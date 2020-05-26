@@ -1,10 +1,10 @@
-# UC1 - Registar Organização
+# UC5 - Regist Historical Transaction
 
-## 1. Engenharia de Requisitos
+## 1. Requirements Engineering
 
-### Formato Breve
+### Brief Format
 
-O utilizador não registado inicia o registo de uma organização. O sistema solicita os dados necessários sobre a organização (i.e. nome da organização, o NIF, o endereço postal, um contacto telefónico, o endereço web, email) e sobre o colaborador (i.e. gestor) que está a proceder ao registo (i.e. nome, função, contacto telefónico, email e pwd). O utilizador não registado introduz os dados solicitados. O sistema valida e apresenta os dados, pedindo que os confirme. O utilizador não registado confirma. O sistema **regista os dados da organização e  do seu colaborador/gestor, tornando este último um utilizador registado** e informa o utilizador não registado do sucesso da operação.
+The collaborator beggins loading the file with historical transactions. The system request for the necessary data about the file(i.e. file name). The collaborator introduces the data requiered. The system validate and show the data, waiting for confirmation. The collaborator confirms. The system load the file and records the transactions data and informs the collaborator about the success of the operation.
 
 ### SSD
 ![UC1_SSD.svg](UC1_SSD.svg)
