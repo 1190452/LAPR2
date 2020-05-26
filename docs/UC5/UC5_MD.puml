@@ -1,0 +1,95 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+class Platform{
+}
+class Freelancer {
+  -String idF
+  -String name
+  -String levelExpertise
+  -String email
+  -String nif
+  -String ibanAccount
+  -String coutry
+}
+
+class Organization {
+  -String nome
+  -String email
+  -String nif
+}
+
+class Collaborator{
+  -String nome
+  -String email
+}
+
+class Task {
+  -String idT
+  -String description
+  -Time timeDuration
+  -double costHour
+  -String taskCategory
+}
+
+
+class Transaction {
+  -Data endDate
+  -double delay
+  -String descriptionOfQuality
+}
+
+class Address{
+  -String street
+  -String doorNumber
+  -String city
+}
+
+class Administrator {
+}
+
+
+class Reader {
+  -String fileName
+}
+
+class HistoricalTransaction{
+}
+
+Freelancer "1" -- "1" Transaction: receive >
+Freelancer "1" -- "1" Address: has >
+
+Task "1..*" -- "1" Freelancer: made by >
+
+Platform "1" -- "1..*" Transaction: has >
+Platform "1" -- "1" Administrator: has >
+Platform "1" -- "1..*" Organization: has registered >
+Platform "1" -- "1..*" Freelancer: has >
+
+Organization "1" -- "1" Address: has >
+Organization "1" -- "1" Collaborator: has >
+
+Administrator "1" -- "1" Organization: registers >
+Administrator "1" -- "1" Collaborator: registers >
+
+Transaction "1" -- "1" Task: has >
+
+Reader "1" -- "1..*" HistoricalTransaction: originates >
+
+HistoricalTransaction "1" -- "1..*" Transaction: has >
+HistoricalTransaction "1" -- "1..*" Freelancer: has >
+
+Collaborator "1" -- "1" Freelancer: creates >
+Collaborator "1" -- "1..*" Task: creates >
+Collaborator "1" -- "1..*" Transaction: creates >
+Collaborator "1" -- "1" HistoricalTransaction: load >
+
+
+
+
+@enduml
+
+
+
