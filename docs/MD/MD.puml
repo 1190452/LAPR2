@@ -112,7 +112,7 @@ Collaborator "1" -- "1" Freelancer: creates >
 Collaborator "1" -- "1..*" Task: creates >
 Collaborator "1" -- "1..*" Transaction: creates >
 Collaborator "1" -- "1" User: acts as >
-
+Collaborator "1" -- "1" HistoricalTransaction: loads >
 
 
 
