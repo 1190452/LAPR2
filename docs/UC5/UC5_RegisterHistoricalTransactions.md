@@ -7,7 +7,7 @@
 The collaborator beggins loading the file with historical transactions. The system request for the necessary data about the file(i.e. file name). The collaborator introduces the data requiered. The system validate and show the data, waiting for confirmation. The collaborator confirms. The system load the file and records the transactions data and informs the collaborator about the success of the operation.
 
 ### SSD
-![UC1_SSD.svg](UC1_SSD.svg)
+![UC1_SSD.svg](UC5_SSD.svg)
 
 
 ### Formato Completo
