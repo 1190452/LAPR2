@@ -7,27 +7,25 @@
 The collaborator beggins loading the file with historical transactions. The system request for the necessary data about the file(i.e. file name). The collaborator introduces the data requiered. The system validate and show the data, waiting for confirmation. The collaborator confirms. The system load the file and records the transactions data and informs the collaborator about the success of the operation.
 
 ### SSD
-![UC1_SSD.svg](UC5_SSD.svg)
+![UC5_SSD.svg](UC5_SSD.svg)
 
 
-### Formato Completo
+### Complet Format
 
-#### Ator principal
+#### Main actor
 
-Utilizador Não Registado
+Collaborator
 
-#### Partes interessadas e seus interesses
-* **Utilizador Não Registado:** pretende regista a organização a que pertence para que possa usufruir das funcionalidade disponibilizadas pela plataforma.
-* **T4J:** pretende que a organização em causa se registe de modo usar a plataforma.
+#### Stakeholders and their interests
+* Collaborator: pretends to load the historical transactions to see them.
 
+#### Preconditions
+* file must be created
 
-#### Pré-condições
-n/a
+#### Postconditions
+* Platforma has already all the transactions that have been done.
 
-#### Pós-condições
-A informação do registo é guardada no sistema.
-
-#### Cenário de sucesso principal (ou fluxo básico)
+#### Main success scenario (or basic flow)
 
 1. O utilizador não registado inicia o registo de uma organização. 
 2. O sistema solicita os dados necessários sobre a organização (i.e. nome da organização, o NIF, o endereço postal, um contacto telefónico, o endereço web, email) e sobre o colaborador (i.e. gestor) que está a proceder ao registo (i.e. nome, função, contacto telefónico, email e pwd). 
@@ -36,7 +34,7 @@ A informação do registo é guardada no sistema.
 5. O utilizador não registado confirma. 
 6. O sistema **regista os dados da organização e  do seu colaborador/gestor, tornando este último um utilizador registado** e informa o utilizador não registado do sucesso da operação.
 
-#### Extensões (ou fluxos alternativos)
+#### Extensions (or alternative flows)
 
 *a. O utilizador não registado solicita o cancelamento da registo.
 
@@ -61,16 +59,16 @@ A informação do registo é guardada no sistema.
 	>	2a. O utilizador não registado não altera os dados. O caso de uso termina.
 
 
-#### Requisitos especiais
-\-
+#### Special requirements
+n/a
 
-#### Lista de Variações de Tecnologias e Dados
-\-
+#### List of Technologies and Data Variations
+n/a
 
-#### Frequência de Ocorrência
-\-
+#### Frequency of Occurrence
+n/a
 
-#### Questões em aberto
+#### Open questions
 
 * Existem outros dados obrigatórios para além dos já conhecidos?
 * Quais os dados que em conjunto permitem detetar a duplicação de organizações (e de gestores)?
