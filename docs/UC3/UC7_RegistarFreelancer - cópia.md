@@ -1,103 +1,86 @@
-# UC 7 - Registar Freelancer
+# UC 3 - Create Freelancer
 
-## 1. Engenharia de Requisitos
+## 1. Requirements Engineering
 
-### Formato Breve
-O administrativo inicia o registo de um freelancer. O sistema solicita os dados que caracterizam o freelancer (i.e., o nome, 
-o NIF, o endereço postal, um contacto telefónico e email), as suas habilitações académicas (grau, designação do curso, instituição 
-que concedeu o grau e média do curso) e os reconhecimentos de competências técnicas (data, competência técnica, grau de proficiência) que lhe foram atribuídos . O administrador introduz os dados solicitados. O sistema 
-valida e apresenta os dados, pedindo que os confirme. O administrador confirma. O sistema regista os dados do freelancer,cria um utilizador para o freelancer e envia-lhe por e-mail os dados de acesso à plataforma e, por fim, informa o administrativo do sucesso da operação.
+### Brief Format
+The collaborator starts creating a freelancer. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country). The collaborator enter the requested data. The system presents the data and asks for confirmation. The collaborator confirms. The system informs the collaborator of the successfull of the operation.
 
 
 ### SSD
-![UC7-SSD](UC7_SSD.png)
+![UC3_SSD.png](UC3_SSD.png)
 
 
-### Formato Completo
+### Full format
 
-#### Ator principal
+#### Main actor
+Collaborator
 
-Administrativo
+#### Stakeholders and their interests
 
-#### Partes interessadas e seus interesses
-**Administrativo:** pretende registar freelancer no sistema para que este possa utilizar a plataforma.
-
-**Freelancer:** pretende usufruir das funcionalidades disponibilizadas pela plataforma.
+**Collaborator:** intends to create freelancers to assign them to their tasks.
 
 **T4J:** pretende que o freelancer em causa esteja registado no sistema de modo a utilizar a plataforma.
 
-#### Pré-condições
+#### Preconditions
 
 n/a
 
-#### Pós-condições
-* A informação do registo do Freelancer é guardada no sistema.
-* É criado um utilizador na plataforma para o Freelancer.
-* É enviado um email ao Freelancer com a informação de acesso à plataforma.
+#### Postconditions
 
-#### Cenário de sucesso principal (ou fluxo básico)
-
-1. O administrativo inicia o registo de um freelancer. 
-2. O sistema solicita os dados que caracterizam o freelancer (i.e., o nome, o NIF, o endereço postal, um contacto telefónico e email).
-3. O administrativo introduz os dados solicitados.
-4. O sistema solicita a introdução de uma habilitação académica (grau, designação do curso, instituição que concedeu o grau e média do curso).
-5. O administrativo introduz os dados solicitados.
-6. Os passos 4-5 repetem-se até que o administrativo tenha introduzido todas as habilitações académicas do freelancer.
-7. O sistema mostra a lista de competências técnicas e respetivos graus de proficiência e solicita a introdução de reconhecimento de competências técnicas (data, competência técnica, grau de proficiência) atribuídas.
-8. O administrativo introduz os dados solicitados.
-9. Os passos 7-8 repetem-se até que o administrativo tenha introduzido todos os reconhecimento de competências técnicas do freelancer.
-10. O sistema valida e apresenta os dados, pedindo que os confirme. 
-11. O administrador confirma. 
-12. O sistema regista os dados do freelancer,cria um utilizador para o freelancer e envia-lhe por e-mail os dados de acesso à plataforma e, por fim, informa o administrativo do sucesso da operação.
+* The freelancer is created.
 
 
-#### Extensões (ou fluxos alternativos)
+#### Main success scenario (or basic flow)
 
-*a. O administrativo solicita o cancelamento da registo.
+1. The collaborator starts creating a freelancer.
+2. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country).
+3. The collaborator enter the requested data. 
+4. The system validates, presents the data and asks for confirmation.
+5. The collaborator confirms the data.
+6. The system informs the collaborator of the successfull of the operation.
 
-> O caso de uso termina.
 
-10a. Dados de Endereço Postal incompletos.
->	1. O sistema informa quais os dados em falta.
->	2. O sistema permite a introdução dos dados em falta (passo 3)
->
-	>	2a. O administrativo não altera os dados. O caso de uso termina.
-	
-10b. Dados mínimos obrigatórios em falta.
->	1. O sistema informa quais os dados em falta.
->	2. O sistema permite a introdução dos dados em falta (passo 3)
+#### Extensions (or alternative flows)
+ 
+1a. The collaborator requests to cancel the creation.
+>    1. The use case ends.
+
+
+4a. The collaborator does not enter all the requested data
+>    1. The system informs you which data is missing.
+>    2. The system allows the collaborator to enter the missing data (step 3).
 >
 	>	2a. O administrativo não altera os dados. O caso de uso termina.
 
-11c. O sistema deteta que os dados (ou algum subconjunto dos dados) introduzidos **(e.g. email) **devem ser únicos e que já existem no sistema.
->	1. O sistema alerta o administrativo para o facto.
->	2. O sistema permite a sua alteração (passo 3)
+11c. The system detects that the data (or some subset of the data) entered (i.e. freelancer identifier, ibanAccount) must be unique and that it already exists in the system.
+>    1. The system alerts the collaborator to the fact.
+>    2. The system allows you to change it (step 3)
 >
-	>	2a. O administrativo não altera os dados. O caso de uso termina.
+	>	2a. The collaborator does not change the data. The use case ends.
+     
 
 
-#### Requisitos especiais
-* **A password deve ser gerada pela plataforma recorrendo a um algoritmo externo (i.e. concebido por terceiros)**
 
-#### Lista de Variações de Tecnologias e Dados
-\-
+#### Special requirements
+--------------------
 
-#### Frequência de Ocorrência
-\-
+#### List of Technologies and Data Variations
+--------------------
 
-#### Questões em aberto
+#### Frequency of Occurrence
+--------------------
 
-* Existem outros dados obrigatórios para além dos já conhecidos?
-* Quais os dados que em conjunto permitem detetar a duplicação de freelancers?
-* É necessário fazer uma operação de negócio usando as habilitações académicas? Quais?
-* O processo conduzido pela departamento de RH precisa de ser considerado no sistema a desenvolver?
-* Qual a frequência de ocorrência deste caso de uso?
+#### Open questions
 
+* Are there any other mandatory data in addition to those already known?
+* What data together can detect the duplication of freelancers?
+* How often does this use case occur?
+ 
 ## 2. Análise OO
 
 ### Excerto do Modelo de Domínio Relevante para o UC
 
-![MD_UC7.png](UC7_MD.png)
+![UC3_MD.png](UC3_MD.png)
 
 
 ## 3. Design - Realização do Caso de Uso
