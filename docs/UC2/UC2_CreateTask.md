@@ -35,7 +35,7 @@ The tasks are available in the platform.
 1. The Collaborator initiates the creation of the task.
 2. The System asks for the data (id, brief description, time duration(in hours), cost per hour(in euros), task category).
 3. The Collaborator writes the data down. 
-4. The System shows the data and asks for confirmation.
+4. The System validates, shows the data and asks for confirmation.
 5. The Collaborator confirms.
 6. The System registers the data and informs about the success of the operation.
 
@@ -85,38 +85,41 @@ The tasks are available in the platform.
 
 ## 3. Design - Use Case Realization
 
+
 ### Rational
 
 | Main Flow | Question: Which Class ... | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-| 1. The Collaborator initiates the creation of the task. 		 | ...interacts with the user?						 |   CreateTaskUI          |       Pure Fabrication           |
+| 1. The Collaborator initiates the creation of the task. 		 | ...interacts with the user?						 |   CreateTaskUI          |       Pure Fabrication:it is not justified to assign this responsibility to any existing class in the Domain Model           |
 |       | ...coordinates the UC? | CreateTaskController | Controller |
-|       | ...creates Task instance? | TaskList | Creator (Regra1) + HC/LC |
+|       | ...creates Task instance? | TaskList | Creator (Rule1) + HC/LC:in the MD the Organization has a Task. By HC / LC delegates these responsibilities in Task List |
 |       | ...session??? |   |   |
 |       | ...which organization the user / collaborator belongs to? | OrganizationRegister | IE: Knows every Organization |
-|       |       | Organization | IE: Knows its Collaborators |
+|       |       | Organization | IE: Knows its Collaborator |
 |       |       | Collaborator | IE: Knows his own data (e.g. email) |
-| Passo2  		 |							 |             |                              |
-| Passo3  		 |							 |             |                              |
-| Passo4  		 |							 |             |                              |
-| Passo5  		 |							 |             |                              |
-| Passo6  		 |							 |             |                              |
+| 2. The System asks for the data (id, brief description, time duration(in hours), cost per hour(in euros), task category). | 							 |             |                              |
+| 3. The Collaborator writes the data down. | ...stores the data entered?  | Task     | instance created in step 1: it has its own data.                              |
+| 4. The System validates, shows the data and asks for confirmation.		 |	...validates the Task data (local validation)?	 |    Task         |  IE:has its own data.                            |
+|       | ...validates the Task data (global validation)?       | TaskList | IE:the TaskList contains Task |
+| 5. The Collaborator confirms.	 | 							 |             |                              |
+| 6. The System registers the data and informs about the success of the operation.  |	...keeps the created Task?		 |  TaskList    | IE:the TaskList contains Task  |
 
-### Sistematização ##
+### Systematization ##
 
- Do racional resulta que as classes conceptuais promovidas a classes de software são:
+ From the rational the classes that are upgraded into software classes are:
 
- * Classe1
- * Classe2
- * Classe3
+ * Organization
+ * Platform
+ * Task
 
-Outras classes de software (i.e. Pure Fabrication) identificadas:
+ Other software classes (i.e. Pure Fabrication) identified:
 
- * xxxxUI
- * xxxxController
+ * CreateTaskUI
+ * CreateTaskController
+ * TaskList
+ * OrganizationRegister
 
-
-###	Diagrama de Sequência
+###	Sequence Diagram
 
 ![SD_UCX.png](SD_UCX.png)
 
