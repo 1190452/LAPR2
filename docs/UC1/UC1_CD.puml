@@ -16,7 +16,7 @@ class Organization {
 class Administrator {
   -String name
   -int phoneNumber
-  Administrator(name, email, password, phoneNumber)
+  Administrator(name, email, role,phoneNumber)
   String getName()
 }
 
@@ -30,22 +30,21 @@ class Address {
 class Collaborator {
   -String name
   -int phoneNumber
-  Collaborator(name, email, password, phoneNumber)
+  Collaborator(name, email, role, phoneNumber)
   String getName()
 }
 
 class Manager {
   -String name
   -int phoneNumber
-  Manager(name, email, password, phoneNumber)
+  Manager(name, email, phoneNumber)
   String getName()
 }
   
 class User {
   -String email
-  -String pwd
   -String role
-  User(email, pwd, role)
+  User(email, role)
   String getEmail()
 }
   
