@@ -86,7 +86,7 @@ n/a
 
 ### Excerpt from the Relevant Domain Model for UC
 
-![UC4_MD.svg](UC4_MD.svg-)
+![UC4_MD.svg](UC4_MD.svg)
 
 
 ## 3. Design - Realização do Caso de Uso
