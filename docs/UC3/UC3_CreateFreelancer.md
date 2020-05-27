@@ -118,22 +118,13 @@ Outras classes de software (i.e. Pure Fabrication) identificadas:
 
 ###	Diagrama de Sequência
 
-![UC7_SD.svg](UC07_SD.svg)
+![UC3_SD.png](UC3_SD.png)
 
 
-
-Desta forma evita-se o método estático na classe Freelancer.
-
-**Esta é uma alternativa mais interessante do que a adotada no UC 1.**
-
-
-![SD_UC7:aut.svg](UC7_SD_aut.svg)
 
 
 ###	Diagrama de Classes
 
-![CD_UC7.svg](UC7_CD.svg)
+![UC3_SD.png](UC3_CD.png)
 
----
 
-![UC7_CD_GerarPwd.svg](UC7_CD_GerarPwd.svg)
