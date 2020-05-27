@@ -93,7 +93,7 @@ n/a
 | |... coordinate the UC?| CreateFreelancerController |Controller|
 | |... create instances of freelancer?|RegisterFreelancer|Creator(regra1) combinado com HC+LC sobre Plataforma.|
 | |... knows RegisterFreelancer?| Platform | IE:
-|2. The system requests the necessary (i.e. freelancer identifier, name, level Expertise, email, nif, iban account, country).|... interact with collaborator?| CreateFreelancerUI |Pure Fabrication|
+|2. The system requests the necessary data (i.e. freelancer identifier, name, level Expertise, email, nif, iban account, country).|... interact with collaborator?| CreateFreelancerUI |Pure Fabrication|
 |3. The collaborator enter the requested data|... save the entered data?|Freelancer|IE:|
 |4. The system validates, presents the data and asks for confirmation |... validates freelancer data( Global Validation )|RegisterFreelancer| IE: |
 | |... validates freelancer data( local Validation )|Freelancer| IE: |
