@@ -107,56 +107,40 @@ n/a
 |5. The collaborator chooses one freelancer from the list. |... 
 |6. The System asks for the rest of the necessary data(details about the execution of the task(end date, delay, brief description of the quality of the work)).|||| 
 |7. The Collaborator introduces all the necessary data.|...saves all the information introduced? | Transaction | Creator (rule1) |
-|8. The system validates and shows the data to the Collaborator asking him to confirm. |... validates the Transaction data (Global validation)? | RegisterTransaction | HC+LC combined with IE, because RegisterTransaction has all the Transactions|
+|8. The system shows the data to the Collaborator and asks him to confirm |... validates the Transaction data (Global validation)? | RegisterTransaction | HC+LC combined with IE, because RegisterTransaction has all the Transactions|
 |    |...validates the Transaction data (local validation)? | Transaction | IE: knows its own data |
 |9. The collaborator confirms.|||| 
 |10. The system regists the data and informs the Collaborator that the operation was successful. |...saves the created instance of Transaction | RegisterTransaction| HC+LC | 
 
 
-### Sistematização ##
+### Sistematization ##
 
- Do racional resulta que as classes conceptuais promovidas a classes de software são:
+From the racional, the conceptual classes that are promoted to software classes are:
 
- * Plataforma
- * Freelancer
- * HabilitacaoAcademica
- * ReconhecimentoCompetenciaTecnica
- * EnderecoPostal
- * CompetênciaTécnica
- * GrauProficiencia
- * AlgoritmoGeradorPasswords
-
-Outras classes de software (i.e. Pure Fabrication) identificadas:  
-
- * RegistarFreelancerUI  
- * RegistarFreelancerController
- * RegistoFreelancer
- * RegistoCT
+ * Platform
+ * Organization
+ * Transaction
  
 
 
-###	Diagrama de Sequência
+Other software classes (eg: Pure Fabrication) identified:
+
+ * CreateTransactionUI
+ * CreateTransactionController
+ * RegisterTransaction
+ * RegisterFreelancer
+ * TaskList
+ 
+ 
+
+
+### Sequence Diagram
 
 ![UC7_SD.svg](UC07_SD.svg)
 
-**Nota:** 
-Atentem na questão do endereço postal no mensagem 7 e 8:
-
-* Na mensagem 7 é enviado como uma string e;
-* ficou o Freelancer com a responsabilidade de instanciar EnderecoPostal no seu construtor (mensagem 8). 
-
-Desta forma evita-se o método estático na classe Freelancer.
-
-**Esta é uma alternativa mais interessante do que a adotada no UC 1.**
 
 
-![SD_UC7:aut.svg](UC7_SD_aut.svg)
-
-
-###	Diagrama de Classes
+### Class Diagram
 
 ![CD_UC7.svg](UC7_CD.svg)
 
----
-
-![UC7_CD_GerarPwd.svg](UC7_CD_GerarPwd.svg)
