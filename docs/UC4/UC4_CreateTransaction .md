@@ -110,7 +110,7 @@ n/a
 |8. The system shows the data to the Collaborator and asks him to confirm |... validates the Transaction data (Global validation)? | RegisterTransaction | HC+LC combined with IE, because RegisterTransaction has all the Transactions|
 |    |...validates the Transaction data (local validation)? | Transaction | IE: knows its own data |
 |9. The collaborator confirms.|||| 
-|10. The system regists the data and informs the Collaborator that the operation was successful. |...saves the created instance of Transaction | RegisterTransaction| HC+LC | 
+|10. The system registers the data and informs the Collaborator that the operation was successful. |...saves the created instance of Transaction | RegisterTransaction| HC+LC | 
 
 
 ### Sistematization ##
@@ -136,11 +136,11 @@ Other software classes (eg: Pure Fabrication) identified:
 
 ### Sequence Diagram
 
-![UC7_SD.svg](UC07_SD.svg)
+![UC4_SD.svg](UC4_SD.svg)
 
 
 
 ### Class Diagram
 
-![CD_UC7.svg](UC7_CD.svg)
+![UC4_CD.svg](UC4_CD.svg)
 

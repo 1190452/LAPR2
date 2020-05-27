@@ -1,0 +1,102 @@
+
+
+@startuml
+class CreateTransactionUI{
+  }
+
+class CreateTransactionController{
+  +getTaskList()
+  +getFreelancerList()
+  +createNewTransaction(task, freel, endDate, delay, qow)
+  +registerTransaction()
+  
+  }
+
+class Organization{
+  -String nome
+  -String email
+  -String nif
+  +getTL()
+  }
+
+class TaskList{
+  +getTaskList()
+  }
+
+class Platform{
+  +getRF()
+  +getRT()
+  }
+
+class RegisterFreelancer{
+  +getFreelancerList()
+  }
+
+class RegisterTransaction{
+  +createNewTransaction(task, freel, endDate, delay, qow)
+  +registerTransaction(trans)
+  +validateTransaction(trans)
+  +addTransaction(trans)
+  }
+
+class Transaction{
+  -Data endDate
+  -double delay
+  -String descriptionOfQuality
+  +create(task, freel, endDate, delay, qow)
+  }
+
+class Freelancer{
+  -String idF
+  -String name
+  -String levelExpertise
+  -String email
+  -String nif
+  -String ibanAccount
+  -String country
+  }
+
+class Collaborator{
+  -String nome
+  -String email
+  }
+
+class Task{
+  -String idT
+  -String description
+  -Time timeDuration
+  -double costHour
+  -String taskCategory
+  }
+
+
+CreateTransactionController ..> Organization
+CreateTransactionController ..> TaskList
+CreateTransactionController ..> Platform
+CreateTransactionController ..> RegisterFreelancer
+CreateTransactionController ..> RegisterTransaction
+CreateTransactionController ..> Transaction
+
+CreateTransactionUI ..> CreateTransactionController
+
+Freelancer "1" -- "1" Transaction: receives >
+
+Platform "1" -- "1..*" RegisterTransaction: has >
+RegisterTransaction "1" -- "*" Transaction: has >
+Platform "1" -- "1..*" Organization: has registered >
+Platform "1" -- "1..*" RegisterFreelancer: has >
+RegisterFreelancer "1" -- "*" Freelancer: has >
+
+Organization "1" -- "1" Collaborator: has >
+Organization "1" -- "1" TaskList: has >
+
+TaskList "1" -- "*" Task: has >
+
+Collaborator "1" -- "1..*" Transaction: creates >
+Collaborator "1" -- "1" User: acts as >
+
+Task "1..*" -- "1" Freelancer: made by >
+
+
+
+@enduml
