@@ -27,36 +27,30 @@ Collaborator
 
 #### Main success scenario (or basic flow)
 
-1. O utilizador não registado inicia o registo de uma organização. 
-2. O sistema solicita os dados necessários sobre a organização (i.e. nome da organização, o NIF, o endereço postal, um contacto telefónico, o endereço web, email) e sobre o colaborador (i.e. gestor) que está a proceder ao registo (i.e. nome, função, contacto telefónico, email e pwd). 
-3. O utilizador não registado introduz os dados solicitados. 
-4. O sistema valida e apresenta os dados, pedindo que os confirme. 
-5. O utilizador não registado confirma. 
-6. O sistema **regista os dados da organização e  do seu colaborador/gestor, tornando este último um utilizador registado** e informa o utilizador não registado do sucesso da operação.
+1. The collaborator starts loading the file.
+2. The system request for the necessary data (i.e. file name). 
+3. The collaborator introduces the data requiered.
+4. The system validate and show the data, waiting for confirmation.
+5. The collaborator confirms. 
+6. The system save the transactions history and notify the collaborator about the sucess of the operation.
 
 #### Extensions (or alternative flows)
 
-*a. O utilizador não registado solicita o cancelamento da registo.
+*a. The collaborator requests to cancel the creation.
 
-> O caso de uso termina.
-
-4a. Dados de Endereço Postal incompletos.
->	1. O sistema informa quais os dados em falta.
->	2. O sistema permite a introdução dos dados em falta (passo 3)
->
-	>	2a. O utilizador não registado não altera os dados. O caso de uso termina.
+> The use case ends.
 	
-4b. Dados mínimos obrigatórios em falta.
->	1. O sistema informa quais os dados em falta.
->	2. O sistema permite a introdução dos dados em falta (passo 3)
+4b. Missing minimum required data.
+>	1. The system advice which data is missing.
+>	2. The system allows the entry of missing data (step 2)
 >
-	>	2a. O utilizador não registado não altera os dados. O caso de uso termina.
+	>	2a. The collaborator doesn´t change the data. The use case ends.
 
-4c. O sistema deteta que os dados (ou algum subconjunto dos dados) introduzidos devem ser únicos e que já existem no sistema.
->	1. O sistema alerta o utilizador não registado para o facto.
->	2. O sistema permite a sua alteração (passo 3)
+4c. The system idenfitifies that the file name entered doesn´t correspond to a created file.
+>	1. The system alerts collaborator about the fact.
+>	2.The system allows its change (passo 2)
 >
-	>	2a. O utilizador não registado não altera os dados. O caso de uso termina.
+	>	2a. The collaborator doesn´t change the data. The use case ends.
 
 
 #### Special requirements
@@ -70,66 +64,56 @@ n/a
 
 #### Open questions
 
-* Existem outros dados obrigatórios para além dos já conhecidos?
-* Quais os dados que em conjunto permitem detetar a duplicação de organizações (e de gestores)?
-* É necessário existir algum mecanismo de segurança adicional para confirmar que a organização existe e é representada pela pessoa que a registou?
-* Quais são as regras de segurança aplicaveis à palavra-passe?
-* Qual a frequência de ocorrência deste caso de uso?
+* How many files the collaborator can load?
+* What is the requeired information in the file?
 
 
-## 2. Análise OO
+## 2. OO Analysis
 
-### Excerto do Modelo de Domínio Relevante para o UC
+### Excerpt From The Relevant Domain Model For UC
 
-![UC1_MD.svg](UC1_MD.svg)
+![UC5_MD.svg](UC5_MD.svg)
 
 
-## 3. Design - Realização do Caso de Uso
+## 3. Design - Use case realization
 
-### Racional
+### Rational
 
-| Fluxo Principal | Questão: Que Classe... | Resposta  | Justificação  |
+| Main flow | Question: what class... | Answer | reason |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-|1. O utilizador não registado inicia o registo de uma organização.|... interage com o utilizador?| RegistarOrganizacaoUI |Pure Fabrication|
-| |... coordena o UC?| RegistarOrganizacaoController |Controller|
-| |... cria instâncias de Organizacao?|Plataforma|Creator(regra1)|
-|2. O sistema solicita os dados necessários sobre a organização (i.e. nome da organização, o NIF, o endereço postal, um contacto telefónico, o endereço web, email) e sobre o colaborador (i.e. gestor) que está a proceder ao registo (i.e. nome, função, contacto telefónico, email e pwd).||||
-|3. O utilizador não registado introduz os dados solicitados. |... guarda os dados introduzidos?|Organizacao, EnderecoPostal, Colaborador|IE: instância criada no passo 1|
-| |... cria instâncias de EnderecoPostal?|Organizacao|creator(regra1)|
-| |... cria instâncias de Colaborador?|Organizacao|creator(regra1)|
-|4. O sistema valida e apresenta os dados, pedindo que os confirme. |... valida os dados da Organizacao (validação local)|Organizacao|IE: possui os seus próprios dados|
-| |... valida os dados da Organizacao (validação local)|EnderecoPostal|IE: possui os seus próprios dados|
-| |... valida os dados da Organizacao (validação local)|Colaborador|IE: possui os seus próprios dados|
-| |... valida os dados da Organizacao (validação global)|Plataforma|IE: A Plataforma tem registadas Organizacao|
-|5. O utilizador não registado confirma. ||||
-|6. O sistema **regista os dados da organização e  do seu colaborador/gestor, tornando este último um utilizador registado** e informa o utilizador não registado do sucesso da operação.|... guarda a Organizacao criada?| Plataforma |IE: No MD a Plataforma tem  Organizacao|
-| |... regista/guarda o Utilizador referente ao Colaborador da Organizacao?|AutorizacaoFacade|IE. A gestão de utilizadores é responsabilidade do componente externo respetivo cujo ponto de interação é através da classe "AutorizacaoFacade"|
-
+|1. The collaborator starts uploading the file.|... interacts with the user?| HistoricalTransactionUI |Pure Fabrication|
+| |... coordinates the UC?| HistoricalTransactionController |Controller|
+| |... create instances of file?|Collaborator|Creator(rule1)|
+|2. The system request the necessary data about the file (i.e. file name).||||
+|3. The collaborator introducethe required data. |... saves the entered data?|Reader|IE: instance created in step 1|
+|4. The system validates and show the data, asking confirmation. |... validate the data of Reader? (local validation)|Reader|IE: own your own data|
+| |...validate the data of Reader? (global validation)|Platform|IE: Platform has historical transactions.|
+|5. The collaborator confirms. ||||
+|6. The system load all the information and notify the collaborator about the sucess of the operation.|... saves the reader created?| Platform |IE: No MD the platform has historical transactions|
              
 
-### Sistematização ##
+### Sistematization ##
 
- Do racional resulta que as classes conceptuais promovidas a classes de software são:
+ From rational results that conceptual classes  conceptuais promoted to software classes are:
 
- * Plataforma
- * Organizacao
- * Colaborador
- * EnderecoPostal
-
-
-Outras classes de software (i.e. Pure Fabrication) identificadas:  
-
- * RegistarOrganizacaoUI  
- * RegistarOrganizacaoController
+ * Platform
+ * Collaborator
+ * Reader
 
 
-###	Diagrama de Sequência
+Other software classes (i.e. Pure Fabrication) identified:  
 
-![UC1_SD.svg](UC1_SD.svg)
+ * ReaderUI  
+ * ReaderController
+
+
+###	Sequence Diagram
+
+![UC5_SD.svg](UC5_SD.png)
 
 
 
-###	Diagrama de Classes
+###	Class Diagram
 
-![UC1_CD.svg](UC1_CD.svg)
+![UC5_CD.svg](UC5_CD.png)
 
