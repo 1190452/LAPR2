@@ -6,18 +6,9 @@ participant ":Sistema" as SIST
 
 activate MCO
 MCO -> SIST : starts the visualization of overall statistics
-activate SIST
-SIST --> MCO : show candidature list and asks user to choose one 
-deactivate SIST
 
-MCO -> SIST : introduces the data required
 activate SIST
-SIST --> MCO : show the data and wait for the confirmation
-deactivate SIST
-
-MCO -> SIST : confirm data
-activate SIST
-SIST --> MCO : show task execution times and freelancer payments the and \ninforms the manager/collaborator about the success of the operation.
+SIST --> MCO : show task execution times and freelancer payments and \ninforms the manager/collaborator about the success of the operation.
 deactivate SIST
 
 deactivate MCO
