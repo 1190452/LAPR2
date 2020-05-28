@@ -8,13 +8,13 @@ class Platform{
 
 
 class Organization {
-  -String nome
+  -String name
   -String email
   -String nif
 }
 
 class Collaborator{
-  -String nome
+  -String name
   -String email
 }
 

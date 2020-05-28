@@ -81,8 +81,8 @@ n/a
 
 | Main flow | Question: what class... | Answer | reason |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-|1. The collaborator starts uploading the file.|... interacts with the user?| ReaderUI |Pure Fabrication|
-| |... coordinates the UC?| ReaderController |Controller|
+|1. The collaborator starts uploading the file.|... interacts with the user?| HistoricalTransactionUI |Pure Fabrication|
+| |... coordinates the UC?| HistoricalTransactionController |Controller|
 | |... create instances of file?|Collaborator|Creator(rule1)|
 |2. The system request the necessary data about the file (i.e. file name).||||
 |3. The collaborator introducethe required data. |... saves the entered data?|Reader|IE: instance created in step 1|
@@ -109,11 +109,11 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ###	Sequence Diagram
 
-![UC5_SD.svg](UC5_SD.svg)
+![UC5_SD.svg](UC5_SD.png)
 
 
 
 ###	Class Diagram
 
-![UC5_CD.svg](UC5_CD.svg)
+![UC5_CD.svg](UC5_CD.png)
 

@@ -1,0 +1,98 @@
+@startuml
+
+class Organization {
+  -String name
+  -String email
+  -String NIF
+  Organization(name, email, nif, address, collaborator, manager)
+  String getNome()
+  String getEmail()
+  String getNif()
+  {static} Address newAddress(street, doorNumber, locality)
+  {static} Collaborator newCollaborator(name, email ,email)
+  {static} Collaborator newManager(name, email ,email)
+}
+
+class Administrator {
+  -String name
+  -int phoneNumber
+  Administrator(name, email, role,phoneNumber)
+  String getName()
+}
+
+class Address {
+  -String street
+  -int doorNumber
+  -String locality
+  Address(street, doorNumber, locality)
+}
+
+class Collaborator {
+  -String name
+  -int phoneNumber
+  Collaborator(name, email, role, phoneNumber)
+  String getName()
+}
+
+class Manager {
+  -String name
+  -int phoneNumber
+  Manager(name, email, phoneNumber)
+  String getName()
+}
+  
+class User {
+  -String email
+  -String role
+  User(email, role)
+  String getEmail()
+}
+  
+class Platform {
+  -String designation
+  RegistOrganization getOrganizationRegists()
+  addOrganizacao(Organizacao org) 
+}
+
+class AuthorizationFacade {
+  registerUserWithRole(name, email, password, phoneNumber, role)
+}
+  
+interface PasswordGenerator {
+  String pwdGenerator(String name, String email)
+}
+  
+class RegistOrganization {
+  Organizacao newOrganization(name,email,NIF,street,doorNumber,locality, nameC, emailC, passwordC, phoneNumberC, nameM, emailM, passwordM, phoneNumberM)
+  registOrganization(Organization org)
+  authenticatesOrganization(Organization org, pwd)
+  addOrganization(Organization org)
+  sendPassword(String name, String email)
+}
+
+class RegistOrganizationController {
+  newOrganizacao(name,email,NIF,street,doorNumber,locality, nameC, emailC, passwordC, phoneNumberC, nameM, emailM, passwordM, phoneNumberM)
+  registOrganization()
+}
+  
+
+class RegistOrganizationUI {
+}
+
+RegistOrganizationUI ..> RegistOrganizationController
+RegistOrganizationController ..> Platform
+RegistOrganizationController ..> Organization
+RegistOrganizationController ..> RegistOrganization
+RegistOrganization ..> AuthorizationFacade
+RegistOrganization ..> PasswordGenerator
+RegistOrganization "1" --> "1..*" Organization: has registered
+Organization "1" -- "1" Collaborator: has
+Organization "1" -- "1" Manager: has
+Organization "1" -- "1" Address: located in
+Platform "1" .. "1" Administrator: has
+Manager "1" .. "1" User: acts 
+Collaborator "1" .. "1" User: acts 
+Administrator "1" .. "1" User: acts
+
+
+@enduml
