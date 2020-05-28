@@ -1,0 +1,16 @@
+@startuml
+autonumber
+actor "Administrator" as ADM
+
+participant ":System" as SYST
+
+activate ADM
+ADM -> SYST : starts the visualization of the performance of the freelancers
+activate SYST
+
+SYST --> ADM :  The system shows the statistics describing the performance of the \nfreelancers (the mean and the standard deviation of the delays and \npayments of all the freelancers and the histrograms that represent that) \nand shows the probability that the sample mean is higher than 3 hours.
+deactivate SYST
+
+deactivate ADM
+
+@enduml

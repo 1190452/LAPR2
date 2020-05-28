@@ -66,7 +66,7 @@ All the last days of the years.
 
 ### Excerto do Modelo de Domínio Relevante para o UC
 
-![UC13-MD](UC13_MD.svg)
+![UC10_MD.png](UC10_MD.png)
 
 ## 3. Design - Realização do Caso de Uso
 
