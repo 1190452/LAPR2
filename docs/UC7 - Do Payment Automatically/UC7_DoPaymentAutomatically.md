@@ -1,87 +1,65 @@
-# UC 7 - Do Payment Automatically
+# UC 7 - Do Payment (Automatically)
 
 ## 1. Requirements Engineering
 
 ### Brief Format
 
-
+The timer starts the automatic payment process at the stipulated time using the payment list, triggering the process at the defined date and time.
 
 ### SSD
-![UC2_SSD](UC2_SSD.svg)
+![UC7_SSD](UC7_SSD.svg)
 
 
 ### Full Format
 
 #### Main Actor
 
-Collaborator
+Timer
 
 #### Stakeholders and their interests
 
-* **Collaborator:** want to create tasks.
-* **Organization:** want collaborator to create tasks.
-* **T4J:** intends to pay freelancers.
+* **Organization:** intends to pay the freelancers.
+* **Freelancer:** intends to receive the payment for the work made.
 
 #### Preconditions
 
-The Organization has to be registered in the platform.
+The date and the time must be present in the system so that the timer can start the process at that moment.
 
 #### Post-conditions
 
-The tasks are available in the platform.
+The Freelancer receives the payment
 
 #### Main success scenario (or basic flow)
 
-1. The Collaborator initiates the creation of the task.
-2. The System asks for the data (id, brief description, time duration(in hours), cost per hour(in euros), task category).
-3. The Collaborator writes the data down. 
-4. The System validates, shows the data and asks for confirmation.
-5. The Collaborator confirms.
-6. The System registers the data and informs about the success of the operation.
-
+1. The timer starts the automatic payment process at the stipulated time.
+2. The system makes payments using the payment list, triggering the process at the defined date and time.
 
 #### Extensions (or alternative flow)
 
-*a. The Collaborator requests to cancel the creation of the task.
 
+*2a. There is no date and time defined in the Payment.
 > The use case ends.
 
-4a. Missing minimum required data.
->    1. The system informs you which data is missing.
->    2. The system allows the entry of missing data (step 3)
->
-    >    2a. The Collaborator does not change the data. The use case ends.
-
-4b. The System detects that the data (or some subset of the data) entered must be unique and that it already exists in the system.
->    1. The system alerts the collaborator to the fact.
->    2. The system allows its modification (step 3)
->
-    >    2a.  The Collaborator does not change the data. The use case ends.
-
-4c. The system detects that the data entered (or some subset of the data) is invalid.
-> 1. The system alerts the collaborator to the fact.
-> 2. The system allows its modification (step 3).
->
-    > 2a.  The Collaborator does not change the data. The use case ends.
+2b. There is no payment in the Payment List to be made.
+> The use case ends.
 
 #### Special Requirements
 
-
 #### List of Technologies and Data Variations
-
 
 #### Frequency of Occurrence
 
+Whenever time identifies that there is a payment to be made.
 
 #### Open questions
 
-
+How often is this process triggered?
 
 ## 2. OO Analysis
 
 ### Excerpt from the Relevant Domain Model for UC
 
-![UC2_MD](UC2_MD.svg)
+![UC7_MD](UC7_MD.svg)
 
 ## 3. Design - Use Case Realization
 

@@ -1,0 +1,80 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+class Platform{
+}
+class Freelancer {
+  -String freeID
+  -String name
+  -String levelExp
+  -String email
+  -String nif
+  -String iban
+  -String country
+}
+
+class Organization {
+  -String nome
+  -String email
+  -String nif
+}
+
+
+class Task {
+  -String idT
+  -String description
+  -Time timeDuration
+  -double costHour
+  -String taskCategory
+  -Boolean isPayed
+}
+
+class Receipt {
+  -double amountE
+  -double amountC
+}
+
+class Transaction {
+
+}
+
+
+
+class Payment{
+  -Time timeToPay
+  -Data dateToPay
+}
+
+
+
+
+
+Freelancer "1" -- "1" Transaction: receive >
+Freelancer "1" -- "1" Receipt: receives >
+Freelancer "1" -- "1" Payment: receives >
+
+Task "1..*" -- "1" Freelancer: made by >
+
+Platform "1" -- "1..*" Transaction: has >
+Platform "1" -- "1..*" Organization: has registered >
+Platform "1" -- "1..*" Freelancer: has >
+
+Organization "1" -- "1..*" Task: has >
+Organization "1" -- "1" Manager: has >
+
+Manager "1" -- "1" Payment: defines >
+
+Transaction "1" -- "1" Payment: results in >
+Transaction "1" -- "1" Task: has >
+
+Payment "1" -- "1" Receipt: generate >
+
+
+
+
+@enduml
+
+
+
