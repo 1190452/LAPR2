@@ -1,0 +1,79 @@
+~@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+class Platform{
+}
+class Freelancer {
+  -String freeID
+  -String name
+  -String levelExp
+  -String email
+  -String nif
+  -String iban
+  -String country
+}
+
+class Organization {
+  -String nome
+  -String email
+  -String nif
+}
+
+
+class Task {
+  -String idT
+  -String description
+  -Time timeDuration
+  -double costHour
+  -String taskCategory
+  -Boolean isPayed
+}
+
+class Transaction {
+
+}
+
+
+class Administrator {
+}
+
+
+class TaskExecution{
+  -Data endDate
+  -double delay
+  -String descriptionOfQuality
+  }
+
+Freelancer "1" -- "1" Transaction: receive >
+
+
+Task "1..*" -- "1" Freelancer: made by >
+
+
+Platform "1" -- "1..*" Transaction: has >
+Platform "1" -- "1" Administrator: has >
+Platform "1" -- "1..*" Organization: has registered >
+Platform "1" -- "1..*" Freelancer: has >
+
+
+Organization "1" -- "1..*" Task: has >
+
+
+Administrator "1" -- "1" Organization: registers >
+
+Transaction "1" -- "1" Task: has >
+Transaction "1" -- "1" TaskExecution: has >
+
+
+TaskExecution "1" -- "1" Freelancer: related to the work of
+
+Task "1" -- "1" TaskExecution : originates >
+
+
+
+@enduml
+
+
+
