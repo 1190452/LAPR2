@@ -4,7 +4,7 @@
 
 ### Brief Format
 
-The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show candidacy list and request the freelancer to choose one. The manager/collaborator choose the task. The system validate and show the data, waiting for confirmation. The manager/collaborator confirms. The system (por acabar) the and informs the manager/collaborator about the success of the operation.
+The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation.
 
 ### SSD
 ![UC8_SSD.svg](UC8_SSD.svg)
@@ -17,22 +17,19 @@ The collaborator/manager beggins watch overall statistics about task execution t
 Manager/Collaborator
 
 #### Stakeholders and their interests
-* Collaborator: pretends to load the historical transactions to see them.
+* Collaborator: pretends to se overall statistics.
+* Manager: pretends to se overall statistics.
+* Freelancer: pretends to see your own statistics.
 
 #### Preconditions
-* file must be created
 
 #### Postconditions
-* Platforma has already all the transactions that have been done.
 
 #### Main success scenario (or basic flow)
 
-1. The collaborator starts loading the file.
-2. The system request for the necessary data (i.e. file name). 
-3. The collaborator introduces the data requiered.
-4. The system validate and show the data, waiting for confirmation.
-5. The collaborator confirms. 
-6. The system save the transactions history and notify the collaborator about the sucess of the operation.
+1. The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments.
+2. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation.
+
 
 #### Extensions (or alternative flows)
 
@@ -40,19 +37,6 @@ Manager/Collaborator
 
 > The use case ends.
 	
-4b. Missing minimum required data.
->	1. The system advice which data is missing.
->	2. The system allows the entry of missing data (step 2)
->
-	>	2a. The collaborator doesn´t change the data. The use case ends.
-
-4c. The system idenfitifies that the file name entered doesn´t correspond to a created file.
->	1. The system alerts collaborator about the fact.
->	2.The system allows its change (passo 2)
->
-	>	2a. The collaborator doesn´t change the data. The use case ends.
-
-
 #### Special requirements
 n/a
 
@@ -63,10 +47,6 @@ n/a
 n/a
 
 #### Open questions
-
-* How many files the collaborator can load?
-* What is the requeired information in the file?
-
 
 ## 2. OO Analysis
 
@@ -81,15 +61,15 @@ n/a
 
 | Main flow | Question: what class... | Answer | reason |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-|1. The collaborator starts uploading the file.|... interacts with the user?| HistoricalTransactionUI |Pure Fabrication|
-| |... coordinates the UC?| HistoricalTransactionController |Controller|
-| |... create instances of file?|Collaborator|Creator(rule1)|
-|2. The system request the necessary data about the file (i.e. file name).||||
-|3. The collaborator introducethe required data. |... saves the entered data?|Reader|IE: instance created in step 1|
-|4. The system validates and show the data, asking confirmation. |... validate the data of Reader? (local validation)|Reader|IE: own your own data|
-| |...validate the data of Reader? (global validation)|Platform|IE: Platform has historical transactions.|
-|5. The collaborator confirms. ||||
-|6. The system load all the information and notify the collaborator about the sucess of the operation.|... saves the reader created?| Platform |IE: No MD the platform has historical transactions|
+|1. The collaborator/manager starts watching overall statistics|... interacts with the user?| WatchStatisticsUI |Pure Fabrication|
+| |... coordinates the UC?|  WatchStatisticsController |Controller|
+|2. The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation. | ...knows the payment of each freelancer? | RegisterTransactions | HC+LC |
+| | ...knows RegisterTransactions | Platform| IE: MD show that Platform has RegisterTransactions |
+| | ...knows task execution times of each freelancer? | TaskExecution | IE: TaskExecution knows its own data |
+
+
+
+
              
 
 ### Sistematization ##
