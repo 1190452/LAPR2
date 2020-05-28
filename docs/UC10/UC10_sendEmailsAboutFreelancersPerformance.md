@@ -1,4 +1,4 @@
-# UC 13 - send emails about Freelancers performance
+# UC 10 - Send emails about Freelancers performance
 
 ## 1. Requirements Engineering
 
