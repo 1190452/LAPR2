@@ -1,13 +1,13 @@
-# UC 4 - Create Payment Transaction
+# UC 9 - Check Freelancer Performance
 
 ## 1.Requirement Engineering
 
 ### Brief format
-The Collaborator beggins the creation of a payment transaction. The system asks for the necessary data (brief description of the task, details about the execution of the task and information about the freelancer that worked in the task). The Collaborator introduces the required data. The system shows the data to the Collaborator and asks him to confirm. The collaborator confirms. The system registers the data and informs the Collaborator that the operation was successful.
+The Administrator starts the visualization of the performance of the freelancers. The system shows the statistics describing the performance of the freelancers (the mean and the standard deviation of the delays and payments of all the freelancers and the histrograms that represent that) and shows the probability that the sample mean is higher than 3 hours.
 
 
 ### SSD
-![UC4_SSD.svg](UC4_SSD.svg)
+![UC_SSD.svg](UC9_SSD.svg)
 
 
 ### Full Format
