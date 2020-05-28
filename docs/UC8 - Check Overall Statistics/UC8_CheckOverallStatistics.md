@@ -72,7 +72,7 @@ n/a
 
 ### Excerpt From The Relevant Domain Model For UC
 
-![UC5_MD.svg](UC5_MD.svg)
+![UC8_MD.svg](UC8_MD.svg)
 
 
 ## 3. Design - Use case realization
