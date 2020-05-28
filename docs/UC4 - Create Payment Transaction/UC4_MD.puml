@@ -45,6 +45,12 @@ class Transaction {
   -String descriptionOfQuality
 }
 
+class TaskExecution{
+  -Data endDate
+  -double delay
+  -String descriptionOfQuality
+  }
+
 
 class Payment{
 }
@@ -62,7 +68,9 @@ Transaction "1" -- "1" Task: has >
 Collaborator "1" -- "1..*" Transaction: creates >
 Collaborator "1" -- "1" User: acts as >
 
-
+Transaction "1" -- "1" TaskExecution: has >
+Task "1" -- "1" TaskExecution: has >
+Freelancer "1" -- "1" TaskExecution: results from the work of
 
 
 @enduml
