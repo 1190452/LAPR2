@@ -1,0 +1,162 @@
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
+
+
+class SeriarCandidaturasAnunciosTask
+{
++SeriarCandidaturasAnunciosTask(info)
++run()
++seriarCandidaturasSubmetidas()
+}
+
+abstract TimerTask{
++run()
+}
+
+class Plataforma {
+  -String designacao
+  +agendaSeriacao()
+  +getRegistoAnuncio()
+  +getRegistoOrganizacao()
+}
+
+class RegistoOrganizacoes {
+    +getOrganizacaoByEmailUtilizador(email)
+}
+
+class RegistoAnuncios {
+    +getAnunciosPorSeriarAutomaticamente()
+}
+
+class Organizacao {
+  -String nome
+  -String NIF
+  -String website
+  -String telefone
+  -String email
+}
+
+class TipoRegimento
+{
+    -String designacao
+    -String descricaoRegras
+    +eAtribuicaoObrigatoria()
+}
+
+
+class Freelancer {
+    -String nome
+    -String NIF
+    -String telefone
+    -String email
+}
+
+class Anuncio
+{
+    -Date dtInicioPublicitacao
+    -Date dtFimPublicitacao
+    -Date dtInicioCandidatura
+    -Date dtFimCandidatura
+    -Date dtInicioSeriacao
+    -Date dtFimSeriacao
+    +getListaCandidaturas()
+    +getNovoProcessoSeriacao()
+    +registaProcessoSeriacao(ps)
+    +novoProcessoAtribuicao(anu,ps)
+}
+
+class ListaCandidaturas
+{
+    +getCandidatura()
+    +getCandidatura(candId)
+    +generateOrdem(cand)
+    +getCandidaturaByFrl(freelancer)
+}
+class Candidatura
+{
+    -Date dataCandidatura
+    -Double valorPretendido
+    -Integer nrDias
+    -String txtApresentacao
+    -String txtMotivacao
+    +getFreelancer()
+    +getValorPretendido()
+    +getNrDias()
+}
+
+class Classificacao
+{
+    -Integer lugar
+    Classificacao(cand,ordem)
+    +validaClassificacao(class)
+    +addClassificacao(class)
+}
+
+class ProcessoSeriacao
+{
+    -Date dataRealizacao
+    +ProcessoSeriacao(tipoRegimento)
+    +addClassificacao(cand,ordem)
+    +valida()
+    +getMelhorClassificacao()
+}
+
+class Adjudicacao {
+-String dsTarefa
+-Date dtIn
+-Date dtFim
+-Date dtAdjudicacao
+-double valorPretendido
+-String refAnu
+-String adjId
++validaAdjudicacao(adjAnu)
+-Adjudicacao(org,frl,dsTarefa,dtIn,dtFim,valor,refAnu)
+}
+
+class Tarefa{
++getDescInformal()
++getReferencia()
+}
+
+class ProcessoAtribuicao{
++ProcessoAtribuicao(tar)
++setData()
++validaAdjudicacao()
++addAdjudicacao()
+}
+
+class Colaborador{
++getEmailColaborador()
+}
+
+
+Plataforma ..>TimerTask
+TimerTask ..> SeriarCandidaturasAnunciosTask
+SeriarCandidaturasAnunciosTask ..> Plataforma
+
+Plataforma "1" --> "1" RegistoOrganizacoes : tem
+Plataforma "1" --> "1" RegistoAnuncios : tem
+
+RegistoOrganizacoes "1" --> "*" Organizacao : tem registadas
+RegistoAnuncios "1" --> "*" Anuncio : publicita
+
+Anuncio "*" --> "1" TipoRegimento: rege-se por
+Anuncio "*" --> "1" Colaborador: publicado por
+Anuncio "1" --> "1" ListaCandidaturas: recebeu
+ListaCandidaturas "1" --> "*" Candidatura: tem
+Anuncio "1" --> "0..1" ProcessoSeriacao: espoleta
+
+Classificacao "0..1" --> "1" Candidatura: referente a
+Candidatura "*" -- "1"  Freelancer: realizada por
+
+Organizacao "1" --> "1" ListaTarefas: tem
+ListaTarefas "1" --> "*" Tarefa: tem
+
+Organizacao "1" --> "*" Colaborador :tem
+
+Anuncio "1" --> "1" ProcessoAtribuicao :espoleta
+ProcessoAtribuicao "1" --> "1" Adjudicacao : tem
+
+Adjudicacao "1" --> "1" Freelancer : escolhe
+@enduml

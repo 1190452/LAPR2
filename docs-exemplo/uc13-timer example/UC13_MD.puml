@@ -1,0 +1,83 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+class Plataforma {
+  -String designacao
+}
+
+class TipoRegimento
+{
+    -String designacao
+    -String descricaoRegras
+}
+
+
+class Freelancer {
+    -String nome
+    -String NIF
+    -String telefone
+    -String email
+}
+
+class Anuncio
+{
+    -Date dtInicioPublicitacao
+    -Date dtFimPublicitacao
+    -Date dtInicioCandidatura
+    -Date dtFimCandidatura
+    -Date dtInicioSeriacao
+    -Date dtFimSeriacao
+}
+
+class Candidatura
+{
+    -Date dataCandidatura
+    -Double valorPretendido
+    -Integer nrDias
+    -String txtApresentacao
+    -String txtMotivacao
+}
+
+class Classificacao
+{
+    -Integer lugar
+}
+
+class ProcessoSeriacao
+{
+    -Date dataRealizacao
+    -String conclusao
+}
+
+class ProcessoAdjudicacao
+{
+    
+}
+
+
+
+Plataforma "1" -- "*" TipoRegimento : suporta >
+Plataforma "1" -- "*" Anuncio : publicita >
+Plataforma "1" -- "*" Freelancer : tem/usa  >
+
+
+
+Anuncio "*" -- "1" TipoRegimento: rege-se por >
+Anuncio "1" -- "*" Candidatura: recebe >
+Anuncio "1" -- "0..1" ProcessoSeriacao: espoleta >
+Anuncio "1" -- "0..1" ProcessoAdjudicacao: espoleta >
+
+Candidatura "*" -- "1"  Freelancer: realizada por >
+
+ProcessoSeriacao "*" -- "1" TipoRegimento: decorre em concordância com >
+ProcessoSeriacao "1" -- "*" Classificacao: resulta >
+
+ProcessoAdjudicacao "1" -- "*" Classificacao: resulta >
+ProcessoAdjudicacao "*" -- "1" TipoRegimento: decorre em concordância com >
+
+Classificacao "0..1" -- "1" Candidatura: referente a >
+
+
+@enduml
