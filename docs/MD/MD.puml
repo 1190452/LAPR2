@@ -32,6 +32,7 @@ class Task {
   -Time timeDuration
   -double costHour
   -String taskCategory
+  -Boolean isPayed
 }
 
 class Manager {
