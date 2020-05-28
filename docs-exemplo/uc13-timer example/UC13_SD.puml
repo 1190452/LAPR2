@@ -1,0 +1,27 @@
+@startuml
+autonumber
+
+participant ":Plataforma" as PLAT
+participant "task\n:SeriarCandidaturasAnunciosTask" as SCAT
+participant "t\n:timer" as T
+
+
+[o-> PLAT : agendaSeriacao()
+activate PLAT
+PLAT --> SCAT** : create(...)
+PLAT -> PLAT : delay = getDelay()
+PLAT -> PLAT : intervalo = getIntervalo()
+PLAT --> T** : create()
+PLAT -> T : schedule(task, delay, intervalo)
+activate T
+deactivate T
+deactivate PLAT
+T -> SCAT : run()
+activate SCAT
+SCAT -> SCAT : seriarCandidaturasSubmetidas()
+ref over SCAT : UC13_SD_seriarCandidaturasSubmetidas
+activate SCAT
+deactivate SCAT
+deactivate SCAT
+
+@enduml

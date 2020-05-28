@@ -1,0 +1,85 @@
+@startuml
+autonumber
+
+title UC13_SD_seriarCandidaturasSubmetidas
+
+participant "task : SeriarCandidaturaAnuncioTask" as SCAT
+participant ":Plataforma" as PLAT
+participant "ra\n:RegistoAnuncios" as RA
+participant "anu\n:Anuncio" as A
+participant "lstAnun\nList<Anuncio>" as LISTA
+participant "ListaCand\n:ListaCandidaturas" as LC
+participant ":ProcessoSeriacao" as PS
+participant "class\n:Classificacao" as Cand
+participant "rs\n:RegistoSeriacoes" as RS
+participant "List<Seriacoes>" as LS
+participant "reg\n:TipoRegimento" as TP
+
+[o-> SCAT : seriarCandidaturasSubmetidas()
+activate SCAT
+SCAT -> PLAT :ra=getRegistoAnuncio()
+activate PLAT
+deactivate PLAT
+SCAT-> RA : lstAnun = getAnunciosPorSeriarAutomaticamente()
+activate RA
+deactivate RA
+loop [ Para cada anúncio: ]
+SCAT -> LISTA : anu = get(i)
+activate LISTA
+deactivate LISTA
+SCAT -> A : listaCand = getListaCandidaturas()
+
+activate A
+deactivate A
+loop [ Para cada Candidatura ]
+
+SCAT -> LC : ListaCand = getCandidatura()
+activate LC
+deactivate LC
+SCAT -> A : ps = getNovoProcessoSeriacao()
+activate A
+A -> PS** : create(tipoRegimento)
+deactivate A
+
+SCAT -> LC : cand = getCandidatura(candId)
+activate LC
+deactivate LC
+SCAT -> LC : ordem = generateOrdem(cand)
+activate LC
+deactivate LC
+SCAT -> PS : addClassificacao = getClassificacao(cand, ordem)
+activate PS
+PS -> Cand** : class = create(cand,ordem)
+PS -> PS : validaClassificacao(class)
+PS -> PS : addClassificacao(class)
+deactivate PS
+end loop
+SCAT -> SCAT : sc = seriarCandidaturasSubmetidos(listaCand)
+
+SCAT -> A: registaProcessoSeriacao(ps)
+activate A
+A -> A: validaProcessoSeriacao(ps)
+A -> PS: valida()
+activate PS
+deactivate PS
+A -> A: setProcessoSeriacao(ps)
+
+A -> TP : obrigatorio = eAtribuicaoObrigatoria()
+activate TP
+deactivate TP
+deactivate A
+
+OPT [ obrigatorio == true ]
+SCAT -> A : novoProcessoAtribuicao(anu,ps)
+activate A
+ref over A : UC13_SD_novoProcessoAtribuicao(anu,ps)
+deactivate A
+deactivate SCAT
+
+
+
+end OPT
+end loop
+
+
+@enduml
