@@ -3,6 +3,7 @@
 ## 1. Requirements Engineering
 
 ### Brief Format
+
 The collaborator starts creating a freelancer. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country). The collaborator enter the requested data. The system presents the data and asks for confirmation. The collaborator confirms. The system informs the collaborator of the successfull of the operation.
 
 
