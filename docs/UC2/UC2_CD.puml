@@ -1,0 +1,68 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class POTAplication
+{
+  +static getInstance()
+  +getLogin()
+}
+
+class Login
+{
+  +getUserEmail()
+}
+
+class Task {
+    -String idT
+    -String description
+    -Time timeDuration
+    -double costHour
+    -String taskCategory
+    +Task(idT, description, timeDuration, costHour, taskCategory)
+}
+
+class Organization {
+  -String name
+  -String email
+  -String nif
+  +Organization(name, email, nif)
+  +TaskList getTaskList()
+}
+
+class TaskList {
+  +newTask(idT, description, timeDuration, costHour, taskCategory)
+  +registersTask(task)
+  -addTask(task)
+  -validatesTask(task)
+}
+
+class Plataform {
+  +OrganizationRegister getOrganizationRegister()
+}
+
+class OrganizationRegister {
+  +getOrganizationByUserEmail(email)
+}
+
+class CreateTaskController {
+  +newTask(idT, description, timeDuration, costHour, taskCategory)
+  +registersTask()
+}
+
+class CreateTaskUI {
+
+}
+
+CreateTaskUI ..> CreateTaskController
+CreateTaskController ..> Plataform
+CreateTaskController ..> Task
+CreateTaskController ..> Organization
+CreateTaskController ..> POTAplication
+CreateTaskController ..> Login
+Plataform "1" --> "1" OrganizationRegister : has
+OrganizationRegister "1" --> "*" Organization : has
+Organization "1" --> "1" TaskList : has
+TaskList "1" --> "*" Task : has
+
+
+@enduml
