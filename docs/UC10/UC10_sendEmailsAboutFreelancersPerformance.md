@@ -4,7 +4,7 @@
 
 ### Brief Format
 
-The timer starts sending emails on the last day of the year according to the task delay and the percentage of the freelancers tasks delay.
+The timer starts the process of sending emails on the last day of the year according to the task delay and the percentage of the freelancers tasks delay.
 
 
 ### SSD
@@ -31,11 +31,11 @@ Exist freelancers to send emails.
 
 #### Postconditions
 
-the emails with the performance of the freelancers are sent to the respective
+The emails with the performance of the freelancers are sent to the respective
 
 #### Main success scenario (or basic flow)
 
-1. The timer starts sending emails to freelancers about your performances on the last day of the year in question.
+1. The last day of the year is reached .
 2. The system checks if the process is taking place on the last day of the year, identify the freelancers who have a task delay greater than 3 hours and their percentage of task delay higher than the percentage of overall delays. Then sends emails to them.
  
 
@@ -60,8 +60,6 @@ the emails with the performance of the freelancers are sent to the respective
 All the last days of the years.
 
 #### Open questions
-
-
 
 
 ## 2. Análise OO
