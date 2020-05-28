@@ -1,0 +1,30 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+
+class Manager {
+  -String nome
+  -String email
+}
+
+class User {
+}
+
+
+class Payment{
+  -Time timeToPay
+  -Data dateToPay
+}
+
+
+Manager "1" -- "1" User: acts as >
+Manager "1" -- "1" Payment: defines >
+
+
+
+
+
+
+@enduml

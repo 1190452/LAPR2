@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="159px" preserveAspectRatio="none" style="width:332px;height:159px;" version="1.1" viewBox="0 0 332 159" width="332px" zoomAndPan="magnify"><defs><filter height="300%" id="f784tu1f5h0ye" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[b24ed8d4ae84bae9290d9aab401637c7]
+class Manager--><rect fill="#FEFECE" filter="url(#f784tu1f5h0ye)" height="65.6094" id="Manager" style="stroke: #A80036; stroke-width: 1.5;" width="87" x="6" y="39"/><ellipse cx="21" cy="55" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M23.9688,60.6406 Q23.3906,60.9375 22.75,61.0859 Q22.1094,61.2344 21.4063,61.2344 Q18.9063,61.2344 17.5859,59.5859 Q16.2656,57.9375 16.2656,54.8125 Q16.2656,51.6875 17.5859,50.0313 Q18.9063,48.375 21.4063,48.375 Q22.1094,48.375 22.7578,48.5313 Q23.4063,48.6875 23.9688,48.9844 L23.9688,51.7031 Q23.3438,51.125 22.75,50.8516 Q22.1563,50.5781 21.5313,50.5781 Q20.1875,50.5781 19.5,51.6484 Q18.8125,52.7188 18.8125,54.8125 Q18.8125,56.9063 19.5,57.9766 Q20.1875,59.0469 21.5313,59.0469 Q22.1563,59.0469 22.75,58.7734 Q23.3438,58.5 23.9688,57.9219 L23.9688,60.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="35" y="59.1543">Manager</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="92" y1="71" y2="71"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="74" x="12" y="85.2104">-String nome</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="73" x="12" y="98.0151">-String email</text><!--MD5=[3fd616f346a44cd59a91eb10b19e157c]
+class User--><rect fill="#FEFECE" filter="url(#f784tu1f5h0ye)" height="40" id="User" style="stroke: #A80036; stroke-width: 1.5;" width="61" x="237" y="8"/><ellipse cx="252" cy="24" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M254.9688,29.6406 Q254.3906,29.9375 253.75,30.0859 Q253.1094,30.2344 252.4063,30.2344 Q249.9063,30.2344 248.5859,28.5859 Q247.2656,26.9375 247.2656,23.8125 Q247.2656,20.6875 248.5859,19.0313 Q249.9063,17.375 252.4063,17.375 Q253.1094,17.375 253.7578,17.5313 Q254.4063,17.6875 254.9688,17.9844 L254.9688,20.7031 Q254.3438,20.125 253.75,19.8516 Q253.1563,19.5781 252.5313,19.5781 Q251.1875,19.5781 250.5,20.6484 Q249.8125,21.7188 249.8125,23.8125 Q249.8125,25.9063 250.5,26.9766 Q251.1875,28.0469 252.5313,28.0469 Q253.1563,28.0469 253.75,27.7734 Q254.3438,27.5 254.9688,26.9219 L254.9688,29.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="29" x="266" y="28.1543">User</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="238" x2="297" y1="40" y2="40"/><!--MD5=[764fca796ce7f635542948d8fc39db5e]
+class Payment--><rect fill="#FEFECE" filter="url(#f784tu1f5h0ye)" height="65.6094" id="Payment" style="stroke: #A80036; stroke-width: 1.5;" width="107" x="214" y="83"/><ellipse cx="238.45" cy="99" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M241.4188,104.6406 Q240.8406,104.9375 240.2,105.0859 Q239.5594,105.2344 238.8563,105.2344 Q236.3563,105.2344 235.0359,103.5859 Q233.7156,101.9375 233.7156,98.8125 Q233.7156,95.6875 235.0359,94.0313 Q236.3563,92.375 238.8563,92.375 Q239.5594,92.375 240.2078,92.5313 Q240.8563,92.6875 241.4188,92.9844 L241.4188,95.7031 Q240.7938,95.125 240.2,94.8516 Q239.6063,94.5781 238.9813,94.5781 Q237.6375,94.5781 236.95,95.6484 Q236.2625,96.7188 236.2625,98.8125 Q236.2625,100.9063 236.95,101.9766 Q237.6375,103.0469 238.9813,103.0469 Q239.6063,103.0469 240.2,102.7734 Q240.7938,102.5 241.4188,101.9219 L241.4188,104.6406 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="54" x="254.55" y="103.1543">Payment</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="215" x2="320" y1="115" y2="115"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="95" x="220" y="129.2104">-Time timeToPay</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="93" x="220" y="142.0151">-Data dateToPay</text><!--MD5=[6eb6e197a729f6ec2412743e0bdbca1d]
+link Manager to User--><path d="M93.0916,63.2017 C135.7107,54.5997 199.5005,41.7247 236.9684,34.1623 " fill="none" id="Manager-User" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="46" x="124" y="43.0669">acts as</text><polygon fill="#000000" points="173,37.0664,179,40.0664,173,43.0664,173,37.0664" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="8" x="100.974" y="75.0969">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="8" x="220.983" y="49.404">1</text><!--MD5=[21898ab70dd7e221b590f87a1f131a40]
+link Manager to Payment--><path d="M93.0916,80.7983 C127.8827,87.8204 176.7817,97.6899 213.9531,105.1924 " fill="none" id="Manager-Payment" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="46" x="124" y="84.0669">defines</text><polygon fill="#000000" points="173,78.0664,179,81.0664,173,84.0664,173,78.0664" style="stroke: #000000; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="8" x="100.974" y="95.6079">1</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="8" x="197.8606" y="116.831">1</text><!--MD5=[c89104d086ab752817ca536cb285e5a9]
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+
+class Manager {
+  -String nome
+  -String email
+}
+
+class User {
+}
+
+
+class Payment{
+  -Time timeToPay
+  -Data dateToPay
+}
+
+
+Manager "1" - - "1" User: acts as >
+Manager "1" - - "1" Payment: defines >
+@enduml
+
+PlantUML version 1.2019.12(Sun Nov 03 10:24:54 UTC 2019)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_232-heroku-b09
+Operating System: Linux
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
