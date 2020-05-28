@@ -1,0 +1,85 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide methods
+left to right direction
+
+class Platform{
+}
+class Freelancer {
+  -String freeID
+  -String name
+  -String levelExp
+  -String email
+  -String nif
+  -String iban
+  -String country
+}
+
+class Organization {
+  -String nome
+  -String email
+  -String nif
+}
+
+class Collaborator{
+  -String nome
+  -String email
+}
+
+class Task {
+  -String idT
+  -String description
+  -Time timeDuration
+  -double costHour
+  -String taskCategory
+  -Boolean isPayed
+}
+
+class Manager {
+  -String nome
+  -String email
+}
+
+
+class Transaction {
+
+}
+class TaskExecution{
+  -Data endDate
+  -double delay
+  -String descriptionOfQuality
+  }
+
+Freelancer "1" -- "1" Transaction: receive >
+
+Task "1..*" -- "1" Freelancer: made by >
+
+
+Platform "1" -- "1..*" Transaction: has >
+Platform "1" -- "1..*" Organization: has registered >
+Platform "1" -- "1..*" Freelancer: has >
+
+
+Organization "1" -- "1" Manager: has >
+Organization "1" -- "1" Collaborator: has >
+Organization "1" -- "1..*" Task: has >
+
+Transaction "1" -- "1" Task: has >
+Transaction "1" -- "1" TaskExecution: has >
+
+Collaborator "1" -- "1" Freelancer: creates >
+Collaborator "1" -- "1..*" Task: creates >
+Collaborator "1" -- "1..*" Transaction: creates >
+Collaborator "1" -- "1" TaskExecution: introduces >
+
+TaskExecution "1" -- "1" Freelancer: related to the work of
+
+Task "1" -- "1" TaskExecution : originates >
+
+
+
+@enduml
+
+
+
+
