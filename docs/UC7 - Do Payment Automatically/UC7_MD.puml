@@ -40,6 +40,10 @@ class Transaction {
 
 }
 
+class Manager {
+  -String nome
+  -String email
+}
 
 
 class Payment{
