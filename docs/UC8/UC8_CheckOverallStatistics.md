@@ -1,20 +1,20 @@
-# UC5 - Regist Historical Transaction
+# UC8 - Check Overall Statistics
 
 ## 1. Requirements Engineering
 
 ### Brief Format
 
-The collaborator beggins loading the file with historical transactions. The system request for the necessary data about the file(i.e. file name). The collaborator introduces the data requiered. The system validate and show the data, waiting for confirmation. The collaborator confirms. The system load the file and records the transactions data and informs the collaborator about the success of the operation.
+The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show candidacy list and request the freelancer to choose one. The manager/collaborator choose the task. The system validate and show the data, waiting for confirmation. The manager/collaborator confirms. The system (por acabar) the and informs the manager/collaborator about the success of the operation.
 
 ### SSD
-![UC5_SSD.svg](UC5_SSD.svg)
+![UC8_SSD.svg](UC8_SSD.svg)
 
 
 ### Complet Format
 
 #### Main actor
 
-Collaborator
+Manager/Collaborator
 
 #### Stakeholders and their interests
 * Collaborator: pretends to load the historical transactions to see them.
