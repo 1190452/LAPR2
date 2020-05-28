@@ -6,13 +6,13 @@ left to right direction
 class Platform{
 }
 class Freelancer {
-  -String idF
+  -String freeID
   -String name
-  -String levelExpertise
+  -String levelExp
   -String email
   -String nif
-  -String ibanAccount
-  -String coutry
+  -String iban
+  -String country
 }
 
 class Organization {
