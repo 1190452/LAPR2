@@ -76,54 +76,54 @@ n/a
 * What data together can detect the duplication of freelancers?
 * How often does this use case occur?
  
-## 2. Análise OO
+## 2.OO Analysis
 
-### Excerto do Modelo de Domínio Relevante para o UC
+### Excerpt from the Relevant Domain Model for UC
 
 ![UC3_MD.png](UC3_MD.png)
 
 
-## 3. Design - Realização do Caso de Uso
+## 3. Design - Use Case Realization
 
-### Racional
+### Rational
 
-| Fluxo Principal | Questão: Que Classe... | Resposta  | Justificação  |
+| Main Flow | Question: What Class... | answer | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The collaborator starts creating a freelancer |... interact with collaborator?| CreateFreelancerUI |Pure Fabrication|
 | |... coordinate the UC?| CreateFreelancerController |Controller|
-| |... create instances of freelancer?|RegisterFreelancer|Creator(regra1) combinado com HC+LC sobre Plataforma.|
-| |... knows RegisterFreelancer?| Platform | IE:
+| |... create instances of freelancer?|RegisterFreelancer|Creator (rule1) combined with HC + LC on Platform: Platform delegates responsibilities for RegisterFreelancer|
+| |... knows RegisterFreelancer?| Platform | IE: Platform contains RegisterFreelancer
 |2. The system requests the necessary data (i.e. freelancer identifier, name, level Expertise, email, nif, iban account, country).|... interact with collaborator?| CreateFreelancerUI |Pure Fabrication|
-|3. The collaborator enter the requested data|... save the entered data?|Freelancer|IE:|
-|4. The system validates, presents the data and asks for confirmation |... validates freelancer data( Global Validation )|RegisterFreelancer| IE: |
-| |... validates freelancer data( local Validation )|Freelancer| IE: |
+|3. The collaborator enter the requested data|... save the entered data?|Freelancer|IE: Freelancer knows your attributes|
+|4. The system validates, presents the data and asks for confirmation |... validates freelancer data( Global Validation )|RegisterFreelancer| IE: RegisterFreelancer contains Freelancer and knows them all|
+| |... validates freelancer data( local Validation )|Freelancer| IE: Freelancer knows his attributes |
 |5. The collaborator confirms the data |||  |
 |6. The system informs the collaborator of the successfull of the operation||| |
 
 
-### Sistematização ##
+### Systematization ##
 
- Do racional resulta que as classes conceptuais promovidas a classes de software são:
+It follows from the rational that the conceptual classes promoted to software classes are:
 
  * RegisterFreelancer
  * Freelancer
  * Platform
 
-Outras classes de software (i.e. Pure Fabrication) identificadas:  
+Other software classes (i.e. Pure Fabrication) identified:  
 
  * CreateFreelancerUI  
  * CreateFreelancerController
 
 
 
-###	Diagrama de Sequência
+###	Sequence Diagram
 
 ![UC3_SD.png](UC3_SD.png)
 
 
 
 
-###	Diagrama de Classes
+###	Class Diagram
 
 ![UC3_SD.png](UC3_CD.png)
 

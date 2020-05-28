@@ -63,6 +63,8 @@ class Administrator {
 }
 
 class Payment{
+  -Time timeToPay
+  -Data dateToPay
 }
 
 class Reader {
@@ -88,8 +90,10 @@ Platform "1" -- "1..*" Task: has registered >
 Organization "1" -- "1" Address: has >
 Organization "1" -- "1" Manager: has >
 Organization "1" -- "1" Collaborator: has >
+Organization "1" -- "1..*" Task: has >
 
 Manager "1" -- "1" User: acts as >
+Manager "1" -- "1" Payment: defines >
 
 Administrator "1" -- "1" Organization: registers >
 Administrator "1" -- "1" User: acts as >
@@ -117,5 +121,6 @@ Collaborator "1" -- "1" HistoricalTransaction: loads >
 
 
 @enduml
+
 
 

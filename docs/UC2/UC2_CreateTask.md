@@ -93,7 +93,7 @@ The tasks are available in the platform.
 | 1. The Collaborator initiates the creation of the task. 		 | ...interacts with the user?						 |   CreateTaskUI          |       Pure Fabrication:it is not justified to assign this responsibility to any existing class in the Domain Model           |
 |       | ...coordinates the UC? | CreateTaskController | Controller |
 |       | ...creates Task instance? | TaskList | Creator (Rule1) + HC/LC:in the MD the Organization has a Task. By HC / LC delegates these responsibilities in Task List |
-|       | ...session??? |   |   |
+|       | ...knows the user / manager using the system? | Login  | IE:documentation of the user management component. |
 |       | ...which organization the user / collaborator belongs to? | OrganizationRegister | IE: Knows every Organization |
 |       |       | Organization | IE: Knows its Collaborator |
 |       |       | Collaborator | IE: Knows his own data (e.g. email) |
@@ -118,12 +118,15 @@ The tasks are available in the platform.
  * CreateTaskController
  * TaskList
  * OrganizationRegister
+ 
+ Other classes of external systems / components:
+ 
+ * Login
 
 ###	Sequence Diagram
 
-![SD_UCX.png](SD_UCX.png)
+![UC2_SD.svg](UC2_SD.svg)
 
+###	Class Diagram
 
-###	Diagrama de Classes
-
-![CD_UCX.png](CD_UCX.png)
+![UC2_CD.svg](UC2_CD.svg)
