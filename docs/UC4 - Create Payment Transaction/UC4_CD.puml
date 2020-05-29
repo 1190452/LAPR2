@@ -40,10 +40,9 @@ class RegisterTransaction{
   }
 
 class Transaction{
-  -Data endDate
-  -double delay
-  -String descriptionOfQuality
   +create(task, freel, endDate, delay, qow)
+  +validateTaskExecution(taskExec)
+  +addTaskExecution(taskExec)
   }
 
 class Freelancer{
@@ -68,6 +67,14 @@ class Task{
   -double costHour
   -String taskCategory
   }
+
+class TaskExecution{
+  -Data endDate
+  -double delay
+  -String descriptionOfQuality
+  +create(endDate, delay, qow)
+  }
+  
 
 
 CreateTransactionController ..> Organization
@@ -96,6 +103,11 @@ Collaborator "1" -- "1..*" Transaction: creates >
 Collaborator "1" -- "1" User: acts as >
 
 Task "1..*" -- "1" Freelancer: made by >
+Task "1" -- "1" TaskExecution: originates >
+
+Transaction "1" -- "1" TaskExecution: has >
+
+TaskExecution "1" -- "1" Freelancer: related to the work of >
 
 
 

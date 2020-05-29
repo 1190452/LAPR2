@@ -64,6 +64,7 @@ class Administrator {
 class Payment{
   -Time timeToPay
   -Data dateToPay
+  -int nrDays
 }
 
 class Reader {

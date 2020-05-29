@@ -18,13 +18,25 @@ class Payment{
   -Data dateToPay
 }
 
+class Platform{
+}
+
+
+class Organization {
+  -String name
+  -String email
+  -String nif
+}
+
 
 Manager "1" -- "1" User: acts as >
 Manager "1" -- "1" Payment: defines >
 
-
+Organization "1" -- "1" Manager : has >
+Platform "1" -- "1..*" Organization: has registered >
 
 
 
 
 @enduml
+

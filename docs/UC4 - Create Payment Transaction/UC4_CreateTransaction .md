@@ -107,8 +107,11 @@ n/a
 |5. The collaborator chooses one freelancer from the list. |... 
 |6. The System asks for the rest of the necessary data(details about the execution of the task(end date, delay, brief description of the quality of the work)).|||| 
 |7. The Collaborator introduces all the necessary data.|...saves all the information introduced? | Transaction | Creator (rule1) |
+|                                          |...creates an instance of TaskExecution? | Transaction | IE: in the MD, Transaction has Taskexecution |
 |8. The system shows the data to the Collaborator and asks him to confirm |... validates the Transaction data (Global validation)? | RegisterTransaction | HC+LC combined with IE, because RegisterTransaction has all the Transactions|
 |    |...validates the Transaction data (local validation)? | Transaction | IE: knows its own data |
+|    |...validates the TaskExecution data (global validation) | Transaction | IE: in the MD, Transaction has TaskExecution |
+|    |...validates the TaskExecution data (local validation) | TaskExecution | IE: knows its own data |
 |9. The collaborator confirms.|||| 
 |10. The system registers the data and informs the Collaborator that the operation was successful. |...saves the created instance of Transaction | RegisterTransaction| HC+LC | 
 
@@ -120,6 +123,7 @@ From the racional, the conceptual classes that are promoted to software classes 
  * Platform
  * Organization
  * Transaction
+ * TaskExecution
  
 
 
