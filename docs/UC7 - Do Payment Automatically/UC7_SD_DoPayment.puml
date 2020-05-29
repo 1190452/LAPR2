@@ -1,0 +1,64 @@
+@startuml
+autonumber
+
+participant "task\n:DoPaymentTask" as TASK
+participant "Platform" as P
+participant "rFree\n:RegisterFreelancer" as RF
+participant "lt\n:TaskList" as LT
+participant "ts :Task" as T
+participant "f\n:Freelancer" as F
+
+[o-> TASK : DoPayment(ltNotPayed)
+activate TASK
+
+TASK -> P : rFree = getRegisterFreelancer()
+activate P
+deactivate P
+TASK -> RF : lf = getFreelancerList()
+activate RF
+deactivate RF
+
+loop [for every freelancer]
+TASK -> RF : freel = getFreelancer(i)
+activate RF
+deactivate RF
+
+loop [for every task not payed]
+
+TASK -> LT : ts = ltNotPayed.get(j)
+activate LT
+deactivate LT
+
+
+TASK -> T : f = getFreelancer(ts)
+activate T
+deactivate T
+
+opt [if freel == f]
+
+TASK -> T : costHour = getCostHour()
+activate T
+deactivate T
+
+TASK -> T : timeDuration = getTimeDuration()
+activate T
+deactivate T
+
+TASK -> TASK : sum = calculateValue(costHour, timeDuration)
+
+end opt
+end loop
+
+TASK -> F : iban = getIban()
+activate F
+deactivate F
+
+TASK -> F : email = getEmail()
+activate F
+deactivate F
+
+
+end loop
+
+deactivate TASK
+@enduml

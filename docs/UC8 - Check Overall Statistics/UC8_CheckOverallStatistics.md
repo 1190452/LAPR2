@@ -63,10 +63,11 @@ n/a
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The collaborator/manager starts watching overall statistics|... interacts with the user?| WatchStatisticsUI |Pure Fabrication|
 | |... coordinates the UC?|  WatchStatisticsController |Controller|
-|2. The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation. | ...knows the payment of each freelancer? | RegisterTransactions | HC+LC |
+|2. The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation.| ...knows task execution times of each freelancer? | TaskExecution | IE: TaskExecution knows its own data | 
+| | ...knows TaskExecution? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution |
+| | ...knows Transaction? | RegisterTransaction | IE: RegisterTransaction has a list of transactions | 
+| | ...knows the payment of each freelancer? | RegisterTransactions | HC+LC |
 | | ...knows RegisterTransactions | Platform| IE: MD show that Platform has RegisterTransactions |
-| | ...knows task execution times of each freelancer? | TaskExecution | IE: TaskExecution knows its own data |
-| | ...knows Transaction? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution
 
 
 

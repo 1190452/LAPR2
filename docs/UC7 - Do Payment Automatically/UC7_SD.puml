@@ -1,0 +1,69 @@
+@startuml
+autonumber
+
+participant ":Plataform" as PLAT
+participant "task\n:DoPaymentTask" as TASK
+participant "t\n:timer" as TI
+participant ":TransactionRegister" as TR
+participant "tr\n:Transaction" as T
+participant "lt\n:TaskList" as LT
+participant "ts\nTask" as TS
+participant "p\n:Payment" as P
+
+
+
+[o-> PLAT : schedulesPayment( )
+activate PLAT
+
+PLAT --> TASK** : create( )
+
+loop [for Every Transaction]
+PLAT -> TR : tr = getTransaction(i)
+activate TR
+deactivate TR
+
+
+PLAT -> T : p = getPayment(tr)
+activate T
+
+
+PLAT -> T : lt = getTaskList(tr)
+deactivate T
+loop [for every task]
+PLAT -> LT : ts = getTask(i)
+activate LT
+deactivate LT
+PLAT -> TS : validator = getIsPayed()
+activate TS
+deactivate TS
+
+opt [if validator == false]
+PLAT -> LT : addltNotPayed(ts)
+activate LT
+deactivate LT
+end opt
+end loop
+PLAT -> PLAT : present = getTime()
+PLAT -> P : interval = getIntervalo(present)
+activate P
+deactivate P
+
+PLAT --> TI** : create( )
+PLAT -> TI : schedule(task, interval)
+activate TI
+deactivate TI
+deactivate PLAT
+
+TI -> TASK : run( )
+activate TI
+activate TASK
+TASK -> TASK : DoPayment(ltNotPayed)
+ref over TASK : UC7_SD_DoPayment
+activate TASK
+deactivate TASK
+deactivate TASK
+deactivate TI
+
+end loop
+
+@enduml

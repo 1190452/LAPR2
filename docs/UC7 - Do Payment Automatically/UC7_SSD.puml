@@ -3,7 +3,7 @@ autonumber
 actor "Timer" as TIM
 
 activate TIM
-TIM -> ":System" : The timer starts the automatic payment process at the \nstipulated time using the payment list, triggering the process \nat the defined date and time.
+TIM -> ":System" : The timer starts the automatic payment process\nusing the payment list, triggering the process \nat the defined date and time.
 
 activate ":System"
 deactivate ":System"
