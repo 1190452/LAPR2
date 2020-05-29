@@ -108,13 +108,12 @@ Outras classes de software (i.e. Pure Fabrication) identificadas:
 
 ###	Diagrama de Sequência
 
-![UC13_SD.svg](UC13_SD.svg)
+![UC10_SD.png](UC10_SD.png)
 
 
-![UC13_SD_seriarCandidaturasSubmetidas.svg](UC13_SD_seriarCandidaturasSubmetidas.svg)
+![UC10_SD_SendEmail.png](UC10_SD_SendEmail.png)
 
 
-![UC13_SD_novoProcessoAtribuicao.svg](UC13_SD_novoProcessoAtribuicao.svg)
 
 ###	Diagrama de Classes
 
