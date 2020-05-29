@@ -63,7 +63,6 @@ How often is this process triggered?
 
 ## 3. Design - Use Case Realization
 
-
 ### Rational
 
 | Main Flow | Question: Which Class ... | Answer  | Justification  |

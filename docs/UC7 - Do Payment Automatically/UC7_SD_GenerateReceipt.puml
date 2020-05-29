@@ -1,0 +1,41 @@
+@startuml
+autonumber
+
+participant "Receipt" as R
+participant "amountsET\n: List<Task>" as LTS
+
+participant "ts :Task" as T
+participant "freel\n:Freelancer" as F
+
+
+[o-> R : generateR(freel)
+activate R
+
+
+loop [for every task]
+R -> LTS : ts = get(i)
+activate LTS
+deactivate LTS
+
+R -> T : costHour = getCostHour()
+activate T
+deactivate T
+
+R -> T : timeDuration = getTimeDuration()
+activate T
+deactivate T
+
+R -> R : calc = calculateCost(costHour, timeDuration)
+
+
+end loop
+R -> F : email = getEmail()
+activate F
+deactivate F
+
+R -> F : iban = getIban()
+activate F
+deactivate F
+
+deactivate R
+@enduml
