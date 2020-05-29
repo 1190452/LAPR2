@@ -1,0 +1,66 @@
+@startuml
+autonumber
+'hide footbox
+actor "Manager" as ADM
+
+participant ":PaymentUI" as UI
+participant ":CreatePaymentController" as CTRL
+participant ":Plataform" as PLAT
+participant "rpay:Payment\nRegister" as RPAY
+
+
+activate ADM
+ADM -> UI : The manager of the organization selects the processment cycle of payment transactions.
+activate UI
+UI --> ADM : The System asks for the day of the month, the time of the day and the recurrence time period (e.g. 7 days).
+deactivate UI
+
+ADM -> UI : The Manager inserts the information.
+activate UI
+
+UI -> CTRL : newPayment(time, date, nrDays)
+activate CTRL
+
+
+CTRL -> PLAT : pm = getPaymentRegist()
+activate PLAT
+deactivate PLAT
+
+CTRL -> RPAY : payment = newPayment(time, date, nrDays)
+activate RPAY
+
+
+
+RPAY -> PAYMENT** : create(time, date, nrDays)
+deactivate RPAY
+
+CTRL -> RPAY : validatesPayment(payment)
+activate RPAY
+deactivate RPAY
+
+deactivate CTRL
+
+UI --> ADM : shows the information and asks for confirmation.
+deactivate UI
+
+ADM -> UI : confirms the data
+activate UI
+
+UI -> CTRL : registerPayment()
+activate CTRL
+
+CTRL -> RPAY : registersPayment(payment)
+activate RPAY
+
+RPAY -> RPAY : validatesPayment(payment)
+RPAY -> RPAY : addPayment(payment)
+deactivate RPAY
+deactivate CTRL
+
+UI -> ADM : informs about the success of the operation
+deactivate UI
+deactivate ADM
+
+
+
+@enduml
