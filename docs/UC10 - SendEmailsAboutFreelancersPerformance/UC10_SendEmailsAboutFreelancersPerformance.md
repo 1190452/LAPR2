@@ -35,22 +35,22 @@ The emails with the performance of the freelancers are sent to the respective
 
 #### Main success scenario (or basic flow)
 
-1. The last day of the year is reached .
-2. The system checks if the process is taking place on the last day of the year, identify the freelancers who have a task delay greater than 3 hours and their percentage of task delay higher than the percentage of overall delays. Then sends emails to them.
+1. The timer iniciates the process of send emails on last day of the year .
+2. The system identify the freelancers who have a task delay greater than 3 hours and their percentage of task delay higher than the percentage of overall delays. Then sends emails to them.
  
-
-
 #### Extensions (or alternative flows)
 
 2a. The process is not taking place on the last day of the year.
 > the use case ends.
+
+
+2b. The system does not contain freelancers.
+> Redirect.
  
 2a. The system does not contain freelancers with a task delay greater than 3 hours or greater than the percentage of overall delays.
 > the use case ends
  
  
-
-
 #### Special requirements
 
 ####  List of Technologies and Data Variations
@@ -74,37 +74,34 @@ All the last days of the years.
 
 | Fluxo Principal | Questão: Que Classe... | Resposta  | Justificação  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-|1. O horário de seriação automática é atingido.|...coordena a uc?     |   SeriarCandidaturasAnuncioTask      |      Task    |
-|       | ...determina que o tempo foi atingido? |     Timer       |   Timer        |
-|       | ...cria a instancia do timer? |   Plataforma  | creator:Plataforma conhece as horas que a seriação deve começar                
-|2. O sistema identifica o anúncio cujo tipo de regimento estipula que os critérios de seriação sejam objetivos, que estejam no período de seriação e que ainda não tenham sido seriados. Posteriormente, inicia o processo de seriação automática. |  ...possui o registo de anúncios de tarefas publicadas?		|  Plataforma | IE:no MD a plataforma possui anuncios.  |
-|       | ...possui o anuncio  | RegistoAnuncios | IE: RegistoAnuncios contém/agrega Anuncio (segundo Padrão HC + LC) |
-|       | ...possui a lista de Candidaturas? | Anuncio | IE: no MD o anuncio tem candidaturas |
-|       | ...possui a candidatura? | ListaCandidaturas | IE: Lista de Candidaturas contem candidaturas |
-|       | ...cria a instancia do processo de seriação? | Anuncio | creator: no MD o anuncio espoleta o processo de seriação |
-|       | ...cria, valida e adiciona a instancia da classificação? | ProcessoSeriacao | creator: no MD a classificacao é resultante do processo de seriação |
-|       | ...cria a instancia do processo de Adjudicacao?    |  RegistoAnuncios | creator: no MD o processo de adjudicacao está associado ao anuncio |
-|       | ...possui o Freelancer? | Candidatura | IE: no MD a candidatura é efetuada pelo Freelancer |
-|       | ...possui o Registo de Organizacao? | Plataforma | IE:a plataforma possui organizacao. |
-|       | ...possui Organizacao? | RegistoOrganizacao | IE: RegistoOrganizacao contém/agrega Organizacao (segundo Padrão HC + LC)
-|       | ...possui a tarefa? | Anuncio | IE: anuncio tem tarefa |
-|       | ...cria e valida a instancia da Adjudicacao | Anuncio | creator: Anuncio tem adjudicacao |
+|1. The last day of year is reached.|...coordinate the uc?    |   SendEmailFreelTask      |      Task    |
+|       | ...determines that time has been reached? |     Timer       |   Timer        |
+|       | ...creates the timer instance? |   Platform  | creator:                 
+|2. The system identify the freelancers who have a task delay greater than 3 hours and their percentage of task delay higher than the percentage of overall delays. Then sends emails to them. |  ...own the freelancers?	|  RegisterFreelancer | IE+(HC+LC):|
+|       | ...knows RegisterFreelancer? |     Platform      |   IE:       |
+|       | ...knows the task delay of freelancers?|     TaskExecution       |   IE: |
+|       | ...knows the percentage task delay overall of freelancers?|     RegisterFreelancer       |   IE: |
+|       | ...saves the emails?|    Writer      |   IE: |
+|       | ...send the emails?|     Platform      |   IE: |
+
+
+
+
+
 
 
 ### Sistematização ##
 
  Do racional resulta que as classes conceptuais promovidas a classes de software são:
 
- * Plataforma
- * Anuncio
- * ProcessoSeriacao
- * Candidatura
+ * Platform
+ * Timer
+ * RegisterFreelancer
 
 Outras classes de software (i.e. Pure Fabrication) identificadas:
 
- * SeriarCandidaturasAnuncioTask
- * RegistoAnuncios
- * RegistoOrganizacao
+ * SendEmailFreelTask
+
 
 ###	Diagrama de Sequência
 
