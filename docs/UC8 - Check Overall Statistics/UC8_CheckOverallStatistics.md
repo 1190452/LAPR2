@@ -66,8 +66,8 @@ n/a
 |2. The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation. | ...knows the payment of each freelancer? | RegisterTransactions | HC+LC |
 | | ...knows RegisterTransactions | Platform| IE: MD show that Platform has RegisterTransactions |
 | | ...knows task execution times of each freelancer? | TaskExecution | IE: TaskExecution knows its own data |
-| | ...knows Transaction? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution
-
+| | ...knows TaskExecution? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution |
+| | ...knows Transaction? | Platform | IE: Platform has registered transaction | 
 
 
 
