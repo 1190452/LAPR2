@@ -66,6 +66,7 @@ n/a
 |2. The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation. | ...knows the payment of each freelancer? | RegisterTransactions | HC+LC |
 | | ...knows RegisterTransactions | Platform| IE: MD show that Platform has RegisterTransactions |
 | | ...knows task execution times of each freelancer? | TaskExecution | IE: TaskExecution knows its own data |
+| | ...knows Transaction? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution
 
 
 
@@ -77,23 +78,23 @@ n/a
  From rational results that conceptual classes  conceptuais promoted to software classes are:
 
  * Platform
- * Collaborator
- * Reader
+ * TaskExecution
 
 
 Other software classes (i.e. Pure Fabrication) identified:  
 
- * ReaderUI  
- * ReaderController
+ * WatchStatisticsUI  
+ * WatchStatisticsController
+ * RegisterTransactions
 
 
 ###	Sequence Diagram
 
-![UC5_SD.svg](UC5_SD.png)
+![UC8_SD.svg](UC8_SD.png)
 
 
 
 ###	Class Diagram
 
-![UC5_CD.svg](UC5_CD.png)
+![UC8_CD.svg](UC8_CD.png)
 
