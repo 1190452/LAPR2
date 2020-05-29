@@ -4,11 +4,11 @@
 
 ### Brief Format
 
-The timer starts the automatic payment process at the stipulated time using the payment list, triggering the process at the defined date and time.
+The timer starts the automatic payment process time using the payment list, triggering the process at the defined date and time.
 
 ### SSD
-![UC7_SSD](UC7_SSD.svg)
 
+![UC7_SSD](UC7_SSD.svg)
 
 ### Full Format
 
@@ -31,7 +31,7 @@ The Freelancer receives the payment
 
 #### Main success scenario (or basic flow)
 
-1. The timer starts the automatic payment process at the stipulated time.
+1. The timer starts the automatic payment process.
 2. The system makes payments using the payment list, triggering the process at the defined date and time.
 
 #### Extensions (or alternative flow)
@@ -68,20 +68,9 @@ How often is this process triggered?
 
 | Main Flow | Question: Which Class ... | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-| 1. The Collaborator initiates the creation of the task. 		 | ...interacts with the user?						 |   CreateTaskUI          |       Pure Fabrication:it is not justified to assign this responsibility to any existing class in the Domain Model           |
-|       | ...coordinates the UC? | CreateTaskController | Controller |
-|       | ...creates Task instance? | TaskList | Creator (Rule1) + HC/LC:in the MD the Organization has a Task. By HC / LC delegates these responsibilities in Task List |
-|       | ...knows the user / manager using the system? | Login  | IE:documentation of the user management component. |
-|       | ...which organization the user / collaborator belongs to? | OrganizationRegister | IE: Knows every Organization |
-|       |       | Organization | IE: Knows its Collaborator |
-|       |       | Collaborator | IE: Knows his own data (e.g. email) |
-| 2. The System asks for the data (id, brief description, time duration(in hours), cost per hour(in euros), task category). | 							 |             |                              |
-| 3. The Collaborator writes the data down. | ...stores the data entered?  | Task     | instance created in step 1: it has its own data.                              |
-| 4. The System validates, shows the data and asks for confirmation.		 |	...validates the Task data (local validation)?	 |    Task         |  IE:has its own data.                            |
-|       | ...validates the Task data (global validation)?       | TaskList | IE:the TaskList contains Task |
-| 5. The Collaborator confirms.	 | 							 |             |                              |
-| 6. The System registers the data and informs about the success of the operation.  |	...keeps the created Task?		 |  TaskList    | IE:the TaskList contains Task  |
-
+| 1. The timer starts the automatic payment process at the stipulated time.      | ...creates the instance of the task?  | Platform | creator |
+|       | ...
+|       | ...coordinates the UC? |
 ### Systematization ##
 
  From the rational the classes that are upgraded into software classes are:
@@ -103,8 +92,10 @@ How often is this process triggered?
 
 ###	Sequence Diagram
 
-![UC2_SD.svg](UC2_SD.svg)
+![UC7_SD.svg](UC7_SD.svg)
+
+![UC7_SD_DoPayment.svg](UC7_SD_DoPayment.svg)
 
 ###	Class Diagram
 
-![UC2_CD.svg](UC2_CD.svg)
+![UC7_CD.svg](UC7_CD.svg)
