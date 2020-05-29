@@ -5,8 +5,8 @@ actor "Manager" as ADM
 
 participant ":PaymentUI" as UI
 participant ":CreatePaymentController" as CTRL
-participant ":Plataform" as PLAT
-participant "rpay:Payment\nRegister" as RPAY
+participant ":Transaction" as TRAN
+participant "lpay:Payment\nList" as LPAY
 
 
 activate ADM
@@ -22,21 +22,21 @@ UI -> CTRL : newPayment(time, date, nrDays)
 activate CTRL
 
 
-CTRL -> PLAT : pm = getPaymentRegist()
-activate PLAT
-deactivate PLAT
+CTRL -> TRAN : pm = getPaymentList()
+activate TRAN
+deactivate TRAN
 
-CTRL -> RPAY : payment = newPayment(time, date, nrDays)
-activate RPAY
+CTRL -> LPAY : payment = newPayment(time, date, nrDays)
+activate LPAY
 
 
 
-RPAY -> PAYMENT** : create(time, date, nrDays)
-deactivate RPAY
+LPAY -> PAYMENT** : create(time, date, nrDays)
+deactivate LPAY
 
-CTRL -> RPAY : validatesPayment(payment)
-activate RPAY
-deactivate RPAY
+CTRL -> LPAY : validatesPayment(payment)
+activate LPAY
+deactivate LPAY
 
 deactivate CTRL
 
@@ -49,12 +49,12 @@ activate UI
 UI -> CTRL : registerPayment()
 activate CTRL
 
-CTRL -> RPAY : registersPayment(payment)
-activate RPAY
+CTRL -> LPAY : registersPayment(payment)
+activate LPAY
 
-RPAY -> RPAY : validatesPayment(payment)
-RPAY -> RPAY : addPayment(payment)
-deactivate RPAY
+LPAY -> LPAY : validatesPayment(payment)
+LPAY -> LPAY : addPayment(payment)
+deactivate LPAY
 deactivate CTRL
 
 UI -> ADM : informs about the success of the operation
