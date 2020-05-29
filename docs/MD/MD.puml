@@ -44,8 +44,6 @@ class User {
 }
 
 class Receipt {
-  -double amountE
-  -double amountC
 }
 
 class Transaction {
@@ -143,6 +141,7 @@ TaskExecution "1" -- "1" Freelancer: related to the work of
 
 Task "1" -- "1" TaskExecution : originates >
 
+Receipt "1" -- "1" Writer : uses >
 
 
 
