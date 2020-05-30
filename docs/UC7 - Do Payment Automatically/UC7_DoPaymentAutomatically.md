@@ -80,6 +80,8 @@ Whenever time identifies that there is a payment to be made.
 |       | ...know every the tasks? | TaskList | IE: task lists have tasks | 
 |       | ...creates Receipt? | DoPayementTask | creator |
 |       | ...knows the Writer? | Receipt | IE |
+
+
 ### Systematization ##
 
  From the rational the classes that are upgraded into software classes are:
