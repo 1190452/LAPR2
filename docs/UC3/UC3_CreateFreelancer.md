@@ -88,7 +88,7 @@ n/a
 
 ### Rational
 
-| Main Flow | Question: What Class... | answer | Justification  |
+| Main Flow | Question: What Class... | Answer | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The collaborator starts creating a freelancer |... interact with collaborator?| CreateFreelancerUI |Pure Fabrication|
 | |... coordinate the UC?| CreateFreelancerController |Controller|
