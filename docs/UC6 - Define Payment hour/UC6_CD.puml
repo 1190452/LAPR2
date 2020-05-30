@@ -1,0 +1,41 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class Transaction {
+  create(task, freel, endDate, delay, qow)
+  validateTaskExecution(taskExec)
+  addTaskExecution(taskExec)
+}
+
+class PaymentList {
+  +newPayment(date, time, nrDays)
+  +registersPayment(task)
+  -addPayment(payment)
+  -validatesPayment(task)
+}
+
+class Payment {
+  -Time timeToPay
+  -Data dateToPay
+  -int nrDays
+}
+
+class DefinePaymentController {
+  +newPayment(time, date, nrDays)
+  +registersPayment()
+}
+
+class PaymentUI {
+}
+
+PaymentUI ..> DefinePaymentController
+DefinePaymentController ..> Transaction
+DefinePaymentController ..> PaymentList
+DefinePaymentController ..> Payment
+Transaction "1" ..> "1" PaymentList
+PaymentList "1" ..> "*" Payment
+
+
+
+@enduml
