@@ -32,8 +32,7 @@ class Task {
 }
 
 class Receipt {
-  -double amountE
-  -double amountC
+
 }
 
 class Transaction {
@@ -51,6 +50,8 @@ class Payment{
   -Data dateToPay
 }
 
+class Writer{
+}
 
 
 
@@ -75,7 +76,7 @@ Transaction "1" -- "1" Task: has >
 
 Payment "1" -- "1" Receipt: generate >
 
-
+Receipt "1" -- "1" Writer : uses >
 
 
 @enduml

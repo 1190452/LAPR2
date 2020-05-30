@@ -32,7 +32,7 @@ The Freelancer receives the payment
 #### Main success scenario (or basic flow)
 
 1. The timer starts the automatic payment process.
-2. The system makes payments using the payment list, triggering the process at the defined date and time.
+2. The system makes payments using the payment list, triggering the process at the defined date and time, generating the receipt and sending an email to every freelancer.
 
 #### Extensions (or alternative flow)
 
@@ -53,7 +53,6 @@ Whenever time identifies that there is a payment to be made.
 
 #### Open questions
 
-How often is this process triggered?
 
 ## 2. OO Analysis
 
@@ -63,38 +62,50 @@ How often is this process triggered?
 
 ## 3. Design - Use Case Realization
 
-
 ### Rational
 
 | Main Flow | Question: Which Class ... | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-| 1. The timer starts the automatic payment process at the stipulated time.      | ...creates the instance of the task?  | Platform | creator |
-|       | ...
-|       | ...coordinates the UC? |
+| 1. The timer starts the automatic payment process at the stipulated time.      | ...creates the instance of the Task?  | Platform | creator |
+|       | ...coordinates the UC? | DoPaymentTask | Controller |
+|       | ...knows the TransactionRegister? | Platform | IE and HC+LC |
+|       | ...knows the Transaction? | TransactionRegister | HC+LC | 
+|       | ...knows the Payment? | Transaction | IE: Transaction is connected to the Payment in the MD | 
+|       | ...knows the TaskList? | Transaction | IE: Transaction has Tasks in the MD |
+|       | ...creates the instance of the Timer? | Platform | creator | 
+|       | ...determines that time has been reached? | Timer | IE |
+| 2. The system makes payments using the payment list, triggering the process at the defined date and time, generating the receipt and sending an email to every freelancer. | Knows the RegisterFreelancer? | Platform | IE and HC+LC |
+|       | ...creates a temporary list to save the tasks for each freelancer? | DoPaymentTask | creator |
+|       | ...knows every Freelancer? | RegisterFreelancer | IE |
+|       | ...know every the tasks? | TaskList | IE: task lists have tasks | 
+|       | ...creates Receipt? | DoPayementTask | creator |
+|       | ...knows the Writer? | Receipt | IE |
 ### Systematization ##
 
  From the rational the classes that are upgraded into software classes are:
 
- * Organization
  * Platform
  * Task
+ * Transaction
+ * Receipt
+ * Writer
 
  Other software classes (i.e. Pure Fabrication) identified:
 
- * CreateTaskUI
- * CreateTaskController
+ * DoPaymentTask 
  * TaskList
- * OrganizationRegister
+ * RegisterFreelancer
  
  Other classes of external systems / components:
  
- * Login
 
 ###	Sequence Diagram
 
 ![UC7_SD.svg](UC7_SD.svg)
 
 ![UC7_SD_DoPayment.svg](UC7_SD_DoPayment.svg)
+
+![UC7_SD_GenerateReceipt.svg](UC7_SD_GenerateReceipt.svg)
 
 ###	Class Diagram
 

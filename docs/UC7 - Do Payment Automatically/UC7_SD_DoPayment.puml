@@ -6,10 +6,13 @@ participant "Platform" as P
 participant "rFree\n:RegisterFreelancer" as RF
 participant "lt\n:TaskList" as LT
 participant "ts :Task" as T
+participant "amountsET\n: List<Task>" as LTS
 participant "f\n:Freelancer" as F
+participant "Receipt" as R
 
 [o-> TASK : DoPayment(ltNotPayed)
 activate TASK
+
 
 TASK -> P : rFree = getRegisterFreelancer()
 activate P
@@ -18,10 +21,14 @@ TASK -> RF : lf = getFreelancerList()
 activate RF
 deactivate RF
 
+TASK -> LTS** : create()
+
 loop [for every freelancer]
 TASK -> RF : freel = getFreelancer(i)
 activate RF
 deactivate RF
+
+TASK -> TASK : amountsET = null
 
 loop [for every task not payed]
 
@@ -36,27 +43,23 @@ deactivate T
 
 opt [if freel == f]
 
-TASK -> T : costHour = getCostHour()
-activate T
-deactivate T
 
-TASK -> T : timeDuration = getTimeDuration()
-activate T
-deactivate T
 
-TASK -> TASK : sum = calculateValue(costHour, timeDuration)
+TASK -> LTS : addAmountsET(ts)
+activate LTS
+deactivate LTS
 
 end opt
 end loop
+opt [if amountsET != null]
+TASK -> R** : create(amountsET)
+end opt
 
-TASK -> F : iban = getIban()
-activate F
-deactivate F
 
-TASK -> F : email = getEmail()
-activate F
-deactivate F
-
+TASK -> R : generateR(freel)
+activate R
+deactivate R
+ref over R : UC7_SD_GenerateReceipt
 
 end loop
 
