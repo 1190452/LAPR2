@@ -6,6 +6,7 @@ participant "amountsET\n: List<Task>" as LTS
 
 participant "ts :Task" as T
 participant "freel\n:Freelancer" as F
+participant "Writer" as W
 
 
 [o-> R : generateR(freel)
@@ -29,13 +30,11 @@ R -> R : calc = calculateCost(costHour, timeDuration)
 
 
 end loop
-R -> F : email = getEmail()
-activate F
-deactivate F
 
-R -> F : iban = getIban()
-activate F
-deactivate F
+
+R -> W : sendEmail(feel)
+activate W
+deactivate W
 
 deactivate R
 @enduml

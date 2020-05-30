@@ -95,6 +95,8 @@ How often is this process triggered?
 
 ![UC7_SD_DoPayment.svg](UC7_SD_DoPayment.svg)
 
+![UC7_SD_GenerateReceipt.svg](UC7_SD_GenerateReceipt.svg)
+
 ###	Class Diagram
 
 ![UC7_CD.svg](UC7_CD.svg)
