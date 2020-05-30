@@ -67,11 +67,13 @@ n/a
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The Administrator starts the visualization of the performance of the freelancers. |...interacts with the user? | CheckPerformanceUI | Pure Fabrication|
 |             |...coordinates the UC? | CheckPerformanceController | Controller |
-|2. The system shows the statistics describing the performance of the freelancers (the mean and the standard deviation of the delays and payments of all the freelancers and the histrograms that represent that) and shows the probability that the sample mean is higher than 3 hours. |...knows the payment of each freelancer? | RegisterTransactions | HC+LC|
-|                                  |...knows RegisterTransactions? | Platform | IE: Platform has RegisterTransactions|
-|            |...knows the delay of each task that the freelancer executed? | TaskExecution | IE: TaskExecution knows its own data |
-|            |...saves the probability that the sample mean is higher than 3 hours? | RegisterFreelancer | HC+lC
-|            |...knows RegisterFreelancer? | Platform | IE: Platform has RegisterFreelancer | 
+|2. The system shows the statistics describing the performance of the freelancers (the mean and the standard deviation of the delays and payments of all the freelancers and the histrograms that represent that) and shows the probability that the sample mean is higher than 3 hours. ...knows the delay of each freelancer? | TaskExecution | IE: TaskExecution knows its own data | 
+| | ...knows TaskExecution? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution |
+| | ...knows Transaction? | RegisterTransaction | IE: RegisterTransaction has a list of transactions | 
+| | ...knows the payment of each freelancer? | RegisterTransactions | HC+LC |
+| | ...knows RegisterTransactions | Platform| IE: MD show that Platform has RegisterTransactions |
+| |...saves the probability that the sample mean is higher than 3 hours? | RegisterFreelancer | HC+lC |
+| |...knows RegisterFreelancer? | Platform | IE: Platform has RegisterFreelancer | 
 
 
 
@@ -80,7 +82,7 @@ n/a
 From the racional, the conceptual classes that are promoted to software classes are:
 
  * Platform
- * TaskExecution
+ * Transaction
  
 
 
