@@ -8,6 +8,7 @@ participant ":TransactionRegister" as TR
 participant "tr\n:Transaction" as T
 participant "lt\n:TaskList" as LT
 participant "ts\nTask" as TS
+participant "ltNotPayed\n: List<Task>" as LTS
 participant "p\n:Payment" as P
 
 
@@ -16,6 +17,8 @@ participant "p\n:Payment" as P
 activate PLAT
 
 PLAT --> TASK** : create( )
+
+PLAT --> LTS** :create( )
 
 loop [for Every Transaction]
 PLAT -> TR : tr = getTransaction(i)
@@ -38,9 +41,9 @@ activate TS
 deactivate TS
 
 opt [if validator == false]
-PLAT -> LT : addltNotPayed(ts)
-activate LT
-deactivate LT
+PLAT -> LTS : addltNotPayed(ts)
+activate LTS
+deactivate LTS
 end opt
 end loop
 PLAT -> PLAT : present = getTime()
