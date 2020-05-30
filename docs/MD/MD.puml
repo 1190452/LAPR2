@@ -32,7 +32,8 @@ class Task {
   -Time timeDuration
   -double costHour
   -String taskCategory
-  -Boolean isPayed
+  -boolean isPayed
+  -boolean isFinished
 }
 
 class Manager {
@@ -142,6 +143,7 @@ TaskExecution "1" -- "1" Freelancer: related to the work of
 Task "1" -- "1" TaskExecution : originates >
 
 Receipt "1" -- "1" Writer : uses >
+Receipt "1" -- "*" Transaction: has >
 
 
 
