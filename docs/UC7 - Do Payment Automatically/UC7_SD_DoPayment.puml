@@ -21,7 +21,7 @@ TASK -> RF : lf = getFreelancerList()
 activate RF
 deactivate RF
 
-TASK -> LTS** : create()
+TASK --> LTS** : create()
 
 loop [for every freelancer]
 TASK -> RF : freel = getFreelancer(i)
