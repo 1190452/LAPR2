@@ -44,8 +44,8 @@ The emails with the performance of the freelancers are sent to the respective
 > the use case ends.
 
 2b. The system does not contain freelancers.
-> Redirect.
- 
+> the use case ends.
+
 2c. The system does not contain freelancers with a task delay greater than 3 hours or greater than the percentage of overall delays.
 > the use case ends
  
