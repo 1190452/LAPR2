@@ -61,10 +61,15 @@ class Administrator {
 }
 
 class Payment{
+  -double valueE
+  -double valueC
+}
+
+class definePayment{
   -Time timeToPay
   -Data dateToPay
   -int nrDays
-}
+  }
 
 class Reader {
   -String fileName
@@ -107,8 +112,8 @@ Organization "1" -- "1" Collaborator: has >
 Organization "1" -- "1..*" Task: has >
 
 Manager "1" -- "1" User: acts as >
-Manager "1" -- "1" Payment: defines >
 Manager "1" -- "1" Writer: receives email from >
+Manager "1" -- "1" definePayment: determines >
 
 Administrator "1" -- "1" Organization: registers >
 Administrator "1" -- "1" User: acts as >
@@ -122,6 +127,8 @@ Transaction "1" -- "1" TaskExecution: has >
 
 Payment "1" -- "1" Receipt: generate >
 Payment "1" -- "1..*" Transaction : has >
+
+definePayment "1" -- "1..*" Payment: defines > 
 
 
 Reader "1" -- "1..*" HistoricalTransaction: originates >
@@ -138,7 +145,7 @@ Collaborator "1" -- "1" TaskExecution: introduces >
 Collaborator "1" -- "1" Writer: receives email from >
 
 
-TaskExecution "1" -- "1" Freelancer: related to the work of
+TaskExecution "1" -- "1" Freelancer: related to the work of >
 
 Task "1" -- "1" TaskExecution : originates >
 
@@ -149,6 +156,7 @@ Receipt "1" -- "*" Transaction: has >
 
 
 @enduml
+
 
 
 
