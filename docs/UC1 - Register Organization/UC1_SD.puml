@@ -1,0 +1,87 @@
+@startuml
+autonumber
+'hide footbox
+actor "Manager" as ADM
+
+participant ":PaymentUI" as UI
+participant ":CreatePaymentController" as CTRL
+participant "POTAplication" as _APP
+participant "app\n:POTAplication" as APP
+participant "log\n:Login" as SESSAO
+participant ":Plataform" as PLAT
+participant "rorgs:Organization\nRegister" as RORGS
+participant "org\n:Organization" as ORG
+participant "tl\n:TaksList" as LTASKS
+participant "task\n:Task" as TAREFA
+
+
+activate ADM
+ADM -> UI : The manager of the organization selects the processment cycle of payment transactions.
+activate UI
+UI --> ADM : The System asks for the day of the month, the time of the day and the recurrence time period (e.g. 7 days).
+deactivate UI
+
+ADM -> UI : The Manager inserts the information.
+activate UI
+
+UI -> CTRL : newTask(idT, description, timeDuration, costHour, taskCategoty)
+activate CTRL
+
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+
+CTRL -> APP : log = getLogin()
+activate APP
+deactivate APP
+
+CTRL -> SESSAO : email = getUserEmail()
+activate SESSAO
+deactivate SESSAO
+
+CTRL -> PLAT : rorgs = getOrganizationRegister()
+activate PLAT
+deactivate PLAT
+
+CTRL -> RORGS : org = getOrganizationByUserEmail()
+activate RORGS
+deactivate RORGS
+
+CTRL -> ORG : tl = getTaskList()
+activate ORG
+deactivate ORG
+
+CTRL -> LTASKS : task = newTask(idT, description, timeDuration, costHour, taskCategoty)
+activate LTASKS
+
+LTASKS -> TAREFA** : create(idT, description, timeDuration, costHour, taskCategoty)
+
+LTASKS -> LTASKS : validatesTask(task)
+
+deactivate CTRL
+deactivate LTASKS
+
+UI --> ADM : shows the data and asks for confirmation.
+deactivate UI
+
+ADM -> UI : confirms the data
+activate UI
+
+UI -> CTRL : registersTask()
+activate CTRL
+
+CTRL -> LTASKS : registersTask(task)
+activate LTASKS
+
+LTASKS -> LTASKS : validatesTask(task)
+LTASKS -> LTASKS : addTask(task)
+deactivate LTASKS
+deactivate CTRL
+
+UI -> ADM : informs about the success of the operation
+deactivate UI
+deactivate ADM
+
+
+
+@enduml
