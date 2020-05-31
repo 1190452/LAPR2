@@ -119,3 +119,7 @@ Other classes of external systems / components:
 ###	Class Diagram
 
 ![CD_UCX.png](CD_UCX.png)
+
+###	UC10_CD_SendEmail
+
+![UC10_CD_SendEmail.png](UC10_CD_SendEmail.png)
