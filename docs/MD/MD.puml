@@ -32,7 +32,8 @@ class Task {
   -Time timeDuration
   -double costHour
   -String taskCategory
-  -Boolean isPayed
+  -boolean isPayed
+  -boolean isFinished
 }
 
 class Manager {
@@ -84,7 +85,7 @@ class Writer{
 
 Freelancer "1" -- "1" Transaction: receive >
 Freelancer "1" -- "1" Receipt: receives > 
-Freelancer "1" -- "1" Payment: receives >
+Freelancer "1" -- "1..*" Payment: receives >
 Freelancer "1" -- "1" Address: has >
 Freelancer "1" -- "1" Writer: receives email from >
 
@@ -115,12 +116,12 @@ Administrator "1" -- "1" Collaborator: registers >
 Administrator "1" -- "1" Manager: registers >
 Administrator "1" -- "1" Writer: receives email from >
 
-Transaction "1" -- "1" Payment: results in >
 Transaction "1" -- "1" Task: has >
 Transaction "1" -- "1" TaskExecution: has >
 
 
 Payment "1" -- "1" Receipt: generate >
+Payment "1" -- "1..*" Transaction : has >
 
 
 Reader "1" -- "1..*" HistoricalTransaction: originates >
@@ -142,6 +143,7 @@ TaskExecution "1" -- "1" Freelancer: related to the work of
 Task "1" -- "1" TaskExecution : originates >
 
 Receipt "1" -- "1" Writer : uses >
+Receipt "1" -- "*" Transaction: has >
 
 
 

@@ -4,7 +4,7 @@ autonumber
 actor "Manager" as ADM
 
 participant ":PaymentUI" as UI
-participant ":CreatePaymentController" as CTRL
+participant ":DefinePaymentController" as CTRL
 participant ":Transaction" as TRAN
 participant "lpay:Payment\nList" as LPAY
 
