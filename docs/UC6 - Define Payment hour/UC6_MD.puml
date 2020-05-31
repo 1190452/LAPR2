@@ -4,6 +4,7 @@ hide methods
 left to right direction
 
 
+
 class Manager {
   -String nome
   -String email
@@ -13,30 +14,29 @@ class User {
 }
 
 
+
 class Payment{
+  -double valueE
+  -double valueC
+}
+
+class DefinePayment{
   -Time timeToPay
   -Data dateToPay
-}
-
-class Platform{
-}
-
-
-class Organization {
-  -String name
-  -String email
-  -String nif
+  -int nrDays
 }
 
 
-Manager "1" -- "1" User: acts as >
-Manager "1" -- "1" Payment: defines >
 
-Organization "1" -- "1" Manager : has >
 Platform "1" -- "1..*" Organization: has registered >
 
+Organization "1" -- "1" Manager: has >
+Organization "1" -- "1" DefinePayment: saves >
+
+Manager "1" -- "1" User: acts as >
+Manager "1" -- "1" DefinePayment: determines >
 
 
+DefinePayment "1" -- "1..*" Payment: defines > 
 
 @enduml
-
