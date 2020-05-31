@@ -67,7 +67,10 @@ n/a
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The Administrator starts the visualization of the performance of the freelancers. |...interacts with the user? | CheckPerformanceUI | Pure Fabrication|
 |             |...coordinates the UC? | CheckPerformanceController | Controller |
-|2. The system shows the statistics describing the performance of the freelancers (the mean and the standard deviation of the delays and payments of all the freelancers and the histrograms that represent that) and shows the probability that the sample mean is higher than 3 hours. ...knows the delay of each freelancer? | TaskExecution | IE: TaskExecution knows its own data | 
+|2. The system shows the statistics describing the performance of the freelancers (the mean and the standard deviation of the delays and payments of all the freelancers and the histrograms that represent that) and shows the probability that the sample mean is higher than 3 hours. | |...knows the list of Freelancers? | RegisterFreelancer | HC+LC |
+| |...knows the payment list of each freelancer? | Freelancer | IE: has its own data |
+| |...knows the transactions of each payment? | Payment | IE: has its own data |
+| |...knows the delay of each freelancer? | TaskExecution | IE: TaskExecution knows its own data | 
 | | ...knows TaskExecution? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution |
 | | ...calculates the payment for each task of each freelancer? | Transaction | IE: Transaction has the cost per hour and the time that the task took.|
 | |...saves the probability that the sample mean is higher than 3 hours? | RegisterFreelancer | HC+lC |
