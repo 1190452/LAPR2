@@ -1,40 +1,62 @@
 @startuml
 autonumber
 
-participant "Receipt" as R
-participant "amountsET\n: List<Task>" as LTS
+participant "Payment" as PA
 
-participant "ts :Task" as T
-participant "freel\n:Freelancer" as F
+participant "nltr\nList<Transaction>" as NLTR
+participant "tr\n:Transaction" as T
+participant "ts :Task" as TA
+participant "Receipt" as R
 participant "Writer" as W
 
 
-[o-> R : generateR(freel)
-activate R
+[o-> PA : generateReceipt(country)
+activate PA
+loop [for every transaction]
 
+PA -> NLTR : tr = get(i)
+activate NLTR
+deactivate NLTR
 
-loop [for every task]
-R -> LTS : ts = get(i)
-activate LTS
-deactivate LTS
-
-R -> T : costHour = getCostHour()
+PA -> T : ts = getTask()
 activate T
 deactivate T
 
-R -> T : timeDuration = getTimeDuration()
+PA -> TA : costHour = getCostHour()
+activate TA
+deactivate TA
+
+PA -> TA : timeDuration = getTimeDuration()
+activate TA
+deactivate TA
+
+PA -> PA : valueE = calculate(timeDuration, costHour)
+
+PA -> T : setValueE(valueE)
 activate T
 deactivate T
 
-R -> R : calc = calculateCost(costHour, timeDuration)
+PA -> PA : valueC = calculateInCurrency(valueE, country)
 
+PA -> T : setValueC(valueC)
+activate T
+deactivate T
 
 end loop
 
+PA -> PA : sum = getSum()
+PA -> PA : curr = getCurr()
 
-R -> W : sendEmail(feel)
+PA --> R** : create(nltr, sum, curr)
+
+PA -> R : genEmail()
+activate R
+R -> W : genEmail()
 activate W
 deactivate W
-
 deactivate R
+
+
+
+deactivate PA
 @enduml
