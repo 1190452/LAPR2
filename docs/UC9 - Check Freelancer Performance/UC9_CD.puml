@@ -1,0 +1,75 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+
+class CheckPerformanceUI{
+  }
+
+class CheckPerformanceController{
+  +checkPerformances()
+  }
+
+class Platform {
+  +getRegisterFreelancer()
+  }
+
+class RegisterFreelancer{
+  +getListFreelancer()
+  +calculateProbabilityHigherThanThreeHours()
+  }
+
+class Payment {
+  +getListTransactions()
+  }
+
+class Transaction{
+  +getPayementValue()
+  }
+
+class Freelancer {
+  +getListPayements()
+  +averageOfEachFreelancer(paymentTotal)
+  +calculateDeviation(averageFreel, payment)
+  +calculateDeviation(sumAllPaymentsDeviation)
+  +getTaskList()
+  +delaySumMean(delayTask)
+  +delayMean(sumDelaysOfFreelancer)
+  +deviationDelay(delayTask, averageDelayOfFreelancer)
+  +sumDeviationDelay(deviationDelayOfFreelancer)
+  +calculateDeviationOfOneFreelancer(sumDeviationDelaysOfFreelancer)
+  +averageDelayOfAllFreelancers(totalDelayOfAllFreelancers)
+  +averagePaymentOfAllFreelancers(totalPaymentOfAllFreelancers)
+  +deviationDelay (delayTask , averageDelayOfAllFreelancers)
+  +calculateDeviationOfAllFreelancers(sumDelayDeviationOfAllFreelancers)
+  +calculateDeviation(averagePaymentOfAllFreelancers, payment)
+  +calculatePaymentDeviationOfAllFreelancers(sumAllPaymentsDeviation)
+  }
+
+class TaskExecution{
+  +getDelayByTask()
+  }
+
+
+CheckPerformanceUI ..> CheckPerformanceController
+CheckPerformanceController ..> Platform
+CheckPerformanceController ..> Payment
+CheckPerformanceController ..> Transaction
+CheckPerformanceController ..> Freelancer
+CheckPerformanceController ..> TaskExecution
+
+
+Platform "1" --> "1" RegisterFreelancer: has
+RegisterFreelancer "1" --> "*" Freelancer: has
+Freelancer "1" --> "1.." Payment: has
+Transaction "1..*" --> "1"Payment: originates 
+Transaction "1" --> "1" TaskExecution: creates
+
+
+
+
+
+
+@enduml
+
+
+
