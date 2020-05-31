@@ -48,7 +48,8 @@ class Receipt {
 }
 
 class Transaction {
-
+    -double valueE
+    -double valueC
 }
 
 class Address{
