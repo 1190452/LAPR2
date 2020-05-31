@@ -65,7 +65,7 @@ class Payment{
   -double valueC
 }
 
-class definePayment{
+class DefinePayment{
   -Time timeToPay
   -Data dateToPay
   -int nrDays
@@ -110,10 +110,11 @@ Organization "1" -- "1" Address: has >
 Organization "1" -- "1" Manager: has >
 Organization "1" -- "1" Collaborator: has >
 Organization "1" -- "1..*" Task: has >
+Organization "1" -- "1" DefinePayment: saves >
 
 Manager "1" -- "1" User: acts as >
 Manager "1" -- "1" Writer: receives email from >
-Manager "1" -- "1" definePayment: determines >
+Manager "1" -- "1" DefinePayment: determines >
 
 Administrator "1" -- "1" Organization: registers >
 Administrator "1" -- "1" User: acts as >
@@ -156,7 +157,3 @@ Receipt "1" -- "*" Transaction: has >
 
 
 @enduml
-
-
-
-
