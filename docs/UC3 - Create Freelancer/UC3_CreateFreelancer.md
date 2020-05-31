@@ -4,7 +4,7 @@
 
 ### Brief Format
 
-The collaborator starts creating a freelancer. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country). The collaborator enter the requested data. The system presents the data and asks for confirmation. The collaborator confirms. The system informs the collaborator of the successfull of the operation.
+The collaborator starts creating a freelancer. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country, street, doorNumber, locality). The collaborator enter the requested data. The system presents the data and asks for confirmation. The collaborator confirms. The system informs the collaborator of the successfull of the operation.
 
 
 ### SSD
@@ -34,7 +34,7 @@ n/a
 #### Main success scenario (or basic flow)
 
 1. The collaborator starts creating a freelancer.
-2. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country).
+2. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country, street, doorNumber, locality).
 3. The collaborator enter the requested data. 
 4. The system validates, presents the data and asks for confirmation.
 5. The collaborator confirms the data.
@@ -96,8 +96,12 @@ n/a
 | |... knows RegisterFreelancer?| Platform | IE: Platform contains RegisterFreelancer
 |2. The system requests the necessary data (i.e. freelancer identifier, name, level Expertise, email, nif, iban account, country).|... interact with collaborator?| CreateFreelancerUI |Pure Fabrication|
 |3. The collaborator enter the requested data|... save the entered data?|Freelancer|IE: Freelancer knows your attributes|
+| |... create instances of Adress?| Freelancer |Creator+IE: Freelancer contains adress|
+| |... save Address?| Freelancer |IE: Freelancer contains address|
 |4. The system validates, presents the data and asks for confirmation |... validates freelancer data( Global Validation )|RegisterFreelancer| IE: RegisterFreelancer contains Freelancer and knows them all|
 | |... validates freelancer data( local Validation )|Freelancer| IE: Freelancer knows his attributes |
+| |... validates Address data( local Validation )|Address| IE: Address knows his attributes |
+| |... validates Address data( global Validation )|Freelancer| IE: Freelancer contains address|
 |5. The collaborator confirms the data |||  |
 |6. The system informs the collaborator of the successfull of the operation||| |
 
@@ -109,6 +113,7 @@ It follows from the rational that the conceptual classes promoted to software cl
  * RegisterFreelancer
  * Freelancer
  * Platform
+ * Address
 
 Other software classes (i.e. Pure Fabrication) identified:  
 
