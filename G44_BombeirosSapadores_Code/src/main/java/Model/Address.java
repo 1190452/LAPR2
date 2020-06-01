@@ -88,15 +88,72 @@ public class Address {
 
     /**
      * Returns the locality of the Address
-     * @return 
+     * @return locality of the Address
      */
     public String getLocality() {
         return locality;
     }
     
+    /**
+     * Changes the street of the Address
+     * @param street the new Street of the Address
+     */
+    public void setStreet(String street) {
+        if (street == null || street.isEmpty())
+            throw new IllegalArgumentException("The street should not be empty or null.");
+        this.street = street;
+    }
+
+    /**
+     * Changes the door number of the Address
+     * @param doorNumber the new Door Number of the Address
+     */
+    public void setDoorNumber(int doorNumber) {
+        if (doorNumber < 0)
+            throw new IllegalArgumentException("The door number is invalid.");
+        this.doorNumber = doorNumber;
+    }
+
+    /**
+     * Changes the locality of the Address
+     * @param locality the new Locality of the Address
+     */
+    public void setLocality(String locality) {
+        if (locality == null || locality.isEmpty()) 
+            throw new IllegalArgumentException("The locality should not be empty or null");
+        this.locality = locality;
+    }
     
     
+    /**
+     * Compares 2 Address objects through street, door number and locality with both objects being considered equal only when these 3 parameteres are the same
+     *
+     * @param otherObject object to be compared with the object that calls the method
+     * @return true, if the references of both objects being compared are pointing at the same object false, if the compared object is null or the class of the objects are different true, if address, locality and postCode of both objects are the same
+     */
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Address otherAddress = (Address) otherObject;
+        return this.street.equalsIgnoreCase(otherAddress.street)
+                && this.doorNumber == otherAddress.doorNumber 
+                && this.locality.equalsIgnoreCase(otherAddress.locality);
+    }
     
+    /**
+     * Returns the characteristics of the Address
+     * 
+     * @return characteristics of the Address 
+     */
+    @Override
+    public String toString() {
+        return String.format("Street: %s, Door number: %d, Locality: %s\n", street, doorNumber, locality);
+    } 
     
     
 }
