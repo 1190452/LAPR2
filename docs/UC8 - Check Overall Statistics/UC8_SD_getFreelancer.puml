@@ -1,34 +1,34 @@
-participant "WatchStatisticsController" as E
+participant "RegisterFreelancer" as FR
 participant "ltr\n:List<Transaction>" as LTR
 participant "tr\n:Transaction" as TR
 participant "lt\n:List<Task>" as LTS
 participant "listFreelancer\n:List<Freelancer>" as LF
 
-[o-> E : getFreelancers()
-activate E
+[o-> FR : getFreelancers()
+activate FR
 
-E -> LF** : create()
+FR -> LF** : create()
 
 loop [for every task]
-E -> LTS : ts = get(i)
+FR -> LTS : ts = get(i)
 activate LTS
 deactivate LTS
 loop [for every transaction]
 
-E -> LTR : tr = get(j)
+FR -> LTR : tr = get(j)
 activate LTR
 deactivate LTR
 
-E -> TR : cts = getTask()
+FR -> TR : cts = getTask()
 activate TR
 deactivate TR
 
 
 opt [if ts == cts]
-E -> TR : freel = getFreelancer()
+FR -> TR : freel = getFreelancer()
 activate TR 
 deactivate TR
-E -> LF : addFreel(freel)
+FR -> LF : addFreel(freel)
 activate LF
 deactivate LF
 
@@ -36,4 +36,4 @@ deactivate LF
 end opt
 end loop
 end loop
-deactivate E
+deactivate FR

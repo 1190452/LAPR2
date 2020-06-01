@@ -1,39 +1,85 @@
-participant "WatchStatisticsController" as E
-participant "ltr\n:List<Transaction>" as LTR
-participant "tr\n:Transaction" as TR
-participant "lt\n:List<Task>" as LTS
-participant "listFreelancer\n:List<Freelancer>" as LF
+@startuml
+skinparam classAttributeIconSize 0
+left to right direction
 
-[o-> E : getFreelancers()
-activate E
+class WatchStatisticsUI {
+}
 
-E -> LF** : create()
+class WatchStatisticsController {
+  +getOverallStatistics()
+}
+class Platform {
+    +getRegisterFreelancer()
+    +getOrgaanizacaoByEmail(email)
+    +getListTransactions()
+}
 
-loop [for every task]
-E -> LTS : ts = get(i)
-activate LTS
-deactivate LTS
-loop [for every transaction]
+class RegisterFreelancer{
+  +getListFreelancer()
+  +getFreelancers()
+}
 
-E -> LTR : tr = get(j)
-activate LTR
-deactivate LTR
+class Payment {
+  -double valueE
+  -double valueC
+  +getListTransactions()
+}
 
-E -> TR : cts = getTask()
-activate TR
-deactivate TR
+class Freelancer{
+  -String freeID
+  -String name
+  -String levelExp
+  -String email
+  -String nif
+  -String iban
+  -String country
+  +getListPayments()
+  +averageOfEachFreelancer(PaymentTotal)
+  +calculateDeviation(averageFreel,payment)
+  +calculateDeviation(sumAllPaymentsDeviation)
+  +deviationDelay(delayTask,averageDelayOfFreelancer)
+  +calculateDeviationOfAllFreelancers(sumDelayOfAllFreelancers)
+}
+
+class TaskExecution {
+  -Data endDate
+  -double delay
+  -String descriptionOfQuality
+  +getDelayByTask(task)
+}
+
+class Transaction {
+  +getPaymentValue() 
+  +getTask()
+  +getFreelancer()
+}
+
+class Organization{
+  -String nome
+  -String email
+  -String nif
+  +getTaskList()
+  }
 
 
-opt [if ts == cts]
-E -> TR : freel = getFreelancer()
-activate TR 
-deactivate TR
-E -> LF : addFreel(freel)
-activate LF
-deactivate LF
+
+WatchStatisticsUI ..> WatchStatisticsController
+WatchStatisticsController ..> Platform
+WatchStatisticsController ..> Payment
+WatchStatisticsController ..> Transaction
+WatchStatisticsController ..> Freelancer
+WatchStatisticsController ..> TaskExecution
+WatchStatisticsController ..> Organization
+
+Platform "1" --> "1" RegisterFreelancer: has
+Platform "1" --> "*" Organization: has
+Platform "1" --> "*" Transaction: has
+RegisterFreelancer "1" --> "*" Freelancer: has
+Freelancer "1" --> "1.." Payment: has
+Payment "1" --> "1..*" Transaction: has
+Transaction "1" --> "1" TaskExecution: creates
 
 
-end opt
-end loop
-end loop
-deactivate E
+
+
+@enduml
