@@ -5,7 +5,9 @@
  */
     package Controller;
 
+import Model.Address;
 import Model.Collaborator;
+import Model.Manager;
 import Model.Organization;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,16 +33,13 @@ public class RegisterOrganization
     }
     
     
-    public boolean novaOrganizacao(String strNome, String strNIF, String strWebsite, String strTelefone, 
-            String strEmail, String strLocal, String strCodPostal, String strLocalidade,
-            String strNomeGestor, String strFuncaoGestor, String strEmailGestor,  String strTelefoneGestor,String strPwd)
+    public boolean newOrganization(String name, String NIF, String email, String nameC, String funcaoC, String telefoneC, String emailC, String nameM, String funcaoM, String telefoneM, String emailM)
     {
         try
         {
-            this.m_strPwd = strPwd;
-            EnderecoPostal oMorada = Organization.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
-            Collaborator oColab = Organization.novoColaborador(strNomeGestor, strFuncaoGestor, strTelefoneGestor, strEmailGestor);      
-            this.m_oOrganizacao = this.m_oPlataforma.novaOrganizacao(strNome, strNIF, strWebsite,strTelefone, strEmail, oMorada, oColab);
+            Collaborator Collab = Organization.newCollaborator(nameC, funcaoC, telefoneC, emailC);
+            Manager manager = Organization.newManager(nameM, funcaoM, telefoneM, emailM);
+            this.m_oOrganizacao = this.m_oPlataforma.newOrganization(name, NIF, email, Collab, manager);
             return this.m_oPlataforma.validateOrganization(this.m_oOrganizacao, this.m_strPwd);
         }
         catch(RuntimeException ex)

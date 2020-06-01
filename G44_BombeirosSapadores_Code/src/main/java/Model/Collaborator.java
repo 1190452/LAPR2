@@ -11,71 +11,71 @@ import java.util.Objects;
  *
  * @author paulomaio
  */
-public class Collaborator
-{
+public class Collaborator {
+
     private String m_strNome;
     private String m_strFuncao;
     private String m_strTelefone;
     private String m_strEmail;
-            
-    
-    public Collaborator(String strNome, String strFuncao, String strTelefone, String strEmail)
-    {
-        if ( (strNome == null) || (strFuncao == null) || (strTelefone == null) || (strEmail == null) ||
-                (strNome.isEmpty())|| (strFuncao.isEmpty())|| (strTelefone.isEmpty())|| (strEmail.isEmpty()))
+
+    public Collaborator(String strNome, String strFuncao, String strTelefone, String strEmail) {
+        if ((strNome == null) || (strFuncao == null) || (strTelefone == null) || (strEmail == null)
+                || (strNome.isEmpty()) || (strFuncao.isEmpty()) || (strTelefone.isEmpty()) || (strEmail.isEmpty())) {
             throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
-        
+        }
+
         this.m_strNome = strNome;
         this.m_strFuncao = strFuncao;
         this.m_strTelefone = strTelefone;
         this.m_strEmail = strEmail;
     }
-    
-    public boolean hasId(String strId)
-    {
+
+    public Collaborator() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean hasId(String strId) {
         return this.m_strEmail.equalsIgnoreCase(strId);
     }
-    
-    public String getNome()
-    {
+
+    public String getNome() {
         return this.m_strNome;
     }
-    
-    public String getEmail()
-    {
+
+    public String getEmail() {
         return this.m_strEmail;
     }
-   
-    
+
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 7;
         hash = 23 * hash + Objects.hashCode(this.m_strEmail);
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
-        
+
         // self check
-        if (this == o)
+        if (this == o) {
             return true;
+        }
         // null check
-        if (o == null)
+        if (o == null) {
             return false;
+        }
         // type check and cast
-        if (getClass() != o.getClass())
+        if (getClass() != o.getClass()) {
             return false;
+        }
         // field comparison
         Collaborator obj = (Collaborator) o;
         return (Objects.equals(m_strEmail, obj.m_strEmail));
     }
-    
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return String.format("%s - %s - %s - %s", this.m_strNome, this.m_strFuncao, this.m_strTelefone, this.m_strEmail);
     }
 }

@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import autorizacao.FacadeAuthorazation;
-import pt.ipp.isep.dei.esoft.autorizacao.model.UserSession;
+import autorizacao.model.UserSession;
 import Model.Constants;
 import Model.Platform;
 
