@@ -1,87 +1,77 @@
 @startuml
 autonumber
-'hide footbox
-actor "Manager" as ADM
 
-participant ":PaymentUI" as UI
-participant ":CreatePaymentController" as CTRL
-participant "POTAplication" as _APP
-participant "app\n:POTAplication" as APP
-participant "log\n:Login" as SESSAO
+actor "Administrator" as ADM
+participant ":Regist\nOrganizacionUI" as UI
+participant ":RegistOrganization\nController" as CTRL
 participant ":Plataform" as PLAT
-participant "rorgs:Organization\nRegister" as RORGS
-participant "org\n:Organization" as ORG
-participant "tl\n:TaksList" as LTASKS
-participant "task\n:Task" as TAREFA
+participant "ro:Regist\nOrganizations" as ORGS
+participant "Organization" as _ORG
+participant "org:Organization" as ORG
+participant "add:Address" as ADD
+participant "colab:Collaborator" as COLAB
+participant "manager:Manager" as MNGR
 
 
-activate ADM
-ADM -> UI : The manager of the organization selects the processment cycle of payment transactions.
-activate UI
-UI --> ADM : The System asks for the day of the month, the time of the day and the recurrence time period (e.g. 7 days).
-deactivate UI
-
-ADM -> UI : The Manager inserts the information.
+ADM -> UI : inserts the information
 activate UI
 
-UI -> CTRL : newTask(idT, description, timeDuration, costHour, taskCategoty)
+UI -> CTRL : newOrganization(name,email,NIF,street,doorNumber,locality, nameC, emailC, phoneNumberC, nameM, emailM, phoneNumberM)
 activate CTRL
 
-CTRL -> _APP : app = getInstance()
-activate _APP
-deactivate _APP
-
-CTRL -> APP : log = getLogin()
-activate APP
-deactivate APP
-
-CTRL -> SESSAO : email = getUserEmail()
-activate SESSAO
-deactivate SESSAO
-
-CTRL -> PLAT : rorgs = getOrganizationRegister()
+CTRL -> PLAT: ro = getRegistOrganizations()
 activate PLAT
 deactivate PLAT
 
-CTRL -> RORGS : org = getOrganizationByUserEmail()
-activate RORGS
-deactivate RORGS
+CTRL -> ORGS: org = newOrganization(name,email,NIF,street,doorNumber,locality, nameC, emailC, phoneNumberC, nameM, emailM, phoneNumberM)
+activate ORGS
 
-CTRL -> ORG : tl = getTaskList()
-activate ORG
-deactivate ORG
+ORGS -> _ORG: end=newAddress(street, doorNumber, locality)
+activate _ORG
+_ORG --> ADD ** : create(street, doorNumber, locality)
+deactivate _ORG
 
-CTRL -> LTASKS : task = newTask(idT, description, timeDuration, costHour, taskCategoty)
-activate LTASKS
+ORGS -> _ORG: manager=newManager(name, email, role, phoneNumber)
+activate _ORG
+_ORG --> MNGR ** : create(name, email, role, phoneNumber)
+deactivate _ORG
 
-LTASKS -> TAREFA** : create(idT, description, timeDuration, costHour, taskCategoty)
+ORGS -> _ORG: collab=newCollaborator(name, email, role, phoneNumber)
+activate _ORG
+_ORG --> COLAB ** : create(name, email, role, phoneNumber)
+deactivate _ORG
 
-LTASKS -> LTASKS : validatesTask(task)
+ORGS --> ORG ** : create(name, email, nif, address, collaborator, manager)
+deactivate ORGS
+
+CTRL -> ORGS : validateOrganization(org)
+activate ORGS
+deactivate ORGS
 
 deactivate CTRL
-deactivate LTASKS
-
-UI --> ADM : shows the data and asks for confirmation.
+UI --> ADM : shows information and a requests confirmation
 deactivate UI
 
-ADM -> UI : confirms the data
+ADM -> UI : confirms
 activate UI
 
-UI -> CTRL : registersTask()
+UI -> CTRL: registOrganization()
 activate CTRL
+CTRL -> ORGS: registOrganization(org)
+activate ORGS
 
-CTRL -> LTASKS : registersTask(task)
-activate LTASKS
+ORGS -> ORGS: validatesOrganization(org)
 
-LTASKS -> LTASKS : validatesTask(task)
-LTASKS -> LTASKS : addTask(task)
-deactivate LTASKS
+ref over ORGS, COLAB, MNGR, PLAT
+  UC1_SD_RegistUser
+end ref
+
+ORGS -> ORGS: addOrganization(org)
+deactivate ORGS
+
 deactivate CTRL
-
-UI -> ADM : informs about the success of the operation
+UI --> ADM : successful operation
 deactivate UI
+
 deactivate ADM
-
-
-
 @enduml
