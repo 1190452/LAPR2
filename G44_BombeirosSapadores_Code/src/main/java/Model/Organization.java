@@ -1,6 +1,15 @@
+<<<<<<< HEAD:G44_BombeirosSapadores_Code/src/main/java/Model/Organization.java
 package Model;
 
 
+=======
+ /*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Model;
+>>>>>>> 739b64fd5f4e76325b34c2c21c0ab6a5c52d9fbd:G44_BombeirosSapadores_Code/src/main/java/Model/Organizacao.java
 
 import java.util.HashSet;
 import java.util.List;
