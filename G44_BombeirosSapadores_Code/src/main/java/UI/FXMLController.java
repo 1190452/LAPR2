@@ -1,4 +1,4 @@
-package com.mycompany.g44_bombeirossapadores_code;
+package UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
