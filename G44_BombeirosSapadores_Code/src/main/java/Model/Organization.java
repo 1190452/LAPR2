@@ -7,12 +7,12 @@ package Model;
 public class Organization
 {
 
-    public static Collaborator newCollaborator(String nameC, String funcaoC, String telefoneC, String emailC) {
-          return new Collaborator(nameC, funcaoC, telefoneC, emailC);
+    public static Collaborator newCollaborator(String nameC, String emailC,  String pwd) {
+          return new Collaborator(nameC, emailC, pwd);
     }
 
-    public static Manager newManager(String nameM, String funcaoM, String telefoneM, String emailM) {
-       return new Manager(nameM, funcaoM, telefoneM, emailM);
+    public static Manager newManager(String nameM, String emailM, String pwd) {
+       return new Manager(nameM, emailM, pwd);
     }
 
     /**
@@ -95,20 +95,7 @@ public class Organization
         this.manager = otherOrganization.manager;
     }
     
-
-    /**
-     * Builds an instance of Organization with the omission values
-     */
-    public Organization() {
-        name = NAME_BY_OMISSION;
-        NIF = NIF_BY_OMISSION;
-        email = EMAIL_BY_OMISSION;
-        colab = new Collaborator();
-        manager = new Manager();
-    }
-    
-    
-
+   
     /**
      * Returns the name of the Organization
      * @return name of the Organization

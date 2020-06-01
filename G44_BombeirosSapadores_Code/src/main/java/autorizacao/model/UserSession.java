@@ -52,13 +52,6 @@ public class UserSession
         return null;
     }
     
-    public String getUserID()
-    {
-        if (isLoggedIn())
-            this.m_oUtilizador.getId();
-        return null;
-    }
-    
     public String getUserEmail()
     {
         if (isLoggedIn())

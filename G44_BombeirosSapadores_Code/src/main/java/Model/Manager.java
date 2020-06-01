@@ -5,32 +5,28 @@
  */
 package Model;
 
+import autorizacao.model.User;
 import java.util.Objects;
 
 /**
  *
- * @author jorge
+ * @author OMEN X
  */
-public class Manager {
+public class Manager extends User {
+
     private String name;
-    private String function;
-    private String telephone;
     private String email;
+    private String password;
 
-    public Manager(String name, String function, String telephone, String email) {
-        if ((name == null) || (function == null) || (telephone == null) || (email == null)
-                || (name.isEmpty()) || (function.isEmpty()) || (telephone.isEmpty()) || (email.isEmpty())) {
-            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
-        }
-
-        this.name = name;
-        this.function = function;
-        this.telephone = telephone;
-        this.email = email;
-    }
-
-    Manager() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Builds an instance of Manager that receives name, email and password
+     *
+     * @param name
+     * @param email
+     * @param password
+     */
+    public Manager(String name, String email, String password) {
+        super(name, email, password, "MANAGER");
     }
 
     public boolean hasId(String strId) {
@@ -73,8 +69,19 @@ public class Manager {
         return (Objects.equals(email, obj.email));
     }
 
+    /**
+     * Builds an instance of Manager that is copy of another passed by parameter
+     *
+     * @param otherManager
+     */
+    public Manager(Manager otherManager) {
+        super(otherManager.getName(), otherManager.getEmail(), otherManager.getPassword(), otherManager.getRole());
+
+    }
+
     @Override
     public String toString() {
-        return String.format("%s - %s - %s - %s", this.name, this.function, this.telephone, this.email);
+        return super.toString();
+
     }
 }

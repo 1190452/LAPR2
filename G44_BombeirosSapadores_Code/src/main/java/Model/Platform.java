@@ -14,6 +14,7 @@ import autorizacao.FacadeAuthorazation;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Platform {
+
     private final FacadeAuthorazation m_oAutorizacao;
 
     private final Set<Organization> m_lstOrganizacoes;
@@ -56,9 +57,9 @@ public class Platform {
         boolean bRet = true;
 
         // Escrever aqui o código de validação
-        if (this.m_oAutorizacao.existUser(oOrganizacao.getColab().getEmail())) {
-            bRet = false;
-        }
+//        if (this.m_oAutorizacao.existUser(oOrganizacao.getColab().getEmail())) {
+//            bRet = false;
+//        }
         if (strPwd == null) {
             bRet = false;
         }

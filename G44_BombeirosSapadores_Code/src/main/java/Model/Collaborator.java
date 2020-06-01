@@ -5,43 +5,41 @@
  */
 package Model;
 
+import autorizacao.model.User;
 import java.util.Objects;
 
 /**
  *
- * @author paulomaio
+ * @author OMEN X
  */
-public class Collaborator {
+public class Collaborator extends User {
 
     private String name;
     private String function;
     private String telephone;
     private String email;
 
-    public Collaborator(String name, String function, String telephone, String email) {
-        if ((name == null) || (function == null) || (telephone == null) || (email == null)
-                || (name.isEmpty()) || (function.isEmpty()) || (telephone.isEmpty()) || (email.isEmpty())) {
-            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
-        }
-
-        this.name = name;
-        this.function = function;
-        this.telephone = telephone;
-        this.email = email;
-    }
-
-    public Collaborator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Builds an instance of Collaborator that receives name, email and password
+     *
+     * @param name
+     * @param email
+     * @param password
+     */
+    public Collaborator(String name, String email, String password) {
+        super(name, email, password, "COLLABORATOR");
     }
 
     public boolean hasId(String strId) {
         return this.email.equalsIgnoreCase(strId);
     }
 
+    @Override
     public String getName() {
         return this.name;
     }
 
+    @Override
     public String getEmail() {
         return this.email;
     }
@@ -78,4 +76,16 @@ public class Collaborator {
     public String toString() {
         return String.format("%s - %s - %s - %s", this.name, this.function, this.telephone, this.email);
     }
+
+    /**
+     * Builds an instance of Collaborator that is copy of another passed by
+     * parameter
+     *
+     * @param otherCollaborator
+     */
+    public Collaborator(Collaborator otherCollaborator) {
+        super(otherCollaborator.getName(), otherCollaborator.getEmail(), otherCollaborator.getPassword(), otherCollaborator.getRole());
+
+    }
+
 }
