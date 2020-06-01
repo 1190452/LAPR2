@@ -11,12 +11,12 @@ import java.util.Objects;
  *
  * @author paulomaio
  */
-public class PapelUtilizador
+public class UserRole
 {
     private String m_strPapel;
     private String m_strDescricao;
     
-    public PapelUtilizador(String strPapel)
+    public UserRole(String strPapel)
     {
         if ( (strPapel == null) || (strPapel.isEmpty()))
             throw new IllegalArgumentException("O argumento não pode ser nulo ou vazio.");
@@ -25,7 +25,7 @@ public class PapelUtilizador
         this.m_strDescricao = strPapel;
     }
     
-    public PapelUtilizador(String strPapel, String strDescricao)
+    public UserRole(String strPapel, String strDescricao)
     {
         if ( (strPapel == null) || (strDescricao == null) || (strPapel.isEmpty())|| (strDescricao.isEmpty()))
             throw new IllegalArgumentException("Nenhum dos argumentos não pode ser nulo ou vazio.");
@@ -71,7 +71,7 @@ public class PapelUtilizador
         if (getClass() != o.getClass())
             return false;
         // field comparison
-        PapelUtilizador obj = (PapelUtilizador) o;
+        UserRole obj = (UserRole) o;
         return Objects.equals(m_strPapel, obj.m_strPapel);
     }
     

@@ -3,23 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Controller;
 
 import java.util.List;
-import pt.ipp.isep.dei.esoft.autorizacao.model.PapelUtilizador;
-import Controller.AplicacaoPOT;
+import pt.ipp.isep.dei.esoft.autorizacao.model.UserRole;
 
 /**
  *
  * @author paulomaio
  */
-public class AutenticacaoController
+public class AuthorazationController
 {
-    private AplicacaoPOT m_oApp;
+    private ApplicationPOT m_oApp;
     
-    public AutenticacaoController()
+    public AuthorazationController()
     {
-        this.m_oApp = AplicacaoPOT.getInstance();
+        this.m_oApp = ApplicationPOT.getInstance();
     }
     
     public boolean doLogin(String strId, String strPwd)
@@ -27,7 +26,7 @@ public class AutenticacaoController
         return this.m_oApp.doLogin(strId, strPwd);
     }
     
-    public List<PapelUtilizador> getPapeisUtilizador()
+    public List<UserRole> getPapeisUtilizador()
     {
         if (this.m_oApp.getSessaoAtual().isLoggedIn())
         {

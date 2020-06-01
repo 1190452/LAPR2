@@ -8,7 +8,7 @@ package Model;
 
 import java.util.HashSet;
 import java.util.Set;
-import autorizacao.AutorizacaoFacade;
+import autorizacao.FacadeAuthorazation;
 
 /**
  *
@@ -17,7 +17,7 @@ import autorizacao.AutorizacaoFacade;
 public class Platform
 {
     private String m_strDesignacao;
-    private final AutorizacaoFacade m_oAutorizacao;
+    private final FacadeAuthorazation m_oAutorizacao;
 
     private final Set<Organization> m_lstOrganizacoes;
 
@@ -32,12 +32,12 @@ public class Platform
         this.m_strDesignacao = strDesignacao;
       
         
-        this.m_oAutorizacao = new AutorizacaoFacade();
+        this.m_oAutorizacao = new FacadeAuthorazation();
         
         this.m_lstOrganizacoes = new HashSet<>();
     }   
     
-    public AutorizacaoFacade getAutorizacaoFacade()
+    public FacadeAuthorazation getFacadeAuthorazation()
     {
         return this.m_oAutorizacao;
     }
@@ -59,7 +59,7 @@ public class Platform
             String strNomeGestor = oGestor.getNome();
             String strEmailGestor = oGestor.getEmail();
             if (this.m_oAutorizacao.registaUtilizadorComPapeis(strNomeGestor,strEmailGestor, strPwd, 
-                    new String[] {Constantes.PAPEL_GESTOR_ORGANIZACAO,Constantes.PAPEL_COLABORADOR_ORGANIZACAO}))
+                    new String[] {Constants.PAPEL_GESTOR_ORGANIZACAO,Constants.PAPEL_COLABORADOR_ORGANIZACAO}))
                 return addOrganizacao(oOrganizacao);
         }
         return false;

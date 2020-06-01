@@ -9,7 +9,7 @@ package Model;
  *
  * @author paulomaio
  */
-public class Constantes
+public class Constants
 {
     public static final String PAPEL_ADMINISTRATIVO = "ADMINISTRATIVO";
     public static final String PAPEL_COLABORADOR_ORGANIZACAO = "COLABORADOR_ORGANIZACAO";

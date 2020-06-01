@@ -12,37 +12,37 @@ import java.util.Set;
  *
  * @author paulomaio
  */
-public class RegistoPapeisUtilizador
+public class RegisterUserRoles
 {
-    private Set<PapelUtilizador> m_lstPapeis = new HashSet<PapelUtilizador>();
+    private Set<UserRole> m_lstPapeis = new HashSet<UserRole>();
     
-    public PapelUtilizador novoPapelUtilizador(String strPapel)
+    public UserRole novoPapelUtilizador(String strPapel)
     {
-        return new PapelUtilizador(strPapel);
+        return new UserRole(strPapel);
     }
     
-    public PapelUtilizador novoPapelUtilizador(String strPapel, String strDescricao)
+    public UserRole novoPapelUtilizador(String strPapel, String strDescricao)
     {
-        return new PapelUtilizador(strPapel,strDescricao);
+        return new UserRole(strPapel,strDescricao);
     }
     
-    public boolean addPapel(PapelUtilizador papel)
+    public boolean addPapel(UserRole papel)
     {
         if (papel != null)
             return this.m_lstPapeis.add(papel);
         return false;
     }
     
-    public boolean removePapel(PapelUtilizador papel)
+    public boolean removePapel(UserRole papel)
     {
         if (papel != null)
             return this.m_lstPapeis.remove(papel);
         return false;
     }
     
-    public PapelUtilizador procuraPapel(String strPapel)
+    public UserRole procuraPapel(String strPapel)
     {
-        for(PapelUtilizador p: this.m_lstPapeis)
+        for(UserRole p: this.m_lstPapeis)
         {
             if(p.hasId(strPapel))
                 return p;
@@ -52,13 +52,13 @@ public class RegistoPapeisUtilizador
     
     public boolean hasPapel(String strPapel)
     {
-        PapelUtilizador papel = procuraPapel(strPapel);
+        UserRole papel = procuraPapel(strPapel);
         if (papel != null)
             return this.m_lstPapeis.contains(papel);
         return false;
     }
     
-    public boolean hasPapel(PapelUtilizador papel)
+    public boolean hasPapel(UserRole papel)
     {
         return this.m_lstPapeis.contains(papel);
     }

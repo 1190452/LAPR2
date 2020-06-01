@@ -19,13 +19,13 @@ import Model.Platform;
  */
 public class RegistarOrganizacaoController
 {
-    private AplicacaoPOT m_oApp;
+    private ApplicationPOT m_oApp;
     private Platform m_oPlataforma;
     private Organization m_oOrganizacao;
     private String m_strPwd;
     public RegistarOrganizacaoController()
     {
-        this.m_oApp = AplicacaoPOT.getInstance();
+        this.m_oApp = ApplicationPOT.getInstance();
         this.m_oPlataforma = m_oApp.getPlataforma();
     }
     

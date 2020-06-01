@@ -12,33 +12,33 @@ import java.util.Set;
  *
  * @author paulomaio
  */
-public class RegistoUtilizadores
+public class RegisterUser
 {
-    private Set<Utilizador> m_lstUtilizadores = new HashSet<Utilizador>();
+    private Set<User> m_lstUtilizadores = new HashSet<User>();
     
     
-    public Utilizador novoUtilizador(String strNome, String strEmail, String strPassword)
+    public User novoUtilizador(String strNome, String strEmail, String strPassword)
     {
-        return new Utilizador(strNome,strEmail,strPassword);
+        return new User(strNome,strEmail,strPassword);
     }
     
-    public boolean addUtilizador(Utilizador utlz)
+    public boolean addUtilizador(User utlz)
     {
         if (utlz != null)
             return this.m_lstUtilizadores.add(utlz);
         return false;
     }
     
-    public boolean removeUtilizador(Utilizador utlz)
+    public boolean removeUtilizador(User utlz)
     {
         if (utlz != null)
             return this.m_lstUtilizadores.remove(utlz);
         return false;
     }
     
-    public Utilizador procuraUtilizador(String strId)
+    public User procuraUtilizador(String strId)
     {
-        for(Utilizador utlz: this.m_lstUtilizadores)
+        for(User utlz: this.m_lstUtilizadores)
         {
             if(utlz.hasId(strId))
                 return utlz;
@@ -48,13 +48,13 @@ public class RegistoUtilizadores
     
     public boolean hasUtilizador(String strId)
     {
-        Utilizador utlz = procuraUtilizador(strId);
+        User utlz = procuraUtilizador(strId);
         if (utlz != null)
             return this.m_lstUtilizadores.contains(utlz);
         return false;
     }
     
-    public boolean hasUtilizador(Utilizador utlz)
+    public boolean hasUtilizador(User utlz)
     {
         return this.m_lstUtilizadores.contains(utlz);
     }

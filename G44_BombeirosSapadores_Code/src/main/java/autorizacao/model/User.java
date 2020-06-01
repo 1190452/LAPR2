@@ -15,14 +15,14 @@ import java.util.Set;
  *
  * @author paulomaio
  */
-public class Utilizador
+public class User
 {
     private String m_strNome;
     private String m_strEmail;
     private String m_strPassword; // Não deveria guardar a password em "plain text"
-    private Set<PapelUtilizador> m_lstPapeis = new HashSet<PapelUtilizador>();
+    private Set<UserRole> m_lstPapeis = new HashSet<UserRole>();
     
-    public Utilizador(String strNome, String strEmail, String strPassword)
+    public User(String strNome, String strEmail, String strPassword)
     {
     
         if ( (strNome == null) || (strEmail == null) || (strPassword == null) || (strNome.isEmpty()) || (strEmail.isEmpty()) || (strPassword.isEmpty()))
@@ -59,7 +59,7 @@ public class Utilizador
         return this.m_strPassword.equals(strPwd);
     }
     
-    public boolean addPapel(PapelUtilizador papel)
+    public boolean addPapel(UserRole papel)
     {
         if (papel != null)
             return this.m_lstPapeis.add(papel);
@@ -67,21 +67,21 @@ public class Utilizador
     }
     
     
-    public boolean removePapel(PapelUtilizador papel)
+    public boolean removePapel(UserRole papel)
     {
         if (papel != null)
             return this.m_lstPapeis.remove(papel);
         return false;
     }
     
-    public boolean hasPapel(PapelUtilizador papel)
+    public boolean hasPapel(UserRole papel)
     {
         return this.m_lstPapeis.contains(papel);
     }
     
     public boolean hasPapel(String strPapel)
     {
-        for(PapelUtilizador papel: this.m_lstPapeis)
+        for(UserRole papel: this.m_lstPapeis)
         {
             if (papel.hasId(strPapel))
                 return true;
@@ -89,10 +89,10 @@ public class Utilizador
         return false;
     }
     
-    public List<PapelUtilizador> getPapeis()
+    public List<UserRole> getPapeis()
     {
-        List<PapelUtilizador> list = new ArrayList<>();
-        for(PapelUtilizador papel: this.m_lstPapeis)
+        List<UserRole> list = new ArrayList<>();
+        for(UserRole papel: this.m_lstPapeis)
             list.add(papel);
         return list;
     }
@@ -119,7 +119,7 @@ public class Utilizador
         if (getClass() != o.getClass())
             return false;
         // field comparison
-        Utilizador obj = (Utilizador) o;
+        User obj = (User) o;
         return Objects.equals(m_strEmail, obj.m_strEmail);
     }
     

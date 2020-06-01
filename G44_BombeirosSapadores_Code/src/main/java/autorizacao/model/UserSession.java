@@ -11,15 +11,15 @@ import java.util.List;
  *
  * @author paulomaio
  */
-public class SessaoUtilizador
+public class UserSession
 {
-    private Utilizador m_oUtilizador = null;
+    private User m_oUtilizador = null;
     
-    private SessaoUtilizador()
+    private UserSession()
     {
     }
     
-    public SessaoUtilizador(Utilizador oUtilizador)
+    public UserSession(User oUtilizador)
     {
         if (oUtilizador == null)
             throw new IllegalArgumentException("Argumento não pode ser nulo.");
@@ -66,7 +66,7 @@ public class SessaoUtilizador
         return null;
     }
     
-    public List<PapelUtilizador> getPapeisUtilizador()
+    public List<UserRole> getPapeisUtilizador()
     {
         return this.m_oUtilizador.getPapeis();
     }
