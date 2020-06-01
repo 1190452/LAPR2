@@ -14,7 +14,7 @@ import autorizacao.AutorizacaoFacade;
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-public class Plataforma
+public class Platform
 {
     private String m_strDesignacao;
     private final AutorizacaoFacade m_oAutorizacao;
@@ -23,7 +23,7 @@ public class Plataforma
 
     
 
-    public Plataforma(String strDesignacao)
+    public Platform(String strDesignacao)
     {
         if ( (strDesignacao == null) ||
                 (strDesignacao.isEmpty()))

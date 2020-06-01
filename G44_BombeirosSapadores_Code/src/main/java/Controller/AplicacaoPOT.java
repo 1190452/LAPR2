@@ -12,7 +12,7 @@ import java.util.Properties;
 import autorizacao.AutorizacaoFacade;
 import pt.ipp.isep.dei.esoft.autorizacao.model.SessaoUtilizador;
 import Model.Constantes;
-import Model.Plataforma;
+import Model.Platform;
 
 /**
  *
@@ -21,18 +21,18 @@ import Model.Plataforma;
 public class AplicacaoPOT
 {
        
-    private final Plataforma m_oPlataforma;
+    private final Platform m_oPlataforma;
     private final AutorizacaoFacade m_oAutorizacao;
     
     private AplicacaoPOT()
     {
         Properties props = getProperties();
-        this.m_oPlataforma = new Plataforma(props.getProperty(Constantes.PARAMS_PLATAFORMA_DESIGNACAO));
+        this.m_oPlataforma = new Platform(props.getProperty(Constantes.PARAMS_PLATAFORMA_DESIGNACAO));
         this.m_oAutorizacao = this.m_oPlataforma.getAutorizacaoFacade();
         bootstrap();
     }
     
-    public Plataforma getPlataforma()
+    public Platform getPlataforma()
     {
         return this.m_oPlataforma;
     }

@@ -9,7 +9,7 @@ import Model.Colaborator;
 import Model.Organization;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Model.Plataforma;
+import Model.Platform;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
 
@@ -20,7 +20,7 @@ import Model.Plataforma;
 public class RegistarOrganizacaoController
 {
     private AplicacaoPOT m_oApp;
-    private Plataforma m_oPlataforma;
+    private Platform m_oPlataforma;
     private Organization m_oOrganizacao;
     private String m_strPwd;
     public RegistarOrganizacaoController()
