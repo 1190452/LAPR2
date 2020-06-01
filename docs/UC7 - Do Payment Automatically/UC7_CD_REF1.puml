@@ -1,0 +1,25 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+left to right direction
+
+class Platform{
+    +getRegisterFreelancer()
+
+}
+
+class Organization{
+    +getTaskList
+}
+
+class RegisterFreelancer{
+    +getFreelancer()
+}
+
+
+
+class Freelancer{
+    +getCountry()
+}
+
+@enduml
