@@ -1,5 +1,7 @@
 package Utils;
 
+import java.util.Calendar;
+
 /**
  *
  * @author jorge
@@ -211,37 +213,26 @@ public class Date implements Comparable<Date> {
     }
 
 
-    public int difference(int ano, int mes, int dia) {
-        int totalDias = contaDias();
-        Data outraData = new Data(ano, mes, dia);
-        int totalDias1 = outraData.contaDias();
+    public int difference(int year, int month, int day) {
+        int totalDays = countDays();
+        Date anotherDate = new Date(year, month, day);
+        int totalDays1 = anotherDate.countDays();
 
-        return Math.abs(totalDias - totalDias1);
+        return Math.abs(totalDays - totalDays1);
     }
 
-    /**
-     * Devolve true se o ano passado por parâmetro for bissexto. Se o ano
-     * passado por parâmetro não for bissexto, devolve false.
-     *
-     * @param ano o year a validar.
-     * @return true se o year passado por parâmetro for bissexto, caso contrário
-         devolve false.
-     */
-    public static boolean isLeapYear(int ano) {
-        return ano % 4 == 0 && ano % 100 != 0 || ano % 400 == 0;
+
+    public static boolean isLeapYear(int year) {
+        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 
-    /**
-     * Devolve a data atual do sistema.
-     *
-     * @return a data atual do sistema.
-     */
-    public static Data currentDate() {
+
+    public static Date currentDate() {
         Calendar hoje = Calendar.getInstance();
-        int ano = hoje.get(Calendar.YEAR);
-        int mes = hoje.get(Calendar.MONTH) + 1;    // janeiro é representado por 0
-        int dia = hoje.get(Calendar.DAY_OF_MONTH);
-        return new Data(ano, mes, dia);
+        int year = hoje.get(Calendar.YEAR);
+        int month = hoje.get(Calendar.MONTH) + 1;    // January is represented by 0
+        int day = hoje.get(Calendar.DAY_OF_MONTH);
+        return new Date(year, month, day);
     }
 
     /**
