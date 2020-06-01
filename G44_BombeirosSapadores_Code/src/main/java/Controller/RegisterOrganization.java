@@ -10,6 +10,7 @@ import Model.Organization;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Platform;
+import org.jcp.xml.dsig.internal.dom.Utils;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
 
@@ -17,16 +18,16 @@ import Model.Platform;
  *
  * @author paulomaio
  */
-public class RegistarOrganizacaoController
+public class RegisterOrganization
 {
     private ApplicationPOT m_oApp;
     private Platform m_oPlataforma;
     private Organization m_oOrganizacao;
     private String m_strPwd;
-    public RegistarOrganizacaoController()
+    public RegisterOrganization()
     {
         this.m_oApp = ApplicationPOT.getInstance();
-        this.m_oPlataforma = m_oApp.getPlataforma();
+        this.m_oPlataforma = m_oApp.getPlatform();
     }
     
     
@@ -40,7 +41,7 @@ public class RegistarOrganizacaoController
             EnderecoPostal oMorada = Organization.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
             Collaborator oColab = Organization.novoColaborador(strNomeGestor, strFuncaoGestor, strTelefoneGestor, strEmailGestor);      
             this.m_oOrganizacao = this.m_oPlataforma.novaOrganizacao(strNome, strNIF, strWebsite,strTelefone, strEmail, oMorada, oColab);
-            return this.m_oPlataforma.validaOrganizacao(this.m_oOrganizacao, this.m_strPwd);
+            return this.m_oPlataforma.validateOrganization(this.m_oOrganizacao, this.m_strPwd);
         }
         catch(RuntimeException ex)
         {
@@ -51,12 +52,12 @@ public class RegistarOrganizacaoController
     }
     
     
-    public boolean registaOrganizacao()
+    public boolean registerOrganization()
     {
-        return this.m_oPlataforma.registaOrganizacao(this.m_oOrganizacao, this.m_strPwd);
+        return this.m_oPlataforma.registerOrganization(this.m_oOrganizacao, this.m_strPwd);
     }
 
-    public String getOrganizacaoString()
+    public String getOrganizationString()
     {
         return this.m_oOrganizacao.toString();
     }

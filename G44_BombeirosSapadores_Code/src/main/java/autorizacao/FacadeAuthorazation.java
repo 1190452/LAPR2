@@ -75,10 +75,10 @@ public class FacadeAuthorazation
                 this.m_oSessao = new UserSession(utlz);
             }
         }
-        return getSessaoAtual();
+        return getActualSession();
     }
     
-    public UserSession getSessaoAtual()
+    public UserSession getActualSession()
     {
         return this.m_oSessao;
     }

@@ -27,8 +27,8 @@ public class ApplicationPOT
     private ApplicationPOT()
     {
         Properties props = getProperties();
-        this.m_oPlataforma = new Platform(props.getProperty(Constants.PARAMS_PLATAFORMA_DESIGNACAO));
-        this.m_oAutorizacao = this.m_oPlataforma.getAutorizacaoFacade();
+        this.m_oPlataforma = new Platform();
+        this.m_oAutorizacao = this.m_oPlataforma.getFacadeAuthorazation();
         bootstrap();
     }
     
@@ -38,9 +38,9 @@ public class ApplicationPOT
     }
     
 
-    public UserSession getSessaoAtual()
+    public UserSession getActualSession()
     {
-        return this.m_oAutorizacao.getSessaoAtual();
+        return this.m_oAutorizacao.getActualSession();
     }
     
     public boolean doLogin(String strId, String strPwd)

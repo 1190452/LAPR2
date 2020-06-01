@@ -28,9 +28,9 @@ public class AuthorazationController
     
     public List<UserRole> getPapeisUtilizador()
     {
-        if (this.m_oApp.getSessaoAtual().isLoggedIn())
+        if (this.m_oApp.getActualSession().isLoggedIn())
         {
-            return this.m_oApp.getSessaoAtual().getPapeisUtilizador();
+            return this.m_oApp.getActualSession().getPapeisUtilizador();
         }
         return null;
     }
