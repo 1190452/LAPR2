@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.g44_bombeirossapadores_code.model;
+package Model;
 
 import java.util.List;
 import pt.ipp.isep.dei.esoft.autorizacao.model.PapelUtilizador;
+import pt.ipp.isep.dei.esoft.pot.controller.AplicacaoPOT;
 
 /**
  *

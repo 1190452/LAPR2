@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package pt.ipp.isep.dei.esoft.pot.model;
+package Model;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -21,8 +21,6 @@ public class Plataforma
     private String m_strDesignacao;
     private final AutorizacaoFacade m_oAutorizacao;
     private final Set<Organizacao> m_lstOrganizacoes;
-    private final Set<AreaAtividade> m_lstAreasAtividade;
-    private final Set<CompetenciaTecnica> m_lstCompetencias;
     
 
     public Plataforma(String strDesignacao)
@@ -37,9 +35,7 @@ public class Plataforma
         this.m_oAutorizacao = new AutorizacaoFacade();
         
         this.m_lstOrganizacoes = new HashSet<>();
-        this.m_lstAreasAtividade = new HashSet<>();
-        this.m_lstCompetencias = new HashSet<>();
-    }
+    }   
     
     public AutorizacaoFacade getAutorizacaoFacade()
     {
@@ -97,106 +93,8 @@ public class Plataforma
     
     // <editor-fold defaultstate="collapsed">
     
-    public CompetenciaTecnica getCompetenciaTecnicaById(String strId)
-    {
-        for(CompetenciaTecnica oCompTecnica : this.m_lstCompetencias)
-        {
-            if (oCompTecnica.hasId(strId))
-            {
-                return oCompTecnica;
-            }
-        }
-        
-        return null;
-    }
-
-    public CompetenciaTecnica novaCompetenciaTecnica(String strId, String strDescricaoBreve, String strDescricaoCompleta, AreaAtividade oArea)
-    {
-        return new CompetenciaTecnica(strId, strDescricaoBreve,strDescricaoCompleta,oArea);
-    }
-
-    public boolean registaCompetenciaTecnica(CompetenciaTecnica oCompTecnica)
-    {
-        if (this.validaCompetenciaTecnica(oCompTecnica))
-        {
-            return addCompetenciaTecnica(oCompTecnica);
-        }
-        return false;
-    }
-
-    private boolean addCompetenciaTecnica(CompetenciaTecnica oCompTecnica)
-    {
-        return m_lstCompetencias.add(oCompTecnica);
-    }
-    
-    public boolean validaCompetenciaTecnica(CompetenciaTecnica oCompTecnica)
-    {
-        boolean bRet = true;
-        
-        // Escrever aqui o código de validação
-        
-        //
-      
-        return bRet;
-    }
-    // </editor-fold>
-    
-    // Areas de Atividade 
-    // <editor-fold defaultstate="collapsed">
-            
-    public AreaAtividade getAreaAtividadeById(String strId)
-    {
-        for(AreaAtividade area : this.m_lstAreasAtividade)
-        {
-            if (area.hasId(strId))
-            {
-                return area;
-            }
-        }
-        
-        return null;
-    }
-
-    public AreaAtividade novaAreaAtividade(String strCodigo, String strDescricaoBreve, String strDescricaoDetalhada)
-    {
-        return new AreaAtividade(strCodigo, strDescricaoBreve,strDescricaoDetalhada);
-    }
-
-    public boolean registaAreaAtividade(AreaAtividade oArea)
-    {
-        if (this.validaAreaAtividade(oArea))
-        {
-            return addAreaAtividade(oArea);
-        }
-        return false;
-    }
-
-    private boolean addAreaAtividade(AreaAtividade oArea)
-    {
-        return m_lstAreasAtividade.add(oArea);
-    }
-    
-    public boolean validaAreaAtividade(AreaAtividade oArea)
-    {
-        boolean bRet = true;
-        
-        // Escrever aqui o código de validação
-        
-        //
-      
-        return bRet;
-    }
-    
-    public List<AreaAtividade> getAreasAtividade()
-    {
-        List<AreaAtividade> lc = new ArrayList<>();
-        lc.addAll(this.m_lstAreasAtividade);
-        return lc;
-    }
-    
-    // </editor-fold>
-
-
+   
 }
+
     
     

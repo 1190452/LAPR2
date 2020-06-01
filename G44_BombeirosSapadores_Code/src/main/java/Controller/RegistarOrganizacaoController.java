@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pt.ipp.isep.dei.esoft.pot.controller;
+    package Controller;
 
+import Model.Organizacao;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pt.ipp.isep.dei.esoft.pot.model.Colaborador;
-import pt.ipp.isep.dei.esoft.pot.model.Organizacao;
-import pt.ipp.isep.dei.esoft.pot.model.Plataforma;
-import pt.ipp.isep.dei.esoft.pot.model.EnderecoPostal;
-import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
+import Model.Plataforma;
+
+//import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
 
 /**
  *

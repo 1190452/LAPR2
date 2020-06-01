@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pt.ipp.isep.dei.esoft.pot.controller;
+package Controller;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,8 +11,8 @@ import java.io.InputStream;
 import java.util.Properties;
 import pt.ipp.isep.dei.esoft.autorizacao.AutorizacaoFacade;
 import pt.ipp.isep.dei.esoft.autorizacao.model.SessaoUtilizador;
-import pt.ipp.isep.dei.esoft.pot.model.Constantes;
-import pt.ipp.isep.dei.esoft.pot.model.Plataforma;
+import Model.Constantes;
+import Model.Plataforma;
 
 /**
  *
