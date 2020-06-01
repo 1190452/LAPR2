@@ -5,7 +5,7 @@
  */
     package Controller;
 
-import Model.Colaborator;
+import Model.Collaborator;
 import Model.Organization;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +38,7 @@ public class RegistarOrganizacaoController
         {
             this.m_strPwd = strPwd;
             EnderecoPostal oMorada = Organization.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
-            Colaborator oColab = Organization.novoColaborador(strNomeGestor, strFuncaoGestor, strTelefoneGestor, strEmailGestor);      
+            Collaborator oColab = Organization.novoColaborador(strNomeGestor, strFuncaoGestor, strTelefoneGestor, strEmailGestor);      
             this.m_oOrganizacao = this.m_oPlataforma.novaOrganizacao(strNome, strNIF, strWebsite,strTelefone, strEmail, oMorada, oColab);
             return this.m_oPlataforma.validaOrganizacao(this.m_oOrganizacao, this.m_strPwd);
         }

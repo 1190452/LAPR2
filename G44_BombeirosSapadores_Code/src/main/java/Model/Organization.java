@@ -14,22 +14,19 @@ public class Organization
     private String NIF;
     private String phone;
     private Manager manager;
-    private Colaborator colab;
+    private Collaborator colab;
             
     
-    public Organization(String strNome, String strNIF, String strWebsite, String strTelefone, 
-            String strEmail, Colaborador oColaborador)
+    public Organization(String name, String strNIF,String phone, 
+            String email, Collaborator colab, Manager manager)
     {
-        if ( (strNome == null) || (strNIF == null) || (strTelefone == null) ||
-                (strEmail == null) || (oMorada == null) || (oColaborador == null) ||
-                (strNome.isEmpty())|| (strNIF.isEmpty()) || (strTelefone.isEmpty()) || 
-                (strEmail.isEmpty()))
-            throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
-        
-        this.name = strNome;
-        this.NIF = strNIF;
-        this.m_oEnderecoPostal = oMorada;
-        this.m_strWebsite = strWebsite;
+        if ( (name == null) || (NIF == null) || (phone == null) ||
+                (email == null) || (colab == null) || (manager == null) ||(strNome.isEmpty()) || (strNIF.isEmpty()) || (phone.isEmpty()) || 
+                (email.isEmpty()))
+            throw new IllegalArgumentException("No argument can be null.");
+       
+        this.name = name;
+        this.NIF = NIF;
         this.phone = strTelefone;
         this.email = strEmail;
         this.m_oGestor = oColaborador;
