@@ -26,11 +26,11 @@ public class AuthorazationController
         return this.m_oApp.doLogin(strId, strPwd);
     }
     
-    public List<UserRole> getPapeisUtilizador()
+    public List<UserRole> getUserRoles()
     {
         if (this.m_oApp.getActualSession().isLoggedIn())
         {
-            return this.m_oApp.getActualSession().getPapeisUtilizador();
+            return this.m_oApp.getActualSession().getUserRoles();
         }
         return null;
     }

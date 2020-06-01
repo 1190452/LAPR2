@@ -11,12 +11,12 @@ package Model;
  */
 public class Constants
 {
-    public static final String PAPEL_ADMINISTRATIVO = "ADMINISTRATIVO";
-    public static final String PAPEL_COLABORADOR_ORGANIZACAO = "COLABORADOR_ORGANIZACAO";
-    public static final String PAPEL_GESTOR_ORGANIZACAO = "GESTOR_ORGANIZACAO";
-    public static final String PAPEL_FREELANCER = "FREELANCER";
+    public static final String ROLE_ADMINISTRATIVE = "ADMINISTRATIVE";
+    public static final String ROLE_COLLABORATOR_ORGANIZATION = "COLLABORATOR_ORGANIZATION";
+    public static final String ROLE_MANAGER_ORGANIZATION = "MANAGER_ORGANIZATION";
+    public static final String ROLE_FREELANCER = "FREELANCER";
     
-    public static final String PARAMS_FICHEIRO = "config.properties";
-    public static final String PARAMS_PLATAFORMA_DESIGNACAO = "Plataforma.Designacao";
+    public static final String FILE_PARAMS= "config.properties";
+    public static final String PARAMS_PLATFORM_DESIGNATION = "PlATFORM.Designation";
     
 }

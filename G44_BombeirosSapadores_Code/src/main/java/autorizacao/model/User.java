@@ -39,7 +39,7 @@ public class User
         return this.m_strEmail;
     }
     
-    public String getNome()
+    public String getName()
     {
         return this.m_strNome;
     }
@@ -59,7 +59,7 @@ public class User
         return this.m_strPassword.equals(strPwd);
     }
     
-    public boolean addPapel(UserRole papel)
+    public boolean addRole(UserRole papel)
     {
         if (papel != null)
             return this.m_lstPapeis.add(papel);
@@ -67,7 +67,7 @@ public class User
     }
     
     
-    public boolean removePapel(UserRole papel)
+    public boolean removeRole(UserRole papel)
     {
         if (papel != null)
             return this.m_lstPapeis.remove(papel);
@@ -89,7 +89,7 @@ public class User
         return false;
     }
     
-    public List<UserRole> getPapeis()
+    public List<UserRole> getRoles()
     {
         List<UserRole> list = new ArrayList<>();
         for(UserRole papel: this.m_lstPapeis)

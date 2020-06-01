@@ -22,45 +22,45 @@ public class FacadeAuthorazation
     private final RegisterUserRoles m_oPapeis = new RegisterUserRoles();
     private final RegisterUser m_oUtilizadores = new RegisterUser();
     
-    public boolean registaPapelUtilizador(String strPapel)
+    public boolean registerUserRoles(String role)
     {
-        UserRole papel = this.m_oPapeis.novoPapelUtilizador(strPapel);
+        UserRole papel = this.m_oPapeis.novoPapelUtilizador(role);
         return this.m_oPapeis.addPapel(papel);
     }
     
-    public boolean registaPapelUtilizador(String strPapel, String strDescricao)
+    public boolean registerUserWithRule(String strPapel, String strDescricao)
     {
         UserRole papel = this.m_oPapeis.novoPapelUtilizador(strPapel,strDescricao);
         return this.m_oPapeis.addPapel(papel);
     }
     
-    public boolean registaUtilizador(String strNome, String strEmail, String strPassword)
+    public boolean registerUser(String strNome, String strEmail, String strPassword)
     {
         User utlz = this.m_oUtilizadores.novoUtilizador(strNome,strEmail,strPassword);
         return this.m_oUtilizadores.addUtilizador(utlz);
     }
     
-    public boolean registaUtilizadorComPapel(String strNome, String strEmail, String strPassword, String strPapel)
+    public boolean registerUserWithRule(String strNome, String strEmail, String strPassword, String strPapel)
     {
         UserRole papel = this.m_oPapeis.procuraPapel(strPapel);
         User utlz = this.m_oUtilizadores.novoUtilizador(strNome,strEmail,strPassword);
-        utlz.addPapel(papel);
+        utlz.addRole(papel);
         return this.m_oUtilizadores.addUtilizador(utlz);
     }
     
-    public boolean registaUtilizadorComPapeis(String strNome, String strEmail, String strPassword, String[] papeis)
+    public boolean registerUserWithRules(String strNome, String strEmail, String strPassword, String[] papeis)
     {
         User utlz = this.m_oUtilizadores.novoUtilizador(strNome,strEmail,strPassword);
         for (String strPapel: papeis)
         {
             UserRole papel = this.m_oPapeis.procuraPapel(strPapel);
-            utlz.addPapel(papel);
+            utlz.addRole(papel);
         }
         
         return this.m_oUtilizadores.addUtilizador(utlz);
     }
     
-    public boolean existeUtilizador(String strId)
+    public boolean existUser(String strId)
     {
         return this.m_oUtilizadores.hasUtilizador(strId);
     }

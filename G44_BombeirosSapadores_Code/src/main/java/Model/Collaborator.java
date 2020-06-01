@@ -13,21 +13,21 @@ import java.util.Objects;
  */
 public class Collaborator {
 
-    private String m_strNome;
-    private String m_strFuncao;
-    private String m_strTelefone;
-    private String m_strEmail;
+    private String name;
+    private String function;
+    private String telephone;
+    private String email;
 
-    public Collaborator(String strNome, String strFuncao, String strTelefone, String strEmail) {
-        if ((strNome == null) || (strFuncao == null) || (strTelefone == null) || (strEmail == null)
-                || (strNome.isEmpty()) || (strFuncao.isEmpty()) || (strTelefone.isEmpty()) || (strEmail.isEmpty())) {
+    public Collaborator(String name, String function, String telephone, String email) {
+        if ((name == null) || (function == null) || (telephone == null) || (email == null)
+                || (name.isEmpty()) || (function.isEmpty()) || (telephone.isEmpty()) || (email.isEmpty())) {
             throw new IllegalArgumentException("Nenhum dos argumentos pode ser nulo ou vazio.");
         }
 
-        this.m_strNome = strNome;
-        this.m_strFuncao = strFuncao;
-        this.m_strTelefone = strTelefone;
-        this.m_strEmail = strEmail;
+        this.name = name;
+        this.function = function;
+        this.telephone = telephone;
+        this.email = email;
     }
 
     public Collaborator() {
@@ -35,21 +35,21 @@ public class Collaborator {
     }
 
     public boolean hasId(String strId) {
-        return this.m_strEmail.equalsIgnoreCase(strId);
+        return this.email.equalsIgnoreCase(strId);
     }
 
-    public String getNome() {
-        return this.m_strNome;
+    public String getName() {
+        return this.name;
     }
 
     public String getEmail() {
-        return this.m_strEmail;
+        return this.email;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.m_strEmail);
+        hash = 23 * hash + Objects.hashCode(this.email);
         return hash;
     }
 
@@ -71,11 +71,11 @@ public class Collaborator {
         }
         // field comparison
         Collaborator obj = (Collaborator) o;
-        return (Objects.equals(m_strEmail, obj.m_strEmail));
+        return (Objects.equals(email, obj.email));
     }
 
     @Override
     public String toString() {
-        return String.format("%s - %s - %s - %s", this.m_strNome, this.m_strFuncao, this.m_strTelefone, this.m_strEmail);
+        return String.format("%s - %s - %s - %s", this.name, this.function, this.telephone, this.email);
     }
 }

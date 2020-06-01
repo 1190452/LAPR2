@@ -45,29 +45,29 @@ public class UserSession
         return false;
     }
     
-    public String getNomeUtilizador()
+    public String getUserName()
     {
         if (isLoggedIn())
-            this.m_oUtilizador.getNome();
+            this.m_oUtilizador.getName();
         return null;
     }
     
-    public String getIdUtilizador()
+    public String getUserID()
     {
         if (isLoggedIn())
             this.m_oUtilizador.getId();
         return null;
     }
     
-    public String getEmailUtilizador()
+    public String getUserEmail()
     {
         if (isLoggedIn())
             this.m_oUtilizador.getEmail();
         return null;
     }
     
-    public List<UserRole> getPapeisUtilizador()
+    public List<UserRole> getUserRoles()
     {
-        return this.m_oUtilizador.getPapeis();
+        return this.m_oUtilizador.getRoles();
     }
 }

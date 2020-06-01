@@ -14,8 +14,6 @@ import autorizacao.FacadeAuthorazation;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Platform {
-
-    private String m_strDesignacao;
     private final FacadeAuthorazation m_oAutorizacao;
 
     private final Set<Organization> m_lstOrganizacoes;
@@ -40,10 +38,10 @@ public class Platform {
     public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
         if (this.validateOrganization(oOrganizacao, strPwd)) {
             Collaborator oGestor = oOrganizacao.getColab();
-            String strNomeGestor = oGestor.getNome();
+            String strNomeGestor = oGestor.getName();
             String strEmailGestor = oGestor.getEmail();
-            if (this.m_oAutorizacao.registaUtilizadorComPapeis(strNomeGestor, strEmailGestor, strPwd,
-                    new String[]{Constants.PAPEL_GESTOR_ORGANIZACAO, Constants.PAPEL_COLABORADOR_ORGANIZACAO})) {
+            if (this.m_oAutorizacao.registerUserWithRules(strNomeGestor, strEmailGestor, strPwd,
+                    new String[]{Constants.ROLE_MANAGER_ORGANIZATION, Constants.ROLE_COLLABORATOR_ORGANIZATION})) {
                 return addOrganization(oOrganizacao);
             }
         }
@@ -58,7 +56,7 @@ public class Platform {
         boolean bRet = true;
 
         // Escrever aqui o código de validação
-        if (this.m_oAutorizacao.existeUtilizador(oOrganizacao.getColab().getEmail())) {
+        if (this.m_oAutorizacao.existUser(oOrganizacao.getColab().getEmail())) {
             bRet = false;
         }
         if (strPwd == null) {

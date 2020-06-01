@@ -58,13 +58,13 @@ public class ApplicationPOT
         Properties props = new Properties();
         
         // Adiciona propriedades e valores por omissão
-        props.setProperty(Constants.PARAMS_PLATAFORMA_DESIGNACAO, "Task for Joe");
+        props.setProperty(Constants.PARAMS_PLATFORM_DESIGNATION, "Task for Joe");
 
         
         // Lê as propriedades e valores definidas 
         try
         {
-            InputStream in = new FileInputStream(Constants.PARAMS_FICHEIRO);
+            InputStream in = new FileInputStream(Constants.FILE_PARAMS);
             props.load(in);
             in.close();
         }
@@ -78,18 +78,18 @@ public class ApplicationPOT
     
     private void bootstrap()
     {
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_ADMINISTRATIVO);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_FREELANCER);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_GESTOR_ORGANIZACAO);
-        this.m_oAutorizacao.registaPapelUtilizador(Constants.PAPEL_COLABORADOR_ORGANIZACAO);
+        this.m_oAutorizacao.registerUserRoles(Constants.ROLE_ADMINISTRATIVE);
+        this.m_oAutorizacao.registerUserRoles(Constants.ROLE_FREELANCER);
+        this.m_oAutorizacao.registerUserRoles(Constants.ROLE_MANAGER_ORGANIZATION);
+        this.m_oAutorizacao.registerUserRoles(Constants.ROLE_COLLABORATOR_ORGANIZATION);
         
-        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 1", "adm1@esoft.pt", "123456",Constants.PAPEL_ADMINISTRATIVO);
-        this.m_oAutorizacao.registaUtilizadorComPapel("Administrativo 2", "adm2@esoft.pt", "123456",Constants.PAPEL_ADMINISTRATIVO);
+        this.m_oAutorizacao.registerUserWithRule("Administrativo 1", "adm1@esoft.pt", "123456",Constants.ROLE_ADMINISTRATIVE);
+        this.m_oAutorizacao.registerUserWithRule("Administrativo 2", "adm2@esoft.pt", "123456",Constants.ROLE_ADMINISTRATIVE);
         
-        this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 1", "free1@esoft.pt", "123456",Constants.PAPEL_FREELANCER);
-        this.m_oAutorizacao.registaUtilizadorComPapel("Freelancer 2", "free2@esoft.pt", "123456",Constants.PAPEL_FREELANCER);
+        this.m_oAutorizacao.registerUserWithRule("Freelancer 1", "free1@esoft.pt", "123456",Constants.ROLE_FREELANCER);
+        this.m_oAutorizacao.registerUserWithRule("Freelancer 2", "free2@esoft.pt", "123456",Constants.ROLE_FREELANCER);
         
-        this.m_oAutorizacao.registaUtilizadorComPapeis("Martim", "martim@esoft.pt", "123456",new String[] {Constants.PAPEL_FREELANCER, Constants.PAPEL_ADMINISTRATIVO});
+        this.m_oAutorizacao.registerUserWithRules("Martim", "martim@esoft.pt", "123456",new String[] {Constants.ROLE_FREELANCER, Constants.ROLE_ADMINISTRATIVE});
     }
     
     // Inspirado em https://www.javaworld.com/article/2073352/core-java/core-java-simply-singleton.html?page=2
