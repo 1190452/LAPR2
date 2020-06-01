@@ -148,7 +148,7 @@ public class Organization
      * Compares 2 Organization objects through NIF and email with both objects being considered equal only when these 2 parameteres are the same
      *
      * @param otherObject object to be compared with the object that calls the method
-     * @return true, if the references of both objects being compared are pointing at the same object false, if the compared object is null or the class of the objects are different true, if address, locality and postCode of both objects are the same
+     * @return true, if the references of both objects being compared are pointing at the same object false, if the compared object is null or the class of the objects are different true.
      */
     @Override
     public boolean equals(Object otherObject) {
