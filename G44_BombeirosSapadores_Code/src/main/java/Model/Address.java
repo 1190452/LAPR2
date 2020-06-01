@@ -14,7 +14,7 @@ public class Address {
     /**
      * Door number of the Address
      */
-    private int doorNumber;
+    private String doorNumber;
     
     /**
      * Locality of the Address
@@ -45,7 +45,7 @@ public class Address {
      * @param doorNumber the door number of the Address
      * @param locality the locality of the Address
      */
-    public Address(String street, int doorNumber, String locality) {
+    public Address(String street, String doorNumber, String locality) {
         this.street = street;
         this.doorNumber = doorNumber;
         this.locality = locality;
