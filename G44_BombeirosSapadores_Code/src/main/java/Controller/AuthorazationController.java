@@ -6,7 +6,7 @@
 package Controller;
 
 import java.util.List;
-import pt.ipp.isep.dei.esoft.autorizacao.model.UserRole;
+import autorizacao.model.UserRole;
 
 /**
  *

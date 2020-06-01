@@ -48,7 +48,7 @@ public class UserSession
     public String getNomeUtilizador()
     {
         if (isLoggedIn())
-            this.m_oUtilizador.getNome();
+            this.m_oUtilizador.getName();
         return null;
     }
     

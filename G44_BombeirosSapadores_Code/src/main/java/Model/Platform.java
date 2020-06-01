@@ -33,13 +33,13 @@ public class Platform {
 
     // Organizações
     // <editor-fold defaultstate="collapsed">
-    public Organization novaOrganizacao(String strNome, String strNIF, String strWebsite, String strTelefone, String strEmail, Address oMorada, Collaborator oGestor) {
-        return new Organization(strNome, strNIF, strWebsite, strTelefone, strEmail, oMorada, oGestor);
+    public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager) {
+        return new Organization(name, NIF, email, colab, manager);
     }
 
     public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
         if (this.validateOrganization(oOrganizacao, strPwd)) {
-            Collaborator oGestor = oOrganizacao.getGestor();
+            Collaborator oGestor = oOrganizacao.getColab();
             String strNomeGestor = oGestor.getNome();
             String strEmailGestor = oGestor.getEmail();
             if (this.m_oAutorizacao.registaUtilizadorComPapeis(strNomeGestor, strEmailGestor, strPwd,
@@ -58,7 +58,7 @@ public class Platform {
         boolean bRet = true;
 
         // Escrever aqui o código de validação
-        if (this.m_oAutorizacao.existeUtilizador(oOrganizacao.getGestor().getEmail())) {
+        if (this.m_oAutorizacao.existeUtilizador(oOrganizacao.getColab().getEmail())) {
             bRet = false;
         }
         if (strPwd == null) {

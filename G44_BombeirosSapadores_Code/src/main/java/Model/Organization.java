@@ -1,14 +1,20 @@
 package Model;
 
-
-import java.util.Objects;
-
 /**
  *
  * @author paulomaio
  */
 public class Organization
 {
+
+    public static Collaborator newCollaborator(String nameC, String funcaoC, String telefoneC, String emailC) {
+          return new Collaborator(nameC, funcaoC, telefoneC, emailC);
+    }
+
+    public static Manager newManager(String nameM, String funcaoM, String telefoneM, String emailM) {
+       return new Manager(nameM, funcaoM, telefoneM, emailM);
+    }
+
     /**
      * The name of the Organization
      */
@@ -53,7 +59,7 @@ public class Organization
     
     /**
      * Builds an instance of Organization that receives the name, the NIF, the 
-     * email, the colaborator and the manager
+     * email, the collaborator and the manager
      * 
      * @param name the name of the Organization
      * @param NIF the NIF of the Organization
