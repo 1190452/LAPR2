@@ -9,12 +9,47 @@ import java.util.Objects;
  */
 public class Organization
 {
+    /**
+     * The name of the Organization
+     */
     private String name;
+    
+    /**
+     * The email of the Organization
+     */
     private String email;
+    
+    /**
+     * The NIF of the Organization
+     */
     private String NIF;
+    
+    /**
+     * The manager of the Organization
+     */
     private Manager manager;
+    
+    /**
+     * The collaborator of the Organization
+     */
     private Collaborator colab;
-            
+    
+    /**
+     * The name of the Organization by omission
+     */
+    private static String NAME_BY_OMISSION = "no name provided";
+    
+    /**
+     * The email of the Organization by omission
+     */
+    private static String EMAIL_BY_OMISSION = "no email provided";
+    
+    /**
+     * The NIF of the Organization by omission
+     */
+    private static String NIF_BY_OMISSION = "no NIF provided";
+    
+    
     
     /**
      * Builds an instance of Organization that receives the name, the NIF, the 
@@ -41,6 +76,32 @@ public class Organization
         this.manager = manager;
        
     }
+    
+    /**
+     * Builds an instance of Address that is copy of the one passed by parameter
+     * @param otherOrganization organization that is copied
+     */
+    public Organization(Organization otherOrganization) {
+        this.name = otherOrganization.name;
+        this.NIF = otherOrganization.NIF;
+        this.email = otherOrganization.email;
+        this.colab = otherOrganization.colab;
+        this.manager = otherOrganization.manager;
+    }
+    
+
+    /**
+     * Builds an instance of Organization with the omission values
+     */
+    public Organization() {
+        name = NAME_BY_OMISSION;
+        NIF = NIF_BY_OMISSION;
+        email = EMAIL_BY_OMISSION;
+        colab = new Collaborator();
+        manager = new Manager();
+    }
+    
+    
 
     /**
      * Returns the name of the Organization
@@ -86,42 +147,37 @@ public class Organization
     /**
      * Compares 2 Organization objects through NIF and email with both objects being considered equal only when these 2 parameteres are the same
      *
-     * @param otherObject
-     * @return 
+     * @param otherObject object to be compared with the object that calls the method
+     * @return true, if the references of both objects being compared are pointing at the same object false, if the compared object is null or the class of the objects are different true, if address, locality and postCode of both objects are the same
      */
     @Override
     public boolean equals(Object otherObject) {
         
         // self check
-        if (this == o)
+        if (this == otherObject)
             return true;
         // null check
-        if (o == null)
+        if (otherObject == null)
             return false;
         // type check and cast
-        if (getClass() != o.getClass())
+        if (getClass() != otherObject.getClass())
             return false;
         // field comparison
-        Organization obj = (Organization) o;
-        return (Objects.equals(NIF, obj.NIF));
+        Organization otherOrganization = (Organization) otherObject;
+        return (this.NIF.equalsIgnoreCase(otherOrganization.NIF) &&
+                this.email.equalsIgnoreCase(otherOrganization.email));
     }
     
+    /**
+     * Returns the characteristics of the Organization
+     * 
+     * @return characteristics of the Organization 
+     */
     @Override
     public String toString()
     {
-        String str = String.format("%s - %s - %s - %s - %s - %s - %s", this.name, this.NIF, this.m_strWebsite, this.phone, this.email, this.m_oEnderecoPostal.toString(),this.m_oGestor.toString());
+        String str = String.format("%s - %s - %s - %s - %s - %s - %s", this.name, this.NIF, this.email, this.manager.toString(),this.colab.toString());
         return str;
     }
-    
-    public static Colaborador novoColaborador(String strNome, String strFuncao, String strTelefone, String strEmail)
-    {
-        return new Colaborador(strNome,strFuncao,strTelefone,strEmail);
-    }
-    
-    public static EnderecoPostal novoEnderecoPostal(String strLocal, String strCodPostal, String strLocalidade)
-    {
-        return new EnderecoPostal(strLocal,strCodPostal,strLocalidade);
-    }
-
-    
+   
 }
