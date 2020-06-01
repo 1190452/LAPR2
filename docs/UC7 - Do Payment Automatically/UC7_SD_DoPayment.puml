@@ -4,13 +4,21 @@ autonumber
 participant "task\n:DoPaymentTask" as TASK
 participant "Platform" as P
 participant "rFree\n:RegisterFreelancer" as RF
-participant "lt\n:TaskList" as LT
+participant "lf\n:List<Freelancer>" as LF
+participant "org\n:Organization" as O
+participant "lt\n:List<Task>" as LT
+
 participant "ts :Task" as T
 participant "amountsET\n: List<Task>" as LTS
 participant "f\n:Freelancer" as F
-participant "Receipt" as R
+participant "p\n:Payment" as PA
+participant "rt\n:RegisterTransaction" as RT
+participant "ltr\n:List<Transaction>" as LTR
+participant "tr\n:Transaction" as TR
+participant "nltr\nList<Transaction>" as NLTR
+participant "Writer" as W
 
-[o-> TASK : DoPayment(ltNotPayed)
+[o-> TASK : DoPayment(org)
 activate TASK
 
 
@@ -21,27 +29,35 @@ TASK -> RF : lf = getFreelancerList()
 activate RF
 deactivate RF
 
+TASK -> O : lt = getTaskList()
+activate O
+deactivate O
+
 TASK --> LTS** : create()
 
 loop [for every freelancer]
-TASK -> RF : freel = getFreelancer(i)
-activate RF
-deactivate RF
+TASK -> LF : freel = getFreelancer(i)
+activate LF
+deactivate LF
 
 TASK -> TASK : amountsET = null
 
-loop [for every task not payed]
+loop [for every task]
 
-TASK -> LT : ts = ltNotPayed.get(j)
+TASK -> LT : ts = get(j)
 activate LT
 deactivate LT
 
 
-TASK -> T : f = getFreelancer(ts)
+TASK -> T : f = getFreelancer()
 activate T
 deactivate T
 
-opt [if freel == f]
+TASK -> T : verifier = getIsPayed()
+activate T
+deactivate T
+
+opt [if freel == f && verifier == false]
 
 
 
@@ -51,15 +67,77 @@ deactivate LTS
 
 end opt
 end loop
-opt [if amountsET != null]
-TASK -> R** : create(amountsET)
+
+
+TASK -> P : rt = getRT()
+activate P
+deactivate P
+
+TASK -> RT : ltr = getltr()
+activate RT
+deactivate RT
+
+TASK --> NLTR** : create()
+
+loop [for every task not payed]
+TASK -> LTS : ts = get(j)
+activate LTS
+deactivate LTS
+loop [for every transaction]
+
+TASK -> LTR : tr = get(k)
+activate LTR
+deactivate LTR
+
+TASK -> TR : cts = getTask()
+activate TR
+deactivate TR
+
+
+opt [if ts == cts]
+TASK -> NLTR : addNltr(tr)
+activate NLTR
+deactivate NLTR
 end opt
 
 
-TASK -> R : generateR(freel)
-activate R
-deactivate R
-ref over R : UC7_SD_GenerateReceipt
+
+TASK -> T : costHour = getCostHour()
+activate T
+deactivate T
+
+TASK -> T : timeDuration = getTimeDuration()
+activate T
+deactivate T
+TASK -> TASK : calc = calculateCost(costHour, timeDuration)
+
+TASK -> TASK : sum += calc
+end loop
+
+end loop
+
+TASK -> F : country = getCountry()
+activate F
+deactivate F
+
+TASK -> TASK : curr = convertToCurrency(sum, country)
+
+
+
+TASK --> PA** : create(sum, curr, nltr)
+
+TASK -> W : writeOrg(org, sum, curr)
+activate W
+deactivate W
+
+TASK -> PA : generateReceipt(country)
+activate PA
+deactivate PA
+
+
+
+
+ref over PA : UC7_SD_GenerateReceipt
 
 end loop
 

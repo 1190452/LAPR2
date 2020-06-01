@@ -94,10 +94,10 @@ N/A
 | |       | Manager | IE: Knows his own data (e.g. email) |
 | |... creates instances of Payment | PaymentRegist | Creator(rule 1)
 |2. The system asks for the day of the month, the time of the day and the recurring time. | 
-|3. The manager inserts the information. |... stores the information entered? | PaymentRegist | 
+|3. The manager inserts the information. |... stores the information entered? | Payment | 
 |4. The system requests the validation of the information. |...validates the Date and time (local validation)?	 |    Payment         |  IE:has its own information.                            |
 |5. The tasks that aren't payed will be payed on the date defined by the manager. | 
-|6. The manager confirms. The system registers the information.
+|6. The manager confirms. The system registers the information. | ...saves the created instance of Transaction | PaymentList | HC+LC |
 
 ### Systematization
 

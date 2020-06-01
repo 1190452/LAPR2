@@ -4,7 +4,7 @@
 
 ### Brief Format
 
-The collaborator starts creating a freelancer. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country, street, doorNumber, locality). The collaborator enter the requested data. The system presents the data and asks for confirmation. The collaborator confirms. The system informs the collaborator of the successfull of the operation.
+The collaborator starts creating a freelancer. The system requests the necessary (i.e. name, levelExpertise, email, nif, ibanAccount, country, street, doorNumber, locality). The collaborator enter the requested data. The system presents the data and asks for confirmation. The collaborator confirms. The system informs the collaborator of the successfull of the operation.
 
 
 ### SSD
@@ -34,11 +34,11 @@ n/a
 #### Main success scenario (or basic flow)
 
 1. The collaborator starts creating a freelancer.
-2. The system requests the necessary (i.e. freelancer identifier, name, levelExpertise, email, nif, ibanAccount, country, street, doorNumber, locality).
+2. The system requests the necessary (i.e. name, levelExpertise, email, nif, ibanAccount, country, street, doorNumber, locality).
 3. The collaborator enter the requested data. 
 4. The system validates, presents the data and asks for confirmation.
 5. The collaborator confirms the data.
-6. The system informs the collaborator of the successfull of the operation.
+6. the system generates the freelancer id, saves it and informs the collaborator of the successfull of the operation.
 
 
 #### Extensions (or alternative flows)
@@ -102,6 +102,8 @@ n/a
 | |... validates freelancer data( local Validation )|Freelancer| IE: Freelancer knows his attributes |
 | |... validates Address data( local Validation )|Address| IE: Address knows his attributes |
 | |... validates Address data( global Validation )|Freelancer| IE: Freelancer contains address|
+| |... generates the Freelancer ID?| RegisterFreelancer | IE: RegisterFreelancer contains freelancers and knows their codes|
+| |... saves the Freelancer ID?| Freelancer | IE: Freelancer has freelancer ID has attribute |
 |5. The collaborator confirms the data |||  |
 |6. The system informs the collaborator of the successfull of the operation||| |
 

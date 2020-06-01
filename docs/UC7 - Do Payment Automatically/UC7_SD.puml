@@ -4,12 +4,10 @@ autonumber
 participant ":Plataform" as PLAT
 participant "task\n:DoPaymentTask" as TASK
 participant "t\n:timer" as TI
-participant ":TransactionRegister" as TR
-participant "tr\n:Transaction" as T
-participant "lt\n:TaskList" as LT
-participant "ts\nTask" as TS
-participant "ltNotPayed\n: List<Task>" as LTS
-participant "p\n:Payment" as P
+participant "RegistOrganizations" as RORGS
+participant "lo\n:List<Organazation>" as LO
+participant "org\n:Organization" as O
+participant "def\n:DefinePayment" as DP
 
 
 
@@ -18,41 +16,37 @@ activate PLAT
 
 PLAT --> TASK** : create( )
 
-PLAT --> LTS** :create( )
 
-loop [for Every Transaction]
-PLAT -> TR : tr = getTransaction(i)
-activate TR
-deactivate TR
+PLAT -> RORGS : lo = getLO()
+activate RORGS
+deactivate RORGS
+loop [for every organization]
+PLAT -> LO : org = get(i)
+activate LO
+deactivate LO
+PLAT -> O : dp = getDefinePayment()
+activate O
+deactivate O
+PLAT -> DP : date = getDate()
+activate DP
+deactivate DP
+PLAT -> DP : time = getTime()
+activate DP
+deactivate DP
+PLAT -> DP : nrDays = getNrDays()
+activate DP
+deactivate DP
 
 
-PLAT -> T : p = getPayment(tr)
-activate T
+PLAT -> PLAT : period = calculatePeriod(nrDays)
 
-
-PLAT -> T : lt = getTaskList(tr)
-deactivate T
-loop [for every task]
-PLAT -> LT : ts = getTask(i)
-activate LT
-deactivate LT
-PLAT -> TS : validator = getIsPayed()
-activate TS
-deactivate TS
-
-opt [if validator == false]
-PLAT -> LTS : addltNotPayed(ts)
-activate LTS
-deactivate LTS
-end opt
-end loop
 PLAT -> PLAT : present = getTime()
-PLAT -> P : interval = getIntervalo(present)
-activate P
-deactivate P
+
+PLAT -> PLAT : interval = calculateDiference(present, date, time)
+
 
 PLAT --> TI** : create( )
-PLAT -> TI : schedule(task, interval)
+PLAT -> TI : scheduleAtFixedRate(task, interval, period)
 activate TI
 deactivate TI
 deactivate PLAT
@@ -60,13 +54,14 @@ deactivate PLAT
 TI -> TASK : run( )
 activate TI
 activate TASK
-TASK -> TASK : DoPayment(ltNotPayed)
+TASK -> TASK : DoPayment(org)
 ref over TASK : UC7_SD_DoPayment
 activate TASK
 deactivate TASK
 deactivate TASK
 deactivate TI
-
 end loop
+
+
 
 @enduml

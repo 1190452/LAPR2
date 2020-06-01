@@ -68,18 +68,22 @@ Whenever time identifies that there is a payment to be made.
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 | 1. The timer starts the automatic payment process at the stipulated time.      | ...creates the instance of the Task?  | Platform | creator |
 |       | ...coordinates the UC? | DoPaymentTask | Controller |
-|       | ...knows the TransactionRegister? | Platform | IE and HC+LC |
-|       | ...knows the Transaction? | TransactionRegister | HC+LC | 
-|       | ...knows the Payment? | Transaction | IE: Transaction is connected to the Payment in the MD | 
-|       | ...knows the TaskList? | Transaction | IE: Transaction has Tasks in the MD |
+|       | ...knows the RegistOrganizations? | Platform | IE and HC+LC |
+|       | ...has every Organization? | RegistOrganizations | HC+LC |
+|       | ...knows the DefinePayment? | Organization | IE: each organization has a DefinePayment |
 |       | ...creates the instance of the Timer? | Platform | creator | 
 |       | ...determines that time has been reached? | Timer | IE |
-| 2. The system makes payments using the payment list, triggering the process at the defined date and time, generating the receipt and sending an email to every freelancer. | Knows the RegisterFreelancer? | Platform | IE and HC+LC |
-|       | ...creates a temporary list to save the tasks for each freelancer? | DoPaymentTask | creator |
+| 2. The system makes payments using the payment list, triggering the process at the defined date and time, generating the receipt and sending an email to every freelancer. | ...knows the RegisterFreelancer? | Platform | IE and HC+LC |
 |       | ...knows every Freelancer? | RegisterFreelancer | IE |
-|       | ...know every the tasks? | TaskList | IE: task lists have tasks | 
-|       | ...creates Receipt? | DoPayementTask | creator |
-|       | ...knows the Writer? | Receipt | IE |
+|       | ...knows the TaskList? | Organization | IE: Organization has tasks | 
+|       | ...creates a temporary list to save the tasks for each freelancer? | DoPaymentTask | creator |
+|       | ...has tasks? | TaskList | IE: task lists have tasks | 
+|       | ...knows the RegisterTransaction | Platform | IE and HC+LC |
+|       | ...knows every Transaction? | RegisterTransaction | IE and HC+LC |
+|       | ...creates a temporary list to save the transactions for each freelancer? | DoPaymentTask | creator |
+|       | ...creates Payment? | DoPayementTask | creator |
+|       | ...knows the Writer? | DoPayementTask | IE |
+|       | ...creates the Receipt? | Payment | creator |   
 
 
 ### Systematization ##
@@ -91,12 +95,17 @@ Whenever time identifies that there is a payment to be made.
  * Transaction
  * Receipt
  * Writer
+ * Organization
+ * DefinePayment
+ * Payment
 
  Other software classes (i.e. Pure Fabrication) identified:
 
  * DoPaymentTask 
  * TaskList
  * RegisterFreelancer
+ * RegistOrganizations
+ * RegisterTransaction
  
  Other classes of external systems / components:
  
