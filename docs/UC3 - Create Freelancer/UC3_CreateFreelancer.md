@@ -46,14 +46,13 @@ n/a
 1a. The collaborator requests to cancel the creation.
 >    1. The use case ends.
 
-
 4a. The collaborator does not enter all the requested data
 >    1. The system informs you which data is missing.
 >    2. The system allows the collaborator to enter the missing data (step 3).
 >
 	>	2a. The collaborator does not change the data. The use case ends.
 
-11c. The system detects that the data (or some subset of the data) entered (i.e. freelancer identifier, ibanAccount) must be unique and that it already exists in the system.
+4b. The system detects that the data (or some subset of the data) entered (i.e. ibanAccount, nif) must be unique and that it already exists in the system.
 >    1. The system alerts the collaborator to the fact.
 >    2. The system allows the collaborator to change it (step 3)
 >
