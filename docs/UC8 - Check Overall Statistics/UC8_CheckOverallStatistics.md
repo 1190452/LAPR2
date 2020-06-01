@@ -89,7 +89,11 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ###	Sequence Diagram
 
-![UC8_SD.svg](UC8_SD.png)
+![UC8_SD.svg](UC8_SD.svg)
+
+![UC8_SD_getFreelancer.svg](UC8_SD_getFreelancer.svg)
+
+
 
 
 
