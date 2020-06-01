@@ -6,7 +6,7 @@
 package Controller;
 
 import java.util.List;
-import pt.ipp.isep.dei.esoft.autorizacao.model.UserRole;
+import autorizacao.model.UserRole;
 
 /**
  *
@@ -28,9 +28,9 @@ public class AuthorazationController
     
     public List<UserRole> getPapeisUtilizador()
     {
-        if (this.m_oApp.getSessaoAtual().isLoggedIn())
+        if (this.m_oApp.getActualSession().isLoggedIn())
         {
-            return this.m_oApp.getSessaoAtual().getPapeisUtilizador();
+            return this.m_oApp.getActualSession().getPapeisUtilizador();
         }
         return null;
     }

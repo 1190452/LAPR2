@@ -121,3 +121,8 @@ Whenever time identifies that there is a payment to be made.
 ###	Class Diagram
 
 ![UC7_CD.svg](UC7_CD.svg)
+
+* DoPaymentCD:
+
+![UC7_CD_REF1.svg](UC7_CD_REF1.svg)
+

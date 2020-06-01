@@ -5,11 +5,11 @@
  */
 package autorizacao;
 
-import pt.ipp.isep.dei.esoft.autorizacao.model.UserRole;
-import pt.ipp.isep.dei.esoft.autorizacao.model.RegisterUserRoles;
-import pt.ipp.isep.dei.esoft.autorizacao.model.RegisterUser;
-import pt.ipp.isep.dei.esoft.autorizacao.model.UserSession;
-import pt.ipp.isep.dei.esoft.autorizacao.model.User;
+import autorizacao.model.UserRole;
+import autorizacao.model.RegisterUserRoles;
+import autorizacao.model.RegisterUser;
+import autorizacao.model.UserSession;
+import autorizacao.model.User;
 
 /**
  *
@@ -75,10 +75,10 @@ public class FacadeAuthorazation
                 this.m_oSessao = new UserSession(utlz);
             }
         }
-        return getSessaoAtual();
+        return getActualSession();
     }
     
-    public UserSession getSessaoAtual()
+    public UserSession getActualSession()
     {
         return this.m_oSessao;
     }
