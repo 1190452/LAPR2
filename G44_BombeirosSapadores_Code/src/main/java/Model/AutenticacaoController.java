@@ -7,7 +7,7 @@ package Model;
 
 import java.util.List;
 import pt.ipp.isep.dei.esoft.autorizacao.model.PapelUtilizador;
-import pt.ipp.isep.dei.esoft.pot.controller.AplicacaoPOT;
+import Controller.AplicacaoPOT;
 
 /**
  *

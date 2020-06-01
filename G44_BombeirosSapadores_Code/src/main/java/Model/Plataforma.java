@@ -8,7 +8,7 @@ package Model;
 
 import java.util.HashSet;
 import java.util.Set;
-import pt.ipp.isep.dei.esoft.autorizacao.AutorizacaoFacade;
+import autorizacao.AutorizacaoFacade;
 
 /**
  *

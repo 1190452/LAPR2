@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import pt.ipp.isep.dei.esoft.autorizacao.AutorizacaoFacade;
+import autorizacao.AutorizacaoFacade;
 import pt.ipp.isep.dei.esoft.autorizacao.model.SessaoUtilizador;
 import Model.Constantes;
 import Model.Plataforma;
