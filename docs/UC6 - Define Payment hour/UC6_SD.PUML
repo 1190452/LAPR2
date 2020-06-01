@@ -5,7 +5,6 @@ actor "Manager" as ADM
 
 participant ":PaymentUI" as UI
 participant ":DefinePaymentController" as CTRL
-participant ":Transaction" as TRAN
 participant "pay:Payment" as PAY
 participant "dpay:DefinePayment" as DPAY
 

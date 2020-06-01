@@ -9,7 +9,6 @@ participant "ts :Task" as TA
 participant "Receipt" as R
 participant "Writer" as W
 
-
 [o-> PA : generateReceipt(country)
 activate PA
 loop [for every transaction]
