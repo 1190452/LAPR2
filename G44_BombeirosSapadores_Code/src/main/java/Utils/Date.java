@@ -180,7 +180,7 @@ public class Date implements Comparable<Date> {
      */
     @Override
     public int compareTo(Date anotherDate) {
-        return (anotherDate.isBigger(this)) ? -1 : (isBigger(anotherDate)) ? 1 : 0;
+        return (anotherDate.isGreater(this)) ? -1 : (isGreater(anotherDate)) ? 1 : 0;
     }
 
     
@@ -197,7 +197,7 @@ public class Date implements Comparable<Date> {
     }
 
     
-    public boolean isBigger(Date anotherDate) {
+    public boolean isGreater(Date anotherDate) {
         int totalDays = countDays();
         int totalDays1 = anotherDate.countDays();
 
