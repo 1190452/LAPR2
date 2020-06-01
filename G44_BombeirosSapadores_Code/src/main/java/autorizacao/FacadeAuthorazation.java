@@ -34,16 +34,16 @@ public class FacadeAuthorazation
         return this.m_oPapeis.addPapel(papel);
     }
     
-    public boolean registerUser(String strNome, String strEmail, String strPassword,String role)
+    public boolean registerUser(String strNome, String strEmail, String strPassword)
     {
-        User utlz = this.m_oUtilizadores.novoUtilizador(strNome,strEmail,strPassword,role);
+        User utlz = this.m_oUtilizadores.novoUtilizador(strNome,strEmail,strPassword);
         return this.m_oUtilizadores.addUtilizador(utlz); 
     }
     
     public boolean registerUserWithRule(String strNome, String strEmail, String strPassword, String strPapel)
     {
         UserRole papel = this.m_oPapeis.procuraPapel(strPapel);
-        User utlz = this.m_oUtilizadores.novoUtilizador(strNome,strEmail,strPassword, strPapel);
+        User utlz = this.m_oUtilizadores.novoUtilizador(strNome,strEmail,strPassword);
         utlz.addRole(papel);
         return this.m_oUtilizadores.addUtilizador(utlz);
     }

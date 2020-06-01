@@ -15,94 +15,92 @@ import java.util.Set;
  *
  * @author paulomaio
  */
-public class User
-{
-    
+public class User {
+
     /**
      * user's name
      */
     private String name;
-    
+
     /**
      * user's email
      */
     public String email;
-    
+
     /**
      * user's password
      */
     private String password;
-   
 
     /**
      * user's role
      */
     private String role;
-    
-    
+
     private Set<UserRole> m_lstRoles = new HashSet<UserRole>();
-    
-    
+
     /**
-     * Builds an instance of User that receives a name, an email, a password and a role
+     * Builds an instance of User that receives a name, an email, a password and
+     * a role
+     *
      * @param name
      * @param email
      * @param password
-     * @param role 
-     * @param userID 
      */
-    public User(String name, String email, String password, String role) {
-        if ( (name == null) || (email == null) || (password == null) || (name.isEmpty()) || (email.isEmpty()) || (password.isEmpty()) || (role.isEmpty()))
+    public User(String name, String email, String password) {
+        if ((name == null) || (email == null) || (password == null) || (name.isEmpty()) || (email.isEmpty()) || (password.isEmpty()) || (role.isEmpty())) {
             throw new IllegalArgumentException("None of the arguments can be empty");
+        }
         this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;
-        
+
     }
-   
+
+    public String getId() {
+        return this.email;
+    }
 
     /**
      * returns the user's name
+     *
      * @return the name
      */
     public String getName() {
         return name;
     }
 
-    
-    public boolean addRole(UserRole papel)
-    {
-        if (papel != null)
+    public boolean addRole(UserRole papel) {
+        if (papel != null) {
             return this.m_lstRoles.add(papel);
-        return false;
-    }
-    
-    
-    public boolean removeRole(UserRole papel)
-    {
-        if (papel != null)
-            return this.m_lstRoles.remove(papel);
-        return false;
-
-    }
-    
-    public boolean hasPassword(String strPwd)
-    {
-        return this.password.equals(strPwd);
-    }
-    
-    public boolean hasPapel(String strPapel)
-    {
-        for(UserRole papel: this.m_lstRoles)
-        {
-            if (papel.hasId(strPapel))
-                return true;
         }
         return false;
     }
+
+    public boolean removeRole(UserRole papel) {
+        if (papel != null) {
+            return this.m_lstRoles.remove(papel);
+        }
+        return false;
+
+    }
+
+    public boolean hasPassword(String strPwd) {
+        return this.password.equals(strPwd);
+    }
+
+    public boolean hasPapel(String strPapel) {
+        for (UserRole papel : this.m_lstRoles) {
+            if (papel.hasId(strPapel)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * changes the user's name
+     *
      * @param name the name to set
      */
     public void setName(String name) {
@@ -111,6 +109,7 @@ public class User
 
     /**
      * returns the user's email
+     *
      * @return the email
      */
     public String getEmail() {
@@ -120,6 +119,7 @@ public class User
 
     /**
      * changes the user's email
+     *
      * @param email the email to set
      */
     public void setEmail(String email) {
@@ -128,23 +128,24 @@ public class User
 
     /**
      * returns the user's password
+     *
      * @return the password
      */
     public String getPassword() {
         return password;
     }
 
-    
-    public List<UserRole> getRoles()
-    {
+    public List<UserRole> getRoles() {
         List<UserRole> list = new ArrayList<>();
-        for(UserRole papel: this.m_lstRoles)
+        for (UserRole papel : this.m_lstRoles) {
             list.add(papel);
+        }
         return list;
     }
 
     /**
      * changes the user's password
+     *
      * @param password the password to set
      */
     public void setPassword(String password) {
@@ -154,6 +155,7 @@ public class User
 
     /**
      * returns the user's role
+     *
      * @return the role
      */
     public String getRole() {
@@ -162,18 +164,18 @@ public class User
 
     /**
      * changes the user's role
+     *
      * @param role the role to set
      */
     public void setRole(String role) {
         this.role = role;
-    } 
-    
-    
+    }
+
     @Override
     public String toString() {
         return String.format("Name: %s \nEmail: %s \nRole: %s", name, email, role);
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         //self validation
@@ -184,7 +186,7 @@ public class User
         if (obj == null || obj.getClass() != User.class) {
             return false;
         }
-        
+
         User u = (User) obj;
         return this.email.equalsIgnoreCase(u.email) && this.role.equalsIgnoreCase(u.role);
     }
@@ -199,6 +201,7 @@ public class User
         return hash;
     }
 
-
-
+    public boolean hasId(String strId) {
+        return this.email.equals(strId);
+    }
 }

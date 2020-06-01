@@ -17,9 +17,9 @@ public class RegisterUser
     private Set<User> m_lstUtilizadores = new HashSet<User>();
     
     
-    public User novoUtilizador(String strNome, String strEmail, String strPassword, String role)
+    public User novoUtilizador(String strNome, String strEmail, String strPassword)
     {
-        return new User(strNome,strEmail,strPassword,role);
+        return new User(strNome,strEmail,strPassword);
     }
     
     public boolean addUtilizador(User utlz)

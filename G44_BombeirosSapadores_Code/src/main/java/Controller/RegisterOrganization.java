@@ -33,12 +33,12 @@ public class RegisterOrganization
     }
     
     
-    public boolean newOrganization(String name, String NIF, String email, String nameC, String funcaoC, String telefoneC, String emailC, String nameM, String funcaoM, String telefoneM, String emailM)
+    public boolean newOrganization(String name, String NIF, String email, String nameC, String emailC, String passwordC, String nameM, String emailM, String passwordM)
     {
         try
         {
-            Collaborator Collab = Organization.newCollaborator(nameC, funcaoC, telefoneC, emailC);
-            Manager manager = Organization.newManager(nameM, funcaoM, telefoneM, emailM);
+            Collaborator Collab = Organization.newCollaborator(nameC, emailC, passwordC);
+            Manager manager = Organization.newManager(nameM, emailM, passwordM);
             this.m_oOrganizacao = this.m_oPlataforma.newOrganization(name, NIF, email, Collab, manager);
             return this.m_oPlataforma.validateOrganization(this.m_oOrganizacao, this.m_strPwd);
         }

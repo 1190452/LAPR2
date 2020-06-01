@@ -4,20 +4,17 @@
  * and open the template in the editor.
  */
 package Model;
-
-import autorizacao.model.User;
 import java.util.Objects;
 
 /**
  *
  * @author OMEN X
  */
-public class Collaborator extends User {
+public class Collaborator  {
 
     private String name;
-    private String function;
-    private String telephone;
     private String email;
+    private String password;
 
     /**
      * Builds an instance of Collaborator that receives name, email and password
@@ -27,23 +24,27 @@ public class Collaborator extends User {
      * @param password
      */
     public Collaborator(String name, String email, String password) {
-        super(name, email, password, "COLLABORATOR");
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
 
     public boolean hasId(String strId) {
         return this.email.equalsIgnoreCase(strId);
     }
-
-    @Override
+    
     public String getName() {
         return this.name;
     }
 
-    @Override
+   
     public String getEmail() {
         return this.email;
     }
-
+    
+    public String getPassword(){
+        return this.password;
+    }
     @Override
     public int hashCode() {
         int hash = 7;
@@ -74,7 +75,7 @@ public class Collaborator extends User {
 
     @Override
     public String toString() {
-        return String.format("%s - %s - %s - %s", this.name, this.function, this.telephone, this.email);
+        return String.format("%s - %s - %s", this.name, this.email, this.password);
     }
 
     /**
@@ -83,9 +84,9 @@ public class Collaborator extends User {
      *
      * @param otherCollaborator
      */
-    public Collaborator(Collaborator otherCollaborator) {
-        super(otherCollaborator.getName(), otherCollaborator.getEmail(), otherCollaborator.getPassword(), otherCollaborator.getRole());
-
-    }
+//    public Collaborator(Collaborator otherCollaborator) {
+//        super(otherCollaborator.getName(), otherCollaborator.getEmail(), otherCollaborator.getPassword());
+//
+//    }
 
 }

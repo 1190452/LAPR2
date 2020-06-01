@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author OMEN X
  */
-public class Manager extends User {
+public class Manager {
 
     private String name;
     private String email;
@@ -26,7 +26,9 @@ public class Manager extends User {
      * @param password
      */
     public Manager(String name, String email, String password) {
-        super(name, email, password, "MANAGER");
+       this.name = name;
+       this.email = email;
+       this.password = password;
     }
 
     public boolean hasId(String strId) {
@@ -74,10 +76,10 @@ public class Manager extends User {
      *
      * @param otherManager
      */
-    public Manager(Manager otherManager) {
-        super(otherManager.getName(), otherManager.getEmail(), otherManager.getPassword(), otherManager.getRole());
-
-    }
+//    public Manager(Manager otherManager) {
+//        super(otherManager.getName(), otherManager.getEmail(), otherManager.getPassword(), otherManager.getRole());
+//
+//    }
 
     @Override
     public String toString() {
