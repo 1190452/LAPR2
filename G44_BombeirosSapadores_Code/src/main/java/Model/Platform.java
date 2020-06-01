@@ -46,7 +46,7 @@ public class Platform
     
     // <editor-fold defaultstate="collapsed">
 
-    public Organization novaOrganizacao(String strNome, String strNIF, String strWebsite,String strTelefone, String strEmail, EnderecoPostal oMorada, Colaborator oGestor)
+    public Organization novaOrganizacao(String strNome, String strNIF, String strWebsite,String strTelefone, String strEmail, EnderecoPostal oMorada, Collaborator oGestor)
     {
         return new Organization(strNome,strNIF, strWebsite, strTelefone, strEmail, oMorada, oGestor);
     }
@@ -55,7 +55,7 @@ public class Platform
     {
         if (this.validaOrganizacao(oOrganizacao,strPwd))
         {
-            Colaborator oGestor = oOrganizacao.getGestor();
+            Collaborator oGestor = oOrganizacao.getGestor();
             String strNomeGestor = oGestor.getNome();
             String strEmailGestor = oGestor.getEmail();
             if (this.m_oAutorizacao.registaUtilizadorComPapeis(strNomeGestor,strEmailGestor, strPwd, 
