@@ -71,6 +71,8 @@ WatchStatisticsController ..> Freelancer
 WatchStatisticsController ..> TaskExecution
 WatchStatisticsController ..> Organization
 
+RegisterFreelancer ..> Transaction
+
 Platform "1" --> "1" RegisterFreelancer: has
 Platform "1" --> "*" Organization: has
 Platform "1" --> "*" Transaction: has
