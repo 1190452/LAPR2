@@ -1,0 +1,40 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+left to right direction
+
+class Payment{
+    +generateReceipt(country)
+    +getSum()
+    +getCurr()
+    +calculate(costHour, costHour)
+    +calculateCurrency(valueE, country)
+
+}
+
+class Transaction{
+    +getTask()
+}
+
+class Task{
+    +getCostHour()
+    +getTimeDuration()
+}
+
+class Receipt{
+    +Receipt(nltr, sum, curr)
+    +genEmail()
+}
+
+class Writer{
+    +genEmail()
+}
+
+Payment ..> Transaction
+Transaction "1" -- "1" Task : has
+Payment "1" -- "1" Receipt : generates
+Receipt ..> Writer
+Receipt "1" -- "1..*" Transaction : has
+
+
+@enduml
