@@ -6,9 +6,7 @@
 
 package Model;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import pt.ipp.isep.dei.esoft.autorizacao.AutorizacaoFacade;
 
@@ -20,13 +18,9 @@ public class Plataforma
 {
     private String m_strDesignacao;
     private final AutorizacaoFacade m_oAutorizacao;
-<<<<<<< HEAD
+
     private final Set<Organization> m_lstOrganizacoes;
-    private final Set<AreaAtividade> m_lstAreasAtividade;
-    private final Set<CompetenciaTecnica> m_lstCompetencias;
-=======
-    private final Set<Organizacao> m_lstOrganizacoes;
->>>>>>> 739b64fd5f4e76325b34c2c21c0ab6a5c52d9fbd
+
     
 
     public Plataforma(String strDesignacao)
