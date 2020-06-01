@@ -17,115 +17,139 @@ import java.util.Set;
  */
 public class User
 {
-    private String m_strNome;
-    private String m_strEmail;
-    private String m_strPassword; // Não deveria guardar a password em "plain text"
-    private Set<UserRole> m_lstPapeis = new HashSet<UserRole>();
     
-    public User(String strNome, String strEmail, String strPassword)
-    {
+    /**
+     * user's name
+     */
+    private String name;
     
-        if ( (strNome == null) || (strEmail == null) || (strPassword == null) || (strNome.isEmpty()) || (strEmail.isEmpty()) || (strPassword.isEmpty()))
-            throw new IllegalArgumentException("Nenhum dos argumentos não pode ser nulo ou vazio.");
+    /**
+     * user's email
+     */
+    private String email;
+    
+    /**
+     * user's password
+     */
+    private String password;
+    
+    /**
+     * user's role
+     */
+    private String role;
+    
+    
+    /**
+     * Builds an instance of User that receives a name, an email, a password and a role
+     * @param name
+     * @param email
+     * @param password
+     * @param role 
+     */
+    public User(String name, String email, String password, String role) {
+        if ( (name == null) || (email == null) || (password == null) || (name.isEmpty()) || (email.isEmpty()) || (password.isEmpty()) || (role.isEmpty()))
+            throw new IllegalArgumentException("None of the arguments can be empty");
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.role = role;
         
-        this.m_strNome = strNome;
-        this.m_strEmail = strEmail;
-        this.m_strPassword = strPassword;
-        
+    }
+   
+
+    /**
+     * returns the user's name
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * changes the user's name
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * returns the user's email
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * changes the user's email
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * returns the user's password
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * changes the user's password
+     * @param password the password to set
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     * returns the user's role
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * changes the user's role
+     * @param role the role to set
+     */
+    public void setRole(String role) {
+        this.role = role;
+    } 
+    
+    
+    @Override
+    public String toString() {
+        return String.format("Name: %s \nEmail: %s \nRole: %s", name, email, role);
     }
     
-    public String getId()
-    {
-        return this.m_strEmail;
-    }
-    
-    public String getNome()
-    {
-        return this.m_strNome;
-    }
-    
-    public String getEmail()
-    {
-        return this.m_strEmail;
-    }
-    
-    public boolean hasId(String strId)
-    {
-        return this.m_strEmail.equals(strId);
-    }
-    
-    public boolean hasPassword(String strPwd)
-    {
-        return this.m_strPassword.equals(strPwd);
-    }
-    
-    public boolean addPapel(UserRole papel)
-    {
-        if (papel != null)
-            return this.m_lstPapeis.add(papel);
-        return false;
-    }
-    
-    
-    public boolean removePapel(UserRole papel)
-    {
-        if (papel != null)
-            return this.m_lstPapeis.remove(papel);
-        return false;
-    }
-    
-    public boolean hasPapel(UserRole papel)
-    {
-        return this.m_lstPapeis.contains(papel);
-    }
-    
-    public boolean hasPapel(String strPapel)
-    {
-        for(UserRole papel: this.m_lstPapeis)
-        {
-            if (papel.hasId(strPapel))
-                return true;
+    @Override
+    public boolean equals(Object obj) {
+        //self validation
+        if (this == obj) {
+            return true;
         }
-        return false;
-    }
-    
-    public List<UserRole> getPapeis()
-    {
-        List<UserRole> list = new ArrayList<>();
-        for(UserRole papel: this.m_lstPapeis)
-            list.add(papel);
-        return list;
+        //null validation
+        if (obj == null || obj.getClass() != User.class) {
+            return false;
+        }
+        
+        User u = (User) obj;
+        return this.email.equalsIgnoreCase(u.email) && this.role.equalsIgnoreCase(u.role);
     }
 
     @Override
-    public int hashCode()
-    {
+    public int hashCode() {
         int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.m_strEmail);
+        hash = 97 * hash + Objects.hashCode(this.name);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        hash = 97 * hash + Objects.hashCode(this.password);
+        hash = 97 * hash + Objects.hashCode(this.role);
         return hash;
     }
-    
-    @Override
-    public boolean equals(Object o) {
-        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
-        
-        // self check
-        if (this == o)
-            return true;
-        // null check
-        if (o == null)
-            return false;
-        // type check and cast
-        if (getClass() != o.getClass())
-            return false;
-        // field comparison
-        User obj = (User) o;
-        return Objects.equals(m_strEmail, obj.m_strEmail);
-    }
-    
-    @Override
-    public String toString()
-    {
-        return String.format("%s - %s", this.m_strNome, this.m_strEmail);
-    }
+
 }

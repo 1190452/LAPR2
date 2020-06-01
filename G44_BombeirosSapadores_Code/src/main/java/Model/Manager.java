@@ -5,10 +5,37 @@
  */
 package Model;
 
+import pt.ipp.isep.dei.esoft.autorizacao.model.User;
+
 /**
  *
- * @author jorge
+ * @author OMEN X
  */
-public class Manager {
-    
+public class Manager extends User {
+
+    /**
+     * Builds an instance of Manager that receives name, email and password
+     *
+     * @param name
+     * @param email
+     * @param password
+     */
+    public Manager(String name, String email, String password, String role) {
+        super(name, email, password, role);
+    }
+
+    /**
+     * Builds an instance of Manager that is copy of another passed by
+     * parameter
+     *
+     * @param otherManager
+     */
+    public Manager (Manager otherManager) {
+        super(otherManager.getName(), otherManager.getEmail(), otherManager.getPassword(), otherManager.getRole());
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
