@@ -20,7 +20,7 @@ public class Plataforma
 {
     private String m_strDesignacao;
     private final AutorizacaoFacade m_oAutorizacao;
-    private final Set<Organizacao> m_lstOrganizacoes;
+    private final Set<Organization> m_lstOrganizacoes;
     private final Set<AreaAtividade> m_lstAreasAtividade;
     private final Set<CompetenciaTecnica> m_lstCompetencias;
     
@@ -50,16 +50,16 @@ public class Plataforma
     
     // <editor-fold defaultstate="collapsed">
 
-    public Organizacao novaOrganizacao(String strNome, String strNIF, String strWebsite,String strTelefone, String strEmail, EnderecoPostal oMorada, Colaborador oGestor)
+    public Organization novaOrganizacao(String strNome, String strNIF, String strWebsite,String strTelefone, String strEmail, EnderecoPostal oMorada, Colaborator oGestor)
     {
-        return new Organizacao(strNome,strNIF, strWebsite, strTelefone, strEmail, oMorada, oGestor);
+        return new Organization(strNome,strNIF, strWebsite, strTelefone, strEmail, oMorada, oGestor);
     }
 
-    public boolean registaOrganizacao(Organizacao oOrganizacao, String strPwd)
+    public boolean registaOrganizacao(Organization oOrganizacao, String strPwd)
     {
         if (this.validaOrganizacao(oOrganizacao,strPwd))
         {
-            Colaborador oGestor = oOrganizacao.getGestor();
+            Colaborator oGestor = oOrganizacao.getGestor();
             String strNomeGestor = oGestor.getNome();
             String strEmailGestor = oGestor.getEmail();
             if (this.m_oAutorizacao.registaUtilizadorComPapeis(strNomeGestor,strEmailGestor, strPwd, 
@@ -69,12 +69,12 @@ public class Plataforma
         return false;
     }
 
-    private boolean addOrganizacao(Organizacao oOrganizacao)
+    private boolean addOrganizacao(Organization oOrganizacao)
     {
         return m_lstOrganizacoes.add(oOrganizacao);
     }
     
-    public boolean validaOrganizacao(Organizacao oOrganizacao,String strPwd)
+    public boolean validaOrganizacao(Organization oOrganizacao,String strPwd)
     {
         boolean bRet = true;
         

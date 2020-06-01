@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author paulomaio
  */
-public class Colaborador
+public class Colaborator
 {
     private String m_strNome;
     private String m_strFuncao;
@@ -19,7 +19,7 @@ public class Colaborador
     private String m_strEmail;
             
     
-    public Colaborador(String strNome, String strFuncao, String strTelefone, String strEmail)
+    public Colaborator(String strNome, String strFuncao, String strTelefone, String strEmail)
     {
         if ( (strNome == null) || (strFuncao == null) || (strTelefone == null) || (strEmail == null) ||
                 (strNome.isEmpty())|| (strFuncao.isEmpty())|| (strTelefone.isEmpty())|| (strEmail.isEmpty()))
@@ -69,7 +69,7 @@ public class Colaborador
         if (getClass() != o.getClass())
             return false;
         // field comparison
-        Colaborador obj = (Colaborador) o;
+        Colaborator obj = (Colaborator) o;
         return (Objects.equals(m_strEmail, obj.m_strEmail));
     }
     

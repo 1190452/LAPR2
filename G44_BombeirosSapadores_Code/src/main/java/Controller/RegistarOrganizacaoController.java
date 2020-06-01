@@ -7,8 +7,8 @@ package pt.ipp.isep.dei.esoft.pot.controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pt.ipp.isep.dei.esoft.pot.model.Colaborador;
-import pt.ipp.isep.dei.esoft.pot.model.Organizacao;
+import pt.ipp.isep.dei.esoft.pot.model.Colaborator;
+import pt.ipp.isep.dei.esoft.pot.model.Organization;
 import pt.ipp.isep.dei.esoft.pot.model.Plataforma;
 import pt.ipp.isep.dei.esoft.pot.model.EnderecoPostal;
 import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
@@ -21,7 +21,7 @@ public class RegistarOrganizacaoController
 {
     private AplicacaoPOT m_oApp;
     private Plataforma m_oPlataforma;
-    private Organizacao m_oOrganizacao;
+    private Organization m_oOrganizacao;
     private String m_strPwd;
     public RegistarOrganizacaoController()
     {
@@ -37,8 +37,8 @@ public class RegistarOrganizacaoController
         try
         {
             this.m_strPwd = strPwd;
-            EnderecoPostal oMorada = Organizacao.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
-            Colaborador oColab = Organizacao.novoColaborador(strNomeGestor, strFuncaoGestor, strTelefoneGestor, strEmailGestor);      
+            EnderecoPostal oMorada = Organization.novoEnderecoPostal(strLocal, strCodPostal, strLocalidade);
+            Colaborator oColab = Organization.novoColaborador(strNomeGestor, strFuncaoGestor, strTelefoneGestor, strEmailGestor);      
             this.m_oOrganizacao = this.m_oPlataforma.novaOrganizacao(strNome, strNIF, strWebsite,strTelefone, strEmail, oMorada, oColab);
             return this.m_oPlataforma.validaOrganizacao(this.m_oOrganizacao, this.m_strPwd);
         }
