@@ -12,45 +12,85 @@ public class Organization
     private String name;
     private String email;
     private String NIF;
-    private String phone;
     private Manager manager;
     private Collaborator colab;
             
     
-    public Organization(String name, String strNIF,String phone, 
-            String email, Collaborator colab, Manager manager)
+    /**
+     * Builds an instance of Organization that receives the name, the NIF, the 
+     * email, the colaborator and the manager
+     * 
+     * @param name the name of the Organization
+     * @param NIF the NIF of the Organization
+     * @param email the email of the Organization
+     * @param colab the collaborator of the Organization
+     * @param manager the Manager of the Organization
+     */
+    public Organization(String name, String NIF, String email, 
+            Collaborator colab, Manager manager)
     {
-        if ( (name == null) || (NIF == null) || (phone == null) ||
-                (email == null) || (colab == null) || (manager == null) ||(strNome.isEmpty()) || (strNIF.isEmpty()) || (phone.isEmpty()) || 
+        if ( (name == null) || (NIF == null) || (email == null) || (colab == null) 
+                || (manager == null) ||(name.isEmpty()) || (NIF.isEmpty()) || 
                 (email.isEmpty()))
             throw new IllegalArgumentException("No argument can be null.");
        
         this.name = name;
         this.NIF = NIF;
-        this.phone = strTelefone;
-        this.email = strEmail;
-        this.m_oGestor = oColaborador;
-        this.m_lstColaboradores.add(oColaborador);
+        this.email = email;
+        this.colab = colab;
+        this.manager = manager;
        
     }
-    
-    public Colaborador getGestor()
-    {
-        return this.m_oGestor;
+
+    /**
+     * Returns the name of the Organization
+     * @return name of the Organization
+     */
+    public String getName() {
+        return name;
     }
-   
-    
-    @Override
-    public int hashCode()
-    {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.NIF);
-        return hash;
+
+    /**
+     * Returns the email of the Organization
+     * @return email of the Organization
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Returns the NIF of the Organization
+     * @return NIF of the Organization
+     */
+    public String getNIF() {
+        return NIF;
+    }
+
+    /**
+     * Returns the manager of the Organization
+     * @return Manager of the Organization
+     */
+    public Manager getManager() {
+        return manager;
+    }
+
+    /**
+     * Returns the Collaborator of the Organization
+     * @return collaborator of the Organization
+     */
+    public Collaborator getColab() {
+        return colab;
     }
     
+    
+    /**
+     * Compares 2 Organization objects through NIF and email with both objects being considered equal only when these 2 parameteres are the same
+     *
+     * @param otherObject
+     * @return 
+     */
     @Override
-    public boolean equals(Object o) {
-        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
+    public boolean equals(Object otherObject) {
         
         // self check
         if (this == o)
