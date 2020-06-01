@@ -126,3 +126,7 @@ Whenever time identifies that there is a payment to be made.
 
 ![UC7_CD_REF1.svg](UC7_CD_REF1.svg)
 
+* generateReceiptCD:
+
+![UC7_CD_REF2.svg](UC7_CD_REF2.svg)
+
