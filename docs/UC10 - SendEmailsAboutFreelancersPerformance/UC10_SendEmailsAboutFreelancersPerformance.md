@@ -73,7 +73,7 @@ All the last days of the years.
 
 | Main Flow  | Question: What Class...  | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-|1. The last day of year is reached.|...coordinate the uc?    |   SendEmailFreelTask      |    Controller   |
+|1. The last day of year is reached.|...coordinate the uc?    |   SendEmailFreelTask      |    |
 |       | ...determines that time has been reached? |     Timer       |   Timer        |
 |       | ...creates the timer instance? |   Platform  | Creator+IE: The platform knows the date to start the process                
 |2. The system identify the freelancers who have a task delay greater than 3 hours and their percentage of task delay higher than the percentage of overall delays. Then sends emails to them. |  ...own the freelancers?	|  RegisterFreelancer | IE+(HC+LC):Register Freelancer contains / aggregates Freelancers (according to the HC + LC standard, on Platform)|
@@ -118,7 +118,7 @@ Other classes of external systems / components:
 
 ###	Class Diagram
 
-![CD_UCX.png](CD_UCX.png)
+![UC10_CD.png](UC10_CD.png)
 
 ###	UC10_CD_SendEmail
 
