@@ -35,6 +35,11 @@ public class Platform {
         return this.m_oAutorizacao;
     }
 
+
+
+    public RegisterFreelancer getRfree(){
+        return rFree;
+   }
     // Organizações
     // <editor-fold defaultstate="collapsed">
 
@@ -44,10 +49,7 @@ public class Platform {
 
     }
     
-    public RegisterFreelancer getRfree(){
-        return rFree;
-    }
-
+    
     public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
         if (this.validateOrganization(oOrganizacao, strPwd)) {
             Collaborator oGestor = oOrganizacao.getColab();
