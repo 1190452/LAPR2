@@ -5,7 +5,10 @@
  */
 package autorizacao.model;
 
+import Model.Platform;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -14,48 +17,66 @@ import java.util.Set;
  */
 public class RegisterUser
 {
-    private Set<User> m_lstUtilizadores = new HashSet<User>();
+    private List<User> lstUsers = new ArrayList<User>();
     
+    private Platform platform;
     
-    public User novoUtilizador(String strNome, String strEmail, String strPassword)
-    {
-        return new User(strNome,strEmail,strPassword);
+    public RegisterUser(){
+        this.lstUsers = new ArrayList<User>();
+        this.platform = new Platform();
     }
     
-    public boolean addUtilizador(User utlz)
-    {
-        if (utlz != null)
-            return this.m_lstUtilizadores.add(utlz);
-        return false;
+    public List<User> getUserList(){
+        return lstUsers;
     }
     
-    public boolean removeUtilizador(User utlz)
-    {
-        if (utlz != null)
-            return this.m_lstUtilizadores.remove(utlz);
-        return false;
+    public void setUsersList(ArrayList<User> usersList){
+       lstUsers = usersList; 
     }
-    
-    public User procuraUtilizador(String strId)
-    {
-        for(User utlz: this.m_lstUtilizadores)
-        {
-            if(utlz.hasId(strId))
+
+    public User newUser(String strEmail, String strPassword, String strRole) {
+        return new User(strEmail, strPassword, strRole);
+    }
+
+    public void addUser(User utlz) {
+        if (hasUser(utlz)) {
+            throw new IllegalArgumentException("User Already Exists");
+        }
+        platform.getrUser().getUserList().add(utlz);
+    }
+
+    public void removeUser(User utlz) {
+        if (!hasUser(utlz)) {
+            throw new IllegalArgumentException("User does not exist");
+        }
+        platform.getrUser().remove(utlz);
+    }
+
+    public User findUser(String strEmail) {
+        for (User utlz : platform.getrUser().getUserList()) {
+            if (utlz.hasEmail(strEmail)) {
                 return utlz;
+            }
         }
         return null;
     }
-    
-    public boolean hasUtilizador(String strId)
-    {
-        User utlz = procuraUtilizador(strId);
-        if (utlz != null)
-            return this.m_lstUtilizadores.contains(utlz);
+
+    public boolean hasUser(String strEmail) {
+        User utlz = findUser(strEmail);
+        if (utlz != null) {
+            return platform.getrUser().getUserList().contains(utlz);
+        }
         return false;
     }
+
+    public boolean hasUser(User utlz) {
+        return platform.getrUser().getUserList().contains(utlz);
+    }
     
-    public boolean hasUtilizador(User utlz)
-    {
-        return this.m_lstUtilizadores.contains(utlz);
+    public boolean remove(User utlz){
+        if(lstUsers.contains(utlz)){
+          return lstUsers.remove(utlz);
+        }
+        return false;
     }
 }

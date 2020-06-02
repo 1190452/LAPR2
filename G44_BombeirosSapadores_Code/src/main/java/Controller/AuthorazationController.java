@@ -6,7 +6,6 @@
 package Controller;
 
 import java.util.List;
-import autorizacao.model.UserRole;
 
 /**
  *
@@ -24,15 +23,6 @@ public class AuthorazationController
     public boolean doLogin(String strId, String strPwd)
     {
         return this.m_oApp.doLogin(strId, strPwd);
-    }
-    
-    public List<UserRole> getUserRoles()
-    {
-        if (this.m_oApp.getActualSession().isLoggedIn())
-        {
-            return this.m_oApp.getActualSession().getUserRoles();
-        }
-        return null;
     }
 
     public void doLogout()
