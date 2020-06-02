@@ -6,10 +6,13 @@
 package Controller;
 
 import Model.Constants;
+import Model.Organization;
 import Model.Platform;
 import Model.RegisterOrganization;
 import Model.Task;
+import Model.TaskList;
 import autorizacao.model.UserSession;
+import java.util.List;
 
 /**
  *
@@ -17,8 +20,8 @@ import autorizacao.model.UserSession;
  */
 public class CreateTaskController {
     private Platform m_plat;
-    private Task ts;
-    
+    private Task task;
+    private TaskList tl;
     
     public CreateTaskController(){
     if(!ApplicationPOT.getInstance().getActualSession().isLoggedInWithPart(Constants.ROLE_COLLABORATOR_ORGANIZATION))
@@ -26,13 +29,20 @@ public class CreateTaskController {
         this.m_plat = ApplicationPOT.getInstance().getPlatform();
     }
                 
-    public boolean newTask(String idTask, String description, int timeTask, double costHour, String taskCategory){
+    public Task newTask(String idTask, String description, int timeTask, double costHour, String taskCategory){
         ApplicationPOT app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
         String email = log.getUserEmail();
-        RegisterOrganization rorgs = m_plat.get esta linha...
-        //Organization org = 
+        RegisterOrganization rorgs = m_plat.getrOrg();
+        Organization org = rorgs.getOrganizationByUserEmail(email);
+        tl =  org.getTaskList();
+        task = tl.newTask(idTask, description, timeTask, costHour, taskCategory);
+        return task;
         
+    }
+
+    public boolean registersTask() {
+        return tl.registersTask(task);
     }
     
 }

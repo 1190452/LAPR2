@@ -14,6 +14,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Platform;
 import Model.TaskList;
+import java.util.ArrayList;
+import java.util.List;
 import org.jcp.xml.dsig.internal.dom.Utils;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
@@ -28,8 +30,11 @@ public class RegisterOrganization
     private Platform m_oPlataforma;
     private Organization m_oOrganizacao;
     private String m_strPwd;
+    private List<Organization> lorgs;
+    
     public RegisterOrganization()
     {
+        lorgs = new ArrayList<>();
         this.m_oApp = ApplicationPOT.getInstance();
         this.m_oPlataforma = m_oApp.getPlatform();
     }
@@ -61,5 +66,15 @@ public class RegisterOrganization
     public String getOrganizationString()
     {
         return this.m_oOrganizacao.toString();
+    }
+
+    public Organization getOrganizationByUserEmail(String email) {
+        for (int i = 0; i < lorgs.size(); i++) {
+            if (email.equalsIgnoreCase(lorgs.get(i).getColab().getEmail())){
+                return lorgs.get(i);
+            }
+            
+        }
+        return null;
     }
 }

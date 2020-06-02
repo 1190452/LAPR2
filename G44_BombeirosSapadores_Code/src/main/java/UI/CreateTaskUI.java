@@ -6,6 +6,7 @@
 package UI;
 
 import Controller.CreateTaskController;
+import Model.Task;
 import java.util.Scanner;
 
 /**
@@ -24,7 +25,19 @@ public class CreateTaskUI {
         int td = read.nextInt();
         double ch = read.nextDouble();
         String ct = read.nextLine();
-        ctask_controller.newTask(id, bd, td, ch, ct);
+        Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
+        System.out.println(ts.toString());
+        System.out.println("Confirma?");
+        boolean ans = read.nextBoolean();
+        if(ans==true){
+            if(ctask_controller.registersTask()){
+                System.out.println("Operation Successfull");
+            }
+            
+        }else{
+            System.out.println("failure");
+        }
+        
     }
     
     
