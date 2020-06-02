@@ -42,7 +42,14 @@ public class RegisterFreelancer {
     }
 
     public void addFreelancer(Freelancer free) {
-
+            listaFreelancers.add(free);
+    }
+    public void removeFreelancer(Freelancer fr){
+        listaFreelancers.remove(fr);
+    }
+    
+    public List<Freelancer> getListFreelancer(){
+        return listaFreelancers;
     }
 
     public String generateID() {
