@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.ApplicationPOT;
 import Model.Constants;
 import Model.Platform;
 import Model.RegisterOrganization;

@@ -5,15 +5,10 @@
  */
     package Model;
 
-import Controller.ApplicationPOT;
-import Model.Address;
-import Model.Collaborator;
-import Model.Manager;
-import Model.Organization;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Model.Platform;
-import Model.TaskList;
 import org.jcp.xml.dsig.internal.dom.Utils;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
@@ -28,10 +23,12 @@ public class RegisterOrganization
     private Platform m_oPlataforma;
     private Organization m_oOrganizacao;
     private String m_strPwd;
+    private List<Organization> lOrg;
     public RegisterOrganization()
     {
         this.m_oApp = ApplicationPOT.getInstance();
         this.m_oPlataforma = m_oApp.getPlatform();
+        lOrg = new ArrayList<>();
     }
     
     
@@ -61,5 +58,12 @@ public class RegisterOrganization
     public String getOrganizationString()
     {
         return this.m_oOrganizacao.toString();
+    }
+
+    public boolean addOrganization(Organization oOrganizacao) {
+        if(lOrg.add(oOrganizacao)){
+            return true;
+        }
+        return false;
     }
 }
