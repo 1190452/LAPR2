@@ -34,4 +34,8 @@ public class MainApp extends Application {
         launch(args);
     }
 
+    private Object getClass() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
