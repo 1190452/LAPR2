@@ -34,15 +34,15 @@ public class RegisterUser
        lstUsers = usersList; 
     }
 
-    public User newUser(String strEmail, String strPassword, String strRole) {
-        return new User(strEmail, strPassword, strRole);
+    public User newUser(String name, String strEmail, String strPassword, String strRole) {
+        return new User(name, strEmail, strPassword, strRole);
     }
 
-    public void addUser(User utlz) {
+    public boolean addUser(User utlz) {
         if (hasUser(utlz)) {
             throw new IllegalArgumentException("User Already Exists");
         }
-        platform.getrUser().getUserList().add(utlz);
+         return platform.getrUser().getUserList().add(utlz);
     }
 
     public void removeUser(User utlz) {

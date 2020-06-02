@@ -12,11 +12,7 @@ import java.util.Objects;
  *
  * @author OMEN X
  */
-public class Manager {
-
-    private String name;
-    private String email;
-    private String password;
+public class Manager extends User{
 
     /**
      * Builds an instance of Manager that receives name, email and password
@@ -26,49 +22,7 @@ public class Manager {
      * @param password
      */
     public Manager(String name, String email, String password) {
-       this.name = name;
-       this.email = email;
-       this.password = password;
-    }
-
-    public boolean hasId(String strId) {
-        return this.email.equalsIgnoreCase(strId);
-    }
-
-    public String getNome() {
-        return this.name;
-    }
-
-    public String getEmail() {
-        return this.email;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.email);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        // Inspirado em https://www.sitepoint.com/implement-javas-equals-method-correctly/
-
-        // self check
-        if (this == o) {
-            return true;
-        }
-        // null check
-        if (o == null) {
-            return false;
-        }
-        // type check and cast
-        if (getClass() != o.getClass()) {
-            return false;
-        }
-        // field comparison
-        Manager obj = (Manager) o;
-        return (Objects.equals(email, obj.email));
+       super(name, email, password,"MANAGER");
     }
 
     /**
@@ -76,10 +30,10 @@ public class Manager {
      *
      * @param otherManager
      */
-//    public Manager(Manager otherManager) {
-//        super(otherManager.getName(), otherManager.getEmail(), otherManager.getPassword(), otherManager.getRole());
-//
-//    }
+    public Manager(Manager otherManager) {
+        super(otherManager.getName(), otherManager.getEmail(), otherManager.getPassword(), otherManager.getRole());
+
+    }
 
     @Override
     public String toString() {

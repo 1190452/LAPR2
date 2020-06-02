@@ -50,8 +50,8 @@ public class Platform {
             Collaborator oGestor = oOrganizacao.getColab();
             String strNomeGestor = oGestor.getName();
             String strEmailGestor = oGestor.getEmail();
-            if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd,
-                    new String[]{Constants.ROLE_MANAGER_ORGANIZATION, Constants.ROLE_COLLABORATOR_ORGANIZATION})) {
+            String role = oGestor.getRole();
+            if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd, role)) {
                 return addOrganization(oOrganizacao);
             }
         }

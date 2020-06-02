@@ -18,14 +18,14 @@ public class FacadeAuthorization
    private static UserSession session = null;
    private static final RegisterUser users = new RegisterUser();
 
-    public void registUserWithRole(String strEmail, String strPassword, String strRole) {
-        User utlz = this.users.newUser(strEmail, strPassword, strRole);
-        this.users.addUser(utlz);
+    public boolean registUserWithRole(String name, String strEmail, String strPassword, String strRole) {
+        User utlz = this.users.newUser(name , strEmail, strPassword, strRole);
+         return users.addUser(utlz);
     }
     
-    public void registerUser(String strNome, String strEmail, String strPassword)
+    public void registerUser(String strNome, String strEmail, String strPassword, String role)
     {
-        User utlz = this.users.newUser(strNome,strEmail,strPassword);
+        User utlz = this.users.newUser(strNome,strEmail,strPassword, role);
         this.users.addUser(utlz);
     }
     
