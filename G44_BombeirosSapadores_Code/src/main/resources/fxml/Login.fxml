@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: #ff9933;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="140.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T4J" textAlignment="CENTER" wrappingWidth="69.03907012939453">
+               <font>
+                  <Font size="41.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="305.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField layoutX="49.0" layoutY="146.0" promptText="User name" style="-fx-background-color: transparent; -fx-border-color: #ffcc99; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField layoutX="51.0" layoutY="217.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #ffcc99; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button layoutX="91.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #ffcc99;" text="Login" />
+            <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="18.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/person-icon-png-4-transparent.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="17.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/—Pngtree—key%20vector%20icon_3791341.png" />
+               </image>
+            </ImageView>
+            <Text fill="#ff9933" layoutX="67.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" textAlignment="CENTER">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Text>
+            <Button layoutX="229.0" layoutY="12.0" minHeight="4.0" minWidth="4.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="13.0">
+               <graphic>
+                  <ImageView fitHeight="13.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/botao-x.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
