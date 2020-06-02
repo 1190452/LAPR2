@@ -19,6 +19,8 @@ import java.util.Scanner;
  */
 public class ImportTxtFile implements ImportFile {
     private HistoricalTransaction ht;
+    private TaskList tl;
+    private RegisterFreelancer rf;
     @Override
     public void importFile(List<Transaction> transactions, String fileName) {
         
@@ -26,6 +28,7 @@ public class ImportTxtFile implements ImportFile {
             Scanner sc = new Scanner(new File(fileName), "utf-8");
             sc.useDelimiter(";|\n");
             ht = new HistoricalTransaction();
+            tl = new TaskList();
             try {
                 while (sc.hasNext()) {
                    String transID = sc.next().trim();
@@ -49,8 +52,11 @@ public class ImportTxtFile implements ImportFile {
                    int dia = Integer.parseInt(sc.next().trim());
                    double delay =  Double.parseDouble(sc.next().trim());
                    String descripOFQuality = sc.next().trim();
-                   
-                   ht.addHistoricalTransaction(new Transaction(transID, new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask),new Freelancer(FreelancerID,FreelancerName,FreelancerExpertise,FreelancerEmail,FreelancerNIF,FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet,FreelancerDoor,FreelancerLocality)),new TaskExecution(new Date(ano,mes,dia), delay, descripOFQuality)));
+                   Freelancer fr = new Freelancer (FreelancerID,FreelancerName,FreelancerExpertise,FreelancerEmail,FreelancerNIF,FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet,FreelancerDoor,FreelancerLocality));
+                   rf.addFreelancer(fr);
+                   Task t = new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask);
+                   tl.addTask(t);
+                   ht.addHistoricalTransaction(new Transaction(transID, t,fr,new TaskExecution(new Date(ano,mes,dia), delay, descripOFQuality)));
                 }
                 
             } catch (NoSuchElementException e) {
