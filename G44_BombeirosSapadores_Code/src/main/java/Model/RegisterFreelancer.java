@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author User
+ * @author Rafael
  */
 public class RegisterFreelancer {
     
@@ -26,11 +26,11 @@ public class RegisterFreelancer {
       return new Freelancer( freeID, name, levelExp, email,nif,iban, country,address);
   }
   
-  public void validateFreelancer(Freelancer free){
-      
+  public Boolean validateFreelancer(Freelancer free){
+      if(free.getName)
   }
   
-   public void saveFreelacner(Freelancer free){
+   public Boolean saveFreelacner(Freelancer free){
        
       
   }
