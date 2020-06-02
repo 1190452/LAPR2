@@ -19,41 +19,33 @@ public class Platform {
     private final FacadeAuthorization m_oAutorizacao;
 
     private RegisterOrganization rOrg;
-    
+
     private RegisterFreelancer rFree;
-    
+
     private RegisterUser rUser;
 
     public Platform() {
 
         this.m_oAutorizacao = new FacadeAuthorization();
-<<<<<<< HEAD
-       
-=======
-
-        //this.m_lstOrganizacoes = new HashSet<>();
->>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
+        rOrg = new RegisterOrganization();
+        rFree = new RegisterFreelancer();
     }
 
     public FacadeAuthorization getFacadeAuthorazation() {
         return this.m_oAutorizacao;
     }
 
-
-
-    public RegisterFreelancer getRfree(){
+    public RegisterFreelancer getRfree() {
         return rFree;
-   }
+    }
     // Organizações
     // <editor-fold defaultstate="collapsed">
 
-   
     public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager, TaskList tl) {
-        return new Organization(name, NIF, email, colab, manager,tl);
+        return new Organization(name, NIF, email, colab, manager, tl);
 
     }
-    
-    
+
     public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
         if (this.validateOrganization(oOrganizacao, strPwd)) {
             Collaborator oGestor = oOrganizacao.getColab();
@@ -61,24 +53,17 @@ public class Platform {
             String strEmailGestor = oGestor.getEmail();
             String role = oGestor.getRole();
             if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd, role)) {
-<<<<<<< HEAD
                 return rOrg.addOrganization(oOrganizacao);
-=======
-                //return addOrganization(oOrganizacao);
->>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
+
             }
         }
         return false;
     }
 
-<<<<<<< HEAD
-  
-=======
+
     /*private boolean addOrganization(Organization oOrganizacao) {
     return m_lstOrganizacoes.add(oOrganizacao);
     }*/
->>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
-
     public boolean validateOrganization(Organization oOrganizacao, String strPwd) {
         boolean bRet = true;
 
