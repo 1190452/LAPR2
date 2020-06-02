@@ -109,7 +109,7 @@ public class Task {
     public Task(Task otherTask) {
         idTask = otherTask.idTask;
         description = otherTask.description;
-        time = otherTask.time;
+        timeTask = otherTask.timeTask;
         costHour = otherTask.costHour;
         taskCategory = otherTask.taskCategory;
         isPayed = otherTask.isPayed;
@@ -142,12 +142,12 @@ public class Task {
         this.description = description;
     }
 
-    public Time getTime() {
-        return time;
+    public int getTimeTask() {
+        return timeTask;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setTime(int timeTask) {
+        this.timeTask = timeTask;
     }
 
     public double getCostHour() {
