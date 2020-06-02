@@ -8,6 +8,7 @@ package Model;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import Utils.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -29,8 +30,27 @@ public class ImportTxtFile implements ImportFile {
                 while (sc.hasNext()) {
                    String transID = sc.next().trim();
                    String taskID = sc.next().trim();
-                   Time time = (Time) sc.next
+                   String taskDescrip =  sc.next().trim();
+                   int timeTask = Integer.parseInt(sc.next().trim());
+                   double taskCost = Double.parseDouble(sc.next().trim());
+                   String categoryTask = sc.next().trim();
+                   String FreelancerID = sc.next().trim();
+                   String FreelancerName = sc.next().trim();
+                   String FreelancerExpertise = sc.next().trim();
+                   String FreelancerEmail = sc.next().trim();
+                   String FreelancerNIF = sc.next().trim();
+                   String FreelancerBankAccount = sc.next().trim();
+                   String FreelancerStreet = sc.next().trim();
+                   String FreelancerDoor = sc.next().trim();
+                   String FreelancerLocality = sc.next().trim();
+                   String FreelancerCountry = sc.next().trim();
+                   int ano = Integer.parseInt(sc.next().trim());
+                   int mes = Integer.parseInt(sc.next().trim());
+                   int dia = Integer.parseInt(sc.next().trim());
+                   double delay =  Double.parseDouble(sc.next().trim());
+                   String descripOFQuality = sc.next().trim();
                    
+                   ht.addHistoricalTransaction(new Transaction(transID, new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask),new Freelancer(FreelancerID,FreelancerName,FreelancerExpertise,FreelancerEmail,FreelancerNIF,FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet,FreelancerDoor,FreelancerLocality)),new TaskExecution(new Date(ano,mes,dia), delay, descripOFQuality)));
                 }
                 
             } catch (NoSuchElementException e) {
