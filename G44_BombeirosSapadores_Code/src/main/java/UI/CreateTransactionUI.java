@@ -6,6 +6,9 @@
 package UI;
 
 import Controller.CreateTransactionController;
+import Model.Freelancer;
+import Model.Task;
+import java.util.List;
 
 /**
  *
@@ -16,7 +19,8 @@ public class CreateTransactionUI {
     
     public CreateTransactionUI (){
         ct_controller = new CreateTransactionController();
+        List<Task> taskList = ct_controller.getTaskList();
+        List<Freelancer> freelancerList = ct_controller.getFreelancerList();
     }
-    
-    
+  
 }

@@ -5,9 +5,14 @@
  */
 package Controller;
 
+import Model.Freelancer;
 import Model.HistoricalTransaction;
 import Model.Organization;
 import Model.Platform;
+import Model.RegisterFreelancer;
+import Model.Task;
+import Model.TaskList;
+import java.util.List;
 
 /**
  *
@@ -23,5 +28,15 @@ public class CreateTransactionController {
         //instanciar
     }
     
+    public List<Task> getTaskList(){
+       TaskList tl =  organization.getTaskList();
+       List<Task> taskList = tl.getTaskList();
+       return taskList;
+    }
     
+    public List<Freelancer> getFreelancerList(){
+        RegisterFreelancer rl = platform.getRfree();
+        List<Freelancer> freelancerList = rl.getListFreelancer();
+        return freelancerList;
+    }
 }

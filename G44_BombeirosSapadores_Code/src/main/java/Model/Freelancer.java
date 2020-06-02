@@ -9,7 +9,7 @@ package Model;
  *
  * @author Rafael
  */
-class Freelancer {
+public class Freelancer {
 
     private String freeID;
     private String name;
