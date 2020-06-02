@@ -31,4 +31,29 @@ public class TaskList {
    public List<Task> getTaskList(){
        return taskList;
    }
+
+    public Task newTask(String idTask, String description, int timeTask, double costHour, String taskCategory) {
+        Task task = new Task(idTask, description, timeTask, costHour, taskCategory);
+        
+        if(validateTask(task)==true){
+            return task;
+        }else{
+            return null;
+        }
+    }
+
+    private boolean validateTask(Task task) {
+        //validar 
+        return true;
+                   
+    }
+
+    public boolean registersTask(Task task) {
+        if(validateTask(task)==true){
+            taskList.add(task);
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

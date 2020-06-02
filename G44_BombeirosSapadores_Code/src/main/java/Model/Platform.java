@@ -27,7 +27,12 @@ public class Platform {
     public Platform() {
 
         this.m_oAutorizacao = new FacadeAuthorization();
+<<<<<<< HEAD
        
+=======
+
+        //this.m_lstOrganizacoes = new HashSet<>();
+>>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
     }
 
     public FacadeAuthorization getFacadeAuthorazation() {
@@ -56,13 +61,23 @@ public class Platform {
             String strEmailGestor = oGestor.getEmail();
             String role = oGestor.getRole();
             if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd, role)) {
+<<<<<<< HEAD
                 return rOrg.addOrganization(oOrganizacao);
+=======
+                //return addOrganization(oOrganizacao);
+>>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
             }
         }
         return false;
     }
 
+<<<<<<< HEAD
   
+=======
+    /*private boolean addOrganization(Organization oOrganizacao) {
+    return m_lstOrganizacoes.add(oOrganizacao);
+    }*/
+>>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
 
     public boolean validateOrganization(Organization oOrganizacao, String strPwd) {
         boolean bRet = true;

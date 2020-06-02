@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+<<<<<<< HEAD
+=======
+import Model.Platform;
+import Model.TaskList;
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
 import org.jcp.xml.dsig.internal.dom.Utils;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
@@ -23,9 +30,15 @@ public class RegisterOrganization
     private Platform m_oPlataforma;
     private Organization m_oOrganizacao;
     private String m_strPwd;
+<<<<<<< HEAD
     private List<Organization> lOrg;
+=======
+    private List<Organization> lorgs;
+    
+>>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
     public RegisterOrganization()
     {
+        lorgs = new ArrayList<>();
         this.m_oApp = ApplicationPOT.getInstance();
         this.m_oPlataforma = m_oApp.getPlatform();
         lOrg = new ArrayList<>();
@@ -60,10 +73,21 @@ public class RegisterOrganization
         return this.m_oOrganizacao.toString();
     }
 
+<<<<<<< HEAD
     public boolean addOrganization(Organization oOrganizacao) {
         if(lOrg.add(oOrganizacao)){
             return true;
         }
         return false;
+=======
+    public Organization getOrganizationByUserEmail(String email) {
+        for (int i = 0; i < lorgs.size(); i++) {
+            if (email.equalsIgnoreCase(lorgs.get(i).getColab().getEmail())){
+                return lorgs.get(i);
+            }
+            
+        }
+        return null;
+>>>>>>> 076f983320c2ad8a2c2a2537212eb129f7b98f5b
     }
 }
