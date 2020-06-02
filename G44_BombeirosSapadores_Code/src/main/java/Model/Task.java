@@ -21,7 +21,7 @@ public class Task {
     /**
      * The time of the Task
      */
-    Time time;
+    int timeTask;
 
     /**
      * The cost per hour of the Task
@@ -58,6 +58,8 @@ public class Task {
      */
     private static final double COST_BY_OMISSION = 0;
 
+    private static final int TIMETASK_BY_OMISSION = 0;
+
     /**
      *
      * @param idTask
@@ -68,14 +70,22 @@ public class Task {
      * @param isPayed
      * @param isFinished
      */
-    public Task(String idTask, String description, Time time, double costHour, TaskCategory taskCategory, boolean isPayed, boolean isFinished) {
+    public Task(String idTask, String description, int timeTask, double costHour, TaskCategory taskCategory, boolean isPayed, boolean isFinished) {
         this.idTask = idTask;
         this.description = description;
-        this.time = time;
+        this.timeTask = timeTask;
         this.costHour = costHour;
         this.taskCategory = taskCategory;
         this.isPayed = isPayed;
         this.isFinished = isFinished;
+    }
+
+    public Task(String idTask, String description, int timeTask, double costHour, TaskCategory taskCategory) {
+        this.idTask = idTask;
+        this.description = description;
+        this.timeTask = timeTask;
+        this.costHour = costHour;
+        this.taskCategory = taskCategory;
     }
 
     /**
@@ -84,21 +94,22 @@ public class Task {
     public Task() {
         idTask = ID_BY_OMISSION;
         description = DESCRIPTION_BY_OMISSION;
-        time = new Time();
+        timeTask = TIMETASK_BY_OMISSION;
         costHour = COST_BY_OMISSION;
         taskCategory = new TaskCategory();
         isPayed = false;
         isFinished = false;
     }
-    
+
     /**
      * Builds an instance of Task that is a copy passed by parameter
+     *
      * @param otherTask address that is copied
      */
     public Task(Task otherTask) {
         idTask = otherTask.idTask;
         description = otherTask.description;
-        time = otherTask.time;
+        timeTask = otherTask.timeTask;
         costHour = otherTask.costHour;
         taskCategory = otherTask.taskCategory;
         isPayed = otherTask.isPayed;
@@ -107,6 +118,7 @@ public class Task {
 
     /**
      * Returns the id of the Task
+     *
      * @return id of the Task
      */
     public String getIdTask() {
@@ -115,6 +127,7 @@ public class Task {
 
     /**
      * Modifies the ID of the Task
+     *
      * @param idTask the new ID of the task
      */
     public void setIdTask(String idTask) {
@@ -129,12 +142,12 @@ public class Task {
         this.description = description;
     }
 
-    public Time getTime() {
-        return time;
+    public int getTimeTask() {
+        return timeTask;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setTime(int timeTask) {
+        this.timeTask = timeTask;
     }
 
     public double getCostHour() {
@@ -176,9 +189,11 @@ public class Task {
     }
 
     /**
-     * Compares 2 Task objects through id with both objects being considered equal only when this parameter is the same
+     * Compares 2 Task objects through id with both objects being considered
+     * equal only when this parameter is the same
+     *
      * @param otherObject
-     * @return 
+     * @return
      */
     @Override
     public boolean equals(Object otherObject) {
@@ -194,20 +209,12 @@ public class Task {
 
     /**
      * Returns the characteristics of the Task
+     *
      * @return characteristics of the Task
      */
     public String toString() {
         return String.format("Task %s, description: %s, cost per hour: %s, "
                 + "category: %s", idTask, description, costHour, taskCategory);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 }
