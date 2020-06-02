@@ -37,8 +37,8 @@ public class Platform {
 
     // Organizações
     // <editor-fold defaultstate="collapsed">
-    public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager) {
-        return new Organization(name, NIF, email, colab, manager);
+    public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager, TaskList tl) {
+        return new Organization(name, NIF, email, colab, manager,tl);
     }
     
     public RegisterFreelancer getRfree(){
