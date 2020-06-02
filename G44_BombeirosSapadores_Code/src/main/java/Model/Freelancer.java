@@ -20,7 +20,26 @@ class Freelancer {
     private String iban;
     private Address address;
 
-    Freelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, Address address) {
+    private static final String freeIDPorOmissao = "whitout id";
+    private static final String namePorOmissao = "whitout name";
+    private static final String levelExpPorOmissao = "whitout levelExp";
+    private static final String emailPorOmissao = "whitout email";
+    private static final String nifPorOmissao = "whitout nif";
+    private static final String countryPorOmissao = "whitout country";
+    private static final String ibanPorOmissao = "whitout iban";
+
+    public Freelancer() {
+        this.freeID=freeIDPorOmissao;
+        this.country=countryPorOmissao;
+        this.name=namePorOmissao;
+        this.levelExp=levelExpPorOmissao;
+        this.iban=ibanPorOmissao;
+        this.nif=nifPorOmissao;
+        this.email=emailPorOmissao;
+        this.address= new Address();
+        }
+
+    public Freelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, Address address) {
         this.freeID = freeID;
         this.address = address;
         this.country = country;
@@ -32,11 +51,10 @@ class Freelancer {
 
     }
 
-
     public Boolean validateFreelancer() {
-        if((freeID==null) || (name==null)  || (levelExp==null)  || (email==null)  || (nif==null)  ||  (iban==null)  ||  (country==null) || (address==null)){
+        if ((freeID == null) || (name == null) || (levelExp == null) || (email == null) || (nif == null) || (iban == null) || (country == null) || (address == null)) {
             return false;
-        }else{
+        } else {
             return true;
         }
 
@@ -54,27 +72,6 @@ class Freelancer {
     }
 
     /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @return the levelExp
-     */
-    public String getLevelExp() {
-        return levelExp;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
      * @return the nif
      */
     public String getNif() {
@@ -82,24 +79,10 @@ class Freelancer {
     }
 
     /**
-     * @return the country
-     */
-    public String getCountry() {
-        return country;
-    }
-
-    /**
      * @return the iban
      */
     public String getIban() {
         return iban;
-    }
-
-    /**
-     * @return the address
-     */
-    public Address getAddress() {
-        return address;
     }
 
 }
