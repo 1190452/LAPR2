@@ -38,7 +38,7 @@ public class RegisterFreelancer {
     }
 
     public boolean saveFreelancer(Freelancer free) {
-
+        return false; //FALTA FAZER O CÓDIGO MONTES DE MERDA!
     }
 
     public void addFreelancer(Freelancer free) {

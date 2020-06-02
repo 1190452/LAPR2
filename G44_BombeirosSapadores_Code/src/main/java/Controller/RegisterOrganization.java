@@ -12,6 +12,7 @@ import Model.Organization;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Model.Platform;
+import Model.TaskList;
 import org.jcp.xml.dsig.internal.dom.Utils;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
@@ -33,13 +34,13 @@ public class RegisterOrganization
     }
     
     
-    public boolean newOrganization(String name, String NIF, String email, String nameC, String emailC, String passwordC, String nameM, String emailM, String passwordM)
+    public boolean newOrganization(String name, String NIF, String email, String nameC, String emailC, String passwordC, String nameM, String emailM, String passwordM, TaskList tl)
     {
         try
         {
             Collaborator Collab = Organization.newCollaborator(nameC, emailC, passwordC);
             Manager manager = Organization.newManager(nameM, emailM, passwordM);
-            this.m_oOrganizacao = this.m_oPlataforma.newOrganization(name, NIF, email, Collab, manager);
+            this.m_oOrganizacao = this.m_oPlataforma.newOrganization(name, NIF, email, Collab, manager, tl);
             return this.m_oPlataforma.validateOrganization(this.m_oOrganizacao, this.m_strPwd);
         }
         catch(RuntimeException ex)
