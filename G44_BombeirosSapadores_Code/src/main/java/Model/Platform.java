@@ -7,7 +7,8 @@ package Model;
 
 import java.util.HashSet;
 import java.util.Set;
-import autorizacao.FacadeAuthorazation;
+import autorizacao.FacadeAuthorization;
+import autorizacao.model.RegisterUser;
 
 /**
  *
@@ -15,20 +16,22 @@ import autorizacao.FacadeAuthorazation;
  */
 public class Platform {
 
-    private final FacadeAuthorazation m_oAutorizacao;
+    private final FacadeAuthorization m_oAutorizacao;
 
     private final Set<Organization> m_lstOrganizacoes;
     
     private RegisterFreelancer rFree;
+    
+    private RegisterUser rUser;
 
     public Platform() {
 
-        this.m_oAutorizacao = new FacadeAuthorazation();
+        this.m_oAutorizacao = new FacadeAuthorization();
 
         this.m_lstOrganizacoes = new HashSet<>();
     }
 
-    public FacadeAuthorazation getFacadeAuthorazation() {
+    public FacadeAuthorization getFacadeAuthorazation() {
         return this.m_oAutorizacao;
     }
 
@@ -47,7 +50,7 @@ public class Platform {
             Collaborator oGestor = oOrganizacao.getColab();
             String strNomeGestor = oGestor.getName();
             String strEmailGestor = oGestor.getEmail();
-            if (this.m_oAutorizacao.registerUserWithRules(strNomeGestor, strEmailGestor, strPwd,
+            if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd,
                     new String[]{Constants.ROLE_MANAGER_ORGANIZATION, Constants.ROLE_COLLABORATOR_ORGANIZATION})) {
                 return addOrganization(oOrganizacao);
             }
@@ -62,10 +65,9 @@ public class Platform {
     public boolean validateOrganization(Organization oOrganizacao, String strPwd) {
         boolean bRet = true;
 
-        // Escrever aqui o código de validação
-//        if (this.m_oAutorizacao.existUser(oOrganizacao.getColab().getEmail())) {
-//            bRet = false;
-//        }
+        if (this.m_oAutorizacao.userExists(oOrganizacao.getColab().getEmail())) {
+            bRet = false;
+        }
         if (strPwd == null) {
             bRet = false;
         }
@@ -75,6 +77,20 @@ public class Platform {
         //
 
         return bRet;
+    }
+
+    /**
+     * @return the rUser
+     */
+    public RegisterUser getrUser() {
+        return rUser;
+    }
+
+    /**
+     * @param rUser the rUser to set
+     */
+    public void setrUser(RegisterUser rUser) {
+        this.rUser = rUser;
     }
 
 }

@@ -1,66 +1,47 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package autorizacao.model;
 
-import java.util.List;
+import autorizacao.model.User;
 
-/**
- *
- * @author paulomaio
- */
-public class UserSession
-{
-    private User m_oUtilizador = null;
-    
-    private UserSession()
-    {
-    }
-    
-    public UserSession(User oUtilizador)
-    {
-        if (oUtilizador == null)
+public class UserSession {
+
+    private User user = null;
+
+    public UserSession(User user) {
+        if (user == null) {
             throw new IllegalArgumentException("Argumento não pode ser nulo.");
-        this.m_oUtilizador = oUtilizador;
+        }
+        this.user = user;
     }
-    
-    public void doLogout()
-    {
-        this.m_oUtilizador = null;
+
+    public void doLogout() {
+        this.user = null;
     }
-    
-    public boolean isLoggedIn()
-    {
-        return this.m_oUtilizador != null;
+
+    public boolean isLoggedIn() {
+        return this.user != null;
     }
-    
-    public boolean isLoggedInComPapel(String strPapel)
-    {
-        if (isLoggedIn())
-        {
-            return this.m_oUtilizador.hasPapel(strPapel);
+
+    public boolean isLoggedInWithPart(String strRole) {
+        if (isLoggedIn()) {
+            return this.user.getRole().equalsIgnoreCase(strRole);
         }
         return false;
     }
-    
-    public String getUserName()
-    {
-        if (isLoggedIn())
-            this.m_oUtilizador.getName();
+
+    public String getUserEmail() {
+        if (isLoggedIn()) {
+            return this.user.getEmail();
+        }
         return null;
     }
-    
-    public String getUserEmail()
-    {
-        if (isLoggedIn())
-            this.m_oUtilizador.getEmail();
-        return null;
+
+    public User getUserBySession() {
+        return this.user;
     }
-    
-    public List<UserRole> getUserRoles()
-    {
-        return this.m_oUtilizador.getRoles();
+
+    @Override
+    public String toString() {
+        return "UserSession{" + "user=" + user.toString() + '}';
     }
+
 }
