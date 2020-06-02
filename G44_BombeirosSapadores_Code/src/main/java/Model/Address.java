@@ -46,9 +46,9 @@ public class Address {
      * @param locality the locality of the Address
      */
     public Address(String street, String doorNumber, String locality) {
-        this.street = street;
-        this.doorNumber = doorNumber;
-        this.locality = locality;
+        setStreet(street);
+        setDoorNumber(doorNumber);
+        setLocality(locality);
     }
 
     /**
@@ -98,7 +98,7 @@ public class Address {
      * Changes the street of the Address
      * @param street the new Street of the Address
      */
-    public void setStreet(String street) {
+    public final void setStreet(String street) {
         if (street == null || street.isEmpty())
             throw new IllegalArgumentException("The street should not be empty or null.");
         this.street = street;
@@ -108,7 +108,7 @@ public class Address {
      * Changes the door number of the Address
      * @param doorNumber the new Door Number of the Address
      */
-    public void setDoorNumber(String doorNumber) {
+    public final void setDoorNumber(String doorNumber) {
         if (Integer.parseInt(doorNumber) < 0)
             throw new IllegalArgumentException("The door number is invalid.");
         this.doorNumber = doorNumber;
@@ -118,7 +118,7 @@ public class Address {
      * Changes the locality of the Address
      * @param locality the new Locality of the Address
      */
-    public void setLocality(String locality) {
+    public final void setLocality(String locality) {
         if (locality == null || locality.isEmpty()) 
             throw new IllegalArgumentException("The locality should not be empty or null");
         this.locality = locality;
@@ -141,7 +141,7 @@ public class Address {
         }
         Address otherAddress = (Address) otherObject;
         return this.street.equalsIgnoreCase(otherAddress.street)
-                && this.doorNumber == otherAddress.doorNumber 
+                && this.doorNumber.equals(otherAddress.doorNumber) 
                 && this.locality.equalsIgnoreCase(otherAddress.locality);
     }
     
