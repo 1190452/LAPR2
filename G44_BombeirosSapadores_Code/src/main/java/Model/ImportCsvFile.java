@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
  *
  * @author jorge
  */
-public class ImportCSV implements ImportFile {
+public class ImportCsvFile implements ImportFile {
 
     private HistoricalTransaction ht;
     private TaskList tl;

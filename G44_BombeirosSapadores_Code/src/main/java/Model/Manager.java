@@ -24,6 +24,9 @@ public class Manager extends User{
     public Manager(String name, String email, String password) {
        super(name, email, password,"MANAGER");
     }
+    public Manager(){
+        
+    }
 
     /**
      * Builds an instance of Manager that is copy of another passed by parameter

@@ -96,6 +96,15 @@ public class Organization {
         this.manager = otherOrganization.manager;
         this.taskList = otherOrganization.taskList;
     }
+    
+    public Organization(){
+        this.name = NAME_BY_OMISSION;
+        this.NIF = NIF_BY_OMISSION;
+        this.email = EMAIL_BY_OMISSION;
+        this.colab = new Collaborator();
+        this.manager = new Manager();
+        this.taskList = new TaskList();
+    }
 
     /**
      * Returns the name of the Organization
