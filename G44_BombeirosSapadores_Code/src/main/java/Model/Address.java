@@ -29,7 +29,7 @@ public class Address {
     /**
      * Door number of the Address by omission
      */
-    private static final int DOORNUMBER_BY_OMISSION = 0;
+    private static final String DOORNUMBER_BY_OMISSION = "0";
     
     /**
      * Locality of the Postal Address by omission
@@ -82,7 +82,7 @@ public class Address {
      * Returns the doorNumber of the Address
      * @return door number of the Address
      */
-    public int getDoorNumber() {
+    public String getDoorNumber() {
         return doorNumber;
     }
 
@@ -108,8 +108,8 @@ public class Address {
      * Changes the door number of the Address
      * @param doorNumber the new Door Number of the Address
      */
-    public void setDoorNumber(int doorNumber) {
-        if (doorNumber < 0)
+    public void setDoorNumber(String doorNumber) {
+        if (Integer.parseInt(doorNumber) < 0)
             throw new IllegalArgumentException("The door number is invalid.");
         this.doorNumber = doorNumber;
     }
