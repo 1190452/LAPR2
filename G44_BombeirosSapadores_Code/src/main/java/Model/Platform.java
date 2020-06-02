@@ -18,6 +18,8 @@ public class Platform {
     private final FacadeAuthorazation m_oAutorizacao;
 
     private final Set<Organization> m_lstOrganizacoes;
+    
+    private RegisterFreelancer rFree;
 
     public Platform() {
 
@@ -34,6 +36,10 @@ public class Platform {
     // <editor-fold defaultstate="collapsed">
     public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager) {
         return new Organization(name, NIF, email, colab, manager);
+    }
+    
+    public RegisterFreelancer getRfree(){
+        return rFree;
     }
 
     public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
