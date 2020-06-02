@@ -35,12 +35,27 @@ public class Platform {
         return this.m_oAutorizacao;
     }
 
+<<<<<<< HEAD
     public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager) {
         //return new Organization(name, NIF, email, colab, manager);
 
     //public RegisterFreelancer getRfree(){
         //return rFree;
    // }
+=======
+    // Organizações
+    // <editor-fold defaultstate="collapsed">
+
+   
+    public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager, TaskList tl) {
+        return new Organization(name, NIF, email, colab, manager,tl);
+
+    }
+    
+    public RegisterFreelancer getRfree(){
+        return rFree;
+    }
+>>>>>>> 4735428926a176d0199263f8e13281890386dd78
 
     public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
         if (this.validateOrganization(oOrganizacao, strPwd)) {
