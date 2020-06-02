@@ -35,20 +35,12 @@ public class Platform {
         return this.m_oAutorizacao;
     }
 
-    // Organizações
-    // <editor-fold defaultstate="collapsed">
-<<<<<<< HEAD
     public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager) {
         //return new Organization(name, NIF, email, colab, manager);
-=======
-    public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager, TaskList tl) {
-        return new Organization(name, NIF, email, colab, manager,tl);
->>>>>>> 57e0f9167e60de7425cb2bf6a54090e9ce3af679
-    }
-    
-    public RegisterFreelancer getRfree(){
-        return rFree;
-    }
+
+    //public RegisterFreelancer getRfree(){
+        //return rFree;
+   // }
 
     public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
         if (this.validateOrganization(oOrganizacao, strPwd)) {
