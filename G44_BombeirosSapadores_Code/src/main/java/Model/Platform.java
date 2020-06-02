@@ -18,7 +18,7 @@ public class Platform {
 
     private final FacadeAuthorization m_oAutorizacao;
 
-    private final Set<Organization> m_lstOrganizacoes;
+    private RegisterOrganization rOrg;
     
     private RegisterFreelancer rFree;
     
@@ -96,6 +96,20 @@ public class Platform {
      */
     public void setrUser(RegisterUser rUser) {
         this.rUser = rUser;
+    }
+
+    /**
+     * @return the rOrg
+     */
+    public RegisterOrganization getrOrg() {
+        return rOrg;
+    }
+
+    /**
+     * @param rOrg the rOrg to set
+     */
+    public void setrOrg(RegisterOrganization rOrg) {
+        this.rOrg = rOrg;
     }
 
 }
