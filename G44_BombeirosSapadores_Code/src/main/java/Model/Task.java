@@ -31,7 +31,7 @@ public class Task {
     /**
      * The category of the Task
      */
-    TaskCategory taskCategory;
+    private String taskCategory;
 
     /**
      * The Task status by being payed
@@ -57,7 +57,12 @@ public class Task {
      * The cost of the Task per hour per omission
      */
     private static final double COST_BY_OMISSION = 0;
-
+    
+    /**
+     * The category by omission
+     */
+    private static final String CATEGORY_BY_OMISSION = "no category";
+    
     private static final int TIMETASK_BY_OMISSION = 0;
 
     /**
@@ -70,7 +75,7 @@ public class Task {
      * @param isPayed
      * @param isFinished
      */
-    public Task(String idTask, String description, int timeTask, double costHour, TaskCategory taskCategory, boolean isPayed, boolean isFinished) {
+    public Task(String idTask, String description, int timeTask, double costHour, String taskCategory, boolean isPayed, boolean isFinished) {
         this.idTask = idTask;
         this.description = description;
         this.timeTask = timeTask;
@@ -80,7 +85,7 @@ public class Task {
         this.isFinished = isFinished;
     }
 
-    public Task(String idTask, String description, int timeTask, double costHour, TaskCategory taskCategory) {
+    public Task(String idTask, String description, int timeTask, double costHour, String taskCategory) {
         this.idTask = idTask;
         this.description = description;
         this.timeTask = timeTask;
@@ -96,7 +101,7 @@ public class Task {
         description = DESCRIPTION_BY_OMISSION;
         timeTask = TIMETASK_BY_OMISSION;
         costHour = COST_BY_OMISSION;
-        taskCategory = new TaskCategory();
+        taskCategory = CATEGORY_BY_OMISSION;
         isPayed = false;
         isFinished = false;
     }
@@ -158,14 +163,6 @@ public class Task {
         this.costHour = costHour;
     }
 
-    public TaskCategory getTaskCategory() {
-        return taskCategory;
-    }
-
-    public void setTaskCategory(TaskCategory taskCategory) {
-        this.taskCategory = taskCategory;
-    }
-
     public boolean isIsPayed() {
         return isPayed;
     }
@@ -180,6 +177,20 @@ public class Task {
 
     public void setIsFinished(boolean isFinished) {
         this.isFinished = isFinished;
+    }
+    
+    /**
+     * @return the taskCategory
+     */
+    public String getTaskCategory() {
+        return taskCategory;
+    }
+
+    /**
+     * @param taskCategory the taskCategory to set
+     */
+    public void setTaskCategory(String taskCategory) {
+        this.taskCategory = taskCategory;
     }
 
     @Override
@@ -214,7 +225,11 @@ public class Task {
      */
     public String toString() {
         return String.format("Task %s, description: %s, cost per hour: %s, "
-                + "category: %s", idTask, description, costHour, taskCategory);
+                + "category: %s", idTask, description, costHour, getTaskCategory());
     }
+
+    
+
+    
 
 }
