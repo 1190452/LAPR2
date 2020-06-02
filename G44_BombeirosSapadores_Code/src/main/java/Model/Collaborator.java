@@ -24,6 +24,10 @@ public class Collaborator extends User {
     public Collaborator(String name, String email, String password) {
         super(name, email, password, "COLLABORATOR");
     }
+    
+    public Collaborator(){
+        
+    }
 
     /**
      * Builds an instance of Collaborator that is copy of another passed by
