@@ -34,10 +34,10 @@ class Freelancer {
 
 
     public Boolean validateFreelancer() {
-        if((freeID!=null)|| (name!=null) || (levelExp!=null) || (email!=null) || (nif!=null) || (iban!=null) || (country!=null)|| (address!=null)){
-            return true;
-        }else{
+        if((freeID==null) || (name==null)  || (levelExp==null)  || (email==null)  || (nif==null)  ||  (iban==null)  ||  (country==null) || (address==null)){
             return false;
+        }else{
+            return true;
         }
 
     }
