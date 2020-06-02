@@ -102,5 +102,4 @@ class Freelancer {
         return address;
     }
 
-
 }
