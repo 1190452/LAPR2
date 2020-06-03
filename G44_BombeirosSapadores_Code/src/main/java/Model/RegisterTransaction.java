@@ -43,23 +43,35 @@ public class RegisterTransaction {
         return new Transaction(task, freel, tascExec);
     }
 
-    
-    
     public boolean registerTransaction(Transaction trans) {
-        if(validateTransaction(trans)==true){
+        if (validateTransaction(trans) == true) {
             return addTransaction(trans);
         }
         return false;
     }
-    
-    public boolean validateTransaction(Transaction trans){
-       if(historicalTransaction.contains(trans)){
+
+    public boolean validateTransaction(Transaction trans) {
+        if (historicalTransaction.contains(trans)) {
             return false;
         }
-       return true; 
+        return true;
     }
-    
-    public boolean addTransaction(Transaction trans){
+
+    public boolean addTransaction(Transaction trans) {
         return historicalTransaction.add(trans);
+    }
+
+    public double calculateTransactionValue(Transaction trans) {
+        for (Transaction t : historicalTransaction) {
+            if (trans.equals(trans)) {
+                if (trans.getFreel().getLevelExp().equalsIgnoreCase("Senior")) {
+                    return trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;
+                }
+                return trans.getTask().getCostHour() * trans.getTask().getTimeTask();
+            }
+
+        }
+        return trans.getTask().getCostHour() * trans.getTask().getTimeTask();
+        
     }
 }

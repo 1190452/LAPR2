@@ -11,6 +11,34 @@ package Model;
  */
 public class Freelancer {
 
+    /**
+     * @return the levelExp
+     */
+    public String getLevelExp() {
+        return levelExp;
+    }
+
+    /**
+     * @param levelExp the levelExp to set
+     */
+    public void setLevelExp(String levelExp) {
+        this.levelExp = levelExp;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     private String freeID;
     private String name;
     private String levelExp;
@@ -56,8 +84,8 @@ public class Freelancer {
     }
 
     public Boolean validateFreelancer() {
-        if ((freeID == null) || (name == null) || (levelExp == null) || (email == null) || (nif == null) || (iban == null) || (getCountry() == null) || (address == null)
-                || (freeID.isEmpty()) || (name.isEmpty()) || (levelExp.isEmpty()) || (email.isEmpty()) || (nif.isEmpty()) || (iban.isEmpty()) || (getCountry().isEmpty())) {
+        if ((freeID == null) || (name == null) || (getLevelExp() == null) || (getEmail() == null) || (nif == null) || (iban == null) || (getCountry() == null) || (address == null)
+                || (freeID.isEmpty()) || (name.isEmpty()) || (getLevelExp().isEmpty()) || (getEmail().isEmpty()) || (nif.isEmpty()) || (iban.isEmpty()) || (getCountry().isEmpty())) {
             return false;
         } else {
             return true;

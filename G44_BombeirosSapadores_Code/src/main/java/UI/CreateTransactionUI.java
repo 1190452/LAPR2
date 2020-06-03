@@ -8,6 +8,7 @@ package UI;
 import Controller.CreateTransactionController;
 import Model.Freelancer;
 import Model.Task;
+import Model.Transaction;
 import Utils.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -32,6 +33,8 @@ public class CreateTransactionUI {
         double delay = read.nextDouble();
         String qow = read.next();
         //ct_controller.createNewTransaction(task, freel, endDate, delay, qow);
+        
+        //Transaction trans ...
     }
   
 }

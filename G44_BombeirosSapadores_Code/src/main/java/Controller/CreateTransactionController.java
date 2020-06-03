@@ -49,9 +49,12 @@ public class CreateTransactionController {
           return trans;
     }
     
-    public void registerTrasnaction(){
+    public void registerTransaction(){
         hTransaction.registerTransaction(trans);
     }
     
+    public double calculateTransactionValue(Transaction trans){
+        return hTransaction.calculateTransactionValue(trans);
+    }
     
 }

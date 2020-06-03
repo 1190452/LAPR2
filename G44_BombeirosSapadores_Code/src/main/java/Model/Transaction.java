@@ -12,7 +12,6 @@ import Utils.Date;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author tiagopereira
@@ -22,6 +21,7 @@ public class Transaction {
     private Task task;
     private Freelancer freel;
     private TaskExecution taskEx;
+    private double transactionValue;
 
     private static int counter = 100;
 
@@ -29,6 +29,7 @@ public class Transaction {
         this.task = task;
         this.freel = freel;
         this.taskEx = taskEx;
+        this.transactionValue = 0;
         counter++;
     }
 
@@ -36,6 +37,8 @@ public class Transaction {
         task = new Task();
         freel = new Freelancer();
         taskEx = new TaskExecution();
+        this.transactionValue = 0;
+
         counter++;
     }
 
@@ -86,10 +89,25 @@ public class Transaction {
      */
     public void setTaskEx(TaskExecution taskEx) {
         this.taskEx = taskEx;
+    } 
+    
+    /**
+     * @return the transactionValue
+     */
+    public double getTransactionValue() {
+        return transactionValue;
     }
 
+    /**
+     * @param transactionValue the transactionValue to set
+     */
+    public void setTransactionValue(double transactionValue) {
+        this.transactionValue = transactionValue;
+    }
+
+    
+    
     public TaskExecution createTaskExecution(Date endDate, double delay, String qow) {
         return new TaskExecution(endDate, delay, qow);
     }
-
 }
