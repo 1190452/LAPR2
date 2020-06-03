@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface ImportFile {
     
-    public void importFile(List<Transaction> transactions, String fileName);
+    public RegisterTransaction importFile(String fileName);
     
 }

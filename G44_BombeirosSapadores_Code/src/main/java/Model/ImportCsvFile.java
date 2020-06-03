@@ -5,29 +5,34 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
+import java.io.Serializable;
 import java.util.NoSuchElementException;
 
 /**
  *
  * @author jorge
  */
-public class ImportCsvFile implements ImportFile {
+public class ImportCsvFile implements ImportFile, Serializable {
 
-    private HistoricalTransaction ht;
+    private RegisterTransaction ht;
     private TaskList tl;
     private RegisterFreelancer rf;
-    
+
+    /**
+     *
+     * @param fileName
+     * @return
+     */
     @Override
-    public void importFile(List<Transaction> transactions, String fileName) {
-        
+    public RegisterTransaction importFile(String fileName) {
+
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
+
             String line = null;
             try {
-                while((line = bufferedReader.readLine()) != null) {
+                while ((line = bufferedReader.readLine()) != null) {
                     String[] temp = line.split(";");
                     String idTrans = temp[0];
                     String idTask = temp[1];
@@ -48,26 +53,25 @@ public class ImportCsvFile implements ImportFile {
                     int year = Integer.parseInt(temp[16]);
                     int month = Integer.parseInt(temp[17]);
                     int day = Integer.parseInt(temp[18]);
-                    double delay =  Double.parseDouble(temp[19]);
+                    double delay = Double.parseDouble(temp[19]);
                     String descripOFQuality = temp[20];
-                    
-                    Freelancer fr = new Freelancer (FreelancerID,FreelancerName,FreelancerExpertise,FreelancerEmail,FreelancerNIF,FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet,FreelancerDoor,FreelancerLocality));
+
+                    Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
                     rf.addFreelancer(fr);
                     Task t = new Task(idTask, descriptionTask, taskDuration, taskCost, taskCategory);
                     tl.addTask(t);
                     ht.addHistoricalTransaction(new Transaction(idTrans, t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
-                
-                    
+                    return ht;
+
                 }
             } catch (NoSuchElementException | IOException e) {
                 System.out.println("Error reading HistoricalTransaction file!");
             }
 
-        
-            
         } catch (FileNotFoundException ex) {
             System.out.println("The file " + fileName + " does not exist!");
         }
+        return null;
     }
-    
+
 }

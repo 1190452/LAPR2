@@ -5,10 +5,9 @@
  */
 package Model;
 
-import java.util.HashSet;
-import java.util.Set;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.RegisterUser;
+import java.util.List;
 
 /**
  *
@@ -24,11 +23,17 @@ public class Platform {
 
     private RegisterUser rUser;
 
+    private RegisterTransaction ht;
+
+    private ImportTxtFile itxt;
+
+    private ImportCsvFile icsv;
+
     public Platform() {
 
         this.m_oAutorizacao = new FacadeAuthorization();
-        rOrg = new RegisterOrganization();
-        rFree = new RegisterFreelancer();
+        this.rOrg = new RegisterOrganization();
+        this.rFree = new RegisterFreelancer();
     }
 
     public FacadeAuthorization getFacadeAuthorazation() {
@@ -107,6 +112,22 @@ public class Platform {
      */
     public void setrOrg(RegisterOrganization rOrg) {
         this.rOrg = rOrg;
+    }
+
+    public List<Transaction> loadHistoricalTransaction(String fileName) {
+        if (fileName.endsWith(".txt")) {
+            ht = itxt.importFile(fileName);
+            List<Transaction> lt = ht.getTransactions();
+            return lt;
+        } else if (fileName.endsWith(".csv")) {
+            ht = icsv.importFile(fileName);
+            List<Transaction> lt = ht.getTransactions();
+            if (ht.validateHistoricalTransaction(lt)) {
+                return lt;
+            }
+
+        }
+        return null;
     }
 
 }

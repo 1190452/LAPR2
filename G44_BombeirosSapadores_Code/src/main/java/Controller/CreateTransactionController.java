@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.Freelancer;
-import Model.HistoricalTransaction;
+import Model.RegisterTransaction;
 import Model.Organization;
 import Model.Platform;
 import Model.RegisterFreelancer;
@@ -22,7 +22,7 @@ public class CreateTransactionController {
     
     private Organization organization;
     private Platform platform;
-    private HistoricalTransaction hTransaction;
+    private RegisterTransaction hTransaction;
     
     public CreateTransactionController(){
         //instanciar
