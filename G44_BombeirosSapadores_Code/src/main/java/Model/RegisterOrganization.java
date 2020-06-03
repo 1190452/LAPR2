@@ -110,4 +110,8 @@ public class RegisterOrganization {
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registUserWithRole(nameC, emailC, pwdC, role);
     }
+    
+    public List<Organization> get(){
+        return lorgs;
+    } 
 }
