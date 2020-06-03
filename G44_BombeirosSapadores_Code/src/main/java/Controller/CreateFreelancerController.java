@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.Freelancer;
 import Model.Platform;
 import Model.RegisterFreelancer;
 
@@ -13,17 +14,23 @@ import Model.RegisterFreelancer;
  * @author User
  */
 public class CreateFreelancerController {
-    Platform p1 ;
+
+    Platform p1;
     RegisterFreelancer rfree;
-    
-    public void newFreelancer(String freeID, String name, String levelExp, String email, String nif, String country, String street, String doorNumber, String locality){
+    Freelancer free;
+  
+
+    public void newFreelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
+          rfree = p1.getRfree();
+          free = rfree.newFreelancer(freeID, name, levelExp, email, nif, iban, country, street, doorNumber, locality);
+          rfree.validateFreelancer(free);
+    }
+
+    public void saveFreelancer() {
+        String freeID = rfree.generateID();
+        free.setFreeID(freeID);
+        rfree.saveFreelancer(free);
         
     }
-    
-    public void saveFreelancer(){
-        
-    }
-    
-    
-    
+
 }

@@ -29,30 +29,31 @@ public class Freelancer {
     private static final String ibanPorOmissao = "whitout iban";
 
     public Freelancer() {
-        this.freeID=freeIDPorOmissao;
-        this.country=countryPorOmissao;
-        this.name=namePorOmissao;
-        this.levelExp=levelExpPorOmissao;
-        this.iban=ibanPorOmissao;
-        this.nif=nifPorOmissao;
-        this.email=emailPorOmissao;
-        this.address= new Address();
-        }
+        this.freeID = freeIDPorOmissao;
+        this.country = countryPorOmissao;
+        this.name = namePorOmissao;
+        this.levelExp = levelExpPorOmissao;
+        this.iban = ibanPorOmissao;
+        this.nif = nifPorOmissao;
+        this.email = emailPorOmissao;
+        this.address = new Address();
+    }
 
     public Freelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, Address address) {
         this.freeID = freeID;
-        this.address = address;
         this.country = country;
         this.email = email;
         this.iban = iban;
         this.levelExp = levelExp;
         this.name = name;
         this.nif = nif;
+        this.address = address;
 
     }
 
     public Boolean validateFreelancer() {
-        if ((freeID == null) || (name == null) || (levelExp == null) || (email == null) || (nif == null) || (iban == null) || (country == null) || (address == null)) {
+        if ((freeID == null) || (name == null) || (levelExp == null) || (email == null) || (nif == null) || (iban == null) || (country == null) || (address == null)
+                || (freeID.isEmpty()) || (name.isEmpty()) || (levelExp.isEmpty()) || (email.isEmpty()) || (nif.isEmpty()) || (iban.isEmpty()) || (country.isEmpty())) {
             return false;
         } else {
             return true;
@@ -83,6 +84,10 @@ public class Freelancer {
      */
     public String getIban() {
         return iban;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

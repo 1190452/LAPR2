@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="G44_BombeirosSapadores_Code" target="1.7" />
+      <module name="G44_BombeirosSapadores_Code" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
