@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ee08c6a7-bbbc-4e24-a325-023e6fe47cec" name="Default Changelist" comment="" />
+    <list default="true" id="ee08c6a7-bbbc-4e24-a325-023e6fe47cec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/nbactions-release-profile.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/UI/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/G44_BombeirosSapadores_Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/G44_BombeirosSapadores_Code.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,13 +19,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1cjDds17VumZrVnFGdEie9EbBWS" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -27,11 +38,24 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="UI.Main" />
+      <module name="G44_BombeirosSapadores_Code" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="UI.MainApp" />
       <module name="G44_BombeirosSapadores_Code" />
@@ -47,6 +71,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.MainApp" />
       </list>
     </recent_temporary>
@@ -74,24 +99,50 @@
       <option name="presentableId" value="Default" />
       <updated>1591033198614</updated>
       <workItem from="1591033205424" duration="1022000" />
+      <workItem from="1591103548257" duration="799000" />
+      <workItem from="1591104381281" duration="581000" />
+      <workItem from="1591104974183" duration="63000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="1180" y="285" key="FileChooserDialogImpl" timestamp="1591046505108">
+    <state x="1180" y="285" key="FileChooserDialogImpl" timestamp="1591105034561">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1180" y="285" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591046505108" />
-    <state x="880" y="105" key="SettingsEditor" timestamp="1591046506922">
+    <state x="1180" y="285" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591105034561" />
+    <state width="914" height="282" key="GridCell.Tab.0.bottom" timestamp="1591104347527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="880" y="105" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591046506922" />
-    <state x="701" y="528" key="com.intellij.ide.util.TipDialog" timestamp="1591033205433">
+    <state width="914" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591104347527" />
+    <state width="914" height="282" key="GridCell.Tab.0.center" timestamp="1591104347527">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="701" y="528" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591033205433" />
+    <state width="914" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591104347527" />
+    <state width="914" height="282" key="GridCell.Tab.0.left" timestamp="1591104347527">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591104347527" />
+    <state width="914" height="282" key="GridCell.Tab.0.right" timestamp="1591104347527">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="914" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591104347527" />
+    <state x="17" y="186" key="Maven.ArtifactSearchDialog" timestamp="1591104417763">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="17" y="186" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591104417763" />
+    <state x="540" y="92" key="SettingsEditor" timestamp="1591103635232">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="92" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1591103635232" />
+    <state x="701" y="528" key="com.intellij.ide.util.TipDialog" timestamp="1591104976627">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="701" y="528" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591104976627" />
   </component>
 </project>
