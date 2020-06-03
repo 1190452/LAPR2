@@ -20,13 +20,13 @@ public class Freelancer {
     private String iban;
     private Address address;
 
-    private static final String freeIDPorOmissao = "whitout id";
-    private static final String namePorOmissao = "whitout name";
-    private static final String levelExpPorOmissao = "whitout levelExp";
-    private static final String emailPorOmissao = "whitout email";
-    private static final String nifPorOmissao = "whitout nif";
-    private static final String countryPorOmissao = "whitout country";
-    private static final String ibanPorOmissao = "whitout iban";
+    private static final String freeIDPorOmissao = "without id";
+    private static final String namePorOmissao = "without name";
+    private static final String levelExpPorOmissao = "without levelExp";
+    private static final String emailPorOmissao = "without email";
+    private static final String nifPorOmissao = "without nif";
+    private static final String countryPorOmissao = "without country";
+    private static final String ibanPorOmissao = "without iban";
 
     public Freelancer() {
         this.freeID = freeIDPorOmissao;
