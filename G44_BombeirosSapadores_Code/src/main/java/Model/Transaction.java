@@ -5,31 +5,38 @@
  */
 package Model;
 
+import Utils.Date;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
  *
  * @author tiagopereira
  */
 public class Transaction {
+
     private Task task;
-    private String transID;
     private Freelancer freel;
     private TaskExecution taskEx;
-    
-    private static final String TRANSID_OMISSION = "sem id";
-    
-    public Transaction(String transID, Task task, Freelancer freel,TaskExecution taskEx){
-        this.transID = transID;
+
+    private static int counter = 100;
+
+    public Transaction(Task task, Freelancer freel, TaskExecution taskEx) {
         this.task = task;
         this.freel = freel;
         this.taskEx = taskEx;
+        counter++;
     }
-    
-    public Transaction(){
-        transID = TRANSID_OMISSION;
+
+    public Transaction() {
         task = new Task();
-    //    freel = new Freelancer();
+        freel = new Freelancer();
         taskEx = new TaskExecution();
-        
+        counter++;
     }
 
     /**
@@ -44,20 +51,6 @@ public class Transaction {
      */
     public void setTask(Task task) {
         this.task = task;
-    }
-
-    /**
-     * @return the transID
-     */
-    public String getTransID() {
-        return transID;
-    }
-
-    /**
-     * @param transID the transID to set
-     */
-    public void setTransID(String transID) {
-        this.transID = transID;
     }
 
     /**
@@ -82,10 +75,21 @@ public class Transaction {
     }
 
     /**
+     * @return the counter
+     */
+    public static int getCounter() {
+        return counter;
+    }
+
+    /**
      * @param taskEx the taskEx to set
      */
     public void setTaskEx(TaskExecution taskEx) {
         this.taskEx = taskEx;
     }
-    
+
+    public TaskExecution createTaskExecution(Date endDate, double delay, String qow) {
+        return new TaskExecution(endDate, delay, qow);
+    }
+
 }

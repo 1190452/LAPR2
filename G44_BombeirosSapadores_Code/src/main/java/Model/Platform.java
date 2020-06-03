@@ -23,12 +23,12 @@ public class Platform {
 
     private RegisterUser rUser;
 
-    private RegisterTransaction ht;
+    private RegisterTransaction rTrans;
 
     private ImportTxtFile itxt;
 
     private ImportCsvFile icsv;
-    
+
     private PasswordGenerator alg;
 
     public Platform() {
@@ -46,7 +46,6 @@ public class Platform {
         return rFree;
     }
 
-
 //    public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
 //        if (this.validateOrganization(oOrganizacao, strPwd)) {
 //            Collaborator oGestor = oOrganizacao.getColab();
@@ -60,8 +59,6 @@ public class Platform {
 //        }
 //        return false;
 //    }
-
-
     /*private boolean addOrganization(Organization oOrganizacao) {
     return m_lstOrganizacoes.add(oOrganizacao);
     }*/
@@ -112,13 +109,13 @@ public class Platform {
 
     public List<Transaction> loadHistoricalTransaction(String fileName) {
         if (fileName.endsWith(".txt")) {
-            ht = itxt.importFile(fileName);
-            List<Transaction> lt = ht.getTransactions();
+            rTrans = itxt.importFile(fileName);
+            List<Transaction> lt = getRTrans().getTransactions();
             return lt;
         } else if (fileName.endsWith(".csv")) {
-            ht = icsv.importFile(fileName);
-            List<Transaction> lt = ht.getTransactions();
-            if (ht.validateHistoricalTransaction(lt)) {
+            rTrans = icsv.importFile(fileName);
+            List<Transaction> lt = getRTrans().getTransactions();
+            if (getRTrans().validateHistoricalTransaction(lt)) {
                 return lt;
             }
 
@@ -138,6 +135,13 @@ public class Platform {
      */
     public void setAlg(PasswordGenerator alg) {
         this.alg = alg;
+    }
+
+    /*
+     * @return the rTrans
+     */
+    public RegisterTransaction getRTrans() {
+        return rTrans;
     }
 
 }

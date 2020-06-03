@@ -9,6 +9,7 @@ import Model.Organization;
 import Model.Platform;
 import Model.RegisterOrganization;
 
+
 /**
  *
  * @author jorge
@@ -32,4 +33,12 @@ public class RegistOrganizationController {
         ro.registerOrganization(org);
     }
 
+
+    
+    Organization organization;
+    
+    public void CreateOrganization() {
+        
+    }
+    
 }

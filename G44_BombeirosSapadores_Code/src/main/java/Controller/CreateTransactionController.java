@@ -12,6 +12,8 @@ import Model.Platform;
 import Model.RegisterFreelancer;
 import Model.Task;
 import Model.TaskList;
+import Model.Transaction;
+import Utils.Date;
 import java.util.List;
 
 /**
@@ -23,6 +25,7 @@ public class CreateTransactionController {
     private Organization organization;
     private Platform platform;
     private RegisterTransaction hTransaction;
+    private Transaction trans;
     
     public CreateTransactionController(){
         //instanciar
@@ -39,4 +42,16 @@ public class CreateTransactionController {
         List<Freelancer> freelancerList = rl.getListFreelancer();
         return freelancerList;
     }
+    
+    public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow){
+          RegisterTransaction rt = platform.getRTrans();
+          trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
+          return trans;
+    }
+    
+    public void registerTrasnaction(){
+        hTransaction.registerTransaction(trans);
+    }
+    
+    
 }
