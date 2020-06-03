@@ -19,4 +19,7 @@ public class Constants
     public static final String FILE_PARAMS= "config.properties";
     public static final String PARAMS_PLATFORM_DESIGNATION = "PlATFORM.Designation";
     
+    
+    public static double NR_OF_SECONDS_OF_DAY = 86400;
+    
 }
