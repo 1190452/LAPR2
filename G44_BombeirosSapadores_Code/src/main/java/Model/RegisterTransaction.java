@@ -63,15 +63,19 @@ public class RegisterTransaction {
 
     public double calculateTransactionValue(Transaction trans) {
         for (Transaction t : historicalTransaction) {
-            if (trans.equals(trans)) {
+            if (t.equals(trans)) {
                 if (trans.getFreel().getLevelExp().equalsIgnoreCase("Senior")) {
-                    return trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;
+                    double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;
+                    trans.setTransactionValue(value);
+                    return value;
+                    
                 }
-                return trans.getTask().getCostHour() * trans.getTask().getTimeTask();
+                double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask();
+                trans.setTransactionValue(value);
+                return value;
             }
 
         }
-        return trans.getTask().getCostHour() * trans.getTask().getTimeTask();
-        
+        return -1;        
     }
 }
