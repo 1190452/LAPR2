@@ -15,6 +15,7 @@ import java.util.List;
 public class RegisterFreelancer {
 
     private List<Freelancer> listaFreelancers;
+    private Freelancer free;
 
     public RegisterFreelancer() {
         this.listaFreelancers = new ArrayList();
@@ -28,7 +29,7 @@ public class RegisterFreelancer {
 
     public boolean validateFreelancer(Freelancer free) {
         for (int i = 0; i < listaFreelancers.size(); i++) {
-            if ((free.getIban()==listaFreelancers.get(i).getIban()) || (free.getNif() == listaFreelancers.get(i).getNif()) || (free.getFreeID() == listaFreelancers.get(i).getFreeID())) {
+            if ((free.getIban() == listaFreelancers.get(i).getIban()) || (free.getNif() == listaFreelancers.get(i).getNif()) || (free.getFreeID() == listaFreelancers.get(i).getFreeID())) {
                 return false;
             } else {
                 return true;
@@ -38,21 +39,44 @@ public class RegisterFreelancer {
     }
 
     public boolean saveFreelancer(Freelancer free) {
-        return false; //FALTA FAZER O CÓDIGO MONTES DE MERDA!
+        if ((free.validateFreelancer()) && (validateFreelancer(free)) && addFreelancer(free)) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
-    public void addFreelancer(Freelancer free) {
+    public boolean addFreelancer(Freelancer free) {
+        if (!listaFreelancers.contains(free)) {
             listaFreelancers.add(free);
+            return true;
+        } else {
+            return false;
+        }
     }
-    public void removeFreelancer(Freelancer fr){
+
+    public void removeFreelancer(Freelancer fr) {
         listaFreelancers.remove(fr);
     }
-    
-    public List<Freelancer> getListFreelancer(){
+
+    public List<Freelancer> getListFreelancer() {
         return listaFreelancers;
     }
 
     public String generateID() {
-        return new String();
+        String[] nameparts = free.getName().split(" ");
+        String id = String.valueOf(nameparts[0].charAt(0) + nameparts[1].charAt(0)) + 1;
+        int count = 1;
+
+        for (int i = 0; i < listaFreelancers.size(); i++) {
+            if (id.equalsIgnoreCase(listaFreelancers.get(i).getFreeID())) {
+                count++;
+                id = id + count;
+
+            }
+        }
+        return id;
+
     }
 }
