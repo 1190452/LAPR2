@@ -5,10 +5,12 @@
  */
 package Model;
 
+import autorizacao.FacadeAuthorization;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import org.jcp.xml.dsig.internal.dom.Utils;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
@@ -21,7 +23,8 @@ public class RegisterOrganization {
     private ApplicationPOT m_oApp;
     private Platform m_oPlataforma;
     private Organization m_oOrganizacao;
-    private String m_strPwd;
+    private Manager manager;
+    private Collaborator collab;
 
     private List<Organization> lOrg;
 
@@ -32,23 +35,6 @@ public class RegisterOrganization {
         this.m_oApp = ApplicationPOT.getInstance();
         this.m_oPlataforma = m_oApp.getPlatform();
         lOrg = new ArrayList<>();
-    }
-
-    public boolean newOrganization(String name, String NIF, String email, String nameC, String emailC, String passwordC, String nameM, String emailM, String passwordM, TaskList tl) {
-        try {
-            Collaborator Collab = Organization.newCollaborator(nameC, emailC, passwordC);
-            Manager manager = Organization.newManager(nameM, emailM, passwordM);
-            this.m_oOrganizacao = this.m_oPlataforma.newOrganization(name, NIF, email, Collab, manager, tl);
-            return this.m_oPlataforma.validateOrganization(this.m_oOrganizacao, this.m_strPwd);
-        } catch (RuntimeException ex) {
-            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
-            this.m_oOrganizacao = null;
-            return false;
-        }
-    }
-
-    public boolean registerOrganization() {
-        return this.m_oPlataforma.registerOrganization(this.m_oOrganizacao, this.m_strPwd);
     }
 
     public String getOrganizationString() {
@@ -64,11 +50,64 @@ public class RegisterOrganization {
 
     public Organization getOrganizationByUserEmail(String email) {
         for (int i = 0; i < lorgs.size(); i++) {
-            if (email.equalsIgnoreCase(lorgs.get(i).getColab().getEmail())) {
+            if (email.equalsIgnoreCase(lorgs.get(i).getColab().getEmailC())) {
                 return lorgs.get(i);
             }
 
         }
         return null;
+    }
+
+    public Organization newOrganization(String name, String email, String NIF, String street, String doorNumber, String locality, String nameC, String emailC, String phoneNumberC, String nameM, String emailM, String phoneNumberM) {
+        try {
+            Address address = m_oOrganizacao.newAddress(street, doorNumber, locality);
+            String role = Constants.ROLE_MANAGER_ORGANIZATION;
+            manager = Organization.newManager(nameM, emailM, role, phoneNumberM);
+            role = Constants.ROLE_COLLABORATOR_ORGANIZATION;
+            collab = Organization.newCollaborator(nameC, emailC, role, phoneNumberC);
+            Organization org = new Organization(name, email, NIF, address, collab, manager);
+            return org;
+        } catch (RuntimeException ex) {
+            Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
+            this.m_oOrganizacao = null;
+            return null;
+        }
+    }
+
+    public boolean validateOrganization(Organization org) {
+        boolean bRet = true;
+
+        if (org == null) {
+            bRet = false;
+        }
+
+        return bRet;
+    }
+
+    public void registerOrganization(Organization org) {
+        if (validateOrganization(org)) {
+            registUser(manager);
+            registUser(collab);
+        }
+    }
+
+    public void registUser(Manager manager) {
+        String nameM = manager.getNameM();
+        String emailM = manager.getEmailM();
+        PasswordGenerator alg = m_oPlataforma.getAlg();
+        String pwdM = alg.generate(7);
+        String role = manager.getEmailM();
+        FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
+        aut.registUserWithRole(nameM, emailM, pwdM, role);
+    }
+
+    public void registUser(Collaborator collab) {
+        String nameC = collab.getNameC();
+        String emailC = collab.getEmailC();
+        PasswordGenerator alg = m_oPlataforma.getAlg();
+        String pwdC = alg.generate(7);
+        String role = manager.getEmailM();
+        FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
+        aut.registUserWithRole(nameC, emailC, pwdC, role);
     }
 }

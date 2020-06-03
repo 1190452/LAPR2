@@ -28,6 +28,8 @@ public class Platform {
     private ImportTxtFile itxt;
 
     private ImportCsvFile icsv;
+    
+    private PasswordGenerator alg;
 
     public Platform() {
 
@@ -44,24 +46,20 @@ public class Platform {
         return rFree;
     }
 
-    public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager, TaskList tl) {
-        return new Organization(name, NIF, email, colab, manager, tl);
 
-    }
-
-    public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
-        if (this.validateOrganization(oOrganizacao, strPwd)) {
-            Collaborator oGestor = oOrganizacao.getColab();
-            String strNomeGestor = oGestor.getName();
-            String strEmailGestor = oGestor.getEmail();
-            String role = oGestor.getRole();
-            if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd, role)) {
-                return rOrg.addOrganization(oOrganizacao);
-
-            }
-        }
-        return false;
-    }
+//    public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
+//        if (this.validateOrganization(oOrganizacao, strPwd)) {
+//            Collaborator oGestor = oOrganizacao.getColab();
+//            String strNomeGestor = oGestor.getName();
+//            String strEmailGestor = oGestor.getEmail();
+//            String role = oGestor.getRole();
+//            if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd, role)) {
+//                return rOrg.addOrganization(oOrganizacao);
+//
+//            }
+//        }
+//        return false;
+//    }
 
 
     /*private boolean addOrganization(Organization oOrganizacao) {
@@ -70,7 +68,7 @@ public class Platform {
     public boolean validateOrganization(Organization oOrganizacao, String strPwd) {
         boolean bRet = true;
 
-        if (this.m_oAutorizacao.userExists(oOrganizacao.getColab().getEmail())) {
+        if (this.m_oAutorizacao.userExists(oOrganizacao.getColab().getEmailC())) {
             bRet = false;
         }
         if (strPwd == null) {
@@ -126,6 +124,20 @@ public class Platform {
 
         }
         return null;
+    }
+
+    /**
+     * @return the alg
+     */
+    public PasswordGenerator getAlg() {
+        return alg;
+    }
+
+    /**
+     * @param alg the alg to set
+     */
+    public void setAlg(PasswordGenerator alg) {
+        this.alg = alg;
     }
 
 }

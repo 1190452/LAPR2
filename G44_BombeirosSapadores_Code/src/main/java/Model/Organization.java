@@ -6,14 +6,7 @@ package Model;
  */
 public class Organization {
 
-    public static Collaborator newCollaborator(String nameC, String emailC, String pwd) {
-        return new Collaborator(nameC, emailC, pwd);
-    }
-
-    public static Manager newManager(String nameM, String emailM, String pwd) {
-        return new Manager(nameM, emailM, pwd);
-    }
-
+  
     /**
      * The name of the Organization
      */
@@ -28,7 +21,10 @@ public class Organization {
      * The NIF of the Organization
      */
     private String NIF;
-
+    /**
+     * The Address of the Organization
+     */
+    private Address address;
     /**
      * The manager of the Organization
      */
@@ -62,13 +58,13 @@ public class Organization {
      * @param name the name of the Organization
      * @param NIF the NIF of the Organization
      * @param email the email of the Organization
+     * @param address
      * @param colab the collaborator of the Organization
      * @param manager the Manager of the Organization
-     * @param taskList
      */
-    public Organization(String name, String NIF, String email,
-            Collaborator colab, Manager manager, TaskList taskList) {
-        if ((name == null) || (NIF == null) || (email == null) || (colab == null)
+    public Organization(String name, String NIF, String email,Address address,
+            Collaborator colab, Manager manager) {
+        if ((name == null) || (NIF == null) || (email == null) || (address==null) || (colab == null)
                 || (manager == null) || (name.isEmpty()) || (NIF.isEmpty())
                 || (email.isEmpty())) {
             throw new IllegalArgumentException("No argument can be null.");
@@ -77,6 +73,7 @@ public class Organization {
         this.name = name;
         this.NIF = NIF;
         this.email = email;
+        this.address = address;
         this.colab = colab;
         this.manager = manager;
         this.taskList = taskList;
@@ -101,6 +98,7 @@ public class Organization {
         this.name = NAME_BY_OMISSION;
         this.NIF = NIF_BY_OMISSION;
         this.email = EMAIL_BY_OMISSION;
+        this.address = new Address();
         this.colab = new Collaborator();
         this.manager = new Manager();
         this.taskList = new TaskList();
@@ -206,5 +204,31 @@ public class Organization {
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
     }
+
+    public Address newAddress(String street, String doorNumber, String locality) {
+        return new Address(street,doorNumber,locality);
+    }
+    public static Collaborator newCollaborator(String nameC, String emailC, String role, String phoneNumberC) {
+        return new Collaborator(nameC, emailC, role, phoneNumberC);
+    }
+
+    public static Manager newManager(String nameM, String emailM, String role, String phoneNumberM) {
+        return new Manager(nameM, emailM, role, phoneNumberM);
+    }
+
+    /**
+     * @return the address
+     */
+    public Address getAddress() {
+        return address;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
 
 }

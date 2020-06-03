@@ -19,6 +19,7 @@ public class Freelancer {
     private String country;
     private String iban;
     private Address address;
+    private PaymentList pl;
 
     private static final String freeIDPorOmissao = "whitout id";
     private static final String namePorOmissao = "whitout name";
@@ -37,6 +38,7 @@ public class Freelancer {
         this.nif = nifPorOmissao;
         this.email = emailPorOmissao;
         this.address = new Address();
+        this.pl = new PaymentList();
     }
 
     public Freelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, Address address) {
@@ -48,12 +50,14 @@ public class Freelancer {
         this.name = name;
         this.nif = nif;
         this.address = address;
+        this.pl = new PaymentList(); 
+             
 
     }
 
     public Boolean validateFreelancer() {
-        if ((freeID == null) || (name == null) || (levelExp == null) || (email == null) || (nif == null) || (iban == null) || (country == null) || (address == null)
-                || (freeID.isEmpty()) || (name.isEmpty()) || (levelExp.isEmpty()) || (email.isEmpty()) || (nif.isEmpty()) || (iban.isEmpty()) || (country.isEmpty())) {
+        if ((freeID == null) || (name == null) || (levelExp == null) || (email == null) || (nif == null) || (iban == null) || (getCountry() == null) || (address == null)
+                || (freeID.isEmpty()) || (name.isEmpty()) || (levelExp.isEmpty()) || (email.isEmpty()) || (nif.isEmpty()) || (iban.isEmpty()) || (getCountry().isEmpty())) {
             return false;
         } else {
             return true;
@@ -88,6 +92,48 @@ public class Freelancer {
 
     public String getName() {
         return name;
+    }
+
+    /**
+     * @return the country
+     */
+    public String getCountry() {
+        return country;
+    }
+
+    /**
+     * @param country the country to set
+     */
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    /**
+     * @return the pl
+     */
+    public PaymentList getPl() {
+        return pl;
+    }
+
+    /**
+     * @param pl the pl to set
+     */
+    public void setPl(PaymentList pl) {
+        this.pl = pl;
+    }
+    
+    public boolean addPayment(Payment p){
+        if(p== null){
+            return false;
+        }
+       
+        
+        pl.addPayment(p);
+        return true;
+    }
+    
+    public PaymentList getPaymentList(){
+        return new PaymentList(pl.getPaymentList());
     }
 
 }

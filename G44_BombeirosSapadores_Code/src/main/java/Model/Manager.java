@@ -6,26 +6,36 @@
 package Model;
 
 import autorizacao.model.User;
-import java.util.Objects;
 
 /**
  *
  * @author OMEN X
  */
-public class Manager extends User{
+public class Manager {
+
+    private String nameM;
+    private String emailM;
+    private String role;
+    private String phoneNumberM;
 
     /**
      * Builds an instance of Manager that receives name, email and password
      *
-     * @param name
-     * @param email
-     * @param password
+     * @param nameM
+     * @param emailM
+     * @param role
+     * @param phoneNumberM
      */
-    public Manager(String name, String email, String password) {
-       super(name, email, password,"MANAGER");
+    public Manager(String nameM, String emailM, String role, String phoneNumberM) {
+        this.nameM = nameM;
+        this.emailM = emailM;
+        this.role = role;
+        this.phoneNumberM = phoneNumberM;
+
     }
-    public Manager(){
-        
+
+    public Manager() {
+
     }
 
     /**
@@ -34,13 +44,72 @@ public class Manager extends User{
      * @param otherManager
      */
     public Manager(Manager otherManager) {
-        super(otherManager.getName(), otherManager.getEmail(), otherManager.getPassword(), otherManager.getRole());
+        nameM = otherManager.getNameM();
+        emailM = otherManager.getEmailM();
+        role = otherManager.getRole();
+        phoneNumberM = otherManager.getPhoneNumberM();
+    }
 
+    /**
+     * @return the nameM
+     */
+    public String getNameM() {
+        return nameM;
+    }
+
+    /**
+     * @param nameM the nameM to set
+     */
+    public void setNameM(String nameM) {
+        this.nameM = nameM;
+    }
+
+    /**
+     * @return the emailM
+     */
+    public String getEmailM() {
+        return emailM;
+    }
+
+    /**
+     * @param emailM the emailM to set
+     */
+    public void setEmailM(String emailM) {
+        this.emailM = emailM;
+    }
+
+    /**
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    /**
+     * @param role the role to set
+     */
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    /**
+     * @return the phoneNumberM
+     */
+    public String getPhoneNumberM() {
+        return phoneNumberM;
+    }
+
+    /**
+     * @param phoneNumberM the phoneNumberM to set
+     */
+    public void setPhoneNumberM(String phoneNumberM) {
+        this.phoneNumberM = phoneNumberM;
     }
 
     @Override
     public String toString() {
-        return super.toString();
-
+        return String.format("Nome: %s \nEmail: %s \nRole: %s \nPhone Number: %s", nameM, emailM, role, phoneNumberM);
     }
 }
+
+
