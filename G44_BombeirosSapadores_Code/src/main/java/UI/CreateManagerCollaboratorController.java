@@ -1,34 +1,20 @@
-package UI;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
  *
  * @author jorge
  */
-public class MenuCollaboratorController implements Initializable {
-
-    @FXML
-    private Button bt_createT;
-    @FXML
-    private Button bt_registHT;
-    @FXML
-    private Button bt_checkS;
-    @FXML
-    private Button bt_createPT;
-    @FXML
-    private Button bt_createF;
+public class CreateManagerCollaboratorController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -37,7 +23,5 @@ public class MenuCollaboratorController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
-    
     
 }

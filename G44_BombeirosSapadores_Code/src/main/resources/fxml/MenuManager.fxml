@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
@@ -12,7 +13,7 @@
    <top>
       <AnchorPane prefHeight="66.0" prefWidth="600.0" style="-fx-background-color: #ff9933;" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="215.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu Manager">
+            <Text fill="WHITE" layoutX="215.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu Manager">
                <font>
                   <Font size="25.0" />
                </font>
@@ -21,10 +22,10 @@
       </AnchorPane>
    </top>
    <center>
-      <AnchorPane prefHeight="250.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="250.0" prefWidth="600.0" style="-fx-background-color: #233640;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btn_checkS" layoutX="252.0" layoutY="93.0" mnemonicParsing="false" text="Check statistics" />
-            <Button fx:id="btn_definePH" layoutX="236.0" layoutY="167.0" mnemonicParsing="false" text="Define Payment Hour" />
+            <Button id="sale" fx:id="btn_checkS" layoutX="237.0" layoutY="83.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="127.0" stylesheets="@../styles/stylesheet.css" text="Check statistics" />
+            <Button id="sale" fx:id="btn_definePH" layoutX="218.0" layoutY="167.0" mnemonicParsing="false" stylesheets="@../styles/stylesheet.css" text="Define Payment Hour" />
          </children>
       </AnchorPane>
    </center>

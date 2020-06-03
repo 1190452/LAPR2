@@ -273,6 +273,24 @@
  
 }
 
+
+#orangeline {
+    -fx-text-fill: orange;
+    -fx-font-family: "Verdana";
+    -fx-font-weight: bold;
+   -fx-border-color: orange;
+   -fx-background-color:null;
+}
+
+#orangeline:hover{     
+  -fx-background-color: orange;
+  -fx-text-fill:white;
+  -fx-font-weight:bold; 
+ 
+}
+
+
+
 /*-------------------------------------------------------------------------------------------------------------------------------------*/
 
 #yellow {
