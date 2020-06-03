@@ -1,13 +1,13 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class POTAplication
+class ApplicationPOT
 {
   +static getInstance()
   +getLogin()
 }
 
-class Login
+class UserLogin
 {
   +getUserEmail()
 }
@@ -57,8 +57,8 @@ CreateTaskUI ..> CreateTaskController
 CreateTaskController ..> Plataform
 CreateTaskController ..> Task
 CreateTaskController ..> Organization
-CreateTaskController ..> POTAplication
-CreateTaskController ..> Login
+CreateTaskController ..> ApplicationPOT
+CreateTaskController ..> UserLogin
 Plataform "1" --> "1" OrganizationRegister : has
 OrganizationRegister "1" --> "*" Organization : has
 Organization "1" --> "1" TaskList : has

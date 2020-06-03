@@ -4,47 +4,12 @@ autonumber
 participant "Payment" as PA
 
 participant "nltr\nList<Transaction>" as NLTR
-participant "tr\n:Transaction" as T
-participant "ts :Task" as TA
 participant "Receipt" as R
 participant "Writer" as W
 
 [o-> PA : generateReceipt(country)
 activate PA
-loop [for every transaction]
 
-PA -> NLTR : tr = get(i)
-activate NLTR
-deactivate NLTR
-
-PA -> T : ts = getTask()
-activate T
-deactivate T
-
-PA -> TA : costHour = getCostHour()
-activate TA
-deactivate TA
-
-PA -> TA : timeDuration = getTimeDuration()
-activate TA
-deactivate TA
-
-PA -> PA : valueE = calculate(timeDuration, costHour)
-
-PA -> T : setValueE(valueE)
-activate T
-deactivate T
-
-PA -> PA : valueC = calculateInCurrency(valueE, country)
-
-PA -> T : setValueC(valueC)
-activate T
-deactivate T
-
-end loop
-
-PA -> PA : sum = getSum()
-PA -> PA : curr = getCurr()
 
 PA --> R** : create(nltr, sum, curr)
 

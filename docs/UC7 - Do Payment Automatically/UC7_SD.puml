@@ -5,6 +5,8 @@ participant ":Plataform" as PLAT
 participant "task\n:DoPaymentTask" as TASK
 participant "t\n:timer" as TI
 participant "RegistOrganizations" as RORGS
+participant "Date" as D
+participant "Time" as T
 participant "lo\n:List<Organazation>" as LO
 participant "org\n:Organization" as O
 participant "def\n:DefinePayment" as DP
@@ -15,6 +17,7 @@ participant "def\n:DefinePayment" as DP
 activate PLAT
 
 PLAT --> TASK** : create( )
+
 
 
 PLAT -> RORGS : lo = getLO()
@@ -37,12 +40,10 @@ PLAT -> DP : nrDays = getNrDays()
 activate DP
 deactivate DP
 
-
 PLAT -> PLAT : period = calculatePeriod(nrDays)
 
-PLAT -> PLAT : present = getTime()
 
-PLAT -> PLAT : interval = calculateDiference(present, date, time)
+PLAT -> PLAT : interval = calculatedifference(date, time)
 
 
 PLAT --> TI** : create( )

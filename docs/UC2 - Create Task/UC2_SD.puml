@@ -5,9 +5,9 @@ actor "Collaborator" as ADM
 
 participant ":CreateTaskUI" as UI
 participant ":CreateTaskController" as CTRL
-participant "POTAplication" as _APP
-participant "app\n:POTAplication" as APP
-participant "log\n:Login" as SESSAO
+participant "ApplicationPOT" as _APP
+participant "app\n:ApplicationPOT" as APP
+participant "log\n:UserSession" as SESSAO
 participant ":Plataform" as PLAT
 participant "rorgs:Organization\nRegister" as RORGS
 participant "org\n:Organization" as ORG
@@ -43,7 +43,7 @@ CTRL -> PLAT : rorgs = getOrganizaionRegister()
 activate PLAT
 deactivate PLAT
 
-CTRL -> RORGS : org = getOrganizationByUserEmail()
+CTRL -> RORGS : org = getOrganizationByUserEmail(email)
 activate RORGS
 deactivate RORGS
 

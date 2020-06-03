@@ -5,7 +5,7 @@ left to right direction
 class Platform{
     +calculatePeriod(nrDays)
     +getTime()
-    +calculateDiference(present, date, time)
+    +calculateDifference(date, time)
 }
 
 class DoPaymentTask{

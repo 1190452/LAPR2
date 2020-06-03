@@ -72,10 +72,14 @@ TASK -> RT : ltr = getltr()
 activate RT
 deactivate RT
 
+TASK --> NLTR** : create()
+
 
 loop [for every Freelancer]
 
-TASK --> NLTR** : create()
+TASK --> NLTR : removeAll()
+activate NLTR
+deactivate NLTR
 
 TASK -> LF : freel = getFreelancer(i)
 activate LF
@@ -106,18 +110,12 @@ activate NLTR
 deactivate NLTR
 
 
+TASK -> TR : value = getTransactionValue()
+activate TR
+deactivate TR
 
+TASK -> TASK : sum = addThisValue(value)
 
-TASK -> T : costHour = getCostHour()
-activate T
-deactivate T
-
-TASK -> T : timeDuration = getTimeDuration()
-activate T
-deactivate T
-TASK -> TASK : calc = calculateCost(costHour, timeDuration)
-
-TASK -> TASK : sum += calc
 
 end opt
 end loop
@@ -132,6 +130,14 @@ TASK -> TASK : curr = convertToCurrency(sum, country)
 
 
 TASK --> PA** : create(sum, curr, nltr)
+
+activate PA
+PA -> PA : validatePay()
+deactivate PA
+
+TASK -> F : addPayment(p)
+activate F
+deactivate F
 
 TASK -> W : writeOrg(org, sum, curr)
 activate W
