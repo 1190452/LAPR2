@@ -34,7 +34,6 @@ public class ImportCsvFile implements ImportFile, Serializable {
             try {
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] temp = line.split(";");
-                    String idTrans = temp[0];
                     String idTask = temp[1];
                     String descriptionTask = temp[2];
                     int taskDuration = Integer.parseInt(temp[3]);
@@ -60,7 +59,7 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     rf.addFreelancer(fr);
                     Task t = new Task(idTask, descriptionTask, taskDuration, taskCost, taskCategory);
                     tl.addTask(t);
-                    ht.addHistoricalTransaction(new Transaction(idTrans, t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
+                    ht.addHistoricalTransaction(new Transaction( t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
                     return ht;
 
                 }

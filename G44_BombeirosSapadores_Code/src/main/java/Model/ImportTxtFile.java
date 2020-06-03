@@ -32,7 +32,6 @@ public class ImportTxtFile implements ImportFile, Serializable {
             tl = new TaskList();
             try {
                 while (sc.hasNext()) {
-                    String transID = sc.next().trim();
                     String taskID = sc.next().trim();
                     String taskDescrip = sc.next().trim();
                     int timeTask = Integer.parseInt(sc.next().trim());
@@ -57,7 +56,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     rf.addFreelancer(fr);
                     Task t = new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask);
                     tl.addTask(t);
-                    ht.addHistoricalTransaction(new Transaction(transID, t, fr, new TaskExecution(new Date(ano, mes, dia), delay, descripOFQuality)));
+                    ht.addHistoricalTransaction(new Transaction(t, fr, new TaskExecution(new Date(ano, mes, dia), delay, descripOFQuality)));
                     return ht;
                 }
 
