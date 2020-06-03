@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MenuCollaboratorController">
+   <top>
+      <AnchorPane prefHeight="66.0" prefWidth="600.0" style="-fx-background-color: #ff9933;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="196.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Collaborator Menu">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffd27f;" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="sale" fx:id="bt_createT" layoutX="429.0" layoutY="77.0" mnemonicParsing="false" stylesheets="@../styles/stylesheet.css" text="Create Task" />
+            <Button id="sale" fx:id="bt_registHT" layoutX="321.0" layoutY="182.0" mnemonicParsing="false" stylesheets="@../styles/stylesheet.css" text="Regist Historical Transactions " />
+            <Button id="sale" fx:id="bt_checkS" layoutX="243.0" layoutY="77.0" mnemonicParsing="false" stylesheets="@../styles/stylesheet.css" text="Check Statistics" />
+            <Button id="sale" fx:id="bt_createPT" layoutX="54.0" layoutY="182.0" mnemonicParsing="false" stylesheets="@../styles/stylesheet.css" text="Create Payment Transaction" />
+            <Button id="sale" fx:id="bt_createF" layoutX="54.0" layoutY="77.0" mnemonicParsing="false" stylesheets="@../styles/stylesheet.css" text="Create Freelancer" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

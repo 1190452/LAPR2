@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: #ff9933;" BorderPane.alignment="CENTER">
          <children>
@@ -23,9 +23,9 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="305.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="49.0" layoutY="146.0" promptText="User name" style="-fx-background-color: transparent; -fx-border-color: #ffcc99; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField layoutX="51.0" layoutY="217.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #ffcc99; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button layoutX="91.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #ffcc99;" text="Login" />
+            <TextField fx:id="txtFieldUsername" layoutX="49.0" layoutY="146.0" promptText="User name" style="-fx-background-color: transparent; -fx-border-color: #ffcc99; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="txtFieldPassword" layoutX="51.0" layoutY="205.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #ffcc99; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="loginBtn" layoutX="91.0" layoutY="277.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #ffcc99;" text="Login" />
             <ImageView fitHeight="26.0" fitWidth="25.0" layoutX="18.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../images/person-icon-png-4-transparent.png" />
@@ -41,7 +41,7 @@
                   <Font size="23.0" />
                </font>
             </Text>
-            <Button layoutX="229.0" layoutY="12.0" minHeight="4.0" minWidth="4.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="13.0">
+            <Button fx:id="exitBtn" layoutX="229.0" layoutY="12.0" minHeight="4.0" minWidth="4.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="13.0">
                <graphic>
                   <ImageView fitHeight="13.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -5,10 +5,18 @@
  */
 package Controller;
 
+import Model.Organization;
+
 /**
  *
  * @author jorge
  */
 public class RegistOrganizationController {
+    
+    Organization organization;
+    
+    public void CreateOrganization() {
+        
+    }
     
 }

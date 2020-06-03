@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MenuManagerController">
+   <top>
+      <AnchorPane prefHeight="66.0" prefWidth="600.0" style="-fx-background-color: #ff9933;" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="215.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu Manager">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="250.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btn_checkS" layoutX="252.0" layoutY="93.0" mnemonicParsing="false" text="Check statistics" />
+            <Button fx:id="btn_definePH" layoutX="236.0" layoutY="167.0" mnemonicParsing="false" text="Define Payment Hour" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
