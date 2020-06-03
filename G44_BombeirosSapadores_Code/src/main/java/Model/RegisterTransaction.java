@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Utils.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
  */
 public class RegisterTransaction {
 
+    private Transaction transaction;
     private List<Transaction> historicalTransaction;
 
     public RegisterTransaction() {
@@ -34,5 +36,30 @@ public class RegisterTransaction {
 
     public boolean validateHistoricalTransaction(List<Transaction> lt) {
         return !lt.isEmpty();
+    }
+
+    public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+        TaskExecution tascExec = transaction.createTaskExecution(endDate, delay, qow);
+        return new Transaction(task, freel, tascExec);
+    }
+
+    
+    
+    public boolean registerTransaction(Transaction trans) {
+        if(validateTransaction(trans)==true){
+            return addTransaction(trans);
+        }
+        return false;
+    }
+    
+    public boolean validateTransaction(Transaction trans){
+       if(historicalTransaction.contains(trans)){
+            return false;
+        }
+       return true; 
+    }
+    
+    public boolean addTransaction(Transaction trans){
+        return historicalTransaction.add(trans);
     }
 }

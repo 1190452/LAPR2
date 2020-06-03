@@ -5,6 +5,13 @@
  */
 package Model;
 
+import Utils.Date;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 /**
  *
  * @author tiagopereira
@@ -24,10 +31,16 @@ public class Transaction {
         this.taskEx = taskEx;
     }
     
+    public Transaction(Task task, Freelancer freel,TaskExecution taskEx){
+        this.task = task;
+        this.freel = freel;
+        this.taskEx = taskEx;
+    }
+    
     public Transaction(){
         transID = TRANSID_OMISSION;
         task = new Task();
-    //    freel = new Freelancer();
+        freel = new Freelancer();
         taskEx = new TaskExecution();
         
     }
@@ -86,6 +99,10 @@ public class Transaction {
      */
     public void setTaskEx(TaskExecution taskEx) {
         this.taskEx = taskEx;
+    }
+
+    public TaskExecution createTaskExecution(Date endDate, double delay, String qow) {
+       return new TaskExecution(endDate, delay, qow);
     }
     
 }

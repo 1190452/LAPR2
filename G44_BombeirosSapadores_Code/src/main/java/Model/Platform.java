@@ -23,7 +23,7 @@ public class Platform {
 
     private RegisterUser rUser;
 
-    private RegisterTransaction ht;
+    private RegisterTransaction rTrans;
 
     private ImportTxtFile itxt;
 
@@ -114,18 +114,27 @@ public class Platform {
 
     public List<Transaction> loadHistoricalTransaction(String fileName) {
         if (fileName.endsWith(".txt")) {
-            ht = itxt.importFile(fileName);
-            List<Transaction> lt = ht.getTransactions();
+            rTrans = itxt.importFile(fileName);
+            List<Transaction> lt = getRTrans().getTransactions();
             return lt;
         } else if (fileName.endsWith(".csv")) {
-            ht = icsv.importFile(fileName);
-            List<Transaction> lt = ht.getTransactions();
-            if (ht.validateHistoricalTransaction(lt)) {
+            rTrans = icsv.importFile(fileName);
+            List<Transaction> lt = getRTrans().getTransactions();
+            if (getRTrans().validateHistoricalTransaction(lt)) {
                 return lt;
             }
 
         }
         return null;
     }
+
+    /**
+     * @return the rTrans
+     */
+    public RegisterTransaction getRTrans() {
+        return rTrans;
+    }
+    
+    
 
 }
