@@ -12,11 +12,11 @@ import java.util.List;
  *
  * @author paulomaio
  */
-public class AuthorazationController
+public class AuthorizationController
 {
     private ApplicationPOT m_oApp;
     
-    public AuthorazationController()
+    public AuthorizationController()
     {
         this.m_oApp = ApplicationPOT.getInstance();
     }
