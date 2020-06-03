@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Utils.Date;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.RegisterUser;
 import java.util.List;
@@ -128,6 +129,14 @@ public class Platform {
      */
     public PasswordGenerator getAlg() {
         return alg;
+    }
+    public void scheduleProcess(){
+        Date date = getLastDayDate();
+        // SendEmailFreelTask task = new SendEmailFreelTask();
+    }
+    
+    public Date getLastDayDate(){
+        return new Date(12,31);
     }
 
     /**

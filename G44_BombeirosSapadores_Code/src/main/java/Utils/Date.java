@@ -56,6 +56,10 @@ public class Date implements Comparable<Date> {
     private static String[] nameMonth = {"Invalid", "January", "February",
         "March", "April", "May", "June", "July", "August", "September",
         "October", "November", "December"};
+     public Date( int month, int day) {
+        this.month = month;
+        this.day = year;
+    }
 
     /**
      * Builds an instance of Date receiving the year, the mês and the day.
