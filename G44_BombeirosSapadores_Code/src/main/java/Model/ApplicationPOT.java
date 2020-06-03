@@ -1,7 +1,7 @@
  /** To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Model;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,8 +9,6 @@ import java.io.InputStream;
 import java.util.Properties;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.UserSession;
-import Model.Constants;
-import Model.Platform;
 
 /**
  *

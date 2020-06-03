@@ -225,7 +225,7 @@ public class Task {
      */
     public String toString() {
         return String.format("Task %s, description: %s, cost per hour: %s, "
-                + "category: %s", idTask, description, costHour, getTaskCategory());
+                + "category: %s", idTask, description, costHour, taskCategory);
     }
 
     

@@ -18,38 +18,34 @@ public class Platform {
 
     private final FacadeAuthorization m_oAutorizacao;
 
-    private final Set<Organization> m_lstOrganizacoes;
-    
+    private RegisterOrganization rOrg;
+
     private RegisterFreelancer rFree;
-    
+
     private RegisterUser rUser;
 
     public Platform() {
 
         this.m_oAutorizacao = new FacadeAuthorization();
-
-        this.m_lstOrganizacoes = new HashSet<>();
+        rOrg = new RegisterOrganization();
+        rFree = new RegisterFreelancer();
     }
 
     public FacadeAuthorization getFacadeAuthorazation() {
         return this.m_oAutorizacao;
     }
 
-
-
-    public RegisterFreelancer getRfree(){
+    public RegisterFreelancer getRfree() {
         return rFree;
-   }
+    }
     // Organizações
     // <editor-fold defaultstate="collapsed">
 
-   
     public Organization newOrganization(String name, String NIF, String email, Collaborator colab, Manager manager, TaskList tl) {
-        return new Organization(name, NIF, email, colab, manager,tl);
+        return new Organization(name, NIF, email, colab, manager, tl);
 
     }
-    
-    
+
     public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
         if (this.validateOrganization(oOrganizacao, strPwd)) {
             Collaborator oGestor = oOrganizacao.getColab();
@@ -57,16 +53,17 @@ public class Platform {
             String strEmailGestor = oGestor.getEmail();
             String role = oGestor.getRole();
             if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd, role)) {
-                return addOrganization(oOrganizacao);
+                return rOrg.addOrganization(oOrganizacao);
+
             }
         }
         return false;
     }
 
-    private boolean addOrganization(Organization oOrganizacao) {
-        return m_lstOrganizacoes.add(oOrganizacao);
-    }
 
+    /*private boolean addOrganization(Organization oOrganizacao) {
+    return m_lstOrganizacoes.add(oOrganizacao);
+    }*/
     public boolean validateOrganization(Organization oOrganizacao, String strPwd) {
         boolean bRet = true;
 
@@ -96,6 +93,20 @@ public class Platform {
      */
     public void setrUser(RegisterUser rUser) {
         this.rUser = rUser;
+    }
+
+    /**
+     * @return the rOrg
+     */
+    public RegisterOrganization getrOrg() {
+        return rOrg;
+    }
+
+    /**
+     * @param rOrg the rOrg to set
+     */
+    public void setrOrg(RegisterOrganization rOrg) {
+        this.rOrg = rOrg;
     }
 
 }
