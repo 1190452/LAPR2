@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import org.jcp.xml.dsig.internal.dom.Utils;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
@@ -99,6 +98,7 @@ public class RegisterOrganization {
         String role = manager.getEmailM();
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registUserWithRole(nameM, emailM, pwdM, role);
+        Writter.sendsPassword(emailM, pwdM);
     }
 
     public void registUser(Collaborator collab) {
@@ -109,5 +109,6 @@ public class RegisterOrganization {
         String role = manager.getEmailM();
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registUserWithRole(nameC, emailC, pwdC, role);
+        Writter.sendsPassword(emailC, pwdC);
     }
 }
