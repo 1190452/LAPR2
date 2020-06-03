@@ -6,6 +6,7 @@
 package Model;
 
 import autorizacao.FacadeAuthorization;
+import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
@@ -83,14 +84,17 @@ public class RegisterOrganization {
         return bRet;
     }
 
-    public void registerOrganization(Organization org) {
+    public boolean registerOrganization(Organization org) throws FileNotFoundException {
         if (validateOrganization(org)) {
             registUser(manager);
             registUser(collab);
+            addOrganization(org);
+            return true;
         }
+        return false;
     }
 
-    public void registUser(Manager manager) {
+    public void registUser(Manager manager) throws FileNotFoundException {
         String nameM = manager.getNameM();
         String emailM = manager.getEmailM();
         PasswordGenerator alg = m_oPlataforma.getAlg();
@@ -101,7 +105,7 @@ public class RegisterOrganization {
         Writter.sendsPassword(emailM, pwdM);
     }
 
-    public void registUser(Collaborator collab) {
+    public void registUser(Collaborator collab) throws FileNotFoundException {
         String nameC = collab.getNameC();
         String emailC = collab.getEmailC();
         PasswordGenerator alg = m_oPlataforma.getAlg();
