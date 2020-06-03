@@ -5,13 +5,34 @@ actor "Manager" as ADM
 
 participant ":PaymentUI" as UI
 participant ":DefinePaymentController" as CTRL
-participant "pay:Payment" as PAY
+participant "Platform" as P
+participant "rorgs\n:RegisterOrganization" as RO
+participant "org\n:Organization" as O
 participant "dpay:DefinePayment" as DPAY
+
 
 
 activate ADM
 ADM -> UI : The manager of the organization selects the processment cycle of payment transactions.
 activate UI
+
+UI -> CTRL : getOrg()
+activate CTRL
+
+
+CTRL -> P : rorgs = getRorgs()
+activate P
+deactivate P
+
+
+CTRL -> RO : org = getOrganizationByUserEmail(email)
+activate RO
+deactivate RO
+
+
+
+deactivate CTRL
+
 UI --> ADM : The System asks for the day of the month, the time of the day and the recurrence time period (e.g. 7 days).
 deactivate UI
 
@@ -22,18 +43,14 @@ UI -> CTRL : newDefinePayment(time, date, nrDays)
 activate CTRL
 
 
-CTRL -> PAY : payments = getPayments()
-activate PAY
-deactivate PAY
+CTRL -> O : define = newDefinePayment(time, date, nrDays)
+activate O
+O -> DPAY** : create(time, date, nrDays)
+deactivate O
 
-CTRL -> PAY : define = newDefinePayment(time, date, nrDays)
-activate PAY
-PAY -> DPAY** : create(time, date, nrDays)
-deactivate PAY
-
-CTRL -> PAY : validatesDefinePayment(define)
-activate PAY
-deactivate PAY
+CTRL -> O : validatesDefinePayment(define)
+activate O
+deactivate O
 
 deactivate CTRL
 
@@ -49,8 +66,11 @@ activate CTRL
 CTRL -> DPAY : registersDefinePayment(define)
 activate DPAY
 DPAY -> DPAY : validatesDefinePayment(define)
-DPAY -> DPAY : addDefinePayment(define)
 deactivate DPAY
+CTRL -> O : setDefinePayment(define)
+activate O
+deactivate O
+
 deactivate CTRL
 
 UI -> ADM : informs about the success of the operation

@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Controller.DoPaymentTask;
 import Utils.Date;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.RegisterUser;
@@ -15,7 +16,7 @@ import java.util.List;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Platform {
-
+    
     private final FacadeAuthorization m_oAutorizacao;
 
     private RegisterOrganization rOrg;
@@ -31,6 +32,8 @@ public class Platform {
     private ImportCsvFile icsv;
 
     private PasswordGenerator alg;
+    
+    private DoPaymentTask dpt;
 
     public Platform() {
 
@@ -152,5 +155,15 @@ public class Platform {
     public RegisterTransaction getRTrans() {
         return rTrans;
     }
-
+    
+    
+    public void schedulesPayment(){
+        dpt = new DoPaymentTask();
+        
+        for (int i = 0; i < rOrg.get().size(); i++) {
+            Organization org = rOrg.get().get(i);
+            DefinePayment dp = org.
+            
+        }
+    }
 }

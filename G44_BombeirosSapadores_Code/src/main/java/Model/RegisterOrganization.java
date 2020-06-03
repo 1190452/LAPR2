@@ -111,4 +111,8 @@ public class RegisterOrganization {
         aut.registUserWithRole(nameC, emailC, pwdC, role);
         Writter.sendsPassword(emailC, pwdC);
     }
+    
+    public List<Organization> get(){
+        return lorgs;
+    } 
 }
