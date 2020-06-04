@@ -5,7 +5,9 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,14 +15,14 @@ import java.util.Set;
  * @author tiagopereira
  */
 public class PaymentList {
-    private Set<Payment> paymentList;
+    private List<Payment> paymentList;
 
     public PaymentList() {
-        paymentList = new HashSet<>();
+        paymentList = new ArrayList<>();
     }
     
     public PaymentList(Set<Payment> l){
-        paymentList = new HashSet<>(l);
+        paymentList = new ArrayList<>(l);
         
     }
     
@@ -32,7 +34,7 @@ public class PaymentList {
        paymentList.remove(t);
    }
    
-   public Set<Payment> getPaymentList(){
+   public List<Payment> getPaymentList(){
        return paymentList;
    }
 }
