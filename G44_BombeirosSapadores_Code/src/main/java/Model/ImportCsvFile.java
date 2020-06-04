@@ -31,6 +31,7 @@ public class ImportCsvFile implements ImportFile, Serializable {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line = null;
+
             try {
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] temp = line.split(";");
