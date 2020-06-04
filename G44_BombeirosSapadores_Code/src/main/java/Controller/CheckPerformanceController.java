@@ -13,6 +13,7 @@ import Model.RegisterFreelancer;
 import Model.Task;
 import Model.Transaction;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -138,7 +139,8 @@ public class CheckPerformanceController {
             System.out.println("Delay Deviation: " + deviationAllFreel + "\nAverage Delay: " + averageDelayOfAllFreelancers);
             //SHOW HISTOGRAM
             
-
+            Random r = new Random();
+            double value = r.nextGaussian()*1.5+2;
         }
     }
 
