@@ -41,13 +41,11 @@ public class Task {
     /**
      * the Task status by being finished
      */
-<<<<<<< HEAD
+
     private boolean isFinished;
-=======
-    boolean isFinished;
     
     private TaskExecution texec;
->>>>>>> d94a14f614f8a00f4d588354d0042c3a0e06e009
+
 
     /**
      * The id of the Task per omission

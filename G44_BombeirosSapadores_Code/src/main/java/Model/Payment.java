@@ -78,7 +78,7 @@ public class Payment {
     }
     
     public boolean validatePay(){
-        
+        return true;
     }
     
     
