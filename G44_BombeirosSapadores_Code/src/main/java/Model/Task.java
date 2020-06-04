@@ -42,6 +42,8 @@ public class Task {
      * the Task status by being finished
      */
     boolean isFinished;
+    
+    private TaskExecution texec;
 
     /**
      * The id of the Task per omission
@@ -83,6 +85,7 @@ public class Task {
         this.taskCategory = taskCategory;
         this.isPayed = isPayed;
         this.isFinished = isFinished;
+        this.texec = new TaskExecution();
     }
 
     public Task(String idTask, String description, int timeTask, double costHour, String taskCategory) {
@@ -91,6 +94,7 @@ public class Task {
         this.timeTask = timeTask;
         this.costHour = costHour;
         this.taskCategory = taskCategory;
+        this.texec = new TaskExecution();
     }
 
     /**
@@ -104,6 +108,7 @@ public class Task {
         taskCategory = CATEGORY_BY_OMISSION;
         isPayed = false;
         isFinished = false;
+        this.texec = new TaskExecution();
     }
 
     /**
@@ -119,6 +124,7 @@ public class Task {
         taskCategory = otherTask.taskCategory;
         isPayed = otherTask.isPayed;
         isFinished = otherTask.isFinished;
+        texec = otherTask.texec;
     }
 
     /**
@@ -226,6 +232,20 @@ public class Task {
     public String toString() {
         return String.format("Task %s, description: %s, cost per hour: %s, "
                 + "category: %s", idTask, description, costHour, taskCategory);
+    }
+
+    /**
+     * @return the texec
+     */
+    public TaskExecution getTexec() {
+        return texec;
+    }
+
+    /**
+     * @param texec the texec to set
+     */
+    public void setTexec(TaskExecution texec) {
+        this.texec = texec;
     }
 
     
