@@ -16,7 +16,7 @@ import java.io.PrintWriter;
  *
  * @author brunopereira
  */
-public class Writter {
+public class Writer {
 
     public static void sendsPassword(String email, String pwd) throws FileNotFoundException {
         try {
@@ -32,6 +32,7 @@ public class Writter {
             System.out.println("File not found!");
         }
     }
+<<<<<<< HEAD:G44_BombeirosSapadores_Code/src/main/java/Model/Writter.java
 
     public static void writeOrg(Organization org, double sum) {
         try {
@@ -43,5 +44,20 @@ public class Writter {
             e.printStackTrace();
         }
         
+=======
+    public static void sendEmail(Freelancer free) throws FileNotFoundException {
+        try {
+            PrintWriter out = new PrintWriter(new File("Emails.txt"));
+            try {
+                out.println("Email of your account: " + free.getEmail());
+                out.println(String.format("%s your task Delay is better than 3 and better than the overall task Delay ", free.getName()));
+                out.close();
+            } finally {
+                out.close();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+        }
+>>>>>>> 581da82fd9bb12f8a95854189260abcadf25afd1:G44_BombeirosSapadores_Code/src/main/java/Model/Writer.java
     }
 }

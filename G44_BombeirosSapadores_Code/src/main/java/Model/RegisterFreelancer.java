@@ -16,6 +16,7 @@ public class RegisterFreelancer {
 
     private List<Freelancer> listaFreelancers;
     private Freelancer free;
+    double delayProb;
 
     public RegisterFreelancer() {
         this.listaFreelancers = new ArrayList();
@@ -60,7 +61,7 @@ public class RegisterFreelancer {
         listaFreelancers.remove(fr);
     }
 
-    public List<Freelancer> getListFreelancer() {
+    public List<Freelancer> getListFreelancers() {
         return listaFreelancers;
     }
 
@@ -95,4 +96,10 @@ public class RegisterFreelancer {
         }
         return newList;
     }
+
+    public double getDelayProb() {
+        return delayProb;
+    }
+    
+    
 }
