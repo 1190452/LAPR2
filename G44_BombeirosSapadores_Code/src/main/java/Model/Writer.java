@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class Writer {
 
-    public double code = Constants.INITIALCODE_RECEIPTS ;
+    
     
     public static void sendsPassword(String email, String pwd) throws FileNotFoundException {
         try {
@@ -39,7 +39,7 @@ public class Writer {
     public static void writeOrg(Organization org, double sum) {
         try {
             FileWriter writer = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
-            writer.write("Organization"+org.getName()+ " made a payment of "+ sum +" on " + Date.currentDate().toYearMonthYearString()+ "\n");
+            writer.write("Organization"+org.getName()+ " made a payment of "+ sum +" on " + Date.currentDate().toFile()+ "\n");
             
             writer.close();
         } catch (IOException e) {
@@ -63,13 +63,21 @@ public class Writer {
         }
     }
     
-    public void genEmail(List<Transaction> nltr, double valueE, double valueC){
+    public static void genEmail(List<Transaction> nltr, double valueE, double valueC){
         try {
-            PrintWriter out = new PrintWriter(new File("receipt"+code+nltr.get(0).getFreel().getFreeID()+".txt"));
+            //adicionar o code..
+            PrintWriter out = new PrintWriter(new File("receipt"+nltr.get(0).getFreel().getFreeID()+Date.currentDate().toFile()+".txt"));
             try {
-                out.print();
-                
-                code++;
+                out.println("Receipt of "+nltr.get(0).getFreel().getFreeID());
+                for(Transaction e : nltr){
+                    out.print(e.toString()+"\n");
+                }
+                if(valueE == valueC){
+                    out.println("The total value is: "+ valueE+"euros");   
+                }else{
+                    out.println("The total value in euros is " + valueE +" and "+valueC +" in your local currency"); 
+                }
+
             } finally {
                 
                 out.close();
@@ -80,4 +88,6 @@ public class Writer {
         
         
     }
+    
+    
 }

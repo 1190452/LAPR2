@@ -22,7 +22,8 @@ public class Receipt {
 
    
     public void genEmail(){
-        Writer.genEmail(nltr, sum, curr);
+        
+        Writer.genEmail(nltr, sum, sum);
     }
     
     

@@ -111,4 +111,9 @@ public class Transaction {
         return new TaskExecution(endDate, delay, qow);
     }
     
+    @Override
+    public String toString(){
+        return String.format("Task :%s -------------------- %s ", task.getIdTask(), transactionValue);
+    }
+    
 }
