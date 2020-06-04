@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.NoSuchElementException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,8 +32,11 @@ public class ImportCsvFile implements ImportFile, Serializable {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
+            bufferedReader.readLine(); //reads the first line of the header
             String line = null;
+
             try {
+                
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] temp = line.split(";");
                     String idTask = temp[1];
@@ -71,6 +76,8 @@ public class ImportCsvFile implements ImportFile, Serializable {
 
         } catch (FileNotFoundException ex) {
             System.out.println("The file " + fileName + " does not exist!");
+        } catch (IOException ex) {
+            Logger.getLogger(ImportCsvFile.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

@@ -155,6 +155,15 @@ public class Date implements Comparable<Date> {
     }
     
     /**
+     * Returns the description of the date in format: dayOfTheWeek, day of the month
+     * and the year but in a valid format to insert in a file name.
+     * @return characteristics of the date.
+     */
+    public String toFile(){
+        return String.format("%04d_%02d_%02d", year, month, day);
+    }
+    
+    /**
      * Compares the date with another object received
      *
      * @param anotherObject the object to compare the date.

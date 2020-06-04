@@ -102,6 +102,7 @@ public class DoPaymentTask extends TimerTask {
         
         Writer.writeOrg(org, sum);
         
+        p.generateReceipt(country);
         
         
                     

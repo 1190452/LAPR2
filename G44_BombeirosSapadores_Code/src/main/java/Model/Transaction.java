@@ -110,4 +110,10 @@ public class Transaction {
     public TaskExecution createTaskExecution(Date endDate, double delay, String qow) {
         return new TaskExecution(endDate, delay, qow);
     }
+    
+    @Override
+    public String toString(){
+        return String.format("Task :%s -------------------- %s ", task.getIdTask(), transactionValue);
+    }
+    
 }
