@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXHamburger?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.Bloom?>
@@ -23,9 +24,6 @@
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="1000.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">
          <children>
-            <JFXDatePicker defaultColor="#e6be8a" layoutX="784.0" layoutY="15.0" promptText="Calendar" style="-fx-background-color: #595959; -fx-prompt-text-fill: #0000;" />
-            <Button fx:id="bt_checkS" layoutX="522.0" layoutY="12.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="115.0" style="-fx-background-color: #595959; -fx-text-fill: #e6be8a;" stylesheets="@../styles/stylesheet.css" text="Check Statistics" textOverrun="CLIP" />
-            <Button fx:id="bt_registHT" layoutX="302.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #595959; -fx-text-fill: #e6be8a;" stylesheets="@../styles/stylesheet.css" text="Regist Historical Transactions " textFill="WHITE" />
             <ImageView fitHeight="224.0" fitWidth="209.0" layoutX="770.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../images/Logo_CasasDesign-07_black_minimal.png" />
@@ -35,12 +33,12 @@
                <font>
                   <Font name="Champagne &amp; Limousines Bold" size="70.0" />
                </font></Text>
-            <JFXHamburger layoutX="134.0" layoutY="2.0" prefHeight="59.0" prefWidth="56.0">
+            <JFXHamburger layoutX="35.0" layoutY="2.0" prefHeight="59.0" prefWidth="56.0">
                <effect>
                   <Bloom />
                </effect>
             </JFXHamburger>
-            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="140.0" layoutY="18.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: transparent; -fx-content-display: #e6be8a;" text="MenuButton" textFill="TRANSPARENT">
+            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="41.0" layoutY="18.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: transparent; -fx-content-display: #e6be8a;" text="MenuButton" textFill="TRANSPARENT">
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
@@ -69,6 +67,13 @@
                   </Lighting>
                </effect>
             </MenuButton>
+            <Label fx:id="dateTime" layoutX="430.0" layoutY="17.0" prefHeight="30.0" prefWidth="140.0" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView fill="#48dbfd" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
+            <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="976.0" layoutY="22.0" onMouseClicked="#close" size="1.2em" />
          </children></AnchorPane>
    </top>
 </BorderPane>

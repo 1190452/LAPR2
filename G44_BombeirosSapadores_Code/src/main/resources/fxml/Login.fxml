@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#draged" onMousePressed="#pressed" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="334.0" style="-fx-background-color: #e6be8a;" BorderPane.alignment="CENTER">
          <children>
@@ -34,13 +34,10 @@
             </Text>
             <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="20.0" layoutY="173.0" size="25" wrappingWidth="22.0" />
             <FontAwesomeIconView fill="WHITE" glyphName="KEY" layoutX="20.0" layoutY="229.0" size="25" />
-            <Button fx:id="exitBtn" layoutX="212.0" layoutY="11.0" maxHeight="10.0" maxWidth="10.0" mnemonicParsing="false" onAction="#exit" prefHeight="10.0" prefWidth="10.0" textFill="#ffb469">
-               <graphic>
-                  <FontAwesomeIconView fill="#262525" glyphName="TIMES_CIRCLE" onMouseClicked="#exit" size="20" wrappingWidth="17.0" />
-               </graphic>
-            </Button>
             <JFXTextField fx:id="txtFieldUsername" focusColor="#ff9933" layoutX="49.0" layoutY="146.0" promptText="User email" style="-fx-text-inner-color: white; -fx-prompt-text-fill: gray;" unFocusColor="WHITE" />
             <JFXPasswordField fx:id="txtFieldPassword" focusColor="#ff9933" layoutX="51.0" layoutY="205.0" promptText="Password" style="-fx-text-inner-color: white;-fx-prompt-text-fill: gray" unFocusColor="WHITE" />
+            <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="246.0" layoutY="24.0" onMouseClicked="#close" size="1.2em" />
+            <FontAwesomeIconView fill="#48dbfd" glyphName="MINUS" layoutX="223.0" layoutY="26.0" onMouseClicked="#min" size="1.2em" />
          </children>
       </AnchorPane>
    </right>

@@ -1,10 +1,9 @@
-package UI;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package UI;
 
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -23,26 +22,22 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * FXML Controller class
  *
- * @author jorge
+ * @author Jorge
  */
-public class MenuCollaboratorController implements Initializable {
+public class MenuManagerUI implements Initializable {
 
     @FXML
     private Button bt_createT;
     @FXML
-    private Button bt_createPT;
-    @FXML
     private Button bt_createF;
+    @FXML
+    private Button bt_createPT;
     @FXML
     private Label dateTime;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL location, ResourceBundle resources) {
         
         /**
          * Shows the current time in the label
@@ -53,12 +48,6 @@ public class MenuCollaboratorController implements Initializable {
         }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
-    }      
-
-    @FXML
-    private void min(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setIconified(true);
     }
 
     @FXML
@@ -66,7 +55,11 @@ public class MenuCollaboratorController implements Initializable {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
-    
-    
+
+    @FXML
+    private void min(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
     
 }
