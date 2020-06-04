@@ -71,11 +71,16 @@ CTRL -> O : setDefinePayment(define)
 activate O
 deactivate O
 
+CTRL -> P : schedulesPayment(email)
+activate P
+deactivate P
+
 deactivate CTRL
 
 UI -> ADM : informs about the success of the operation
 deactivate UI
 deactivate ADM
+
 
 
 

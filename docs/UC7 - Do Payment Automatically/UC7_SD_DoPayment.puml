@@ -16,6 +16,7 @@ participant "rt\n:RegisterTransaction" as RT
 participant "ltr\n:List<Transaction>" as LTR
 participant "tr\n:Transaction" as TR
 participant "nltr\nList<Transaction>" as NLTR
+participant "CurrencyConverter" as CC
 participant "Writer" as W
 
 [o-> TASK : DoPayment(org)
@@ -125,7 +126,9 @@ TASK -> F : country = getCountry()
 activate F
 deactivate F
 
-TASK -> TASK : curr = convertToCurrency(sum, country)
+TASK -> CC : curr = convertToCurrency(sum, country)
+activate CC
+deactivate CC
 
 
 

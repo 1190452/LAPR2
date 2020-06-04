@@ -16,15 +16,10 @@ activate PLAT
 
 PLAT --> TASK** : create( )
 
-
-
-PLAT -> RORGS : lo = getLO()
+PLAT -> RORGS : org = getOrganizationByUserEmail(email)
 activate RORGS
 deactivate RORGS
 
-PLAT -> LO : org = get(i)
-activate LO
-deactivate LO
 PLAT -> O : dp = getDefinePayment()
 activate O
 deactivate O
@@ -45,15 +40,22 @@ PLAT -> PLAT : interval = calculatedifference(date, time)
 
 
 PLAT --> TI** : create( )
+
+PLAT -> TASK : passOrg(org)
+activate TASK
+deactivate TASK
+
 PLAT -> TI : scheduleAtFixedRate(task, interval, period)
 activate TI
 deactivate TI
 deactivate PLAT
 
+
+
 TI -> TASK : run( )
 activate TI
 activate TASK
-TASK -> TASK : DoPayment()
+TASK -> TASK : doPayment()
 ref over TASK : UC7_SD_DoPayment
 activate TASK
 deactivate TASK

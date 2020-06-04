@@ -4,7 +4,7 @@
 
 ### Brief Format
 
-The timer starts the automatic payment process time using the payment list, triggering the process at the defined date and time.
+The timer starts the automatic payment process time using the define payment, triggering the process at the defined date and time.
 
 ### SSD
 
@@ -23,7 +23,6 @@ Timer
 
 #### Preconditions
 
-The date and the time must be present in the system so that the timer can start the process at that moment.
 
 #### Post-conditions
 
@@ -37,10 +36,10 @@ The Freelancer receives the payment
 #### Extensions (or alternative flow)
 
 
-*2a. There is no date and time defined in the Payment.
+*2a. There is no date and time defined in the DefinePayment.
 > The use case ends.
 
-2b. There is no payment in the Payment List to be made.
+2b. There is Task to be payed.
 > The use case ends.
 
 #### Special Requirements
@@ -49,7 +48,7 @@ The Freelancer receives the payment
 
 #### Frequency of Occurrence
 
-Whenever time identifies that there is a payment to be made.
+When the manager defines the hour of the payments.
 
 #### Open questions
 
@@ -108,6 +107,8 @@ Whenever time identifies that there is a payment to be made.
  * RegisterTransaction
  
  Other classes of external systems / components:
+ 
+ * CurrencyConverter
  
 
 ###	Sequence Diagram
