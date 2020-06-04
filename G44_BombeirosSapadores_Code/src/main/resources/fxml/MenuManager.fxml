@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
@@ -24,9 +25,9 @@
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="1000.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="224.0" fitWidth="209.0" layoutX="770.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="338.0" fitWidth="561.0" layoutX="624.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../images/Logo_CasasDesign-07_black_minimal.png" />
+                  <Image url="@../../../../../../../Desktop/vector-triangles-minimalist-2.png" />
                </image>
             </ImageView>
             <Text fill="#e6be8a" fontSmoothingType="LCD" layoutX="35.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manager">
@@ -73,7 +74,13 @@
                </font>
             </Label>
             <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="976.0" layoutY="22.0" onMouseClicked="#close" size="1.2em" />
-            <FontAwesomeIconView fill="#48dbfd" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
+            <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
+            <ImageView fitHeight="64.0" fitWidth="790.0" layoutX="184.0" layoutY="-100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Desktop/Header-ForestManager-silhouette.png" />
+               </image>
+            </ImageView>
+            <JFXDatePicker defaultColor="#e6be8a" layoutX="726.0" layoutY="20.0" />
          </children></AnchorPane>
    </top>
 </BorderPane>
