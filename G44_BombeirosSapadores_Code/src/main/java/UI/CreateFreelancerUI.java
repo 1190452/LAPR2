@@ -29,25 +29,18 @@ public class CreateFreelancerUI implements Initializable {
     @FXML
     private Button cancelBtn;
     @FXML
-    private TextField nameTxt;
-    @FXML
-    private TextField emailTxt;
-    @FXML
-    private TextField nifTxt;
-    @FXML
     private Button confirmBtn;
-    @FXML
-    private TextField ibanTxt;
-    @FXML
-    private TextField countryTxt;
-    @FXML
-    private TextField streetTxt;
-    @FXML
-    private TextField doorTxt;
-    @FXML
-    private TextField localityTxt;
-    @FXML
     private ComboBox<String> cbLvl;
+    @FXML
+    private TextField idTxt;
+    @FXML
+    private TextField durationTxt;
+    @FXML
+    private TextField costTxt;
+    @FXML
+    private TextField categoryTxt;
+    @FXML
+    private TextField descriptionTxt;
     
     
     
@@ -58,9 +51,6 @@ public class CreateFreelancerUI implements Initializable {
     }
     
 
-    @FXML
-    private void exitBtn(MouseEvent event) {
-    }
 
     @FXML
     private void cancel(ActionEvent event) {
@@ -68,6 +58,14 @@ public class CreateFreelancerUI implements Initializable {
 
     @FXML
     private void confirm(ActionEvent event) {
+    }
+
+    @FXML
+    private void min(MouseEvent event) {
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
     }
 
 

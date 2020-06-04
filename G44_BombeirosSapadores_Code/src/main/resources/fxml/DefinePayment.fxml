@@ -23,20 +23,20 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #262626 #262626;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#e6be8a" fontSmoothingType="LCD" layoutX="143.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Date" wrappingWidth="109.9833984375">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="143.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Date" wrappingWidth="109.9833984375">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
             </Text>
-            <Text fill="#e6be8a" fontSmoothingType="LCD" layoutX="142.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Time" wrappingWidth="111.75">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="142.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Time" wrappingWidth="111.75">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
             </Text>
             <JFXDatePicker defaultColor="#e6be8a" layoutX="113.0" layoutY="109.0" prefHeight="25.0" prefWidth="179.0" style="-fx-text-inner-color: white;" />
             <JFXTimePicker defaultColor="#e6be8a" editable="true" layoutX="113.0" layoutY="195.0" prefHeight="25.0" prefWidth="179.0" style="-fx-text-inner-color: white;" />
-            <Button id="orangeline" fx:id="confirmBtn" layoutX="222.0" layoutY="278.0" mnemonicParsing="false" onAction="#Confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" />
-            <Button id="orangeline" fx:id="cancelBtn" layoutX="113.0" layoutY="278.0" mnemonicParsing="false" onAction="#Cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" />
+            <Button id="goldline" fx:id="confirmBtn" layoutX="222.0" layoutY="278.0" mnemonicParsing="false" onAction="#Confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" />
+            <Button id="goldline" fx:id="cancelBtn" layoutX="113.0" layoutY="278.0" mnemonicParsing="false" onAction="#Cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" />
          </children>
       </AnchorPane>
    </center>

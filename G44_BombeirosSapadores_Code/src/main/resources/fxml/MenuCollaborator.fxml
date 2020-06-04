@@ -55,6 +55,11 @@
                         <Button fx:id="bt_createPT" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Payment Transaction" textFill="WHITE" />
                      </graphic>
                   </MenuItem>
+                  <MenuItem mnemonicParsing="false" text="Unspecified Action">
+                     <graphic>
+                        <Button fx:id="loadTransactionsBtn" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Load Transactions from file" textFill="WHITE" />
+                     </graphic>
+                  </MenuItem>
               </items>
                <effect>
                   <Lighting>
