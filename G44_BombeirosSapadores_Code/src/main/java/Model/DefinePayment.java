@@ -74,6 +74,24 @@ public class DefinePayment {
     public void setNrDays(int nrDays) {
         this.nrDays = nrDays;
     }
+
+    public boolean registersDefinePayment(DefinePayment dpay) {
+       if(validatesDefinePayment(dpay)){
+           return true;
+       }
+       return false;
+    }
+
+    private boolean validatesDefinePayment(DefinePayment dpay) {
+        boolean bRet = true;
+
+        if (dpay == null) {
+            bRet = false;
+        }
+
+        return bRet;
+    }
+    }
     
     
-}
+

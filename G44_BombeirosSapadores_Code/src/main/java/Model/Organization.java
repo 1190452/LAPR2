@@ -1,12 +1,14 @@
 package Model;
 
+import Utils.Date;
+import Utils.Time;
+
 /**
  *
  * @author paulomaio
  */
 public class Organization {
 
-  
     /**
      * The name of the Organization
      */
@@ -36,7 +38,7 @@ public class Organization {
     private Collaborator colab;
 
     private TaskList taskList;
-    
+
     private DefinePayment definePayment;
     /**
      * The name of the Organization by omission
@@ -64,9 +66,9 @@ public class Organization {
      * @param colab the collaborator of the Organization
      * @param manager the Manager of the Organization
      */
-    public Organization(String name, String NIF, String email,Address address,
+    public Organization(String name, String NIF, String email, Address address,
             Collaborator colab, Manager manager) {
-        if ((name == null) || (NIF == null) || (email == null) || (address==null) || (colab == null)
+        if ((name == null) || (NIF == null) || (email == null) || (address == null) || (colab == null)
                 || (manager == null) || (name.isEmpty()) || (NIF.isEmpty())
                 || (email.isEmpty())) {
             throw new IllegalArgumentException("No argument can be null.");
@@ -79,7 +81,7 @@ public class Organization {
         this.colab = colab;
         this.manager = manager;
         this.taskList = taskList;
-        this.definePayment=null;
+        this.definePayment = null;
 
     }
 
@@ -96,8 +98,8 @@ public class Organization {
         this.manager = otherOrganization.manager;
         this.taskList = otherOrganization.taskList;
     }
-    
-    public Organization(){
+
+    public Organization() {
         this.name = NAME_BY_OMISSION;
         this.NIF = NIF_BY_OMISSION;
         this.email = EMAIL_BY_OMISSION;
@@ -209,8 +211,9 @@ public class Organization {
     }
 
     public Address newAddress(String street, String doorNumber, String locality) {
-        return new Address(street,doorNumber,locality);
+        return new Address(street, doorNumber, locality);
     }
+
     public static Collaborator newCollaborator(String nameC, String emailC, String role, String phoneNumberC) {
         return new Collaborator(nameC, emailC, role, phoneNumberC);
     }
@@ -247,5 +250,18 @@ public class Organization {
         this.definePayment = definePayment;
     }
 
+    public DefinePayment newDefinePayment(Time time, Date date, int rtp) {
+        return new DefinePayment(time, date, rtp);
+    }
+
+    public boolean validatesDefinePayment(DefinePayment dp) {
+        boolean bRet = true;
+
+        if (dp == null) {
+            bRet = false;
+        }
+
+        return bRet;
+    }
 
 }

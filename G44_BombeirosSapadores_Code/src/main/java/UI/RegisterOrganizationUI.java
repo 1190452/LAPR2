@@ -33,7 +33,7 @@ public class RegisterOrganizationUI {
         String emailM = read.nextLine();
         String phoneNumberM = read.nextLine();
         Organization org = c_ro.newOrganization(name, email, NIF, street, doorNumber, locality, nameC, emailC, phoneNumberC, nameM, emailM, phoneNumberM);
-        System.out.println("Confirma?");
+        System.out.println("Confirms?");
         boolean choice = read.nextBoolean();
         if (choice) {
             if (c_ro.registaOrganization()) {
