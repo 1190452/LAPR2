@@ -15,6 +15,7 @@ import Model.RegisterOrganization;
 import Model.RegisterTransaction;
 import Model.Task;
 import Model.Transaction;
+import Model.Writter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
@@ -94,6 +95,13 @@ public class DoPaymentTask extends TimerTask {
         double curr =  c.convert(sum, country);
         
         Payment p = new Payment(sum, curr, nltr);
+        
+        boolean verif = p.validatePay();
+        if (verif==true){
+            freel.addPayment(p);
+        }
+        
+        Writter.writeOrg(org, sum);
         
         
         

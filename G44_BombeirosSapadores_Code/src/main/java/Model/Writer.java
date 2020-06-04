@@ -5,8 +5,11 @@
  */
 package Model;
 
+import Utils.Date;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
@@ -29,6 +32,19 @@ public class Writer {
             System.out.println("File not found!");
         }
     }
+<<<<<<< HEAD:G44_BombeirosSapadores_Code/src/main/java/Model/Writter.java
+
+    public static void writeOrg(Organization org, double sum) {
+        try {
+            FileWriter writer = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
+            writer.write("Organization"+org.getName()+ " made a payment of "+ sum +" on " + Date.currentDate().toYearMonthYearString()+ "\n");
+            
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+=======
     public static void sendEmail(Freelancer free) throws FileNotFoundException {
         try {
             PrintWriter out = new PrintWriter(new File("Emails.txt"));
@@ -42,5 +58,6 @@ public class Writer {
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
+>>>>>>> 581da82fd9bb12f8a95854189260abcadf25afd1:G44_BombeirosSapadores_Code/src/main/java/Model/Writer.java
     }
 }
