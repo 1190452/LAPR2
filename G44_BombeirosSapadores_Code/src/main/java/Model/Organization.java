@@ -36,6 +36,8 @@ public class Organization {
     private Collaborator colab;
 
     private TaskList taskList;
+    
+    private DefinePayment definePayment;
     /**
      * The name of the Organization by omission
      */
@@ -77,6 +79,7 @@ public class Organization {
         this.colab = colab;
         this.manager = manager;
         this.taskList = taskList;
+        this.definePayment=null;
 
     }
 
@@ -228,6 +231,20 @@ public class Organization {
      */
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    /**
+     * @return the definePayment
+     */
+    public DefinePayment getDefinePayment() {
+        return definePayment;
+    }
+
+    /**
+     * @param definePayment the definePayment to set
+     */
+    public void setDefinePayment(DefinePayment definePayment) {
+        this.definePayment = definePayment;
     }
 
 

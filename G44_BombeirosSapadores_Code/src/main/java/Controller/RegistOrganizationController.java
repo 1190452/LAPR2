@@ -8,6 +8,7 @@ package Controller;
 import Model.Organization;
 import Model.Platform;
 import Model.RegisterOrganization;
+import java.io.FileNotFoundException;
 
 
 /**
@@ -29,8 +30,8 @@ public class RegistOrganizationController {
         return null;
     }
 
-    public void registaOrganization() {
-        ro.registerOrganization(org);
+    public boolean registaOrganization() throws FileNotFoundException {
+        return ro.registerOrganization(org);
     }
 
 

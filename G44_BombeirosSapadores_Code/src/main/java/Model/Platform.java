@@ -5,9 +5,14 @@
  */
 package Model;
 
+import Controller.DoPaymentTask;
 import Utils.Date;
+import Utils.Time;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.RegisterUser;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 /**
@@ -15,7 +20,7 @@ import java.util.List;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Platform {
-
+    
     private final FacadeAuthorization m_oAutorizacao;
 
     private RegisterOrganization rOrg;
@@ -31,6 +36,8 @@ public class Platform {
     private ImportCsvFile icsv;
 
     private PasswordGenerator alg;
+    
+    private DoPaymentTask dpt;
 
     public Platform() {
 
@@ -152,5 +159,46 @@ public class Platform {
     public RegisterTransaction getRTrans() {
         return rTrans;
     }
-
+    
+    
+    public void schedulesPayment(){
+        dpt = new DoPaymentTask();
+        
+        for (int i = 0; i < rOrg.get().size(); i++) {
+            Organization org = rOrg.get().get(i);
+            DefinePayment dp = org.getDefinePayment();
+            Date date = dp.getDateToPay();
+            Time time = dp.getTimeToPay();
+            double nrDays = dp.getNrDays();
+            
+            double period = calculatePeriod(nrDays);
+            
+            long interval = calculateDifference(date,time);
+            
+            
+            
+            
+            
+        }
+    }
+    
+    public long calculateDifference(Date date, Time time){
+        
+        ZonedDateTime now = ZonedDateTime.now();
+        
+      
+        ZonedDateTime timeToTimer = ZonedDateTime.of(date.getYear(), date.getMonth(), date.getDia(),
+        time.getHours(), time.getMinutes(), time.getSeconds(), 0, ZoneId.of("Europe/London"));
+        
+        long diff = ChronoUnit.SECONDS.between(now, timeToTimer);
+        return diff;
+         
+        
+        
+        
+    }
+    
+    public double calculatePeriod(double nrDays){
+        return (Constants.NR_OF_SECONDS_OF_DAY*nrDays);    
+    }
 }

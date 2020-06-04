@@ -7,6 +7,7 @@ package UI;
 
 import Controller.RegistOrganizationController;
 import Model.Organization;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -14,9 +15,11 @@ import java.util.Scanner;
  * @author tiagopereira
  */
 public class RegisterOrganizationUI {
+
     Scanner read = new Scanner(System.in);
     private RegistOrganizationController c_ro;
-    public RegisterOrganizationUI(){
+
+    public RegisterOrganizationUI() throws FileNotFoundException {
         String name = read.nextLine();
         String email = read.nextLine();
         String NIF = read.nextLine();
@@ -29,11 +32,13 @@ public class RegisterOrganizationUI {
         String nameM = read.nextLine();
         String emailM = read.nextLine();
         String phoneNumberM = read.nextLine();
-        Organization org = c_ro.newOrganization(name, email,NIF, street,doorNumber,locality,nameC,emailC,phoneNumberC,nameM,emailM,phoneNumberM);
+        Organization org = c_ro.newOrganization(name, email, NIF, street, doorNumber, locality, nameC, emailC, phoneNumberC, nameM, emailM, phoneNumberM);
         System.out.println("Confirma?");
         boolean choice = read.nextBoolean();
-        if(choice){
-            c_ro.registaOrganization();
+        if (choice) {
+            if (c_ro.registaOrganization()) {
+                System.out.println("Operation Successfull");
+            }
         }
     }
 }
