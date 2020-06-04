@@ -214,6 +214,17 @@ public class Freelancer {
     public TaskList getTaskList() {
         return tl;
        
+    public double calculateAveragePayementOFAllFreelancers(double totalPaymentOfAllFreelancer, int numPaymentsOfAllFreelancers) {
+        return totalPaymentOfAllFreelancer/numPaymentsOfAllFreelancers;
+    }
+
+    public double calculatePaymentDeviationOfAllFreelancers(double averagePayementOFAllFreelancers, double payValue) {
+        double deviation = Math.pow((payValue - averagePayementOFAllFreelancers), 2);
+        return deviation;
+    }
+
+    public double calculatepaymentDeviationOfAllFreelancers(double sumPaymentDeviationOfAllFreelancers, int n) {
+        return Math.sqrt((sumPaymentDeviationOfAllFreelancers / (n - 1)));
     }
 
 }
