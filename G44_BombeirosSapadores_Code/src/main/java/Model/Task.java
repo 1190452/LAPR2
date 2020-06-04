@@ -36,12 +36,12 @@ public class Task {
     /**
      * The Task status by being payed
      */
-    boolean isPayed;
+    private boolean isPayed;
 
     /**
      * the Task status by being finished
      */
-    boolean isFinished;
+    private boolean isFinished;
 
     /**
      * The id of the Task per omission

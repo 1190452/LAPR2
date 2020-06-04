@@ -77,7 +77,9 @@ public class Payment {
         this.valueC = valueC;
     }
     
-    
+    public boolean validatePay(){
+        
+    }
     
     
     

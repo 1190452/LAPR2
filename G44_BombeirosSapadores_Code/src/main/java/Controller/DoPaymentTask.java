@@ -5,6 +5,18 @@
  */
 package Controller;
 
+import Model.CurrencyConverter;
+import Model.Freelancer;
+import Model.Organization;
+import Model.Payment;
+import Model.Platform;
+import Model.RegisterFreelancer;
+import Model.RegisterOrganization;
+import Model.RegisterTransaction;
+import Model.Task;
+import Model.Transaction;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TimerTask;
 
 /**
@@ -12,17 +24,85 @@ import java.util.TimerTask;
  * @author Ricardo
  */
 public class DoPaymentTask extends TimerTask {
-    
-    public DoPaymentTask(){
-    
-        
+
+    Platform plt;
+
+    Organization org;
+
+    public DoPaymentTask() {
+
     }
-    
+
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }  
+        doPayment();
+    }
 
-   
-    
+    private void doPayment() {
+
+        RegisterFreelancer rFree = plt.getRfree();
+
+        List<Freelancer> lf = rFree.getListFreelancer();
+
+        List<Task> lt = org.getTaskList().getTaskList();
+
+        List<Task> amountsET = new ArrayList<>();
+
+        for (int i = 0; i < lt.size(); i++) {
+
+            Task ts = lt.get(i);
+            boolean verifier = ts.isIsFinished();
+            if (verifier == false) {
+
+                amountsET.add(ts);
+
+            }
+        }
+
+        RegisterTransaction rt = plt.getRTrans();
+        List<Transaction> ltr = rt.getTransactions();
+        
+        List<Transaction> nltr = new ArrayList<>();
+        
+        for (int i = 0; i < lf.size(); i++) {
+            
+            ltr.removeAll(ltr);
+            double sum=0;
+            Freelancer freel = lf.get(i);
+            for (int j = 0; j < amountsET.size(); j++) {
+                
+                Task ts = amountsET.get(j);
+                
+                for (int k = 0; k < ltr.size(); k++) {
+                    
+                    Transaction tr = ltr.get(k);
+                    Freelancer f = tr.getFreel();
+                    Task cts = tr.getTask();
+                    
+                    if(ts.equals(cts) && freel.equals(f)){
+                        nltr.add(tr);
+                        double value = tr.getTransactionValue();
+                        sum +=value;
+                        
+                    }
+                    
+                }
+            }
+        
+        String country = freel.getCountry();
+        CurrencyConverter c = new CurrencyConverter();
+        double curr =  c.convert(sum, country);
+        
+        Payment p = new Payment(sum, curr, nltr);
+        
+        
+        
+                    
+        }
+    }
+
+    public void passOrg(Organization org) {
+        this.org = org;
+    }
+
 }

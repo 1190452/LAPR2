@@ -13,14 +13,17 @@ import autorizacao.model.RegisterUser;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.Timer;
 
 /**
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Platform {
-    
+
     private final FacadeAuthorization m_oAutorizacao;
 
     private RegisterOrganization rOrg;
@@ -36,7 +39,7 @@ public class Platform {
     private ImportCsvFile icsv;
 
     private PasswordGenerator alg;
-    
+
     private DoPaymentTask dpt;
 
     public Platform() {
@@ -137,13 +140,14 @@ public class Platform {
     public PasswordGenerator getAlg() {
         return alg;
     }
-    public void scheduleProcess(){
+
+    public void scheduleProcess() {
         Date date = getLastDayDate();
         // SendEmailFreelTask task = new SendEmailFreelTask();
     }
-    
-    public Date getLastDayDate(){
-        return new Date(12,31);
+
+    public Date getLastDayDate() {
+        return new Date(12, 31);
     }
 
     /**
@@ -159,46 +163,41 @@ public class Platform {
     public RegisterTransaction getRTrans() {
         return rTrans;
     }
-    
-    
-    public void schedulesPayment(){
+
+    public void schedulesPayment(String email) {
         dpt = new DoPaymentTask();
+
+        Organization org = rOrg.getOrganizationByUserEmail(email);
+        DefinePayment dp = org.getDefinePayment();
+        Date date = dp.getDateToPay();
+        Time time = dp.getTimeToPay();
+        double nrDays = dp.getNrDays();
+
+        long period = calculatePeriod(nrDays);
+
+        long interval = calculateDifference(date, time);
+
+        Timer t = new Timer();
         
-        for (int i = 0; i < rOrg.get().size(); i++) {
-            Organization org = rOrg.get().get(i);
-            DefinePayment dp = org.getDefinePayment();
-            Date date = dp.getDateToPay();
-            Time time = dp.getTimeToPay();
-            double nrDays = dp.getNrDays();
-            
-            double period = calculatePeriod(nrDays);
-            
-            long interval = calculateDifference(date,time);
-            
-            
-            
-            
-            
-        }
+        dpt.passOrg(org);
+
+        t.scheduleAtFixedRate(dpt, interval, period);
+
     }
-    
-    public long calculateDifference(Date date, Time time){
-        
+
+    public long calculateDifference(Date date, Time time) {
+
         ZonedDateTime now = ZonedDateTime.now();
-        
-      
+
         ZonedDateTime timeToTimer = ZonedDateTime.of(date.getYear(), date.getMonth(), date.getDia(),
-        time.getHours(), time.getMinutes(), time.getSeconds(), 0, ZoneId.of("Europe/London"));
-        
+                time.getHours(), time.getMinutes(), time.getSeconds(), 0, ZoneId.of("Europe/London"));
+
         long diff = ChronoUnit.SECONDS.between(now, timeToTimer);
         return diff;
-         
-        
-        
-        
+
     }
-    
-    public double calculatePeriod(double nrDays){
-        return (Constants.NR_OF_SECONDS_OF_DAY*nrDays);    
+
+    public long calculatePeriod(double nrDays) {
+        return (long) (Constants.NR_OF_SECONDS_OF_DAY * nrDays);
     }
 }

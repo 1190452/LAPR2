@@ -5,15 +5,13 @@ participant ":Plataform" as PLAT
 participant "task\n:DoPaymentTask" as TASK
 participant "t\n:timer" as TI
 participant "RegistOrganizations" as RORGS
-participant "Date" as D
-participant "Time" as T
 participant "lo\n:List<Organazation>" as LO
 participant "org\n:Organization" as O
 participant "def\n:DefinePayment" as DP
 
 
 
-[o-> PLAT : schedulesPayment( )
+[o-> PLAT : schedulesPayment(email)
 activate PLAT
 
 PLAT --> TASK** : create( )
@@ -23,7 +21,7 @@ PLAT --> TASK** : create( )
 PLAT -> RORGS : lo = getLO()
 activate RORGS
 deactivate RORGS
-loop [for every organization]
+
 PLAT -> LO : org = get(i)
 activate LO
 deactivate LO
@@ -55,13 +53,13 @@ deactivate PLAT
 TI -> TASK : run( )
 activate TI
 activate TASK
-TASK -> TASK : DoPayment(org)
+TASK -> TASK : DoPayment()
 ref over TASK : UC7_SD_DoPayment
 activate TASK
 deactivate TASK
 deactivate TASK
 deactivate TI
-end loop
+
 
 
 
