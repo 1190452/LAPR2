@@ -10,6 +10,7 @@ import Model.Payment;
 import Model.PaymentList;
 import Model.Platform;
 import Model.RegisterFreelancer;
+import Model.Transaction;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +33,14 @@ public class CheckPerformanceController {
             Freelancer freel = listFreelancer.get(i);
             PaymentList pl = freel.getPaymentList();
             List<Payment> listPayment = pl.getPaymentList();
+            for (int j=0; j<listPayment.size();j++){
+                Payment payment = listPayment.get(i);
+                List<Transaction> listTransaction = payment.getNltr();
+                for (int k=0; k<listTransaction.size();k++){
+                    Transaction transaction = listTransaction.get(i);
+                    double value = transaction.getTransactionValue();
+                }
+            }
         }
     }
 }
