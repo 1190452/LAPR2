@@ -15,7 +15,7 @@ import Model.RegisterOrganization;
 import Model.RegisterTransaction;
 import Model.Task;
 import Model.Transaction;
-import Model.Writter;
+import Model.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
@@ -101,7 +101,7 @@ public class DoPaymentTask extends TimerTask {
             freel.addPayment(p);
         }
         
-        Writter.writeOrg(org, sum);
+        Writer.writeOrg(org, sum);
         
         
         

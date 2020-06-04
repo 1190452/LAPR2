@@ -32,7 +32,6 @@ public class Writer {
             System.out.println("File not found!");
         }
     }
-<<<<<<< HEAD:G44_BombeirosSapadores_Code/src/main/java/Model/Writter.java
 
     public static void writeOrg(Organization org, double sum) {
         try {
@@ -43,8 +42,8 @@ public class Writer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
         
-=======
     public static void sendEmail(Freelancer free) throws FileNotFoundException {
         try {
             PrintWriter out = new PrintWriter(new File("Emails.txt"));
@@ -58,6 +57,5 @@ public class Writer {
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
->>>>>>> 581da82fd9bb12f8a95854189260abcadf25afd1:G44_BombeirosSapadores_Code/src/main/java/Model/Writer.java
     }
 }

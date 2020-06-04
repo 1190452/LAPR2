@@ -5,13 +5,8 @@
  */
 package UI;
 
-import Controller.CreateFreelancerController;
-import Model.NewEnum;
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,11 +16,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
+ * FXML Controller class
  *
- * @author User
+ * @author Jorge
  */
-public class CreateFreelancerUI implements Initializable {
-    private CreateFreelancerController c1;
+public class CreateFreelancerController implements Initializable {
+
     @FXML
     private Button cancelBtn;
     @FXML
@@ -46,18 +42,16 @@ public class CreateFreelancerUI implements Initializable {
     private TextField doorTxt;
     @FXML
     private TextField localityTxt;
-    @FXML
-    private ComboBox<String> cbLvl;
-    
-    
-    
-    
+
+    /**
+     * Initializes the controller class.
+     */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> list = FXCollections.observableArrayList("Junior", "Senior");
-        cbLvl.setItems(list);
-    }
-    
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        
+        
+    }    
 
     @FXML
     private void exitBtn(MouseEvent event) {
@@ -70,9 +64,5 @@ public class CreateFreelancerUI implements Initializable {
     @FXML
     private void confirm(ActionEvent event) {
     }
-
-
-
-    
     
 }

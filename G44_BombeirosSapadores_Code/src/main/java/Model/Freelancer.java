@@ -213,6 +213,7 @@ public class Freelancer {
 
     public TaskList getTaskList() {
         return tl;
+    }
        
     public double calculateAveragePayementOFAllFreelancers(double totalPaymentOfAllFreelancer, int numPaymentsOfAllFreelancers) {
         return totalPaymentOfAllFreelancer/numPaymentsOfAllFreelancers;
