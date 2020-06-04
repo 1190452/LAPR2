@@ -39,7 +39,6 @@ public class WatchStatisticsController {
     private int numTasksOfAllFreelancers = 0;
     private Freelancer freel;
     private double deviationDelay = 0;
-    private double totalDeviationDelayOfAllFreelancers = 0;
 
     public void getOverallStatistics() {
         RegisterOrganization rorgs = pl.getrOrg();
@@ -117,11 +116,10 @@ public class WatchStatisticsController {
                 double delayTask = task.getTexec().getDelay();
                 deviationDelay += freel.sumDeviation(averageDelayOfAllFreelancers, delayTask);
             }
-            totalDeviationDelayOfAllFreelancers += deviationDelay;
         }
 
-        double deviationAllFreel = freel.calculateDelayDeviation(totalDeviationDelayOfAllFreelancers, numTasksOfAllFreelancers);
-        System.out.println("Delay Deviation: " + deviationAllFreel + "\nAverage Delay: " + averageDelayOfAllFreelancers);
+        double deviationAllFreelancers = freel.calculateDelayDeviation(deviationDelay, numTasksOfAllFreelancers);
+        System.out.println("Delay Deviation: " + deviationAllFreelancers + "\nAverage Delay: " + averageDelayOfAllFreelancers);
         //SHOW HISTOGRAM
     }
 

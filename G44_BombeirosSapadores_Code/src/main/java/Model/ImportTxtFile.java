@@ -30,6 +30,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
             sc.useDelimiter(";|\n");
             ht = new RegisterTransaction();
             tl = new TaskList();
+            rf = new RegisterFreelancer();
             try {
                 while (sc.hasNext()) {
                     String taskID = sc.next().trim();
@@ -53,7 +54,9 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     double delay = Double.parseDouble(sc.next().trim());
                     String descripOFQuality = sc.next().trim();
                     Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
-                    rf.addFreelancer(fr);
+                    if (rf.Verification(fr)) {
+                        rf.addFreelancer(fr);
+                    }
                     Task t = new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask);
                     tl.addTask(t);
                     ht.addHistoricalTransaction(new Transaction(t, fr, new TaskExecution(new Date(ano, mes, dia), delay, descripOFQuality)));
