@@ -290,6 +290,22 @@
 }
 
 
+#goldline {
+    -fx-text-fill: #e6be8a;
+    -fx-font-family: "Verdana";
+    -fx-font-weight: bold;
+    -fx-border-color: #e6be8a;
+    -fx-background-color:null;
+}
+
+#goldline:hover{     
+    -fx-background-color: #e6be8a;
+    -fx-text-fill:white;
+    -fx-font-weight:bold; 
+
+}
+
+
 
 /*-------------------------------------------------------------------------------------------------------------------------------------*/
 
