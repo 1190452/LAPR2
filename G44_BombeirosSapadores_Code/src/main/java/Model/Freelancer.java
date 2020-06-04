@@ -48,6 +48,7 @@ public class Freelancer {
     private String iban;
     private Address address;
     private PaymentList pl;
+    private TaskList tl;
 
     private static final String freeIDPorOmissao = "without id";
     private static final String namePorOmissao = "without name";
@@ -67,6 +68,7 @@ public class Freelancer {
         this.email = emailPorOmissao;
         this.address = new Address();
         this.pl = new PaymentList();
+        this.tl = new TaskList();
     }
 
     public Freelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, Address address) {
@@ -78,8 +80,8 @@ public class Freelancer {
         this.name = name;
         this.nif = nif;
         this.address = address;
-        this.pl = new PaymentList(); 
-             
+        this.pl = new PaymentList();
+        this.tl = new TaskList();
 
     }
 
@@ -149,19 +151,62 @@ public class Freelancer {
     public void setPl(PaymentList pl) {
         this.pl = pl;
     }
-    
-    public boolean addPayment(Payment p){
-        if(p== null){
+
+    public boolean addPayment(Payment p) {
+        if (p == null) {
             return false;
         }
-       
-        
+
         pl.addPayment(p);
         return true;
     }
-    
-    public PaymentList getPaymentList(){
+
+    public PaymentList getPaymentList() {
         return pl;
+    }
+
+    /**
+     * @return the tl
+     */
+    public TaskList getTl() {
+        return tl;
+    }
+
+    /**
+     * @param tl the tl to set
+     */
+    public void setTl(TaskList tl) {
+        this.tl = tl;
+    }
+
+    public double averageOfEachFreelancer(double paymentTotal, int n) {
+        return (paymentTotal / n);
+    }
+
+    public double sumDeviation(double averageFreel, double paymentValue) {
+        double deviation = Math.pow((paymentValue - averageFreel), 2);
+        return deviation;
+    }
+
+    public double calculateDeviation(double sumAllPaymentsDeviation, int n) {
+        return Math.sqrt((sumAllPaymentsDeviation / (n - 1)));
+    }
+
+    public double delayMean(double totalDelay, int size) {
+        return (totalDelay/size);
+    }
+
+    public double sumDelay(double averageDelayOfFreelancer, double delayTask) {
+        double deviation = Math.pow((delayTask - averageDelayOfFreelancer), 2);
+        return deviation;
+    }
+
+    public double calculateDelayDeviation(double deviatonDelayOfEachTask, int size) {
+        return Math.sqrt((deviatonDelayOfEachTask / (size - 1)));
+    }
+
+    public double calculateAverageDelayOfAllFreelancers(double totalDelayOfAllFreelancers, double numTasksOfAllFreelancers) {
+        return (totalDelayOfAllFreelancers/numTasksOfAllFreelancers);
     }
 
 }
