@@ -23,12 +23,13 @@ public class PaymentController {
     private Platform plat;
     private Organization org;
     private DefinePayment dpay;
+    private String email;
 
     public Organization getOrg() {
         RegisterOrganization rorgs = plat.getrOrg();
         ApplicationPOT app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
-        String email = log.getUserEmail();
+        email = log.getUserEmail();
         org = rorgs.getOrganizationByUserEmail(email);
         return org;
     }
@@ -44,6 +45,7 @@ public class PaymentController {
     public boolean registerDefinePayment() {
         if(dpay.registersDefinePayment(dpay)){
             org.setDefinePayment(dpay);
+            plat.schedulesPayment(email);
             return true;
         }
         return false;

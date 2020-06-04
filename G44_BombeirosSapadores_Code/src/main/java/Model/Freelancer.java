@@ -161,7 +161,7 @@ public class Freelancer {
     }
     
     public PaymentList getPaymentList(){
-        return new PaymentList(pl.getPaymentList());
+        return pl;
     }
 
 }
