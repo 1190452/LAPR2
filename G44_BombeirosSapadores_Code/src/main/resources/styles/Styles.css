@@ -1,17 +1,17 @@
 .button {
     -fx-font-weight: bold;
 }
-<<<<<<< HEAD
+
 .jfx-date-picker .text-field{
 -jfx-unfocus-color: blue;
 -fx-prompt-text-fill: blueviolet;
 -fx-text-fill: red;
 }
-=======
+
 
 .jfx-text-field, .jfx-password-field {
     -fx-prompt-text-fill: WHITE;
     -jfx-focus-color: WHITE;
     -jfx-unfocus-color: WHITE;
 }
->>>>>>> 9cf2b67779aa7ef29efec065e6a612634559dd0d
+

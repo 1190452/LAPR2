@@ -2,9 +2,13 @@
 
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXHamburger?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,33 +18,57 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MenuCollaboratorController">
    <bottom>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="165.0" prefWidth="1000.0" style="-fx-background-color: #262626;" BorderPane.alignment="CENTER">
-         <children>
-            <FontAwesomeIconView fill="WHITE" glyphName="INSTAGRAM" layoutX="22.0" layoutY="34.0" size="20" />
-            <FontAwesomeIconView fill="WHITE" glyphName="TWITTER" layoutX="22.0" layoutY="80.0" size="20" />
-            <FontAwesomeIconView fill="WHITE" glyphName="FACEBOOK" layoutX="22.0" layoutY="130.0" size="20" />
-         </children></AnchorPane>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="159.0" prefWidth="1000.0" style="-fx-background-color: #262626; -fx-border-color: #e6be8a; -fx-border-width: 4px 0px 0px 0px;" BorderPane.alignment="CENTER" />
    </bottom>
-   <center>
-      <AnchorPane prefHeight="333.0" prefWidth="1000.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">
+   <top>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="1000.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">
          <children>
-            <JFXDatePicker defaultColor="WHITE" layoutX="784.0" layoutY="15.0" promptText="Calendar" style="-fx-background-color: #595959; -fx-prompt-text-fill: #0000;" />
-            <ButtonBar layoutX="21.0" layoutY="15.0" prefHeight="25.0" prefWidth="372.0" />
-            <Button fx:id="bt_checkS" layoutX="655.0" layoutY="15.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="115.0" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Check Statistics" textOverrun="CLIP" />
-            <Button fx:id="bt_createT" layoutX="562.0" layoutY="15.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Task" />
-            <Button fx:id="bt_createF" layoutX="431.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="123.0" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Freelancer" />
-            <Button fx:id="bt_registHT" layoutX="312.0" layoutY="74.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Regist Historical Transactions " textFill="WHITE" />
+            <JFXDatePicker defaultColor="#e6be8a" layoutX="784.0" layoutY="15.0" promptText="Calendar" style="-fx-background-color: #595959; -fx-prompt-text-fill: #0000;" />
+            <Button fx:id="bt_checkS" layoutX="522.0" layoutY="12.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="115.0" style="-fx-background-color: #595959; -fx-text-fill: #e6be8a;" stylesheets="@../styles/stylesheet.css" text="Check Statistics" textOverrun="CLIP" />
+            <Button fx:id="bt_registHT" layoutX="302.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #595959; -fx-text-fill: #e6be8a;" stylesheets="@../styles/stylesheet.css" text="Regist Historical Transactions " textFill="WHITE" />
             <ImageView fitHeight="224.0" fitWidth="209.0" layoutX="770.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../Desktop/Logo_CasasDesign-07_black_minimal.png" />
+                  <Image url="@../../../../images/Logo_CasasDesign-07_black_minimal.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="35.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Collaborator">
+            <Text fill="#e6be8a" fontSmoothingType="LCD" layoutX="35.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Collaborator">
                <font>
                   <Font name="Champagne &amp; Limousines Bold" size="70.0" />
                </font></Text>
-            <Button fx:id="bt_createPT" layoutX="83.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Payment Transaction" textFill="WHITE" />
-            <JFXHamburger layoutX="35.0" layoutY="38.0" />
+            <JFXHamburger layoutX="134.0" layoutY="2.0" prefHeight="59.0" prefWidth="56.0">
+               <effect>
+                  <Bloom />
+               </effect>
+            </JFXHamburger>
+            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="140.0" layoutY="18.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: transparent; -fx-content-display: #e6be8a;" text="MenuButton" textFill="TRANSPARENT">
+              <items>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="bt_createT" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Task" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="bt_createF" mnemonicParsing="false" prefHeight="34.0" prefWidth="123.0" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Freelancer" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="bt_createPT" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Payment Transaction" textFill="WHITE" />
+                     </graphic>
+                  </MenuItem>
+              </items>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </MenuButton>
          </children></AnchorPane>
-   </center>
+   </top>
 </BorderPane>
