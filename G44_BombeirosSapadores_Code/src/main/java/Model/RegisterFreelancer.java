@@ -95,4 +95,11 @@ public class RegisterFreelancer {
         }
         return newList;
     }
+
+    public boolean Verification(Freelancer fr) {
+        if(listaFreelancers.contains(fr)){
+            return false;
+        }
+        return true;
+    }
 }
