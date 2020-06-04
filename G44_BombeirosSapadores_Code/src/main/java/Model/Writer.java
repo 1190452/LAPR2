@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  *
@@ -18,6 +19,8 @@ import java.io.PrintWriter;
  */
 public class Writer {
 
+    public double code = Constants.INITIALCODE_RECEIPTS ;
+    
     public static void sendsPassword(String email, String pwd) throws FileNotFoundException {
         try {
             PrintWriter out = new PrintWriter(new File("EmailsWithPassword.txt"));
@@ -43,7 +46,8 @@ public class Writer {
             e.printStackTrace();
         }
     }
-        
+    
+    
     public static void sendEmail(Freelancer free) throws FileNotFoundException {
         try {
             PrintWriter out = new PrintWriter(new File("Emails.txt"));
@@ -57,5 +61,23 @@ public class Writer {
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
+    }
+    
+    public void genEmail(List<Transaction> nltr, double valueE, double valueC){
+        try {
+            PrintWriter out = new PrintWriter(new File("receipt"+code+nltr.get(0).getFreel().getFreeID()+".txt"));
+            try {
+                out.print();
+                
+                code++;
+            } finally {
+                
+                out.close();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+        }
+        
+        
     }
 }

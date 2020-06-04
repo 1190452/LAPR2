@@ -110,4 +110,5 @@ public class Transaction {
     public TaskExecution createTaskExecution(Date endDate, double delay, String qow) {
         return new TaskExecution(endDate, delay, qow);
     }
+    
 }

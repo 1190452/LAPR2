@@ -84,6 +84,12 @@ public class Payment {
             return false;
         }
     }
+
+    public void generateReceipt(String country) {
+        Receipt r = new Receipt(nltr, valueE, valueC);
+        
+        r.genEmail();
+    }
     
     
     

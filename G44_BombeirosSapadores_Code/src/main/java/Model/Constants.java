@@ -23,4 +23,6 @@ public class Constants
     public static double NR_OF_SECONDS_OF_DAY = 86400;
     
     public static final String PAYMENTS_ORGS_FILENAME ="paymentsOrgs.txt";
+    public static double INITIALCODE_RECEIPTS = 100;
+    
 }
