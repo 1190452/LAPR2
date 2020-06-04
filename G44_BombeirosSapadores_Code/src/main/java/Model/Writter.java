@@ -5,8 +5,11 @@
  */
 package Model;
 
+import Utils.Date;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
@@ -28,5 +31,17 @@ public class Writter {
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
+    }
+
+    public static void writeOrg(Organization org, double sum) {
+        try {
+            FileWriter writer = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
+            writer.write("Organization"+org.getName()+ " made a payment of "+ sum +" on " + Date.currentDate().toYearMonthYearString()+ "\n");
+            
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
     }
 }
