@@ -34,6 +34,7 @@ public class ImportCsvFile implements ImportFile, Serializable {
 
             bufferedReader.readLine(); //reads the first line of the header
             String line = null;
+
             try {
                 
                 while ((line = bufferedReader.readLine()) != null) {

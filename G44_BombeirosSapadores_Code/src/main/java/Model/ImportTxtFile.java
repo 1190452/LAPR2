@@ -31,6 +31,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
             ht = new RegisterTransaction();
             tl = new TaskList();
             rf = new RegisterFreelancer();
+            String cabecalho = sc.nextLine();
             try {
                 while (sc.hasNext()) {
                     String taskID = sc.next().trim();
