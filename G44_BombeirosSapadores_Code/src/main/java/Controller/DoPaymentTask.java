@@ -11,10 +11,10 @@ import Model.Organization;
 import Model.Payment;
 import Model.Platform;
 import Model.RegisterFreelancer;
-import Model.RegisterOrganization;
 import Model.RegisterTransaction;
 import Model.Task;
 import Model.Transaction;
+import Model.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
@@ -42,7 +42,7 @@ public class DoPaymentTask extends TimerTask {
 
         RegisterFreelancer rFree = plt.getRfree();
 
-        List<Freelancer> lf = rFree.getListFreelancer();
+        List<Freelancer> lf = rFree.getListFreelancers();
 
         List<Task> lt = org.getTaskList().getTaskList();
 
@@ -94,6 +94,13 @@ public class DoPaymentTask extends TimerTask {
         double curr =  c.convert(sum, country);
         
         Payment p = new Payment(sum, curr, nltr);
+        
+        boolean verif = p.validatePay();
+        if (verif==true){
+            freel.addPayment(p);
+        }
+        
+        Writer.writeOrg(org, sum);
         
         
         

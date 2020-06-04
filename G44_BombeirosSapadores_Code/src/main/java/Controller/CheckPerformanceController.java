@@ -7,14 +7,16 @@ package Controller;
 
 import Model.Freelancer;
 import Model.Payment;
-import Model.PaymentList;
 import Model.Platform;
 import Model.RegisterFreelancer;
 import Model.Task;
 import Model.Transaction;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Random;
 import java.util.Set;
+=======
+>>>>>>> fbb781b725b51290ab9cbb6c956283e159788410
 
 /**
  *
@@ -48,7 +50,7 @@ public class CheckPerformanceController {
 
     public void getPerformances() {
         RegisterFreelancer rFree = platform.getRfree();
-        List<Freelancer> listFreelancer = rFree.getListFreelancer();
+        List<Freelancer> listFreelancer = rFree.getListFreelancers();
         for (int i = 0; i < listFreelancer.size(); i++) {
             Freelancer freel = listFreelancer.get(i);
             List<Payment> listPayments = freel.getPaymentList().getPaymentList();
@@ -89,14 +91,14 @@ public class CheckPerformanceController {
             List<Task> taskList = freel.getTl().getTaskList();
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 totalDelay += delayTask;
             }
             double averageDelayOfFreelancer = freel.delayMean(totalDelay, taskList.size());
 
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 deviatonDelayOfEachTask += freel.sumDelay(averageDelayOfFreelancer, delayTask);
             }
             numTasksOfAllFreelancers += taskList.size();
@@ -116,7 +118,7 @@ public class CheckPerformanceController {
             List<Payment> listPayments = freel.getPaymentList().getPaymentList();
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 deviationDelay += freel.sumDeviation(averageDelayOfAllFreelancers, delayTask);
             }
             for (int k = 0; k < listPayments.size(); k++) {

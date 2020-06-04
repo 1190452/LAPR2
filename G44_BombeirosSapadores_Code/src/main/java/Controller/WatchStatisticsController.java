@@ -39,7 +39,6 @@ public class WatchStatisticsController {
     private int numTasksOfAllFreelancers = 0;
     private Freelancer freel;
     private double deviationDelay = 0;
-    private double totalDeviationDelayOfAllFreelancers = 0;
 
     public void getOverallStatistics() {
         RegisterOrganization rorgs = pl.getrOrg();
@@ -91,14 +90,14 @@ public class WatchStatisticsController {
             List<Task> taskList = freel.getTl().getTaskList();
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 totalDelay += delayTask;
             }
             double averageDelayOfFreelancer = freel.delayMean(totalDelay, taskList.size());
 
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 deviatonDelayOfEachTask += freel.sumDelay(averageDelayOfFreelancer, delayTask);
             }
             numTasksOfAllFreelancers += taskList.size();
@@ -114,14 +113,13 @@ public class WatchStatisticsController {
             List<Task> taskList = freel.getTl().getTaskList();
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 deviationDelay += freel.sumDeviation(averageDelayOfAllFreelancers, delayTask);
             }
-            totalDeviationDelayOfAllFreelancers += deviationDelay;
         }
 
-        double deviationAllFreel = freel.calculateDelayDeviation(totalDeviationDelayOfAllFreelancers, numTasksOfAllFreelancers);
-        System.out.println("Delay Deviation: " + deviationAllFreel + "\nAverage Delay: " + averageDelayOfAllFreelancers);
+        double deviationAllFreelancers = freel.calculateDelayDeviation(deviationDelay, numTasksOfAllFreelancers);
+        System.out.println("Delay Deviation: " + deviationAllFreelancers + "\nAverage Delay: " + averageDelayOfAllFreelancers);
         //SHOW HISTOGRAM
     }
 

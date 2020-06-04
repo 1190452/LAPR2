@@ -39,7 +39,7 @@ public class CreateTransactionController {
     
     public List<Freelancer> getFreelancerList(){
         RegisterFreelancer rl = platform.getRfree();
-        List<Freelancer> freelancerList = rl.getListFreelancer();
+        List<Freelancer> freelancerList = rl.getListFreelancers();
         return freelancerList;
     }
     

@@ -102,7 +102,7 @@ public class RegisterOrganization {
         String role = manager.getEmailM();
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registUserWithRole(nameM, emailM, pwdM, role);
-        Writter.sendsPassword(emailM, pwdM);
+        Writer.sendsPassword(emailM, pwdM);
     }
 
     public void registUser(Collaborator collab) throws FileNotFoundException {
@@ -113,7 +113,7 @@ public class RegisterOrganization {
         String role = manager.getEmailM();
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registUserWithRole(nameC, emailC, pwdC, role);
-        Writter.sendsPassword(emailC, pwdC);
+        Writer.sendsPassword(emailC, pwdC);
     }
     
     public List<Organization> get(){

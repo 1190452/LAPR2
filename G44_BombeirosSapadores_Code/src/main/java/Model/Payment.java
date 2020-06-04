@@ -78,7 +78,11 @@ public class Payment {
     }
     
     public boolean validatePay(){
-        return true;
+        if(valueE != 0 && valueC != 0 && nltr != null){
+            return true;
+        }else{
+            return false;
+        }
     }
     
     

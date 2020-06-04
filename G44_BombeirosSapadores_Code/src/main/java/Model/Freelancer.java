@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.util.List;
+
 /**
  *
  * @author Rafael
@@ -209,6 +211,10 @@ public class Freelancer {
         return (totalDelayOfAllFreelancers/numTasksOfAllFreelancers);
     }
 
+    public TaskList getTaskList() {
+        return tl;
+    }
+       
     public double calculateAveragePayementOFAllFreelancers(double totalPaymentOfAllFreelancer, int numPaymentsOfAllFreelancers) {
         return totalPaymentOfAllFreelancer/numPaymentsOfAllFreelancers;
     }

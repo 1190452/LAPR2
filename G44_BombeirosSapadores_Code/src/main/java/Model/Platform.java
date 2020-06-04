@@ -6,16 +6,16 @@
 package Model;
 
 import Controller.DoPaymentTask;
+import Controller.SendEmailFreelTask;
 import Utils.Date;
 import Utils.Time;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.RegisterUser;
+import java.io.FileNotFoundException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.Timer;
 
 /**
@@ -41,6 +41,10 @@ public class Platform {
     private PasswordGenerator alg;
 
     private DoPaymentTask dpt;
+
+    private SendEmailFreelTask sEF;
+    
+    private Writer writer;
 
     public Platform() {
 
@@ -143,7 +147,10 @@ public class Platform {
 
     public void scheduleProcess() {
         Date date = getLastDayDate();
-        // SendEmailFreelTask task = new SendEmailFreelTask();
+        sEF = new SendEmailFreelTask();
+        Timer t = new Timer();
+        t.schedule(sEF, date);
+
     }
 
     public Date getLastDayDate() {
@@ -178,7 +185,7 @@ public class Platform {
         long interval = calculateDifference(date, time);
 
         Timer t = new Timer();
-        
+
         dpt.passOrg(org);
 
         t.scheduleAtFixedRate(dpt, interval, period);
@@ -200,4 +207,33 @@ public class Platform {
     public long calculatePeriod(double nrDays) {
         return (long) (Constants.NR_OF_SECONDS_OF_DAY * nrDays);
     }
+    public Writer getWriter(){
+        return writer;
+    }
+
+    public void sendEmail() throws FileNotFoundException {
+        List<Freelancer> listFreelancers = rFree.getListFreelancers();
+        double delayProb = rFree.getDelayProb();
+
+        for (int i = 0; i < listFreelancers.size(); i++) {
+            Freelancer free = listFreelancers.get(i);
+            TaskList taskL = free.getTaskList();
+            List<Task> taskList = taskL.getTaskList();
+
+            for (int j = 0; j < taskList.size(); j++) {
+                Task task = taskList.get(j);
+                TaskExecution taskExec = task.getTexec();
+                double taskDelay = taskExec.getTaskDelay();
+
+                if (taskDelay > 3 && taskDelay > delayProb) {
+                    Writer writer = getWriter();
+                    writer.sendEmail(free);
+                }
+
+            }
+
+        }
+    }
+
+    
 }

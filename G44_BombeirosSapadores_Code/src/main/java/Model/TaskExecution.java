@@ -43,7 +43,7 @@ public class TaskExecution {
     /**
      * @return the delay
      */
-    public double getDelay() {
+    public double getTaskDelay() {
         return delay;
     }
 
