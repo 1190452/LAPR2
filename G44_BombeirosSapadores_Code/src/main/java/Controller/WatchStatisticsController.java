@@ -90,14 +90,14 @@ public class WatchStatisticsController {
             List<Task> taskList = freel.getTl().getTaskList();
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 totalDelay += delayTask;
             }
             double averageDelayOfFreelancer = freel.delayMean(totalDelay, taskList.size());
 
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 deviatonDelayOfEachTask += freel.sumDelay(averageDelayOfFreelancer, delayTask);
             }
             numTasksOfAllFreelancers += taskList.size();
@@ -113,7 +113,7 @@ public class WatchStatisticsController {
             List<Task> taskList = freel.getTl().getTaskList();
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
-                double delayTask = task.getTexec().getDelay();
+                double delayTask = task.getTexec().getTaskDelay();
                 deviationDelay += freel.sumDeviation(averageDelayOfAllFreelancers, delayTask);
             }
         }

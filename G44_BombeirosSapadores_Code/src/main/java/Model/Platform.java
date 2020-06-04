@@ -11,15 +11,11 @@ import Utils.Date;
 import Utils.Time;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.RegisterUser;
-import Model.Writer;
 import java.io.FileNotFoundException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.Timer;
 
 /**

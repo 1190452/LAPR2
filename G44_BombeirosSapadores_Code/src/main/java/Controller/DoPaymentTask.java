@@ -11,7 +11,6 @@ import Model.Organization;
 import Model.Payment;
 import Model.Platform;
 import Model.RegisterFreelancer;
-import Model.RegisterOrganization;
 import Model.RegisterTransaction;
 import Model.Task;
 import Model.Transaction;
@@ -43,7 +42,7 @@ public class DoPaymentTask extends TimerTask {
 
         RegisterFreelancer rFree = plt.getRfree();
 
-        List<Freelancer> lf = rFree.getListFreelancer();
+        List<Freelancer> lf = rFree.getListFreelancers();
 
         List<Task> lt = org.getTaskList().getTaskList();
 

@@ -97,18 +97,16 @@ public class RegisterFreelancer {
         return newList;
     }
 
-<<<<<<< HEAD
+
     public boolean Verification(Freelancer fr) {
         if(listaFreelancers.contains(fr)){
             return false;
         }
         return true;
     }
-=======
+
     public double getDelayProb() {
         return delayProb;
     }
     
-    
->>>>>>> 2560ec95efac79eb8405421dd500b76e488f436c
 }

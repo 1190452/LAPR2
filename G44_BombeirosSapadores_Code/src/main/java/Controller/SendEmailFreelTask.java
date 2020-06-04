@@ -6,7 +6,10 @@
 package Controller;
 
 import Model.Platform;
+import java.io.FileNotFoundException;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,8 +25,12 @@ public class SendEmailFreelTask extends TimerTask{
 
     @Override
     public void run() {
-        p1.sendEmail();
-        p1.scheduleProcess();
+        try {
+            p1.sendEmail();
+            p1.scheduleProcess();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(SendEmailFreelTask.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }
