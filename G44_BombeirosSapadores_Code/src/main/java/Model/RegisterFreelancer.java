@@ -16,6 +16,7 @@ public class RegisterFreelancer {
 
     private List<Freelancer> listaFreelancers;
     private Freelancer free;
+    double delayProb;
 
     public RegisterFreelancer() {
         this.listaFreelancers = new ArrayList();
@@ -60,7 +61,7 @@ public class RegisterFreelancer {
         listaFreelancers.remove(fr);
     }
 
-    public List<Freelancer> getListFreelancer() {
+    public List<Freelancer> getListFreelancers() {
         return listaFreelancers;
     }
 
@@ -96,10 +97,18 @@ public class RegisterFreelancer {
         return newList;
     }
 
+<<<<<<< HEAD
     public boolean Verification(Freelancer fr) {
         if(listaFreelancers.contains(fr)){
             return false;
         }
         return true;
     }
+=======
+    public double getDelayProb() {
+        return delayProb;
+    }
+    
+    
+>>>>>>> 2560ec95efac79eb8405421dd500b76e488f436c
 }

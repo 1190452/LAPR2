@@ -150,7 +150,7 @@ public class Date implements Comparable<Date> {
      *
      * @return caraterísticas da data.
      */
-    public String toAnoMesDiaString() {
+    public String toYearMonthYearString() {
         return String.format("%04d/%02d/%02d", year, month, day);
     }
     

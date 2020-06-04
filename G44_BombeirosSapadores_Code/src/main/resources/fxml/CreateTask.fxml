@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="802.0" style="-fx-background-color: #2c2424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CreateFreelancerUI">
+   <top>
+      <AnchorPane prefHeight="66.0" prefWidth="600.0" style="-fx-border-width: 0px 0px 3px 0px; -fx-border-color: #e6be8a;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="355.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create">
+               <font>
+                  <Font name="Verdana Bold" size="25.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="17.0" fitWidth="20.0" layoutX="780.0" layoutY="9.0" onMouseClicked="#exitBtn" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/botao-x.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <GridPane prefHeight="397.0" prefWidth="655.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Id:" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Brief description:" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Time duration (hours):" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Button id="orangeline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets bottom="15.0" right="100.0" />
+               </GridPane.margin>
+            </Button>
+            <Text fill="WHITE" fontSmoothingType="LCD" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Task" underline="true" GridPane.halignment="LEFT">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Text>
+            <TextField fx:id="idTxt" layoutX="360.0" layoutY="230.0" maxWidth="183.0" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: #ffff; -fx-border-color: #e6be8a; -fx-border-width: 2px;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </TextField>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="140.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost per hour:" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="147.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <TextField fx:id="durationTxt" layoutX="210.0" layoutY="230.0" maxWidth="183.0" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: #ffff; -fx-border-color: #ff99#e6be8a33; -fx-border-width: 2px;" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="costTxt" layoutX="210.0" layoutY="230.0" maxWidth="183.0" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: #ffff; -fx-border-color: #e6be8a; -fx-border-width: 2px;" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </TextField>
+            <Button id="orangeline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="100.0" />
+               </GridPane.margin>
+            </Button>
+            <TextField fx:id="categoryTxt" layoutX="219.0" layoutY="135.0" maxWidth="183.0" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: #ffff; -fx-border-color: #e6be8a; -fx-border-width: 2px;" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+            <TextField fx:id="descriptionTxt" layoutX="320.0" layoutY="123.0" maxWidth="183.0" prefHeight="29.0" prefWidth="183.0" style="-fx-background-color: #ffff; -fx-border-color: #e6be8a; -fx-border-width: 2px;" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>
