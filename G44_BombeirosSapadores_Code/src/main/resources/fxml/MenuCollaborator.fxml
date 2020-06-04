@@ -72,12 +72,12 @@
                   </Lighting>
                </effect>
             </MenuButton>
-            <Label fx:id="dateTime" layoutX="430.0" layoutY="17.0" prefHeight="30.0" prefWidth="140.0" textFill="WHITE">
+            <Label fx:id="dateTime" layoutX="720.0" layoutY="31.0" prefHeight="30.0" prefWidth="140.0" textFill="#e6be8a">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <FontAwesomeIconView fill="#48dbfd" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
+            <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
             <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="976.0" layoutY="22.0" onMouseClicked="#close" size="1.2em" />
          </children></AnchorPane>
    </top>
