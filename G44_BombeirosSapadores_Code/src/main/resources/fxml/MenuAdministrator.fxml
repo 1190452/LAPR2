@@ -19,7 +19,12 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#draged" onMousePressed="#pressed" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MenuAdministratorUI">
    <bottom>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="187.0" prefWidth="1000.0" style="-fx-background-color: #262626; -fx-border-color: #e6be8a; -fx-border-width: 4px 0px 0px 0px;" BorderPane.alignment="CENTER" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="187.0" prefWidth="1000.0" style="-fx-background-color: #262626; -fx-border-color: #e6be8a; -fx-border-width: 4px 0px 0px 0px;" BorderPane.alignment="CENTER">
+         <children>
+            <FontAwesomeIconView fill="#e6be8a" glyphName="INSTAGRAM" layoutX="14.0" layoutY="30.0" onMouseClicked="#openInsta" size="20" />
+            <FontAwesomeIconView fill="#e6be8a" glyphName="FACEBOOK" layoutX="16.0" layoutY="75.0" onMouseClicked="#openFace" size="20" />
+            <FontAwesomeIconView fill="#e6be8a" glyphName="LINKEDIN" layoutX="14.0" layoutY="120.0" onMouseClicked="#openLink" size="20" />
+         </children></AnchorPane>
    </bottom>
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="1000.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">

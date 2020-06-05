@@ -5,7 +5,10 @@
  */
 package UI;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,12 +43,12 @@ public class MenuAdministratorUI implements Initializable {
     private Button checkStatisticsBtn;
     @FXML
     private Button createOrganizationBtn;
-    
-    private double x,y;
+
+    private double x, y;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
         /**
          * Shows the current time in the label
          */
@@ -59,21 +62,21 @@ public class MenuAdministratorUI implements Initializable {
 
     @FXML
     private void close(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
     @FXML
     private void min(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
     @FXML
     private void draged(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setX(event.getScreenX() -x);
-        stage.setY(event.getScreenY() -y);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
     }
 
     @FXML
@@ -88,16 +91,56 @@ public class MenuAdministratorUI implements Initializable {
 
     @FXML
     private void createOrganization(ActionEvent event) throws IOException {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateOrganization.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.setTitle("Administrator Menu");
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.setResizable(false);
-            stage.show();
-            
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateOrganization.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("Administrator Menu");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
     }
 
-    
+    @FXML
+    private void openInsta(MouseEvent event) throws URISyntaxException {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.instagram.com/isep.pporto/"));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            } catch (URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    private void openFace(MouseEvent event) {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.facebook.com/isep.pporto/"));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            } catch (URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+        }
+        
+    }
+
+    @FXML
+    private void openLink(MouseEvent event) {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.linkedin.com/school/isep/?originalSubdomain=pt"));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            } catch (URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+        }
+        
+    }
+
 }
