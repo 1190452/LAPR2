@@ -22,6 +22,9 @@ import javafx.stage.Stage;
  */
 public class CreateTaskUI {
     Scanner read = new Scanner(System.in);
+    
+    
+    
     private CreateTaskController ctask_controller;
     @FXML
     private Button cancelBtn;
@@ -39,14 +42,12 @@ public class CreateTaskUI {
     private JFXTextField categoryTxt;
     
     public CreateTaskUI(){
-        ctask_controller = new CreateTaskController();   
+        //ctask_controller = new CreateTaskController();   
         //System.out.println("Introduce the id, brief description, time duration (in hours), cost per hour (in euros), and the category");
-        String id = idTxt.getSelectedText();
-        String bd = descriptionTxt.getSelectedText();
-        int td = Integer.parseInt(timeTxt.getSelectedText());
-        double ch = Double.parseDouble(costTxt.getSelectedText());
-        String ct = categoryTxt.getSelectedText();
-        Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
+        
+        
+        
+        
 //        System.out.println(ts.toString());
 //        System.out.println("Confirma?");
 //        boolean ans = read.nextBoolean();
@@ -79,6 +80,13 @@ public class CreateTaskUI {
 
     @FXML
     private void confirm(ActionEvent event) {
+        String id = idTxt.getSelectedText();
+        String bd = descriptionTxt.getSelectedText();
+        int td = Integer.parseInt(timeTxt.getSelectedText());
+        double ch = Double.parseDouble(costTxt.getSelectedText());
+        String ct = categoryTxt.getSelectedText();
+        ctask_controller = new CreateTaskController();
+        Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
     }
     
     

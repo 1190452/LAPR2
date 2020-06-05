@@ -25,9 +25,9 @@ public class CreateTaskController {
     private TaskList tl;
     
     public CreateTaskController(){
-    if(!ApplicationPOT.getInstance().getActualSession().isLoggedInWithPart(Constants.ROLE_COLLABORATOR_ORGANIZATION))
-    throw new IllegalStateException("Non authorized user");
-        this.m_plat = ApplicationPOT.getInstance().getPlatform();
+//    if(!ApplicationPOT.getInstance().getActualSession().isLoggedInWithPart(Constants.ROLE_COLLABORATOR_ORGANIZATION))
+//    throw new IllegalStateException("Non authorized user");
+//        this.m_plat = ApplicationPOT.getInstance().getPlatform();
     }
                 
     public Task newTask(String idTask, String description, int timeTask, double costHour, String taskCategory){
