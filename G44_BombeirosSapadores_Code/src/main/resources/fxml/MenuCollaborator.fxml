@@ -32,9 +32,9 @@
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="1000.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="224.0" fitWidth="209.0" layoutX="770.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="214.0" fitWidth="302.0" layoutX="662.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../images/Logo_CasasDesign-07_black_minimal.png" />
+                  <Image url="@../../../../images/unnamed.png" />
                </image>
             </ImageView>
             <Text fill="#e6be8a" fontSmoothingType="LCD" layoutX="35.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Collaborator">
