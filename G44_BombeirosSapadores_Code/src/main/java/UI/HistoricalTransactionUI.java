@@ -6,7 +6,6 @@
 package UI;
 
 import Controller.HistoricalTransactionController;
-import Model.Transaction;
 import java.io.File;
 import java.util.List;
 import java.util.Scanner;
@@ -16,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -35,6 +35,8 @@ public class HistoricalTransactionUI {
     private Button openFile;
     @FXML
     private Label lbl;
+    @FXML
+    private BorderPane borderPane;
 
     /**public HistoricalTransactionUI() {
         System.out.println("Introduce the file name to load all transactions");
@@ -74,10 +76,30 @@ public class HistoricalTransactionUI {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Txt files", "*.txt"));
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV files", "*.csv"));
-        File selectedFile = fc.showOpenDialog(null);
+        Stage stage = (Stage) borderPane.getScene().getWindow();
         
-        if (selectedFile != null) {
-            lbl.setText(selectedFile.getName());
+        List<File> files = fc.showOpenMultipleDialog(stage);
+        //fc.setInitialDirectory(file.getParentFile());
+        
+        
+        if (files != null) {
+            if(files.size() == 1) {
+                lbl.setText("File loaded!");
+            }else
+                lbl.setText("Files loaded!");
         }
+        
+        
+        /**
+        if (list != null) {
+            for(File file : list) {
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    desktop.open(file);
+                } catch(IOException e) {
+                    Logger.getLogger(HistoricalTransactionController.class.getName()).log(Level.SEVERE, null, e);
+                }
+            }
+        }*/
     }
 }

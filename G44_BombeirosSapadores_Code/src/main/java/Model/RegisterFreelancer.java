@@ -23,9 +23,9 @@ public class RegisterFreelancer {
 
     }
 
-    public Freelancer newFreelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
+    public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
         Address address = new Address(street, doorNumber, locality);
-        return new Freelancer(freeID, name, levelExp, email, nif, iban, country, address);
+        return new Freelancer(name, levelExp, email, nif, iban, country, address);
     }
 
     public boolean validateFreelancer(Freelancer free) {
