@@ -30,7 +30,7 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="305.0" style="-fx-background-color: #262626;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="loginBtn" layoutX="91.0" layoutY="277.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="68.0" style="-fx-background-color: #ffcc99;" text="Login" />
+            <Button id="goldline" fx:id="loginBtn" layoutX="91.0" layoutY="277.0" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="68.0" stylesheets="@../styles/stylesheet.css" text="Login" />
             <Text fill="#e6be8a" fontSmoothingType="LCD" layoutX="72.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login" textAlignment="CENTER">
                <font>
                   <Font name="Verdana" size="23.0" />

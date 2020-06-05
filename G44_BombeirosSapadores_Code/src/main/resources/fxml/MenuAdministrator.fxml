@@ -51,7 +51,7 @@
                   <Image url="@../images/logoemamarelo.png" />
                </image>
             </ImageView>
-            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" opacity="0.0" popupSide="RIGHT" prefHeight="13.0" prefWidth="43.0" style="-fx-background-color: #595959; -fx-content-display: #e6be8a; -fx-border-color: #e6be8a;" text="MenuButton" textFill="#575757">
+            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" opacity="0.0" popupSide="RIGHT" prefHeight="13.0" prefWidth="43.0" text="MenuButton" textFill="#575757">
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>

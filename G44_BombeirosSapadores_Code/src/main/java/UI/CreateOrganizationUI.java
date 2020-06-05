@@ -38,8 +38,8 @@ public class CreateOrganizationUI implements Initializable {
     private JFXTextField nifTxt;
     @FXML
     private JFXTextField emailTxt;
-    
-    private double x,y;
+
+    private double x, y;
 
     /**
      * Initializes the controller class.
@@ -47,8 +47,7 @@ public class CreateOrganizationUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
+    }
 
     @FXML
     private void cancel(ActionEvent event) {
@@ -56,38 +55,47 @@ public class CreateOrganizationUI implements Initializable {
 
     @FXML
     private void next(ActionEvent event) throws IOException {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            //Stage stage = new Stage();
-            Scene createMC_scene = new Scene(root1);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(createMC_scene);
-            //stage.setTitle("Create Menu");
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.setResizable(false);
-            stage.show();
-            
-            // Hide this current window
-            //((Node) (event.getSource())).getScene().getWindow().hide();
-    }
     
+        Parent view = FXMLLoader.load(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
+        
+        Scene create = new Scene(view);
+        
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        
+        window.setScene(create);
+        window.show();
+//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
+//        Parent root1 = (Parent) fxmlLoader.load();
+//        //Stage stage = new Stage();
+//        Scene createMC_scene = new Scene(root1);
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        stage.setScene(createMC_scene);
+//        //stage.setTitle("Create Menu");
+//        stage.initStyle(StageStyle.TRANSPARENT);
+//        stage.setResizable(false);
+//        stage.show();
+//            
+//        // Hide this current window
+//        //((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
     @FXML
     private void close(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
     @FXML
     private void min(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
     @FXML
     private void draged(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setX(event.getScreenX() -x);
-        stage.setY(event.getScreenY() -y);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
     }
 
     @FXML
@@ -96,6 +104,4 @@ public class CreateOrganizationUI implements Initializable {
         y = event.getSceneY();
     }
 
-
-    
 }
