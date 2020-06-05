@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #233640;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#draged" onMousePressed="#pressed" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #233640;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.CreateManagerCollaboratorUI">
    <top>
-      <AnchorPane prefHeight="66.0" prefWidth="600.0" style="-fx-border-width: 0px 0px 3px 0px; -fx-border-color: ff9933;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="44.0" prefWidth="802.0" style="-fx-border-width: 0px 0px 3px 0px; -fx-border-color: #e6be8a; -fx-background-color: #595959;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" layoutX="214.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration">
-               <font>
-                  <Font name="Verdana Bold" size="25.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="17.0" fitWidth="20.0" layoutX="566.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../images/botao-x.png" />
-               </image>
-            </ImageView>
+            <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="561.0" layoutY="26.0" onMouseClicked="#min" size="1.2em" text="" />
+            <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="581.0" layoutY="24.0" onMouseClicked="#close" size="1.2em" />
          </children>
       </AnchorPane>
    </top>
    <center>
-      <GridPane BorderPane.alignment="CENTER">
+      <GridPane style="-fx-background-color: #262626 #262626;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -66,12 +59,12 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Button id="orangeline" cancelButton="true" mnemonicParsing="false" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <Button id="goldline" fx:id="backBtn" cancelButton="true" mnemonicParsing="false" onAction="#back" stylesheets="@../styles/stylesheet.css" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="40.0" />
                </GridPane.margin>
             </Button>
-            <Button id="orangeline" mnemonicParsing="false" stylesheets="@../styles/stylesheet.css" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button id="goldline" fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" stylesheets="@../styles/stylesheet.css" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
@@ -84,11 +77,6 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <TextField layoutX="360.0" layoutY="230.0" maxWidth="100.0" prefHeight="29.0" prefWidth="50.0" style="-fx-background-color: #ffff; -fx-border-color: #ff9933; -fx-border-width: 2px;" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-            </TextField>
             <Text fill="WHITE" fontSmoothingType="LCD" layoutX="140.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <font>
                   <Font name="Verdana" size="12.0" />
@@ -113,36 +101,41 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <TextField layoutX="210.0" layoutY="96.0" maxWidth="100.0" prefHeight="29.0" prefWidth="50.0" style="-fx-background-color: #ffff; -fx-border-color: #ff9933; -fx-border-width: 2px;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField layoutX="210.0" layoutY="163.0" maxWidth="100.0" prefHeight="29.0" prefWidth="50.0" style="-fx-background-color: #ffff; -fx-border-color: #ff9933; -fx-border-width: 2px;" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField layoutX="210.0" layoutY="163.0" maxWidth="100.0" prefHeight="29.0" prefWidth="50.0" style="-fx-background-color: #ffff; -fx-border-color: #ff9933; -fx-border-width: 2px;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField layoutX="510.0" layoutY="96.0" maxWidth="100.0" prefHeight="29.0" prefWidth="50.0" style="-fx-background-color: #ffff; -fx-border-color: #ff9933; -fx-border-width: 2px;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="30.0" />
-               </GridPane.margin>
-            </TextField>
             <Text fill="WHITE" fontSmoothingType="LCD" layoutX="131.0" layoutY="50.0" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Collaborator" underline="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
             </Text>
-            <TextField layoutX="210.0" layoutY="163.0" maxWidth="100.0" prefHeight="29.0" prefWidth="50.0" style="-fx-background-color: #ffff; -fx-border-color: #ff9933; -fx-border-width: 2px;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <JFXTextField fx:id="nameMTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="30.0" />
+                  <Insets left="100.0" />
                </GridPane.margin>
-            </TextField>
+            </JFXTextField>
+            <JFXTextField fx:id="nifMTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="emailMTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="nameCTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="nifCTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="emailCTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </JFXTextField>
          </children>
       </GridPane>
    </center>

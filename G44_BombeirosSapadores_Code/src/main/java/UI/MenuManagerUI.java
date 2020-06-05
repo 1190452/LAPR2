@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -28,15 +29,15 @@ import javafx.util.Duration;
 public class MenuManagerUI implements Initializable {
 
     @FXML
+    private Label dateTime;
+    
+    double x,y;
+    @FXML
     private Button bt_createT;
     @FXML
     private Button bt_createF;
     @FXML
     private Button bt_createPT;
-    @FXML
-    private Label dateTime;
-    
-    double x,y;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,5 +77,6 @@ public class MenuManagerUI implements Initializable {
         x = event.getSceneX();
         y = event.getSceneY();
     }
+
     
 }

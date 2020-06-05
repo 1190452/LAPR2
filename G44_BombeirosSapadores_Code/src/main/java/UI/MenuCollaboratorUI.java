@@ -27,7 +27,7 @@ import javafx.util.Duration;
  *
  * @author jorge
  */
-public class MenuCollaboratorController implements Initializable {
+public class MenuCollaboratorUI implements Initializable {
 
     @FXML
     private Button bt_createT;
