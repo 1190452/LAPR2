@@ -19,11 +19,13 @@ public class CreateFreelancerController {
     RegisterFreelancer rfree;
     Freelancer free;
 
-    public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
+    public boolean newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
         rfree = p1.getRfree();
         free = rfree.newFreelancer(name, levelExp, email, nif, iban, country, street, doorNumber, locality);
-        return free;
-
+        if(free != null){
+            return true;
+        }
+        return false;
     }
 
     public boolean saveFreelancer() {

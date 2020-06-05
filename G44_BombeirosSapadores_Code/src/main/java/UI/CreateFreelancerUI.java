@@ -9,7 +9,6 @@ import Controller.CreateFreelancerController;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -51,15 +49,30 @@ public class CreateFreelancerUI implements Initializable {
     private JFXTextField localityTxt;
     @FXML
     private JFXComboBox<String> experienceCB;
-
+    private double x,y;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         experienceCB.getItems().addAll("Junior", "Senior");
     }
+    
+    public CreateFreelancerUI(){
+        cf = new CreateFreelancerController();
+    }
 
     @FXML
+    private void min(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
     private void cancelBtn(ActionEvent event) {
-        encerrarCreateFreelancerUI(event);
+
     }
 
     private void encerrarCreateFreelancerUI(ActionEvent event) {
@@ -77,7 +90,12 @@ public class CreateFreelancerUI implements Initializable {
     }
 
     @FXML
-    private void confirmBtn(ActionEvent event) {
+    private void cancel(ActionEvent event) {
+        encerrarCreateFreelancerUI(event);
+    }
+
+    @FXML
+    private void confirm(ActionEvent event) {
         try {
             String name = nameTxt.getSelectedText();
             String email = emailTxt.getSelectedText();
@@ -88,44 +106,44 @@ public class CreateFreelancerUI implements Initializable {
             String door = doorTxt.getSelectedText();
             String locality = localityTxt.getSelectedText();
             String exp = experienceCB.getSelectionModel().getSelectedItem();
-            cf.newFreelancer(name, exp, email, nif, iban, country, street, door, locality);
-            if (alert1(event) == ButtonType.YES) {
-                boolean added = cf.saveFreelancer();
-                AlertUI.criarAlerta(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Add new Freelancer.",
-                        added ? "Freelancer added with success."
-                                : "It was not possible to add Freelancer").show();
-                encerrarCreateFreelancerUI(event);
-            } else if(alert1(event) == ButtonType.NO){
-                encerrarCreateFreelancerUI(event);
-            }
+            confirmBtn(name, exp, email, nif, iban, country, street, door, locality, event);
+            
 
         } catch (NumberFormatException nfe) {
-            AlertUI.criarAlerta(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
+            AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
                     "Introduza correct data").show();
         } catch (IllegalArgumentException iae) {
-            AlertUI.criarAlerta(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
+            AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
                     iae.getMessage()).show();
         }
     }
+      
+    private void confirmBtn(String name, String exp, String email, String nif, String iban, String country, String street, String door, String locality, ActionEvent event){
+        boolean created = cf.newFreelancer(name, exp, email, nif, iban, country, street, door, locality);
+            if (created) {
+                Alert a = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Create Freelancer", "Confirms?");
 
-    @FXML
-    private void min(MouseEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setIconified(true);
+                if (a.getContentText().equalsIgnoreCase("yes")) {
+                    boolean added = cf.saveFreelancer();
+                    AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Add new Freelancer.",
+                            added ? "Freelancer added with success."
+                                    : "It was not possible to add Freelancer").show();
+                    encerrarCreateFreelancerUI(event);
+                }
+            }
     }
 
     @FXML
-    private void close(MouseEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
+    private void dragged(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() -x);
+        stage.setY(event.getScreenY() -y);
     }
 
-@FXML
-    private ButtonType alert1(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation Freelancer");
-        Optional<ButtonType> result = alert.showAndWait();
-        return result.get();
+    @FXML
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
     }
 
 }
