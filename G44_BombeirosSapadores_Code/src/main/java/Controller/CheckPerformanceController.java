@@ -13,8 +13,6 @@ import Model.RegisterFreelancer;
 import Model.Task;
 import Model.Transaction;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
 
