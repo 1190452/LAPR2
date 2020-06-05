@@ -10,15 +10,10 @@
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="397.0" style="-fx-background-color: #233640;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HistoricalTransactionUI">
    <top>
-      <AnchorPane prefHeight="61.0" prefWidth="397.0" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: #595959; -fx-border-color: #e6be8a;" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="30.0" prefWidth="802.0" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: #595959; -fx-border-color: #e6be8a;" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" layoutX="142.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Load File" textAlignment="CENTER">
-               <font>
-                  <Font name="Sitka Text Bold" size="25.0" />
-               </font>
-            </Text>
-            <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="377.0" layoutY="24.0" onMouseClicked="#close" size="1.2em" />
-            <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="354.0" layoutY="26.0" onMouseClicked="#min" size="1.2em" />
+            <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="377.0" layoutY="19.0" onMouseClicked="#close" size="1.2em" />
+            <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="354.0" layoutY="20.0" onMouseClicked="#min" size="1.2em" />
          </children>
       </AnchorPane>
    </top>
@@ -30,8 +25,8 @@
                   <Font name="Verdana" size="18.0" />
                </font>
             </Text>
-            <Button id="goldline" fx:id="confirmBtn" layoutX="222.0" layoutY="278.0" mnemonicParsing="false" onAction="#Confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" />
-            <Button id="goldline" fx:id="cancelBtn" layoutX="113.0" layoutY="278.0" mnemonicParsing="false" onAction="#Cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" />
+            <Button id="goldline" fx:id="confirmBtn" layoutX="210.0" layoutY="278.0" mnemonicParsing="false" onAction="#Confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" />
+            <Button id="goldline" fx:id="cancelBtn" layoutX="120.0" layoutY="278.0" mnemonicParsing="false" onAction="#Cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" />
             <Button id="iphone" fx:id="openFile" layoutX="174.0" layoutY="145.0" mnemonicParsing="false" onAction="#btnAction" stylesheets="@../styles/stylesheet.css" text="Load" />
             <Label fx:id="lbl" alignment="CENTER" layoutX="52.0" layoutY="200.0" prefHeight="66.0" prefWidth="294.0" textAlignment="CENTER" textFill="WHITE" />
          </children>
