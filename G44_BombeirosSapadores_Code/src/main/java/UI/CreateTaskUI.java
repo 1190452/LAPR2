@@ -11,8 +11,10 @@ import com.jfoenix.controls.JFXTextField;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  *
@@ -20,6 +22,9 @@ import javafx.scene.input.MouseEvent;
  */
 public class CreateTaskUI {
     Scanner read = new Scanner(System.in);
+    
+    
+    
     private CreateTaskController ctask_controller;
     @FXML
     private Button cancelBtn;
@@ -37,34 +42,36 @@ public class CreateTaskUI {
     private JFXTextField categoryTxt;
     
     public CreateTaskUI(){
-        ctask_controller = new CreateTaskController();   
-        System.out.println("Introduce the id, brief description, time duration (in hours), cost per hour (in euros), and the category");
-        String id = read.next();
-        String bd = read.nextLine();
-        int td = read.nextInt();
-        double ch = read.nextDouble();
-        String ct = read.nextLine();
-        Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
-        System.out.println(ts.toString());
-        System.out.println("Confirma?");
-        boolean ans = read.nextBoolean();
-        if(ans==true){
-            if(ctask_controller.registersTask()){
-                System.out.println("Operation Successfull");
-            }
-            
-        }else{
-            System.out.println("failure");
-        }
+        //ctask_controller = new CreateTaskController();   
+        //System.out.println("Introduce the id, brief description, time duration (in hours), cost per hour (in euros), and the category");
+        
+        
+        
+        
+//        System.out.println(ts.toString());
+//        System.out.println("Confirma?");
+//        boolean ans = read.nextBoolean();
+//        if(ans==true){
+//            if(ctask_controller.registersTask()){
+//                System.out.println("Operation Successfull");
+//            }
+//            
+//        }else{
+//            System.out.println("failure");
+//        }
         
     }
 
     @FXML
     private void min(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 
     @FXML
     private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -73,6 +80,13 @@ public class CreateTaskUI {
 
     @FXML
     private void confirm(ActionEvent event) {
+        String id = idTxt.getSelectedText();
+        String bd = descriptionTxt.getSelectedText();
+        int td = Integer.parseInt(timeTxt.getSelectedText());
+        double ch = Double.parseDouble(costTxt.getSelectedText());
+        String ct = categoryTxt.getSelectedText();
+        ctask_controller = new CreateTaskController();
+        Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
     }
     
     

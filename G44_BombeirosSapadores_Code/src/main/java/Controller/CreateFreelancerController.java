@@ -18,19 +18,19 @@ public class CreateFreelancerController {
     Platform p1;
     RegisterFreelancer rfree;
     Freelancer free;
-  
 
-    public void newFreelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
-          rfree = p1.getRfree();
-          free = rfree.newFreelancer(freeID, name, levelExp, email, nif, iban, country, street, doorNumber, locality);
-          rfree.validateFreelancer(free);
+    public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
+        rfree = p1.getRfree();
+        free = rfree.newFreelancer(name, levelExp, email, nif, iban, country, street, doorNumber, locality);
+        return free;
+
     }
 
-    public void saveFreelancer() {
+    public boolean saveFreelancer() {
         String freeID = rfree.generateID();
         free.setFreeID(freeID);
-        rfree.saveFreelancer(free);
-        
+        return rfree.saveFreelancer(free);
+
     }
 
 }
