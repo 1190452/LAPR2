@@ -6,7 +6,6 @@
 package UI;
 
 import Controller.CreateFreelancerController;
-import Model.Freelancer;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -121,7 +120,7 @@ public class CreateFreelancerUI implements Initializable {
         stage.close();
     }
 
-    @FXML
+@FXML
     private ButtonType alert1(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Freelancer");

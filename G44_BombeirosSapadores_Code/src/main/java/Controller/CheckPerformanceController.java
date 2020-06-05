@@ -12,11 +12,7 @@ import Model.RegisterFreelancer;
 import Model.Task;
 import Model.Transaction;
 import java.util.List;
-<<<<<<< HEAD
-import java.util.Random;
-import java.util.Set;
-=======
->>>>>>> fbb781b725b51290ab9cbb6c956283e159788410
+
 
 /**
  *
@@ -141,7 +137,7 @@ public class CheckPerformanceController {
             System.out.println("Delay Deviation: " + deviationAllFreel + "\nAverage Delay: " + averageDelayOfAllFreelancers);
             //SHOW HISTOGRAM
             
-            Math
+           
         }
     }
 
