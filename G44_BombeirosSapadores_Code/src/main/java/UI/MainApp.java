@@ -16,8 +16,12 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
 
 
+<<<<<<< HEAD
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateFreelancer.fxml"));
 
+=======
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateTask.fxml"));
+>>>>>>> 7b4102fadb8d001443c83d3d18250e676223ee1d
 
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");

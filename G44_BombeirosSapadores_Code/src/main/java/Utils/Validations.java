@@ -5,6 +5,8 @@
  */
 package Utils;
 
+import Model.Task;
+
 /**
  *
  * @author OMEN X
@@ -70,6 +72,8 @@ public class Validations {
         String regex = "^[A-Z][a-z]{2,}(?: [A-Z][a-z]*)*$";
         return name.matches(regex);
     }
+    
+    
     
     
 }
