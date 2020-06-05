@@ -21,10 +21,9 @@ import javafx.stage.Stage;
  * @author Ricardo
  */
 public class CreateTaskUI {
+
     Scanner read = new Scanner(System.in);
-    
-    
-    
+
     private CreateTaskController ctask_controller;
     @FXML
     private Button cancelBtn;
@@ -40,14 +39,11 @@ public class CreateTaskUI {
     private JFXTextField costTxt;
     @FXML
     private JFXTextField categoryTxt;
-    
-    public CreateTaskUI(){
+
+    public CreateTaskUI() {
         //ctask_controller = new CreateTaskController();   
         //System.out.println("Introduce the id, brief description, time duration (in hours), cost per hour (in euros), and the category");
-        
-        
-        
-        
+
 //        System.out.println(ts.toString());
 //        System.out.println("Confirma?");
 //        boolean ans = read.nextBoolean();
@@ -59,18 +55,17 @@ public class CreateTaskUI {
 //        }else{
 //            System.out.println("failure");
 //        }
-        
     }
 
     @FXML
     private void min(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
     @FXML
     private void close(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
@@ -80,15 +75,22 @@ public class CreateTaskUI {
 
     @FXML
     private void confirm(ActionEvent event) {
-        String id = idTxt.getSelectedText();
-        String bd = descriptionTxt.getSelectedText();
-        int td = Integer.parseInt(timeTxt.getSelectedText());
-        double ch = Double.parseDouble(costTxt.getSelectedText());
-        String ct = categoryTxt.getSelectedText();
-        ctask_controller = new CreateTaskController();
-        Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
+
+        //try {
+            
+            String id = idTxt.getSelectedText();
+            String bd = descriptionTxt.getSelectedText();
+            int td = Integer.parseInt(timeTxt.getSelectedText());
+            double ch = Double.parseDouble(costTxt.getSelectedText());
+            String ct = categoryTxt.getSelectedText();
+            ctask_controller = new CreateTaskController();
+            
+            Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
+            if(ts == null){
+                
+            }
+        
+
     }
-    
-    
-    
+
 }
