@@ -3,7 +3,7 @@ autonumber
 
 participant "Payment" as PA
 
-participant "nltr\nList<Transaction>" as NLTR
+
 participant "Receipt" as R
 participant "Writer" as W
 

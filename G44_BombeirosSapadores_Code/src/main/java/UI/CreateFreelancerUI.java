@@ -6,19 +6,17 @@
 package UI;
 
 import Controller.CreateFreelancerController;
-import Model.NewEnum;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
-import java.util.Observable;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  *
@@ -30,24 +28,32 @@ public class CreateFreelancerUI implements Initializable {
     private Button cancelBtn;
     @FXML
     private Button confirmBtn;
-    private ComboBox<String> cbLvl;
+
     @FXML
-    private TextField idTxt;
+    private JFXTextField nameTxt;
     @FXML
-    private TextField durationTxt;
+    private JFXTextField emailTxt;
     @FXML
-    private TextField costTxt;
+    private JFXTextField nifTxt;
     @FXML
-    private TextField categoryTxt;
+    private JFXTextField ibanTxt;
     @FXML
-    private TextField descriptionTxt;
+    private JFXTextField countryTxt;
+    @FXML
+    private JFXTextField streetTxt;
+    @FXML
+    private JFXTextField doorTxt;
+    @FXML
+    private JFXTextField localityTxt;
+    @FXML
+    private JFXComboBox<String> experienceCB;
     
     
     
   
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> list = FXCollections.observableArrayList("Junior", "Senior");
-        cbLvl.setItems(list);
+        experienceCB.getItems().addAll("Junior", "Senior");
     }
     
 
@@ -58,14 +64,29 @@ public class CreateFreelancerUI implements Initializable {
 
     @FXML
     private void confirm(ActionEvent event) {
+        String name = nameTxt.getSelectedText();
+        String email = emailTxt.getSelectedText();
+        String nif = nifTxt.getSelectedText();
+        String iban = ibanTxt.getSelectedText();
+        String country = countryTxt.getSelectedText();
+        String street = streetTxt.getSelectedText();
+        String door = doorTxt.getSelectedText();
+        String locality = localityTxt.getSelectedText();
+        String exp = experienceCB.getSelectionModel().getSelectedItem();
+        
+        
     }
 
     @FXML
     private void min(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 
     @FXML
     private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
 

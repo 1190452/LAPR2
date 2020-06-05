@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
@@ -129,11 +130,6 @@
                   <Insets left="100.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField focusColor="#e6be8a" layoutX="376.0" layoutY="93.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </JFXTextField>
             <JFXTextField fx:id="emailTxt" focusColor="#e6be8a" layoutX="10.0" layoutY="131.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="100.0" />
@@ -169,6 +165,11 @@
                   <Insets left="100.0" />
                </GridPane.margin>
             </JFXTextField>
+            <JFXComboBox fx:id="experienceCB" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" styleClass="combo-box" stylesheets="@../styles/Styles.css" unFocusColor="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </JFXComboBox>
          </children>
       </GridPane>
    </center>
