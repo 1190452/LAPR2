@@ -13,7 +13,7 @@ public class MainApp extends Application {
     public static final String APPLICATION_TITLE = "T4J";
     @Override
     public void start(Stage stage) throws Exception   {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/CretateFreelancer.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");

@@ -133,7 +133,7 @@ public class Platform {
         Date date = getLastDayDate();
         sEF = new SendEmailFreelTask();
         Timer t = new Timer();
-        t.schedule(sEF, date);
+        //t.schedule(sEF, date);
 
     }
 
