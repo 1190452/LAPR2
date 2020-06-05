@@ -12,7 +12,10 @@ import Model.RegisterFreelancer;
 import Model.Task;
 import Model.Transaction;
 import java.util.List;
+<<<<<<< HEAD
 
+=======
+>>>>>>> e8f52a0c4eba6b5418fcf79362b8165dba29d555
 
 /**
  *
@@ -137,7 +140,11 @@ public class CheckPerformanceController {
             System.out.println("Delay Deviation: " + deviationAllFreel + "\nAverage Delay: " + averageDelayOfAllFreelancers);
             //SHOW HISTOGRAM
             
+<<<<<<< HEAD
            
+=======
+            
+>>>>>>> e8f52a0c4eba6b5418fcf79362b8165dba29d555
         }
     }
 

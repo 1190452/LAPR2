@@ -18,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -55,29 +54,46 @@ public class LoginController implements Initializable {
             FacadeAuthorization fa = new FacadeAuthorization();
             fa.doLogin(txtFieldUsername.getText(), txtFieldPassword.getText());
             if (FacadeAuthorization.getActualSession().isLoggedInWithPart(Constants.ROLE_ADMINISTRATIVE)) {
-                
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuAdministrator.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Administrator Menu");
+                stage.setResizable(false);
+                stage.show();
+
+                // Hide this current window
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+            } else if (FacadeAuthorization.getActualSession().isLoggedInWithPart(Constants.ROLE_COLLABORATOR_ORGANIZATION)) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuCollaborator.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Collaborator Menu");
+                stage.setResizable(false);
+                stage.show();
+
+                // Hide this current window
+                ((Node) (event.getSource())).getScene().getWindow().hide();
+            } else if (FacadeAuthorization.getActualSession().isLoggedInWithPart(Constants.ROLE_MANAGER_ORGANIZATION)) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuCollaborator.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Collaborator Menu");
+                stage.setResizable(false);
+                stage.show();
             }
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuManager.fxml"));
-            
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Login Window");
-            stage.setScene(new Scene(root1));
-            stage.setResizable(false);
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show();
-            
-            // Hide this current window
-            ((Node) (event.getSource())).getScene().getWindow().hide();
         }catch(IOException e) {
             e.printStackTrace();
+        } catch(Exception ex) {
+            txtFieldUsername.clear();
+            txtFieldPassword.clear();
         }
         
         
         
     }
-
-
 
     @FXML
     private void draged(MouseEvent event) {
