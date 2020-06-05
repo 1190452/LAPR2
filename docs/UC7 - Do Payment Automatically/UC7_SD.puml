@@ -5,7 +5,7 @@ participant ":Plataform" as PLAT
 participant "task\n:DoPaymentTask" as TASK
 participant "t\n:timer" as TI
 participant "RegistOrganizations" as RORGS
-participant "lo\n:List<Organazation>" as LO
+
 participant "org\n:Organization" as O
 participant "def\n:DefinePayment" as DP
 
