@@ -39,7 +39,7 @@ public class Writer {
     public static void writeOrg(Organization org, double sum) {
         try {
             FileWriter writer = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
-            writer.write("Organization"+org.getName()+ " made a payment of "+ sum +" on " + Date.currentDate().toFile()+ "\n");
+            writer.write("Organization"+org.getName()+ " made a payment of "+ sum +" on " + Date.actualDate().toFile() + "\n");
             
             writer.close();
         } catch (IOException e) {
@@ -66,7 +66,7 @@ public class Writer {
     public static void genEmail(List<Transaction> nltr, double valueE, double valueC){
         try {
             //adicionar o code..
-            PrintWriter out = new PrintWriter(new File("receipt"+nltr.get(0).getFreel().getFreeID()+Date.currentDate().toFile()+".txt"));
+            PrintWriter out = new PrintWriter(new File("receipt"+nltr.get(0).getFreel().getFreeID()+Date.actualDate().toFile() + ".txt"));
             try {
                 out.println("Receipt of "+nltr.get(0).getFreel().getFreeID());
                 for(Transaction e : nltr){

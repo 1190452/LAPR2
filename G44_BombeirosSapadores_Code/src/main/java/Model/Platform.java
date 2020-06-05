@@ -181,7 +181,7 @@ public class Platform {
 
         ZonedDateTime now = ZonedDateTime.now();
 
-        ZonedDateTime timeToTimer = ZonedDateTime.of(date.getYear(), date.getMonth(), date.getDia(),
+        ZonedDateTime timeToTimer = ZonedDateTime.of(date.getYear(), date.getMonth(), date.getDay(),
                 time.getHours(), time.getMinutes(), time.getSeconds(), 0, ZoneId.of("Europe/London"));
 
         long diff = ChronoUnit.SECONDS.between(now, timeToTimer);
