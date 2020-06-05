@@ -14,7 +14,6 @@ public class Collaborator {
     private String nameC;
     private String emailC;
     private String role;
-    private String phoneNumberC;
 
     /**
      * Builds an instance of Collaborator that receives name, email and password
@@ -24,11 +23,10 @@ public class Collaborator {
      * @param role
      * @param phoneNumberC
      */
-    public Collaborator(String nameC, String emailC, String role, String phoneNumberC) {
+    public Collaborator(String nameC, String emailC, String role) {
         this.nameC = nameC;
         this.emailC = emailC;
         this.role = role;
-        this.phoneNumberC = phoneNumberC;
 
     }
 
@@ -46,7 +44,6 @@ public class Collaborator {
         nameC = otherCollaborator.getNameC();
         emailC = otherCollaborator.getEmailC();
         role = otherCollaborator.getRole();
-        phoneNumberC = otherCollaborator.getPhoneNumberC();
     }
 
     /**
@@ -91,22 +88,9 @@ public class Collaborator {
         this.role = role;
     }
 
-    /**
-     * @return the phoneNumberC
-     */
-    public String getPhoneNumberC() {
-        return phoneNumberC;
-    }
-
-    /**
-     * @param phoneNumberC the phoneNumberC to set
-     */
-    public void setPhoneNumberC(String phoneNumberC) {
-        this.phoneNumberC = phoneNumberC;
-    }
 
     @Override
     public String toString() {
-        return String.format("Nome: %s \nEmail: %s \nRole: %s \nPhone Number: %s", nameC, emailC, role, phoneNumberC);
+        return String.format("Nome: %s \nEmail: %s \nRole: %s", nameC, emailC, role);
     }
 }
