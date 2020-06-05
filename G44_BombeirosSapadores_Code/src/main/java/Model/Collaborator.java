@@ -88,7 +88,6 @@ public class Collaborator {
         this.role = role;
     }
 
-
     @Override
     public String toString() {
         return String.format("Nome: %s \nEmail: %s \nRole: %s", nameC, emailC, role);

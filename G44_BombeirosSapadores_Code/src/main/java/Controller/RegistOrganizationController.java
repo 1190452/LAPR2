@@ -10,7 +10,6 @@ import Model.Platform;
 import Model.RegisterOrganization;
 import java.io.FileNotFoundException;
 
-
 /**
  *
  * @author jorge
@@ -23,7 +22,7 @@ public class RegistOrganizationController {
 
     public Organization newOrganization(String name, String email, String NIF, String street, String doorNumber, String locality, String nameC, String emailC, String nameM, String emailM) {
         ro = plat.getrOrg();
-        org = ro.newOrganization(name, email, NIF, street, doorNumber, locality, nameC, emailC,nameM, emailM);
+        org = ro.newOrganization(name, email, NIF, street, doorNumber, locality, nameC, emailC, nameM, emailM);
         if (ro.validateOrganization(org)) {
             return org;
         }
@@ -34,12 +33,10 @@ public class RegistOrganizationController {
         return ro.registerOrganization(org);
     }
 
-
-    
     Organization organization;
-    
+
     public void CreateOrganization() {
-        
+
     }
-    
+
 }
