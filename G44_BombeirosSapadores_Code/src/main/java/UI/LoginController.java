@@ -7,9 +7,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -24,8 +26,8 @@ public class LoginController implements Initializable {
     private PasswordField txtFieldPassword;
     @FXML
     private Button loginBtn;
-    @FXML
-    private Button exitBtn;
+    
+    double x,y;
 
     /**
      * Initializes the controller class.
@@ -33,18 +35,38 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
 
     @FXML
     private void login(ActionEvent event) {
     }
 
+
+
     @FXML
-    private void exit(ActionEvent event) {
+    private void draged(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() -x);
+        stage.setY(event.getScreenY() -y);
     }
 
     @FXML
-    private void exit(MouseEvent event) {
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void min(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
     
 }

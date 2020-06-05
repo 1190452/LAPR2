@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -20,28 +19,16 @@ import javafx.scene.input.MouseEvent;
  *
  * @author Jorge
  */
-public class CreateFreelancerController implements Initializable {
+public class ExecutionTaskUI implements Initializable {
 
     @FXML
     private Button cancelBtn;
     @FXML
-    private TextField nameTxt;
-    @FXML
-    private TextField emailTxt;
-    @FXML
-    private TextField nifTxt;
+    private TextField durationTxt;
     @FXML
     private Button confirmBtn;
     @FXML
-    private TextField ibanTxt;
-    @FXML
-    private TextField countryTxt;
-    @FXML
-    private TextField streetTxt;
-    @FXML
-    private TextField doorTxt;
-    @FXML
-    private TextField localityTxt;
+    private TextField descriptionTxt;
 
     /**
      * Initializes the controller class.
@@ -49,12 +36,14 @@ public class CreateFreelancerController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        
     }    
 
     @FXML
-    private void exitBtn(MouseEvent event) {
+    private void min(MouseEvent event) {
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
     }
 
     @FXML

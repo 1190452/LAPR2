@@ -6,18 +6,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 
 public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception   {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateFreelancer.fxml"));
         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
         
-        stage.setTitle("JavaFX and Maven");
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
         stage.show();
     } 

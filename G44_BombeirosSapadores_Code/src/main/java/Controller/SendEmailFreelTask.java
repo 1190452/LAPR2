@@ -15,12 +15,13 @@ import java.util.logging.Logger;
  *
  * @author User
  */
-public class SendEmailFreelTask extends TimerTask{
+public class SendEmailFreelTask extends TimerTask {
+
     private Platform p1;
-    
-    public SendEmailFreelTask(){
-        p1=new Platform();
-        
+
+    public SendEmailFreelTask() {
+        p1 = new Platform();
+
     }
 
     @Override
@@ -31,12 +32,7 @@ public class SendEmailFreelTask extends TimerTask{
         } catch (FileNotFoundException ex) {
             Logger.getLogger(SendEmailFreelTask.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
-    
-    
-        
-    
-    
+
 }

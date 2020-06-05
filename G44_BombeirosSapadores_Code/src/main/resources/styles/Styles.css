@@ -15,3 +15,7 @@
     -jfx-unfocus-color: WHITE;
 }
 
+.combo-box .cell:selected {
+    -fx-text-fill: white;
+}
+

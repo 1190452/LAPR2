@@ -61,22 +61,6 @@ public class Platform {
         return rFree;
     }
 
-//    public boolean registerOrganization(Organization oOrganizacao, String strPwd) {
-//        if (this.validateOrganization(oOrganizacao, strPwd)) {
-//            Collaborator oGestor = oOrganizacao.getColab();
-//            String strNomeGestor = oGestor.getName();
-//            String strEmailGestor = oGestor.getEmail();
-//            String role = oGestor.getRole();
-//            if (this.m_oAutorizacao.registUserWithRole(strNomeGestor, strEmailGestor, strPwd, role)) {
-//                return rOrg.addOrganization(oOrganizacao);
-//
-//            }
-//        }
-//        return false;
-//    }
-    /*private boolean addOrganization(Organization oOrganizacao) {
-    return m_lstOrganizacoes.add(oOrganizacao);
-    }*/
     public boolean validateOrganization(Organization oOrganizacao, String strPwd) {
         boolean bRet = true;
 
@@ -149,7 +133,7 @@ public class Platform {
         Date date = getLastDayDate();
         sEF = new SendEmailFreelTask();
         Timer t = new Timer();
-       // t.schedule(sEF, date);
+        t.schedule(sEF, date);
 
     }
 
@@ -215,7 +199,9 @@ public class Platform {
         List<Freelancer> listFreelancers = rFree.getListFreelancers();
         double delayProb = rFree.getDelayProb();
 
-        for (int i = 0; i < listFreelancers.size(); i++) {
+        for (int i = 0; i < listFreelancers.size(); i++) 
+        
+        {
             Freelancer free = listFreelancers.get(i);
             TaskList taskL = free.getTaskList();
             List<Task> taskList = taskL.getTaskList();
