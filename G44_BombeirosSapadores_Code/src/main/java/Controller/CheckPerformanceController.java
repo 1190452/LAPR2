@@ -12,11 +12,10 @@ import Model.RegisterFreelancer;
 import Model.Task;
 import Model.Transaction;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Random;
 import java.util.Set;
-=======
->>>>>>> fbb781b725b51290ab9cbb6c956283e159788410
+import org.apache.commons.math3.distribution.NormalDistribution;
+
 
 /**
  *
@@ -140,8 +139,19 @@ public class CheckPerformanceController {
             double deviationAllFreel = freel.calculateDelayDeviation(totalDeviationDelayOfAllFreelancers, numTasksOfAllFreelancers);
             System.out.println("Delay Deviation: " + deviationAllFreel + "\nAverage Delay: " + averageDelayOfAllFreelancers);
             //SHOW HISTOGRAM
+             
             
-            Math
+            /*
+            X represents the mean execution time delay of the freelancers
+            mean = 2
+            standard deviation = 1.5/Math.sqrt(number of freelancers)
+            X~N(2;1.5/Math.sqrt(number of freelancers)
+            */
+            NormalDistribution nd = new NormalDistribution(2, (1.5/Math.sqrt(listFreelancer.size())));
+            
+            //P(X>3) = 1 - P(X<=3) 
+            double probability = 1 - nd.cumulativeProbability(3); 
+            
         }
     }
 
