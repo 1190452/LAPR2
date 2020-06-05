@@ -29,28 +29,28 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Id:" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Id:" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="100.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Brief description:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Brief description:" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="100.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Time duration (hours):" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Time duration (hours):" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="100.0" />
                </GridPane.margin>
             </Text>
             <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="7">
@@ -58,7 +58,7 @@
                   <Insets bottom="15.0" right="100.0" />
                </GridPane.margin>
             </Button>
-            <Text fill="WHITE" fontSmoothingType="LCD" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Task" underline="true" GridPane.halignment="LEFT">
+            <Text fill="WHITE" fontSmoothingType="LCD" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TASK" underline="true" GridPane.halignment="LEFT">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
@@ -66,20 +66,20 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="140.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost per hour:" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="140.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cost per hour:" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="100.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="147.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="147.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="100.0" />
                </GridPane.margin>
             </Text>
             <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="7">

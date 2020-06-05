@@ -35,28 +35,28 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of experience:" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Level of experience:" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
             <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="12">
@@ -64,7 +64,7 @@
                   <Insets bottom="15.0" right="100.0" />
                </GridPane.margin>
             </Button>
-            <Text fill="WHITE" fontSmoothingType="LCD" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer" underline="true" GridPane.halignment="LEFT">
+            <Text fill="WHITE" fontSmoothingType="LCD" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="FREELANCER" underline="true" GridPane.halignment="LEFT">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
@@ -72,20 +72,20 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="140.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF:" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="140.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF:" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="147.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IBAN:" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="147.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IBAN:" GridPane.halignment="LEFT" GridPane.rowIndex="6">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
             <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="12">
@@ -93,36 +93,36 @@
                   <Insets bottom="15.0" left="100.0" />
                </GridPane.margin>
             </Button>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="268.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="268.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country:" GridPane.halignment="LEFT" GridPane.rowIndex="7">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="259.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street:" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="259.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street:" GridPane.halignment="LEFT" GridPane.rowIndex="8">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="10.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Door number:" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="10.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Door number:" GridPane.halignment="LEFT" GridPane.rowIndex="9">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="10.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Locality" GridPane.halignment="CENTER" GridPane.rowIndex="10">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="10.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Locality:" GridPane.halignment="LEFT" GridPane.rowIndex="10">
                <font>
-                  <Font name="Verdana" size="12.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets right="250.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
             <JFXTextField fx:id="nameTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
@@ -174,9 +174,9 @@
       </GridPane>
    </center>
    <top>
-      <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="802.0" style="-fx-background-color: #595959;">
+      <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="802.0" style="-fx-background-color: #595959; -fx-border-color: #e6be8a; -fx-border-width: 0px 0px 2px 0px;">
          <children>
-            <FontAwesomeIconView fill="#48dbfd" glyphName="MINUS" onMouseClicked="#min" size="1.2em">
+            <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" onMouseClicked="#min" size="1.2em">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>

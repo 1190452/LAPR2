@@ -64,7 +64,7 @@ public class ValidationsTest {
      */
     @Test
     public void testIsNameValid() {
-        String name = "Albertina Macacão";
+        String name = "Albertina Macacao";
         boolean expResult = true;
         boolean result = Validations.isNameValid(name);
         assertEquals(expResult, result);
