@@ -20,7 +20,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#draged" onMousePressed="#pressed" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.MenuCollaboratorUI">
    <bottom>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="159.0" prefWidth="1000.0" style="-fx-background-color: #262626; -fx-border-color: #e6be8a; -fx-border-width: 4px 0px 0px 0px;" BorderPane.alignment="CENTER" />
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="159.0" prefWidth="1000.0" style="-fx-background-color: #262626; -fx-border-color: #e6be8a; -fx-border-width: 4px 0px 0px 0px;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="dateTime" layoutX="829.0" layoutY="95.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: transparent;" textFill="#e6be8a">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
    </bottom>
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="1000.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">
@@ -73,11 +80,6 @@
                   </Lighting>
                </effect>
             </MenuButton>
-            <Label fx:id="dateTime" layoutX="720.0" layoutY="31.0" prefHeight="30.0" prefWidth="140.0" textFill="#e6be8a">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
             <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
             <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="976.0" layoutY="22.0" onMouseClicked="#close" size="1.2em" />
             <Polygon fill="#e6be8a" layoutX="359.0" layoutY="181.0" points="90.0, 160.0, 641.0, 160.0, 641.0, 140.0" stroke="#e6be8a" strokeType="INSIDE" />

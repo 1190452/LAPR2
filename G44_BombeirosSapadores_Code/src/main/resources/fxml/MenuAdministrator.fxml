@@ -24,6 +24,11 @@
             <FontAwesomeIconView fill="#e6be8a" glyphName="INSTAGRAM" layoutX="14.0" layoutY="30.0" onMouseClicked="#openInsta" size="20" />
             <FontAwesomeIconView fill="#e6be8a" glyphName="FACEBOOK" layoutX="16.0" layoutY="75.0" onMouseClicked="#openFace" size="20" />
             <FontAwesomeIconView fill="#e6be8a" glyphName="LINKEDIN" layoutX="14.0" layoutY="120.0" onMouseClicked="#openLink" size="20" />
+            <Label fx:id="dateTime" layoutX="829.0" layoutY="95.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: transparent;" textFill="#e6be8a">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </bottom>
    <top>
@@ -38,11 +43,6 @@
                   <Bloom />
                </effect>
             </JFXHamburger>
-            <Label fx:id="dateTime" layoutX="720.0" layoutY="31.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #595959;" textFill="#e6be8a">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
             <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="976.0" layoutY="22.0" onMouseClicked="#close" size="1.2em" />
             <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
             <ImageView fitHeight="244.0" fitWidth="238.0" layoutX="701.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
