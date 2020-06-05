@@ -141,8 +141,7 @@ public class CheckPerformanceController {
             System.out.println("Delay Deviation: " + deviationAllFreel + "\nAverage Delay: " + averageDelayOfAllFreelancers);
             //SHOW HISTOGRAM
             
-            Random r = new Random();
-            double value = r.nextGaussian()*1.5+2;
+            Math
         }
     }
 
