@@ -11,8 +11,10 @@ import com.jfoenix.controls.JFXTextField;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  *
@@ -38,33 +40,37 @@ public class CreateTaskUI {
     
     public CreateTaskUI(){
         ctask_controller = new CreateTaskController();   
-        System.out.println("Introduce the id, brief description, time duration (in hours), cost per hour (in euros), and the category");
-        String id = read.next();
-        String bd = read.nextLine();
-        int td = read.nextInt();
-        double ch = read.nextDouble();
-        String ct = read.nextLine();
+        //System.out.println("Introduce the id, brief description, time duration (in hours), cost per hour (in euros), and the category");
+        String id = idTxt.getSelectedText();
+        String bd = descriptionTxt.getSelectedText();
+        int td = Integer.parseInt(timeTxt.getSelectedText());
+        double ch = Double.parseDouble(costTxt.getSelectedText());
+        String ct = categoryTxt.getSelectedText();
         Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
-        System.out.println(ts.toString());
-        System.out.println("Confirma?");
-        boolean ans = read.nextBoolean();
-        if(ans==true){
-            if(ctask_controller.registersTask()){
-                System.out.println("Operation Successfull");
-            }
-            
-        }else{
-            System.out.println("failure");
-        }
+//        System.out.println(ts.toString());
+//        System.out.println("Confirma?");
+//        boolean ans = read.nextBoolean();
+//        if(ans==true){
+//            if(ctask_controller.registersTask()){
+//                System.out.println("Operation Successfull");
+//            }
+//            
+//        }else{
+//            System.out.println("failure");
+//        }
         
     }
 
     @FXML
     private void min(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 
     @FXML
     private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
