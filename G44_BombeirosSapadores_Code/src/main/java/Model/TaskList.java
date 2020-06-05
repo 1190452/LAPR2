@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Utils.Validations;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +44,13 @@ public class TaskList {
     }
 
     private boolean validateTask(Task task) {
-        //validar 
+        for(Task e : taskList){
+            if(task.equals(e)){
+                return false;
+            }
+        }
         return true;
-                   
+           
     }
 
     public boolean registersTask(Task task) {

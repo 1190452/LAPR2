@@ -214,12 +214,12 @@ public class Organization {
         return new Address(street, doorNumber, locality);
     }
 
-    public static Collaborator newCollaborator(String nameC, String emailC, String role, String phoneNumberC) {
-        return new Collaborator(nameC, emailC, role, phoneNumberC);
+    public static Collaborator newCollaborator(String nameC, String emailC, String role) {
+        return new Collaborator(nameC, emailC, role);
     }
 
-    public static Manager newManager(String nameM, String emailM, String role, String phoneNumberM) {
-        return new Manager(nameM, emailM, role, phoneNumberM);
+    public static Manager newManager(String nameM, String emailM, String role) {
+        return new Manager(nameM, emailM, role);
     }
 
     /**

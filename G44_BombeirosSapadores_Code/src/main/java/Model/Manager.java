@@ -16,7 +16,6 @@ public class Manager {
     private String nameM;
     private String emailM;
     private String role;
-    private String phoneNumberM;
 
     /**
      * Builds an instance of Manager that receives name, email and password
@@ -26,11 +25,10 @@ public class Manager {
      * @param role
      * @param phoneNumberM
      */
-    public Manager(String nameM, String emailM, String role, String phoneNumberM) {
+    public Manager(String nameM, String emailM, String role) {
         this.nameM = nameM;
         this.emailM = emailM;
         this.role = role;
-        this.phoneNumberM = phoneNumberM;
 
     }
 
@@ -47,7 +45,6 @@ public class Manager {
         nameM = otherManager.getNameM();
         emailM = otherManager.getEmailM();
         role = otherManager.getRole();
-        phoneNumberM = otherManager.getPhoneNumberM();
     }
 
     /**
@@ -92,23 +89,9 @@ public class Manager {
         this.role = role;
     }
 
-    /**
-     * @return the phoneNumberM
-     */
-    public String getPhoneNumberM() {
-        return phoneNumberM;
-    }
-
-    /**
-     * @param phoneNumberM the phoneNumberM to set
-     */
-    public void setPhoneNumberM(String phoneNumberM) {
-        this.phoneNumberM = phoneNumberM;
-    }
-
     @Override
     public String toString() {
-        return String.format("Nome: %s \nEmail: %s \nRole: %s \nPhone Number: %s", nameM, emailM, role, phoneNumberM);
+        return String.format("Nome: %s \nEmail: %s \nRole: %s", nameM, emailM, role);
     }
 }
 

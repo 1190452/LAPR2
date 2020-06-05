@@ -15,19 +15,19 @@ import javafx.scene.control.ButtonType;
  */
 public class AlertUI {
 
-    public static Alert criarAlerta(Alert.AlertType alertType, String title, String header, String message) {
-        Alert alerta = new Alert(alertType);
+    public static Alert createAlert(Alert.AlertType alertType, String title, String header, String message) {
+        Alert alert = new Alert(alertType);
 
-        alerta.setTitle(title);
-        alerta.setHeaderText(header);
-        alerta.setContentText(message);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(message);
 
         if (alertType == Alert.AlertType.CONFIRMATION) {
-            ((Button) alerta.getDialogPane().lookupButton(ButtonType.OK)).setText("Yes");
-            ((Button) alerta.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("No");
+            ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("Yes");
+            ((Button) alert.getDialogPane().lookupButton(ButtonType.CANCEL)).setText("No");
         }
 
-        return alerta;
+        return alert;
     }
     
 }

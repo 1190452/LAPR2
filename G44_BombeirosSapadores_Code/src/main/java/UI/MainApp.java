@@ -18,10 +18,14 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+<<<<<<< HEAD
 
         Administrator admin = new Administrator("ZÉ", "zemanel@gmail.com", "q", Constants.ROLE_ADMINISTRATIVE);
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
+=======
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateTask.fxml"));
+>>>>>>> 6a7194772e82aacf2a1153bf5e08927d74fc59fc
 
         Scene scene = new Scene(root);
 

@@ -21,9 +21,9 @@ public class RegistOrganizationController {
     RegisterOrganization ro;
     Organization org;
 
-    public Organization newOrganization(String name, String email, String NIF, String street, String doorNumber, String locality, String nameC, String emailC, String phoneNumberC, String nameM, String emailM, String phoneNumberM) {
+    public Organization newOrganization(String name, String email, String NIF, String street, String doorNumber, String locality, String nameC, String emailC, String nameM, String emailM) {
         ro = plat.getrOrg();
-        org = ro.newOrganization(name, email, NIF, street, doorNumber, locality, nameC, emailC, phoneNumberC, nameM, emailM, phoneNumberM);
+        org = ro.newOrganization(name, email, NIF, street, doorNumber, locality, nameC, emailC,nameM, emailM);
         if (ro.validateOrganization(org)) {
             return org;
         }
