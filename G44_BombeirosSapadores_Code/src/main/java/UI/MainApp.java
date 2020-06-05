@@ -10,7 +10,7 @@ import javafx.stage.StageStyle;
 
 
 public class MainApp extends Application {
-
+    public static final String APPLICATION_TITLE = "T4J";
     @Override
     public void start(Stage stage) throws Exception   {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateFreelancer.fxml"));

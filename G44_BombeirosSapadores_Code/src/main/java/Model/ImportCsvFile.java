@@ -60,7 +60,7 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     double delay = Double.parseDouble(temp[19]);
                     String descripOFQuality = temp[20];
 
-                    Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
+                    Freelancer fr = new Freelancer(FreelancerID,FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
                     if (rf.Verification(fr)) {
                         rf.addFreelancer(fr);
                     }

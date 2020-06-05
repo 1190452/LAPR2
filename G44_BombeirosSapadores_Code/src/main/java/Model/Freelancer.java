@@ -5,8 +5,6 @@
  */
 package Model;
 
-import java.util.List;
-
 /**
  *
  * @author Rafael
@@ -71,6 +69,20 @@ public class Freelancer {
         this.address = new Address();
         this.pl = new PaymentList();
         this.tl = new TaskList();
+    }
+
+    public Freelancer(String name, String levelExp, String email, String nif, String iban, String country, Address address) {
+        this.freeID = freeID;
+        this.country = country;
+        this.email = email;
+        this.iban = iban;
+        this.levelExp = levelExp;
+        this.name = name;
+        this.nif = nif;
+        this.address = address;
+        this.pl = new PaymentList();
+        this.tl = new TaskList();
+
     }
 
     public Freelancer(String freeID, String name, String levelExp, String email, String nif, String iban, String country, Address address) {
@@ -195,7 +207,7 @@ public class Freelancer {
     }
 
     public double delayMean(double totalDelay, int size) {
-        return (totalDelay/size);
+        return (totalDelay / size);
     }
 
     public double sumDelay(double averageDelayOfFreelancer, double delayTask) {
@@ -208,15 +220,15 @@ public class Freelancer {
     }
 
     public double calculateAverageDelayOfAllFreelancers(double totalDelayOfAllFreelancers, double numTasksOfAllFreelancers) {
-        return (totalDelayOfAllFreelancers/numTasksOfAllFreelancers);
+        return (totalDelayOfAllFreelancers / numTasksOfAllFreelancers);
     }
 
     public TaskList getTaskList() {
         return tl;
     }
-       
+
     public double calculateAveragePayementOFAllFreelancers(double totalPaymentOfAllFreelancer, int numPaymentsOfAllFreelancers) {
-        return totalPaymentOfAllFreelancer/numPaymentsOfAllFreelancers;
+        return totalPaymentOfAllFreelancer / numPaymentsOfAllFreelancers;
     }
 
     public double calculatePaymentDeviationOfAllFreelancers(double averagePayementOFAllFreelancers, double payValue) {
