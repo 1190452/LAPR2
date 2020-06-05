@@ -2,6 +2,7 @@ package UI;
 
 import Model.Administrator;
 import Model.Constants;
+import autorizacao.FacadeAuthorization;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -17,8 +18,14 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-
+        FacadeAuthorization fc = new FacadeAuthorization();
         Administrator admin = new Administrator("ZÉ", "zemanel@gmail.com", "q", Constants.ROLE_ADMINISTRATIVE);
+        
+        
+        fc.registUserWithRole("ZÉ", "zemanel@gmail.com", "q", Constants.ROLE_ADMINISTRATIVE);
+            
+           
+            
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
 

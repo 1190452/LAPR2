@@ -42,6 +42,8 @@ public class LoginUI implements Initializable {
     @FXML
     private Button loginBtn;
     
+  
+    
     double x,y;
 
     /**
@@ -103,18 +105,21 @@ public class LoginUI implements Initializable {
             txtFieldPassword.clear();
             }*/
             
+            FacadeAuthorization fc = new FacadeAuthorization();
+            fc.doLogin(txtFieldUsername.getText(), txtFieldPassword.getText());
             
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuAdministrator.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.setTitle("Administrator Menu");
-            stage.initStyle(StageStyle.TRANSPARENT);
-            stage.setResizable(false);
-            stage.show();
-            
-            // Hide this current window
-            ((Node) (event.getSource())).getScene().getWindow().hide();
+            //if (FacadeAuthorization.getActualSession().isLoggedInWithPart(Constants.ROLE_ADMINISTRATIVE)) {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuAdministrator.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.setTitle("Administrator Menu");
+                stage.initStyle(StageStyle.TRANSPARENT);
+                stage.setResizable(false);
+                stage.show();
+            //}
+                // Hide this current window
+                ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException ex) {
             Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
         }
