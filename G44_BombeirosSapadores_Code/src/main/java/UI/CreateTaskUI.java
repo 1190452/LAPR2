@@ -7,7 +7,12 @@ package UI;
 
 import Controller.CreateTaskController;
 import Model.Task;
+import com.jfoenix.controls.JFXTextField;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -16,6 +21,20 @@ import java.util.Scanner;
 public class CreateTaskUI {
     Scanner read = new Scanner(System.in);
     private CreateTaskController ctask_controller;
+    @FXML
+    private Button cancelBtn;
+    @FXML
+    private Button confirmBtn;
+    @FXML
+    private JFXTextField idTxt;
+    @FXML
+    private JFXTextField descriptionTxt;
+    @FXML
+    private JFXTextField timeTxt;
+    @FXML
+    private JFXTextField costTxt;
+    @FXML
+    private JFXTextField categoryTxt;
     
     public CreateTaskUI(){
         ctask_controller = new CreateTaskController();   
@@ -38,6 +57,22 @@ public class CreateTaskUI {
             System.out.println("failure");
         }
         
+    }
+
+    @FXML
+    private void min(MouseEvent event) {
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
+    }
+
+    @FXML
+    private void cancel(ActionEvent event) {
+    }
+
+    @FXML
+    private void confirm(ActionEvent event) {
     }
     
     
