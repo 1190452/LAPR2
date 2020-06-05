@@ -2,7 +2,6 @@ package UI;
 
 import Model.Administrator;
 import Model.Constants;
-import autorizacao.FacadeAuthorization;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.apache.commons.math3.analysis.function.Constant;
 
 public class MainApp extends Application {
 
@@ -18,14 +16,12 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-<<<<<<< HEAD
+
 
         Administrator admin = new Administrator("ZÉ", "zemanel@gmail.com", "q", Constants.ROLE_ADMINISTRATIVE);
         
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
-=======
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/CreateTask.fxml"));
->>>>>>> 6a7194772e82aacf2a1153bf5e08927d74fc59fc
+
 
         Scene scene = new Scene(root);
 

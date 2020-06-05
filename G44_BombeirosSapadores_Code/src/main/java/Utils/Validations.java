@@ -87,8 +87,7 @@ public class Validations {
     }
 
     public static boolean isNameValid(String name) {
-        String regex = "^[A-Z][a-z]{2,}(?: [A-Z][a-z]*)*$";
-        return name.matches(regex);
+        return name.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$");
     }
 
     public static boolean isIBANValid(String iban) {
