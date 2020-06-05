@@ -35,6 +35,8 @@ public class MenuManagerUI implements Initializable {
     private Button bt_createPT;
     @FXML
     private Label dateTime;
+    
+    double x,y;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,6 +62,19 @@ public class MenuManagerUI implements Initializable {
     private void min(MouseEvent event) {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    @FXML
+    private void draged(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() -x);
+        stage.setY(event.getScreenY() -y);
+    }
+
+    @FXML
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
     }
     
 }

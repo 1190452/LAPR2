@@ -7,8 +7,17 @@ package UI;
 
 import Controller.HistoricalTransactionController;
 import Model.Transaction;
+import java.io.File;
 import java.util.List;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -18,8 +27,16 @@ public class HistoricalTransactionUI {
 
     Scanner read = new Scanner(System.in);
     private HistoricalTransactionController ht_controller;
+    @FXML
+    private Button confirmBtn;
+    @FXML
+    private Button cancelBtn;
+    @FXML
+    private Button openFile;
+    @FXML
+    private Label lbl;
 
-    public HistoricalTransactionUI() {
+    /**public HistoricalTransactionUI() {
         System.out.println("Introduce the file name to load all transactions");
         String fileName = read.nextLine();
         List<Transaction> lt = ht_controller.loadHistoricalTransaction(fileName);
@@ -29,5 +46,38 @@ public class HistoricalTransactionUI {
             System.out.println("Operation Unsuccessfull");
         }
 
+    }*/
+
+    @FXML
+    private void min(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void Confirm(ActionEvent event) {
+    }
+
+    @FXML
+    private void Cancel(ActionEvent event) {
+    }
+
+    
+    @FXML
+    private void btnAction(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("Txt files", "*.txt"));
+        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("CSV files", "*.csv"));
+        File selectedFile = fc.showOpenDialog(null);
+        
+        if (selectedFile != null) {
+            lbl.setText(selectedFile.getName());
+        }
     }
 }
