@@ -7,11 +7,8 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.effect.Bloom?>
-<?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
@@ -24,11 +21,6 @@
    <top>
       <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="341.0" prefWidth="1000.0" style="-fx-background-color: #595959;" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="224.0" fitWidth="209.0" layoutX="770.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../images/Logo_CasasDesign-07_black_minimal.png" />
-               </image>
-            </ImageView>
             <Text fill="#e6be8a" fontSmoothingType="LCD" layoutX="35.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manager">
                <font>
                   <Font name="Champagne &amp; Limousines Bold" size="70.0" />
@@ -61,19 +53,16 @@
                      <bumpInput>
                         <Shadow />
                      </bumpInput>
-                     <light>
-                        <Light.Distant />
-                     </light>
                   </Lighting>
                </effect>
             </MenuButton>
-            <Label fx:id="dateTime" layoutX="430.0" layoutY="17.0" prefHeight="30.0" prefWidth="140.0" textFill="WHITE">
+            <Label fx:id="dateTime" layoutX="720.0" layoutY="31.0" prefHeight="30.0" prefWidth="140.0" style="-fx-background-color: #595959;" textFill="#e6be8a">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
             <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="976.0" layoutY="22.0" onMouseClicked="#close" size="1.2em" />
-            <FontAwesomeIconView fill="#48dbfd" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
+            <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
          </children></AnchorPane>
    </top>
 </BorderPane>
