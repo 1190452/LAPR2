@@ -34,7 +34,7 @@ public class CurrencyConverter {
                 return valueE*1.6280;
             
             case ("japan"):
-                return valueE*121.5400;
+                return valueE*123.77;
                 
             default:
                 return valueE;
