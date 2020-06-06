@@ -13,6 +13,7 @@ import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -85,10 +86,14 @@ public class CreateTaskUI {
             double ch = Double.parseDouble(costTxt.getSelectedText());
             String ct = categoryTxt.getSelectedText();
             ctask_controller = new CreateTaskController();
-            
+            if(idTxt.getText().isEmpty() || descriptionTxt.getText().isEmpty() || timeTxt.getText().isEmpty() || costTxt.getText().isEmpty() || categoryTxt.getText().isEmpty()){
+                Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Creation", "Please introduce the necessary data to create a Task.");
+                alert2.show(); 
+            }
             Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
             if(ts == null){
-                
+                Alert alert1 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "Please introduce the necessary data to access the platform.");
+                alert1.show(); 
             }
         
 
