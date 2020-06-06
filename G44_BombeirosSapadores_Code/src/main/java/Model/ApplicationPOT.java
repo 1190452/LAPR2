@@ -83,9 +83,10 @@ public class ApplicationPOT
     {
         if(singleton == null) 
         {
-            synchronized(ApplicationPOT.class) 
+            
+           synchronized(ApplicationPOT.class) 
             { 
-                singleton = new ApplicationPOT();
+                    singleton = new ApplicationPOT();
             }
         }
         return singleton;

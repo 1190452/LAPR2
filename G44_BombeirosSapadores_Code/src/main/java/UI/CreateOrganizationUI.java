@@ -58,6 +58,8 @@ public class CreateOrganizationUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
+        this.controller = new RegistOrganizationController();
     }
 
     @FXML

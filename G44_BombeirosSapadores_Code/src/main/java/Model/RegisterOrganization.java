@@ -32,8 +32,8 @@ public class RegisterOrganization {
 
     public RegisterOrganization() {
         lorgs = new ArrayList<>();
-        //this.m_oApp = ApplicationPOT.getInstance();
-        //this.m_oPlataforma = m_oApp.getPlatform();
+    //    this.m_oApp = ApplicationPOT.getInstance();
+      //  this.m_oPlataforma = m_oApp.getPlatform();
         lOrg = new ArrayList<>();
     }
 
@@ -60,13 +60,16 @@ public class RegisterOrganization {
 
     public Organization newOrganization(String name, String email, String NIF, String street, String doorNumber, String locality, String nameC, String emailC, String nameM, String emailM) {
         try {
-            Address address = m_oOrganizacao.newAddress(street, doorNumber, locality);
+            this.m_oApp = ApplicationPOT.getInstance();
+            this.m_oPlataforma = m_oApp.getPlatform();
+            
+            Address address = new Address(street, doorNumber, locality);
             String role = Constants.ROLE_MANAGER_ORGANIZATION;
             manager = Organization.newManager(nameM, emailM, role);
             role = Constants.ROLE_COLLABORATOR_ORGANIZATION;
             collab = Organization.newCollaborator(nameC, emailC, role);
-            Organization org = new Organization(name, email, NIF, address, collab, manager);
-            return org;
+            m_oOrganizacao = new Organization(name, email, NIF, address, collab, manager);
+            return m_oOrganizacao;
         } catch (RuntimeException ex) {
             Logger.getLogger(Utils.class.getName()).log(Level.SEVERE, null, ex);
             this.m_oOrganizacao = null;
