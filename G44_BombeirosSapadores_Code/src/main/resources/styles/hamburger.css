@@ -1,0 +1,13 @@
+
+
+.jfx-hamburger {
+    -fx-spacing: 5;
+    -fx-cursor: hand;
+}
+
+.jfx-hamburger StackPane {
+    -fx-pref-width: 30px;
+    -fx-pref-height: 4px;
+    -fx-background-color: #e6be8a;
+    -fx-background-radius: 3px;
+}
