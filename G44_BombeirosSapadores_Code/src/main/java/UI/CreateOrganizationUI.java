@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Controller.RegistOrganizationController;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -47,6 +47,8 @@ public class CreateOrganizationUI implements Initializable {
     @FXML
     private JFXTextField localityTxt;
 
+    
+    private RegistOrganizationController controller;
     /**
      * Initializes the controller class.
      *
@@ -64,24 +66,21 @@ public class CreateOrganizationUI implements Initializable {
 
     @FXML
     private void next(ActionEvent event) throws IOException {
-        Parent view = FXMLLoader.load(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
-        Scene create = new Scene(view);
+    
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
+        Parent root = loader.load();
+        CreateManagerCollaboratorUI c = loader.getController();
+        
+        c.associarParentUI(this);
+        
+        Scene create = new Scene(root);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(create);
         window.show();
-//        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
-//        Parent root1 = (Parent) fxmlLoader.load();
-//        //Stage stage = new Stage();
-//        Scene createMC_scene = new Scene(root1);
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        stage.setScene(createMC_scene);
-//        //stage.setTitle("Create Menu");
-//        stage.initStyle(StageStyle.TRANSPARENT);
-//        stage.setResizable(false);
-//        stage.show();
-//            
-//        // Hide this current window
-//        //((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+    
+    public RegistOrganizationController getController(){
+        return controller;
     }
 
     @FXML
@@ -109,16 +108,46 @@ public class CreateOrganizationUI implements Initializable {
         y = event.getSceneY();
     }
 
-    public String[] getInformation() {
-        String[] information = new String[6];
-        information[0] = nameTxt.getText();
-        information[1] = nifTxt.getText();
-        information[2] = emailTxt.getText();
-        information[3] = streetTxt.getText();
-        information[4] = doorTxt.getText();
-        information[5] = localityTxt.getText();
+    /**
+     * @return the nameTxt
+     */
+    public JFXTextField getNameTxt() {
+        return nameTxt;
+    }
 
-        return information;
+    /**
+     * @return the nifTxt
+     */
+    public JFXTextField getNifTxt() {
+        return nifTxt;
+    }
+
+    /**
+     * @return the emailTxt
+     */
+    public JFXTextField getEmailTxt() {
+        return emailTxt;
+    }
+
+    /**
+     * @return the streetTxt
+     */
+    public JFXTextField getStreetTxt() {
+        return streetTxt;
+    }
+
+    /**
+     * @return the doorTxt
+     */
+    public JFXTextField getDoorTxt() {
+        return doorTxt;
+    }
+
+    /**
+     * @return the localityTxt
+     */
+    public JFXTextField getLocalityTxt() {
+        return localityTxt;
     }
 
 }

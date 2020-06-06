@@ -6,9 +6,6 @@
 package UI;
 
 import Controller.RegistOrganizationController;
-import Model.Collaborator;
-import Model.Organization;
-import Model.RegisterOrganization;
 import com.jfoenix.controls.JFXTextField;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -34,13 +32,9 @@ public class CreateManagerCollaboratorUI implements Initializable {
     @FXML
     private JFXTextField nameMTxt;
     @FXML
-    private JFXTextField nifMTxt;
-    @FXML
     private JFXTextField emailMTxt;
     @FXML
     private JFXTextField nameCTxt;
-    @FXML
-    private JFXTextField nifCTxt;
     @FXML
     private JFXTextField emailCTxt;
 
@@ -62,6 +56,12 @@ public class CreateManagerCollaboratorUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+    
+     public void associarParentUI(CreateOrganizationUI co) {
+        this.co = co;
+        roc = this.co.getController();
+
     }
 
     @FXML
@@ -106,10 +106,38 @@ public class CreateManagerCollaboratorUI implements Initializable {
 
     @FXML
     private void submit(ActionEvent event) throws FileNotFoundException {
-        String[] inf = co.getInformation();
-        roc.newOrganization(inf[0], inf[2], inf[1], inf[3], inf[4], inf[5], nameCTxt.getText(), emailCTxt.getText(), nameMTxt.getText(), emailMTxt.getText());
-        roc.registaOrganization();
+        try{
+        roc.newOrganization(co.getNameTxt().getText(), co.getEmailTxt().getText(), co.getNifTxt().getText(), co.getStreetTxt().getText(), co.getDoorTxt().getText(), co.getLocalityTxt().getText(), nameCTxt.getText(), emailCTxt.getText(), nameMTxt.getText(), emailMTxt.getText());
+        boolean added = roc.registaOrganization();
+        if (added) {
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Organization",
+                    added ? "New Organization added with success"
+                            : "It was not possible to added the organization").show();
 
+            endCreateManagerCollaboratorUI(event);
+        }
+        } catch (NumberFormatException nfe) {
+            AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
+                    "Introduce correct data").show();
+        } catch (IllegalArgumentException iae) {
+            AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
+                    iae.getMessage()).show();
+        }
     }
+
+    private void endCreateManagerCollaboratorUI(ActionEvent event) {
+        this.nameMTxt.clear();
+        this.emailMTxt.clear();
+        this.nameCTxt.clear();
+        this.emailCTxt.clear();
+        ((Node) event.getSource()).getScene().getWindow().hide();
+    }
+
+   
+
+//
+//    private void initData(String name, String email, String nif, String street, String door, String locality) {
+//       
+//    }
 
 }
