@@ -58,7 +58,13 @@ public class LoginUI implements Initializable {
     @FXML
     private void login(ActionEvent event) {
 //        try {
+
+        
         try {
+            if(txtFieldUsername.getText().isEmpty() || txtFieldPassword.getText().isEmpty()){
+                Alert alert1 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "Please introduce the necessary data to access the platform.");
+                alert1.show();    
+            }
             ApplicationPOT ac = ApplicationPOT.getInstance();
             FacadeAuthorization fc = ac.getPlatform().getFacadeAuthorazation();
             UserSession us = fc.doLogin(txtFieldUsername.getText(), txtFieldPassword.getText());
@@ -96,8 +102,9 @@ public class LoginUI implements Initializable {
                 stage.setResizable(false);
                 stage.show();
 
-            } else if(txtFieldUsername.getText().isEmpty() || txtFieldPassword.getText().isEmpty() ){
-                AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "Please introduce the necessary data to have access to the platform").show();
+            } else if (!us.isLoggedIn()) {
+                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "The user does not exist. Please register.");
+                alert.show();
             }
         } catch (IOException e) {
             e.printStackTrace();
