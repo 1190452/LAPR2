@@ -8,8 +8,6 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
@@ -61,10 +60,9 @@ public class LoginUI implements Initializable {
 //        try {
         try {
             ApplicationPOT ac = ApplicationPOT.getInstance();
-
             FacadeAuthorization fc = ac.getPlatform().getFacadeAuthorazation();
             UserSession us = fc.doLogin(txtFieldUsername.getText(), txtFieldPassword.getText());
-
+         
             if (us.isLoggedInWithPart(Constants.ROLE_ADMINISTRATIVE)) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuAdministrator.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -98,6 +96,8 @@ public class LoginUI implements Initializable {
                 stage.setResizable(false);
                 stage.show();
 
+            } else if(txtFieldUsername.getText().isEmpty() || txtFieldPassword.getText().isEmpty() ){
+                AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "Please introduce the necessary data to have access to the platform").show();
             }
         } catch (IOException e) {
             e.printStackTrace();
