@@ -152,7 +152,7 @@ public class Address {
      */
     @Override
     public String toString() {
-        return String.format("Street: %s, Door number: %d, Locality: %s\n", street, doorNumber, locality);
+        return String.format("Street: %s, Door number: %s, Locality: %s\n", street, doorNumber, locality);
     } 
     
     
