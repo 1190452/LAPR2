@@ -38,11 +38,6 @@
                <font>
                   <Font name="Champagne &amp; Limousines Bold" size="70.0" />
                </font></Text>
-            <JFXHamburger layoutX="138.0" layoutY="20.0" prefHeight="34.0" prefWidth="39.0">
-               <effect>
-                  <Bloom />
-               </effect>
-            </JFXHamburger>
             <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="976.0" layoutY="22.0" onMouseClicked="#close" size="1.2em" />
             <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="951.0" layoutY="23.0" onMouseClicked="#min" size="1.2em" />
             <ImageView fitHeight="244.0" fitWidth="238.0" layoutX="701.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
@@ -77,6 +72,12 @@
                   </Lighting>
                </effect>
             </MenuButton>
+            <JFXHamburger layoutX="138.0" layoutY="20.0" prefHeight="34.0" prefWidth="39.0" stylesheets="@../styles/hamburger.css">
+               <effect>
+                  <Bloom />
+               </effect>
+            </JFXHamburger>
+            <Button id="goldline" fx:id="logoutBtn" layoutX="209.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="68.0" stylesheets="@../styles/stylesheet.css" text="Logout" />
          </children></AnchorPane>
    </top>
 </BorderPane>
