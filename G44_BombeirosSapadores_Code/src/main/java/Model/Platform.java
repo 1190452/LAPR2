@@ -8,7 +8,7 @@ package Model;
 
 import Controller.DoPaymentTask;
 import Controller.SendEmailFreelTask;
-import Model.PasswordGenerator.PasswordGeneratorBuilder;
+import Utils.PasswordGenerator;
 import Utils.Date;
 import Utils.Time;
 import autorizacao.FacadeAuthorization;
@@ -53,7 +53,7 @@ public class Platform {
         this.m_oAutorizacao = new FacadeAuthorization();
         this.rOrg = new RegisterOrganization();
         this.rFree = new RegisterFreelancer();
-        PasswordGeneratorBuilder pg = new PasswordGeneratorBuilder();
+        PasswordGenerator.PasswordGeneratorBuilder pg = new PasswordGenerator.PasswordGeneratorBuilder();
         pg.useLower(true);
         pg.useDigits(true);
         this.alg = pg.build();

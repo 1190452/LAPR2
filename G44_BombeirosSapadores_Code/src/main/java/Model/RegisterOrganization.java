@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.List;
 import org.jcp.xml.dsig.internal.dom.Utils;
+import Utils.PasswordGenerator;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
 /**
