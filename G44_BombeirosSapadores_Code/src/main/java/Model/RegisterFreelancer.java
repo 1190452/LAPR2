@@ -65,7 +65,7 @@ public class RegisterFreelancer {
         return listaFreelancers;
     }
 
-    public String generateID() {
+    public String generateID(Freelancer free) {
         String[] nameparts = free.getName().split(" ");
         String id = String.valueOf(nameparts[0].charAt(0) + nameparts[1].charAt(0)) + 1;
         int count = 1;

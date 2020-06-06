@@ -47,7 +47,6 @@ public class MenuCollaboratorUI implements Initializable {
 
     double x, y;
     @FXML
-    private Button logoutBtn;
 
     /**
      * Initializes the controller class.
@@ -64,6 +63,8 @@ public class MenuCollaboratorUI implements Initializable {
         }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
+        
+        
     }
 
     @FXML
@@ -107,7 +108,18 @@ public class MenuCollaboratorUI implements Initializable {
     }
 
     @FXML
-    private void CreateFreelancerOA(ActionEvent event) {
+    private void CreateFreelancerOA(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateFreelancer.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("CreateFreelancer");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML

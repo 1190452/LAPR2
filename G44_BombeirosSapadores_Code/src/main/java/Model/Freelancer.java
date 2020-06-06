@@ -72,7 +72,7 @@ public class Freelancer {
     }
 
     public Freelancer(String name, String levelExp, String email, String nif, String iban, String country, Address address) {
-        this.freeID = freeID;
+        freeID = freeID;
         this.country = country;
         this.email = email;
         this.iban = iban;
