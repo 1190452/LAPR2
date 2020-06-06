@@ -135,9 +135,4 @@ public class CreateManagerCollaboratorUI implements Initializable {
 
    
 
-//
-//    private void initData(String name, String email, String nif, String street, String door, String locality) {
-//       
-//    }
-
 }
