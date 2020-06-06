@@ -30,7 +30,6 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
@@ -43,7 +42,7 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF:" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -51,20 +50,12 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.halignment="LEFT" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Text>
-            <Button id="goldline" fx:id="backBtn" cancelButton="true" mnemonicParsing="false" onAction="#back" stylesheets="@../styles/stylesheet.css" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <Button id="goldline" fx:id="backBtn" cancelButton="true" mnemonicParsing="false" onAction="#back" stylesheets="@../styles/stylesheet.css" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets right="40.0" />
                </GridPane.margin>
             </Button>
-            <Button id="goldline" fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" stylesheets="@../styles/stylesheet.css" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button id="goldline" fx:id="submitBtn" mnemonicParsing="false" onAction="#submit" stylesheets="@../styles/stylesheet.css" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
@@ -85,15 +76,7 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="147.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="141.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="141.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -111,12 +94,7 @@
                   <Insets left="100.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="nifMTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </JFXTextField>
-            <JFXTextField fx:id="emailMTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <JFXTextField fx:id="emailMTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>
@@ -126,12 +104,7 @@
                   <Insets left="100.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="nifCTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </JFXTextField>
-            <JFXTextField fx:id="emailCTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <JFXTextField fx:id="emailCTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>

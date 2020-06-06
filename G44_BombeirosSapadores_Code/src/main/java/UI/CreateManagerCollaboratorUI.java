@@ -5,7 +5,12 @@
  */
 package UI;
 
+import Controller.RegistOrganizationController;
+import Model.Collaborator;
+import Model.Organization;
+import Model.RegisterOrganization;
 import com.jfoenix.controls.JFXTextField;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,8 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -40,42 +43,44 @@ public class CreateManagerCollaboratorUI implements Initializable {
     private JFXTextField nifCTxt;
     @FXML
     private JFXTextField emailCTxt;
-    
-    private double x,y;
+
+    private double x, y;
     @FXML
     private Button backBtn;
     @FXML
     private Button submitBtn;
     @FXML
     private BorderPane borderPane;
-    
-    
-   
+
+    private RegistOrganizationController roc;
+
+    private CreateOrganizationUI co;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void close(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
     @FXML
     private void min(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
-@FXML
+    @FXML
     private void draged(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setX(event.getScreenX() -x);
-        stage.setY(event.getScreenY() -y);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
     }
 
     @FXML
@@ -86,7 +91,7 @@ public class CreateManagerCollaboratorUI implements Initializable {
 
     @FXML
     private void back(ActionEvent event) throws IOException {
-        
+
         BorderPane pane = FXMLLoader.load(getClass().getResource("/fxml/CreateOrganization.fxml"));
         borderPane.getChildren().setAll(pane);
         /*Stage stage = new Stage();
@@ -100,9 +105,11 @@ public class CreateManagerCollaboratorUI implements Initializable {
     }
 
     @FXML
-    private void submit(ActionEvent event) {
-        
-        
+    private void submit(ActionEvent event) throws FileNotFoundException {
+        String[] inf = co.getInformation();
+        roc.newOrganization(inf[0], inf[2], inf[1], inf[3], inf[4], inf[5], nameCTxt.getText(), emailCTxt.getText(), nameMTxt.getText(), emailMTxt.getText());
+        roc.registaOrganization();
+
     }
-    
+
 }

@@ -40,9 +40,18 @@ public class CreateOrganizationUI implements Initializable {
     private JFXTextField emailTxt;
 
     private double x, y;
+    @FXML
+    private JFXTextField streetTxt;
+    @FXML
+    private JFXTextField doorTxt;
+    @FXML
+    private JFXTextField localityTxt;
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,13 +64,9 @@ public class CreateOrganizationUI implements Initializable {
 
     @FXML
     private void next(ActionEvent event) throws IOException {
-    
         Parent view = FXMLLoader.load(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
-        
         Scene create = new Scene(view);
-        
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(create);
         window.show();
 //        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
@@ -102,6 +107,18 @@ public class CreateOrganizationUI implements Initializable {
     private void pressed(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
+    }
+
+    public String[] getInformation() {
+        String[] information = new String[6];
+        information[0] = nameTxt.getText();
+        information[1] = nifTxt.getText();
+        information[2] = emailTxt.getText();
+        information[3] = streetTxt.getText();
+        information[4] = doorTxt.getText();
+        information[5] = localityTxt.getText();
+
+        return information;
     }
 
 }
