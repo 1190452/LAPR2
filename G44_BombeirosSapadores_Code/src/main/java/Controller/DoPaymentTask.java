@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.CurrencyConverter;
+import Utils.CurrencyConverter;
 import Model.Freelancer;
 import Model.Organization;
 import Model.Payment;
