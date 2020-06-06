@@ -88,6 +88,7 @@ public class LoginUI implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
                 stage.setTitle("Collaborator Menu");
+                stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setResizable(false);
                 stage.show();
 
@@ -98,7 +99,8 @@ public class LoginUI implements Initializable {
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root1));
-                stage.setTitle("Collaborator Menu");
+                stage.setTitle("Manager Menu");
+                stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setResizable(false);
                 stage.show();
                 // Hide this current window

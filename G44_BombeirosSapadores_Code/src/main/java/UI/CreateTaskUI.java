@@ -44,6 +44,8 @@ public class CreateTaskUI {
     @FXML
     private JFXTextField categoryTxt;
 
+    private double x, y;
+
     public CreateTaskUI() {
         //ctask_controller = new CreateTaskController();   
         //System.out.println("Introduce the id, brief description, time duration (in hours), cost per hour (in euros), and the category");
@@ -91,21 +93,36 @@ public class CreateTaskUI {
             Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Creation", "Please introduce the necessary data to create a Task.");
             alert2.show();
         } else {
-            System.out.println("1 aviso");
+            
             Task ts = ctask_controller.newTask(idTxt.getText(), descriptionTxt.getText(),
-            Integer.parseInt(timeTxt.getText()), Double.parseDouble(costTxt.getText()), categoryTxt.getText());
+                    Integer.parseInt(timeTxt.getText()), Double.parseDouble(costTxt.getText()), categoryTxt.getText());
             Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Task Creation", ts.toString());
             alert1.show();
             TimeUnit.SECONDS.sleep(10);
             alert1.setContentText("Do you confirm the data of the Task?");
             if (alert1.showAndWait().get() == ButtonType.YES) {
-                System.out.println("ekjhfloisjedf");
+                ctask_controller.registersTask();
+                
             } else {
                 alert1.close();
             }
 
         }
 
+    }
+
+    @FXML
+    private void draged(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
+    }
+
+    @FXML
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
     }
 
 }
