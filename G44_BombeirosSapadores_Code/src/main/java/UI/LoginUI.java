@@ -102,6 +102,8 @@ public class LoginUI implements Initializable {
                 stage.setResizable(false);
                 stage.show();
 
+                // Hide this current window
+                ((Node) (event.getSource())).getScene().getWindow().hide();
             } else if (!us.isLoggedIn()) {
                 Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "The user does not exist. Please register.");
                 alert.show();
