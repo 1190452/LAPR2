@@ -10,11 +10,13 @@ import Model.Task;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -41,6 +43,8 @@ public class CreateTaskUI {
     private JFXTextField costTxt;
     @FXML
     private JFXTextField categoryTxt;
+
+    private double x, y;
 
     public CreateTaskUI() {
         //ctask_controller = new CreateTaskController();   
@@ -76,27 +80,49 @@ public class CreateTaskUI {
     }
 
     @FXML
-    private void confirm(ActionEvent event) {
+    private void confirm(ActionEvent event) throws InterruptedException {
 
         //try {
+//        String id = idTxt.getSelectedText();
+//        String bd = descriptionTxt.getSelectedText();
+//        int td = Integer.parseInt(timeTxt.getSelectedText());
+//        double ch = Double.parseDouble(costTxt.getSelectedText());
+//        String ct = categoryTxt.getSelectedText();
+        ctask_controller = new CreateTaskController();
+        if (idTxt.getText().isEmpty() || descriptionTxt.getText().isEmpty() || timeTxt.getText().isEmpty() || costTxt.getText().isEmpty() || categoryTxt.getText().isEmpty()) {
+            Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Creation", "Please introduce the necessary data to create a Task.");
+            alert2.show();
+        } else {
             
-            String id = idTxt.getSelectedText();
-            String bd = descriptionTxt.getSelectedText();
-            int td = Integer.parseInt(timeTxt.getSelectedText());
-            double ch = Double.parseDouble(costTxt.getSelectedText());
-            String ct = categoryTxt.getSelectedText();
-            ctask_controller = new CreateTaskController();
-            if(idTxt.getText().isEmpty() || descriptionTxt.getText().isEmpty() || timeTxt.getText().isEmpty() || costTxt.getText().isEmpty() || categoryTxt.getText().isEmpty()){
-                Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Creation", "Please introduce the necessary data to create a Task.");
-                alert2.show(); 
+            Task ts = ctask_controller.newTask(idTxt.getText(), descriptionTxt.getText(),
+                    Integer.parseInt(timeTxt.getText()), Double.parseDouble(costTxt.getText()), categoryTxt.getText());
+            Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Task Creation", ts.toString());
+            alert1.show();
+            TimeUnit.SECONDS.sleep(10);
+            alert1.setContentText("Do you confirm the data of the Task?");
+            if (alert1.showAndWait().get() == ButtonType.YES) {
+                ctask_controller.registersTask();
+                
+            } else {
+                alert1.close();
             }
-            Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
-            if(ts == null){
-                Alert alert1 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "Please introduce the necessary data to access the platform.");
-                alert1.show(); 
-            }
-        
 
+        }
+
+    }
+
+    @FXML
+    private void draged(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
+    }
+
+    @FXML
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
     }
 
 }

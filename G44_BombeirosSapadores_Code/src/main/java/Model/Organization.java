@@ -80,7 +80,7 @@ public class Organization {
         this.address = address;
         this.colab = colab;
         this.manager = manager;
-        this.taskList = taskList;
+        taskList = new TaskList();
         this.definePayment = null;
 
     }

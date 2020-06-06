@@ -18,9 +18,6 @@ public class Receipt {
         this.curr=valueC;  
     }
 
-   
-
-   
     public void genEmail(){
         
         Writer.genEmail(nltr, sum, sum);
