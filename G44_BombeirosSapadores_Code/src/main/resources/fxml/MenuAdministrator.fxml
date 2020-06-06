@@ -51,7 +51,12 @@
                   <Image url="@../images/logoemamarelo.png" />
                </image>
             </ImageView>
-            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" opacity="0.0" popupSide="RIGHT" prefHeight="13.0" prefWidth="43.0" text="MenuButton" textFill="#575757">
+            <JFXHamburger layoutX="138.0" layoutY="20.0" prefHeight="34.0" prefWidth="39.0" stylesheets="@../styles/hamburger.css">
+               <effect>
+                  <Bloom />
+               </effect>
+            </JFXHamburger>
+            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" opacity="0.0" popupSide="RIGHT" prefHeight="34.0" prefWidth="43.0" text="MenuButton" textFill="#575757">
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
@@ -72,11 +77,6 @@
                   </Lighting>
                </effect>
             </MenuButton>
-            <JFXHamburger layoutX="138.0" layoutY="20.0" prefHeight="34.0" prefWidth="39.0" stylesheets="@../styles/hamburger.css">
-               <effect>
-                  <Bloom />
-               </effect>
-            </JFXHamburger>
             <Button id="goldline" fx:id="logoutBtn" layoutX="209.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="68.0" stylesheets="@../styles/stylesheet.css" text="Logout" />
          </children></AnchorPane>
    </top>
