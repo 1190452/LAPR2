@@ -1,6 +1,7 @@
 
 package UI;
 
+import Model.ApplicationPOT;
 import Model.Constants;
 import autorizacao.FacadeAuthorization;
 import com.jfoenix.controls.JFXTextField;
@@ -105,10 +106,10 @@ public class LoginUI implements Initializable {
             txtFieldPassword.clear();
             }*/
             
-            FacadeAuthorization fc = new FacadeAuthorization();
+            ApplicationPOT fc = new ApplicationPOT();
             fc.doLogin(txtFieldUsername.getText(), txtFieldPassword.getText());
             
-            //if (FacadeAuthorization.getActualSession().isLoggedInWithPart(Constants.ROLE_ADMINISTRATIVE)) {
+            if (FacadeAuthorization.getActualSession().isLoggedInWithPart(Constants.ROLE_ADMINISTRATIVE)) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuAdministrator.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
@@ -117,7 +118,7 @@ public class LoginUI implements Initializable {
                 stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setResizable(false);
                 stage.show();
-            //}
+            }
                 // Hide this current window
                 ((Node) (event.getSource())).getScene().getWindow().hide();
         } catch (IOException ex) {

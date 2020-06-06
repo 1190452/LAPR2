@@ -23,6 +23,7 @@ public class FacadeAuthorization
          return users.addUser(utlz);
     }
     
+    
     public void registerUser(String strNome, String strEmail, String strPassword, String role)
     {
         User utlz = this.users.newUser(strNome,strEmail,strPassword, role);

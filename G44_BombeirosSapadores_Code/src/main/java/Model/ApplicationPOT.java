@@ -20,11 +20,11 @@ public class ApplicationPOT
     private final Platform m_oPlataforma;
     private final FacadeAuthorization m_oAutorizacao;
     
-    private ApplicationPOT()
+    public ApplicationPOT()
     {
-        Properties props = getProperties();
         this.m_oPlataforma = new Platform();
         this.m_oAutorizacao = this.m_oPlataforma.getFacadeAuthorazation();
+        bootstrap();
     }
     
     public Platform getPlatform()
@@ -68,6 +68,16 @@ public class ApplicationPOT
             
         }
         return props;
+    }
+     private void bootstrap()
+    {
+    
+        this.m_oAutorizacao.registUserWithRole("ZÉ", "zemanel@gmail.com", "q", Constants.ROLE_ADMINISTRATIVE);
+//        this.m_oAutorizacao.registUserWithRole("Administrativo 2", "adm2@esoft.pt", "123456",Constants.ROLE_ADMINISTRATIVE);
+        
+//        this.m_oAutorizacao.registUserWithRole("Freelancer 1", "free1@esoft.pt", "123456",Constants.ROLE_FREELANCER);
+//        this.m_oAutorizacao.registUserWithRole("Freelancer 2", "free2@esoft.pt", "123456",Constants.ROLE_FREELANCER);
+       
     }
 
     
