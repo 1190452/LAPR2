@@ -235,6 +235,12 @@ public class Task {
         return String.format("Task %s, description: %s, cost per hour: %s, "
                 + "category: %s", idTask, description, costHour, taskCategory);
     }
+    
+     public String toStringS() {
+        return String.format("Task %s\nDescription: %s\nCost per hour: %s"
+                + "\nCategory: %s", idTask, description, costHour, taskCategory);
+    }
+    
 
     /**
      * @return the texec

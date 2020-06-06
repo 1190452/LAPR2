@@ -81,13 +81,6 @@ public class CreateTaskUI {
 
     @FXML
     private void confirm(ActionEvent event) throws InterruptedException {
-
-        //try {
-//        String id = idTxt.getSelectedText();
-//        String bd = descriptionTxt.getSelectedText();
-//        int td = Integer.parseInt(timeTxt.getSelectedText());
-//        double ch = Double.parseDouble(costTxt.getSelectedText());
-//        String ct = categoryTxt.getSelectedText();
         ctask_controller = new CreateTaskController();
         if (idTxt.getText().isEmpty() || descriptionTxt.getText().isEmpty() || timeTxt.getText().isEmpty() || costTxt.getText().isEmpty() || categoryTxt.getText().isEmpty()) {
             Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Creation", "Please introduce the necessary data to create a Task.");
@@ -96,11 +89,13 @@ public class CreateTaskUI {
             
             Task ts = ctask_controller.newTask(idTxt.getText(), descriptionTxt.getText(),
                     Integer.parseInt(timeTxt.getText()), Double.parseDouble(costTxt.getText()), categoryTxt.getText());
-            Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Task Creation", ts.toString());
+            Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Task Creation", ts.toStringS());
             alert1.show();
-            TimeUnit.SECONDS.sleep(10);
-            alert1.setContentText("Do you confirm the data of the Task?");
-            if (alert1.showAndWait().get() == ButtonType.YES) {
+            TimeUnit.SECONDS.sleep(5);
+            alert1.close();
+            Alert alert2 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Task Creation", "Do you confirm this task?");
+            alert2.show();
+            if (alert2.showAndWait().get() == ButtonType.YES) {
                 ctask_controller.registersTask();
                 
             } else {
