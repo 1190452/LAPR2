@@ -5,6 +5,7 @@
  */
 package UI;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,12 +15,16 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 /**
@@ -38,6 +43,8 @@ public class MenuManagerUI implements Initializable {
     private Button bt_createF;
     @FXML
     private Button bt_createPT;
+    @FXML
+    private Button logoutBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -76,6 +83,21 @@ public class MenuManagerUI implements Initializable {
     private void pressed(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("Login");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     
