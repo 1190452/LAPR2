@@ -5,6 +5,7 @@ import Model.Constants;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.UserSession;
 import com.jfoenix.controls.JFXTextField;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -77,6 +79,8 @@ public class LoginUI implements Initializable {
                 stage.setTitle("Administrator Menu");
                 stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setResizable(false);
+                
+                stage.getIcons().add(new Image("/images/logoparaapp.png"));
                 stage.show();
 
                 // Hide this current window
