@@ -101,17 +101,14 @@ public class LoginUI implements Initializable {
                 stage.setTitle("Collaborator Menu");
                 stage.setResizable(false);
                 stage.show();
-
-<<<<<<< HEAD
-            } 
-=======
                 // Hide this current window
                 ((Node) (event.getSource())).getScene().getWindow().hide();
-            } else if (!us.isLoggedIn()) {
+
+            }  else if (!us.isLoggedIn()) {
                 Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "The user does not exist. Please register.");
                 alert.show();
             }
->>>>>>> bbfebf78833cb61418c67a1cf9072fbd1ebff427
+    
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception ex) {
