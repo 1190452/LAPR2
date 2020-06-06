@@ -72,12 +72,7 @@ public class ApplicationPOT
      private void bootstrap()
     {
     
-        this.m_oAutorizacao.registUserWithRole("ZÉ", "zemanel@gmail.com", "q", Constants.ROLE_ADMINISTRATIVE);
-//        this.m_oAutorizacao.registUserWithRole("Administrativo 2", "adm2@esoft.pt", "123456",Constants.ROLE_ADMINISTRATIVE);
-        
-//        this.m_oAutorizacao.registUserWithRole("Freelancer 1", "free1@esoft.pt", "123456",Constants.ROLE_FREELANCER);
-//        this.m_oAutorizacao.registUserWithRole("Freelancer 2", "free2@esoft.pt", "123456",Constants.ROLE_FREELANCER);
-       
+        this.m_oAutorizacao.registerUser("Ricardo", "bombeiro@gmail.com", "qwerty", Constants.ROLE_ADMINISTRATIVE);   
     }
 
     

@@ -18,6 +18,8 @@ public class FacadeAuthorization
    private static UserSession session = null;
    private static final RegisterUser users = new RegisterUser();
 
+   
+    
     public boolean registUserWithRole(String name, String strEmail, String strPassword, String strRole) {
         User utlz = this.users.newUser(name , strEmail, strPassword, strRole);
          return users.addUser(utlz);

@@ -15,14 +15,11 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-   
+        
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
 
 
         Scene scene = new Scene(root);
-
-        //FacadeAuthorization fc = new FacadeAuthorization();
-        //fc.registerUser("boas", "zemanel@gmail.com", "qwerty", Constants.ROLE_ADMINISTRATIVE);
         scene.getStylesheets().add("/styles/Styles.css");
 
         stage.initStyle(StageStyle.TRANSPARENT);

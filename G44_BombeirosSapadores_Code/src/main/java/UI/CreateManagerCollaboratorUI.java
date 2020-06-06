@@ -101,6 +101,8 @@ public class CreateManagerCollaboratorUI implements Initializable {
 
     @FXML
     private void submit(ActionEvent event) {
+        
+        
     }
     
 }

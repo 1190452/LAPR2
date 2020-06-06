@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.ApplicationPOT;
 import Model.Platform;
 import java.io.FileNotFoundException;
 import java.util.TimerTask;
@@ -20,7 +21,8 @@ public class SendEmailFreelTask extends TimerTask {
     private Platform p1;
 
     public SendEmailFreelTask() {
-        p1 = new Platform();
+        ApplicationPOT pot = ApplicationPOT.getInstance();
+        p1 = pot.getPlatform();
 
     }
 

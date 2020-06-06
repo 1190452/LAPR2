@@ -6,6 +6,7 @@
  */
 package Controller;
 
+import Model.ApplicationPOT;
 import Model.Freelancer;
 import Model.Payment;
 import Model.Platform;
@@ -43,7 +44,8 @@ public class CheckPerformanceController {
     private double sumPaymentDeviationOfAllFreelancers = 0;
 
     public CheckPerformanceController() {
-        platform = new Platform();
+        ApplicationPOT pot = ApplicationPOT.getInstance();
+        platform = pot.getPlatform();
     }
 
     public void getPerformances() {

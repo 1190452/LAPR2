@@ -32,8 +32,8 @@ public class RegisterOrganization {
 
     public RegisterOrganization() {
         lorgs = new ArrayList<>();
-        this.m_oApp = ApplicationPOT.getInstance();
-        this.m_oPlataforma = m_oApp.getPlatform();
+        //this.m_oApp = ApplicationPOT.getInstance();
+        //this.m_oPlataforma = m_oApp.getPlatform();
         lOrg = new ArrayList<>();
     }
 

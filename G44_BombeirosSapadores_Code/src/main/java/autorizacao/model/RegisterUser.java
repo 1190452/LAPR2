@@ -7,9 +7,8 @@ package autorizacao.model;
 
 import Model.Platform;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 /**
  *
@@ -23,7 +22,7 @@ public class RegisterUser
     
     public RegisterUser(){
         this.lstUsers = new ArrayList<User>();
-        this.platform = new Platform();
+        
     }
     
     public List<User> getUserList(){
@@ -39,10 +38,10 @@ public class RegisterUser
     }
 
     public boolean addUser(User utlz) {
-        if (hasUser(utlz)) {
-            throw new IllegalArgumentException("User Already Exists");
-        }
-         return platform.getrUser().getUserList().add(utlz);
+//        if (hasUser(utlz)) {
+//            throw new IllegalArgumentException("User Already Exists");
+//        }
+         return this.lstUsers.add(utlz);
     }
 
     public void removeUser(User utlz) {
@@ -53,7 +52,7 @@ public class RegisterUser
     }
 
     public User findUser(String strEmail) {
-        for (User utlz : platform.getrUser().getUserList()) {
+        for (User utlz : lstUsers) {
             if (utlz.hasEmail(strEmail)) {
                 return utlz;
             }
