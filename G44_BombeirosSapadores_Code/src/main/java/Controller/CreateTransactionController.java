@@ -8,12 +8,13 @@ package Controller;
 import Model.ApplicationPOT;
 import Model.Freelancer;
 import Model.RegisterTransaction;
-import Model.Organization;
 import Model.RegisterFreelancer;
+import Model.RegisterOrganization;
 import Model.Task;
 import Model.TaskList;
 import Model.Transaction;
 import Utils.Date;
+import autorizacao.model.UserSession;
 import java.util.List;
 
 /**
@@ -22,15 +23,18 @@ import java.util.List;
  */
 public class CreateTransactionController {
 
-    private Organization organization;
-    private RegisterTransaction hTransaction;
+    private RegisterTransaction rt;
     private Transaction trans;
 
     public CreateTransactionController() {
     }
 
     public List<Task> getTaskList() {
-        TaskList tl = organization.getTaskList();
+        ApplicationPOT ap = ApplicationPOT.getInstance();
+        RegisterOrganization rorgs = ap.getPlatform().getrOrg();
+        UserSession log = ap.getActualSession();
+        String email = log.getUserEmail();
+        TaskList tl = rorgs.getOrganizationByUserEmailColab(email).getTaskList();
         List<Task> taskList = tl.getTaskList();
         return taskList;
     }
@@ -44,17 +48,17 @@ public class CreateTransactionController {
 
     public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         ApplicationPOT app = ApplicationPOT.getInstance();
-        RegisterTransaction rt = app.getPlatform().getRTrans();
+        rt = app.getPlatform().getRTrans();
         trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
         return trans;
     }
 
     public void registerTransaction() {
-        hTransaction.registerTransaction(trans);
+        rt.registerTransaction(trans);
     }
 
     public double calculateTransactionValue(Transaction trans) {
-        return hTransaction.calculateTransactionValue(trans);
+        return rt.calculateTransactionValue(trans);
     }
 
 }

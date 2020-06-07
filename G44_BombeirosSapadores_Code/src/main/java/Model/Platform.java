@@ -27,30 +27,66 @@ import java.util.Timer;
  */
 public class Platform implements Serializable{
 
+    /**
+     * facade authorization
+     */
     private final FacadeAuthorization m_oAutorizacao;
 
+    /**
+     * register organization
+     */
     private RegisterOrganization rOrg;
 
+    /**
+     * register freelancer
+     */
     private RegisterFreelancer rFree;
 
+    /**
+     * register user
+     */
     private RegisterUser rUser;
 
+    /**
+     * register transaction
+     */
     private RegisterTransaction rTrans;
 
+    /**
+     * import txt file
+     */
     private ImportTxtFile itxt;
 
+    /**
+     * import csv file
+     */
     private ImportCsvFile icsv;
 
+    /**
+     * password generator
+     */
     private PasswordGenerator alg;
 
+    /**
+     * do payment task
+     */
     private DoPaymentTask dpt;
 
+    /**
+     * send email to mean performance freelancers task
+     */
     private SendEmailFreelTask sEF;
-    
+
+    /**
+     * writer
+     */
     private Writer writer;
 
+    /**
+     * constructor than initializes the necessary classes (FacadeAuthorization,
+     * RegisterOrganization, RegisterFreelancer, PasswordGenerator)
+     */
     public Platform() {
-
         this.m_oAutorizacao = new FacadeAuthorization();
         this.rOrg = new RegisterOrganization();
         this.rFree = new RegisterFreelancer();
@@ -60,14 +96,31 @@ public class Platform implements Serializable{
         this.alg = pg.build();
     }
 
+    /**
+     * returns the facade authorization
+     *
+     * @return
+     */
     public FacadeAuthorization getFacadeAuthorazation() {
         return this.m_oAutorizacao;
     }
 
+    /**
+     * returns the register freelancer
+     *
+     * @return
+     */
     public RegisterFreelancer getRfree() {
         return rFree;
     }
 
+    /**
+     * method that validates the organization created
+     *
+     * @param oOrganizacao
+     * @param strPwd
+     * @return
+     */
     public boolean validateOrganization(Organization oOrganizacao, String strPwd) {
         boolean bRet = true;
 
@@ -86,6 +139,8 @@ public class Platform implements Serializable{
     }
 
     /**
+     * returns the register user
+     *
      * @return the rUser
      */
     public RegisterUser getrUser() {
@@ -93,6 +148,8 @@ public class Platform implements Serializable{
     }
 
     /**
+     * modifies the register user
+     *
      * @param rUser the rUser to set
      */
     public void setrUser(RegisterUser rUser) {
@@ -100,6 +157,8 @@ public class Platform implements Serializable{
     }
 
     /**
+     * returns the register organization
+     *
      * @return the rOrg
      */
     public RegisterOrganization getrOrg() {
@@ -107,12 +166,20 @@ public class Platform implements Serializable{
     }
 
     /**
+     * modifies the register organization
+     *
      * @param rOrg the rOrg to set
      */
     public void setrOrg(RegisterOrganization rOrg) {
         this.rOrg = rOrg;
     }
 
+    /**
+     * method that loads and returns a list of transactions
+     *
+     * @param fileName
+     * @return
+     */
     public List<Transaction> loadHistoricalTransaction(String fileName) {
         if (fileName.endsWith(".txt")) {
             rTrans = itxt.importFile(fileName);
@@ -130,12 +197,17 @@ public class Platform implements Serializable{
     }
 
     /**
+     * return the password generator
+     *
      * @return the alg
      */
     public PasswordGenerator getAlg() {
         return alg;
     }
 
+    /**
+     *
+     */
     public void scheduleProcess() {
         Date date = getLastDayDate();
         sEF = new SendEmailFreelTask();
@@ -144,24 +216,38 @@ public class Platform implements Serializable{
 
     }
 
+    /**
+     * return a date with the last day of the year
+     *
+     * @return
+     */
     public Date getLastDayDate() {
         return new Date(12, 31);
     }
 
     /**
+     * modifies the password generator
+     *
      * @param alg the alg to set
      */
     public void setAlg(PasswordGenerator alg) {
         this.alg = alg;
     }
 
-    /*
+    /**
+     * returns the register transaction
+     *
      * @return the rTrans
      */
     public RegisterTransaction getRTrans() {
         return rTrans;
     }
 
+    /**
+     * method that schedules the payment to the freelancer
+     *
+     * @param email
+     */
     public void schedulesPayment(String email) {
         dpt = new DoPaymentTask();
 
@@ -183,6 +269,13 @@ public class Platform implements Serializable{
 
     }
 
+    /**
+     * method that calculates the difference between two times in seconds
+     *
+     * @param date
+     * @param time
+     * @return
+     */
     public long calculateDifference(Date date, Time time) {
 
         ZonedDateTime now = ZonedDateTime.now();
@@ -195,20 +288,35 @@ public class Platform implements Serializable{
 
     }
 
+    /**
+     * method that calculates a period
+     *
+     * @param nrDays
+     * @return
+     */
     public long calculatePeriod(double nrDays) {
         return (long) (Constants.NR_OF_SECONDS_OF_DAY * nrDays);
     }
-    public Writer getWriter(){
+
+    /**
+     * return the writer
+     *
+     * @return
+     */
+    public Writer getWriter() {
         return writer;
     }
 
+    /**
+     * method that "sends" and email to mean performance freelancers
+     *
+     * @throws FileNotFoundException
+     */
     public void sendEmail() throws FileNotFoundException {
         List<Freelancer> listFreelancers = rFree.getListFreelancers();
         double delayProb = rFree.getDelayProb();
 
-        for (int i = 0; i < listFreelancers.size(); i++) 
-        
-        {
+        for (int i = 0; i < listFreelancers.size(); i++) {
             Freelancer free = listFreelancers.get(i);
             TaskList taskL = free.getTaskList();
             List<Task> taskList = taskL.getTaskList();
@@ -227,5 +335,4 @@ public class Platform implements Serializable{
         }
     }
 
-    
 }

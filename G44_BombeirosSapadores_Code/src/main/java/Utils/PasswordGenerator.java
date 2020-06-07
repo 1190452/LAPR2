@@ -16,7 +16,7 @@ import java.util.Random;
  */
 public final class PasswordGenerator implements Serializable{
         
-    //inspirado em https://stackoverflow.com/questions/19743124/java-password-generator/41891760
+    //inspired in https://stackoverflow.com/questions/19743124/java-password-generator/41891760
     private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";
     private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static final String DIGITS = "0123456789";

@@ -15,26 +15,43 @@ import java.util.Set;
  *
  * @author tiagopereira
  */
+<<<<<<< HEAD
 public class PaymentList implements Serializable{
+=======
+public class PaymentList {
+    /**
+     * list of payments
+     */
+>>>>>>> 8f43a82269b3d63fb10dd068602c8b30d5a25959
     private List<Payment> paymentList;
 
+    /**
+     * constructor that inicializes the payment list as an ArrayList
+     */
     public PaymentList() {
         paymentList = new ArrayList<>();
     }
-    
-    public PaymentList(Set<Payment> l){
-        paymentList = new ArrayList<>(l);
-        
-    }
-    
+
+    /**
+     * method that adds a new payment to the payment list
+     * @param t 
+     */
     public void addPayment(Payment t){
        paymentList.add(t);
    }
    
+    /**
+     * method that removes a payment from the payment list
+     * @param t 
+     */
    public void removePayment(Payment t){
        paymentList.remove(t);
    }
    
+   /**
+    * returns the list of payments
+    * @return 
+    */
    public List<Payment> getPaymentList(){
        return paymentList;
    }

@@ -152,6 +152,7 @@ public class CheckPerformanceController {
             
             //P(X>3) = 1 - P(X<=3) 
             double probability = 1 - nd.cumulativeProbability(3); 
+            rFree.setDelayProb(probability);
             
         }
     }

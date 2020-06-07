@@ -1,15 +1,24 @@
 package Model;
 
+<<<<<<< HEAD
 import java.io.Serializable;
+=======
+import java.util.ArrayList;
+>>>>>>> 8f43a82269b3d63fb10dd068602c8b30d5a25959
 import java.util.List;
 
 /**
  *
  * @author Ricardo
  */
+<<<<<<< HEAD
 public class Payment implements Serializable{
+=======
+public class Payment {
+
+>>>>>>> 8f43a82269b3d63fb10dd068602c8b30d5a25959
     /**
-     * Value of the payment in euro
+     * Value of the payment in euros
      */
     private double valueE;
     /**
@@ -20,23 +29,34 @@ public class Payment implements Serializable{
      * List of the tranmsactions of the freelancer
      */
     private List<Transaction> nltr;
+
+    private static final double VALUEE_BY_OMISSION = 0;
+    private static final double VALUEC_BY_OMISSION = 0;
+
     /**
-     * 
+     * complete constrcutor that creates an instance of payment with the
+     * following parameters:
+     *
      * @param sum
      * @param curr
-     * @param nltr 
+     * @param nltr
      */
-    public Payment(double sum, double curr, List<Transaction> nltr){
-        if(sum != 0 && curr != 0 && nltr != null){
-            this.valueE=sum;
-            this.valueC=curr;
-            this.nltr=nltr;
+    public Payment(double sum, double curr, List<Transaction> nltr) {
+        if (sum != 0 && curr != 0 && nltr != null) {
+            this.valueE = sum;
+            this.valueC = curr;
+            this.nltr = nltr;
         }
-        
     }
 
+    public Payment() {
+        this.valueE = VALUEE_BY_OMISSION;
+        this.valueC = VALUEC_BY_OMISSION;
+        this.nltr = new ArrayList<Transaction>();
+    }
 
     /**
+     * returns the transaction list of the payment
      * @return the nltr
      */
     public List<Transaction> getNltr() {
@@ -44,6 +64,7 @@ public class Payment implements Serializable{
     }
 
     /**
+     * modifies the transaction list of the payment
      * @param nltr the nltr to set
      */
     public void setNltr(List<Transaction> nltr) {
@@ -51,6 +72,7 @@ public class Payment implements Serializable{
     }
 
     /**
+     * returns the value in euros of the payment
      * @return the valueE
      */
     public double getValueE() {
@@ -58,6 +80,7 @@ public class Payment implements Serializable{
     }
 
     /**
+     * modifies the value in euros of the payment
      * @param valueE the valueE to set
      */
     public void setValueE(double valueE) {
@@ -65,6 +88,7 @@ public class Payment implements Serializable{
     }
 
     /**
+     * returns the value in the currency of the freelancer of the payment
      * @return the valueC
      */
     public double getValueC() {
@@ -72,26 +96,33 @@ public class Payment implements Serializable{
     }
 
     /**
+     * modifies the value in the currency of the freelancer of the payment
      * @param valueC the valueC to set
      */
     public void setValueC(double valueC) {
         this.valueC = valueC;
     }
-    
-    public boolean validatePay(){
-        if(valueE != 0 && valueC != 0 && nltr != null){
+
+    /**
+     * method that validates the payment created
+     * @return 
+     */
+    public boolean validatePay() {
+        if (valueE != 0 && valueC != 0 && nltr != null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
+    /**
+     * method that generates a receipt 
+     * @param country 
+     */
     public void generateReceipt(String country) {
         Receipt r = new Receipt(nltr, valueE, valueC);
-        
+
         r.genEmail();
     }
-    
-    
-    
+
 }
