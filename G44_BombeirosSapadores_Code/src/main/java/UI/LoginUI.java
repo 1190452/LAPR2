@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -44,6 +45,10 @@ public class LoginUI implements Initializable {
     private Button loginBtn;
 
     double x, y;
+    @FXML
+    private Label lblUser;
+    @FXML
+    private Label lblInformation;
 
     /**
      * Initializes the controller class.
@@ -62,6 +67,7 @@ public class LoginUI implements Initializable {
         
         try {
             if(txtFieldUsername.getText().isEmpty() || txtFieldPassword.getText().isEmpty()){
+                lblInformation.setText(" ");
                 Alert alert1 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "Please introduce the necessary data to access the platform.");
                 alert1.show();    
             } 
@@ -114,6 +120,7 @@ public class LoginUI implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception ex) {
+            lblInformation.setText("Invalid information!");
             txtFieldUsername.clear();
             txtFieldPassword.clear();
         }

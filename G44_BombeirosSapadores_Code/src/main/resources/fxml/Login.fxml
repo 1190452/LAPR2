@@ -44,6 +44,7 @@
             <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" layoutX="246.0" layoutY="24.0" onMouseClicked="#close" size="1.2em" />
             <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" layoutX="223.0" layoutY="26.0" onMouseClicked="#min" size="1.2em" text="" />
             <Label fx:id="lblUser" layoutX="76.0" layoutY="104.0" prefHeight="17.0" prefWidth="113.0" textFill="WHITE" />
+            <Label fx:id="lblInformation" layoutX="75.0" layoutY="113.0" prefHeight="17.0" prefWidth="113.0" textFill="WHITE" />
          </children>
       </AnchorPane>
    </right>
