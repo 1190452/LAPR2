@@ -5,6 +5,7 @@ package UI;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import Model.ApplicationPOT;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -132,7 +133,8 @@ public class MenuCollaboratorUI implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
-        
+        ApplicationPOT pot = ApplicationPOT.getInstance();
+        pot.doLogout();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
