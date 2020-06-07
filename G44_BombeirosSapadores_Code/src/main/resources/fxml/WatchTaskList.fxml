@@ -44,7 +44,7 @@
                   <Insets bottom="15.0" left="100.0" />
                </GridPane.margin>
             </Button>
-            <JFXComboBox fx:id="listTaskCB" prefHeight="27.0" prefWidth="291.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <JFXComboBox fx:id="listTaskCB" focusColor="#e6be8a" onAction="#tasklist" prefHeight="27.0" prefWidth="291.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin>

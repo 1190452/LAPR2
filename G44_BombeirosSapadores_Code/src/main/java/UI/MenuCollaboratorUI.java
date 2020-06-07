@@ -124,7 +124,18 @@ public class MenuCollaboratorUI implements Initializable {
     }
 
     @FXML
-    private void CreatePaymentOA(ActionEvent event) {
+    private void CreatePaymentOA(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/ExecutionTask.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("CreateFreelancer");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML

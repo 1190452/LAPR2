@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
-import Controller.CreateTaskController;
 import Controller.CreateTransactionController;
 import Model.Freelancer;
 import Model.Task;
@@ -15,7 +9,6 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -41,11 +33,22 @@ public class ExecutionTaskUI implements Initializable {
     private Button cancelBtn;
     @FXML
     private Button confirmBtn;
-    private JFXDatePicker endDateTxt;
-    private JFXTextField delayTxt;
-    private JFXTextField descriptionTxt;
     @FXML
-    private JFXComboBox<Task> listTaskCB;
+    private JFXDatePicker endDateTxt;
+    @FXML
+    private JFXTextField delayTxt;
+    @FXML
+    private JFXTextField descriptionTxt;
+
+    private double x, y;
+    @FXML
+    private JFXComboBox<Task> listTaskTxt;
+    @FXML
+    private JFXComboBox<Freelancer> listFreelancerTxt;
+    
+    private List<Freelancer> freelancerList;
+    
+    private List<Task> taskList;
 
     /**
      * Initializes the controller class.
@@ -53,6 +56,10 @@ public class ExecutionTaskUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ct_controller = new CreateTransactionController();
+        taskList = ct_controller.getTaskList();
+        listTaskTxt.getItems().addAll(taskList);
+        freelancerList = ct_controller.getFreelancerList();
+        listFreelancerTxt.getItems().addAll(freelancerList);
     }
 
     @FXML
@@ -80,12 +87,11 @@ public class ExecutionTaskUI implements Initializable {
                 Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Execution Creation", "Please introduce the necessary data to create a Task Execution.");
                 alert.show();
             } else {
-                List<Task> taskList = ct_controller.getTaskList();
-                ObservableList<Task> tl = FXCollections.observableArrayList(taskList);
-                List<Freelancer> freelancerList = ct_controller.getFreelancerList();
-                ObservableList<Freelancer> fl = FXCollections.observableArrayList(freelancerList);
+                //ObservableList<Task> tl = FXCollections.observableArrayList(taskList);
+                
+                //ObservableList<Freelancer> fl = FXCollections.observableArrayList(freelancerList);
 
-                ct_controller.createNewTransaction(taskList, freelancerList, new Date(endDateTxt.getValue().getYear(), endDateTxt.getValue().getMonthValue(), endDateTxt.getValue().getDayOfMonth()), Double.parseDouble(delayTxt.getText()), descriptionTxt.getText());
+                ct_controller.createNewTransaction(listTaskTxt.getSelectionModel().getSelectedItem(), listFreelancerTxt.getSelectionModel().getSelectedItem(), new Date(endDateTxt.getValue().getYear(), endDateTxt.getValue().getMonthValue(), endDateTxt.getValue().getDayOfMonth()), Double.parseDouble(delayTxt.getText()), descriptionTxt.getText());
 
             }
         } catch (NumberFormatException nfe) {
@@ -97,12 +103,15 @@ public class ExecutionTaskUI implements Initializable {
         }
     }
 
-    @FXML
     private void draged(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
     }
 
-    @FXML
     private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
     }
 
 }
