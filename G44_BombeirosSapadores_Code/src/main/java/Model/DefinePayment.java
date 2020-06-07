@@ -7,12 +7,13 @@ package Model;
 
 import Utils.Date;
 import Utils.Time;
+import java.io.Serializable;
 
 /**
  *
  * @author tiagopereira
  */
-public class DefinePayment {
+public class DefinePayment implements Serializable{
     
     /**
      * time in which the platform will pay to the freelancers

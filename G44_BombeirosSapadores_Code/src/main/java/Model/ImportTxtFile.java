@@ -18,10 +18,26 @@ import java.util.Scanner;
  */
 public class ImportTxtFile implements ImportFile, Serializable {
 
+    /**
+     * atribute from the class RegisterTransaction used to call the methods of that class
+     */
     private RegisterTransaction ht;
+    
+    /**
+     * atribute from the class TaskList used to call the methods of that class
+     */
     private TaskList tl;
+    
+    /**
+     * atribute from the class RegisterFreelancer used to call the methods of that class
+     */
     private RegisterFreelancer rf;
 
+    /**
+     * method that reads a txt file and loads a set of historical transactions
+     * @param fileName
+     * @return 
+     */
     @Override
     public RegisterTransaction importFile(String fileName) {
 

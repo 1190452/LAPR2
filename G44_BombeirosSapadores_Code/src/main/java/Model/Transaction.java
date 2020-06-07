@@ -6,6 +6,7 @@
 package Model;
 
 import Utils.Date;
+import java.io.Serializable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,7 +17,7 @@ import Utils.Date;
  *
  * @author tiagopereira
  */
-public class Transaction {
+public class Transaction implements Serializable{
 
     private Task task;
     private Freelancer freel;

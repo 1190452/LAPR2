@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Rafael
  */
-public class Freelancer {
+public class Freelancer implements Serializable{
 
     /**
      * id of the freelancer

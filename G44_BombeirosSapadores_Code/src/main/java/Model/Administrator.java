@@ -6,12 +6,13 @@
 package Model;
 
 import autorizacao.model.User;
+import java.io.Serializable;
 
 /**
  *
  * @author OMEN X
  */
-public class Administrator extends User{
+public class Administrator extends User implements Serializable{
     
     /**
      * complete constructor of the Administrator with the parameters of the superclass (User)

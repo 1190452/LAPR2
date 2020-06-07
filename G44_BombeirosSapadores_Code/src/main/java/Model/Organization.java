@@ -2,12 +2,13 @@ package Model;
 
 import Utils.Date;
 import Utils.Time;
+import java.io.Serializable;
 
 /**
  *
  * @author paulomaio
  */
-public class Organization {
+public class Organization implements Serializable{
 
     /**
      * The name of the Organization
@@ -186,7 +187,7 @@ public class Organization {
     }
 
     /**
-     * Returns the characteristics of the Organization
+     * Writing method of the class Organization
      *
      * @return characteristics of the Organization
      */
@@ -197,6 +198,7 @@ public class Organization {
     }
 
     /**
+     * returns the task list of the organization
      * @return the taskList
      */
     public TaskList getTaskList() {
@@ -204,25 +206,48 @@ public class Organization {
     }
 
     /**
+     * modifies the task list of the organization
      * @param taskList the taskList to set
      */
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
     }
 
+    /**
+     * method that creates an instance of address with the following parameters
+     * @param street
+     * @param doorNumber
+     * @param locality
+     * @return 
+     */
     public Address newAddress(String street, String doorNumber, String locality) {
         return new Address(street, doorNumber, locality);
     }
 
+    /**
+     * method that creates an instance of collaborator with the following parameters
+     * @param nameC
+     * @param emailC
+     * @param role
+     * @return 
+     */
     public static Collaborator newCollaborator(String nameC, String emailC, String role) {
         return new Collaborator(nameC, emailC, role);
     }
 
+    /**
+     * method that creates an instance of manager with the following parameters
+     * @param nameM
+     * @param emailM
+     * @param role
+     * @return 
+     */
     public static Manager newManager(String nameM, String emailM, String role) {
         return new Manager(nameM, emailM, role);
     }
 
     /**
+     * returns the address of the organization
      * @return the address
      */
     public Address getAddress() {
@@ -230,6 +255,7 @@ public class Organization {
     }
 
     /**
+     * modifies the address of the organization
      * @param address the address to set
      */
     public void setAddress(Address address) {
@@ -237,6 +263,7 @@ public class Organization {
     }
 
     /**
+     * returns the payment definition of the organization
      * @return the definePayment
      */
     public DefinePayment getDefinePayment() {
@@ -244,16 +271,29 @@ public class Organization {
     }
 
     /**
+     * modifies the payment definition of the organization
      * @param definePayment the definePayment to set
      */
     public void setDefinePayment(DefinePayment definePayment) {
         this.definePayment = definePayment;
     }
 
+    /**
+     * creates a new payment definition
+     * @param time
+     * @param date
+     * @param rtp
+     * @return 
+     */
     public DefinePayment newDefinePayment(Time time, Date date, int rtp) {
         return new DefinePayment(time, date, rtp);
     }
 
+    /**
+     * validates the payment definition created
+     * @param dp
+     * @return 
+     */
     public boolean validatesDefinePayment(DefinePayment dp) {
         boolean bRet = true;
 
