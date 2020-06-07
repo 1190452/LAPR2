@@ -61,7 +61,10 @@ public class MenuManagerUI implements Initializable {
 
     @FXML
     private void close(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        ApplicationPOT pot = ApplicationPOT.getInstance();
+        pot.doLogout();
+        pot.save(pot.getPlatform());
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 

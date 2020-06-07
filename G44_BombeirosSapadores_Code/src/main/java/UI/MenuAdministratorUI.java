@@ -65,6 +65,9 @@ public class MenuAdministratorUI implements Initializable {
 
     @FXML
     private void close(MouseEvent event) {
+        ApplicationPOT pot = ApplicationPOT.getInstance();
+        pot.doLogout();
+        pot.save(pot.getPlatform());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
