@@ -40,7 +40,7 @@ public class RegisterFreelancer {
     }
 
     public boolean saveFreelancer(Freelancer free) {
-        return (free.validateFreelancer()) && (validateFreelancer(free)) && addFreelancer(free);
+        return (validateFreelancer(free)) && addFreelancer(free);
 
     }
 
