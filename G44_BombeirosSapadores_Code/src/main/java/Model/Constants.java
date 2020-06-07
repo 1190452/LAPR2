@@ -9,12 +9,11 @@ package Model;
  *
  * @author paulomaio
  */
-public class Constants
-{
+public class Constants {
+    
     public static final String ROLE_ADMINISTRATIVE = "ADMINISTRATIVE";
     public static final String ROLE_COLLABORATOR_ORGANIZATION = "COLLABORATOR_ORGANIZATION";
     public static final String ROLE_MANAGER_ORGANIZATION = "MANAGER_ORGANIZATION";
-    public static final String ROLE_FREELANCER = "FREELANCER";
     
     public static final String FILE_PARAMS= "config.properties";
     public static final String PARAMS_PLATFORM_DESIGNATION = "PlATFORM.Designation";

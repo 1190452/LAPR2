@@ -13,14 +13,29 @@ import autorizacao.model.User;
  */
 public class Administrator extends User{
     
+    /**
+     * complete constructor of the Administrator with the parameters of the superclass (User)
+     * @param name
+     * @param email
+     * @param password
+     * @param role 
+     */
     public Administrator(String name, String email, String password, String role){
         super(name, email, password, "ADMINISTRATOR");
     }
     
+    /**
+     * copy constructor
+     * @param otherAdmin 
+     */
     public Administrator (Administrator otherAdmin){
         super(otherAdmin.getName(), otherAdmin.getEmail(), otherAdmin.getPassword(), otherAdmin.getRole());
     }
     
+    /**
+     * writing method of the class Administrator
+     * @return 
+     */
     @Override
     public String toString(){
         return super.toString();

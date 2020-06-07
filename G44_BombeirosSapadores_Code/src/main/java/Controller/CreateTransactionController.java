@@ -5,10 +5,10 @@
  */
 package Controller;
 
+import Model.ApplicationPOT;
 import Model.Freelancer;
 import Model.RegisterTransaction;
 import Model.Organization;
-import Model.Platform;
 import Model.RegisterFreelancer;
 import Model.Task;
 import Model.TaskList;
@@ -21,40 +21,40 @@ import java.util.List;
  * @author OMEN X
  */
 public class CreateTransactionController {
-    
+
     private Organization organization;
-    private Platform platform;
     private RegisterTransaction hTransaction;
     private Transaction trans;
-    
-    public CreateTransactionController(){
-        //instanciar
+
+    public CreateTransactionController() {
     }
-    
-    public List<Task> getTaskList(){
-       TaskList tl =  organization.getTaskList();
-       List<Task> taskList = tl.getTaskList();
-       return taskList;
+
+    public List<Task> getTaskList() {
+        TaskList tl = organization.getTaskList();
+        List<Task> taskList = tl.getTaskList();
+        return taskList;
     }
-    
-    public List<Freelancer> getFreelancerList(){
-        RegisterFreelancer rl = platform.getRfree();
+
+    public List<Freelancer> getFreelancerList() {
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        RegisterFreelancer rl = app.getPlatform().getRfree();
         List<Freelancer> freelancerList = rl.getListFreelancers();
         return freelancerList;
     }
-    
-    public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow){
-          RegisterTransaction rt = platform.getRTrans();
-          trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
-          return trans;
+
+    public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        RegisterTransaction rt = app.getPlatform().getRTrans();
+        trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
+        return trans;
     }
-    
-    public void registerTransaction(){
+
+    public void registerTransaction() {
         hTransaction.registerTransaction(trans);
     }
-    
-    public double calculateTransactionValue(Transaction trans){
+
+    public double calculateTransactionValue(Transaction trans) {
         return hTransaction.calculateTransactionValue(trans);
     }
-    
+
 }

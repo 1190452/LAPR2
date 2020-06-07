@@ -105,7 +105,6 @@ Other software classes (i.e. Pure Fabrication) identified:
 ###	Sequence Diagram
 
 ![UC11_SD.svg](UC11_SD.svg)
-
 ![Ref_SendEmail.svg](Ref_SendEmail.svg)
 
 

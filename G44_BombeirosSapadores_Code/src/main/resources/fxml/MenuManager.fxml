@@ -40,7 +40,7 @@
                   <Bloom />
                </effect>
             </JFXHamburger>
-            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: transparent; -fx-content-display: #e6be8a;" text="MenuButton" textFill="TRANSPARENT">
+            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="43.0" text="MenuButton" textFill="TRANSPARENT">
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
