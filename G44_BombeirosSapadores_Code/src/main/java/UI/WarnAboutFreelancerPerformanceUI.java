@@ -6,6 +6,7 @@
 package UI;
 
 import Controller.WarnAboutFreelancerPerformanceController;
+import java.io.FileNotFoundException;
 
 /**
  *
@@ -15,7 +16,7 @@ public class WarnAboutFreelancerPerformanceUI {
     
     private WarnAboutFreelancerPerformanceController controller;
     
-    public void sendEmail(){
+    public void sendEmail() throws FileNotFoundException{
         controller.sendEmail();
     }
 }

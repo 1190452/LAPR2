@@ -10,7 +10,6 @@ class WarnAboutFreelancerPerformanceController{
 
 class Platform {
     +sendEmail()
-    +getWriter()
 }
 
 class RegisterFreelancer {
