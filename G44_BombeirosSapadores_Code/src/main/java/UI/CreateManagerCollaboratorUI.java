@@ -112,7 +112,7 @@ public class CreateManagerCollaboratorUI implements Initializable {
         if (added) {
             AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Organization",
                     added ? "New Organization added with success"
-                            : "It was not possible to added the organization").show();
+                            : "It was not possible to add the organization").show();
 
             endCreateManagerCollaboratorUI(event);
         }

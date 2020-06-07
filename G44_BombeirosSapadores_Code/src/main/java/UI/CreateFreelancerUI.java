@@ -108,7 +108,7 @@ public class CreateFreelancerUI implements Initializable {
             if (added) {
             AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Freelancer",
                     added ? "New Freelancer added with success"
-                            : "It was not possible to added the Freelancer").show();
+                            : "It was not possible to add the Freelancer").show();
 
             endCreateFreelancerUI(event);
         }
