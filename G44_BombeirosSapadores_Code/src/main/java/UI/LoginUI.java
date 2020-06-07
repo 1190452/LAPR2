@@ -53,15 +53,15 @@ public class LoginUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txtFieldUsername.clear();
-        txtFieldPassword.clear();
+
+        
 
     }
 
     @FXML
     private void login(ActionEvent event) {
 //        try {
-
+        
         
         try {
             if(txtFieldUsername.getText().isEmpty() || txtFieldPassword.getText().isEmpty()){

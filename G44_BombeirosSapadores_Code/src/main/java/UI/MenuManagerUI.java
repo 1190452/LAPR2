@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Model.ApplicationPOT;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -87,6 +88,9 @@ public class MenuManagerUI implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
+        
+        ApplicationPOT pot = ApplicationPOT.getInstance();
+        pot.doLogout();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
