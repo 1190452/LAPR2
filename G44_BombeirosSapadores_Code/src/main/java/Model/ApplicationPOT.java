@@ -21,7 +21,7 @@ import java.io.Serializable;
  */
 public class ApplicationPOT implements Serializable{
 
-    private final String FILENAME = "saves.plat";
+    private final String FILENAME = "saves.ser";
     /**
      * system platform
      */
