@@ -30,6 +30,7 @@ public class RegisterFreelancer {
 
     /**
      * method that creates a new freelancer
+     *
      * @param name
      * @param levelExp
      * @param email
@@ -39,7 +40,7 @@ public class RegisterFreelancer {
      * @param street
      * @param doorNumber
      * @param locality
-     * @return 
+     * @return
      */
     public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
         Address address = new Address(street, doorNumber, locality);
@@ -48,8 +49,9 @@ public class RegisterFreelancer {
 
     /**
      * method that validates the freelancer created
+     *
      * @param free
-     * @return 
+     * @return
      */
     public boolean validateFreelancer(Freelancer free) {
         for (int i = 0; i < getListaFreelancers().size(); i++) {
@@ -64,8 +66,9 @@ public class RegisterFreelancer {
 
     /**
      * method that saves the freelancer
+     *
      * @param free
-     * @return 
+     * @return
      */
     public boolean saveFreelancer(Freelancer free) {
         return (validateFreelancer(free)) && addFreelancer(free);
@@ -74,8 +77,9 @@ public class RegisterFreelancer {
 
     /**
      * method that adds the freelancer to the freelancers list
+     *
      * @param free
-     * @return 
+     * @return
      */
     public boolean addFreelancer(Freelancer free) {
         if (!listaFreelancers.contains(free)) {
@@ -88,7 +92,8 @@ public class RegisterFreelancer {
 
     /**
      * method that removes a freelancer from the list
-     * @param fr 
+     *
+     * @param fr
      */
     public void removeFreelancer(Freelancer fr) {
         getListaFreelancers().remove(fr);
@@ -96,7 +101,8 @@ public class RegisterFreelancer {
 
     /**
      * returns the list of freelancers
-     * @return 
+     *
+     * @return
      */
     public List<Freelancer> getListFreelancers() {
         return getListaFreelancers();
@@ -104,58 +110,59 @@ public class RegisterFreelancer {
 
     /**
      * method that generates an id to a freelancer
+     *
      * @param free
-     * @return 
+     * @return
      */
     public String generateID(Freelancer free) {
         String id = "";
         int count = 1;
-        
+
         String[] nameparts = free.getName().split(" ");
         for (String namepart : nameparts) {
             id += Character.toUpperCase(namepart.toUpperCase().charAt(0));
         }
-<<<<<<< HEAD
 
         for (int i = 0; i < getListaFreelancers().size(); i++) {
             if (id.equalsIgnoreCase(getListaFreelancers().get(i).getFreeID())) {
-=======
-            
+
+            }
+        }
+
         for (int i = 0; i < listaFreelancers.size(); i++) {
             if (id.equalsIgnoreCase(listaFreelancers.get(i).getFreeID())) {
->>>>>>> 7aade0d4c308486a670c64732b85681c278016d8
                 count++;
             }
         }
-        return id+count;
+        return id + count;
 
     }
 
     /**
-     * method that returns a specific list of freelancers 
+     * method that returns a specific list of freelancers
+     *
      * @param lt
      * @param ltr
-     * @return 
+     * @return
      */
     public List<Freelancer> getFreelancers(List<Task> lt, List<Transaction> ltr) {
         List<Freelancer> newList = new ArrayList<>();
         for (int i = 0; i < lt.size(); i++) {
-           Task ts = lt.get(i);
-           for (int p = 0; p < ltr.size(); p++) {
-               Transaction tr = ltr.get(p);
-               Task cts = tr.getTask();
-               if(ts.equals(cts)){
-                   Freelancer freel = tr.getFreel();
-                   newList.add(freel);
-               }
-           }
+            Task ts = lt.get(i);
+            for (int p = 0; p < ltr.size(); p++) {
+                Transaction tr = ltr.get(p);
+                Task cts = tr.getTask();
+                if (ts.equals(cts)) {
+                    Freelancer freel = tr.getFreel();
+                    newList.add(freel);
+                }
+            }
         }
         return newList;
     }
 
-
     public boolean Verification(Freelancer fr) {
-        if(getListaFreelancers().contains(fr)){
+        if (getListaFreelancers().contains(fr)) {
             return false;
         }
         return true;
@@ -163,6 +170,7 @@ public class RegisterFreelancer {
 
     /**
      * returns the list of freelancers
+     *
      * @return the listaFreelancers
      */
     public List<Freelancer> getListaFreelancers() {
@@ -171,6 +179,7 @@ public class RegisterFreelancer {
 
     /**
      * modifies the list of freelancers
+     *
      * @param listaFreelancers the listaFreelancers to set
      */
     public void setListaFreelancers(List<Freelancer> listaFreelancers) {
@@ -179,6 +188,7 @@ public class RegisterFreelancer {
 
     /**
      * returns the delay probability
+     *
      * @return the delayProb
      */
     public double getDelayProb() {
@@ -187,13 +197,11 @@ public class RegisterFreelancer {
 
     /**
      * modifies the delay probability
+     *
      * @param delayProb the delayProb to set
      */
     public void setDelayProb(double delayProb) {
         this.delayProb = delayProb;
     }
-    
-   
 
-    
 }
