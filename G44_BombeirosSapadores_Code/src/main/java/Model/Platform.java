@@ -218,7 +218,6 @@ public class Platform {
                 double taskDelay = taskExec.getTaskDelay();
 
                 if (taskDelay > 3 && taskDelay > delayProb) {
-                    Writer writer = getWriter();
                     writer.sendEmail(free);
                 }
 

@@ -1,0 +1,67 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class WarnAboutFreelancerPerformanceUI{
+}
+
+class WarnAboutFreelancerPerformanceController{
+    +sendEmail()
+}
+
+class Platform {
+    +sendEmail()
+}
+
+class RegisterFreelancer {
+    +getListFreelancers()
+    +getDelayProb()
+}
+
+class Freelancer{
+    +getTaskList()
+}
+
+class TaskList{
+    +getTaskList()
+}
+
+class Task{
+    +getTexec()
+}
+
+class TaskExecution{
+    +getTaskDelay()
+}
+
+class Writer {
+    +sendEmail(free)
+} 
+
+WarnAboutFreelancerPerformanceUI ..> WarnAboutFreelancerPerformanceController
+
+WarnAboutFreelancerPerformanceController ..> Platform
+WarnAboutFreelancerPerformanceController ..> RegisterFreelancer
+WarnAboutFreelancerPerformanceController ..> Freelancer
+WarnAboutFreelancerPerformanceController ..> TaskList
+WarnAboutFreelancerPerformanceController ..> Task
+WarnAboutFreelancerPerformanceController ..> TaskExecution
+WarnAboutFreelancerPerformanceController ..> Writer
+
+Platform "1"-- "1" RegisterFreelancer: has
+Platform "1"-- "1" Writer: has
+
+RegisterFreelancer "1" --  "*" Freelancer: has
+
+Task "1" -- "1" Freelancer: made by
+
+Freelancer "1" -- "1" Writer: receives email from
+
+TaskList "1" -- "*" Task: has 
+
+Task "1" -- "1" TaskExecution : has    
+
+TaskExecution "1" -- "1" Freelancer: related to the work of 
+    
+
+
+@enduml

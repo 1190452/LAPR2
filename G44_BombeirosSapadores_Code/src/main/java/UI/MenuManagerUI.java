@@ -39,13 +39,11 @@ public class MenuManagerUI implements Initializable {
     
     double x,y;
     @FXML
-    private Button bt_createT;
-    @FXML
-    private Button bt_createF;
-    @FXML
-    private Button bt_createPT;
-    @FXML
     private Button logoutBtn;
+    @FXML
+    private Button bt_dph;
+    @FXML
+    private Button bt_CheckSt;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -102,6 +100,27 @@ public class MenuManagerUI implements Initializable {
 
         // Hide this current window
         ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void definePaymentHour(ActionEvent event) throws IOException {
+        
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/DefinePayment.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("DefinePaymentHour");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void checkStats(ActionEvent event) throws IOException {
+        
     }
 
     
