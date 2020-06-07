@@ -139,6 +139,12 @@ public class DefinePayment {
 
         return bRet;
     }
+    
+    @Override
+    public String toString(){
+        return String.format("Date to Pay: %s\nTime to Pay: %s\nNumber of Days: %d", dateToPay.toString(), timeToPay.toString(), nrDays);  
+    }
+    
     }
     
     

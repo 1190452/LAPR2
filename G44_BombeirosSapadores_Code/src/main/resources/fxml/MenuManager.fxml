@@ -40,21 +40,16 @@
                   <Bloom />
                </effect>
             </JFXHamburger>
-            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: transparent; -fx-content-display: #e6be8a;" text="MenuButton" textFill="TRANSPARENT">
+            <MenuButton alignment="CENTER" blendMode="COLOR_BURN" layoutX="138.0" layoutY="20.0" mnemonicParsing="false" opacity="0.0" prefHeight="28.0" prefWidth="43.0" text="MenuButton" textFill="TRANSPARENT">
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="bt_createT" minWidth="170.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Task" textFill="#e6be8a" />
+                        <Button fx:id="bt_dph" minWidth="170.0" mnemonicParsing="false" onAction="#definePaymentHour" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Define Payment Hour" textFill="#e6be8a" />
                      </graphic>
                   </MenuItem>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="bt_createF" minWidth="170.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Freelancer" textFill="#e6be8a" />
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <Button fx:id="bt_createPT" minWidth="170.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Payment Transaction" textFill="#e6be8a" />
+                        <Button fx:id="bt_CheckSt" minWidth="170.0" mnemonicParsing="false" onAction="#checkStats" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Check Overall Statistics" textFill="#e6be8a" />
                      </graphic>
                   </MenuItem>
               </items>
