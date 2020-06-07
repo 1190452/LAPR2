@@ -44,17 +44,12 @@
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="bt_createT" minWidth="170.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Task" textFill="#e6be8a" />
+                        <Button fx:id="bt_dph" minWidth="170.0" mnemonicParsing="false" onAction="#definePaymentHour" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Define Payment Hour" textFill="#e6be8a" />
                      </graphic>
                   </MenuItem>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="bt_createF" minWidth="170.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Freelancer" textFill="#e6be8a" />
-                     </graphic>
-                  </MenuItem>
-                  <MenuItem mnemonicParsing="false">
-                     <graphic>
-                        <Button fx:id="bt_createPT" minWidth="170.0" mnemonicParsing="false" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Payment Transaction" textFill="#e6be8a" />
+                        <Button fx:id="bt_CheckSt" minWidth="170.0" mnemonicParsing="false" onAction="#checkStats" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Check Overall Statistics" textFill="#e6be8a" />
                      </graphic>
                   </MenuItem>
               </items>
