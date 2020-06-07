@@ -10,8 +10,14 @@ import Model.Freelancer;
 import Model.Task;
 import Model.Transaction;
 import Utils.Date;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import java.util.List;
 import java.util.Scanner;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -20,6 +26,16 @@ import java.util.Scanner;
 public class CreateTransactionUI {
     static Scanner read = new Scanner(System.in);
     private CreateTransactionController ct_controller;
+    @FXML
+    private JFXDatePicker calendarButton;
+    @FXML
+    private Button confirmBtn;
+    @FXML
+    private Button cancelBtn;
+    @FXML
+    private JFXTextField DelayTxt;
+    @FXML
+    private JFXTextField qowTxt;
     
     public CreateTransactionUI (){
         ct_controller = new CreateTransactionController();
@@ -35,6 +51,22 @@ public class CreateTransactionUI {
         //ct_controller.createNewTransaction(task, freel, endDate, delay, qow);
         
         //Transaction trans ...
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
+    }
+
+    @FXML
+    private void min(MouseEvent event) {
+    }
+
+    @FXML
+    private void Confirm(ActionEvent event) {
+    }
+
+    @FXML
+    private void Cancel(ActionEvent event) {
     }
   
 }

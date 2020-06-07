@@ -11,6 +11,7 @@ import Model.Organization;
 import Utils.Date;
 import Utils.Time;
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,9 +34,12 @@ public class DefinePaymentController implements Initializable {
     private Button cancelBtn;
     @FXML
     private JFXDatePicker calendarButton;
-    @FXML
     private JFXTimePicker timeButton;
     private PaymentController pc;
+    @FXML
+    private JFXTextField DelayTxt;
+    @FXML
+    private JFXTextField qowTxt;
 
     /**
      * Initializes the controller class.
