@@ -78,9 +78,9 @@ public class RegisterOrganization implements Serializable{
             
             Address address = new Address(street, doorNumber, locality);
             String role = Constants.ROLE_MANAGER_ORGANIZATION;
-            manager = Organization.newManager(nameM, emailM, role);
+            this.manager = Organization.newManager(nameM, emailM, role);
             role = Constants.ROLE_COLLABORATOR_ORGANIZATION;
-            collab = Organization.newCollaborator(nameC, emailC, role);
+            this.collab = Organization.newCollaborator(nameC, emailC, role);
             m_oOrganizacao = new Organization(name, email, NIF, address, collab, manager);
             return m_oOrganizacao;
         } catch (RuntimeException ex) {
@@ -102,8 +102,8 @@ public class RegisterOrganization implements Serializable{
 
     public boolean registerOrganization(Organization org) throws FileNotFoundException {
         if (validateOrganization(org)) {
-            registUser(manager);
-            registUser(collab);
+            registUser(this.manager);
+            registUser(this.collab);
             addOrganization(org);
             return true;
         }
@@ -116,7 +116,7 @@ public class RegisterOrganization implements Serializable{
         PasswordGenerator alg = m_oPlataforma.getAlg();
         String pwdM = alg.generate(7);
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
-        aut.registUserWithRole(nameM, emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
+        aut.registerUser(nameM, emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
         Writer.sendsPassword(emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
     }
 
@@ -126,7 +126,7 @@ public class RegisterOrganization implements Serializable{
         PasswordGenerator alg = m_oPlataforma.getAlg();
         String pwdC = alg.generate(7);
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
-        aut.registUserWithRole(nameC, emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
+        aut.registerUser(nameC, emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
         Writer.sendsPassword(emailC, pwdC,Constants.ROLE_COLLABORATOR_ORGANIZATION);
     }
     
