@@ -35,10 +35,10 @@ public class CreateTaskController {
         ApplicationPOT app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
         String email = log.getUserEmail();
-//        RegisterOrganization rorgs = m_plat.getrOrg();
-//        Organization org = rorgs.getOrganizationByUserEmail(email);
-//        
-        Organization org = new Organization("org","123456789","o@gmail.com",new Address("rua12","23","Espinho"),new Collaborator("Bruno","b@gmail.com",Constants.ROLE_COLLABORATOR_ORGANIZATION), new Manager("Bruno","c@gmail.com",Constants.ROLE_MANAGER_ORGANIZATION));
+        RegisterOrganization rorgs = m_plat.getrOrg();
+        Organization org = rorgs.getOrganizationByUserEmail(email);
+        
+        //Organization org = new Organization("org","123456789","o@gmail.com",new Address("rua12","23","Espinho"),new Collaborator("Bruno","b@gmail.com",Constants.ROLE_COLLABORATOR_ORGANIZATION), new Manager("Bruno","c@gmail.com",Constants.ROLE_MANAGER_ORGANIZATION));
         
         
         tl =  org.getTaskList();

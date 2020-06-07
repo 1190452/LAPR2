@@ -38,9 +38,9 @@ public class RegisterUser
     }
 
     public boolean addUser(User utlz) {
-//        if (hasUser(utlz)) {
-//            throw new IllegalArgumentException("User Already Exists");
-//        }
+        if (hasUser(utlz)) {
+            throw new IllegalArgumentException("User Already Exists");
+        }
          return this.lstUsers.add(utlz);
     }
 
