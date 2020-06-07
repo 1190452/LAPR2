@@ -11,12 +11,27 @@ package Model;
  */
 public class Collaborator {
 
+    /**
+     * name of the collaborator
+     */
     private String nameC;
+    
+    /**
+     * email of the Collaborator
+     */
     private String emailC;
+    
+    /**
+     * role of the Collaborator
+     */
     private String role;
+    
+    private static final String NAME_BY_OMISSION = "no name";
+    private static final String EMAIL_BY_OMISSION = "no email";
+    private static final String ROLE_BY_OMISSION = "no role";
 
     /**
-     * Builds an instance of Collaborator that receives name, email and password
+     * Builds an instance of Collaborator that receives name, email and role
      *
      * @param nameC
      * @param emailC
@@ -30,8 +45,13 @@ public class Collaborator {
 
     }
 
+    /**
+     * empty constructor that builds an instance of Collaborator
+     */
     public Collaborator() {
-
+        this.nameC = NAME_BY_OMISSION;
+        this.emailC = EMAIL_BY_OMISSION;
+        this.role = ROLE_BY_OMISSION;
     }
 
     /**
@@ -47,6 +67,7 @@ public class Collaborator {
     }
 
     /**
+     * returns the name of the collaborator
      * @return the nameC
      */
     public String getNameC() {
@@ -54,6 +75,7 @@ public class Collaborator {
     }
 
     /**
+     * modifies the name of the collaborator
      * @param nameC the nameC to set
      */
     public void setNameC(String nameC) {
@@ -61,6 +83,7 @@ public class Collaborator {
     }
 
     /**
+     * returns the email of the collaborator
      * @return the emailC
      */
     public String getEmailC() {
@@ -68,6 +91,7 @@ public class Collaborator {
     }
 
     /**
+     * modifies the email of teh collaborator
      * @param emailC the emailC to set
      */
     public void setEmailC(String emailC) {
@@ -75,6 +99,7 @@ public class Collaborator {
     }
 
     /**
+     * returns the role of the collaborator
      * @return the role
      */
     public String getRole() {
@@ -82,12 +107,17 @@ public class Collaborator {
     }
 
     /**
+     * modifies teh role of the collaborator
      * @param role the role to set
      */
     public void setRole(String role) {
         this.role = role;
     }
 
+    /**
+     * writing method of the class Collaborator
+     * @return 
+     */
     @Override
     public String toString() {
         return String.format("Nome: %s \nEmail: %s \nRole: %s", nameC, emailC, role);
