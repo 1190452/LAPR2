@@ -54,8 +54,8 @@ public class CreateTransactionController {
         return trans;
     }
 
-    public void registerTransaction() {
-        rt.registerTransaction(trans);
+    public boolean registerTransaction() {
+        return rt.registerTransaction(trans);
     }
 
     public double calculateTransactionValue(Transaction trans) {
