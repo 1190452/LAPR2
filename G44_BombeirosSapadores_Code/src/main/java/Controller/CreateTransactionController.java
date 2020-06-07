@@ -27,6 +27,7 @@ public class CreateTransactionController {
     private Transaction trans;
 
     public CreateTransactionController() {
+        
     }
 
     public List<Task> getTaskList() {
