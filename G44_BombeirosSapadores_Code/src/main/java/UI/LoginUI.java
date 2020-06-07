@@ -53,7 +53,8 @@ public class LoginUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        txtFieldUsername.clear();
+        txtFieldPassword.clear();
 
     }
 

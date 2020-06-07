@@ -42,13 +42,13 @@ public class CreateTaskController {
         
         
         tl =  org.getTaskList();
-        task = tl.newTask(idTask, description, timeTask, costHour, taskCategory);
+        this.task = tl.newTask(idTask, description, timeTask, costHour, taskCategory);
         return task;
         
     }
 
     public boolean registersTask() {
-        return tl.registersTask(task);
+        return tl.registersTask(this.task);
     }
     
 }
