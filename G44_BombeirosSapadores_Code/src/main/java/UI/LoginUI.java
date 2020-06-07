@@ -53,9 +53,7 @@ public class LoginUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        txtFieldUsername.clear();
-        txtFieldPassword.clear();
-
+   
     }
 
     @FXML
@@ -83,9 +81,8 @@ public class LoginUI implements Initializable {
                 
                 stage.getIcons().add(new Image("/images/logoparaapp.png"));
                 stage.show();
-
-                // Hide this current window
-                ((Node) (event.getSource())).getScene().getWindow().hide();
+                endLoginUI(event);
+               
 
             } else if (us.isLoggedInWithPart(Constants.ROLE_COLLABORATOR_ORGANIZATION)) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuCollaborator.fxml"));
@@ -96,9 +93,8 @@ public class LoginUI implements Initializable {
                 stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setResizable(false);
                 stage.show();
-
-                // Hide this current window
-                ((Node) (event.getSource())).getScene().getWindow().hide();
+                endLoginUI(event);
+                
             } else if (us.isLoggedInWithPart(Constants.ROLE_MANAGER_ORGANIZATION)) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuManager.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -108,8 +104,8 @@ public class LoginUI implements Initializable {
                 stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setResizable(false);
                 stage.show();
-                // Hide this current window
-                ((Node) (event.getSource())).getScene().getWindow().hide();
+                endLoginUI(event);
+    
 
             }  else if (!us.isLoggedIn()) {
                 Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "The user does not exist. Please register.");
@@ -151,6 +147,12 @@ public class LoginUI implements Initializable {
     private void min(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    private void endLoginUI(ActionEvent event) {
+        txtFieldUsername.clear();
+        txtFieldPassword.clear();
+       ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }

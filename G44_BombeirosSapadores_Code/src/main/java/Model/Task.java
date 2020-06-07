@@ -73,7 +73,6 @@ public class Task {
      *
      * @param idTask
      * @param description
-     * @param time
      * @param costHour
      * @param taskCategory
      * @param isPayed
