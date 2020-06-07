@@ -53,13 +53,6 @@ public class LoginUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-<<<<<<< HEAD
-   
-=======
-
-        
-
->>>>>>> 545976f53bdcaa586071049852551ccb721b2188
     }
 
     @FXML
