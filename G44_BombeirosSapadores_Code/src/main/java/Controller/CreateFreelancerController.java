@@ -20,14 +20,14 @@ public class CreateFreelancerController {
     RegisterFreelancer rfree;
     Freelancer free;
    
-    public boolean newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {   
+    public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {   
         ApplicationPOT ap = ApplicationPOT.getInstance();
         rfree = ap.getPlatform().getRfree();
         free = rfree.newFreelancer(name, levelExp, email, nif, iban, country, street, doorNumber, locality);
         if (free != null) {
-            return true;
+            return free;
         }
-        return false;
+        return null;
     }
 
     public boolean saveFreelancer() {

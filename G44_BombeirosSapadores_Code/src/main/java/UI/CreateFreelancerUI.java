@@ -6,9 +6,11 @@
 package UI;
 
 import Controller.CreateFreelancerController;
+import Model.Freelancer;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -45,7 +48,7 @@ public class CreateFreelancerUI implements Initializable {
     private JFXTextField streetTxt;
     @FXML
     private JFXTextField doorTxt;
-   
+
     @FXML
     private JFXTextField localityTxt;
     @FXML
@@ -101,20 +104,32 @@ public class CreateFreelancerUI implements Initializable {
     private void confirm(ActionEvent event) {
         try {
 
-            cf.newFreelancer(nameTxt.getText(), experienceCB.getSelectionModel().getSelectedItem(), emailTxt.getText(), nifTxt.getText(),
+            Freelancer f = cf.newFreelancer(nameTxt.getText(), experienceCB.getSelectionModel().getSelectedItem(), emailTxt.getText(), nifTxt.getText(),
                     ibanTxt.getText(), countryTxt.getText(), streetTxt.getText(), doorTxt.getText(), localityTxt.getText());
+            Alert alert = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", f.toString());
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                alert.close();
+            }
 
-            boolean added = cf.saveFreelancer();
+            Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Task Creation", "Do you confirm this task?");
+            Optional<ButtonType> option = alert1.showAndWait();
+            boolean added = false;
+            if (option.get() == ButtonType.OK) {
+                added = cf.saveFreelancer();
+            } else {
+                alert1.close();
+            }
+
             if (added) {
-            AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Freelancer",
-                    added ? "New Freelancer added with success"
-                            : "It was not possible to add the Freelancer").show();
+                AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Freelancer",
+                        added ? "New Freelancer added with success"
+                                : "It was not possible to add the Freelancer").show();
 
-            endCreateFreelancerUI(event);
-        }
+                endCreateFreelancerUI(event);
+            }
         } catch (NumberFormatException nfe) {
             AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
-                     nfe.getMessage()).show();
+                    nfe.getMessage()).show();
         } catch (IllegalArgumentException iae) {
             AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
                     iae.getMessage()).show();

@@ -7,14 +7,23 @@ package UI;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
  *
- * @author Jorge
+ * @author tiagopereira
  */
 public class DefinePaymentController implements Initializable {
+
+    @FXML
+    private Button confirmBtn;
+    @FXML
+    private Button cancelBtn;
 
     /**
      * Initializes the controller class.
@@ -23,5 +32,21 @@ public class DefinePaymentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void close(MouseEvent event) {
+    }
+
+    @FXML
+    private void min(MouseEvent event) {
+    }
+
+    @FXML
+    private void Confirm(ActionEvent event) {
+    }
+
+    @FXML
+    private void Cancel(ActionEvent event) {
+    }
     
 }

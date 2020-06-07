@@ -24,7 +24,7 @@ import javafx.stage.Stage;
  * @author Ricardo
  */
 public class CreateTaskUI {
-    
+
     private CreateTaskController ctask_controller;
     @FXML
     private Button cancelBtn;
@@ -42,8 +42,6 @@ public class CreateTaskUI {
     private JFXTextField categoryTxt;
 
     private double x, y;
-
-    
 
     @FXML
     private void min(MouseEvent event) {
@@ -65,11 +63,12 @@ public class CreateTaskUI {
     private void confirm(ActionEvent event) throws InterruptedException, IOException {
 
         try {
-            
+
             if (idTxt.getText().isEmpty() || descriptionTxt.getText().isEmpty() || timeTxt.getText().isEmpty() || costTxt.getText().isEmpty() || categoryTxt.getText().isEmpty()) {
                 Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Creation", "Please introduce the necessary data to create a Task.");
                 alert2.show();
             } else {
+                ctask_controller = new CreateTaskController();
                 Task ts = ctask_controller.newTask(idTxt.getText(), descriptionTxt.getText(),
                         Integer.parseInt(timeTxt.getText()), Double.parseDouble(costTxt.getText()), categoryTxt.getText());
                 Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Task Creation", ts.toStringS());

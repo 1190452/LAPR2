@@ -21,9 +21,9 @@ public class Writer {
 
     
     
-    public static void sendsPassword(String email, String pwd) throws FileNotFoundException {
+    public static void sendsPassword(String email, String pwd, String role) throws FileNotFoundException {
         try {
-            PrintWriter out = new PrintWriter(new File("EmailsWithPassword.txt"));
+            PrintWriter out = new PrintWriter(new File("Data about " + role));
             try {
                 out.println("Email of your account: " + email);
                 out.println("Password to access your account: " + pwd);

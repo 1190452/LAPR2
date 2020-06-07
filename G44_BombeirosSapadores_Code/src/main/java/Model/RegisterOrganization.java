@@ -27,16 +27,15 @@ public class RegisterOrganization {
     private Organization m_oOrganizacao;
     private Manager manager;
     private Collaborator collab;
-    private CreateTaskController ctask_controller;
+//    private CreateTaskController ctask_controller;
     private List<Organization> lOrg;
     
-    private List<Organization> lorgs;
 
     public RegisterOrganization() {
-        lorgs = new ArrayList<>();
-        this.ctask_controller = new CreateTaskController();
+//        this.ctask_controller = new CreateTaskController();
     //    this.m_oApp = ApplicationPOT.getInstance();
       //  this.m_oPlataforma = m_oApp.getPlatform();
+        
         lOrg = new ArrayList<>();
     }
 
@@ -52,9 +51,9 @@ public class RegisterOrganization {
     }
 
     public Organization getOrganizationByUserEmail(String email) {
-        for (int i = 0; i < lorgs.size(); i++) {
-            if (email.equalsIgnoreCase(lorgs.get(i).getColab().getEmailC())) {
-                return lorgs.get(i);
+        for (int i = 0; i < lOrg.size(); i++) {
+            if (email.equalsIgnoreCase(lOrg.get(i).getColab().getEmailC())) {
+                return lOrg.get(i);
             }
 
         }
@@ -105,10 +104,9 @@ public class RegisterOrganization {
         String emailM = manager.getEmailM();
         PasswordGenerator alg = m_oPlataforma.getAlg();
         String pwdM = alg.generate(7);
-        //String role = manager.getEmailM();
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registUserWithRole(nameM, emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
-        Writer.sendsPassword(emailM, pwdM);
+        Writer.sendsPassword(emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
     }
 
     public void registUser(Collaborator collab) throws FileNotFoundException {
@@ -116,13 +114,12 @@ public class RegisterOrganization {
         String emailC = collab.getEmailC();
         PasswordGenerator alg = m_oPlataforma.getAlg();
         String pwdC = alg.generate(7);
-        //String role = manager.getEmailM();
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registUserWithRole(nameC, emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
-        Writer.sendsPassword(emailC, pwdC);
+        Writer.sendsPassword(emailC, pwdC,Constants.ROLE_COLLABORATOR_ORGANIZATION);
     }
     
     public List<Organization> get(){
-        return lorgs;
+        return lOrg;
     } 
 }
