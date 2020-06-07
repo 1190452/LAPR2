@@ -64,22 +64,19 @@ public class LoginUI implements Initializable {
     @FXML
     private void login(ActionEvent event) {
 //        try {
-        
-        
+
         try {
-            if(txtFieldUsername.getText().isEmpty() || txtFieldPassword.getText().isEmpty()){
+            if (txtFieldUsername.getText().isEmpty() || txtFieldPassword.getText().isEmpty()) {
                 lblInformation.setText(" ");
                 Alert alert1 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "Please introduce the necessary data to access the platform.");
-                alert1.show();    
-            } 
+                alert1.show();
+            }
             ApplicationPOT ac = ApplicationPOT.getInstance();
-            
+
             FacadeAuthorization fc = ac.getPlatform().getFacadeAuthorazation();
-            
-            
-            
+
             UserSession us = fc.doLogin(txtFieldUsername.getText(), txtFieldPassword.getText());
-         
+
             if (us.isLoggedInWithPart(Constants.ROLE_ADMINISTRATIVE)) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuAdministrator.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -88,11 +85,10 @@ public class LoginUI implements Initializable {
                 stage.setTitle("Administrator Menu");
                 stage.initStyle(StageStyle.TRANSPARENT);
                 stage.setResizable(false);
-                
+
                 stage.getIcons().add(new Image("/images/logoparaapp.png"));
                 stage.show();
                 endLoginUI(event);
-               
 
             } else if (us.isLoggedInWithPart(Constants.ROLE_COLLABORATOR_ORGANIZATION)) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuCollaborator.fxml"));
@@ -104,7 +100,7 @@ public class LoginUI implements Initializable {
                 stage.setResizable(false);
                 stage.show();
                 endLoginUI(event);
-                
+
             } else if (us.isLoggedInWithPart(Constants.ROLE_MANAGER_ORGANIZATION)) {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MenuManager.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -115,26 +111,18 @@ public class LoginUI implements Initializable {
                 stage.setResizable(false);
                 stage.show();
                 endLoginUI(event);
-    
-
-<<<<<<< HEAD
-
-            } 
 
                 // Hide this current window
                 ((Node) (event.getSource())).getScene().getWindow().hide();
             } else if (!us.isLoggedIn()) {
                 Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "The user does not exist. Please register.");
                 alert.show();
-            }
 
-=======
-            }  else if (!us.isLoggedIn()) {
+            } else if (!us.isLoggedIn()) {
                 Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "The user does not exist. Please register.");
                 alert.show();
             }
-    
->>>>>>> 89ddc66263ea0ea267bb2731dbcd905da52a4b08
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (Exception ex) {
@@ -142,12 +130,11 @@ public class LoginUI implements Initializable {
             txtFieldUsername.clear();
             txtFieldPassword.clear();
         }
+    }
 
 //        } catch (IOException ex) {
 //            Logger.getLogger(LoginUI.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-    
-
     @FXML
     private void draged(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -156,13 +143,15 @@ public class LoginUI implements Initializable {
     }
 
     @FXML
-    private void pressed(MouseEvent event) {
+    private void pressed(MouseEvent event
+    ) {
         x = event.getSceneX();
         y = event.getSceneY();
     }
 
     @FXML
-    private void close(MouseEvent event) {
+    private void close(MouseEvent event
+    ) {
         ApplicationPOT pot = ApplicationPOT.getInstance();
         pot.doLogout();
         pot.save(pot.getPlatform());
@@ -171,7 +160,8 @@ public class LoginUI implements Initializable {
     }
 
     @FXML
-    private void min(MouseEvent event) {
+    private void min(MouseEvent event
+    ) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
@@ -179,7 +169,7 @@ public class LoginUI implements Initializable {
     private void endLoginUI(ActionEvent event) {
         txtFieldUsername.clear();
         txtFieldPassword.clear();
-       ((Node) (event.getSource())).getScene().getWindow().hide();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }
