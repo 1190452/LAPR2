@@ -141,6 +141,10 @@ public class DefinePayment implements Serializable{
         return bRet;
     }
     
+    /**
+     * Method toString of Define Payment
+     * @return Define Payment in String format
+     */
     @Override
     public String toString(){
         return String.format("Date to Pay: %s\nTime to Pay: %s\nNumber of Days: %d", dateToPay.toString(), timeToPay.toString(), nrDays);  
