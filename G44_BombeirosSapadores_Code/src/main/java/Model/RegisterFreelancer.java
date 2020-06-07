@@ -14,23 +14,46 @@ import java.util.List;
  */
 public class RegisterFreelancer {
 
+    /**
+     * list of freelancers
+     */
     private List<Freelancer> listaFreelancers;
-    private Freelancer free;
-    double delayProb;
+    private double delayProb;
 
+    /**
+     * constructor than initializes the list of freelancers as an ArrayList
+     */
     public RegisterFreelancer() {
         this.listaFreelancers = new ArrayList();
 
     }
 
+    /**
+     * method that creates a new freelancer
+     * @param name
+     * @param levelExp
+     * @param email
+     * @param nif
+     * @param iban
+     * @param country
+     * @param street
+     * @param doorNumber
+     * @param locality
+     * @return 
+     */
     public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
         Address address = new Address(street, doorNumber, locality);
         return new Freelancer(name, levelExp, email, nif, iban, country, address);
     }
 
+    /**
+     * method that validates the freelancer created
+     * @param free
+     * @return 
+     */
     public boolean validateFreelancer(Freelancer free) {
-        for (int i = 0; i < listaFreelancers.size(); i++) {
-            if ((free.getIban() == listaFreelancers.get(i).getIban()) || (free.getNif() == listaFreelancers.get(i).getNif()) || (free.getFreeID() == listaFreelancers.get(i).getFreeID())) {
+        for (int i = 0; i < getListaFreelancers().size(); i++) {
+            if ((free.getIban() == getListaFreelancers().get(i).getIban()) || (free.getNif() == getListaFreelancers().get(i).getNif()) || (free.getFreeID() == getListaFreelancers().get(i).getFreeID())) {
                 return false;
             } else {
                 return true;
@@ -39,28 +62,51 @@ public class RegisterFreelancer {
         return true;
     }
 
+    /**
+     * method that saves the freelancer
+     * @param free
+     * @return 
+     */
     public boolean saveFreelancer(Freelancer free) {
         return (validateFreelancer(free)) && addFreelancer(free);
 
     }
 
+    /**
+     * method that adds the freelancer to the freelancers list
+     * @param free
+     * @return 
+     */
     public boolean addFreelancer(Freelancer free) {
         if (!listaFreelancers.contains(free)) {
-            listaFreelancers.add(free);
+            getListaFreelancers().add(free);
             return true;
         } else {
             return false;
         }
     }
 
+    /**
+     * method that removes a freelancer from the list
+     * @param fr 
+     */
     public void removeFreelancer(Freelancer fr) {
-        listaFreelancers.remove(fr);
+        getListaFreelancers().remove(fr);
     }
 
+    /**
+     * returns the list of freelancers
+     * @return 
+     */
     public List<Freelancer> getListFreelancers() {
-        return listaFreelancers;
+        return getListaFreelancers();
     }
 
+    /**
+     * method that generates an id to a freelancer
+     * @param free
+     * @return 
+     */
     public String generateID(Freelancer free) {
         String id;
         int count = 1;
@@ -72,8 +118,8 @@ public class RegisterFreelancer {
             id = String.valueOf(nameparts[0].toUpperCase().charAt(0) + nameparts[1].toUpperCase().charAt(0));
         }
 
-        for (int i = 0; i < listaFreelancers.size(); i++) {
-            if (id.equalsIgnoreCase(listaFreelancers.get(i).getFreeID())) {
+        for (int i = 0; i < getListaFreelancers().size(); i++) {
+            if (id.equalsIgnoreCase(getListaFreelancers().get(i).getFreeID())) {
                 count++;
             }
         }
@@ -81,6 +127,12 @@ public class RegisterFreelancer {
 
     }
 
+    /**
+     * method that returns a specific list of freelancers 
+     * @param lt
+     * @param ltr
+     * @return 
+     */
     public List<Freelancer> getFreelancers(List<Task> lt, List<Transaction> ltr) {
         List<Freelancer> newList = new ArrayList<>();
         for (int i = 0; i < lt.size(); i++) {
@@ -99,14 +151,45 @@ public class RegisterFreelancer {
 
 
     public boolean Verification(Freelancer fr) {
-        if(listaFreelancers.contains(fr)){
+        if(getListaFreelancers().contains(fr)){
             return false;
         }
         return true;
     }
 
+    /**
+     * returns the list of freelancers
+     * @return the listaFreelancers
+     */
+    public List<Freelancer> getListaFreelancers() {
+        return listaFreelancers;
+    }
+
+    /**
+     * modifies the list of freelancers
+     * @param listaFreelancers the listaFreelancers to set
+     */
+    public void setListaFreelancers(List<Freelancer> listaFreelancers) {
+        this.listaFreelancers = listaFreelancers;
+    }
+
+    /**
+     * returns the delay probability
+     * @return the delayProb
+     */
     public double getDelayProb() {
         return delayProb;
     }
+
+    /**
+     * modifies the delay probability
+     * @param delayProb the delayProb to set
+     */
+    public void setDelayProb(double delayProb) {
+        this.delayProb = delayProb;
+    }
+    
+   
+
     
 }

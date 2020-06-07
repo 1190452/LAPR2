@@ -26,8 +26,19 @@ public class Collaborator {
      */
     private String role;
     
+    /**
+     * name of the collaborator by omission
+     */
     private static final String NAME_BY_OMISSION = "no name";
+    
+    /**
+     * email of the collaborator by omission
+     */
     private static final String EMAIL_BY_OMISSION = "no email";
+    
+    /**
+     * role of the collaborator by omission
+     */
     private static final String ROLE_BY_OMISSION = "no role";
 
     /**

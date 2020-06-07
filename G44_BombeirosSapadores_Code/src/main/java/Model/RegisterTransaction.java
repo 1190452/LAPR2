@@ -16,22 +16,29 @@ import java.util.List;
 public class RegisterTransaction {
 
     private Transaction transaction;
-    private List<Transaction> historicalTransaction;
+    private List<Transaction> transactionList;
 
+    /**
+     * constructor than initializes the transaftion list as an ArrayList
+     */
     public RegisterTransaction() {
-        historicalTransaction = new ArrayList<>();
+        transactionList = new ArrayList<>();
     }
 
+    /**
+     * 
+     * @param tr 
+     */
     public void addHistoricalTransaction(Transaction tr) {
-        historicalTransaction.add(tr);
+        transactionList.add(tr);
     }
 
     public void removeHistoricalTransaction(Transaction tr) {
-        historicalTransaction.remove(tr);
+        transactionList.remove(tr);
     }
 
     public List<Transaction> getTransactions() {
-        return historicalTransaction;
+        return transactionList;
     }
 
     public boolean validateHistoricalTransaction(List<Transaction> lt) {
@@ -40,7 +47,7 @@ public class RegisterTransaction {
 
     public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         TaskExecution tascExec = transaction.createTaskExecution(endDate, delay, qow);
-        return new Transaction(task, freel, tascExec);
+        return new Transaction(task, freel, new TaskExecution(endDate, delay, qow));
     }
 
     public boolean registerTransaction(Transaction trans) {
@@ -51,18 +58,18 @@ public class RegisterTransaction {
     }
 
     public boolean validateTransaction(Transaction trans) {
-        if (historicalTransaction.contains(trans)) {
+        if (transactionList.contains(trans)) {
             return false;
         }
         return true;
     }
 
     public boolean addTransaction(Transaction trans) {
-        return historicalTransaction.add(trans);
+        return transactionList.add(trans);
     }
 
     public double calculateTransactionValue(Transaction trans) {
-        for (Transaction t : historicalTransaction) {
+        for (Transaction t : transactionList) {
             if (t.equals(trans)) {
                 if (trans.getFreel().getLevelExp().equalsIgnoreCase("Senior")) {
                     double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;

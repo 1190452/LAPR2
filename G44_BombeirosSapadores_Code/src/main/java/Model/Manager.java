@@ -13,17 +13,42 @@ import autorizacao.model.User;
  */
 public class Manager {
 
+    /**
+     * name of the manager
+     */
     private String nameM;
+    
+    /**
+     * email of the manager
+     */
     private String emailM;
+    
+    /**
+     * role of the manager
+     */
     private String role;
+    
+    /**
+     * name of the manager by omission
+     */
+    private static final String NAME_BY_OMISSION = "no name";
+    
+    /**
+     * email of the manager by omission
+     */
+    private static final String EMAIL_BY_OMISSION = "no email";
+    
+    /**
+     * role of the manager by omission
+     */
+    private static final String ROLE_BY_OMISSION = "no role";
 
     /**
-     * Builds an instance of Manager that receives name, email and password
+     * Complete constructor that builds an instance of Manager that receives name, email and password
      *
      * @param nameM
      * @param emailM
      * @param role
-     * @param phoneNumberM
      */
     public Manager(String nameM, String emailM, String role) {
         this.nameM = nameM;
@@ -32,8 +57,13 @@ public class Manager {
 
     }
 
+    /**
+     * embpty constructor that builds and instance of Manager
+     */
     public Manager() {
-
+        this.nameM = NAME_BY_OMISSION;
+        this.emailM = EMAIL_BY_OMISSION;
+        this.role = ROLE_BY_OMISSION;
     }
 
     /**
@@ -48,6 +78,7 @@ public class Manager {
     }
 
     /**
+     * returns the name of the manager
      * @return the nameM
      */
     public String getNameM() {
@@ -55,6 +86,7 @@ public class Manager {
     }
 
     /**
+     * modifies the name of the manager
      * @param nameM the nameM to set
      */
     public void setNameM(String nameM) {
@@ -62,6 +94,7 @@ public class Manager {
     }
 
     /**
+     * returns the email of the manager
      * @return the emailM
      */
     public String getEmailM() {
@@ -69,6 +102,7 @@ public class Manager {
     }
 
     /**
+     * modifies the email of the manager
      * @param emailM the emailM to set
      */
     public void setEmailM(String emailM) {
@@ -76,6 +110,7 @@ public class Manager {
     }
 
     /**
+     * returns the role of the freelancer
      * @return the role
      */
     public String getRole() {
@@ -83,12 +118,17 @@ public class Manager {
     }
 
     /**
+     * modifies the role of the freelancer
      * @param role the role to set
      */
     public void setRole(String role) {
         this.role = role;
     }
 
+    /**
+     * writing method of the class Manager
+     * @return 
+     */
     @Override
     public String toString() {
         return String.format("Nome: %s \nEmail: %s \nRole: %s", nameM, emailM, role);
