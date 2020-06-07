@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Rafael
  */
-public class RegisterFreelancer implements Serializable{
+public class RegisterFreelancer implements Serializable {
 
     /**
      * list of freelancers
@@ -55,11 +55,10 @@ public class RegisterFreelancer implements Serializable{
      * @return
      */
     public boolean validateFreelancer(Freelancer free) {
-        for (int i = 0; i < getListaFreelancers().size(); i++) {
-            if ((free.getIban() == getListaFreelancers().get(i).getIban()) || (free.getNif() == getListaFreelancers().get(i).getNif()) || (free.getFreeID() == getListaFreelancers().get(i).getFreeID())) {
+        for (int i = 0; i < listaFreelancers.size(); i++) {
+            if ((free.getIban().equalsIgnoreCase(listaFreelancers.get(i).getIban())) || (free.getNif().equalsIgnoreCase(listaFreelancers.get(i).getNif()))
+                    || (free.getFreeID().equalsIgnoreCase(listaFreelancers.get(i).getFreeID()))) {
                 return false;
-            } else {
-                return true;
             }
         }
         return true;
@@ -72,8 +71,10 @@ public class RegisterFreelancer implements Serializable{
      * @return
      */
     public boolean saveFreelancer(Freelancer free) {
-        return (validateFreelancer(free)) && addFreelancer(free);
-
+        if (validateFreelancer(free)) {
+            return addFreelancer(free);
+        }
+        return false;
     }
 
     /**
@@ -124,18 +125,19 @@ public class RegisterFreelancer implements Serializable{
             id += Character.toUpperCase(namepart.toUpperCase().charAt(0));
         }
 
-        for (int i = 0; i < getListaFreelancers().size(); i++) {
-            if (id.equalsIgnoreCase(getListaFreelancers().get(i).getFreeID())) {
-
-            }
-        }
-
         for (int i = 0; i < listaFreelancers.size(); i++) {
-            if (id.equalsIgnoreCase(listaFreelancers.get(i).getFreeID())) {
-                count++;
+            if (id.charAt(0) == listaFreelancers.get(i).getFreeID().charAt(0) && id.charAt(1) == listaFreelancers.get(i).getFreeID().charAt(1)) {
+                int d = Character.getNumericValue(listaFreelancers.get(i).getFreeID().charAt(2));
+                d = d + 1;
+                id = id + d;
+
             }
         }
-        return id + count;
+        if (id.length() == 2) {
+            return id + 1;
+        } else {
+            return id;
+        }
 
     }
 
