@@ -41,6 +41,8 @@ public class Organization implements Serializable{
     private TaskList taskList;
 
     private DefinePayment definePayment;
+    
+    private RegisterTransaction rt;
     /**
      * The name of the Organization by omission
      */
@@ -83,6 +85,7 @@ public class Organization implements Serializable{
         this.manager = manager;
         this.taskList = new TaskList();
         this.definePayment = null;
+        this.rt = new RegisterTransaction();
 
     }
 

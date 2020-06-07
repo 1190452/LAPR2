@@ -18,7 +18,7 @@ public class RegisterUser
         implements Serializable {
 
     private List<User> lstUsers;
-
+    
     private Platform platform;
 
     public RegisterUser() {
