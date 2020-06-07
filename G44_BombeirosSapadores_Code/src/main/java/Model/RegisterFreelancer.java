@@ -71,7 +71,7 @@ public class RegisterFreelancer {
         
         String[] nameparts = free.getName().split(" ");
         if (nameparts.length == 1) {
-            id = String.valueOf(nameparts[0].charAt(0) + nameparts[0].charAt(1));
+            id = String.valueOf(nameparts[0].charAt(0) + nameparts[0].toUpperCase().charAt(1));
         }else {
             id = String.valueOf(nameparts[0].charAt(0) + nameparts[1].charAt(0));
         }
