@@ -105,12 +105,14 @@ public class ExecutionTaskUI implements Initializable {
         }
     }
 
+    @FXML
     private void draged(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
         stage.setY(event.getScreenY() - y);
     }
 
+    @FXML
     private void pressed(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
