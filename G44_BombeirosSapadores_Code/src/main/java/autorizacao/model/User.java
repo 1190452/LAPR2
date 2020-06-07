@@ -5,11 +5,13 @@
  */
 package autorizacao.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author paulomaio
  */
-public class User {
+public class User implements Serializable{
     private String name;
     private String email;
     private String password;

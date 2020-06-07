@@ -1,8 +1,9 @@
 package autorizacao.model;
 
 import autorizacao.model.User;
+import java.io.Serializable;
 
-public class UserSession {
+public class UserSession implements Serializable{
 
     private User user = null;
 

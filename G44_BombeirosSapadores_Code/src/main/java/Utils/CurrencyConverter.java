@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+package Utils;
+
+import java.io.Serializable;
 
 /**
  *
  * @author Ricardo
  */
-public class CurrencyConverter {
+public class CurrencyConverter implements Serializable{
 
     public CurrencyConverter(){
         

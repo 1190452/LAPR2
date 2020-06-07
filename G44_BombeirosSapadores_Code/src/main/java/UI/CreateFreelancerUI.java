@@ -6,9 +6,11 @@
 package UI;
 
 import Controller.CreateFreelancerController;
+import Model.Freelancer;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -45,17 +48,20 @@ public class CreateFreelancerUI implements Initializable {
     private JFXTextField streetTxt;
     @FXML
     private JFXTextField doorTxt;
+
     @FXML
     private JFXTextField localityTxt;
     @FXML
     private JFXComboBox<String> experienceCB;
-    private double x,y;
+    private double x, y;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         experienceCB.getItems().addAll("Junior", "Senior");
+        this.cf = new CreateFreelancerController();
     }
-    
-    public CreateFreelancerUI(){
+
+    public CreateFreelancerUI() {
         cf = new CreateFreelancerController();
     }
 
@@ -75,7 +81,7 @@ public class CreateFreelancerUI implements Initializable {
 
     }
 
-    private void encerrarCreateFreelancerUI(ActionEvent event) {
+    private void endCreateFreelancerUI(ActionEvent event) {
         this.nameTxt.clear();
         this.emailTxt.clear();
         this.nifTxt.clear();
@@ -91,53 +97,50 @@ public class CreateFreelancerUI implements Initializable {
 
     @FXML
     private void cancel(ActionEvent event) {
-        encerrarCreateFreelancerUI(event);
+        endCreateFreelancerUI(event);
     }
 
     @FXML
     private void confirm(ActionEvent event) {
         try {
-            String name = nameTxt.getSelectedText();
-            String email = emailTxt.getSelectedText();
-            String nif = nifTxt.getSelectedText();
-            String iban = ibanTxt.getSelectedText();
-            String country = countryTxt.getSelectedText();
-            String street = streetTxt.getSelectedText();
-            String door = doorTxt.getSelectedText();
-            String locality = localityTxt.getSelectedText();
-            String exp = experienceCB.getSelectionModel().getSelectedItem();
-            confirmBtn(name, exp, email, nif, iban, country, street, door, locality, event);
-            
 
+            Freelancer f = cf.newFreelancer(nameTxt.getText(), experienceCB.getSelectionModel().getSelectedItem(), emailTxt.getText(), nifTxt.getText(),
+                    ibanTxt.getText(), countryTxt.getText(), streetTxt.getText(), doorTxt.getText(), localityTxt.getText());
+            Alert alert = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", f.toString());
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                alert.close();
+            }
+
+            Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", "Do you confirm this Freelancer");
+            Optional<ButtonType> option = alert1.showAndWait();
+            boolean added = false;
+            if (option.get() == ButtonType.OK) {
+                added = cf.saveFreelancer();
+            } else {
+                alert1.close();
+            }
+
+            if (added) {
+                AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Freelancer",
+                        added ? "New Freelancer added with success"
+                                : "It was not possible to add the Freelancer").show();
+
+                endCreateFreelancerUI(event);
+            }
         } catch (NumberFormatException nfe) {
             AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
-                    "Introduza correct data").show();
+                    nfe.getMessage()).show();
         } catch (IllegalArgumentException iae) {
             AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
                     iae.getMessage()).show();
         }
     }
-      
-    private void confirmBtn(String name, String exp, String email, String nif, String iban, String country, String street, String door, String locality, ActionEvent event){
-        boolean created = cf.newFreelancer(name, exp, email, nif, iban, country, street, door, locality);
-            if (created) {
-                Alert a = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Create Freelancer", "Confirms?");
-
-                if (a.getContentText().equalsIgnoreCase("yes")) {
-                    boolean added = cf.saveFreelancer();
-                    AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Add new Freelancer.",
-                            added ? "Freelancer added with success."
-                                    : "It was not possible to add Freelancer").show();
-                    encerrarCreateFreelancerUI(event);
-                }
-            }
-    }
 
     @FXML
     private void dragged(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setX(event.getScreenX() -x);
-        stage.setY(event.getScreenY() -y);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
     }
 
     @FXML

@@ -1,10 +1,12 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jorge
  */
-public class Address {
+public class Address implements Serializable{
     
     /**
      * Street of the Address

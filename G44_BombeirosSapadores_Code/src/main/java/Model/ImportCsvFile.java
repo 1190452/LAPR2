@@ -16,14 +16,25 @@ import java.util.logging.Logger;
  */
 public class ImportCsvFile implements ImportFile, Serializable {
 
+    /**
+     * atribute from the class RegisterTransaction used to call the methods of that class
+     */
     private RegisterTransaction ht;
+    
+    /**
+     * atribute from the class TaskList used to call the methods of that class
+     */
     private TaskList tl;
+    
+    /**
+     * atribute from the class RegisterFreelancer used to call the methods of that class
+     */
     private RegisterFreelancer rf;
 
     /**
-     *
+     * method that reads a CSV file and loads a set of historical transactions
      * @param fileName
-     * @return
+     * @return 
      */
     @Override
     public RegisterTransaction importFile(String fileName) {

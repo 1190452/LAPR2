@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.ApplicationPOT;
 import Model.Organization;
 import Model.Platform;
 import Model.RegisterOrganization;
@@ -21,7 +22,8 @@ public class RegistOrganizationController {
     Organization org;
 
     public Organization newOrganization(String name, String email, String NIF, String street, String doorNumber, String locality, String nameC, String emailC, String nameM, String emailM) {
-        ro = plat.getrOrg();
+        ApplicationPOT ap = ApplicationPOT.getInstance();
+        ro = ap.getPlatform().getrOrg();
         org = ro.newOrganization(name, email, NIF, street, doorNumber, locality, nameC, emailC, nameM, emailM);
         if (ro.validateOrganization(org)) {
             return org;

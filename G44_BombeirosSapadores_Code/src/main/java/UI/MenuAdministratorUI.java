@@ -5,6 +5,7 @@
  */
 package UI;
 
+import Model.ApplicationPOT;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -45,6 +46,8 @@ public class MenuAdministratorUI implements Initializable {
     private Button createOrganizationBtn;
 
     private double x, y;
+    @FXML
+    private Button logoutBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -141,6 +144,24 @@ public class MenuAdministratorUI implements Initializable {
             }
         }
         
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+        
+        ApplicationPOT pot = ApplicationPOT.getInstance();
+        pot.doLogout();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("Login");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }

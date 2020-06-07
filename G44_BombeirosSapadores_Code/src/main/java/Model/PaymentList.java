@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,26 +15,42 @@ import java.util.Set;
  *
  * @author tiagopereira
  */
-public class PaymentList {
+
+public class PaymentList implements Serializable{
+
+    /**
+     * list of payments
+     */
+
     private List<Payment> paymentList;
 
+    /**
+     * constructor that inicializes the payment list as an ArrayList
+     */
     public PaymentList() {
         paymentList = new ArrayList<>();
     }
-    
-    public PaymentList(Set<Payment> l){
-        paymentList = new ArrayList<>(l);
-        
-    }
-    
+
+    /**
+     * method that adds a new payment to the payment list
+     * @param t 
+     */
     public void addPayment(Payment t){
        paymentList.add(t);
    }
    
+    /**
+     * method that removes a payment from the payment list
+     * @param t 
+     */
    public void removePayment(Payment t){
        paymentList.remove(t);
    }
    
+   /**
+    * returns the list of payments
+    * @return 
+    */
    public List<Payment> getPaymentList(){
        return paymentList;
    }

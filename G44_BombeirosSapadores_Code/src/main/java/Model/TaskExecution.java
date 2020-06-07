@@ -6,12 +6,13 @@
 package Model;
 
 import Utils.Date;
+import java.io.Serializable;
 
 /**
  *
  * @author tiagopereira
  */
-public class TaskExecution {
+public class TaskExecution implements Serializable{
 
     private Date endDate;
     private double delay;

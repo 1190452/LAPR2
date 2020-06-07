@@ -26,16 +26,18 @@ public class PaymentController {
     private String email;
 
     public Organization getOrg() {
-        RegisterOrganization rorgs = plat.getrOrg();
         ApplicationPOT app = ApplicationPOT.getInstance();
+        plat = app.getPlatform();
+        RegisterOrganization rorgs = plat.getrOrg();
         UserSession log = app.getActualSession();
         email = log.getUserEmail();
-        org = rorgs.getOrganizationByUserEmail(email);
+        org = rorgs.getOrganizationByUserEmailMan(email);
         return org;
     }
 
     public DefinePayment newDefinePayment(Time time, Date date, int rtp) {
         dpay = org.newDefinePayment(time,date,rtp);
+        
         if(org.validatesDefinePayment(dpay)){
             return dpay;
         }

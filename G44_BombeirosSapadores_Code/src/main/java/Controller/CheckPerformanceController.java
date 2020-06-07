@@ -78,7 +78,7 @@ public class CheckPerformanceController {
                 for (int z = 0; z < listTransactions.size(); z++) {
                     Transaction transaction = listTransactions.get(z);
                     paymentValue = transaction.getTransactionValue();
-                    sumDeviation += freel.sumDeviation(averageFreel, paymentValue);
+                    sumDeviation += freel.sumPaymentVariance(averageFreel, paymentValue);
                 }
                 //Sum all deviations calculated with payment and the average calculated before
                 sumAllPaymentsDeviation += sumDeviation;
@@ -99,7 +99,7 @@ public class CheckPerformanceController {
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
                 double delayTask = task.getTexec().getTaskDelay();
-                deviatonDelayOfEachTask += freel.sumDelay(averageDelayOfFreelancer, delayTask);
+                deviatonDelayOfEachTask += freel.sumDelayVariance(averageDelayOfFreelancer, delayTask);
             }
             numTasksOfAllFreelancers += taskList.size();
             deviatonDelayOfEachFreelancer = freel.calculateDelayDeviation(deviatonDelayOfEachTask, taskList.size());
@@ -119,7 +119,7 @@ public class CheckPerformanceController {
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
                 double delayTask = task.getTexec().getTaskDelay();
-                deviationDelay += freel.sumDeviation(averageDelayOfAllFreelancers, delayTask);
+                deviationDelay += freel.sumPaymentVariance(averageDelayOfAllFreelancers, delayTask);
             }
             for (int k = 0; k < listPayments.size(); k++) {
                 Payment payment = listPayments.get(k);
@@ -128,7 +128,7 @@ public class CheckPerformanceController {
                 for (int z = 0; z < listTransactions.size(); z++) {
                     Transaction transaction = listTransactions.get(z);
                     double payValue = transaction.getTransactionValue();
-                    sumPaymentDeviationOfAllFreelancers += freel.calculatePaymentDeviationOfAllFreelancers(averagePayementOFAllFreelancers, payValue);
+                    sumPaymentDeviationOfAllFreelancers += freel.calculatePaymentVarianceOfAllFreelancers(averagePayementOFAllFreelancers, payValue);
                 }
                 totalDeviationDelayOfAllFreelancers += deviationDelay;
                 
@@ -152,6 +152,7 @@ public class CheckPerformanceController {
             
             //P(X>3) = 1 - P(X<=3) 
             double probability = 1 - nd.cumulativeProbability(3); 
+            rFree.setDelayProb(probability);
             
         }
     }

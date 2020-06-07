@@ -23,20 +23,25 @@
       </AnchorPane>
    </top>
    <center>
-      <GridPane style="-fx-background-color: #262626 #262626;" BorderPane.alignment="CENTER">
+      <GridPane prefWidth="600.0" style="-fx-background-color: #262626 #262626;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -44,7 +49,7 @@
                   <Insets left="130.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF:" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="NIF:" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -52,7 +57,7 @@
                   <Insets left="130.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -60,12 +65,12 @@
                   <Insets left="130.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets right="40.0" />
                </GridPane.margin>
             </Button>
-            <Button id="goldline" fx:id="nextBtn" mnemonicParsing="false" onAction="#next" stylesheets="@../styles/stylesheet.css" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button id="goldline" fx:id="nextBtn" mnemonicParsing="false" onAction="#next" stylesheets="@../styles/stylesheet.css" text="Next" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets left="40.0" />
                </GridPane.margin>
@@ -78,17 +83,56 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <JFXTextField fx:id="nameTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <JFXTextField fx:id="nameTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="nifTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <JFXTextField fx:id="nifTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="emailTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <JFXTextField fx:id="emailTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Street" GridPane.rowIndex="5">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="130.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Door" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="130.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Locality" GridPane.rowIndex="7">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="130.0" />
+               </GridPane.margin>
+            </Text>
+            <JFXTextField fx:id="streetTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="doorTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </JFXTextField>
+            <JFXTextField fx:id="localityTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>

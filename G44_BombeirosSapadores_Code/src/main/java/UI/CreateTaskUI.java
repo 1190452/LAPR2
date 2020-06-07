@@ -9,12 +9,13 @@ import Controller.CreateTaskController;
 import Model.Task;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.Optional;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -23,8 +24,6 @@ import javafx.stage.Stage;
  * @author Ricardo
  */
 public class CreateTaskUI {
-
-    Scanner read = new Scanner(System.in);
 
     private CreateTaskController ctask_controller;
     @FXML
@@ -42,22 +41,7 @@ public class CreateTaskUI {
     @FXML
     private JFXTextField categoryTxt;
 
-    public CreateTaskUI() {
-        //ctask_controller = new CreateTaskController();   
-        //System.out.println("Introduce the id, brief description, time duration (in hours), cost per hour (in euros), and the category");
-
-//        System.out.println(ts.toString());
-//        System.out.println("Confirma?");
-//        boolean ans = read.nextBoolean();
-//        if(ans==true){
-//            if(ctask_controller.registersTask()){
-//                System.out.println("Operation Successfull");
-//            }
-//            
-//        }else{
-//            System.out.println("failure");
-//        }
-    }
+    private double x, y;
 
     @FXML
     private void min(MouseEvent event) {
@@ -76,26 +60,74 @@ public class CreateTaskUI {
     }
 
     @FXML
-    private void confirm(ActionEvent event) {
+    private void confirm(ActionEvent event) throws InterruptedException, IOException {
 
-        //try {
-            
-            String id = idTxt.getSelectedText();
-            String bd = descriptionTxt.getSelectedText();
-            int td = Integer.parseInt(timeTxt.getSelectedText());
-            double ch = Double.parseDouble(costTxt.getSelectedText());
-            String ct = categoryTxt.getSelectedText();
-            ctask_controller = new CreateTaskController();
-            if(idTxt.getText().isEmpty() || descriptionTxt.getText().isEmpty() || timeTxt.getText().isEmpty() || costTxt.getText().isEmpty() || categoryTxt.getText().isEmpty()){
+        try {
+
+            if (idTxt.getText().isEmpty() || descriptionTxt.getText().isEmpty() || timeTxt.getText().isEmpty() || costTxt.getText().isEmpty() || categoryTxt.getText().isEmpty()) {
                 Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Creation", "Please introduce the necessary data to create a Task.");
-                alert2.show(); 
+                alert2.show();
+            } else {
+                ctask_controller = new CreateTaskController();
+                Task ts = ctask_controller.newTask(idTxt.getText(), descriptionTxt.getText(),
+                        Integer.parseInt(timeTxt.getText()), Double.parseDouble(costTxt.getText()), categoryTxt.getText());
+                Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Task Creation", ts.toStringS());
+
+                if (alert1.showAndWait().get() == ButtonType.OK) {
+                    alert1.close();
+                }
+
+                Alert alert6 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Task Creation", "Do you confirm this task?");
+                boolean verif = false;
+
+                Optional<ButtonType> option = alert6.showAndWait();
+                if (option.get() == ButtonType.OK) {
+                    verif = ctask_controller.registersTask();
+                } else {
+                    alert1.close();
+                }
+
+                if (verif) {
+                    AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Task",
+                            verif ? "New Task added with success"
+                                    : "It was not possible to add the Task").show();
+
+                    endTask(event);
+
+                }
+
             }
-            Task ts = ctask_controller.newTask(id, bd, td, ch, ct);
-            if(ts == null){
-                Alert alert1 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Login data", "Please introduce the necessary data to access the platform.");
-                alert1.show(); 
-            }
-        
+        } catch (NumberFormatException nfe) {
+            AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
+                    nfe.getMessage()).show();
+        } catch (IllegalArgumentException iae) {
+            AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
+                    iae.getMessage()).show();
+        }
+    }
+
+    @FXML
+    private void draged(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
+    }
+
+    @FXML
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
+    }
+
+    private void endTask(ActionEvent event) {
+        idTxt.clear();
+        descriptionTxt.clear();
+        timeTxt.clear();
+        costTxt.clear();
+        categoryTxt.clear();
+
+        ((Node) event.getSource()).getScene().getWindow().hide();
 
     }
 

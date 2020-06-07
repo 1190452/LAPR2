@@ -8,13 +8,13 @@ package autorizacao;
 import autorizacao.model.RegisterUser;
 import autorizacao.model.UserSession;
 import autorizacao.model.User;
+import java.io.Serializable;
 
 /**
  *
  * @author paulomaio
  */
-public class FacadeAuthorization
-{
+public class FacadeAuthorization implements Serializable{
    private static UserSession session = null;
    private static final RegisterUser users = new RegisterUser();
 

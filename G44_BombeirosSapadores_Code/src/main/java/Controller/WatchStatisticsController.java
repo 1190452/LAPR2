@@ -45,7 +45,7 @@ public class WatchStatisticsController {
         ApplicationPOT app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
         email = log.getUserEmail();
-        Organization org = rorgs.getOrganizationByUserEmail(email);
+        Organization org = rorgs.getOrganizationByUserEmailColab(email);
         List<Task> lt = org.getTaskList().getTaskList();
         List<Transaction> ltr = pl.getRTrans().getTransactions();
         RegisterFreelancer rf = pl.getRfree();
@@ -77,7 +77,7 @@ public class WatchStatisticsController {
                 for (int z = 0; z < listTransactions.size(); z++) {
                     Transaction transaction = listTransactions.get(z);
                     paymentValue = transaction.getTransactionValue();
-                    sumDeviation += freel.sumDeviation(averageFreel, paymentValue);
+                    sumDeviation += freel.sumPaymentVariance(averageFreel, paymentValue);
                 }
                 //Sum all deviations calculated with payment and the average calculated before
                 sumAllPaymentsDeviation += sumDeviation;
@@ -98,7 +98,7 @@ public class WatchStatisticsController {
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
                 double delayTask = task.getTexec().getTaskDelay();
-                deviatonDelayOfEachTask += freel.sumDelay(averageDelayOfFreelancer, delayTask);
+                deviatonDelayOfEachTask += freel.sumDelayVariance(averageDelayOfFreelancer, delayTask);
             }
             numTasksOfAllFreelancers += taskList.size();
             deviatonDelayOfEachFreelancer = freel.calculateDelayDeviation(deviatonDelayOfEachTask, taskList.size());
@@ -114,7 +114,7 @@ public class WatchStatisticsController {
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
                 double delayTask = task.getTexec().getTaskDelay();
-                deviationDelay += freel.sumDeviation(averageDelayOfAllFreelancers, delayTask);
+                deviationDelay += freel.sumPaymentVariance(averageDelayOfAllFreelancers, delayTask);
             }
         }
 

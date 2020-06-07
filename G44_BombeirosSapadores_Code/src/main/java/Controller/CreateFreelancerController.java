@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.ApplicationPOT;
 import Model.Freelancer;
 import Model.Platform;
 import Model.RegisterFreelancer;
@@ -18,18 +19,19 @@ public class CreateFreelancerController {
     Platform p1;
     RegisterFreelancer rfree;
     Freelancer free;
-
-    public boolean newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
-        rfree = p1.getRfree();
+   
+    public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {   
+        ApplicationPOT ap = ApplicationPOT.getInstance();
+        rfree = ap.getPlatform().getRfree();
         free = rfree.newFreelancer(name, levelExp, email, nif, iban, country, street, doorNumber, locality);
-        if(free != null){
-            return true;
+        if (free != null) {
+            return free;
         }
-        return false;
+        return null;
     }
 
     public boolean saveFreelancer() {
-        String freeID = rfree.generateID();
+        String freeID = rfree.generateID(free);
         free.setFreeID(freeID);
         return rfree.saveFreelancer(free);
 

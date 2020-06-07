@@ -5,18 +5,46 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author OMEN X
  */
-public class Collaborator {
-
-    private String nameC;
-    private String emailC;
-    private String role;
+public class Collaborator implements Serializable{
 
     /**
-     * Builds an instance of Collaborator that receives name, email and password
+     * name of the collaborator
+     */
+    private String nameC;
+    
+    /**
+     * email of the Collaborator
+     */
+    private String emailC;
+    
+    /**
+     * role of the Collaborator
+     */
+    private String role;
+    
+    /**
+     * name of the collaborator by omission
+     */
+    private static final String NAME_BY_OMISSION = "no name";
+    
+    /**
+     * email of the collaborator by omission
+     */
+    private static final String EMAIL_BY_OMISSION = "no email";
+    
+    /**
+     * role of the collaborator by omission
+     */
+    private static final String ROLE_BY_OMISSION = "no role";
+
+    /**
+     * Builds an instance of Collaborator that receives name, email and role
      *
      * @param nameC
      * @param emailC
@@ -30,8 +58,13 @@ public class Collaborator {
 
     }
 
+    /**
+     * empty constructor that builds an instance of Collaborator
+     */
     public Collaborator() {
-
+        this.nameC = NAME_BY_OMISSION;
+        this.emailC = EMAIL_BY_OMISSION;
+        this.role = ROLE_BY_OMISSION;
     }
 
     /**
@@ -47,6 +80,7 @@ public class Collaborator {
     }
 
     /**
+     * returns the name of the collaborator
      * @return the nameC
      */
     public String getNameC() {
@@ -54,6 +88,7 @@ public class Collaborator {
     }
 
     /**
+     * modifies the name of the collaborator
      * @param nameC the nameC to set
      */
     public void setNameC(String nameC) {
@@ -61,6 +96,7 @@ public class Collaborator {
     }
 
     /**
+     * returns the email of the collaborator
      * @return the emailC
      */
     public String getEmailC() {
@@ -68,6 +104,7 @@ public class Collaborator {
     }
 
     /**
+     * modifies the email of teh collaborator
      * @param emailC the emailC to set
      */
     public void setEmailC(String emailC) {
@@ -75,6 +112,7 @@ public class Collaborator {
     }
 
     /**
+     * returns the role of the collaborator
      * @return the role
      */
     public String getRole() {
@@ -82,12 +120,17 @@ public class Collaborator {
     }
 
     /**
+     * modifies teh role of the collaborator
      * @param role the role to set
      */
     public void setRole(String role) {
         this.role = role;
     }
 
+    /**
+     * writing method of the class Collaborator
+     * @return 
+     */
     @Override
     public String toString() {
         return String.format("Nome: %s \nEmail: %s \nRole: %s", nameC, emailC, role);

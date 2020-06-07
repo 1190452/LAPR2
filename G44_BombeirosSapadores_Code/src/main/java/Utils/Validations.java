@@ -1,10 +1,12 @@
 package Utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author OMEN X
  */
-public class Validations {
+public class Validations implements Serializable{
 
     /**
      * method to confirm if a String is numeric or not
@@ -65,6 +67,11 @@ public class Validations {
         return false;
     }
 
+    /**
+     * method to confirm is a door number is valid
+     * @param doorNumber
+     * @return 
+     */
     public static boolean isDoorNumberValid(String doorNumber) {
         if (doorNumber != null && !doorNumber.isEmpty() && isNumeric(doorNumber) == true) {
             return true;
@@ -72,6 +79,11 @@ public class Validations {
         return false;
     }
     
+    /**
+     * method to confirm if a street is valid
+     * @param street
+     * @return 
+     */
     public static boolean isStreetValid(String street){
         if (street != null && !street.isEmpty() && isNumeric(street) == false) {
             return true;
@@ -79,10 +91,20 @@ public class Validations {
         return false;
     }
 
+    /**
+     * method to confirm if a name is valid
+     * @param name
+     * @return 
+     */
     public static boolean isNameValid(String name) {
         return name.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$");
     }
 
+    /**
+     * methos to confirm if an IBAN is valid
+     * @param iban
+     * @return 
+     */
     public static boolean isIBANValid(String iban) {
         int cont = 0;
         if (iban.length() == 20 && iban != null && !iban.isEmpty()) {
