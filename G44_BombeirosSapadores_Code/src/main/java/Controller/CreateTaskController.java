@@ -12,11 +12,9 @@ import Model.Constants;
 import Model.Manager;
 import Model.Organization;
 import Model.Platform;
-import Model.RegisterOrganization;
 import Model.Task;
 import Model.TaskList;
 import autorizacao.model.UserSession;
-import java.util.List;
 
 /**
  *
