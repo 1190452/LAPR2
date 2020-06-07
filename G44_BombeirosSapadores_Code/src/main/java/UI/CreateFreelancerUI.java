@@ -111,7 +111,7 @@ public class CreateFreelancerUI implements Initializable {
                 alert.close();
             }
 
-            Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Task Creation", "Do you confirm this task?");
+            Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", "Do you confirm this Freelancer");
             Optional<ButtonType> option = alert1.showAndWait();
             boolean added = false;
             if (option.get() == ButtonType.OK) {
