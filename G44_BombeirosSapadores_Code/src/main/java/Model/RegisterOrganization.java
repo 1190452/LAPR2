@@ -105,8 +105,9 @@ public class RegisterOrganization {
         String emailM = manager.getEmailM();
         PasswordGenerator alg = m_oPlataforma.getAlg();
         String pwdM = alg.generate(7);
+        String role = manager.getEmailM();
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
-        aut.registUserWithRole(nameM, emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
+        aut.registUserWithRole(nameM, emailM, pwdM, role);
         Writer.sendsPassword(emailM, pwdM);
     }
 
@@ -115,8 +116,9 @@ public class RegisterOrganization {
         String emailC = collab.getEmailC();
         PasswordGenerator alg = m_oPlataforma.getAlg();
         String pwdC = alg.generate(7);
+        String role = manager.getEmailM();
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
-        aut.registUserWithRole(nameC, emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
+        aut.registUserWithRole(nameC, emailC, pwdC, role);
         Writer.sendsPassword(emailC, pwdC);
     }
     
