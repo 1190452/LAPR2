@@ -66,18 +66,22 @@ public class RegisterFreelancer {
     }
 
     public String generateID(Freelancer free) {
-        String[] nameparts = free.getName().split(" ");
-        String id = String.valueOf(nameparts[0].charAt(0) + nameparts[1].charAt(0)) + 1;
+        String id;
         int count = 1;
+        
+        String[] nameparts = free.getName().split(" ");
+        if (nameparts.length == 1) {
+            id = String.valueOf(nameparts[0].charAt(0) + nameparts[0].charAt(1));
+        }else {
+            id = String.valueOf(nameparts[0].charAt(0) + nameparts[1].charAt(0));
+        }
 
         for (int i = 0; i < listaFreelancers.size(); i++) {
             if (id.equalsIgnoreCase(listaFreelancers.get(i).getFreeID())) {
                 count++;
-                id = id + count;
-
             }
         }
-        return id;
+        return id+count;
 
     }
 
