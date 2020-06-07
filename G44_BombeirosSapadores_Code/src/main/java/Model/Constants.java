@@ -10,10 +10,21 @@ package Model;
  * @author paulomaio
  */
 public class Constants {
-    
+    /**
+     * The role of the administrator
+     */
     public static final String ROLE_ADMINISTRATIVE = "ADMINISTRATIVE";
+    
+    /**
+     * The role of the collaborator
+     */
     public static final String ROLE_COLLABORATOR_ORGANIZATION = "COLLABORATOR_ORGANIZATION";
+    
+    /**
+     * The role of the manager
+     */
     public static final String ROLE_MANAGER_ORGANIZATION = "MANAGER_ORGANIZATION";
+    
     
     public static final String FILE_PARAMS= "config.properties";
     public static final String PARAMS_PLATFORM_DESIGNATION = "PlATFORM.Designation";
