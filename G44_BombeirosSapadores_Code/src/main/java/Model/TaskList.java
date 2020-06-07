@@ -6,6 +6,7 @@
 package Model;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author tiagopereira
  */
-public class TaskList {
+public class TaskList implements Serializable{
 
     private List<Task> taskList;
 

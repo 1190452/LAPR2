@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Set;
  *
  * @author tiagopereira
  */
-public class PaymentList {
+public class PaymentList implements Serializable{
     private List<Payment> paymentList;
 
     public PaymentList() {

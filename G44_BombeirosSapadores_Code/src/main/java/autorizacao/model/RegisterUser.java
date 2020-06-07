@@ -6,6 +6,7 @@
 package autorizacao.model;
 
 import Model.Platform;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  * @author paulomaio
  */
 public class RegisterUser
-{
+implements Serializable{
     private List<User> lstUsers = new ArrayList<User>();
     
     private Platform platform;

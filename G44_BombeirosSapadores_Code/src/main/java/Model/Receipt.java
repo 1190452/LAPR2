@@ -1,12 +1,13 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author jorge
  */
-public class Receipt {
+public class Receipt implements Serializable{
     
     private List<Transaction> nltr;
     private double sum;

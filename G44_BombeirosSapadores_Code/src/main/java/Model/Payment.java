@@ -1,12 +1,13 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Ricardo
  */
-public class Payment {
+public class Payment implements Serializable{
     /**
      * Value of the payment in euro
      */

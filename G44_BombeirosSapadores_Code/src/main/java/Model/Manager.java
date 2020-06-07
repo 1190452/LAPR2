@@ -6,12 +6,13 @@
 package Model;
 
 import autorizacao.model.User;
+import java.io.Serializable;
 
 /**
  *
  * @author OMEN X
  */
-public class Manager {
+public class Manager implements Serializable{
 
     private String nameM;
     private String emailM;

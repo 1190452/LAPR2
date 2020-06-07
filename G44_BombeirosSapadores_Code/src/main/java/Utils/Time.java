@@ -1,12 +1,13 @@
 package Utils;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  *
  * @author jorge
  */
-public class Time implements Comparable<Time> {
+public class Time implements Comparable<Time>,Serializable{
     
     /**
      * Hours of time.

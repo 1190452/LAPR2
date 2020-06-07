@@ -5,11 +5,13 @@
  */
 package Utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ricardo
  */
-public class CurrencyConverter {
+public class CurrencyConverter implements Serializable{
 
     public CurrencyConverter(){
         

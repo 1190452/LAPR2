@@ -1,10 +1,12 @@
 package Utils;
 
+import java.io.Serializable;
+
 /**
  *
  * @author OMEN X
  */
-public class Validations {
+public class Validations implements Serializable{
 
     /**
      * method to confirm if a String is numeric or not

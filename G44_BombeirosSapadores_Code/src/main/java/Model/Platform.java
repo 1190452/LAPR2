@@ -14,6 +14,7 @@ import Utils.Time;
 import autorizacao.FacadeAuthorization;
 import autorizacao.model.RegisterUser;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -24,7 +25,7 @@ import java.util.Timer;
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-public class Platform {
+public class Platform implements Serializable{
 
     private final FacadeAuthorization m_oAutorizacao;
 

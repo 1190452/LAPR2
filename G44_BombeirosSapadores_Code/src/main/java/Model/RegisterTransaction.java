@@ -6,6 +6,7 @@
 package Model;
 
 import Utils.Date;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author tiagopereira
  */
-public class RegisterTransaction {
+public class RegisterTransaction implements Serializable{
 
     private Transaction transaction;
     private List<Transaction> historicalTransaction;

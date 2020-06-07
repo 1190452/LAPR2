@@ -5,6 +5,7 @@
  */
 package Utils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -13,7 +14,7 @@ import java.util.Random;
  *
  * @author tiagopereira
  */
-public final class PasswordGenerator {
+public final class PasswordGenerator implements Serializable{
         
     //inspirado em https://stackoverflow.com/questions/19743124/java-password-generator/41891760
     private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";

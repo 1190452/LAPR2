@@ -14,13 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jcp.xml.dsig.internal.dom.Utils;
 import Utils.PasswordGenerator;
+import java.io.Serializable;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
 /**
  *
  * @author paulomaio
  */
-public class RegisterOrganization {
+public class RegisterOrganization implements Serializable{
 
     private ApplicationPOT m_oApp;
     private Platform m_oPlataforma;

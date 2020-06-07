@@ -1,12 +1,13 @@
 package Model;
 
 import Utils.Time;
+import java.io.Serializable;
 
 /**
  *
  * @author jorge
  */
-public class Task {
+public class Task implements Serializable{
 
     /**
      * The id of the Task

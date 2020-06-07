@@ -73,7 +73,11 @@ public class LoginUI implements Initializable {
                 alert1.show();    
             } 
             ApplicationPOT ac = ApplicationPOT.getInstance();
+            
             FacadeAuthorization fc = ac.getPlatform().getFacadeAuthorazation();
+            
+            
+            
             UserSession us = fc.doLogin(txtFieldUsername.getText(), txtFieldPassword.getText());
          
             if (us.isLoggedInWithPart(Constants.ROLE_ADMINISTRATIVE)) {
@@ -146,6 +150,9 @@ public class LoginUI implements Initializable {
 
     @FXML
     private void close(MouseEvent event) {
+        ApplicationPOT pot = ApplicationPOT.getInstance();
+        pot.doLogout();
+        pot.save(pot.getPlatform());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }

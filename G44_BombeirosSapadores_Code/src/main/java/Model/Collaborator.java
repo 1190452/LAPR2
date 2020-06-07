@@ -5,11 +5,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author OMEN X
  */
-public class Collaborator {
+public class Collaborator implements Serializable{
 
     /**
      * name of the collaborator

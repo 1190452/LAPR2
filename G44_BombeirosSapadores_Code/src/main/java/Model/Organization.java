@@ -2,12 +2,13 @@ package Model;
 
 import Utils.Date;
 import Utils.Time;
+import java.io.Serializable;
 
 /**
  *
  * @author paulomaio
  */
-public class Organization {
+public class Organization implements Serializable{
 
     /**
      * The name of the Organization
