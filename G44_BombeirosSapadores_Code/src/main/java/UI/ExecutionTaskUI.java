@@ -3,12 +3,14 @@ package UI;
 import Controller.CreateTransactionController;
 import Model.Freelancer;
 import Model.Task;
+import Model.Transaction;
 import Utils.Date;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -86,15 +89,34 @@ public class ExecutionTaskUI implements Initializable {
         try {
 
             if (endDateTxt.getValue() == null || descriptionTxt.getText().isEmpty() || delayTxt.getText().isEmpty()) {
-                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Task Execution Creation", "Please introduce the necessary data to create a Task Execution.");
+                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Transaction Creation", "Please introduce the necessary data to create a Transaction.");
                 alert.show();
             } else {
-                //ObservableList<Task> tl = FXCollections.observableArrayList(taskList);
-                
-                //ObservableList<Freelancer> fl = FXCollections.observableArrayList(freelancerList);
+                Transaction ts = ct_controller.createNewTransaction(listTaskTxt.getSelectionModel().getSelectedItem(), listFreelancerTxt.getSelectionModel().getSelectedItem(), new Date(endDateTxt.getValue().getYear(), endDateTxt.getValue().getMonthValue(), endDateTxt.getValue().getDayOfMonth()), Double.parseDouble(delayTxt.getText()), descriptionTxt.getText());
+                 Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Transaction Creation", ts.toString());
 
-                ct_controller.createNewTransaction(listTaskTxt.getSelectionModel().getSelectedItem(), listFreelancerTxt.getSelectionModel().getSelectedItem(), new Date(endDateTxt.getValue().getYear(), endDateTxt.getValue().getMonthValue(), endDateTxt.getValue().getDayOfMonth()), Double.parseDouble(delayTxt.getText()), descriptionTxt.getText());
+                if (alert1.showAndWait().get() == ButtonType.OK) {
+                    alert1.close();
+                }
 
+                Alert alert6 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Transaction Creation", "Do you confirm this transaction?");
+                boolean verif = false;
+
+                Optional<ButtonType> option = alert6.showAndWait();
+                if (option.get() == ButtonType.OK) {
+                    verif = ct_controller.registerTransaction();
+                } else {
+                    alert1.close();
+                }
+
+                if (verif) {
+                    AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Transaction",
+                            verif ? "New Transaction added with success"
+                                    : "It was not possible to add the Transaction").show();
+
+                    endTransaction(event);
+
+                }
             }
         } catch (NumberFormatException nfe) {
             AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
@@ -116,6 +138,14 @@ public class ExecutionTaskUI implements Initializable {
     private void pressed(MouseEvent event) {
         x = event.getSceneX();
         y = event.getSceneY();
+    }
+
+    private void endTransaction(ActionEvent event) {
+       listFreelancerTxt.getSelectionModel().clearSelection();
+       listTaskTxt.getSelectionModel().clearSelection();
+       delayTxt.clear();
+       descriptionTxt.clear();
+       endDateTxt.getEditor().clear();
     }
 
 }
