@@ -5,7 +5,7 @@
  */
 package Model;
 
-import Utils.Validations;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,44 +20,45 @@ public class TaskList {
     public TaskList() {
         taskList = new ArrayList<>();
     }
-    
-    public void addTask(Task t){
-       taskList.add(t);
-   }
-   
-   public void removeTask(Task t){
-       taskList.remove(t);
-   }
-   
-   public List<Task> getTaskList(){
-       return taskList;
-   }
+
+    public void addTask(Task t) {
+        taskList.add(t);
+    }
+
+    public void removeTask(Task t) {
+        taskList.remove(t);
+    }
+
+    public List<Task> getTaskList() {
+        return taskList;
+    }
 
     public Task newTask(String idTask, String description, int timeTask, double costHour, String taskCategory) {
+
         Task task = new Task(idTask, description, timeTask, costHour, taskCategory);
-        
-        if(validateTask(task)==true){
+
+        if (validateTask(task) == true) {
             return task;
-        }else{
+        } else {
             return null;
         }
     }
 
     private boolean validateTask(Task task) {
-        for(Task e : taskList){
-            if(task.equals(e)){
+        for (Task e : taskList) {
+            if (task.equals(e)) {
                 return false;
             }
         }
         return true;
-           
+
     }
 
     public boolean registersTask(Task task) {
-        if(validateTask(task)==true){
-            taskList.add(task);
+        if (validateTask(task)==true) {
+            addTask(task);
             return true;
-        }else{
+        } else {
             return false;
         }
     }

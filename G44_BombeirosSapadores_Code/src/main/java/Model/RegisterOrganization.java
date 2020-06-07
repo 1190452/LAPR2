@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Controller.CreateTaskController;
 import autorizacao.FacadeAuthorization;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
@@ -26,13 +27,14 @@ public class RegisterOrganization {
     private Organization m_oOrganizacao;
     private Manager manager;
     private Collaborator collab;
-
+    private CreateTaskController ctask_controller;
     private List<Organization> lOrg;
-
+    
     private List<Organization> lorgs;
 
     public RegisterOrganization() {
         lorgs = new ArrayList<>();
+        this.ctask_controller = new CreateTaskController();
     //    this.m_oApp = ApplicationPOT.getInstance();
       //  this.m_oPlataforma = m_oApp.getPlatform();
         lOrg = new ArrayList<>();
