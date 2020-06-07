@@ -14,24 +14,26 @@ import java.io.Serializable;
  *
  * @author paulomaio
  */
-public class FacadeAuthorization implements Serializable{
-   private static UserSession session = null;
-   private static final RegisterUser users = new RegisterUser();
+public class FacadeAuthorization implements Serializable {
 
-   
+    private static UserSession session = null;
+    //private static final RegisterUser users = new RegisterUser();
     
-    public boolean registUserWithRole(String name, String strEmail, String strPassword, String strRole) {
-        User utlz = this.users.newUser(name , strEmail, strPassword, strRole);
-         return users.addUser(utlz);
+    private RegisterUser users;
+
+    public FacadeAuthorization() {
+        this.users = new RegisterUser();
     }
-    
-    
-    public void registerUser(String strNome, String strEmail, String strPassword, String role)
-    {
-        User utlz = this.users.newUser(strNome,strEmail,strPassword, role);
+
+    public boolean registUserWithRole(String name, String strEmail, String strPassword, String strRole) {
+        User utlz = this.users.newUser(name, strEmail, strPassword, strRole);
+        return users.addUser(utlz);
+    }
+
+    public void registerUser(String strNome, String strEmail, String strPassword, String role) {
+        User utlz = this.users.newUser(strNome, strEmail, strPassword, role);
         this.users.addUser(utlz);
     }
-    
 
     public boolean userExists(String strEmail) {
         return this.users.hasUser(strEmail);
@@ -57,9 +59,8 @@ public class FacadeAuthorization implements Serializable{
         }
         this.session = null;
     }
-    
-     public boolean existeUtilizador(String strId)
-    {
+
+    public boolean existeUtilizador(String strId) {
         return this.users.hasUser(strId);
     }
 }
