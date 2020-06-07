@@ -45,7 +45,7 @@ public class WatchStatisticsController {
         ApplicationPOT app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
         email = log.getUserEmail();
-        Organization org = rorgs.getOrganizationByUserEmail(email);
+        Organization org = rorgs.getOrganizationByUserEmailColab(email);
         List<Task> lt = org.getTaskList().getTaskList();
         List<Transaction> ltr = pl.getRTrans().getTransactions();
         RegisterFreelancer rf = pl.getRfree();

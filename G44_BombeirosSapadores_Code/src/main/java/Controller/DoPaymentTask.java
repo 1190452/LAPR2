@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Model.ApplicationPOT;
 import Utils.CurrencyConverter;
 import Model.Freelancer;
 import Model.Organization;
@@ -40,6 +41,11 @@ public class DoPaymentTask extends TimerTask {
 
     private void doPayment() {
 
+        
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        
+        plt = app.getPlatform();
+        
         RegisterFreelancer rFree = plt.getRfree();
 
         List<Freelancer> lf = rFree.getListFreelancers();

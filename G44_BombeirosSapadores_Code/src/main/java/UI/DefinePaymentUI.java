@@ -43,6 +43,8 @@ public class DefinePaymentUI implements Initializable {
     private Button cancelBtn;
     @FXML
     private JFXTextField nrDaystxt;
+    
+    private DefinePayment dp;
 
     /**
      * Initializes the controller class.
@@ -50,6 +52,7 @@ public class DefinePaymentUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         pc = new PaymentController();
+        dp = new DefinePayment();
     }
 
     @FXML
@@ -66,8 +69,8 @@ public class DefinePaymentUI implements Initializable {
         Organization org = pc.getOrg();
         Date date = new Date(calendarButton.getValue().getYear(), calendarButton.getValue().getMonthValue(), calendarButton.getValue().getDayOfMonth());
         Time time = new Time(timeButton.getValue().getHour(), timeButton.getValue().getMinute(), timeButton.getValue().getSecond());
-
-        DefinePayment dp = pc.newDefinePayment(time, date, Integer.parseInt(nrDaystxt.getText()));
+        
+        dp = pc.newDefinePayment(time, date, Integer.parseInt(nrDaystxt.getText()));
         Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Define Payment Hour", dp.toString());
         boolean verif = false;
         

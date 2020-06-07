@@ -164,7 +164,7 @@ public class Platform {
     public void schedulesPayment(String email) {
         dpt = new DoPaymentTask();
 
-        Organization org = rOrg.getOrganizationByUserEmail(email);
+        Organization org = rOrg.getOrganizationByUserEmailMan(email);
         DefinePayment dp = org.getDefinePayment();
         Date date = dp.getDateToPay();
         Time time = dp.getTimeToPay();
@@ -177,7 +177,7 @@ public class Platform {
         Timer t = new Timer();
 
         dpt.passOrg(org);
-
+        System.out.println("Timer uc7 defined");
         t.scheduleAtFixedRate(dpt, interval, period);
 
     }

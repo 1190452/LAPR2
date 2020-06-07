@@ -37,7 +37,7 @@ public class CreateTaskController {
         RegisterOrganization rorgs = app.getPlatform().getrOrg();
         //NAO ESQUECER DE APAGAR
         rorgs.addOrganization(org);
-        Organization org2 = rorgs.getOrganizationByUserEmail(email);
+        Organization org2 = rorgs.getOrganizationByUserEmailColab(email);
         this.tl = org2.getTaskList();
         this.task = tl.newTask(idTask, description, timeTask, costHour, taskCategory);
         return task;

@@ -50,9 +50,19 @@ public class RegisterOrganization {
         return false;
     }
 
-    public Organization getOrganizationByUserEmail(String email) {
+    public Organization getOrganizationByUserEmailColab(String email) {
         for (int i = 0; i < lOrg.size(); i++) {
             if (email.equalsIgnoreCase(lOrg.get(i).getColab().getEmailC())) {
+                return lOrg.get(i);
+            }
+
+        }
+        return null;
+    }
+    
+    public Organization getOrganizationByUserEmailMan(String email) {
+        for (int i = 0; i < lOrg.size(); i++) {
+            if (email.equalsIgnoreCase(lOrg.get(i).getManager().getEmailM())) {
                 return lOrg.get(i);
             }
 
