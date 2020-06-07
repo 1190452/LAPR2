@@ -10,28 +10,27 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  *
  * @author paulomaio
  */
 public class RegisterUser
-implements Serializable{
-    private List<User> lstUsers = new ArrayList<User>();
-    
+        implements Serializable {
+
+    private List<User> lstUsers;
+
     private Platform platform;
-    
-    public RegisterUser(){
-        this.lstUsers = new ArrayList<User>();
-        
+
+    public RegisterUser() {
+        this.lstUsers = new ArrayList<>();
     }
-    
-    public List<User> getUserList(){
+
+    public List<User> getUserList() {
         return lstUsers;
     }
-    
-    public void setUsersList(ArrayList<User> usersList){
-       lstUsers = usersList; 
+
+    public void setUsersList(ArrayList<User> usersList) {
+        lstUsers = usersList;
     }
 
     public User newUser(String name, String strEmail, String strPassword, String strRole) {
@@ -42,7 +41,7 @@ implements Serializable{
 //        if (hasUser(utlz)) {
 //            throw new IllegalArgumentException("User Already Exists");
 //        }
-         return this.lstUsers.add(utlz);
+        return this.lstUsers.add(utlz);
     }
 
     public void removeUser(User utlz) {
@@ -72,10 +71,10 @@ implements Serializable{
     public boolean hasUser(User utlz) {
         return platform.getrUser().getUserList().contains(utlz);
     }
-    
-    public boolean remove(User utlz){
-        if(lstUsers.contains(utlz)){
-          return lstUsers.remove(utlz);
+
+    public boolean remove(User utlz) {
+        if (lstUsers.contains(utlz)) {
+            return lstUsers.remove(utlz);
         }
         return false;
     }
