@@ -15,14 +15,13 @@ import java.util.Set;
  *
  * @author tiagopereira
  */
-<<<<<<< HEAD
+
 public class PaymentList implements Serializable{
-=======
-public class PaymentList {
+
     /**
      * list of payments
      */
->>>>>>> 8f43a82269b3d63fb10dd068602c8b30d5a25959
+
     private List<Payment> paymentList;
 
     /**

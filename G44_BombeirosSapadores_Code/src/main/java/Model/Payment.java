@@ -1,22 +1,21 @@
 package Model;
 
-<<<<<<< HEAD
+
 import java.io.Serializable;
-=======
+
 import java.util.ArrayList;
->>>>>>> 8f43a82269b3d63fb10dd068602c8b30d5a25959
+
 import java.util.List;
 
 /**
  *
  * @author Ricardo
  */
-<<<<<<< HEAD
-public class Payment implements Serializable{
-=======
-public class Payment {
 
->>>>>>> 8f43a82269b3d63fb10dd068602c8b30d5a25959
+public class Payment implements Serializable{
+
+
+
     /**
      * Value of the payment in euros
      */
