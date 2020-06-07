@@ -214,7 +214,7 @@ public class Freelancer implements Serializable{
      * @param freeID 
      */
     public void setFreeID(String freeID) {
-        this.freeID = this.getFreeID();
+        this.freeID = freeID;
     }
 
     /**
