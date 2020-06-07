@@ -45,9 +45,9 @@ public class RegisterUser
     }
 
     public void removeUser(User utlz) {
-        if (!hasUser(utlz)) {
-            throw new IllegalArgumentException("User does not exist");
-        }
+//        if (!hasUser(utlz)) {
+//            throw new IllegalArgumentException("User does not exist");
+//        }
         platform.getrUser().remove(utlz);
     }
 
