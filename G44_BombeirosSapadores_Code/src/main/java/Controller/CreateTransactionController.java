@@ -23,13 +23,32 @@ import java.util.List;
  */
 public class CreateTransactionController {
 
+    /**
+     * atribute to call the methods of RegisterTransaction class
+     */
     private RegisterTransaction rt;
+    
+    /**
+     * transaction that will be created 
+     */
     private Transaction trans;
+    
+    /**
+     * email of the user
+     */
     private String email;
+    
+    /**
+     * constructor that creates an instance of CreateTransactionController
+     */
     public CreateTransactionController() {
         
     }
 
+    /**
+     * method that calls the TaskList class to get the list of tasks
+     * @return taskList
+     */
     public List<Task> getTaskList() {
         ApplicationPOT ap = ApplicationPOT.getInstance();
         RegisterOrganization rorgs = ap.getPlatform().getrOrg();
@@ -40,6 +59,10 @@ public class CreateTransactionController {
         return taskList;
     }
 
+    /**
+     * method that calls the RegisterFreelancer class to get the list of freelancers
+     * @return freelancerList
+     */
     public List<Freelancer> getFreelancerList() {
         ApplicationPOT app = ApplicationPOT.getInstance();
         RegisterFreelancer rl = app.getPlatform().getRfree();
@@ -47,6 +70,15 @@ public class CreateTransactionController {
         return freelancerList;
     }
 
+    /**
+     * calls the method of the class RegisterTransaction to create a new transaction
+     * @param task
+     * @param freel
+     * @param endDate
+     * @param delay
+     * @param qow
+     * @return 
+     */
     public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         ApplicationPOT app = ApplicationPOT.getInstance();
         rt = app.getPlatform().getRTrans();
@@ -54,10 +86,19 @@ public class CreateTransactionController {
         return trans;
     }
 
+    /**
+     * calls the method of the class RegisterTransaction to register the created transaction
+     * @return 
+     */
     public boolean registerTransaction() {
         return rt.registerTransaction(trans);
     }
 
+    /**
+     * calls the method of the class RegisterTransaction that calculates the value of that transaction
+     * @param trans
+     * @return 
+     */
     public double calculateTransactionValue(Transaction trans) {
         return rt.calculateTransactionValue(trans);
     }

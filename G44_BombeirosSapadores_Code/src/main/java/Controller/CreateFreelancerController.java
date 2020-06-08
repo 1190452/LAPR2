@@ -16,11 +16,36 @@ import Model.RegisterFreelancer;
  */
 public class CreateFreelancerController {
 
-    Platform p1;
-    RegisterFreelancer rfree;
-    Freelancer free;
-   
-    public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {   
+    /**
+     * atribute to call the methods of the Platform class
+     */
+    private Platform p1;
+
+    /**
+     * atribute to call the methods of the RegisterFreelancer class
+     */
+    private RegisterFreelancer rfree;
+
+    /**
+     * atribute to call the methods of the Freelancer class
+     */
+    private Freelancer free;
+
+    /**
+     * method that calls the class RegisterFreelancer to create a new freelancer
+     *
+     * @param name
+     * @param levelExp
+     * @param email
+     * @param nif
+     * @param iban
+     * @param country
+     * @param street
+     * @param doorNumber
+     * @param locality
+     * @return
+     */
+    public Freelancer newFreelancer(String name, String levelExp, String email, String nif, String iban, String country, String street, String doorNumber, String locality) {
         ApplicationPOT ap = ApplicationPOT.getInstance();
         rfree = ap.getPlatform().getRfree();
         free = rfree.newFreelancer(name, levelExp, email, nif, iban, country, street, doorNumber, locality);
@@ -30,6 +55,11 @@ public class CreateFreelancerController {
         return null;
     }
 
+    /**
+     * method that saves a freelancer, creating an ID for him
+     *
+     * @return
+     */
     public boolean saveFreelancer() {
         String freeID = rfree.generateID(free);
         free.setFreeID(freeID);

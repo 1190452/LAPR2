@@ -108,7 +108,11 @@ public class CheckPerformanceController {
     }
     
     /**
-     * This method get The performances of freelancers
+     *  method that gets the performances of freelancers in 4 ways:
+     *  - payment mean and deviation of one freelancer
+     *  - delay mean and deviation of one freelancer
+     *  - payment mean and deviation of all freelancers
+     *  - delay mean and deviation of all freelancers
      */
     public void getPerformances() {
         RegisterFreelancer rFree = platform.getRfree();
