@@ -84,9 +84,9 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     }
                     Task t = new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask);
                     tl.addTask(t);
-                    ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
-                    return ht;
+                    ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));             
                 }
+                 return ht;
             } catch (NoSuchElementException e) {
 
                 System.out.println("Error reading HistoricalTransaction file!");
