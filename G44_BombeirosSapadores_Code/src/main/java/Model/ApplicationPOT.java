@@ -50,6 +50,7 @@ public class ApplicationPOT implements Serializable{
                 this.m_oAutorizacao = this.m_oPlataforma.getFacadeAuthorazation();
             } finally {
                 in.close();
+                in.reset();
             }
 
         } catch (IOException | ClassNotFoundException ex) {
