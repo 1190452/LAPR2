@@ -75,7 +75,7 @@ public class Writer {
      * @param valueE
      * @param valueC 
      */
-    public static void genEmail(List<Transaction> nltr, double valueE, double valueC) {
+    public static boolean genEmail(List<Transaction> nltr, double valueE, double valueC) {
         try {
             //adicionar o code..
             PrintWriter out = new PrintWriter(new File("receipt" + nltr.get(0).getFreel().getFreeID() + Date.actualDate().toFile() + ".txt"));
@@ -91,12 +91,14 @@ public class Writer {
                 }
 
             } finally {
-
                 out.close();
+                return true;
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
+            return false;
         }
+       
 
     }
 

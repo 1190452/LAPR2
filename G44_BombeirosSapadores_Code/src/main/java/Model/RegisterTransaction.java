@@ -32,8 +32,8 @@ public class RegisterTransaction implements Serializable{
      * method that removes a transaction from the transaction list
      * @param tr 
      */
-    public void removeHistoricalTransaction(Transaction tr) {
-        transactionList.remove(tr);
+    public boolean removeHistoricalTransaction(Transaction tr) {
+       return transactionList.remove(tr);
     }
 
     /**
@@ -63,6 +63,7 @@ public class RegisterTransaction implements Serializable{
      * @return 
      */
     public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+        task.setIsFinished(true);
         return new Transaction(task, freel, new TaskExecution(endDate, delay, qow));
     }
 

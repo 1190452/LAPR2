@@ -28,16 +28,16 @@ public class PaymentList implements Serializable{
      * method that adds a new payment to the payment list
      * @param t 
      */
-    public void addPayment(Payment t){
-       paymentList.add(t);
+    public boolean addPayment(Payment t){
+       return  paymentList.add(t);
    }
    
     /**
      * method that removes a payment from the payment list
      * @param t 
      */
-   public void removePayment(Payment t){
-       paymentList.remove(t);
+   public boolean removePayment(Payment t){
+       return paymentList.remove(t);
    }
    
    /**
