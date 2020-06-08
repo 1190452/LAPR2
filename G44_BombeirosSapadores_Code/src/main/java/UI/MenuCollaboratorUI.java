@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -48,6 +49,11 @@ public class MenuCollaboratorUI implements Initializable {
 
     double x, y;
     @FXML
+    private Button logoutBtn;
+    @FXML
+    private Label lblWelcome;
+    
+    private ApplicationPOT pot;
 
     /**
      * Initializes the controller class.
@@ -64,7 +70,16 @@ public class MenuCollaboratorUI implements Initializable {
         }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
-        
+        pot = ApplicationPOT.getInstance();
+        lblWelcome.setText("Welcome " + pot.getActualSession().getUserName() + "!");
+
+        PauseTransition visiblePause = new PauseTransition(
+                Duration.seconds(10)
+        );
+        visiblePause.setOnFinished(
+                event -> lblWelcome.setVisible(false)
+        );
+        visiblePause.play();
         
     }
 
@@ -158,7 +173,7 @@ public class MenuCollaboratorUI implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
-        ApplicationPOT pot = ApplicationPOT.getInstance();
+        
         pot.doLogout();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
