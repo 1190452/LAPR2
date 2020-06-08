@@ -78,6 +78,11 @@
                </effect>
             </MenuButton>
             <Button id="goldline" fx:id="logoutBtn" layoutX="209.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="68.0" stylesheets="@../styles/stylesheet.css" text="Logout" />
+            <Label fx:id="lblWelcome" layoutX="310.0" layoutY="24.0" prefHeight="26.0" prefWidth="314.0" textFill="#e6be8a">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </top>
 </BorderPane>

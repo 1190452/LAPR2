@@ -18,20 +18,16 @@ public class Writer {
      * method that "sends" an email to the new registered users with the password 
      * @param email
      * @param pwd
-     * @param role
-     * @throws FileNotFoundException 
+     * @param role 
      */
-    public static void sendsPassword(String email, String pwd, String role) throws FileNotFoundException {
+    public static void sendsPassword(String email, String pwd, String role) {
         try {
-            PrintWriter out = new PrintWriter(new File("Data about " + role + ".txt"));
-            try {
+            try (PrintWriter out = new PrintWriter(new FileWriter("Data about " + role + ".txt",true))) {
                 out.println("Email of your account: " + email);
                 out.println("Password to access your account: " + pwd);
                 out.close();
-            } finally {
-                out.close();
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException ex) {
             System.out.println("File not found!");
         }
     }

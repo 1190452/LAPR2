@@ -3,7 +3,7 @@ package Authorization.model;
 import Authorization.model.User;
 import java.io.Serializable;
 
-public class UserSession implements Serializable{
+public class UserSession implements Serializable {
 
     private User user = null;
 
@@ -32,6 +32,13 @@ public class UserSession implements Serializable{
     public String getUserEmail() {
         if (isLoggedIn()) {
             return this.user.getEmail();
+        }
+        return null;
+    }
+
+    public String getUserName() {
+        if (isLoggedIn()) {
+            return this.user.getName();
         }
         return null;
     }
