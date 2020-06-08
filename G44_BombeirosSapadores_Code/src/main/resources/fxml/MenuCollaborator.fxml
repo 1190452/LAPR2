@@ -68,6 +68,11 @@
                         <Button fx:id="loadTransactionsBtn" minWidth="170.0" mnemonicParsing="false" onAction="#LoadTransactionsOA" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Load Transactions from file" textFill="#e6be8a" />
                      </graphic>
                   </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="checkFreelancerStatistics" minWidth="170.0" mnemonicParsing="false" onAction="#checkStatisticsFreelancer" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Check Freelancer statistics" textFill="#e6be8a" />
+                     </graphic>
+                  </MenuItem>
               </items>
                <effect>
                   <Lighting>
