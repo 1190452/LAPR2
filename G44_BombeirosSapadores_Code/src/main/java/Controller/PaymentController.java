@@ -55,7 +55,7 @@ public class PaymentController {
     }
 
     /**
-     * Defines the payment
+     * calls the method that creates a new payment definition of the class Organization 
      * @param time the time of the payment
      * @param date the date of the payment
      * @param rtp
@@ -71,7 +71,7 @@ public class PaymentController {
     }
 
     /**
-     * 
+     * calls the method that registers the payment 
      * @return 
      */
     public boolean registerDefinePayment() {

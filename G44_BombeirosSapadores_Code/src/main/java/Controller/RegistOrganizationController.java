@@ -21,6 +21,20 @@ public class RegistOrganizationController {
     RegisterOrganization ro;
     Organization org;
 
+    /**
+     * calls the RegisterOrganization method that creates a new organization and receives that organization
+     * @param name
+     * @param email
+     * @param NIF
+     * @param street
+     * @param doorNumber
+     * @param locality
+     * @param nameC
+     * @param emailC
+     * @param nameM
+     * @param emailM
+     * @return 
+     */
     public Organization newOrganization(String name, String email, String NIF, String street, String doorNumber, String locality, String nameC, String emailC, String nameM, String emailM) {
         ApplicationPOT ap = ApplicationPOT.getInstance();
         ro = ap.getPlatform().getrOrg();
@@ -31,14 +45,12 @@ public class RegistOrganizationController {
         return null;
     }
 
-    public boolean registaOrganization() throws FileNotFoundException {
+    /**
+     * calls the RegisterOrganization method that register the organization created
+     * @return
+     * @throws FileNotFoundException 
+     */
+    public boolean registerOrganization() throws FileNotFoundException {
         return ro.registerOrganization(org);
     }
-
-    Organization organization;
-
-    public void CreateOrganization() {
-
-    }
-
 }

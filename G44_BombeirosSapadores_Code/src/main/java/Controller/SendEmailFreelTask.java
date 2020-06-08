@@ -24,12 +24,11 @@ public class SendEmailFreelTask extends TimerTask {
     private Platform p1;
 
     /**
-     * Sends and email
+     * constructor that gets platform of the current session 
      */
     public SendEmailFreelTask() {
         ApplicationPOT pot = ApplicationPOT.getInstance();
         p1 = pot.getPlatform();
-
     }
 
     /**

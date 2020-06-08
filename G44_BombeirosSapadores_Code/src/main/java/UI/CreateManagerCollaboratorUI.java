@@ -108,7 +108,7 @@ public class CreateManagerCollaboratorUI implements Initializable {
     private void submit(ActionEvent event) throws FileNotFoundException {
         try{
         roc.newOrganization(co.getNameTxt().getText(), co.getEmailTxt().getText(), co.getNifTxt().getText(), co.getStreetTxt().getText(), co.getDoorTxt().getText(), co.getLocalityTxt().getText(), nameCTxt.getText(), emailCTxt.getText(), nameMTxt.getText(), emailMTxt.getText());
-        boolean added = roc.registaOrganization();
+        boolean added = roc.registerOrganization();
         if (added) {
             AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Organization",
                     added ? "New Organization added with success"

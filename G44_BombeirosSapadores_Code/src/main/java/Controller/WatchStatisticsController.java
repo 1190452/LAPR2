@@ -23,23 +23,92 @@ import java.util.List;
  */
 public class WatchStatisticsController {
 
+    /**
+     * platform that contains the list of organizations
+     */
     private Platform pl;
+    
+    /**
+     * email of the user
+     */
     private String email;
+    
+    /**
+     * payment total
+     */
     private double paymentTotal = 0;
-    private double averageFreel = 0;
+    
+    /**
+     * average payment of one freelancer
+     */
+    private double averagePaymentFreel = 0;
+    
+    /**
+     * payment value of one freelancer
+     */
     private double paymentValue = 0;
+    
+    /**
+     * sum deviation of one freelancer
+     */
     private double sumDeviation = 0;
+    
+    /**
+     * sum of all payment deviation of one freelancer
+     */
     private double sumAllPaymentsDeviation = 0;
+    
+    /**
+     * payment deviation of one freelancer
+     */
     private double deviation = 0;
+    
+    /**
+     * total delay of one freelancer
+     */
     private double totalDelay = 0;
+    
+    /**
+     * list of transactions
+     */
     List<Transaction> listTransactions;
+    
+    /**
+     * total delay of all freelancers
+     */
     private double totalDelayOfAllFreelancers = 0;
+    
+    /**
+     * deviation delay of each task
+     */
     private double deviatonDelayOfEachTask = 0;
+    
+    /**
+     * delay deviation of one freelancer
+     */
     private double deviatonDelayOfEachFreelancer = 0;
+    
+    /**
+     * number of tasks of all freelancers
+     */
     private int numTasksOfAllFreelancers = 0;
+    
+    /**
+     * object of the class where all the calculations are done
+     */
     private Freelancer freel;
+    
+    /**
+     * deviation delay of all freelancers
+     */
     private double deviationDelay = 0;
 
+    /**
+     *  method that gets the performances of freelancers in 4 ways:
+     *  - payment mean and deviation of one freelancer
+     *  - delay mean and deviation of one freelancer
+     *  - delay mean and deviation of all freelancers
+     */
     public void getOverallStatistics() {
         RegisterOrganization rorgs = pl.getrOrg();
         ApplicationPOT app = ApplicationPOT.getInstance();
@@ -68,7 +137,7 @@ public class WatchStatisticsController {
             }
             int n = listPayments.size() * listTransactions.size();
             //Average of each Freelancer
-            averageFreel = freel.averageOfEachFreelancer(paymentTotal, n);
+            averagePaymentFreel = freel.averageOfEachFreelancer(paymentTotal, n);
             //For each payment of each freelancer
             for (int p = 0; p < listPayments.size(); p++) {
                 Payment payment = listPayments.get(p);
@@ -77,7 +146,7 @@ public class WatchStatisticsController {
                 for (int z = 0; z < listTransactions.size(); z++) {
                     Transaction transaction = listTransactions.get(z);
                     paymentValue = transaction.getTransactionValue();
-                    sumDeviation += freel.sumPaymentVariance(averageFreel, paymentValue);
+                    sumDeviation += freel.sumPaymentVariance(averagePaymentFreel, paymentValue);
                 }
                 //Sum all deviations calculated with payment and the average calculated before
                 sumAllPaymentsDeviation += sumDeviation;
@@ -85,7 +154,7 @@ public class WatchStatisticsController {
             //Deviation of each Freelancer
             deviation = freel.calculateDeviation(sumAllPaymentsDeviation, n);
             //Output the result
-            System.out.println("Freelancer: " + freel + "\nPayment Deviation: " + deviation + "\nAverage Payment: " + averageFreel);
+            System.out.println("Freelancer: " + freel + "\nPayment Deviation: " + deviation + "\nAverage Payment: " + averagePaymentFreel);
 
             List<Task> taskList = freel.getTl().getTaskList();
             for (int h = 0; h < taskList.size(); h++) {
