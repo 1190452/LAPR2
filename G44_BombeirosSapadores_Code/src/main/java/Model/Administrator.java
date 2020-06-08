@@ -5,7 +5,7 @@
  */
 package Model;
 
-import autorizacao.model.User;
+import Authorization.model.User;
 import java.io.Serializable;
 
 /**

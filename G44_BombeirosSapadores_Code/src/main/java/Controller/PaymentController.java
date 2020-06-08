@@ -12,7 +12,7 @@ import Model.Platform;
 import Model.RegisterOrganization;
 import Utils.Date;
 import Utils.Time;
-import autorizacao.model.UserSession;
+import Authorization.model.UserSession;
 
 /**
  *

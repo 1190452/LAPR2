@@ -8,7 +8,7 @@ package Model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import Utils.Date;
-import autorizacao.model.UserSession;
+import Authorization.model.UserSession;
 import java.io.Serializable;
 import java.util.NoSuchElementException;
 import java.util.Scanner;

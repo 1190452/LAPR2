@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package autorizacao;
+package Authorization;
 
-import autorizacao.model.RegisterUser;
-import autorizacao.model.UserSession;
-import autorizacao.model.User;
+import Authorization.model.RegisterUser;
+import Authorization.model.UserSession;
+import Authorization.model.User;
 import java.io.Serializable;
 
 /**

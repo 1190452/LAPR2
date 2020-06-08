@@ -14,7 +14,7 @@ import Model.RegisterFreelancer;
 import Model.RegisterOrganization;
 import Model.Task;
 import Model.Transaction;
-import autorizacao.model.UserSession;
+import Authorization.model.UserSession;
 import java.util.List;
 
 /**

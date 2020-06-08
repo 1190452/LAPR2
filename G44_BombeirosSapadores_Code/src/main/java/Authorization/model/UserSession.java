@@ -1,6 +1,6 @@
-package autorizacao.model;
+package Authorization.model;
 
-import autorizacao.model.User;
+import Authorization.model.User;
 import java.io.Serializable;
 
 public class UserSession implements Serializable{
