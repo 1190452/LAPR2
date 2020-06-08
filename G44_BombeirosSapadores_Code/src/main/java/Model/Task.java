@@ -147,42 +147,82 @@ public class Task implements Serializable{
         this.idTask = idTask;
     }
 
+    /**
+     * Returns the desciption of the Task
+     * @return description of the Task
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Modifies the description of the task
+     * @param description the new description of the Task
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Returns the time of the task
+     * @return time of the task
+     */
     public int getTimeTask() {
         return timeTask;
     }
 
+    /**
+     * Modifies the time of the task
+     * @param timeTask the new time of the task
+     */
     public void setTime(int timeTask) {
         this.timeTask = timeTask;
     }
 
+    /**
+     * Returns the cost per hour of the task
+     * @return cost per hour of the task
+     */
     public double getCostHour() {
         return costHour;
     }
 
+    /**
+     * Modifies the cost per hour 
+     * @param costHour 
+     */
     public void setCostHour(double costHour) {
         this.costHour = costHour;
     }
 
+    /**
+     * Returns the value of isPayed of the Task
+     * @return the isPayed value
+     */
     public boolean isIsPayed() {
         return isPayed;
     }
 
+    /**
+     * Modifies the value isPayed of the Task
+     * @param isPayed  the new value isPayed of the Task
+     */
     public void setIsPayed(boolean isPayed) {
         this.isPayed = isPayed;
     }
 
+    /**
+     * Returns the value isFinished of the Task
+     * @return the value isFinished of the Task
+     */
     public boolean isIsFinished() {
         return isFinished;
     }
 
+    /**
+     * Modifies the value isFinished of the Task
+     * @param isFinished the new isFinished value of the Task
+     */
     public void setIsFinished(boolean isFinished) {
         this.isFinished = isFinished;
     }
@@ -231,17 +271,13 @@ public class Task implements Serializable{
      *
      * @return characteristics of the Task
      */
+    @Override
     public String toString() {
         return String.format("Task %s, description: %s, cost per hour: %s, "
                 + "category: %s", idTask, description, costHour, taskCategory);
     }
     
-     public String toStringS() {
-        return String.format("Task %s\nDescription: %s\nCost per hour: %s"
-                + "\nCategory: %s", idTask, description, costHour, taskCategory);
-    }
     
-
     /**
      * @return the texec
      */
