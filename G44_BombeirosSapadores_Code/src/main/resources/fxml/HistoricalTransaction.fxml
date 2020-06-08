@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="397.0" style="-fx-background-color: #233640;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HistoricalTransactionUI">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#draged" onMousePressed="#pressed" prefHeight="400.0" prefWidth="397.0" style="-fx-background-color: #233640;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HistoricalTransactionUI">
    <top>
       <AnchorPane prefHeight="30.0" prefWidth="802.0" style="-fx-border-width: 0px 0px 2px 0px; -fx-background-color: #595959; -fx-border-color: #e6be8a;" BorderPane.alignment="CENTER">
          <children>

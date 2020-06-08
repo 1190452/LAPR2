@@ -37,6 +37,8 @@ public class HistoricalTransactionUI {
     private Label lbl;
     @FXML
     private BorderPane borderPane;
+    
+    private double x,y;
 
     /**public HistoricalTransactionUI() {
         System.out.println("Introduce the file name to load all transactions");
@@ -102,4 +104,18 @@ public class HistoricalTransactionUI {
             }
         }*/
     }
+
+    @FXML
+    private void dragged(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
+    }
+
+    @FXML
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
+    }
+
 }
