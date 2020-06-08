@@ -132,7 +132,7 @@ public class MenuCollaboratorUI implements Initializable {
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
-        stage.setTitle("CreateFreelancer");
+        stage.setTitle("CreatePayment");
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setResizable(false);
         stage.show();
@@ -142,7 +142,18 @@ public class MenuCollaboratorUI implements Initializable {
     }
 
     @FXML
-    private void LoadTransactionsOA(ActionEvent event) {
+    private void LoadTransactionsOA(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/HistoricalTransaction.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("LoadTransaction");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
