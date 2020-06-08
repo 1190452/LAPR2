@@ -18,9 +18,9 @@ public class TaskExecution implements Serializable{
     private double delay;
     private String descriptionOfQuality;
 
-    private static final Date DATA_OMISSAO = new Date();
-    private static final double DELAY_OMISSAO = 1;
-    private static final String DESCRIPTION_OMISSAO = "sem descrição";
+    private static final Date DATE_BY_OMISSION = new Date();
+    private static final double DELAY_BY_OMISSION = 1;
+    private static final String DESCRIPTION_BY_OMISSION = "No description provided";
 
     public TaskExecution(Date endDate, double delay, String descriptionOfQuality) {
         this.endDate = endDate;
@@ -29,9 +29,9 @@ public class TaskExecution implements Serializable{
     }
     
     public TaskExecution(){
-        endDate = DATA_OMISSAO;
-        delay = DELAY_OMISSAO;
-        descriptionOfQuality = DESCRIPTION_OMISSAO;
+        endDate = DATE_BY_OMISSION;
+        delay = DELAY_BY_OMISSION;
+        descriptionOfQuality = DESCRIPTION_BY_OMISSION;
     }
 
     /**
