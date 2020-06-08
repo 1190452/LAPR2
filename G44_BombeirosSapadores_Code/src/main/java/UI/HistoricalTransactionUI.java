@@ -102,6 +102,7 @@ public class HistoricalTransactionUI implements Initializable {
 
     }
 
+    @FXML
     private void dragged(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setX(event.getScreenX() - x);
@@ -114,9 +115,6 @@ public class HistoricalTransactionUI implements Initializable {
         y = event.getSceneY();
     }
 
-    @FXML
-    private void draged(MouseEvent event) {
-    }
 
     private void endLoad(ActionEvent event) {
         ((Node) event.getSource()).getScene().getWindow().hide();

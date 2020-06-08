@@ -55,27 +55,30 @@ public class ImportCsvFile implements ImportFile, Serializable {
             try {
                 
                 while ((line = bufferedReader.readLine()) != null) {
-                    String[] temp = line.split(";");
+                    String[] temp = line.split(";|-|,");
+                    String transID = temp[0]; 
                     String idTask = temp[1];
                     String descriptionTask = temp[2];
                     int taskDuration = Integer.parseInt(temp[3]);
                     double taskCost = Double.parseDouble(temp[4]);
                     String taskCategory = temp[5];
-                    String FreelancerID = temp[6];
-                    String FreelancerName = temp[7];
-                    String FreelancerExpertise = temp[8];
-                    String FreelancerEmail = temp[9];
-                    String FreelancerNIF = temp[10];
-                    String FreelancerBankAccount = temp[11];
-                    String FreelancerStreet = temp[12];
-                    String FreelancerDoor = temp[13];
-                    String FreelancerLocality = temp[14];
-                    String FreelancerCountry = temp[15];
-                    int year = Integer.parseInt(temp[16]);
-                    int month = Integer.parseInt(temp[17]);
-                    int day = Integer.parseInt(temp[18]);
-                    double delay = Double.parseDouble(temp[19]);
-                    String descripOFQuality = temp[20];
+                    int year = Integer.parseInt(temp[7]);
+                    int month = Integer.parseInt(temp[8]);
+                    int day = Integer.parseInt(temp[9]);
+                    double delay = Double.parseDouble(temp[10]);
+                    String descripOFQuality = temp[11];
+                    String FreelancerID = temp[12];
+                    String FreelancerName = temp[13];
+                    String FreelancerExpertise = temp[14];
+                    String FreelancerEmail = temp[15];
+                    String FreelancerNIF = temp[16];
+                    String FreelancerBankAccount = temp[17];
+                    String FreelancerStreet = temp[18];
+                    String FreelancerDoor = temp[19];
+                    String FreelancerLocality = temp[20];
+                    String FreelancerCountry = temp[21];
+                    
+                    
 
                     Freelancer fr = new Freelancer(FreelancerID,FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
                     if (rf.Verification(fr)) {
@@ -84,9 +87,9 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     Task t = new Task(idTask, descriptionTask, taskDuration, taskCost, taskCategory);
                     tl.addTask(t);
                     ht.addHistoricalTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
-                    return ht;
-
+                  
                 }
+                return ht;
             } catch (NoSuchElementException | IOException e) {
                 System.out.println("Error reading HistoricalTransaction file!");
             }
