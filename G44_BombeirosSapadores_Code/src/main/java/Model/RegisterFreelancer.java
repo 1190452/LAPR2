@@ -118,7 +118,7 @@ public class RegisterFreelancer implements Serializable {
      */
     public String generateID(Freelancer free) {
         String id = "";
-        int count = 1;
+        int d = 1;
 
         String[] nameparts = free.getName().split(" ");
         for (String namepart : nameparts) {
@@ -127,17 +127,12 @@ public class RegisterFreelancer implements Serializable {
 
         for (int i = 0; i < listaFreelancers.size(); i++) {
             if (id.charAt(0) == listaFreelancers.get(i).getFreeID().charAt(0) && id.charAt(1) == listaFreelancers.get(i).getFreeID().charAt(1)) {
-                int d = Character.getNumericValue(listaFreelancers.get(i).getFreeID().charAt(2));
+                d = Character.getNumericValue(listaFreelancers.get(i).getFreeID().charAt(2));
                 d = d + 1;
-                id = id + d;
-
+                
             }
         }
-        if (id.length() == 2) {
-            return id + 1;
-        } else {
-            return id;
-        }
+        return id + d;
 
     }
 
