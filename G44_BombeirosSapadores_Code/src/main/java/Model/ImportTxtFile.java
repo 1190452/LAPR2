@@ -50,7 +50,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
 
         try {
             Scanner sc = new Scanner(new File(fileName), "utf-8");
-            sc.useDelimiter(";|\n");
+            sc.useDelimiter(";|\n|-|,");
             ApplicationPOT pot = ApplicationPOT.getInstance();
             UserSession log = pot.getActualSession();
             String email = log.getUserEmail();
@@ -60,11 +60,17 @@ public class ImportTxtFile implements ImportFile, Serializable {
             String cabecalho = sc.nextLine();
             try {
                 while (sc.hasNext()) {
+                    String transID = sc.next().trim();
                     String taskID = sc.next().trim();
                     String taskDescrip = sc.next().trim();
                     int timeTask = Integer.parseInt(sc.next().trim());
                     double taskCost = Double.parseDouble(sc.next().trim());
                     String categoryTask = sc.next().trim();
+                    int day = Integer.parseInt(sc.next().trim());
+                    int month = Integer.parseInt(sc.next().trim());
+                    int year = Integer.parseInt(sc.next().trim());
+                    double delay = Double.parseDouble(sc.next().trim());
+                    String descripOFQuality = sc.next().trim();
                     String FreelancerID = sc.next().trim();
                     String FreelancerName = sc.next().trim();
                     String FreelancerExpertise = sc.next().trim();
@@ -75,21 +81,17 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     String FreelancerDoor = sc.next().trim();
                     String FreelancerLocality = sc.next().trim();
                     String FreelancerCountry = sc.next().trim();
-                    int ano = Integer.parseInt(sc.next().trim());
-                    int mes = Integer.parseInt(sc.next().trim());
-                    int dia = Integer.parseInt(sc.next().trim());
-                    double delay = Double.parseDouble(sc.next().trim());
-                    String descripOFQuality = sc.next().trim();
+
                     Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
                     if (rf.Verification(fr)) {
                         rf.addFreelancer(fr);
                     }
                     Task t = new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask);
                     tl.addTask(t);
-                    ht.addHistoricalTransaction(new Transaction(t, fr, new TaskExecution(new Date(ano, mes, dia), delay, descripOFQuality)));
-                    return ht;
-                }
+                    ht.addHistoricalTransaction(new Transaction(transID, t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
 
+                }
+                return ht;
             } catch (NoSuchElementException e) {
 
                 System.out.println("Error reading HistoricalTransaction file!");

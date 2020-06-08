@@ -23,6 +23,7 @@ public class Transaction implements Serializable{
     private Freelancer freel;
     private TaskExecution taskEx;
     private double transactionValue;
+    private String transID;
 
     private static int counter = 100;
 
@@ -32,6 +33,14 @@ public class Transaction implements Serializable{
         this.taskEx = taskEx;
         this.transactionValue = 0;
         counter++;
+    }
+    
+    public Transaction(String transID,Task task, Freelancer freel, TaskExecution taskEx) { 
+        this.transID = transID;
+        this.task = task;
+        this.freel = freel;
+        this.taskEx = taskEx;
+        this.transactionValue = 0;
     }
 
     public Transaction() {
