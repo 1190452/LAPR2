@@ -5,7 +5,6 @@
  */
 package Model;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,26 +13,57 @@ import java.util.List;
  *
  * @author tiagopereira
  */
-public class TaskList implements Serializable{
+public class TaskList implements Serializable {
 
+    /**
+     * list of tasks
+     */
     private List<Task> taskList;
 
+    /**
+     * constructor that intializes the list of tasks as an AraayList
+     */
     public TaskList() {
         taskList = new ArrayList<>();
     }
 
+    /**
+     * adds a task to the task list
+     *
+     * @param t
+     */
     public void addTask(Task t) {
         taskList.add(t);
     }
 
+    /**
+     * removes a task from the task list
+     *
+     * @param t
+     */
     public void removeTask(Task t) {
         taskList.remove(t);
     }
 
+    /**
+     * returns the task list
+     *
+     * @return
+     */
     public List<Task> getTaskList() {
         return taskList;
     }
 
+    /**
+     * creates a new task with the following parameters:
+     *
+     * @param idTask
+     * @param description
+     * @param timeTask
+     * @param costHour
+     * @param taskCategory
+     * @return
+     */
     public Task newTask(String idTask, String description, int timeTask, double costHour, String taskCategory) {
 
         Task task = new Task(idTask, description, timeTask, costHour, taskCategory);
@@ -45,6 +75,12 @@ public class TaskList implements Serializable{
         }
     }
 
+    /**
+     * method that validates if a task already exists or not
+     *
+     * @param task
+     * @return
+     */
     private boolean validateTask(Task task) {
         for (Task e : taskList) {
             if (task.equals(e)) {
@@ -55,8 +91,14 @@ public class TaskList implements Serializable{
 
     }
 
+    /**
+     * method that regists a task in the system
+     *
+     * @param task
+     * @return
+     */
     public boolean registersTask(Task task) {
-        if (validateTask(task)==true) {
+        if (validateTask(task) == true) {
             addTask(task);
             return true;
         } else {

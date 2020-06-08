@@ -8,24 +8,43 @@ package Model;
 import Utils.Date;
 import java.io.Serializable;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author tiagopereira
  */
-public class Transaction implements Serializable{
+public class Transaction implements Serializable {
 
+    /**
+     * task related to the transaction
+     */
     private Task task;
+
+    /**
+     * freelancer related to the transaction
+     */
     private Freelancer freel;
+
+    /**
+     * task execution related to the transaction
+     */
     private TaskExecution taskEx;
+
+    /**
+     * value of the transaction
+     */
     private double transactionValue;
 
+    /**
+     * counter which will be incremented to generate the transaction ID
+     */
     private static int counter = 100;
 
+    /**
+     *
+     * @param task
+     * @param freel
+     * @param taskEx
+     */
     public Transaction(Task task, Freelancer freel, TaskExecution taskEx) {
         this.task = task;
         this.freel = freel;
@@ -35,15 +54,15 @@ public class Transaction implements Serializable{
     }
 
     public Transaction() {
-        task = new Task();
-        freel = new Freelancer();
-        taskEx = new TaskExecution();
+        this.task = new Task();
+        this.freel = new Freelancer();
+        this.taskEx = new TaskExecution();
         this.transactionValue = 0;
-
         counter++;
     }
 
     /**
+     * returns the task related to the transaction
      * @return the task
      */
     public Task getTask() {
@@ -51,6 +70,7 @@ public class Transaction implements Serializable{
     }
 
     /**
+     * modifies the task related to the transaction
      * @param task the task to set
      */
     public void setTask(Task task) {
@@ -58,6 +78,7 @@ public class Transaction implements Serializable{
     }
 
     /**
+     * returns the freelancer related to the transaction
      * @return the freel
      */
     public Freelancer getFreel() {
@@ -65,6 +86,7 @@ public class Transaction implements Serializable{
     }
 
     /**
+     * modifies the freelancer related to the transaction
      * @param freel the freel to set
      */
     public void setFreel(Freelancer freel) {
@@ -72,6 +94,7 @@ public class Transaction implements Serializable{
     }
 
     /**
+     * returns the task execution of the transaction
      * @return the taskEx
      */
     public TaskExecution getTaskEx() {
@@ -79,6 +102,7 @@ public class Transaction implements Serializable{
     }
 
     /**
+     * returns the counter 
      * @return the counter
      */
     public static int getCounter() {
@@ -86,13 +110,15 @@ public class Transaction implements Serializable{
     }
 
     /**
+     * modifies the task execution related to the transaction
      * @param taskEx the taskEx to set
      */
     public void setTaskEx(TaskExecution taskEx) {
         this.taskEx = taskEx;
-    } 
-    
+    }
+
     /**
+     * returns the transaction value
      * @return the transactionValue
      */
     public double getTransactionValue() {
@@ -100,21 +126,21 @@ public class Transaction implements Serializable{
     }
 
     /**
+     * modifies the transaction value
      * @param transactionValue the transactionValue to set
      */
     public void setTransactionValue(double transactionValue) {
         this.transactionValue = transactionValue;
     }
 
-    
-    
-    public TaskExecution createTaskExecution(Date endDate, double delay, String qow) {
-        return new TaskExecution(endDate, delay, qow);
-    }
-    
+
+    /**
+     * writing method of the class Transaction
+     * @return 
+     */
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("Task :%s -------------------- %s ", task.getIdTask(), transactionValue);
     }
-    
+
 }

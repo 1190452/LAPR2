@@ -14,27 +14,54 @@ import java.io.Serializable;
  */
 public class TaskExecution implements Serializable{
 
+    /**
+     * end date of the task execution
+     */
     private Date endDate;
+    
+    /**
+     * delay of the task execution (extra time that the freelancer took to execute the task)
+     */
     private double delay;
+    
+    /**
+     * description of quality of the task execution
+     */
     private String descriptionOfQuality;
 
-    private static final Date DATE_BY_OMISSION = new Date();
+    /**
+     * delay by omission
+     */
     private static final double DELAY_BY_OMISSION = 1;
+    
+    /**
+     * description of quality by omission
+     */
     private static final String DESCRIPTION_BY_OMISSION = "No description provided";
 
+    /**
+     * complete constructor that builds an instance of task execution
+     * @param endDate
+     * @param delay
+     * @param descriptionOfQuality 
+     */
     public TaskExecution(Date endDate, double delay, String descriptionOfQuality) {
         this.endDate = endDate;
         this.delay = delay;
         this.descriptionOfQuality = descriptionOfQuality;
     }
     
+    /**
+     * empty constructor that builds an instance of task execution
+     */
     public TaskExecution(){
-        endDate = DATE_BY_OMISSION;
-        delay = DELAY_BY_OMISSION;
-        descriptionOfQuality = DESCRIPTION_BY_OMISSION;
+        this.endDate = new Date();
+        this.delay = DELAY_BY_OMISSION;
+        this.descriptionOfQuality = DESCRIPTION_BY_OMISSION;
     }
 
     /**
+     * returns the end date
      * @return the endDate
      */
     public Date getEndDate() {
@@ -42,6 +69,7 @@ public class TaskExecution implements Serializable{
     }
 
     /**
+     * returns the task 
      * @return the delay
      */
     public double getTaskDelay() {
@@ -49,6 +77,7 @@ public class TaskExecution implements Serializable{
     }
 
     /**
+     * returns the description of quality
      * @return the descriptionOfQuality
      */
     public String getDescriptionOfQuality() {
@@ -56,6 +85,7 @@ public class TaskExecution implements Serializable{
     }
 
     /**
+     * modifies the description of quality 
      * @param descriptionOfQuality the descriptionOfQuality to set
      */
     public void setDescriptionOfQuality(String descriptionOfQuality) {
@@ -63,6 +93,7 @@ public class TaskExecution implements Serializable{
     }
 
     /**
+     * modifies the end date
      * @param endDate the endDate to set
      */
     public void setEndDate(Date endDate) {
@@ -70,6 +101,7 @@ public class TaskExecution implements Serializable{
     }
 
     /**
+     * modifies the delay
      * @param delay the delay to set
      */
     public void setDelay(double delay) {

@@ -86,7 +86,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     }
                     Task t = new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask);
                     tl.addTask(t);
-                    ht.addHistoricalTransaction(new Transaction(t, fr, new TaskExecution(new Date(ano, mes, dia), delay, descripOFQuality)));
+                    ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(ano, mes, dia), delay, descripOFQuality)));
                     return ht;
                 }
 

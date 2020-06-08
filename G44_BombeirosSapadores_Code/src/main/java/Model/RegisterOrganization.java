@@ -21,29 +21,64 @@ import java.io.Serializable;
  *
  * @author paulomaio
  */
-public class RegisterOrganization implements Serializable{
+public class RegisterOrganization implements Serializable {
 
+    /**
+     * variable used to call the methods of the class ApplicationPOT
+     */
     private ApplicationPOT m_oApp;
-    private Platform m_oPlataforma;
-    private Organization m_oOrganizacao;
-    private Manager manager;
-    private Collaborator collab;
-//    private CreateTaskController ctask_controller;
-    private List<Organization> lOrg;
-    
 
+    /**
+     * platform
+     */
+    private Platform m_oPlataforma;
+
+    /**
+     * organization
+     */
+    private Organization m_oOrganizacao;
+
+    /**
+     * manager of the organization
+     */
+    private Manager manager;
+
+    /**
+     * collaborator of the organization
+     */
+    private Collaborator collab;
+
+    /**
+     * list of organizations
+     */
+    private List<Organization> lOrg;
+
+    /**
+     *
+     */
     public RegisterOrganization() {
-//        this.ctask_controller = new CreateTaskController();
-    //    this.m_oApp = ApplicationPOT.getInstance();
-      //  this.m_oPlataforma = m_oApp.getPlatform();
-        
+        // this.ctask_controller = new CreateTaskController();
+        //    this.m_oApp = ApplicationPOT.getInstance();
+        //  this.m_oPlataforma = m_oApp.getPlatform();
+
         lOrg = new ArrayList<>();
     }
 
+    /**
+     * returns the writing method of the organization
+     *
+     * @return
+     */
     public String getOrganizationString() {
         return this.m_oOrganizacao.toString();
     }
 
+    /**
+     * adds an organization to the list of organizations
+     *
+     * @param oOrganizacao
+     * @return
+     */
     public boolean addOrganization(Organization oOrganizacao) {
         if (lOrg.add(oOrganizacao)) {
             return true;
@@ -51,6 +86,13 @@ public class RegisterOrganization implements Serializable{
         return false;
     }
 
+    /**
+     * returns the organization of the collaborator, which email was received by
+     * parameter
+     *
+     * @param email
+     * @return
+     */
     public Organization getOrganizationByUserEmailColab(String email) {
         for (int i = 0; i < lOrg.size(); i++) {
             if (email.equalsIgnoreCase(lOrg.get(i).getColab().getEmailC())) {
@@ -60,7 +102,14 @@ public class RegisterOrganization implements Serializable{
         }
         return null;
     }
-    
+
+    /**
+     * returns the organization of the manager, which email was received by
+     * parameter
+     *
+     * @param email
+     * @return
+     */
     public Organization getOrganizationByUserEmailMan(String email) {
         for (int i = 0; i < lOrg.size(); i++) {
             if (email.equalsIgnoreCase(lOrg.get(i).getManager().getEmailM())) {
@@ -71,11 +120,27 @@ public class RegisterOrganization implements Serializable{
         return null;
     }
 
+    /**
+     * method that creates a new organization and receives the following
+     * parameters:
+     *
+     * @param name
+     * @param email
+     * @param NIF
+     * @param street
+     * @param doorNumber
+     * @param locality
+     * @param nameC
+     * @param emailC
+     * @param nameM
+     * @param emailM
+     * @return
+     */
     public Organization newOrganization(String name, String email, String NIF, String street, String doorNumber, String locality, String nameC, String emailC, String nameM, String emailM) {
         try {
             this.m_oApp = ApplicationPOT.getInstance();
             this.m_oPlataforma = m_oApp.getPlatform();
-            
+
             Address address = new Address(street, doorNumber, locality);
             String role = Constants.ROLE_MANAGER_ORGANIZATION;
             this.manager = Organization.newManager(nameM, emailM, role);
@@ -90,6 +155,12 @@ public class RegisterOrganization implements Serializable{
         }
     }
 
+    /**
+     * method that validates if an organization is or isn't null
+     *
+     * @param org
+     * @return
+     */
     public boolean validateOrganization(Organization org) {
         boolean bRet = true;
 
@@ -100,6 +171,13 @@ public class RegisterOrganization implements Serializable{
         return bRet;
     }
 
+    /**
+     * method that regists in the system an organization received by parameter
+     *
+     * @param org
+     * @return
+     * @throws FileNotFoundException
+     */
     public boolean registerOrganization(Organization org) throws FileNotFoundException {
         if (validateOrganization(org)) {
             registUser(this.manager);
@@ -110,6 +188,13 @@ public class RegisterOrganization implements Serializable{
         return false;
     }
 
+    /**
+     * method that regists a manager as a user in the system and sends him an
+     * email with his password so he can login
+     *
+     * @param manager
+     * @throws FileNotFoundException
+     */
     public void registUser(Manager manager) throws FileNotFoundException {
         String nameM = manager.getNameM();
         String emailM = manager.getEmailM();
@@ -120,6 +205,13 @@ public class RegisterOrganization implements Serializable{
         Writer.sendsPassword(emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
     }
 
+    /**
+     * method that regists a collaborator as a user in the system and sends him
+     * an email with his password so he can login
+     *
+     * @param collab
+     * @throws FileNotFoundException
+     */
     public void registUser(Collaborator collab) throws FileNotFoundException {
         String nameC = collab.getNameC();
         String emailC = collab.getEmailC();
@@ -127,10 +219,7 @@ public class RegisterOrganization implements Serializable{
         String pwdC = alg.generate(7);
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registerUser(nameC, emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
-        Writer.sendsPassword(emailC, pwdC,Constants.ROLE_COLLABORATOR_ORGANIZATION);
+        Writer.sendsPassword(emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
     }
-    
-    public List<Organization> get(){
-        return lOrg;
-    } 
+
 }

@@ -83,7 +83,7 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     }
                     Task t = new Task(idTask, descriptionTask, taskDuration, taskCost, taskCategory);
                     tl.addTask(t);
-                    ht.addHistoricalTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
+                    ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
                     return ht;
 
                 }
