@@ -15,14 +15,16 @@ import java.util.List;
 public class Writer {
 
     /**
-     * method that "sends" an email to the new registered users with the password 
+     * method that "sends" an email to the new registered users with the
+     * password
+     *
      * @param email
      * @param pwd
-     * @param role 
+     * @param role
      */
     public static void sendsPassword(String email, String pwd, String role) {
         try {
-            try (PrintWriter out = new PrintWriter(new FileWriter("Data about " + role + ".txt",true))) {
+            try (PrintWriter out = new PrintWriter(new FileWriter("Data about " + role + ".txt", true))) {
                 out.println("Email of your account: " + email);
                 out.println("Password to access your account: " + pwd);
                 out.close();
@@ -33,9 +35,10 @@ public class Writer {
     }
 
     /**
-     * method that "sends" an email to the freelancers with the payment value 
+     * method that "sends" an email to the freelancers with the payment value
+     *
      * @param org
-     * @param sum 
+     * @param sum
      */
     public static void writeOrg(Organization org, double sum) {
         try {
@@ -49,9 +52,11 @@ public class Writer {
     }
 
     /**
-     * method that "sends" an email to freelancers that have a task delay higher than 3 hours and higher than the overall task delay
+     * method that "sends" an email to freelancers that have a task delay higher
+     * than 3 hours and higher than the overall task delay
+     *
      * @param free
-     * @throws FileNotFoundException 
+     * @throws FileNotFoundException
      */
     public static void sendEmail(Freelancer free) throws FileNotFoundException {
         try {
@@ -69,35 +74,34 @@ public class Writer {
     }
 
     /**
-     * method that "sends" an email with the receipt, explaining the payment for eahc task and the overall payment in euros and 
-     * in the currency of the freelancer
+     * method that "sends" an email with the receipt, explaining the payment for
+     * eahc task and the overall payment in euros and in the currency of the
+     * freelancer
+     *
      * @param nltr
      * @param valueE
-     * @param valueC 
+     * @param valueC
      */
     public static void genEmail(List<Transaction> nltr, double valueE, double valueC) {
         try {
-            //adicionar o code..
-            PrintWriter out = new PrintWriter(new File("receipt" + nltr.get(0).getFreel().getFreeID() + Date.actualDate().toFile() + ".txt"));
-            try {
-                out.println("Receipt of " + nltr.get(0).getFreel().getFreeID());
+
+            FileWriter writer2 = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
+            {
+                writer2.write("Receipt of " + nltr.get(0).getFreel().getFreeID());
                 for (Transaction e : nltr) {
-                    out.print(e.toString() + "\n");
+                    writer2.write(e.toString() + "\n");
                 }
                 if (valueE == valueC) {
-                    out.println("The total value is: " + valueE + "euros");
+                    writer2.write("The total value is: " + valueE + "euros\n");
                 } else {
-                    out.println("The total value in euros is " + valueE + " and " + valueC + " in your local currency");
+                    writer2.write("The total value in euros is " + valueE + " and " + valueC + " in your local currency\n");
                 }
 
-            } finally {
-
-                out.close();
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
-        }
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
