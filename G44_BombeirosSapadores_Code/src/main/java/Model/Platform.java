@@ -270,7 +270,7 @@ public class Platform implements Serializable{
 
         dpt.passOrg(org);
         System.out.println("Timer uc7 defined");
-        t.scheduleAtFixedRate(dpt, interval, period);
+        t.scheduleAtFixedRate(dpt, interval*1000, period*1000);
 
     }
 

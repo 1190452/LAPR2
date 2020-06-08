@@ -40,12 +40,11 @@ public class DoPaymentTask extends TimerTask {
     }
 
     private void doPayment() {
-
-        
+        System.out.println("task ta a andarrrrrr");
         ApplicationPOT app = ApplicationPOT.getInstance();
-        
+
         plt = app.getPlatform();
-        
+
         RegisterFreelancer rFree = plt.getRfree();
 
         List<Freelancer> lf = rFree.getListFreelancers();
@@ -58,7 +57,7 @@ public class DoPaymentTask extends TimerTask {
 
             Task ts = lt.get(i);
             boolean verifier = ts.isIsFinished();
-            if (verifier == false) {
+            if (verifier == true) {
 
                 amountsET.add(ts);
 
@@ -67,51 +66,49 @@ public class DoPaymentTask extends TimerTask {
 
         RegisterTransaction rt = plt.getRTrans();
         List<Transaction> ltr = rt.getTransactions();
-        
+
         List<Transaction> nltr = new ArrayList<>();
-        
+
         for (int i = 0; i < lf.size(); i++) {
-            
+
             ltr.removeAll(ltr);
-            double sum=0;
+            double sum = 0;
             Freelancer freel = lf.get(i);
             for (int j = 0; j < amountsET.size(); j++) {
-                
+
                 Task ts = amountsET.get(j);
-                
+
                 for (int k = 0; k < ltr.size(); k++) {
-                    
+
                     Transaction tr = ltr.get(k);
                     Freelancer f = tr.getFreel();
                     Task cts = tr.getTask();
-                    
-                    if(ts.equals(cts) && freel.equals(f)){
+
+                    if (ts.equals(cts) && freel.equals(f)) {
                         nltr.add(tr);
                         double value = tr.getTransactionValue();
-                        sum +=value;
-                        
+                        sum += value;
+
                     }
-                    
+
                 }
             }
-        
-        String country = freel.getCountry();
-        CurrencyConverter c = new CurrencyConverter();
-        double curr =  c.convert(sum, country);
-        
-        Payment p = new Payment(sum, curr, nltr);
-        
-        boolean verif = p.validatePay();
-        if (verif==true){
-            freel.addPayment(p);
-        }
-        
-        Writer.writeOrg(org, sum);
-        
-        p.generateReceipt(country);
-        
-        
-                    
+
+            String country = freel.getCountry();
+            CurrencyConverter c = new CurrencyConverter();
+            double curr = c.convert(sum, country);
+
+            Payment p = new Payment(sum, curr, nltr);
+
+            boolean verif = p.validatePay();
+            if (verif == true) {
+                freel.addPayment(p);
+            }
+
+            Writer.writeOrg(org, sum);
+
+            p.generateReceipt(country);
+
         }
     }
 
