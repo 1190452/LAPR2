@@ -1,0 +1,2 @@
+Receipt of QO1Task :t1 -------------------- 140.0 
+The total value is: 140.0euros

@@ -32,7 +32,8 @@ public class Constants {
     
     public static double NR_OF_SECONDS_OF_DAY = 86400;
     
-    public static final String PAYMENTS_ORGS_FILENAME ="emails.txt";
+    public static final String EMAILS ="e-mails.txt";
+    public static final String ORGS ="Orgs.txt";
   
     
 }

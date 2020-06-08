@@ -1,6 +1,7 @@
 package Model;
 
 import Utils.Date;
+import Utils.Time;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -42,8 +43,8 @@ public class Writer {
      */
     public static void writeOrg(Organization org, double sum) {
         try {
-            FileWriter writer = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
-            writer.write("Organization" + org.getName() + " made a payment of " + sum + " on " + Date.actualDate().toFile() + "\n");
+            FileWriter writer = new FileWriter(Constants.ORGS, true);
+            writer.write("Organization " + org.getName() + " made a payment of " + sum + " on " + Date.actualDate().toFile() + " at "+Time.actualTime().toString() +"\n");
 
             writer.close();
         } catch (IOException e) {
@@ -85,7 +86,7 @@ public class Writer {
     public static void genEmail(List<Transaction> nltr, double valueE, double valueC) {
         try {
 
-            FileWriter writer2 = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
+            FileWriter writer2 = new FileWriter(Constants.EMAILS, true);
 
             writer2.write("Receipt of " + nltr.get(0).getFreel().getFreeID());
             for (Transaction e : nltr) {
