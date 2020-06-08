@@ -26,10 +26,17 @@ public final class PasswordGenerator implements Serializable{
     private boolean useDigits;
     private boolean usePunctuation;
 
+    /**
+     * The empty constructor of PasswordGenerator
+     */
     private PasswordGenerator() {
         throw new UnsupportedOperationException("Empty constructor is not supported.");
     }
 
+    /**
+     * Builds an instance of PasswordGenerator
+     * @param builder the pass
+     */
     private PasswordGenerator(PasswordGeneratorBuilder builder) {
         this.useLower = builder.useLower;
         this.useUpper = builder.useUpper;
@@ -39,11 +46,33 @@ public final class PasswordGenerator implements Serializable{
 
     public static class PasswordGeneratorBuilder {
 
+        /**
+         * true if the user want lowercase characters, false if he doesn't want
+         * lowercase characters
+         */
         private boolean useLower;
+        
+        /**
+         * true if the user want uppercase characters, false if he doesn't want
+         * uppercase characters
+         */
         private boolean useUpper;
+        
+        /**
+         * true if the user want digits , false if he doesn't want
+         * digits characters
+         */
         private boolean useDigits;
+        
+        /**
+         * true if the user want punctuation characters(.,!?), false if he doesn't want
+         * punctuation characters (.,!?)
+         */
         private boolean usePunctuation;
 
+        /**
+         * Creates an instance of PasswordGeneratorBuilder with the default values
+         */
         public PasswordGeneratorBuilder() {
             this.useLower = false;
             this.useUpper = false;
