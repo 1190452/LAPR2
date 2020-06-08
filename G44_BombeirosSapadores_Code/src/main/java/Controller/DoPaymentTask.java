@@ -55,11 +55,8 @@ public class DoPaymentTask extends TimerTask {
      * method that does the payment and generates the receipt
      */
     private void doPayment() {
-<<<<<<< HEAD
 
-=======
         System.out.println("task ta a andarrrrrr");
->>>>>>> 68a1bd77cee6ff61047eca1b083aab285ecffbda
         ApplicationPOT app = ApplicationPOT.getInstance();
 
         plt = app.getPlatform();
