@@ -6,7 +6,7 @@
 package Model;
 
 import Controller.CreateTaskController;
-import autorizacao.FacadeAuthorization;
+import Authorization.FacadeAuthorization;
 import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

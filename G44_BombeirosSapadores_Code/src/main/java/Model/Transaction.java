@@ -1,13 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Model;
 
 import Utils.Date;
 import java.io.Serializable;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 38591059d10c6d6956c8c524142cd0215abb2f0f
 /**
  *
  * @author tiagopereira
@@ -33,6 +33,7 @@ public class Transaction implements Serializable {
      * value of the transaction
      */
     private double transactionValue;
+    private String transID;
 
     /**
      * counter which will be incremented to generate the transaction ID
@@ -51,6 +52,14 @@ public class Transaction implements Serializable {
         this.taskEx = taskEx;
         this.transactionValue = 0;
         counter++;
+    }
+    
+    public Transaction(String transID,Task task, Freelancer freel, TaskExecution taskEx) { 
+        this.transID = transID;
+        this.task = task;
+        this.freel = freel;
+        this.taskEx = taskEx;
+        this.transactionValue = 0;
     }
 
     public Transaction() {

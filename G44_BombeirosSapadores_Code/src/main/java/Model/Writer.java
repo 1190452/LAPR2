@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
 import Utils.Date;
@@ -28,7 +23,7 @@ public class Writer {
      */
     public static void sendsPassword(String email, String pwd, String role) throws FileNotFoundException {
         try {
-            PrintWriter out = new PrintWriter(new File("Data about " + role));
+            PrintWriter out = new PrintWriter(new File("Data about " + role + ".txt"));
             try {
                 out.println("Email of your account: " + email);
                 out.println("Password to access your account: " + pwd);

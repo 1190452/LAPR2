@@ -2,8 +2,8 @@ package UI;
 
 import Model.ApplicationPOT;
 import Model.Constants;
-import autorizacao.FacadeAuthorization;
-import autorizacao.model.UserSession;
+import Authorization.FacadeAuthorization;
+import Authorization.model.UserSession;
 import com.jfoenix.controls.JFXTextField;
 
 import java.io.IOException;

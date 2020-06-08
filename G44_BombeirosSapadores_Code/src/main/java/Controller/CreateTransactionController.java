@@ -14,7 +14,7 @@ import Model.Task;
 import Model.TaskList;
 import Model.Transaction;
 import Utils.Date;
-import autorizacao.model.UserSession;
+import Authorization.model.UserSession;
 import java.util.List;
 
 /**

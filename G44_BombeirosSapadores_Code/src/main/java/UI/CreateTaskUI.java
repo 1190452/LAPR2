@@ -71,7 +71,7 @@ public class CreateTaskUI {
                 ctask_controller = new CreateTaskController();
                 Task ts = ctask_controller.newTask(idTxt.getText(), descriptionTxt.getText(),
                         Integer.parseInt(timeTxt.getText()), Double.parseDouble(costTxt.getText()), categoryTxt.getText());
-                Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Task Creation", ts.toStringS());
+                Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Task Creation", ts.toString());
 
                 if (alert1.showAndWait().get() == ButtonType.OK) {
                     alert1.close();

@@ -12,7 +12,7 @@ import Model.Platform;
 import Model.RegisterOrganization;
 import Utils.Date;
 import Utils.Time;
-import autorizacao.model.UserSession;
+import Authorization.model.UserSession;
 
 /**
  *
@@ -20,11 +20,30 @@ import autorizacao.model.UserSession;
  */
 public class PaymentController {
 
+    /**
+     * The platform of the PaymentController
+     */
     private Platform plat;
+    
+    /**
+     * The organization of the PaymentController
+     */
     private Organization org;
+    
+    /**
+     * The definePayement of the PaymentController
+     */
     private DefinePayment dpay;
+    
+    /**
+     * The email of the PaymentController
+     */
     private String email;
 
+    /**
+     * The organization that is going to be used to define the payment
+     * @return organization
+     */
     public Organization getOrg() {
         ApplicationPOT app = ApplicationPOT.getInstance();
         plat = app.getPlatform();
@@ -35,6 +54,13 @@ public class PaymentController {
         return org;
     }
 
+    /**
+     * Defines the payment
+     * @param time the time of the payment
+     * @param date the date of the payment
+     * @param rtp
+     * @return 
+     */
     public DefinePayment newDefinePayment(Time time, Date date, int rtp) {
         dpay = org.newDefinePayment(time,date,rtp);
         
@@ -44,6 +70,10 @@ public class PaymentController {
         return null;
     }
 
+    /**
+     * 
+     * @return 
+     */
     public boolean registerDefinePayment() {
         if(dpay.registersDefinePayment(dpay)){
             org.setDefinePayment(dpay);

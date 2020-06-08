@@ -5,7 +5,7 @@
  */
 package Model;
 
-import autorizacao.model.UserSession;
+import Authorization.model.UserSession;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

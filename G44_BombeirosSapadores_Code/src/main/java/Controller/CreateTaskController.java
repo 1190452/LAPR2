@@ -14,7 +14,7 @@ import Model.Organization;
 import Model.RegisterOrganization;
 import Model.Task;
 import Model.TaskList;
-import autorizacao.model.UserSession;
+import Authorization.model.UserSession;
 
 /**
  *
