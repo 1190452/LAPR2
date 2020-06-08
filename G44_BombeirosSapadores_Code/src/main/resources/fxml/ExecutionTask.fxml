@@ -91,12 +91,12 @@
                         <Insets left="100.0" />
                      </GridPane.margin>
                   </JFXTextField>
-                  <JFXComboBox fx:id="listTaskTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <JFXComboBox fx:id="listTaskTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" styleClass="combo-box" stylesheets="@../styles/Styles.css" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="100.0" />
                      </GridPane.margin>
                   </JFXComboBox>
-                  <JFXComboBox fx:id="listFreelancerTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <JFXComboBox fx:id="listFreelancerTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" styleClass="combo-box" stylesheets="@../styles/Styles.css" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="100.0" />
                      </GridPane.margin>
