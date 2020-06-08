@@ -24,6 +24,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -45,6 +46,7 @@ public class DefinePaymentUI implements Initializable {
     private JFXTextField nrDaystxt;
 
     private DefinePayment dp;
+    private double x,y;
 
     /**
      * Initializes the controller class.
@@ -60,6 +62,8 @@ public class DefinePaymentUI implements Initializable {
 
     @FXML
     private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 
     @FXML
@@ -98,6 +102,7 @@ public class DefinePaymentUI implements Initializable {
 
     @FXML
     private void Cancel(ActionEvent event) {
+        endDP(event);
     }
 
     private void endDP(ActionEvent event) {
@@ -106,6 +111,21 @@ public class DefinePaymentUI implements Initializable {
         nrDaystxt.clear();
 
         ((Node) event.getSource()).getScene().getWindow().hide();
+    }
+
+
+    @FXML
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
+    }
+
+    @FXML
+    private void dragged(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
     }
 
 }

@@ -24,40 +24,40 @@ public class TaskExecutionTest {
     /**
      * Test of getEndDate method, of class TaskExecution.
      */
-    @Test
-    public void testGetEndDate() {
-        System.out.println("getEndDate");
-        TaskExecution instance = new TaskExecution();
-        Date expResult = null;
-        Date result = instance.getEndDate();
-        assertEquals(expResult, result);
-
-    }
+//    @Test
+//    public void testGetEndDate() {
+//        System.out.println("getEndDate");
+//        TaskExecution instance = new TaskExecution();
+//        Date expResult = null;
+//        Date result = instance.getEndDate();
+//        assertEquals(expResult, result);
+//
+//    }
 
     /**
      * Test of getTaskDelay method, of class TaskExecution.
      */
-    @Test
-    public void testGetTaskDelay() {
-        System.out.println("getTaskDelay");
-        TaskExecution instance = new TaskExecution();
-        double expResult = 0.0;
-        double result = instance.getTaskDelay();
-        assertEquals(expResult, result, 0.0);
-
-    }
+//    @Test
+//    public void testGetTaskDelay() {
+//        System.out.println("getTaskDelay");
+//        TaskExecution instance = new TaskExecution();
+//        double expResult = 0.0;
+//        double result = instance.getTaskDelay();
+//        assertEquals(expResult, result, 0.0);
+//
+//    }
 
     /**
      * Test of getDescriptionOfQuality method, of class TaskExecution.
      */
-    @Test
-    public void testGetDescriptionOfQuality() {
-        System.out.println("getDescriptionOfQuality");
-        TaskExecution instance = new TaskExecution();
-        String expResult = "";
-        String result = instance.getDescriptionOfQuality();
-        assertEquals(expResult, result);
-    }
+//    @Test
+//    public void testGetDescriptionOfQuality() {
+//        System.out.println("getDescriptionOfQuality");
+//        TaskExecution instance = new TaskExecution();
+//        String expResult = "";
+//        String result = instance.getDescriptionOfQuality();
+//        assertEquals(expResult, result);
+//    }
 
     /**
      * Test of setDescriptionOfQuality method, of class TaskExecution.

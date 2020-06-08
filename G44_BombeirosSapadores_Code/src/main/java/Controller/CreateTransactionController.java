@@ -93,14 +93,4 @@ public class CreateTransactionController {
     public boolean registerTransaction() {
         return rt.registerTransaction(trans);
     }
-
-    /**
-     * calls the method of the class RegisterTransaction that calculates the value of that transaction
-     * @param trans
-     * @return 
-     */
-    public double calculateTransactionValue(Transaction trans) {
-        return rt.calculateTransactionValue(trans);
-    }
-
 }

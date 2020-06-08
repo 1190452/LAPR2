@@ -71,7 +71,7 @@ public class DoPaymentTask extends TimerTask {
 
         for (int i = 0; i < lf.size(); i++) {
 
-            ltr.removeAll(ltr);
+            nltr.removeAll(nltr);
             double sum = 0;
             Freelancer freel = lf.get(i);
             for (int j = 0; j < amountsET.size(); j++) {

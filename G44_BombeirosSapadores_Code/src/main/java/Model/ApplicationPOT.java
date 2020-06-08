@@ -6,6 +6,7 @@ package Model;
 import java.io.FileInputStream;
 import java.io.IOException;
 import Authorization.FacadeAuthorization;
+import Authorization.model.RegisterUser;
 import Authorization.model.UserSession;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,7 +18,7 @@ import java.io.Serializable;
  *
  * @author paulomaio
  */
-public class ApplicationPOT implements Serializable{
+public class ApplicationPOT implements Serializable {
 
     private final String FILENAME = "saves.ser";
     /**
@@ -29,14 +30,17 @@ public class ApplicationPOT implements Serializable{
      * facade authorization
      */
     private FacadeAuthorization m_oAutorizacao;
+    private RegisterUser ru;
 
     /**
      * constructor that initializes the Platform and the FacadeAuthorization
      */
+    private RegisterOrganization rorg;
+
     public ApplicationPOT() {
         this.m_oPlataforma = new Platform();
         this.m_oAutorizacao = this.m_oPlataforma.getFacadeAuthorazation();
-        bootstrap(true);
+        bootstrap();
     }
 
     public void read() {
@@ -60,13 +64,13 @@ public class ApplicationPOT implements Serializable{
         try {
             ObjectOutputStream out = new ObjectOutputStream(
                     new FileOutputStream(new File(FILENAME)));
-            try{
+            try {
                 out.writeObject(m_Platform);
-            }finally{
+            } finally {
                 out.close();
             }
             return true;
-        } catch(IOException ex){
+        } catch (IOException ex) {
             return false;
         }
     }
@@ -110,16 +114,18 @@ public class ApplicationPOT implements Serializable{
     /**
      * method that regists an administrator in the platform
      */
-    private void bootstrap(boolean isTesting) {
+    private void bootstrap() {
 
         this.m_oAutorizacao.registerUser("Ricardo", "bombeiro@gmail.com", "qwerty", Constants.ROLE_ADMINISTRATIVE);
         this.m_oAutorizacao.registerUser("Bruno", "b@gmail.com", "qwerty", Constants.ROLE_COLLABORATOR_ORGANIZATION);
         this.m_oAutorizacao.registerUser("Alexandre", "a@gmail.com ", "qwerty", Constants.ROLE_MANAGER_ORGANIZATION);
-        
-        if(isTesting){
-            
-        }
-       
+//        Collaborator o = new Collaborator("Bruno Silva", "bruno@gmail.com", Constants.ROLE_COLLABORATOR_ORGANIZATION);
+//        Manager m = new Manager("Alex Silva", "alexandre@gmail.com", Constants.ROLE_MANAGER_ORGANIZATION);
+//        ru.newUser("Alex Silva", "alexandre@gmail.com", "cona", Constants.ROLE_MANAGER_ORGANIZATION);
+//        ru.newUser("Bruno Silva", "bruno@gmail.com", "cona", Constants.ROLE_COLLABORATOR_ORGANIZATION);
+//        this.rorg.addOrganization(new Organization("lda", "152063390", "lad@gmail.com", new Address("Rua rosa", "43", "Portugal"), o, m));
+
+
     }
 
     /**

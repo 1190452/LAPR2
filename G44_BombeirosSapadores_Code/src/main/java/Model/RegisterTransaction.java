@@ -73,7 +73,7 @@ public class RegisterTransaction implements Serializable{
      * @return 
      */
     public boolean registerTransaction(Transaction trans) {
-        if (validateTransaction(trans) == true) {
+        if (validateTransaction(trans)) {
             return addTransaction(trans);
         }
         return false;
@@ -97,7 +97,12 @@ public class RegisterTransaction implements Serializable{
      * @return 
      */
     public boolean addTransaction(Transaction trans) {
-        return transactionList.add(trans);
+        transactionList.add(trans);
+        trans.setTransactionValue(calculateTransactionValue(trans));
+        if(transactionList!=null){
+            return true;
+        }
+        return false;
     }
 
     /**
