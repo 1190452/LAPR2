@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,18 +37,22 @@ public class MenuManagerUI implements Initializable {
 
     @FXML
     private Label dateTime;
-    
-    double x,y;
+
+    double x, y;
     @FXML
     private Button logoutBtn;
     @FXML
     private Button bt_dph;
     @FXML
     private Button bt_CheckSt;
+    @FXML
+    private Label lblWelcome;
+
+    private ApplicationPOT pot;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
         /**
          * Shows the current time in the label
          */
@@ -57,11 +62,21 @@ public class MenuManagerUI implements Initializable {
         }), new KeyFrame(Duration.seconds(1)));
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
+
+        pot = ApplicationPOT.getInstance();
+        lblWelcome.setText("Welcome " + pot.getActualSession().getUserName() + "!");
+
+        PauseTransition visiblePause = new PauseTransition(
+                Duration.seconds(10)
+        );
+        visiblePause.setOnFinished(
+                event -> lblWelcome.setVisible(false)
+        );
+        visiblePause.play();
     }
 
     @FXML
     private void close(MouseEvent event) {
-        ApplicationPOT pot = ApplicationPOT.getInstance();
         pot.doLogout();
         pot.save(pot.getPlatform());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -70,15 +85,15 @@ public class MenuManagerUI implements Initializable {
 
     @FXML
     private void min(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
     }
 
     @FXML
     private void draged(MouseEvent event) {
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        stage.setX(event.getScreenX() -x);
-        stage.setY(event.getScreenY() -y);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
     }
 
     @FXML
@@ -89,8 +104,7 @@ public class MenuManagerUI implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
-        
-        ApplicationPOT pot = ApplicationPOT.getInstance();
+
         pot.doLogout();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
@@ -107,7 +121,7 @@ public class MenuManagerUI implements Initializable {
 
     @FXML
     private void definePaymentHour(ActionEvent event) throws IOException {
-        
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/DefinePayment.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -123,8 +137,7 @@ public class MenuManagerUI implements Initializable {
 
     @FXML
     private void checkStats(ActionEvent event) throws IOException {
-        
+
     }
 
-    
 }
