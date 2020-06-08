@@ -1,6 +1,7 @@
 package Model;
 
 import Utils.Date;
+import autorizacao.model.UserSession;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -42,7 +43,12 @@ public class ImportCsvFile implements ImportFile, Serializable {
         try {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-
+            ApplicationPOT pot = ApplicationPOT.getInstance();
+            UserSession log = pot.getActualSession();
+            String email = log.getUserEmail();
+            ht = pot.getPlatform().getRTrans();
+            tl = pot.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getTaskList();
+            rf = pot.getPlatform().getRfree();
             bufferedReader.readLine(); //reads the first line of the header
             String line = null;
 

@@ -81,6 +81,8 @@ public class Platform implements Serializable{
      * writer
      */
     private Writer writer;
+    
+   
 
     /**
      * constructor than initializes the necessary classes (FacadeAuthorization,
@@ -94,6 +96,9 @@ public class Platform implements Serializable{
         pg.useLower(true);
         pg.useDigits(true);
         this.alg = pg.build();
+        this.itxt = new ImportTxtFile();
+        this.icsv = new ImportCsvFile();
+        this.rTrans = new RegisterTransaction();
     }
 
     /**
@@ -183,7 +188,7 @@ public class Platform implements Serializable{
     public List<Transaction> loadHistoricalTransaction(String fileName) {
         if (fileName.endsWith(".txt")) {
             rTrans = itxt.importFile(fileName);
-            List<Transaction> lt = getRTrans().getTransactions();
+            List<Transaction> lt = rTrans.getTransactions();
             return lt;
         } else if (fileName.endsWith(".csv")) {
             rTrans = icsv.importFile(fileName);

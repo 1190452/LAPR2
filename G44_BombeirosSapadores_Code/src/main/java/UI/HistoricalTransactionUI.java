@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -92,7 +91,6 @@ public class HistoricalTransactionUI implements Initializable {
         Stage stage = (Stage) borderPane.getScene().getWindow();
 
         files = fc.showOpenMultipleDialog(stage);
-        //fc.setInitialDirectory(file.getParentFile());
 
         if (files != null) {
             if (files.size() == 1) {

@@ -49,7 +49,7 @@ public class CreateTransactionController {
 
     public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         ApplicationPOT app = ApplicationPOT.getInstance();
-        rt = app.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getRt();
+        rt = app.getPlatform().getRTrans();
         trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
         return trans;
     }

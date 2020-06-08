@@ -8,6 +8,7 @@ package Model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import Utils.Date;
+import autorizacao.model.UserSession;
 import java.io.Serializable;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -19,34 +20,43 @@ import java.util.Scanner;
 public class ImportTxtFile implements ImportFile, Serializable {
 
     /**
-     * atribute from the class RegisterTransaction used to call the methods of that class
+     * atribute from the class RegisterTransaction used to call the methods of
+     * that class
      */
     private RegisterTransaction ht;
-    
+
     /**
      * atribute from the class TaskList used to call the methods of that class
      */
     private TaskList tl;
-    
+
     /**
-     * atribute from the class RegisterFreelancer used to call the methods of that class
+     * atribute from the class RegisterFreelancer used to call the methods of
+     * that class
      */
     private RegisterFreelancer rf;
 
     /**
      * method that reads a txt file and loads a set of historical transactions
+     *
      * @param fileName
-     * @return 
+     * @return
      */
+    public ImportTxtFile() {
+    }
+
     @Override
     public RegisterTransaction importFile(String fileName) {
 
         try {
             Scanner sc = new Scanner(new File(fileName), "utf-8");
             sc.useDelimiter(";|\n");
-            ht = new RegisterTransaction();
-            tl = new TaskList();
-            rf = new RegisterFreelancer();
+            ApplicationPOT pot = ApplicationPOT.getInstance();
+            UserSession log = pot.getActualSession();
+            String email = log.getUserEmail();
+            ht = pot.getPlatform().getRTrans();
+            tl = pot.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getTaskList();
+            rf = pot.getPlatform().getRfree();
             String cabecalho = sc.nextLine();
             try {
                 while (sc.hasNext()) {
