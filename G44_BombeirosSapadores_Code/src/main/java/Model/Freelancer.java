@@ -125,7 +125,6 @@ public class Freelancer implements Serializable{
      * @param address 
      */
     public Freelancer(String name, String levelExp, String email, String nif, String iban, String country, Address address) {
-        freeID = freeID;
         this.country = country;
         this.email = email;
         this.iban = iban;
@@ -135,7 +134,6 @@ public class Freelancer implements Serializable{
         this.address = address;
         this.pl = new PaymentList();
         this.tl = new TaskList();
-
     }
 
     /**
