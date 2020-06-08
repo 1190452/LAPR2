@@ -39,12 +39,8 @@ public class ImportTxtFile implements ImportFile, Serializable {
     /**
      * method that reads a txt file and loads a set of historical transactions
      *
-     * @param fileName
      * @return
      */
-    public ImportTxtFile() {
-    }
-
     @Override
     public RegisterTransaction importFile(String fileName) {
 
@@ -88,16 +84,9 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     }
                     Task t = new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask);
                     tl.addTask(t);
-<<<<<<< HEAD
-                    ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(ano, mes, dia), delay, descripOFQuality)));
+                    ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
                     return ht;
                 }
-=======
-                    ht.addHistoricalTransaction(new Transaction(transID, t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
->>>>>>> 38591059d10c6d6956c8c524142cd0215abb2f0f
-
-                }
-                return ht;
             } catch (NoSuchElementException e) {
 
                 System.out.println("Error reading HistoricalTransaction file!");
@@ -112,5 +101,4 @@ public class ImportTxtFile implements ImportFile, Serializable {
         return null;
 
     }
-
 }

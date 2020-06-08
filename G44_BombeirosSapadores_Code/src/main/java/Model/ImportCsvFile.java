@@ -86,14 +86,9 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     }
                     Task t = new Task(idTask, descriptionTask, taskDuration, taskCost, taskCategory);
                     tl.addTask(t);
-<<<<<<< HEAD
                     ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
                     return ht;
-
-=======
-                    ht.addHistoricalTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
                   
->>>>>>> 38591059d10c6d6956c8c524142cd0215abb2f0f
                 }
                 return ht;
             } catch (NoSuchElementException | IOException e) {

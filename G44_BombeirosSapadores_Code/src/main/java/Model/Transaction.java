@@ -4,10 +4,6 @@ package Model;
 import Utils.Date;
 import java.io.Serializable;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 38591059d10c6d6956c8c524142cd0215abb2f0f
 /**
  *
  * @author tiagopereira
@@ -41,7 +37,7 @@ public class Transaction implements Serializable {
     private static int counter = 100;
 
     /**
-     *
+     * constructor that creates an instance of transaction with the following parameters:
      * @param task
      * @param freel
      * @param taskEx
@@ -54,6 +50,13 @@ public class Transaction implements Serializable {
         counter++;
     }
     
+    /**
+     * complete constructor that creates an instance of Transaction with the following parameters:
+     * @param transID
+     * @param task
+     * @param freel
+     * @param taskEx 
+     */
     public Transaction(String transID,Task task, Freelancer freel, TaskExecution taskEx) { 
         this.transID = transID;
         this.task = task;
@@ -62,12 +65,27 @@ public class Transaction implements Serializable {
         this.transactionValue = 0;
     }
 
+    /**
+     * empty constructor that creates an instance of Transaction
+     */
     public Transaction() {
         this.task = new Task();
         this.freel = new Freelancer();
         this.taskEx = new TaskExecution();
         this.transactionValue = 0;
         counter++;
+    }
+    
+    /**
+     * copy constructor
+     * @param otherTrans 
+     */
+    public Transaction (Transaction otherTrans){
+        this.transID = otherTrans.transID;
+        this.task = otherTrans.task;
+        this.freel = otherTrans.freel;
+        this.taskEx = otherTrans.taskEx;
+        
     }
 
     /**
