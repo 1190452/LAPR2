@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Utils;
 
 import java.io.Serializable;
@@ -13,10 +8,19 @@ import java.io.Serializable;
  */
 public class CurrencyConverter implements Serializable{
 
+    /**
+     * Empty constructor that creates an instance of CurrencyConverter
+     */
     public CurrencyConverter(){
         
     }
     
+    /**
+     * Method used to convert currency values
+     * @param valueE value in euros
+     * @param country the country of origin
+     * @return the value in the currency defined by the country
+     */
     public double convert(double valueE, String country){
         
         switch(country.toLowerCase()){

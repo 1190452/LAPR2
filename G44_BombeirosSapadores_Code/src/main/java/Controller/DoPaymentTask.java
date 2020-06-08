@@ -26,20 +26,36 @@ import java.util.TimerTask;
  */
 public class DoPaymentTask extends TimerTask {
 
-    Platform plt;
+    /**
+     * platform that does the payment
+     */
+    private Platform plt;
 
-    Organization org;
+    /**
+     * organization that has the list of tasks
+     */
+    private Organization org;
 
+    /**
+     * creates an instance of DoPaymentTask
+     */
     public DoPaymentTask() {
 
     }
 
+    /**
+     * calls the method doPayment
+     */
     @Override
     public void run() {
         doPayment();
     }
 
+    /**
+     * method that does the payment and generates the receipt
+     */
     private void doPayment() {
+
         System.out.println("task ta a andarrrrrr");
         ApplicationPOT app = ApplicationPOT.getInstance();
 
@@ -112,6 +128,12 @@ public class DoPaymentTask extends TimerTask {
         }
     }
 
+    /**
+     * method that substitutes the atribute org for the organization received by
+     * parameter
+     *
+     * @param org
+     */
     public void passOrg(Organization org) {
         this.org = org;
     }

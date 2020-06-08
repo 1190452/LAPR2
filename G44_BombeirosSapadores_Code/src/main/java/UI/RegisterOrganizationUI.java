@@ -36,7 +36,7 @@ public class RegisterOrganizationUI {
         System.out.println("Confirms?");
         boolean choice = read.nextBoolean();
         if (choice) {
-            if (c_ro.registaOrganization()) {
+            if (c_ro.registerOrganization()) {
                 System.out.println("Operation Successfull");
             }
         }

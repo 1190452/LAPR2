@@ -113,6 +113,7 @@ public class CheckPerformanceController {
      *  - delay mean and deviation of one freelancer
      *  - payment mean and deviation of all freelancers
      *  - delay mean and deviation of all freelancers
+     * then the method calculates the probability that the task delay is higher than 3 hours
      */
     public void getPerformances() {
         RegisterFreelancer rFree = platform.getRfree();
