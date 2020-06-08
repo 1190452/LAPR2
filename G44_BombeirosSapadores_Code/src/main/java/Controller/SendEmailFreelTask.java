@@ -18,14 +18,23 @@ import java.util.logging.Logger;
  */
 public class SendEmailFreelTask extends TimerTask {
 
+    /**
+     * The platform that is going to be used
+     */
     private Platform p1;
 
+    /**
+     * Sends and email
+     */
     public SendEmailFreelTask() {
         ApplicationPOT pot = ApplicationPOT.getInstance();
         p1 = pot.getPlatform();
 
     }
 
+    /**
+     * Runs the process of sending an email to the freelancers
+     */
     @Override
     public void run() {
         try {
