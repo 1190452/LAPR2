@@ -82,38 +82,24 @@ public class Writer {
      * @param valueE
      * @param valueC
      */
-    public static boolean genEmail(List<Transaction> nltr, double valueE, double valueC) {
+    public static void genEmail(List<Transaction> nltr, double valueE, double valueC) {
         try {
 
             FileWriter writer2 = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
-            {
-                writer2.write("Receipt of " + nltr.get(0).getFreel().getFreeID());
-                for (Transaction e : nltr) {
-                    writer2.write(e.toString() + "\n");
-                }
-                if (valueE == valueC) {
-                    writer2.write("The total value is: " + valueE + "euros\n");
-                } else {
-                    writer2.write("The total value in euros is " + valueE + " and " + valueC + " in your local currency\n");
-                }
 
-<<<<<<< HEAD
+            writer2.write("Receipt of " + nltr.get(0).getFreel().getFreeID());
+            for (Transaction e : nltr) {
+                writer2.write(e.toString() + "\n");
             }
-=======
-            } finally {
-                out.close();
-                return true;
+            if (valueE == valueC) {
+                writer2.write("The total value is: " + valueE + "euros\n");
+            } else {
+                writer2.write("The total value in euros is " + valueE + " and " + valueC + " in your local currency\n");
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
-            return false;
-        }
-       
->>>>>>> b79fc1b553a4924042adf73a90021641e1fa59bc
-
-        } catch (IOException e) {
+        writer2.close();
+        }catch (IOException e) {
             e.printStackTrace();
         }
-    }
 
+    }
 }
