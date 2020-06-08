@@ -5,8 +5,6 @@ package Model;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 import Authorization.FacadeAuthorization;
 import Authorization.model.UserSession;
 import java.io.File;
@@ -33,12 +31,12 @@ public class ApplicationPOT implements Serializable{
     private FacadeAuthorization m_oAutorizacao;
 
     /**
-     * constructor that inicializes the Platform and the FacadeAuthorization
+     * constructor that initializes the Platform and the FacadeAuthorization
      */
     public ApplicationPOT() {
         this.m_oPlataforma = new Platform();
         this.m_oAutorizacao = this.m_oPlataforma.getFacadeAuthorazation();
-        bootstrap();
+        bootstrap(true);
     }
 
     public void read() {
@@ -112,11 +110,16 @@ public class ApplicationPOT implements Serializable{
     /**
      * method that regists an administrator in the platform
      */
-    private void bootstrap() {
+    private void bootstrap(boolean isTesting) {
 
         this.m_oAutorizacao.registerUser("Ricardo", "bombeiro@gmail.com", "qwerty", Constants.ROLE_ADMINISTRATIVE);
         this.m_oAutorizacao.registerUser("Bruno", "b@gmail.com", "qwerty", Constants.ROLE_COLLABORATOR_ORGANIZATION);
         this.m_oAutorizacao.registerUser("Alexandre", "a@gmail.com ", "qwerty", Constants.ROLE_MANAGER_ORGANIZATION);
+        
+        if(isTesting){
+            
+        }
+       
     }
 
     /**
