@@ -54,6 +54,8 @@ public class MenuCollaboratorUI implements Initializable {
     private Label lblWelcome;
     
     private ApplicationPOT pot;
+    @FXML
+    private Button checkFreelancerStatistics;
 
     /**
      * Initializes the controller class.
@@ -186,6 +188,10 @@ public class MenuCollaboratorUI implements Initializable {
 
         // Hide this current window
         ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void checkStatisticsFreelancer(ActionEvent event) {
     }
 
 }
