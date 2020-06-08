@@ -16,38 +16,100 @@ import Model.Transaction;
 import java.util.List;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
-
 /**
  *
  * @author OMEN X
  */
 public class CheckPerformanceController {
 
+    /**
+     * Platform
+     */
     private Platform platform;
+    /**
+     * total payment
+     */
     private double paymentTotal = 0;
+    /**
+     * Average of freelancer
+     */
     private double averageFreel = 0;
+    /**
+     * Paymente value
+     */
     private double paymentValue = 0;
+    /**
+     * sum of the deviations
+     */
     private double sumDeviation = 0;
+    /**
+     * sum of all payments deviations
+     */
     private double sumAllPaymentsDeviation = 0;
+    /**
+     * Deviation
+     */
     private double deviation = 0;
+    /**
+     * Total of delay
+     */
     private double totalDelay = 0;
+    /**
+     * List of transactions
+     */
     List<Transaction> listTransactions;
+    /**
+     * Total delay of the freelancers
+     */
     private double totalDelayOfAllFreelancers = 0;
-    private double deviatonDelayOfEachTask = 0;
-    private double deviatonDelayOfEachFreelancer = 0;
+    /**
+     * Deviation delay of each task
+     */
+    private double deviationDelayOfEachTask = 0;
+    /**
+     * Deviation of each freelancer
+     */
+    private double deviationDelayOfEachFreelancer = 0;
+    /**
+     * Number of tasks of all freelancers
+     */
     private int numTasksOfAllFreelancers = 0;
+    /**
+     * Number of payments of all freelancers
+     */
     private int numPaymentsOfAllFreelancers = 0;
+    /**
+     * Freelancer
+     */
     private Freelancer freel;
+    /**
+     * Delay deviation
+     */
     private double deviationDelay = 0;
+    /**
+     * Total delay deviation of all freelancers
+     */
     private double totalDeviationDelayOfAllFreelancers = 0;
+    /**
+     * Total payment of all freelancers
+     */
     private double totalPaymentOfAllFreelancer = 0;
+    /**
+     * Sum of the payment deviations of all freelancers
+     */
     private double sumPaymentDeviationOfAllFreelancers = 0;
-
+    
+    /**
+     * This method check the perfomancer of controller
+     */
     public CheckPerformanceController() {
         ApplicationPOT pot = ApplicationPOT.getInstance();
         platform = pot.getPlatform();
     }
-
+    
+    /**
+     * This method get The performances of freelancers
+     */
     public void getPerformances() {
         RegisterFreelancer rFree = platform.getRfree();
         List<Freelancer> listFreelancer = rFree.getListFreelancers();
@@ -99,11 +161,11 @@ public class CheckPerformanceController {
             for (int h = 0; h < taskList.size(); h++) {
                 Task task = taskList.get(h);
                 double delayTask = task.getTexec().getTaskDelay();
-                deviatonDelayOfEachTask += freel.sumDelayVariance(averageDelayOfFreelancer, delayTask);
+                deviationDelayOfEachTask += freel.sumDelayVariance(averageDelayOfFreelancer, delayTask);
             }
             numTasksOfAllFreelancers += taskList.size();
-            deviatonDelayOfEachFreelancer = freel.calculateDelayDeviation(deviatonDelayOfEachTask, taskList.size());
-            System.out.println("Freelancer: " + freel + "\nDelay Deviation: " + deviatonDelayOfEachFreelancer + "\nAverage Delay: " + averageDelayOfFreelancer);
+            deviationDelayOfEachFreelancer = freel.calculateDelayDeviation(deviationDelayOfEachTask, taskList.size());
+            System.out.println("Freelancer: " + freel + "\nDelay Deviation: " + deviationDelayOfEachFreelancer + "\nAverage Delay: " + averageDelayOfFreelancer);
             //SHOW HISTOGRAM
         }
         totalPaymentOfAllFreelancer += paymentTotal;
@@ -131,29 +193,27 @@ public class CheckPerformanceController {
                     sumPaymentDeviationOfAllFreelancers += freel.calculatePaymentVarianceOfAllFreelancers(averagePayementOFAllFreelancers, payValue);
                 }
                 totalDeviationDelayOfAllFreelancers += deviationDelay;
-                
+
             }
             //calculation of the payment deviation of all freelancers
-            double paymentDeviationOfAllFreelancers = freel.calculatepaymentDeviationOfAllFreelancers(sumPaymentDeviationOfAllFreelancers,numTasksOfAllFreelancers );
-            
-            
+            double paymentDeviationOfAllFreelancers = freel.calculatepaymentDeviationOfAllFreelancers(sumPaymentDeviationOfAllFreelancers, numTasksOfAllFreelancers);
+
             double deviationAllFreel = freel.calculateDelayDeviation(totalDeviationDelayOfAllFreelancers, numTasksOfAllFreelancers);
             System.out.println("Delay Deviation: " + deviationAllFreel + "\nAverage Delay: " + averageDelayOfAllFreelancers);
             //SHOW HISTOGRAM
-             
-            
+
             /*
             X represents the mean execution time delay of the freelancers
             mean = 2
             standard deviation = 1.5/Math.sqrt(number of freelancers)
             X~N(2;1.5/Math.sqrt(number of freelancers)
-            */
-            NormalDistribution nd = new NormalDistribution(2, (1.5/Math.sqrt(listFreelancer.size())));
-            
+             */
+            NormalDistribution nd = new NormalDistribution(2, (1.5 / Math.sqrt(listFreelancer.size())));
+
             //P(X>3) = 1 - P(X<=3) 
-            double probability = 1 - nd.cumulativeProbability(3); 
+            double probability = 1 - nd.cumulativeProbability(3);
             rFree.setDelayProb(probability);
-            
+
         }
     }
 
