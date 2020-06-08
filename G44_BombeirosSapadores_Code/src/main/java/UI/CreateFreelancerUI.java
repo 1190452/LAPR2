@@ -7,6 +7,7 @@ package UI;
 
 import Controller.CreateFreelancerController;
 import Model.Freelancer;
+import Utils.Validations;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -102,37 +103,57 @@ public class CreateFreelancerUI implements Initializable {
 
     @FXML
     private void confirm(ActionEvent event) {
-        try {
+        if (Validations.isNameValid(nameTxt.getText())) {
+            if (Validations.isEmailValid(emailTxt.getText())) {
+                if (Validations.isNIFValid(nifTxt.getText())) {
+                    if (Validations.isIBANValid(ibanTxt.getText())) {
+                        if (Validations.isNameValid(countryTxt.getText()) && Validations.isStreetValid(streetTxt.getText())
+                                && Validations.isDoorNumberValid(doorTxt.getText()) && Validations.isLocalityValid(localityTxt.getText())) {
+                            Freelancer f = cf.newFreelancer(nameTxt.getText(), experienceCB.getSelectionModel().getSelectedItem(), emailTxt.getText(), nifTxt.getText(),
+                                    ibanTxt.getText(), countryTxt.getText(), streetTxt.getText(), doorTxt.getText(), localityTxt.getText());
+                            Alert alert = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", f.toString());
+                            if (alert.showAndWait().get() == ButtonType.OK) {
+                                alert.close();
+                            }
 
-            Freelancer f = cf.newFreelancer(nameTxt.getText(), experienceCB.getSelectionModel().getSelectedItem(), emailTxt.getText(), nifTxt.getText(),
-                    ibanTxt.getText(), countryTxt.getText(), streetTxt.getText(), doorTxt.getText(), localityTxt.getText());
-            Alert alert = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", f.toString());
+                            Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", "Do you confirm this Freelancer");
+                            Optional<ButtonType> option = alert1.showAndWait();
+                            boolean added = false;
+                            if (option.get() == ButtonType.OK) {
+                                added = cf.saveFreelancer();
+                            } else {
+                                alert1.close();
+                            }
+
+                            if (added) {
+                                AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Freelancer",
+                                        added ? "New Freelancer added with success"
+                                                : "It was not possible to add the Freelancer").show();
+
+                                endCreateFreelancerUI(event);
+
+                            } else {
+                               Alert alert2 =  AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Address of the Freelancer is invalid!", "Please write the correct Address.");
+                               alert2.show();
+                            }
+                        } else {
+                           Alert alert =  AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The IBAN of the Freelancer is invalid!", "Please write the correct IBAN.");
+                           alert.show();
+                        }
+                    } else {
+                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The NIF of the Freelancer is invalid!", "Please write the correct NIF.");
+                        alert.show();
+                    }
+                } else {
+                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Email is invalid!", "Please use a real email.");
+                    alert.show();
+                }
+            }
+        } else {
+            Alert alert = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "The name of the freelancer is invalid!", "Please use a real name");
             if (alert.showAndWait().get() == ButtonType.OK) {
                 alert.close();
             }
-
-            Alert alert1 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", "Do you confirm this Freelancer");
-            Optional<ButtonType> option = alert1.showAndWait();
-            boolean added = false;
-            if (option.get() == ButtonType.OK) {
-                added = cf.saveFreelancer();
-            } else {
-                alert1.close();
-            }
-
-            if (added) {
-                AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Freelancer",
-                        added ? "New Freelancer added with success"
-                                : "It was not possible to add the Freelancer").show();
-
-                endCreateFreelancerUI(event);
-            }
-        } catch (NumberFormatException nfe) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
-                    nfe.getMessage()).show();
-        } catch (IllegalArgumentException iae) {
-            AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
-                    iae.getMessage()).show();
         }
     }
 
