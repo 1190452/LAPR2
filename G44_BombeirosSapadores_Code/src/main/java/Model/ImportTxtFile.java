@@ -53,7 +53,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
             ht = pot.getPlatform().getRTrans();
             tl = pot.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getTaskList();
             rf = pot.getPlatform().getRfree();
-            String cabecalho = sc.nextLine();
+            String header = sc.nextLine();
             try {
                 while (sc.hasNext()) {
                     String transID = sc.next().trim();
