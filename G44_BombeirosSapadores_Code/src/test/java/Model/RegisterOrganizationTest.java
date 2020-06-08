@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -112,6 +103,7 @@ public class RegisterOrganizationTest {
 
     /**
      * Test of registerOrganization method, of class RegisterOrganization.
+     * @throws java.lang.Exception
      */
     @Test
     public void testRegisterOrganization() throws Exception {
@@ -126,6 +118,7 @@ public class RegisterOrganizationTest {
 
     /**
      * Test of registUser method, of class RegisterOrganization.
+     * @throws java.lang.Exception
      */
     @Test
     public void testRegistUser_Manager() throws Exception {
@@ -134,12 +127,13 @@ public class RegisterOrganizationTest {
         RegisterOrganization instance = new RegisterOrganization();
         boolean result=instance.registUser(manager);
         boolean expectedResult= true;
-        assertEquals(expResult, result);
+        assertEquals(expectedResult, result);
        
     }
 
     /**
      * Test of registUser method, of class RegisterOrganization.
+     * @throws java.lang.Exception
      */
     @Test
     public void testRegistUser_Collaborator() throws Exception {
