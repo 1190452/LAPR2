@@ -97,8 +97,8 @@ public class RegisterFreelancer implements Serializable {
      *
      * @param fr
      */
-    public void removeFreelancer(Freelancer fr) {
-        getListaFreelancers().remove(fr);
+    public boolean removeFreelancer(Freelancer fr) {
+        return getListaFreelancers().remove(fr);
     }
 
     /**

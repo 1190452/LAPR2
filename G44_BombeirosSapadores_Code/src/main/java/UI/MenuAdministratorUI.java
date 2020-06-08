@@ -56,6 +56,8 @@ public class MenuAdministratorUI implements Initializable {
     private Label lblWelcome;
 
     private ApplicationPOT pot;
+    @FXML
+    private Button warnFreelancerBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -183,6 +185,10 @@ public class MenuAdministratorUI implements Initializable {
 
         // Hide this current window
         ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void warnFreelancer(ActionEvent event) {
     }
 
 }

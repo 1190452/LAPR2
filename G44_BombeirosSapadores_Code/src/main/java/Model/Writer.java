@@ -82,7 +82,7 @@ public class Writer {
      * @param valueE
      * @param valueC
      */
-    public static void genEmail(List<Transaction> nltr, double valueE, double valueC) {
+    public static boolean genEmail(List<Transaction> nltr, double valueE, double valueC) {
         try {
 
             FileWriter writer2 = new FileWriter(Constants.PAYMENTS_ORGS_FILENAME, true);
@@ -97,7 +97,19 @@ public class Writer {
                     writer2.write("The total value in euros is " + valueE + " and " + valueC + " in your local currency\n");
                 }
 
+<<<<<<< HEAD
             }
+=======
+            } finally {
+                out.close();
+                return true;
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found!");
+            return false;
+        }
+       
+>>>>>>> b79fc1b553a4924042adf73a90021641e1fa59bc
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -88,24 +88,27 @@ public class TaskExecution implements Serializable{
      * modifies the description of quality 
      * @param descriptionOfQuality the descriptionOfQuality to set
      */
-    public void setDescriptionOfQuality(String descriptionOfQuality) {
+    public boolean setDescriptionOfQuality(String descriptionOfQuality) {
         this.descriptionOfQuality = descriptionOfQuality;
+        return true;
     }
 
     /**
      * modifies the end date
      * @param endDate the endDate to set
      */
-    public void setEndDate(Date endDate) {
+    public boolean setEndDate(Date endDate) {
         this.endDate = endDate;
+        return true;
     }
 
     /**
      * modifies the delay
      * @param delay the delay to set
      */
-    public void setDelay(double delay) {
+    public boolean setDelay(double delay) {
         this.delay = delay;
+        return true;
     }
     
     
