@@ -46,7 +46,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
 
         try {
             Scanner sc = new Scanner(new File(fileName), "utf-8");
-            sc.useDelimiter(";|\n|-|,");
+            sc.useDelimiter(";|\n|,");
             ApplicationPOT pot = ApplicationPOT.getInstance();
             UserSession log = pot.getActualSession();
             String email = log.getUserEmail();
@@ -83,10 +83,15 @@ public class ImportTxtFile implements ImportFile, Serializable {
                         rf.addFreelancer(fr);
                     }
                     Task t = new Task(taskID, taskDescrip, timeTask, taskCost, categoryTask);
-                    tl.addTask(t);
-                    ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));             
+                    if (tl.validateTask(t)) {
+                        tl.addTask(t);
+                    }
+                    Transaction trans = new Transaction(transID, t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality));
+                    if (ht.validateTransaction(trans)) {
+                        ht.addTransaction(trans);
+                    }
                 }
-                 return ht;
+                return ht;
             } catch (NoSuchElementException e) {
 
                 System.out.println("Error reading HistoricalTransaction file!");

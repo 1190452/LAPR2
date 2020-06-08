@@ -60,12 +60,17 @@
               <items>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="checkStatisticsBtn" minWidth="150.0" mnemonicParsing="false" onAction="#checkFreelancerStatistics" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Check Freelancer Statistics" textFill="#e6be8a" />
+                        <Button fx:id="checkStatisticsBtn" minWidth="210.0" mnemonicParsing="false" onAction="#checkFreelancerStatistics" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Check Freelancer Statistics" textFill="#e6be8a" />
                      </graphic>
                   </MenuItem>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="createOrganizationBtn" minWidth="155.0" mnemonicParsing="false" onAction="#createOrganization" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Organization" textFill="#e6be8a" />
+                        <Button fx:id="createOrganizationBtn" minWidth="210.0" mnemonicParsing="false" onAction="#createOrganization" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Create Organization" textFill="#e6be8a" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="warnFreelancerBtn" minWidth="100.0" mnemonicParsing="false" onAction="#warnFreelancer" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Warn freelancers about performance" textFill="#e6be8a" />
                      </graphic>
                   </MenuItem>
               </items>

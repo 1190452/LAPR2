@@ -98,6 +98,15 @@ public class Task implements Serializable{
         this.taskCategory = taskCategory;
         this.texec = new TaskExecution();
     }
+    
+     public Task(String idTask, String description, int timeTask, double costHour, String taskCategory, TaskExecution texec) {
+        this.idTask = idTask;
+        this.description = description;
+        this.timeTask = timeTask;
+        this.costHour = costHour;
+        this.taskCategory = taskCategory;
+        this.texec = texec;
+    }
 
     /**
      * Builds an instance of Task with the omission values

@@ -81,7 +81,7 @@ public class TaskList implements Serializable {
      * @param task
      * @return
      */
-    private boolean validateTask(Task task) {
+    public boolean validateTask(Task task) {
         for (Task e : taskList) {
             if (task.equals(e)) {
                 return false;

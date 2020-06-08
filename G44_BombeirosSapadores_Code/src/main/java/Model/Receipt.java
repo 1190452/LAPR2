@@ -40,7 +40,6 @@ public class Receipt implements Serializable{
      * method that call the writer to generate an email with the receipt
      */
     public void genEmail(){
-        
         Writer.genEmail(nltr, sum, sum);
     }
     

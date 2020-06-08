@@ -43,11 +43,14 @@ public class DefinePaymentUI implements Initializable {
     private Button cancelBtn;
     @FXML
     private JFXTextField nrDaystxt;
-    
+
     private DefinePayment dp;
 
     /**
      * Initializes the controller class.
+     *
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -69,11 +72,11 @@ public class DefinePaymentUI implements Initializable {
         Organization org = pc.getOrg();
         Date date = new Date(calendarButton.getValue().getYear(), calendarButton.getValue().getMonthValue(), calendarButton.getValue().getDayOfMonth());
         Time time = new Time(timeButton.getValue().getHour(), timeButton.getValue().getMinute(), timeButton.getValue().getSecond());
-        
+
         dp = pc.newDefinePayment(time, date, Integer.parseInt(nrDaystxt.getText()));
         Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Define Payment Hour", dp.toString());
         boolean verif = false;
-        
+
         Alert alert6 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Define Payment Hour", "Do you confirm this Payment date and hour?");
         Optional<ButtonType> option = alert6.showAndWait();
         if (option.get() == ButtonType.OK) {
@@ -81,15 +84,15 @@ public class DefinePaymentUI implements Initializable {
         } else {
             alert1.close();
         }
-        
+
         if (verif) {
-                    AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Define Payment Hour",
-                            verif ? "New Date and Hour added with success"
-                                    : "It was not possible to change the date and hour").show();
+            AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Define Payment Hour",
+                    verif ? "New Date and Hour added with success"
+                            : "It was not possible to change the date and hour").show();
 
-                    endDP(event);
+            endDP(event);
 
-                }
+        }
 
     }
 
@@ -101,9 +104,7 @@ public class DefinePaymentUI implements Initializable {
         calendarButton.getEditor().clear();
         timeButton.getEditor().clear();
         nrDaystxt.clear();
-                
-        
-        
+
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
 

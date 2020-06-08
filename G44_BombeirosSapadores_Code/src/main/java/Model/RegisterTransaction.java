@@ -32,8 +32,8 @@ public class RegisterTransaction implements Serializable{
      * method that removes a transaction from the transaction list
      * @param tr 
      */
-    public void removeHistoricalTransaction(Transaction tr) {
-        transactionList.remove(tr);
+    public boolean removeHistoricalTransaction(Transaction tr) {
+       return transactionList.remove(tr);
     }
 
     /**

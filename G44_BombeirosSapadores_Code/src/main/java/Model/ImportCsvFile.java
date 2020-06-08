@@ -18,24 +18,27 @@ import java.util.logging.Logger;
 public class ImportCsvFile implements ImportFile, Serializable {
 
     /**
-     * atribute from the class RegisterTransaction used to call the methods of that class
+     * atribute from the class RegisterTransaction used to call the methods of
+     * that class
      */
     private RegisterTransaction ht;
-    
+
     /**
      * atribute from the class TaskList used to call the methods of that class
      */
     private TaskList tl;
-    
+
     /**
-     * atribute from the class RegisterFreelancer used to call the methods of that class
+     * atribute from the class RegisterFreelancer used to call the methods of
+     * that class
      */
     private RegisterFreelancer rf;
 
     /**
      * method that reads a CSV file and loads a set of historical transactions
+     *
      * @param fileName
-     * @return 
+     * @return
      */
     @Override
     public RegisterTransaction importFile(String fileName) {
@@ -53,10 +56,10 @@ public class ImportCsvFile implements ImportFile, Serializable {
             String line = null;
 
             try {
-                
+
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] temp = line.split(";|-|,");
-                    String transID = temp[0]; 
+                    String transID = temp[0];
                     String idTask = temp[1];
                     String descriptionTask = temp[2];
                     int taskDuration = Integer.parseInt(temp[3]);
@@ -77,18 +80,19 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     String FreelancerDoor = temp[19];
                     String FreelancerLocality = temp[20];
                     String FreelancerCountry = temp[21];
-                    
-                    
 
-                    Freelancer fr = new Freelancer(FreelancerID,FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
+                    Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
                     if (rf.Verification(fr)) {
                         rf.addFreelancer(fr);
                     }
                     Task t = new Task(idTask, descriptionTask, taskDuration, taskCost, taskCategory);
-                    tl.addTask(t);
-                    ht.addTransaction(new Transaction(t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality)));
-                    return ht;
-                  
+                    if (tl.validateTask(t)) {
+                        tl.addTask(t);
+                    }
+                    Transaction trans = new Transaction(transID, t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality));
+                    if (ht.validateTransaction(trans)) {
+                        ht.addTransaction(trans);
+                    }
                 }
                 return ht;
             } catch (NoSuchElementException | IOException e) {

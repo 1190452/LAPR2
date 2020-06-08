@@ -189,7 +189,7 @@ public class RegisterOrganization implements Serializable {
      * @param manager
      * @throws FileNotFoundException
      */
-    public void registUser(Manager manager) throws FileNotFoundException {
+    public boolean registUser(Manager manager) throws FileNotFoundException {
         String nameM = manager.getNameM();
         String emailM = manager.getEmailM();
         PasswordGenerator alg = m_oPlataforma.getAlg();
@@ -197,6 +197,7 @@ public class RegisterOrganization implements Serializable {
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registerUser(nameM, emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
         Writer.sendsPassword(emailM, pwdM, Constants.ROLE_MANAGER_ORGANIZATION);
+        return true;
     }
 
     /**
@@ -206,7 +207,7 @@ public class RegisterOrganization implements Serializable {
      * @param collab
      * @throws FileNotFoundException
      */
-    public void registUser(Collaborator collab) throws FileNotFoundException {
+    public boolean registUser(Collaborator collab) throws FileNotFoundException {
         String nameC = collab.getNameC();
         String emailC = collab.getEmailC();
         PasswordGenerator alg = m_oPlataforma.getAlg();
@@ -214,6 +215,7 @@ public class RegisterOrganization implements Serializable {
         FacadeAuthorization aut = m_oPlataforma.getFacadeAuthorazation();
         aut.registerUser(nameC, emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
         Writer.sendsPassword(emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
+        return true;
     }
 
 }
