@@ -16,9 +16,13 @@ import java.util.List;
 public class HistoricalTransactionController {
     private Platform ht_plat;
     private List<Transaction> lt;
-    public List<Transaction> loadHistoricalTransaction(String fileName) {
+    public HistoricalTransactionController(){
+        
+    }
+    
+    public boolean loadHistoricalTransaction(String fileName) {
        lt = ht_plat.loadHistoricalTransaction(fileName);
-       return lt;
+       return lt!=null;
     }
 
 
