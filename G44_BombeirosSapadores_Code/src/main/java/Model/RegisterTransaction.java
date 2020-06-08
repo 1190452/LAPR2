@@ -63,6 +63,7 @@ public class RegisterTransaction implements Serializable{
      * @return 
      */
     public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+        task.setIsFinished(true);
         return new Transaction(task, freel, new TaskExecution(endDate, delay, qow));
     }
 

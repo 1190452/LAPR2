@@ -22,12 +22,31 @@ import Authorization.model.UserSession;
  */
 public class CreateTaskController {
 
+    /**
+     * task that will be created
+     */
     private Task task;
+    
+    /**
+     * task list
+     */
     private TaskList tl;
 
+    /**
+     * empty constructor that creates an instance of CreateTaskController
+     */
     public CreateTaskController() {
     }
 
+    /**
+     * method that calls the class TaskList to create a new task
+     * @param idTask
+     * @param description
+     * @param timeTask
+     * @param costHour
+     * @param taskCategory
+     * @return 
+     */
     public Task newTask(String idTask, String description, int timeTask, double costHour, String taskCategory) {
         ApplicationPOT app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
@@ -44,6 +63,10 @@ public class CreateTaskController {
 
     }
 
+    /**
+     * method that calls the class TaskList to register the task
+     * @return 
+     */
     public boolean registersTask() {
         return tl.registersTask(this.task);
     }
