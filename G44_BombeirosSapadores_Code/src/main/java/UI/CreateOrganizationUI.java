@@ -64,6 +64,7 @@ public class CreateOrganizationUI implements Initializable {
 
     @FXML
     private void cancel(ActionEvent event) {
+        endOrg(event);
     }
 
     @FXML
@@ -152,4 +153,17 @@ public class CreateOrganizationUI implements Initializable {
         return localityTxt;
     }
 
-}
+    private void endOrg(ActionEvent event) {
+         
+       nameTxt.clear();
+       emailTxt.clear();
+       nifTxt.clear();
+       streetTxt.clear();
+       localityTxt.clear();
+       doorTxt.clear();
+       
+       ((Node) event.getSource()).getScene().getWindow().hide();
+    }
+    }
+
+

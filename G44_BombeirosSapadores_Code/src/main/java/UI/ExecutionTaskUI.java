@@ -81,6 +81,7 @@ public class ExecutionTaskUI implements Initializable {
 
     @FXML
     private void cancel(ActionEvent event) {
+        endTransaction(event);
     }
 
     @FXML
@@ -146,6 +147,8 @@ public class ExecutionTaskUI implements Initializable {
        delayTxt.clear();
        descriptionTxt.clear();
        endDateTxt.getEditor().clear();
+       
+       ((Node) event.getSource()).getScene().getWindow().hide();
     }
 
 }
