@@ -103,7 +103,7 @@ public class CreateFreelancerUI implements Initializable {
 
     @FXML
     private void confirm(ActionEvent event) {
-        if (Validations.isNameValid(nameTxt.getText())) {
+        if (Validations.isNameValid2(nameTxt.getText())) {
             if (Validations.isEmailValid(emailTxt.getText())) {
                 if (Validations.isNIFValid(nifTxt.getText())) {
                     if (Validations.isIBANValid(ibanTxt.getText())) {
@@ -150,7 +150,7 @@ public class CreateFreelancerUI implements Initializable {
                 }
             }
         } else {
-            Alert alert = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "The name of the freelancer is invalid!", "Please use a real name");
+            Alert alert = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "The name of the freelancer is incomplete/invalid!", "Please write your first and last name");
             if (alert.showAndWait().get() == ButtonType.OK) {
                 alert.close();
             }
