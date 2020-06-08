@@ -432,6 +432,6 @@ public class Freelancer implements Serializable{
 
     @Override
     public String toString(){
-        return String.format("ID: %s\nName: %s\nLevel of Experience: %s\nEmail: %s", freeID, name, levelExp, email);
+        return String.format("Name: %s\nLevel of Experience: %s\nEmail: %s", name, levelExp, email);
     }
 }

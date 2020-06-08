@@ -25,7 +25,7 @@ public class CreateTransactionController {
 
     private RegisterTransaction rt;
     private Transaction trans;
-
+    private String email;
     public CreateTransactionController() {
         
     }
@@ -34,7 +34,7 @@ public class CreateTransactionController {
         ApplicationPOT ap = ApplicationPOT.getInstance();
         RegisterOrganization rorgs = ap.getPlatform().getrOrg();
         UserSession log = ap.getActualSession();
-        String email = log.getUserEmail();
+        email = log.getUserEmail();
         TaskList tl = rorgs.getOrganizationByUserEmailColab(email).getTaskList();
         List<Task> taskList = tl.getTaskList();
         return taskList;
@@ -49,7 +49,7 @@ public class CreateTransactionController {
 
     public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         ApplicationPOT app = ApplicationPOT.getInstance();
-        rt = app.getPlatform().getRTrans();
+        rt = app.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getRt();
         trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
         return trans;
     }

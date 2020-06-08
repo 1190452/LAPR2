@@ -307,4 +307,18 @@ public class Organization implements Serializable{
         return bRet;
     }
 
+    /**
+     * @return the rt
+     */
+    public RegisterTransaction getRt() {
+        return rt;
+    }
+
+    /**
+     * @param rt the rt to set
+     */
+    public void setRt(RegisterTransaction rt) {
+        this.rt = rt;
+    }
+
 }
