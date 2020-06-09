@@ -48,7 +48,7 @@ public class TransactionExecution implements Serializable {
     /**
      * Value of the TransactionExecution
      */
-    private double transactionValue;
+    private Payment payment;
 
     /**
      * The id of the TransactionExecution
@@ -78,7 +78,6 @@ public class TransactionExecution implements Serializable {
         this.endDate = endDate;
         this.delay = delay;
         this.descriptionOfQuality = descString;
-        this.transactionValue = 0;
         counter++;
     }
     
@@ -93,16 +92,17 @@ public class TransactionExecution implements Serializable {
      * @param endDate
      * @param delay
      * @param descString
+     * @param payment
      * @param transactionValue
      */
-    public TransactionExecution(String transID,Task task, Freelancer freel, Date endDate, double delay, String descString, double transactionValue) {
+    public TransactionExecution(String transID,Task task, Freelancer freel, Date endDate, double delay, String descString, Payment payment) {
         this.transID = transID;
         this.task = task;
         this.freel = freel;
         this.endDate = endDate;
         this.delay = delay;
         this.descriptionOfQuality = descString;
-        this.transactionValue = transactionValue;
+        this.payment = payment;
         counter++;
     }
     
@@ -122,7 +122,6 @@ public class TransactionExecution implements Serializable {
         this.endDate = endDate;
         this.delay = delay;
         this.descriptionOfQuality = descString;
-        transactionValue = 0;
         counter++;
     }
 
@@ -136,7 +135,7 @@ public class TransactionExecution implements Serializable {
         this.endDate = new Date();
         this.delay = DELAY_BY_OMISSION;
         this.descriptionOfQuality = DESCRIPTION_BY_OMISSION;
-        this.transactionValue = 0;
+        this.payment = new Payment();
         counter++;
     }
 
@@ -152,7 +151,7 @@ public class TransactionExecution implements Serializable {
         this.endDate = otherTrans.endDate;
         this.delay = otherTrans.delay;
         this.descriptionOfQuality = otherTrans.descriptionOfQuality;
-        this.transactionValue = otherTrans.transactionValue;
+        this.payment = otherTrans.payment;
 
     }
 
@@ -264,21 +263,20 @@ public class TransactionExecution implements Serializable {
 
 
     /**
-     * returns the transaction value
+     * returns the payment of the transaction
      *
-     * @return the transactionValue
+     * @return the payment
      */
-    public double getTransactionValue() {
-        return transactionValue;
+    public Payment getPayment() {
+        return payment;
     }
 
     /**
-     * modifies the transaction value
-     *
-     * @param transactionValue the transactionValue to set
+     * modifies the payment of the transaction
+     * @param payment
      */
-    public void setTransactionValue(double transactionValue) {
-        this.transactionValue = transactionValue;
+    public void setTransactionValue(Payment payment) {
+        this.payment = payment;
     }
 
     /**
@@ -288,7 +286,7 @@ public class TransactionExecution implements Serializable {
      */
     @Override
     public String toString() {
-        return String.format("Task Execution:%s -------------------- %s ", task.getIdTask(), transactionValue);
+        return String.format("Task Execution:%s -------------------- %s ", task.getIdTask(), payment.getValueE());
     }
 
 }
