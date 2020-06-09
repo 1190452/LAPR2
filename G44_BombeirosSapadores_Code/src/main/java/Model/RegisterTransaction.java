@@ -30,6 +30,8 @@ public class RegisterTransaction implements Serializable {
      */
     public RegisterTransaction() {
         transactionList = new ArrayList<>();
+        cc = new CurrencyConverter();
+        
     }
 
     //======================================================================================================================================================
@@ -54,27 +56,26 @@ public class RegisterTransaction implements Serializable {
             }
 
         }
-        if ((sum / count) > 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return (sum / count) > 3;
     }
 
-    public double percentageOfDelays(Freelancer free) {
-        int numberOfTasks = free.getTaskList().getTaskList().size();
-        int count = 0;
-        int sum = 0;
 
-        for (int i = 0; i < transactionList.size(); i++) {
-            if (transactionList.get(i).getFreel().equals(free) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
-                sum += transactionList.get(i).getTaskDelay();
-                count++;
-            }
+//    public double percentageOfDelays(Freelancer free) {
+//        int numberOfTasks = free.getTaskList().getTaskList().size();
+//        int count = 0;
+//        int sum = 0;
+//
+//        for (int i = 0; i < transactionList.size(); i++) {
+//            if (transactionList.get(i).getFreel().equals(free)) {
+//                sum += transactionList.get(i).getTaskDelay();
+//                count++;
+//            }
+//
+//        }
+//        return ((sum / count) * 100);
+//    }
 
-        }
-        return ((sum / count) * 100);
-    }
+
 
     public double overallPercentageDelays() {
         int count = 0;
@@ -111,9 +112,11 @@ public class RegisterTransaction implements Serializable {
      * @return
      */
     public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+     
         task.setIsFinished(true);
         double costEuros = task.getCostHour() * task.getTimeTask();
-        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros, cc.convert(costEuros, freel.getCountry())));
+        double costCureency = cc.convert(costEuros, freel.getCountry());
+        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros,costCureency));
     }
 
     /**
@@ -137,10 +140,11 @@ public class RegisterTransaction implements Serializable {
      * @return
      */
     public boolean validateTransaction(TransactionExecution trans) {
-        if (transactionList.contains(trans)) {
-            return false;
+        for(TransactionExecution t : transactionList) {
+            if(t.getTransID() == trans.getTransID())
+                return false;
         }
-        return true;
+        return !transactionList.contains(trans);
     }
 
     /**
@@ -151,10 +155,7 @@ public class RegisterTransaction implements Serializable {
      */
     public boolean addTransaction(TransactionExecution trans) {
         transactionList.add(trans);
-        if (transactionList != null) {
-            return true;
-        }
-        return false;
+        return transactionList != null;
     }
 
     /**

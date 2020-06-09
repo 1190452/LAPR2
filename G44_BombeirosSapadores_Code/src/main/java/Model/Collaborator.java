@@ -146,4 +146,18 @@ public class Collaborator implements Serializable {
     public String toString() {
         return String.format("Nome: %s \nEmail: %s \nRole: %s", nameC, emailC, role);
     }
+    
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Collaborator otherCollab = (Collaborator) otherObject;
+        return this.nameC.equalsIgnoreCase(otherCollab.nameC)
+                && this.emailC.equals(otherCollab.emailC) 
+                && this.role.equalsIgnoreCase(otherCollab.role);
+    }
 }
