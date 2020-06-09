@@ -54,11 +54,6 @@ public class Freelancer implements Serializable {
     private Address address;
 
     /**
-     * task list of the freelancer
-     */
-    private TaskList tl;
-
-    /**
      * freelancer id by omission
      */
     private static final String FREEID_BY_OMISSION = "no id";
@@ -234,24 +229,7 @@ public class Freelancer implements Serializable {
         return country;
     }
 
-    /**
-     * returns freelancer's task list
-     *
-     * @return the tl
-     */
-    public TaskList getTl() {
-        return tl;
-    }
-
-    /**
-     * returns the task list of the freelancer
-     *
-     * @return
-     */
-    public TaskList getTaskList() {
-        return tl;
-    }
-
+   
     //======================================================================================================================================================
     /**
      * modifies the level of expertise of the freelancer
@@ -289,14 +267,6 @@ public class Freelancer implements Serializable {
         this.country = country;
     }
 
-    /**
-     * modifies freelancer's task list
-     *
-     * @param tl the tl to set
-     */
-    public void setTl(TaskList tl) {
-        this.tl = tl;
-    }
 
     //======================================================================================================================================================
     @Override

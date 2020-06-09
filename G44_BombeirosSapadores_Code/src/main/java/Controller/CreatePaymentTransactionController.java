@@ -42,7 +42,7 @@ public class CreatePaymentTransactionController {
      * constructor that creates an instance of CreateTransactionController
      */
     public CreatePaymentTransactionController() {
-
+            trans = new TransactionExecution ();
     }
     
     
