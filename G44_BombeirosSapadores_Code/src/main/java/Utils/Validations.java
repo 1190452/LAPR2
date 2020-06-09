@@ -101,15 +101,14 @@ public class Validations implements Serializable{
     }
     
     public static boolean isNameValid2(String name) {
-        boolean match = isNameValid(name);
-        
+   
         String[] nameparts = name.split(" ");
         
         if(nameparts.length == 2) {
-            return true && match;
+            return true;
         }
         else
-            return false && match;
+            return false;
     }
 
     /**
