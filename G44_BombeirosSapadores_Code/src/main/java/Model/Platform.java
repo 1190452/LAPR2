@@ -83,24 +83,7 @@ public class Platform implements Serializable {
 
     }
 
-    /**
-     * returns the facade authorization
-     *
-     * @return
-     */
-    public FacadeAuthorization getFacadeAuthorazation() {
-        return this.m_oAutorizacao;
-    }
-
-    /**
-     * returns the register freelancer
-     *
-     * @return
-     */
-    public RegisterFreelancer getRfree() {
-        return rFree;
-    }
-
+    //======================================================================================================================================================
     /**
      * method that validates the organization created
      *
@@ -126,51 +109,6 @@ public class Platform implements Serializable {
     }
 
     /**
-     * returns the register user
-     *
-     * @return the rUser
-     */
-    public RegisterUser getrUser() {
-        return rUser;
-    }
-
-    /**
-     * modifies the register user
-     *
-     * @param rUser the rUser to set
-     */
-    public void setrUser(RegisterUser rUser) {
-        this.rUser = rUser;
-    }
-
-    /**
-     * returns the register organization
-     *
-     * @return the rOrg
-     */
-    public RegisterOrganization getrOrg() {
-        return rOrg;
-    }
-
-    /**
-     * modifies the register organization
-     *
-     * @param rOrg the rOrg to set
-     */
-    public void setrOrg(RegisterOrganization rOrg) {
-        this.rOrg = rOrg;
-    }
-
-    /**
-     * return the password generator
-     *
-     * @return the alg
-     */
-    public PasswordGenerator getAlg() {
-        return alg;
-    }
-
-    /**
      *
      */
     public void scheduleProcess() {
@@ -182,29 +120,6 @@ public class Platform implements Serializable {
         long interval = getYearInterval();
         t.scheduleAtFixedRate(sEF, delay, interval);
 
-    }
-
-    public long getYearInterval() {
-        return 366 * 24 * 60 * 60 * 1000;
-    }
-
-    /**
-     * return a date with the last day of the year
-     *
-     * @return
-     */
-    public Date getLastDayDate() {
-        int year = Year.now().getValue();
-        return new Date(year, 12, 31);
-    }
-
-    /**
-     * modifies the password generator
-     *
-     * @param alg the alg to set
-     */
-    public void setAlg(PasswordGenerator alg) {
-        this.alg = alg;
     }
 
     /**
@@ -275,6 +190,7 @@ public class Platform implements Serializable {
     }
 
     /**
+<<<<<<< HEAD
      * return the writer
      *
      * @return
@@ -284,6 +200,8 @@ public class Platform implements Serializable {
     }
     
     /**
+=======
+>>>>>>> 9ac137832ea31ab824dde615eee83728d987fa61
      * method that "sends" and email to mean performance freelancers
      *
      * @throws FileNotFoundException
@@ -294,11 +212,16 @@ public class Platform implements Serializable {
         List<Organization> orgList = rOrg.getlOrg();
         for (int i = 0; i < orgList.size(); i++) {
             List<TransactionExecution> transList = orgList.get(i).getRTrans().getTransactions();
-            
+
             for (int j = 0; j < transList.size(); j++) {
                 double taskDelay = transList.get(j).getTaskDelay();
+<<<<<<< HEAD
                 
                 if (taskDelay > 3 && taskDelay > delayPercentage) {
+=======
+
+                if (taskDelay > 3 && taskDelay > delayProb) {
+>>>>>>> 9ac137832ea31ab824dde615eee83728d987fa61
                     Freelancer free = transList.get(j).getFreel();
                     Writer.sendEmail(free);
                 }
@@ -316,6 +239,103 @@ public class Platform implements Serializable {
      */
     public static boolean leapYear(int year) {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+    }
+    //======================================================================================================================================================
+
+    /**
+     * returns the facade authorization
+     *
+     * @return
+     */
+    public FacadeAuthorization getFacadeAuthorazation() {
+        return this.m_oAutorizacao;
+    }
+
+    /**
+     * returns the register freelancer
+     *
+     * @return
+     */
+    public RegisterFreelancer getRfree() {
+        return rFree;
+    }
+
+    /**
+     * returns the register user
+     *
+     * @return the rUser
+     */
+    public RegisterUser getrUser() {
+        return rUser;
+    }
+
+    /**
+     * returns the register organization
+     *
+     * @return the rOrg
+     */
+    public RegisterOrganization getrOrg() {
+        return rOrg;
+    }
+
+    /**
+     * return the password generator
+     *
+     * @return the alg
+     */
+    public PasswordGenerator getAlg() {
+        return alg;
+    }
+
+    public long getYearInterval() {
+        return 366 * 24 * 60 * 60 * 1000;
+    }
+
+    /**
+     * return a date with the last day of the year
+     *
+     * @return
+     */
+    public Date getLastDayDate() {
+        int year = Year.now().getValue();
+        return new Date(year, 12, 31);
+    }
+
+    /**
+     * return the writer
+     *
+     * @return
+     */
+    public Writer getWriter() {
+        return writer;
+    }
+
+    //======================================================================================================================================================
+    /**
+     * modifies the register user
+     *
+     * @param rUser the rUser to set
+     */
+    public void setrUser(RegisterUser rUser) {
+        this.rUser = rUser;
+    }
+
+    /**
+     * modifies the register organization
+     *
+     * @param rOrg the rOrg to set
+     */
+    public void setrOrg(RegisterOrganization rOrg) {
+        this.rOrg = rOrg;
+    }
+
+    /**
+     * modifies the password generator
+     *
+     * @param alg the alg to set
+     */
+    public void setAlg(PasswordGenerator alg) {
+        this.alg = alg;
     }
 
 }

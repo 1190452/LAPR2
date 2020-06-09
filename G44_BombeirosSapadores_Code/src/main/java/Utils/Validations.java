@@ -97,7 +97,9 @@ public class Validations implements Serializable{
      * @return 
      */
     public static boolean isNameValid(String name) {
-        return name.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$");
+        //return name.matches("[A-Z][a-zA-Z][^#&<>\"~;$^%{}?]{1,20}$");
+        String expression = "^[a-zA-z ]*$";
+        return name.matches(expression);
     }
     
     public static boolean isNameValid2(String name) {

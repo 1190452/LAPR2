@@ -71,7 +71,7 @@ public class TransactionExecution implements Serializable {
      * @param delay
      * @param descString
      */
-    public TransactionExecution(String transID,Task task, Freelancer freel, Date endDate, double delay, String descString) {
+    public TransactionExecution(String transID, Task task, Freelancer freel, Date endDate, double delay, String descString) {
         this.transID = transID;
         this.task = task;
         this.freel = freel;
@@ -80,8 +80,7 @@ public class TransactionExecution implements Serializable {
         this.descriptionOfQuality = descString;
         counter++;
     }
-    
-    
+
     /**
      * constructor that creates an instance of transaction with the following
      * parameters:
@@ -95,7 +94,7 @@ public class TransactionExecution implements Serializable {
      * @param payment
      * @param transactionValue
      */
-    public TransactionExecution(String transID,Task task, Freelancer freel, Date endDate, double delay, String descString, Payment payment) {
+    public TransactionExecution(String transID, Task task, Freelancer freel, Date endDate, double delay, String descString, Payment payment) {
         this.transID = transID;
         this.task = task;
         this.freel = freel;
@@ -105,7 +104,7 @@ public class TransactionExecution implements Serializable {
         this.payment = payment;
         counter++;
     }
-    
+
     /**
      * constructor that creates an instance of transaction with the following
      * parameters:
@@ -125,7 +124,6 @@ public class TransactionExecution implements Serializable {
         this.payment = payment;
         counter++;
     }
-
 
     /**
      * empty constructor that creates an instance of Transaction
@@ -156,6 +154,7 @@ public class TransactionExecution implements Serializable {
 
     }
 
+    //======================================================================================================================================================
     /**
      * returns the end date
      *
@@ -184,6 +183,43 @@ public class TransactionExecution implements Serializable {
     }
 
     /**
+     * returns the task related to the transaction
+     *
+     * @return the task
+     */
+    public Task getTask() {
+        return task;
+    }
+
+    /**
+     * returns the counter
+     *
+     * @return the counter
+     */
+    public static int getCounter() {
+        return counter;
+    }
+
+    /**
+     * returns the payment of the transaction
+     *
+     * @return the payment
+     */
+    public Payment getPayment() {
+        return payment;
+    }
+
+    /**
+     * returns the freelancer related to the transaction
+     *
+     * @return the freel
+     */
+    public Freelancer getFreel() {
+        return freel;
+    }
+
+    //======================================================================================================================================================
+    /**
      * modifies the description of quality
      *
      * @param descriptionOfQuality the descriptionOfQuality to s
@@ -198,7 +234,7 @@ public class TransactionExecution implements Serializable {
      * modifies the end date
      *
      * @param endDate the endDate to set
-     * @return 
+     * @return
      */
     public boolean setEndDate(Date endDate) {
         this.endDate = endDate;
@@ -209,20 +245,11 @@ public class TransactionExecution implements Serializable {
      * modifies the delay
      *
      * @param delay the delay to set
-     * @return 
+     * @return
      */
     public boolean setDelay(double delay) {
         this.delay = delay;
         return true;
-    }
-
-    /**
-     * returns the task related to the transaction
-     *
-     * @return the task
-     */
-    public Task getTask() {
-        return task;
     }
 
     /**
@@ -235,15 +262,6 @@ public class TransactionExecution implements Serializable {
     }
 
     /**
-     * returns the freelancer related to the transaction
-     *
-     * @return the freel
-     */
-    public Freelancer getFreel() {
-        return freel;
-    }
-
-    /**
      * modifies the freelancer related to the transaction
      *
      * @param freel the freel to set
@@ -251,34 +269,18 @@ public class TransactionExecution implements Serializable {
     public void setFreel(Freelancer freel) {
         this.freel = freel;
     }
-
-
+    
     /**
-     * returns the counter
-     *
-     * @return the counter
-     */
-    public static int getCounter() {
-        return counter;
-    }
+    * modifies the payment of the transaction
+    * @param
+    payment
 
-
-    /**
-     * returns the payment of the transaction
-     *
-     * @return the payment
-     */
-    public Payment getPayment() {
-        return payment;
-    }
-
-    /**
-     * modifies the payment of the transaction
-     * @param payment
-     */
+    */
     public void setTransactionValue(Payment payment) {
         this.payment = payment;
     }
+    
+    //======================================================================================================================================================
 
     /**
      * writing method of the class TransactionExecution

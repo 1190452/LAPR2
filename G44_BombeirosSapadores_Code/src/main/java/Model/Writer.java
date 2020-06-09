@@ -14,6 +14,9 @@ import java.util.List;
  * @author brunopereira
  */
 public class Writer {
+    
+    
+    //======================================================================================================================================================
 
     /**
      * method that "sends" an email to the new registered users with the

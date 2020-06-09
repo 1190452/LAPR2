@@ -6,7 +6,7 @@ import java.io.Serializable;
  *
  * @author jorge
  */
-public class Task implements Serializable{
+public class Task implements Serializable {
 
     /**
      * The id of the Task
@@ -41,10 +41,7 @@ public class Task implements Serializable{
     /**
      * the Task status by being finished
      */
-
     private boolean isFinished;
-    
-
 
     /**
      * The id of the Task per omission
@@ -60,12 +57,12 @@ public class Task implements Serializable{
      * The cost of the Task per hour per omission
      */
     private static final double COST_BY_OMISSION = 0;
-    
+
     /**
      * The category by omission
      */
     private static final String CATEGORY_BY_OMISSION = "no category";
-    
+
     private static final int TIMETASK_BY_OMISSION = 0;
 
     /**
@@ -94,7 +91,6 @@ public class Task implements Serializable{
         this.costHour = costHour;
         this.taskCategory = taskCategory;
     }
-    
 
     /**
      * Builds an instance of Task with the omission values
@@ -123,7 +119,27 @@ public class Task implements Serializable{
         isPayed = otherTask.isPayed;
         isFinished = otherTask.isFinished;
     }
+    //======================================================================================================================================================
 
+    /**
+     * Returns the value isFinished of the Task
+     *
+     * @return the value isFinished of the Task
+     */
+    public boolean isIsFinished() {
+        return isFinished;
+    }
+
+    /**
+     * Returns the value of isPayed of the Task
+     *
+     * @return the isPayed value
+     */
+    public boolean isIsPayed() {
+        return isPayed;
+    }
+
+    //======================================================================================================================================================
     /**
      * Returns the id of the Task
      *
@@ -132,6 +148,41 @@ public class Task implements Serializable{
     public String getIdTask() {
         return idTask;
     }
+
+    /**
+     * Returns the desciption of the Task
+     *
+     * @return description of the Task
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * Returns the time of the task
+     *
+     * @return time of the task
+     */
+    public int getTimeTask() {
+        return timeTask;
+    }
+
+    /**
+     * Returns the cost per hour of the task
+     *
+     * @return cost per hour of the task
+     */
+    public double getCostHour() {
+        return costHour;
+    }
+
+    /**
+     * @return the taskCategory
+     */
+    public String getTaskCategory() {
+        return taskCategory;
+    }
+    //======================================================================================================================================================
 
     /**
      * Modifies the ID of the Task
@@ -143,15 +194,8 @@ public class Task implements Serializable{
     }
 
     /**
-     * Returns the desciption of the Task
-     * @return description of the Task
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
      * Modifies the description of the task
+     *
      * @param description the new description of the Task
      */
     public void setDescription(String description) {
@@ -159,15 +203,8 @@ public class Task implements Serializable{
     }
 
     /**
-     * Returns the time of the task
-     * @return time of the task
-     */
-    public int getTimeTask() {
-        return timeTask;
-    }
-
-    /**
      * Modifies the time of the task
+     *
      * @param timeTask the new time of the task
      */
     public void setTime(int timeTask) {
@@ -175,58 +212,30 @@ public class Task implements Serializable{
     }
 
     /**
-     * Returns the cost per hour of the task
-     * @return cost per hour of the task
-     */
-    public double getCostHour() {
-        return costHour;
-    }
-
-    /**
-     * Modifies the cost per hour 
-     * @param costHour 
+     * Modifies the cost per hour
+     *
+     * @param costHour
      */
     public void setCostHour(double costHour) {
         this.costHour = costHour;
     }
 
     /**
-     * Returns the value of isPayed of the Task
-     * @return the isPayed value
-     */
-    public boolean isIsPayed() {
-        return isPayed;
-    }
-
-    /**
      * Modifies the value isPayed of the Task
-     * @param isPayed  the new value isPayed of the Task
+     *
+     * @param isPayed the new value isPayed of the Task
      */
     public void setIsPayed(boolean isPayed) {
         this.isPayed = isPayed;
     }
 
     /**
-     * Returns the value isFinished of the Task
-     * @return the value isFinished of the Task
-     */
-    public boolean isIsFinished() {
-        return isFinished;
-    }
-
-    /**
      * Modifies the value isFinished of the Task
+     *
      * @param isFinished the new isFinished value of the Task
      */
     public void setIsFinished(boolean isFinished) {
         this.isFinished = isFinished;
-    }
-    
-    /**
-     * @return the taskCategory
-     */
-    public String getTaskCategory() {
-        return taskCategory;
     }
 
     /**
@@ -236,12 +245,14 @@ public class Task implements Serializable{
         this.taskCategory = taskCategory;
     }
 
+    //======================================================================================================================================================
     @Override
     public int hashCode() {
         int hash = 7;
         return hash;
     }
 
+    //======================================================================================================================================================
     /**
      * Compares 2 Task objects through id with both objects being considered
      * equal only when this parameter is the same
@@ -261,6 +272,7 @@ public class Task implements Serializable{
         return this.idTask.equals(otherTask.idTask);
     }
 
+    //======================================================================================================================================================
     /**
      * Returns the characteristics of the Task
      *
@@ -271,6 +283,5 @@ public class Task implements Serializable{
         return String.format("Task %s, description: %s, cost per hour: %s, "
                 + "category: %s", idTask, description, costHour, taskCategory);
     }
-    
 
 }

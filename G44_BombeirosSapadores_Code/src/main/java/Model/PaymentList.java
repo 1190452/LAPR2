@@ -24,6 +24,8 @@ public class PaymentList implements Serializable{
         paymentList = new ArrayList<>();
     }
 
+    //======================================================================================================================================================
+    
     /**
      * method that adds a new payment to the payment list
      * @param t 
@@ -39,6 +41,8 @@ public class PaymentList implements Serializable{
    public boolean removePayment(Payment t){
        return paymentList.remove(t);
    }
+   
+   //======================================================================================================================================================
    
    /**
     * returns the list of payments

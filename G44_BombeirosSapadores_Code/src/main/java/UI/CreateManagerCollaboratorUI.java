@@ -115,7 +115,7 @@ public class CreateManagerCollaboratorUI implements Initializable {
                             if (Validations.isDoorNumberValid(co.getDoorTxt().getText())) {
                                 if (Validations.isLocalityValid(co.getLocalityTxt().getText())) {
                                     if (Validations.isNameValid(nameCTxt.getText()) && Validations.isEmailValid(emailCTxt.getText())) {
-                                        if (Validations.isNameValid(nameMTxt.getText()) && Validations.isEmailValid(nameMTxt.getText())) {
+                                        if (Validations.isNameValid(nameMTxt.getText()) && Validations.isEmailValid(emailMTxt.getText())) {
 
                                             roc.newOrganization(co.getNameTxt().getText(), co.getEmailTxt().getText(), co.getNifTxt().getText(), co.getStreetTxt().getText(), co.getDoorTxt().getText(), co.getLocalityTxt().getText(), nameCTxt.getText(), emailCTxt.getText(), nameMTxt.getText(), emailMTxt.getText());
                                             boolean added = roc.registerOrganization();

@@ -1,20 +1,12 @@
 package Model;
 
-
 import java.io.Serializable;
-
-import java.util.ArrayList;
-
-import java.util.List;
 
 /**
  *
  * @author Ricardo
  */
-
-public class Payment implements Serializable{
-
-
+public class Payment implements Serializable {
 
     /**
      * Value of the payment in euros
@@ -48,8 +40,10 @@ public class Payment implements Serializable{
         this.valueC = VALUEC_BY_OMISSION;
     }
 
+    //======================================================================================================================================================
     /**
      * returns the value in euros of the payment
+     *
      * @return the valueE
      */
     public double getValueE() {
@@ -57,7 +51,18 @@ public class Payment implements Serializable{
     }
 
     /**
+     * returns the value in the currency of the freelancer of the payment
+     *
+     * @return the valueC
+     */
+    public double getValueC() {
+        return valueC;
+    }
+
+    //======================================================================================================================================================
+    /**
      * modifies the value in euros of the payment
+     *
      * @param valueE the valueE to set
      */
     public void setValueE(double valueE) {
@@ -65,15 +70,8 @@ public class Payment implements Serializable{
     }
 
     /**
-     * returns the value in the currency of the freelancer of the payment
-     * @return the valueC
-     */
-    public double getValueC() {
-        return valueC;
-    }
-
-    /**
      * modifies the value in the currency of the freelancer of the payment
+     *
      * @param valueC the valueC to set
      */
     public void setValueC(double valueC) {

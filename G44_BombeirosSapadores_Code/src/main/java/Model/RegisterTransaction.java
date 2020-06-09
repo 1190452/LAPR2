@@ -15,13 +15,13 @@ import java.util.List;
  *
  * @author tiagopereira
  */
-public class RegisterTransaction implements Serializable{
-    
+public class RegisterTransaction implements Serializable {
+
     /**
      * transaction list
      */
     private List<TransactionExecution> transactionList;
-    
+
     private CurrencyConverter cc;
 
     /**
@@ -31,27 +31,68 @@ public class RegisterTransaction implements Serializable{
         transactionList = new ArrayList<>();
     }
 
+    //======================================================================================================================================================
+    
     /**
      * method that removes a transaction from the transaction list
-     * @param tr 
-     * @return  
+     *
+     * @param tr
+     * @return
      */
     public boolean removeHistoricalTransaction(TransactionExecution tr) {
-       return transactionList.remove(tr);
+        return transactionList.remove(tr);
     }
 
-    /**
-     * returns the list of transactions
-     * @return the transactionList
-     */
-    public List<TransactionExecution> getTransactions() {
-        return transactionList;
+    public boolean meanTaskDelayBetterThan3(Freelancer free) {
+        int count = 0;
+        double sum = 0;
+
+        for (int i = 0; i < transactionList.size(); i++) {
+            if (transactionList.get(i).getFreel().equals(free)) {
+                sum += transactionList.get(i).getTaskDelay();
+                count++;
+            }
+
+        }
+        if ((sum / count) > 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public double percentageOfDelays(Freelancer free) {
+        int numberOfTasks = free.getTaskList().getTaskList().size();
+        int count = 0;
+        int sum = 0;
+
+        for (int i = 0; i < transactionList.size(); i++) {
+            if (transactionList.get(i).getFreel().equals(free)) {
+                sum += transactionList.get(i).getTaskDelay();
+                count++;
+            }
+
+        }
+        return ((sum / count) * 100);
+    }
+
+    public double overallPercentageDelays() {
+        int count = 0;
+        int sum = 0;
+
+        for (int i = 0; i < transactionList.size(); i++) {
+            sum += transactionList.get(i).getTaskDelay();
+            count++;
+        }
+        return ((sum / count) * 100);
+
     }
 
     /**
      * method that verifies if they transaction list is empty
+     *
      * @param lt
-     * @return 
+     * @return
      */
     public boolean validateHistoricalTransaction(List<TransactionExecution> lt) {
         return !lt.isEmpty();
@@ -59,23 +100,25 @@ public class RegisterTransaction implements Serializable{
 
     /**
      * method that creates a new transaction
+     *
      * @param task
      * @param freel
      * @param endDate
      * @param delay
      * @param qow
-     * @return 
+     * @return
      */
     public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         task.setIsFinished(true);
-        double costEuros = task.getCostHour()*task.getTimeTask();
-        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros,cc.convert(costEuros, freel.getCountry())));
+        double costEuros = task.getCostHour() * task.getTimeTask();
+        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros, cc.convert(costEuros, freel.getCountry())));
     }
 
     /**
      * method that registers the transaction
+     *
      * @param trans
-     * @return 
+     * @return
      */
     public boolean registerTransaction(TransactionExecution trans) {
         if (validateTransaction(trans)) {
@@ -85,9 +128,11 @@ public class RegisterTransaction implements Serializable{
     }
 
     /**
-     * method that checks if the transaction can be added to the list (global validation)
+     * method that checks if the transaction can be added to the list (global
+     * validation)
+     *
      * @param trans
-     * @return 
+     * @return
      */
     public boolean validateTransaction(TransactionExecution trans) {
         if (transactionList.contains(trans)) {
@@ -97,13 +142,14 @@ public class RegisterTransaction implements Serializable{
     }
 
     /**
-     * method that adds a transaction 
+     * method that adds a transaction
+     *
      * @param trans
-     * @return 
+     * @return
      */
     public boolean addTransaction(TransactionExecution trans) {
         transactionList.add(trans);
-        if(transactionList!=null){
+        if (transactionList != null) {
             return true;
         }
         return false;
@@ -111,8 +157,9 @@ public class RegisterTransaction implements Serializable{
 
     /**
      * method that calculates the value of each transaction
+     *
      * @param trans
-     * @return 
+     * @return
      */
     public double calculateTransactionValue(TransactionExecution trans) {
         for (TransactionExecution t : transactionList) {
@@ -120,13 +167,24 @@ public class RegisterTransaction implements Serializable{
                 if (trans.getFreel().getLevelExp().equalsIgnoreCase("Senior")) {
                     double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;
                     return value;
-                    
+
                 }
                 double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask();
                 return value;
             }
 
         }
-        return -1;        
+        return -1;
     }
+
+    //======================================================================================================================================================
+    /**
+     * returns the list of transactions
+     *
+     * @return the transactionList
+     */
+    public List<TransactionExecution> getTransactions() {
+        return transactionList;
+    }
+
 }

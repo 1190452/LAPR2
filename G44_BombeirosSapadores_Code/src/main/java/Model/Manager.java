@@ -77,6 +77,8 @@ public class Manager implements Serializable{
         emailM = otherManager.getEmailM();
         role = otherManager.getRole();
     }
+    
+    //======================================================================================================================================================
 
     /**
      * returns the name of the manager
@@ -87,19 +89,31 @@ public class Manager implements Serializable{
     }
 
     /**
-     * modifies the name of the manager
-     * @param nameM the nameM to set
-     */
-    public void setNameM(String nameM) {
-        this.nameM = nameM;
-    }
-
-    /**
      * returns the email of the manager
      * @return the emailM
      */
     public String getEmailM() {
         return emailM;
+    }
+
+
+    /**
+     * returns the role of the freelancer
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+    
+    //======================================================================================================================================================
+    
+    /**
+     * modifies the name of the manager
+     *
+     * @param nameM the nameM to set
+     */
+    public void setNameM(String nameM) {
+        this.nameM = nameM;
     }
 
     /**
@@ -109,15 +123,6 @@ public class Manager implements Serializable{
     public void setEmailM(String emailM) {
         this.emailM = emailM;
     }
-
-    /**
-     * returns the role of the freelancer
-     * @return the role
-     */
-    public String getRole() {
-        return role;
-    }
-
     /**
      * modifies the role of the freelancer
      * @param role the role to set
@@ -126,6 +131,8 @@ public class Manager implements Serializable{
         this.role = role;
     }
 
+    //======================================================================================================================================================
+    
     /**
      * writing method of the class Manager
      * @return 

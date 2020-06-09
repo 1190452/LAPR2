@@ -36,6 +36,9 @@ public class ImportTxtFile implements ImportFile, Serializable {
      */
     private RegisterFreelancer rf;
 
+    
+    //======================================================================================================================================================
+    
     /**
      * method that reads a txt file and loads a set of historical transactions
      *

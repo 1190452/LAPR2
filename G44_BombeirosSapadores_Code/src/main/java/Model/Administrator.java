@@ -33,6 +33,8 @@ public class Administrator extends User implements Serializable{
         super(otherAdmin.getName(), otherAdmin.getEmail(), otherAdmin.getPassword(), otherAdmin.getRole());
     }
     
+    //======================================================================================================================================================
+    
     /**
      * writing method of the class Administrator
      * @return 

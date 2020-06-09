@@ -27,17 +27,12 @@ public class WatchStatisticsController {
     private String email;
 
     private Statistic st;
-
-    public Map.Entry<String, CustomValue> OverallStatistics() {
+    
+   
+     public Map.Entry<String, CustomValue> OverallStatistics( List<TransactionExecution> ltr) {
         String decisao = null;
         String emailF = "gg@gmail.com";
-        st = new Statistic();
-        ApplicationPOT app = ApplicationPOT.getInstance();
-        RegisterOrganization rorgs = app.getPlatform().getrOrg();
-        UserSession log = app.getActualSession();
-        email = log.getUserEmail();
-        Organization org = rorgs.getOrganizationByUserEmailColab(email);
-        List<TransactionExecution> ltr = org.getRTrans().getTransactions();
+        st = new Statistic();     
          if (decisao.equals("Payment Deviation of each Freelancer")) {
             return getPaymentDeviationOfEachFreelancer(emailF, ltr);
 
@@ -50,6 +45,18 @@ public class WatchStatisticsController {
         }
 
         return null;
+    } 
+     
+    //======================================================================================================================================================
+    
+   
+    public List<TransactionExecution> getFreelancers(){
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        RegisterOrganization rorgs = app.getPlatform().getrOrg();
+        UserSession log = app.getActualSession();
+        email = log.getUserEmail();
+        Organization org = rorgs.getOrganizationByUserEmailColab(email);
+        return org.getRTrans().getTransactions();
     }
 
     /**
