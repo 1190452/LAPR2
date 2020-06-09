@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.ApplicationPOT;
-import Model.Transaction;
+import Model.TransactionExecution;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ public class HistoricalTransactionController {
     /**
      * The list of transactions of HistoricalTransactionController
      */
-    private List<Transaction> lt;
+    private List<TransactionExecution> lt;
     
     /**
      * Initializes the HistoricalTransactionController

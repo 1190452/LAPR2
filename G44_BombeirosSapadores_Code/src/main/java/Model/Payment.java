@@ -27,7 +27,7 @@ public class Payment implements Serializable{
     /**
      * List of the tranmsactions of the freelancer
      */
-    private List<Transaction> nltr;
+    private List<TransactionExecution> nltr;
 
     private static final double VALUEE_BY_OMISSION = 0;
     private static final double VALUEC_BY_OMISSION = 0;
@@ -40,7 +40,7 @@ public class Payment implements Serializable{
      * @param curr
      * @param nltr
      */
-    public Payment(double sum, double curr, List<Transaction> nltr) {
+    public Payment(double sum, double curr, List<TransactionExecution> nltr) {
         if (sum != 0 && curr != 0 && nltr != null) {
             this.valueE = sum;
             this.valueC = curr;
@@ -51,14 +51,14 @@ public class Payment implements Serializable{
     public Payment() {
         this.valueE = VALUEE_BY_OMISSION;
         this.valueC = VALUEC_BY_OMISSION;
-        this.nltr = new ArrayList<Transaction>();
+        this.nltr = new ArrayList<TransactionExecution>();
     }
 
     /**
      * returns the transaction list of the payment
      * @return the nltr
      */
-    public List<Transaction> getNltr() {
+    public List<TransactionExecution> getNltr() {
         return nltr;
     }
 
@@ -66,7 +66,7 @@ public class Payment implements Serializable{
      * modifies the transaction list of the payment
      * @param nltr the nltr to set
      */
-    public void setNltr(List<Transaction> nltr) {
+    public void setNltr(List<TransactionExecution> nltr) {
         this.nltr = nltr;
     }
 

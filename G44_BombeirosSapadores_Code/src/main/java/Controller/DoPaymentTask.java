@@ -14,7 +14,7 @@ import Model.Platform;
 import Model.RegisterFreelancer;
 import Model.RegisterTransaction;
 import Model.Task;
-import Model.Transaction;
+import Model.TransactionExecution;
 import Model.Writer;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,9 +81,9 @@ public class DoPaymentTask extends TimerTask {
         }
 
         RegisterTransaction rt = plt.getRTrans();
-        List<Transaction> ltr = rt.getTransactions();
+        List<TransactionExecution> ltr = rt.getTransactions();
 
-        List<Transaction> nltr = new ArrayList<>();
+        List<TransactionExecution> nltr = new ArrayList<>();
 
         for (int i = 0; i < lf.size(); i++) {
 
@@ -96,7 +96,7 @@ public class DoPaymentTask extends TimerTask {
 
                 for (int k = 0; k < ltr.size(); k++) {
 
-                    Transaction tr = ltr.get(k);
+                    TransactionExecution tr = ltr.get(k);
                     Freelancer f = tr.getFreel();
                     Task cts = tr.getTask();
 
