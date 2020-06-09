@@ -1,0 +1,5 @@
+Receipt of JS1Task :t1 -------------------- 24.0 
+The total value is: 24.0euros
+Receipt of JS1Task :t1 -------------------- 24.0 
+Task :2 -------------------- 220.0 
+The total value is: 244.0euros

@@ -99,6 +99,17 @@ public class Validations implements Serializable{
     public static boolean isNameValid(String name) {
         return name.matches("(?i)(^[a-z])((?![ .,'-]$)[a-z .,'-]){0,24}$");
     }
+    
+    public static boolean isNameValid2(String name) {
+   
+        String[] nameparts = name.split(" ");
+        
+        if(nameparts.length == 2) {
+            return true;
+        }
+        else
+            return false;
+    }
 
     /**
      * methos to confirm if an IBAN is valid

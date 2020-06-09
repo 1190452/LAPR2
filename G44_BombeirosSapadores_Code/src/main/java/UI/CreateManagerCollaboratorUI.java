@@ -6,6 +6,7 @@
 package UI;
 
 import Controller.RegistOrganizationController;
+import Utils.Validations;
 import com.jfoenix.controls.JFXTextField;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -57,8 +58,8 @@ public class CreateManagerCollaboratorUI implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
-     public void associarParentUI(CreateOrganizationUI co) {
+
+    public void associarParentUI(CreateOrganizationUI co) {
         this.co = co;
         roc = this.co.getController();
 
@@ -106,16 +107,59 @@ public class CreateManagerCollaboratorUI implements Initializable {
 
     @FXML
     private void submit(ActionEvent event) throws FileNotFoundException {
-        try{
-        roc.newOrganization(co.getNameTxt().getText(), co.getEmailTxt().getText(), co.getNifTxt().getText(), co.getStreetTxt().getText(), co.getDoorTxt().getText(), co.getLocalityTxt().getText(), nameCTxt.getText(), emailCTxt.getText(), nameMTxt.getText(), emailMTxt.getText());
-        boolean added = roc.registerOrganization();
-        if (added) {
-            AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Organization",
-                    added ? "New Organization added with success"
-                            : "It was not possible to add the organization").show();
+        try {
+            if (Validations.isNameValid(co.getNameTxt().getText())) {
+                if (Validations.isEmailValid(co.getEmailTxt().getText())) {
+                    if (Validations.isNIFValid(co.getNifTxt().getText())) {
+                        if (Validations.isStreetValid(co.getStreetTxt().getText())) {
+                            if (Validations.isDoorNumberValid(co.getDoorTxt().getText())) {
+                                if (Validations.isLocalityValid(co.getLocalityTxt().getText())) {
+                                    if (Validations.isNameValid(nameCTxt.getText()) && Validations.isEmailValid(emailCTxt.getText())) {
+                                        if (Validations.isNameValid(nameMTxt.getText()) && Validations.isEmailValid(nameMTxt.getText())) {
 
-            endCreateManagerCollaboratorUI(event);
-        }
+                                            roc.newOrganization(co.getNameTxt().getText(), co.getEmailTxt().getText(), co.getNifTxt().getText(), co.getStreetTxt().getText(), co.getDoorTxt().getText(), co.getLocalityTxt().getText(), nameCTxt.getText(), emailCTxt.getText(), nameMTxt.getText(), emailMTxt.getText());
+                                            boolean added = roc.registerOrganization();
+                                            if (added) {
+                                                AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new Organization",
+                                                        added ? "New Organization added with success"
+                                                                : "It was not possible to add the organization").show();
+
+                                                endCreateManagerCollaboratorUI(event);
+                                            }
+
+                                        } else {
+                                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Manager is invalid!", "Please check the information on written.");
+                                            alert.show();
+                                        }
+                                    } else {
+                                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Collaborator is invalid!", "Please check the information on written.");
+                                        alert.show();
+                                    }
+                                } else {
+                                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The locality is invalid!", "Please check the information on written.");
+                                    alert.show();
+                                }
+                            } else {
+                                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Door number is invalid!", "Please check the information on written.");
+                                alert.show();
+                            }
+                        } else {
+                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Street is invalid!", "Please check the information on written.");
+                            alert.show();
+                        }
+                    } else {
+                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The NIF is invalid!", "Please check the information on written.");
+                        alert.show();
+                    }
+                } else {
+                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Email is invalid!", "Please check the information on written.");
+                    alert.show();
+                }
+            } else {
+                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Name of the Organization is invalid!", "Please check the information on written.");
+                alert.show();
+            }
+
         } catch (NumberFormatException nfe) {
             AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error in data.",
                     "Introduce correct data").show();
@@ -132,7 +176,5 @@ public class CreateManagerCollaboratorUI implements Initializable {
         this.emailCTxt.clear();
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
-
-   
 
 }
