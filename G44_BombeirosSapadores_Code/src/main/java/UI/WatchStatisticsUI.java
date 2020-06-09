@@ -7,8 +7,10 @@ package UI;
 
 import Controller.WatchStatisticsController;
 import Model.Freelancer;
+import Model.TransactionExecution;
 import Utils.CustomValue;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -58,8 +60,9 @@ public class WatchStatisticsUI implements Initializable {
 
     @FXML
     private void confirm(ActionEvent event) {
-        Map.Entry<Freelancer, CustomValue> entryPayment = wsc.OverallStatistics();
-        Map.Entry<Freelancer, CustomValue> entryTaskExecution = wsc.OverallStatistics();
+        List<TransactionExecution> ltr = wsc.getFreelancers();
+        Map.Entry<String, CustomValue> entry = wsc.OverallStatistics(ltr);
+        
         
     }
 

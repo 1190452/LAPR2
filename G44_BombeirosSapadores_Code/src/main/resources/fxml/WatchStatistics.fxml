@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -26,8 +26,6 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="49.1953125" GridPane.halignment="LEFT" GridPane.rowIndex="2">
@@ -38,7 +36,7 @@
                   <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="15.0" right="100.0" />
                </GridPane.margin>
@@ -51,12 +49,11 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets bottom="15.0" left="100.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="lblName" prefHeight="17.0" prefWidth="223.0" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Delay Task: " GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <font>
                   <Font name="Verdana" size="14.0" />
@@ -65,24 +62,7 @@
                   <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Delay Payment: " GridPane.halignment="LEFT" GridPane.rowIndex="6">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="200.0" />
-               </GridPane.margin>
-            </Text>
-            <Label fx:id="lblDelay" layoutX="300.0" layoutY="139.0" prefHeight="17.0" prefWidth="244.0" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </Label>
-            <Label fx:id="lblPayment" layoutX="300.0" layoutY="139.0" prefHeight="17.0" prefWidth="223.0" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets left="100.0" />
-               </GridPane.margin>
-            </Label>
+            <JFXComboBox prefHeight="27.0" prefWidth="206.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </center>

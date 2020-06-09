@@ -46,7 +46,7 @@ public class Statistic {
     private double FreelancerMeanPayment(List<TransactionExecution> eachFreel) {
         double sum = 0;
         for (int i = 0; i < eachFreel.size(); i++) {
-            sum += eachFreel.get(i).getTransactionValue();
+            sum += eachFreel.get(i).getPayment().getValueE();
         }
         return (sum / eachFreel.size());
     }
@@ -54,7 +54,7 @@ public class Statistic {
     private double FreelancerPaymentDeviation(List<TransactionExecution> eachFreel, double meanFreel) {
         double sumDeviation = 0;
         for (int i = 0; i < eachFreel.size(); i++) {
-            sumDeviation += Math.pow((eachFreel.get(i).getTransactionValue() - meanFreel), 2);
+            sumDeviation += Math.pow((eachFreel.get(i).getPayment().getValueE() - meanFreel), 2);
         }
         return sumDeviation;
     }
@@ -96,7 +96,7 @@ public class Statistic {
         Map.Entry<String, CustomValue> entry = new AbstractMap.SimpleEntry<>("Task Execution Delay of All Freelancers", new CustomValue(mean, deviation));
         return entry;
     }
-    
+
     public Map.Entry<String, CustomValue> getPaymentDeviationOfAllFreelancers(List<TransactionExecution> ltr) {
         double mean = FreelancerMeanPayment(ltr);
         double deviation = FreelancerDeviationTaskExecution(ltr, mean);

@@ -114,8 +114,9 @@ public class CreateManagerCollaboratorUI implements Initializable {
                         if (Validations.isStreetValid(co.getStreetTxt().getText())) {
                             if (Validations.isDoorNumberValid(co.getDoorTxt().getText())) {
                                 if (Validations.isLocalityValid(co.getLocalityTxt().getText())) {
-                                    if (Validations.isNameValid(nameCTxt.getText()) && Validations.isEmailValid(emailCTxt.getText())) {
-                                        if (Validations.isNameValid(nameMTxt.getText()) && Validations.isEmailValid(nameMTxt.getText())) {
+                                    if (Validations.isNameValid(nameCTxt.getText()) && Validations.isNameValid2(nameCTxt.getText()) && Validations.isEmailValid(emailCTxt.getText())) {
+                                        if (Validations.isNameValid(nameMTxt.getText()) && Validations.isNameValid2(nameMTxt.getText())  && Validations.isEmailValid(emailMTxt.getText())) {
+                                            
 
                                             roc.newOrganization(co.getNameTxt().getText(), co.getEmailTxt().getText(), co.getNifTxt().getText(), co.getStreetTxt().getText(), co.getDoorTxt().getText(), co.getLocalityTxt().getText(), nameCTxt.getText(), emailCTxt.getText(), nameMTxt.getText(), emailMTxt.getText());
                                             boolean added = roc.registerOrganization();
@@ -128,35 +129,35 @@ public class CreateManagerCollaboratorUI implements Initializable {
                                             }
 
                                         } else {
-                                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Manager is invalid!", "Please check the information on written.");
+                                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Manager is invalid!", "Please check the information written.");
                                             alert.show();
                                         }
                                     } else {
-                                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Collaborator is invalid!", "Please check the information on written.");
+                                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Collaborator is invalid!", "Please check the information written.");
                                         alert.show();
                                     }
                                 } else {
-                                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The locality is invalid!", "Please check the information on written.");
+                                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The locality is invalid!", "Please check the information written.");
                                     alert.show();
                                 }
                             } else {
-                                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Door number is invalid!", "Please check the information on written.");
+                                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Door number is invalid!", "Please check the information written.");
                                 alert.show();
                             }
                         } else {
-                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Street is invalid!", "Please check the information on written.");
+                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Street is invalid!", "Please check the information written.");
                             alert.show();
                         }
                     } else {
-                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The NIF is invalid!", "Please check the information on written.");
+                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The NIF is invalid!", "Please check the information written.");
                         alert.show();
                     }
                 } else {
-                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Email is invalid!", "Please check the information on written.");
+                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Email is invalid!", "Please check the information written.");
                     alert.show();
                 }
             } else {
-                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Name of the Organization is invalid!", "Please check the information on written.");
+                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Name of the Organization is invalid!", "Please check the information written.");
                 alert.show();
             }
 
