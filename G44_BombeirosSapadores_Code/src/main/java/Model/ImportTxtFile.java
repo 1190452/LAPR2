@@ -59,7 +59,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
             String header = sc.nextLine();
             try {
                 while (sc.hasNext()) {
-                    String transID = sc.next().trim();
+                    int transID = Integer.parseInt(sc.next().trim());
                     String taskID = sc.next().trim();
                     String taskDescrip = sc.next().trim();
                     int timeTask = Integer.parseInt(sc.next().trim());
