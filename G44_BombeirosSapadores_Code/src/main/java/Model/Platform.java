@@ -48,20 +48,6 @@ public class Platform implements Serializable {
      */
     private RegisterUser rUser;
 
-    /**
-     * register transaction
-     */
-    private RegisterTransaction rTrans;
-
-    /**
-     * import txt file
-     */
-    private ImportTxtFile itxt;
-
-    /**
-     * import csv file
-     */
-    private ImportCsvFile icsv;
 
     /**
      * password generator
@@ -95,9 +81,8 @@ public class Platform implements Serializable {
         pg.useLower(true);
         pg.useDigits(true);
         this.alg = pg.build();
-        this.itxt = new ImportTxtFile();
-        this.icsv = new ImportCsvFile();
-        this.rTrans = new RegisterTransaction();
+    
+      
     }
 
     /**
@@ -178,27 +163,7 @@ public class Platform implements Serializable {
         this.rOrg = rOrg;
     }
 
-    /**
-     * method that loads and returns a list of transactions
-     *
-     * @param fileName
-     * @return
-     */
-    public List<TransactionExecution> loadHistoricalTransaction(String fileName) {
-        if (fileName.endsWith(".txt")) {
-            rTrans = itxt.importFile(fileName);
-            List<TransactionExecution> lt = rTrans.getTransactions();
-            return lt;
-        } else if (fileName.endsWith(".csv")) {
-            rTrans = icsv.importFile(fileName);
-            List<TransactionExecution> lt = getRTrans().getTransactions();
-            if (getRTrans().validateHistoricalTransaction(lt)) {
-                return lt;
-            }
-
-        }
-        return null;
-    }
+    
 
     /**
      * return the password generator
@@ -245,14 +210,6 @@ public class Platform implements Serializable {
         this.alg = alg;
     }
 
-    /**
-     * returns the register transaction
-     *
-     * @return the rTrans
-     */
-    public RegisterTransaction getRTrans() {
-        return rTrans;
-    }
 
     /**
      * method that schedules the payment to the freelancer
@@ -330,6 +287,7 @@ public class Platform implements Serializable {
         return writer;
     }
 
+<<<<<<< HEAD
     /**
      * method that "sends" and email to mean performance freelancers
      *
@@ -360,4 +318,6 @@ public class Platform implements Serializable {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 
+=======
+>>>>>>> a08184695fb9839da0e3507ad85c1cd95ce4162e
 }

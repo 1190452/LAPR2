@@ -1,6 +1,6 @@
 package UI;
 
-import Controller.CreateTransactionController;
+import Controller.CreatePaymentTransactionController;
 import Model.Freelancer;
 import Model.Task;
 import Model.TransactionExecution;
@@ -12,8 +12,6 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,9 +27,9 @@ import javafx.stage.Stage;
  *
  * @author Jorge
  */
-public class ExecutionTaskUI implements Initializable {
+public class CreatePaymentTransactionUI implements Initializable {
 
-    private CreateTransactionController ct_controller;
+    private CreatePaymentTransactionController ct_controller;
     @FXML
     private Button cancelBtn;
     @FXML
@@ -60,7 +58,7 @@ public class ExecutionTaskUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ct_controller = new CreateTransactionController();
+        ct_controller = new CreatePaymentTransactionController();
         taskList = ct_controller.getTaskList();
         listTaskTxt.getItems().addAll(taskList);
         freelancerList = ct_controller.getFreelancerList();

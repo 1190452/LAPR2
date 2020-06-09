@@ -114,7 +114,7 @@ public class DoPaymentTask extends TimerTask {
             CurrencyConverter c = new CurrencyConverter();
             double curr = c.convert(sum, country);
 
-            Payment p = new Payment(sum, curr, nltr);
+            Payment p = new Payment(sum, curr);
 
             boolean verif = p.validatePay();
             if (verif == true) {

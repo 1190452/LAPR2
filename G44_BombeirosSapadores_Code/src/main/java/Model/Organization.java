@@ -2,13 +2,15 @@ package Model;
 
 import Utils.Date;
 import Utils.Time;
+import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
  * @author paulomaio
  */
-public class Organization implements Serializable{
+public class Organization implements Serializable {
 
     /**
      * The name of the Organization
@@ -42,7 +44,20 @@ public class Organization implements Serializable{
 
     private DefinePayment definePayment;
     
+    /**
+     * import txt file
+     */
+    private ImportTxtFile itxt;
 
+    /**
+     * import csv file
+     */
+    private ImportCsvFile icsv;
+
+    /**
+     * register transaction
+     */
+    private RegisterTransaction rTrans;
     /**
      * The name of the Organization by omission
      */
@@ -85,7 +100,7 @@ public class Organization implements Serializable{
         this.manager = manager;
         this.taskList = new TaskList();
         this.definePayment = null;
-       
+        this.rTrans = new RegisterTransaction();
 
     }
 
@@ -101,6 +116,8 @@ public class Organization implements Serializable{
         this.colab = otherOrganization.colab;
         this.manager = otherOrganization.manager;
         this.taskList = otherOrganization.taskList;
+        this.itxt = new ImportTxtFile();
+        this.icsv = new ImportCsvFile();
     }
 
     public Organization() {
@@ -202,6 +219,7 @@ public class Organization implements Serializable{
 
     /**
      * returns the task list of the organization
+     *
      * @return the taskList
      */
     public TaskList getTaskList() {
@@ -210,6 +228,7 @@ public class Organization implements Serializable{
 
     /**
      * modifies the task list of the organization
+     *
      * @param taskList the taskList to set
      */
     public void setTaskList(TaskList taskList) {
@@ -218,21 +237,24 @@ public class Organization implements Serializable{
 
     /**
      * method that creates an instance of address with the following parameters
+     *
      * @param street
      * @param doorNumber
      * @param locality
-     * @return 
+     * @return
      */
     public Address newAddress(String street, String doorNumber, String locality) {
         return new Address(street, doorNumber, locality);
     }
 
     /**
-     * method that creates an instance of collaborator with the following parameters
+     * method that creates an instance of collaborator with the following
+     * parameters
+     *
      * @param nameC
      * @param emailC
      * @param role
-     * @return 
+     * @return
      */
     public static Collaborator newCollaborator(String nameC, String emailC, String role) {
         return new Collaborator(nameC, emailC, role);
@@ -240,10 +262,11 @@ public class Organization implements Serializable{
 
     /**
      * method that creates an instance of manager with the following parameters
+     *
      * @param nameM
      * @param emailM
      * @param role
-     * @return 
+     * @return
      */
     public static Manager newManager(String nameM, String emailM, String role) {
         return new Manager(nameM, emailM, role);
@@ -251,6 +274,7 @@ public class Organization implements Serializable{
 
     /**
      * returns the address of the organization
+     *
      * @return the address
      */
     public Address getAddress() {
@@ -259,6 +283,7 @@ public class Organization implements Serializable{
 
     /**
      * modifies the address of the organization
+     *
      * @param address the address to set
      */
     public void setAddress(Address address) {
@@ -267,6 +292,7 @@ public class Organization implements Serializable{
 
     /**
      * returns the payment definition of the organization
+     *
      * @return the definePayment
      */
     public DefinePayment getDefinePayment() {
@@ -275,6 +301,7 @@ public class Organization implements Serializable{
 
     /**
      * modifies the payment definition of the organization
+     *
      * @param definePayment the definePayment to set
      */
     public void setDefinePayment(DefinePayment definePayment) {
@@ -283,10 +310,11 @@ public class Organization implements Serializable{
 
     /**
      * creates a new payment definition
+     *
      * @param time
      * @param date
      * @param rtp
-     * @return 
+     * @return
      */
     public DefinePayment newDefinePayment(Time time, Date date, int rtp) {
         return new DefinePayment(time, date, rtp);
@@ -294,8 +322,9 @@ public class Organization implements Serializable{
 
     /**
      * validates the payment definition created
+     *
      * @param dp
-     * @return 
+     * @return
      */
     public boolean validatesDefinePayment(DefinePayment dp) {
         boolean bRet = true;
@@ -306,7 +335,56 @@ public class Organization implements Serializable{
 
         return bRet;
     }
+    
+    /**
+     * returns the register transaction
+     *
+     * @return the rTrans
+     */
+    public RegisterTransaction getRTrans() {
+        return rTrans;
+    }
+    
+    /**
+     * method that loads and returns a list of transactions
+     *
+     * @param fileName
+     * @return
+     */
+    public List<TransactionExecution> loadHistoricalTransaction(String fileName) {
+        if (fileName.endsWith(".txt")) {
+            rTrans = itxt.importFile(fileName);
+            List<TransactionExecution> lt = rTrans.getTransactions();
+            return lt;
+        } else if (fileName.endsWith(".csv")) {
+            rTrans = icsv.importFile(fileName);
+            List<TransactionExecution> lt = getRTrans().getTransactions();
+            if (getRTrans().validateHistoricalTransaction(lt)) {
+                return lt;
+            }
 
- 
+        }
+        return null;
+    }
+    
+    /**
+     * method that "sends" and email to mean performance freelancers
+     *
+     * @throws FileNotFoundException
+     */
+    public void sendEmail() throws FileNotFoundException {
+        ApplicationPOT ap = ApplicationPOT.getInstance();
+         List<Freelancer> listFreelancers = ap.getPlatform().getRfree().getListFreelancers();
+        double delayProb = ap.getPlatform().getRfree().getDelayProb();
+
+        List<TransactionExecution> transList = rTrans.getTransactions();
+        for (int i = 0; i < transList.size(); i++) {
+            double taskDelay = transList.get(i).getTaskDelay();
+            if (taskDelay > 3 && taskDelay > delayProb) {
+                Freelancer free = transList.get(i).getFreel();
+                Writer.sendEmail(free);
+            }
+        }
+    }
 
 }

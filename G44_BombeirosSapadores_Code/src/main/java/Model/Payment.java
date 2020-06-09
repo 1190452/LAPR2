@@ -24,10 +24,6 @@ public class Payment implements Serializable{
      * Value of the payment in Freelancers currency
      */
     private double valueC;
-    /**
-     * List of the tranmsactions of the freelancer
-     */
-    private List<TransactionExecution> nltr;
 
     private static final double VALUEE_BY_OMISSION = 0;
     private static final double VALUEC_BY_OMISSION = 0;
@@ -40,34 +36,16 @@ public class Payment implements Serializable{
      * @param curr
      * @param nltr
      */
-    public Payment(double sum, double curr, List<TransactionExecution> nltr) {
-        if (sum != 0 && curr != 0 && nltr != null) {
+    public Payment(double sum, double curr) {
+        if (sum != 0 && curr != 0) {
             this.valueE = sum;
             this.valueC = curr;
-            this.nltr = nltr;
         }
     }
 
     public Payment() {
         this.valueE = VALUEE_BY_OMISSION;
         this.valueC = VALUEC_BY_OMISSION;
-        this.nltr = new ArrayList<TransactionExecution>();
-    }
-
-    /**
-     * returns the transaction list of the payment
-     * @return the nltr
-     */
-    public List<TransactionExecution> getNltr() {
-        return nltr;
-    }
-
-    /**
-     * modifies the transaction list of the payment
-     * @param nltr the nltr to set
-     */
-    public void setNltr(List<TransactionExecution> nltr) {
-        this.nltr = nltr;
     }
 
     /**
@@ -100,28 +78,6 @@ public class Payment implements Serializable{
      */
     public void setValueC(double valueC) {
         this.valueC = valueC;
-    }
-
-    /**
-     * method that validates the payment created
-     * @return 
-     */
-    public boolean validatePay() {
-        if (valueE != 0 && valueC != 0 && nltr != null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * method that generates a receipt 
-     * @param country 
-     */
-    public void generateReceipt(String country) {
-        Receipt r = new Receipt(nltr, valueE, valueC);
-
-        r.genEmail();
     }
 
 }
