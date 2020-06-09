@@ -26,16 +26,19 @@ public class Writer {
      * @param pwd
      * @param role
      */
-    public static void sendsPassword(String email, String pwd, String role) {
+    public static boolean sendsPassword(String email, String pwd, String role) {
         try {
             try (PrintWriter out = new PrintWriter(new FileWriter("Data about " + role + ".txt", true))) {
                 out.println("Email of your account: " + email);
                 out.println("Password to access your account: " + pwd);
                 out.close();
+                return true;
             }
         } catch (IOException ex) {
             System.out.println("File not found!");
+            return false;
         }
+       
     }
 
     /**
@@ -44,14 +47,15 @@ public class Writer {
      * @param org
      * @param sum
      */
-    public static void writeOrg(Organization org, double sum) {
+    public static boolean writeOrg(Organization org, double sum) {
         try {
             FileWriter writer = new FileWriter(Constants.ORGS, true);
             writer.write("Organization " + org.getName() + " made a payment of " + sum + " on " + Date.actualDate().toFile() + " at "+Time.actualTime().toString() +"\n");
-
             writer.close();
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -62,18 +66,21 @@ public class Writer {
      * @param free
      * @throws FileNotFoundException
      */
-    public static void sendEmail(Freelancer free) throws FileNotFoundException {
+    public static boolean sendEmail(Freelancer free) throws FileNotFoundException {
         try {
             PrintWriter out = new PrintWriter(new File("Emails.txt"));
             try {
                 out.println("Email of your account: " + free.getEmail());
                 out.println(String.format("%s your task Delay is higher than 3 and higher than the overall task Delay ", free.getName()));
                 out.close();
+                return true;
             } finally {
                 out.close();
+                
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
+            return false;
         }
     }
 
@@ -86,7 +93,7 @@ public class Writer {
      * @param valueE
      * @param valueC
      */
-    public static void genEmail(List<TransactionExecution> nltr, double valueE, double valueC) {
+    public static boolean genEmail(List<TransactionExecution> nltr, double valueE, double valueC) {
         try {
 
             FileWriter writer2 = new FileWriter(Constants.EMAILS, true);
@@ -101,8 +108,10 @@ public class Writer {
                 writer2.write("The total value in euros is " + valueE + " and " + valueC + " in your local currency\n");
             }
         writer2.close();
+        return true;
         }catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
 
     }

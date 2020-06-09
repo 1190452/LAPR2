@@ -236,7 +236,8 @@ public class Organization implements Serializable {
             double taskDelay = transList.get(i).getTaskDelay();
             if (taskDelay > 3 && taskDelay > delayProb) {
                 Freelancer free = transList.get(i).getFreel();
-                Writer.sendEmail(free);
+                Writer.sendEmail(free); 
+              
             }
         }
     }

@@ -8,6 +8,7 @@ package Model;
 import Utils.CurrencyConverter;
 import Utils.Date;
 import java.io.Serializable;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +50,7 @@ public class RegisterTransaction implements Serializable {
         double sum = 0;
 
         for (int i = 0; i < transactionList.size(); i++) {
-            if (transactionList.get(i).getFreel().equals(free)) {
+            if ((transactionList.get(i).getFreel().equals(free)) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
                 sum += transactionList.get(i).getTaskDelay();
                 count++;
             }
@@ -62,6 +63,7 @@ public class RegisterTransaction implements Serializable {
         }
     }
 
+<<<<<<< HEAD
 //    public double percentageOfDelays(Freelancer free) {
 //        int numberOfTasks = free.getTaskList().getTaskList().size();
 //        int count = 0;
@@ -76,14 +78,32 @@ public class RegisterTransaction implements Serializable {
 //        }
 //        return ((sum / count) * 100);
 //    }
+=======
+    public double percentageOfDelays(Freelancer free) {
+        int numberOfTasks = free.getTaskList().getTaskList().size();
+        int count = 0;
+        int sum = 0;
+
+        for (int i = 0; i < transactionList.size(); i++) {
+            if (transactionList.get(i).getFreel().equals(free) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
+                sum += transactionList.get(i).getTaskDelay();
+                count++;
+            }
+
+        }
+        return ((sum / count) * 100);
+    }
+>>>>>>> 83dbd59a61598c6da84a37171f877a5cc08cf4b0
 
     public double overallPercentageDelays() {
         int count = 0;
         int sum = 0;
 
         for (int i = 0; i < transactionList.size(); i++) {
-            sum += transactionList.get(i).getTaskDelay();
-            count++;
+            if ((transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
+                sum += transactionList.get(i).getTaskDelay();
+                count++;
+            }
         }
         return ((sum / count) * 100);
 
