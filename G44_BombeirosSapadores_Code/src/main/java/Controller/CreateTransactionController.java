@@ -12,7 +12,7 @@ import Model.RegisterFreelancer;
 import Model.RegisterOrganization;
 import Model.Task;
 import Model.TaskList;
-import Model.Transaction;
+import Model.TransactionExecution;
 import Utils.Date;
 import Authorization.model.UserSession;
 import java.util.List;
@@ -31,7 +31,7 @@ public class CreateTransactionController {
     /**
      * transaction that will be created 
      */
-    private Transaction trans;
+    private TransactionExecution trans;
     
     /**
      * email of the user
@@ -79,7 +79,7 @@ public class CreateTransactionController {
      * @param qow
      * @return 
      */
-    public Transaction createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+    public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         ApplicationPOT app = ApplicationPOT.getInstance();
         rt = app.getPlatform().getRTrans();
         trans = rt.createNewTransaction(task, freel, endDate, delay, qow);

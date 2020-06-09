@@ -12,7 +12,7 @@ public class Receipt implements Serializable{
     /**
      * transaction list of teh receipt
      */
-    private List<Transaction> nltr;
+    private List<TransactionExecution> nltr;
     
     /**
      * sum (total value) of the receipt in euros
@@ -30,7 +30,7 @@ public class Receipt implements Serializable{
      * @param valueE
      * @param valueC 
      */
-    public Receipt(List<Transaction> nltr, double valueE, double valueC){
+    public Receipt(List<TransactionExecution> nltr, double valueE, double valueC){
         this.nltr=nltr;
         this.sum=valueE;
         this.curr=valueC;  
