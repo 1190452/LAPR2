@@ -61,7 +61,7 @@ public class ImportCsvFile implements ImportFile, Serializable {
 
                 while ((line = bufferedReader.readLine()) != null) {
                     String[] temp = line.split(";|-|,");
-                    String transID = temp[0];
+                    int transID = Integer.parseInt(temp[0]);
                     String idTask = temp[1];
                     String descriptionTask = temp[2];
                     int taskDuration = Integer.parseInt(temp[3]);

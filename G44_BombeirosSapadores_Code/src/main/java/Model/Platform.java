@@ -189,15 +189,6 @@ public class Platform implements Serializable {
         return (long) (Constants.NR_OF_SECONDS_OF_DAY * nrDays);
     }
 
-    /**
-
-     * return the writer
-     *
-     * @return
-     */
-    public Writer getWriter() {
-        return writer;
-    }
     
     /**
      * method that "sends" and email to mean performance freelancers

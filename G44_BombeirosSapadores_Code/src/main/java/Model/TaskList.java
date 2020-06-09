@@ -77,7 +77,7 @@ public class TaskList implements Serializable {
      */
     public boolean validateTask(Task task) {
         for (Task e : taskList) {
-            if (task.equals(e)) {
+            if (task.getIdTask().equals(e.getIdTask())) {
                 return false;
             }
         }
