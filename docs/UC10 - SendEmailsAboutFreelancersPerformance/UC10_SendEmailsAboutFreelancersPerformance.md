@@ -115,6 +115,11 @@ Other classes of external systems / components:
 
 ![UC10_SD_SendEmail.png](UC10_SD_SendEmail.png)
 
+###	UC10_SD_SendEmailRef
+
+![UC10_SD_SendEmailRef.png](UC10_SD_SendEmailRef.png)
+
+
 
 ###	Class Diagram
 
