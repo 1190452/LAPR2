@@ -57,16 +57,10 @@ public class RegisterOrganization implements Serializable {
 
         lOrg = new ArrayList<>();
     }
+    
+    //======================================================================================================================================================
 
-    /**
-     * returns the writing method of the organization
-     *
-     * @return
-     */
-    public String getOrganizationString() {
-        return this.m_oOrganizacao.toString();
-    }
-
+    
     /**
      * adds an organization to the list of organizations
      *
@@ -78,43 +72,7 @@ public class RegisterOrganization implements Serializable {
             return true;
         }
         return false;
-    }
-
-    /**
-     * returns the organization of the collaborator, which email was received by
-     * parameter
-     *
-     * @param email
-     * @return
-     */
-    public Organization getOrganizationByUserEmailColab(String email) {
-        for (int i = 0; i < lOrg.size(); i++) {
-            if (email.equalsIgnoreCase(lOrg.get(i).getColab().getEmailC())) {
-                return lOrg.get(i);
-            }
-
-        }
-        return null;
-    }
-
-    /**
-     * returns the organization of the manager, which email was received by
-     * parameter
-     *
-     * @param email
-     * @return
-     */
-    public Organization getOrganizationByUserEmailMan(String email) {
-        for (int i = 0; i < lOrg.size(); i++) {
-            if (email.equalsIgnoreCase(lOrg.get(i).getManager().getEmailM())) {
-                return lOrg.get(i);
-            }
-
-        }
-        return null;
-    }
-
-    /**
+    } /**
      * method that creates a new organization and receives the following
      * parameters:
      *
@@ -148,6 +106,8 @@ public class RegisterOrganization implements Serializable {
             return null;
         }
     }
+    
+    //======================================================================================================================================================
 
     /**
      * method that validates if an organization is or isn't null
@@ -217,6 +177,53 @@ public class RegisterOrganization implements Serializable {
         Writer.sendsPassword(emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
         return true;
     }
+    
+    //======================================================================================================================================================
+
+    /**
+     * returns the writing method of the organization
+     *
+     * @return
+     */
+    public String getOrganizationString() {
+        return this.m_oOrganizacao.toString();
+    }
+
+    /**
+     * returns the organization of the collaborator, which email was received by
+     * parameter
+     *
+     * @param email
+     * @return
+     */
+    public Organization getOrganizationByUserEmailColab(String email) {
+        for (int i = 0; i < lOrg.size(); i++) {
+            if (email.equalsIgnoreCase(lOrg.get(i).getColab().getEmailC())) {
+                return lOrg.get(i);
+            }
+
+        }
+        return null;
+    }
+
+    /**
+     * returns the organization of the manager, which email was received by
+     * parameter
+     *
+     * @param email
+     * @return
+     */
+    public Organization getOrganizationByUserEmailMan(String email) {
+        for (int i = 0; i < lOrg.size(); i++) {
+            if (email.equalsIgnoreCase(lOrg.get(i).getManager().getEmailM())) {
+                return lOrg.get(i);
+            }
+
+        }
+        return null;
+    }
+
+   
 
     public List<Organization> getlOrg() {
         return lOrg;

@@ -43,6 +43,8 @@ public class ApplicationPOT implements Serializable {
         bootstrap();
     }
 
+    //======================================================================================================================================================
+    
     public void read() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File(FILENAME)));
@@ -73,24 +75,6 @@ public class ApplicationPOT implements Serializable {
         } catch (IOException ex) {
             return false;
         }
-    }
-
-    /**
-     * return the platform
-     *
-     * @return m_oPlataforma
-     */
-    public Platform getPlatform() {
-        return this.m_oPlataforma;
-    }
-
-    /**
-     * method that returns the actualSession
-     *
-     * @return
-     */
-    public UserSession getActualSession() {
-        return this.m_oAutorizacao.getActualSession();
     }
 
     /**
@@ -125,7 +109,6 @@ public class ApplicationPOT implements Serializable {
 //        ru.newUser("Bruno Silva", "bruno@gmail.com", "cona", Constants.ROLE_COLLABORATOR_ORGANIZATION);
 //        this.rorg.addOrganization(new Organization("lda", "152063390", "lad@gmail.com", new Address("Rua rosa", "43", "Portugal"), o, m));
 
-
     }
 
     /**
@@ -142,6 +125,26 @@ public class ApplicationPOT implements Serializable {
             }
         }
         return singleton;
+    }
+
+    //======================================================================================================================================================
+    
+    /**
+     * return the platform
+     *
+     * @return m_oPlataforma
+     */
+    public Platform getPlatform() {
+        return this.m_oPlataforma;
+    }
+
+    /**
+     * method that returns the actualSession
+     *
+     * @return
+     */
+    public UserSession getActualSession() {
+        return this.m_oAutorizacao.getActualSession();
     }
 
 }

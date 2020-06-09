@@ -39,21 +39,7 @@ public class DefinePaymentController {
      * The email of the DefinePaymentController
      */
     private String email;
-
-    /**
-     * The organization that is going to be used to define the payment
-     * @return organization
-     */
-    public Organization getOrg() {
-        ApplicationPOT app = ApplicationPOT.getInstance();
-        plat = app.getPlatform();
-        RegisterOrganization rorgs = plat.getrOrg();
-        UserSession log = app.getActualSession();
-        email = log.getUserEmail();
-        org = rorgs.getOrganizationByUserEmailMan(email);
-        return org;
-    }
-
+    
     /**
      * calls the method that creates a new payment definition of the class Organization 
      * @param time the time of the payment
@@ -82,5 +68,23 @@ public class DefinePaymentController {
         }
         return false;
     }
+    
+    //======================================================================================================================================================
+
+    /**
+     * The organization that is going to be used to define the payment
+     * @return organization
+     */
+    public Organization getOrg() {
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        plat = app.getPlatform();
+        RegisterOrganization rorgs = plat.getrOrg();
+        UserSession log = app.getActualSession();
+        email = log.getUserEmail();
+        org = rorgs.getOrganizationByUserEmailMan(email);
+        return org;
+    }
+
+    
 
 }

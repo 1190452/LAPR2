@@ -12,6 +12,9 @@ public class WarnAboutFreelancerPerformanceController {
      * platform that will send the email
      */
     private Platform platform;
+    
+    
+    //======================================================================================================================================================
 
     /**
      * calls the method of the class Platform that sends the emails

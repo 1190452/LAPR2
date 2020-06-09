@@ -113,7 +113,7 @@ public class ValidationsTest {
      */
     @Test
     public void testIsNameValid() {
-        String name = "Albertina Macacao";
+        String name = "Albertina";
         boolean expResult = true;
         boolean result = Validations.isNameValid(name);
         assertEquals(expResult, result);
