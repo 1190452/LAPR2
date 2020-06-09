@@ -12,7 +12,7 @@ import Model.Payment;
 import Model.Platform;
 import Model.RegisterFreelancer;
 import Model.Task;
-import Model.Transaction;
+import Model.TransactionExecution;
 import java.util.List;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -57,7 +57,7 @@ public class CheckPerformanceController {
     /**
      * List of transactions
      */
-    List<Transaction> listTransactions;
+    List<TransactionExecution> listTransactions;
     /**
      * Total delay of the freelancers
      */
@@ -127,7 +127,7 @@ public class CheckPerformanceController {
                 listTransactions = payment.getNltr();
                 //For each transaction of each freelancer
                 for (int z = 0; z < listTransactions.size(); z++) {
-                    Transaction transaction = listTransactions.get(z);
+                    TransactionExecution transaction = listTransactions.get(z);
                     paymentValue += transaction.getTransactionValue();
                 }
                 //Sum all payments that Freelancer received
@@ -143,7 +143,7 @@ public class CheckPerformanceController {
                 listTransactions = payment.getNltr();
                 //For each transaction of each freelancer
                 for (int z = 0; z < listTransactions.size(); z++) {
-                    Transaction transaction = listTransactions.get(z);
+                    TransactionExecution transaction = listTransactions.get(z);
                     paymentValue = transaction.getTransactionValue();
                     sumDeviation += freel.sumPaymentVariance(averageFreel, paymentValue);
                 }
@@ -193,7 +193,7 @@ public class CheckPerformanceController {
                 listTransactions = payment.getNltr();
                 //For each transaction of each freelancer
                 for (int z = 0; z < listTransactions.size(); z++) {
-                    Transaction transaction = listTransactions.get(z);
+                    TransactionExecution transaction = listTransactions.get(z);
                     double payValue = transaction.getTransactionValue();
                     sumPaymentDeviationOfAllFreelancers += freel.calculatePaymentVarianceOfAllFreelancers(averagePayementOFAllFreelancers, payValue);
                 }

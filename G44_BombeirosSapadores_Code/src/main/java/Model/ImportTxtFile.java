@@ -86,7 +86,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     if (tl.validateTask(t)) {
                         tl.addTask(t);
                     }
-                    Transaction trans = new Transaction(transID, t, fr, new TaskExecution(new Date(year, month, day), delay, descripOFQuality));
+                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, descripOFQuality);
                     if (ht.validateTransaction(trans)) {
                         ht.addTransaction(trans);
                     }

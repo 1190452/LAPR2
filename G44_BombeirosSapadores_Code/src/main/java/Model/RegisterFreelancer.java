@@ -143,12 +143,12 @@ public class RegisterFreelancer implements Serializable {
      * @param ltr
      * @return
      */
-    public List<Freelancer> getFreelancers(List<Task> lt, List<Transaction> ltr) {
+    public List<Freelancer> getFreelancers(List<Task> lt, List<TransactionExecution> ltr) {
         List<Freelancer> newList = new ArrayList<>();
         for (int i = 0; i < lt.size(); i++) {
             Task ts = lt.get(i);
             for (int p = 0; p < ltr.size(); p++) {
-                Transaction tr = ltr.get(p);
+                TransactionExecution tr = ltr.get(p);
                 Task cts = tr.getTask();
                 if (ts.equals(cts)) {
                     Freelancer freel = tr.getFreel();

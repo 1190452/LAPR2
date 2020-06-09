@@ -83,13 +83,13 @@ public class Writer {
      * @param valueE
      * @param valueC
      */
-    public static void genEmail(List<Transaction> nltr, double valueE, double valueC) {
+    public static void genEmail(List<TransactionExecution> nltr, double valueE, double valueC) {
         try {
 
             FileWriter writer2 = new FileWriter(Constants.EMAILS, true);
 
             writer2.write("Receipt of " + nltr.get(0).getFreel().getFreeID());
-            for (Transaction e : nltr) {
+            for (TransactionExecution e : nltr) {
                 writer2.write(e.toString() + "\n");
             }
             if (valueE == valueC) {

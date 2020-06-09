@@ -12,7 +12,7 @@ import Model.Payment;
 import Model.RegisterFreelancer;
 import Model.RegisterOrganization;
 import Model.Task;
-import Model.Transaction;
+import Model.TransactionExecution;
 import Authorization.model.UserSession;
 import java.util.List;
 
@@ -65,7 +65,7 @@ public class WatchStatisticsController {
     /**
      * list of transactions
      */
-    List<Transaction> listTransactions;
+    List<TransactionExecution> listTransactions;
 
     /**
      * total delay of all freelancers
@@ -110,7 +110,7 @@ public class WatchStatisticsController {
         email = log.getUserEmail();
         Organization org = rorgs.getOrganizationByUserEmailColab(email);
         List<Task> lt = org.getTaskList().getTaskList();
-        List<Transaction> ltr = app.getPlatform().getRTrans().getTransactions();
+        List<TransactionExecution> ltr = app.getPlatform().getRTrans().getTransactions();
         RegisterFreelancer rf = app.getPlatform().getRfree();
         List<Freelancer> newList = rf.getFreelancers(lt, ltr);
         Object[][] object = new Object[newList.size() + 1][5];
@@ -125,7 +125,7 @@ public class WatchStatisticsController {
                 listTransactions = payment.getNltr();
                 //For each transaction of each freelancer
                 for (int z = 0; z < listTransactions.size(); z++) {
-                    Transaction transaction = listTransactions.get(z);
+                    TransactionExecution transaction = listTransactions.get(z);
                     paymentValue += transaction.getTransactionValue();
                 }
                 //Sum all payments that Freelancer received
@@ -140,7 +140,7 @@ public class WatchStatisticsController {
                 listTransactions = payment.getNltr();
                 //For each transaction of each freelancer
                 for (int z = 0; z < listTransactions.size(); z++) {
-                    Transaction transaction = listTransactions.get(z);
+                    TransactionExecution transaction = listTransactions.get(z);
                     paymentValue = transaction.getTransactionValue();
                     sumDeviation += freel.sumPaymentVariance(averagePaymentFreel, paymentValue);
                 }

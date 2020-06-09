@@ -3,7 +3,7 @@ package UI;
 import Controller.CreateTransactionController;
 import Model.Freelancer;
 import Model.Task;
-import Model.Transaction;
+import Model.TransactionExecution;
 import Utils.Date;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -93,7 +93,7 @@ public class ExecutionTaskUI implements Initializable {
                 Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Transaction Creation", "Please introduce the necessary data to create a Transaction.");
                 alert.show();
             } else {
-                Transaction ts = ct_controller.createNewTransaction(listTaskTxt.getSelectionModel().getSelectedItem(), listFreelancerTxt.getSelectionModel().getSelectedItem(), new Date(endDateTxt.getValue().getYear(), endDateTxt.getValue().getMonthValue(), endDateTxt.getValue().getDayOfMonth()), Double.parseDouble(delayTxt.getText()), descriptionTxt.getText());
+                TransactionExecution ts = ct_controller.createNewTransaction(listTaskTxt.getSelectionModel().getSelectedItem(), listFreelancerTxt.getSelectionModel().getSelectedItem(), new Date(endDateTxt.getValue().getYear(), endDateTxt.getValue().getMonthValue(), endDateTxt.getValue().getDayOfMonth()), Double.parseDouble(delayTxt.getText()), descriptionTxt.getText());
                  Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Transaction Creation", ts.toString());
 
                 if (alert1.showAndWait().get() == ButtonType.OK) {

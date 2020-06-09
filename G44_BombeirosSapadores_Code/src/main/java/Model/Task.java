@@ -1,6 +1,5 @@
 package Model;
 
-import Utils.Time;
 import java.io.Serializable;
 
 /**
@@ -45,7 +44,6 @@ public class Task implements Serializable{
 
     private boolean isFinished;
     
-    private TaskExecution texec;
 
 
     /**
@@ -87,7 +85,6 @@ public class Task implements Serializable{
         this.taskCategory = taskCategory;
         this.isPayed = isPayed;
         this.isFinished = isFinished;
-        this.texec = new TaskExecution();
     }
 
     public Task(String idTask, String description, int timeTask, double costHour, String taskCategory) {
@@ -96,17 +93,8 @@ public class Task implements Serializable{
         this.timeTask = timeTask;
         this.costHour = costHour;
         this.taskCategory = taskCategory;
-        this.texec = new TaskExecution();
     }
     
-     public Task(String idTask, String description, int timeTask, double costHour, String taskCategory, TaskExecution texec) {
-        this.idTask = idTask;
-        this.description = description;
-        this.timeTask = timeTask;
-        this.costHour = costHour;
-        this.taskCategory = taskCategory;
-        this.texec = texec;
-    }
 
     /**
      * Builds an instance of Task with the omission values
@@ -119,7 +107,6 @@ public class Task implements Serializable{
         taskCategory = CATEGORY_BY_OMISSION;
         isPayed = false;
         isFinished = false;
-        this.texec = new TaskExecution();
     }
 
     /**
@@ -135,7 +122,6 @@ public class Task implements Serializable{
         taskCategory = otherTask.taskCategory;
         isPayed = otherTask.isPayed;
         isFinished = otherTask.isFinished;
-        texec = otherTask.texec;
     }
 
     /**
@@ -285,24 +271,6 @@ public class Task implements Serializable{
         return String.format("Task %s, description: %s, cost per hour: %s, "
                 + "category: %s", idTask, description, costHour, taskCategory);
     }
-    
-    
-    /**
-     * @return the texec
-     */
-    public TaskExecution getTexec() {
-        return texec;
-    }
-
-    /**
-     * @param texec the texec to set
-     */
-    public void setTexec(TaskExecution texec) {
-        this.texec = texec;
-    }
-
-    
-
     
 
 }

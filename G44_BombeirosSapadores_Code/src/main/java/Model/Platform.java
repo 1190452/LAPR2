@@ -25,7 +25,7 @@ import java.util.Timer;
  *
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
-public class Platform implements Serializable{
+public class Platform implements Serializable {
 
     /**
      * facade authorization
@@ -81,8 +81,6 @@ public class Platform implements Serializable{
      * writer
      */
     private Writer writer;
-    
-   
 
     /**
      * constructor than initializes the necessary classes (FacadeAuthorization,
@@ -185,14 +183,14 @@ public class Platform implements Serializable{
      * @param fileName
      * @return
      */
-    public List<Transaction> loadHistoricalTransaction(String fileName) {
+    public List<TransactionExecution> loadHistoricalTransaction(String fileName) {
         if (fileName.endsWith(".txt")) {
             rTrans = itxt.importFile(fileName);
-            List<Transaction> lt = rTrans.getTransactions();
+            List<TransactionExecution> lt = rTrans.getTransactions();
             return lt;
         } else if (fileName.endsWith(".csv")) {
             rTrans = icsv.importFile(fileName);
-            List<Transaction> lt = getRTrans().getTransactions();
+            List<TransactionExecution> lt = getRTrans().getTransactions();
             if (getRTrans().validateHistoricalTransaction(lt)) {
                 return lt;
             }
@@ -272,7 +270,7 @@ public class Platform implements Serializable{
 
         dpt.passOrg(org);
         System.out.println("Timer uc7 defined");
-        t.scheduleAtFixedRate(dpt, interval*1000, period*1000);
+        t.scheduleAtFixedRate(dpt, interval * 1000, period * 1000);
 
     }
 
@@ -334,23 +332,13 @@ public class Platform implements Serializable{
         List<Freelancer> listFreelancers = rFree.getListFreelancers();
         double delayProb = rFree.getDelayProb();
 
-        for (int i = 0; i < listFreelancers.size(); i++) {
-            Freelancer free = listFreelancers.get(i);
-            TaskList taskL = free.getTaskList();
-            List<Task> taskList = taskL.getTaskList();
-
-            for (int j = 0; j < taskList.size(); j++) {
-                Task task = taskList.get(j);
-                TaskExecution taskExec = task.getTexec();
-                double taskDelay = taskExec.getTaskDelay();
-
-                if (taskDelay > 3 && taskDelay > delayProb) {
-                    writer.sendEmail(free);
-                }
-
+        List<TransactionExecution> transList = rTrans.getTransactions();
+        for (int i = 0; i < transList.size(); i++) {
+            double taskDelay = transList.get(i).getTaskDelay();
+            if (taskDelay > 3 && taskDelay > delayProb) {
+                Freelancer free = transList.get(i).getFreel();
+                Writer.sendEmail(free);
             }
-
         }
     }
-
 }
