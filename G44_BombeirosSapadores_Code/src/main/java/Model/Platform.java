@@ -15,6 +15,7 @@ import Authorization.FacadeAuthorization;
 import Authorization.model.RegisterUser;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.time.Year;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -180,8 +181,14 @@ public class Platform implements Serializable {
         Date date = getLastDayDate();
         sEF = new SendEmailFreelTask();
         Timer t = new Timer();
-        //t.schedule(sEF, date);
+        long delay = calculateDifferenceDate(date);
+        long interval = getYearInterval();
+        t.scheduleAtFixedRate(sEF, delay, interval);
 
+    }
+
+    public long getYearInterval() {
+        return 366 * 24 * 60 * 60 * 1000;
     }
 
     /**
@@ -190,7 +197,8 @@ public class Platform implements Serializable {
      * @return
      */
     public Date getLastDayDate() {
-        return new Date(12, 31);
+        int year = Year.now().getValue();
+        return new Date(year, 12, 31);
     }
 
     /**
@@ -222,8 +230,6 @@ public class Platform implements Serializable {
         long interval = calculateDifference(date, time);
 
         Timer t = new Timer();
-        
-        
 
         dpt.passOrg(org);
         System.out.println("Timer uc7 defined");
@@ -249,7 +255,8 @@ public class Platform implements Serializable {
         return diff;
 
     }
-      public long calculateDifferenceDate(Date date) {
+
+    public long calculateDifferenceDate(Date date) {
         Time time = new Time();
         ZonedDateTime now = ZonedDateTime.now();
 
@@ -280,4 +287,37 @@ public class Platform implements Serializable {
         return writer;
     }
 
+<<<<<<< HEAD
+    /**
+     * method that "sends" and email to mean performance freelancers
+     *
+     * @throws FileNotFoundException
+     */
+    public void sendEmail() throws FileNotFoundException {
+        List<Freelancer> listFreelancers = rFree.getListFreelancers();
+        double delayProb = rFree.getDelayProb();
+
+        List<TransactionExecution> transList = rTrans.getTransactions();
+        for (int i = 0; i < transList.size(); i++) {
+            double taskDelay = transList.get(i).getTaskDelay();
+            if (taskDelay > 3 && taskDelay > delayProb) {
+                Freelancer free = transList.get(i).getFreel();
+                Writer.sendEmail(free);
+            }
+        }
+    }
+    /**
+     * Returns true if the year received by parameter is a leap year.
+     * If the year received by parameter is not a leap year, it returns false.
+     *
+     * @param year the year to be validated.
+     * @return true if the year received by parameter is a leap year,
+     *         otherwise it is false.
+     */
+    public static boolean leapYear(int year) {
+        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+    }
+
+=======
+>>>>>>> a08184695fb9839da0e3507ad85c1cd95ce4162e
 }
