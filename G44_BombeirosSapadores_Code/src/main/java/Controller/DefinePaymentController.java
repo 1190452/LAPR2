@@ -18,25 +18,25 @@ import Authorization.model.UserSession;
  *
  * @author tiagopereira
  */
-public class PaymentController {
+public class DefinePaymentController {
 
     /**
-     * The platform of the PaymentController
+     * The platform of the DefinePaymentController
      */
     private Platform plat;
     
     /**
-     * The organization of the PaymentController
+     * The organization of the DefinePaymentController
      */
     private Organization org;
     
     /**
-     * The definePayement of the PaymentController
+     * The definePayement of the DefinePaymentController
      */
     private DefinePayment dpay;
     
     /**
-     * The email of the PaymentController
+     * The email of the DefinePaymentController
      */
     private String email;
 

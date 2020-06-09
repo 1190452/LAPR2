@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author OMEN X
  */
-public class CreateTransactionController {
+public class CreatePaymentTransactionController {
 
     /**
      * atribute to call the methods of RegisterTransaction class
@@ -41,7 +41,7 @@ public class CreateTransactionController {
     /**
      * constructor that creates an instance of CreateTransactionController
      */
-    public CreateTransactionController() {
+    public CreatePaymentTransactionController() {
         
     }
 

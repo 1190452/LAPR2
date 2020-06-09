@@ -5,7 +5,7 @@
  */
 package UI;
 
-import Controller.PaymentController;
+import Controller.DefinePaymentController;
 import Model.DefinePayment;
 import Model.Organization;
 import Utils.Date;
@@ -37,7 +37,7 @@ public class DefinePaymentUI implements Initializable {
     private JFXDatePicker calendarButton;
     @FXML
     private JFXTimePicker timeButton;
-    private PaymentController pc;
+    private DefinePaymentController pc;
     @FXML
     private Button confirmBtn;
     @FXML
@@ -56,7 +56,7 @@ public class DefinePaymentUI implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        pc = new PaymentController();
+        pc = new DefinePaymentController();
         dp = new DefinePayment();
     }
 
