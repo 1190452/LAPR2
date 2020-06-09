@@ -190,20 +190,32 @@ public class Platform implements Serializable {
     }
 
     /**
+<<<<<<< HEAD
+     * return the writer
+     *
+     * @return
+     */
+    public Writer getWriter() {
+        return writer;
+    }
+    
+    /**
      * method that "sends" and email to mean performance freelancers
      *
      * @throws FileNotFoundException
      */
     public void sendEmail() throws FileNotFoundException {
         List<Freelancer> listFreelancers = rFree.getListFreelancers();
-        double delayProb = rFree.getDelayProb();
+        double delayPercentage = rFree.getDelayProb()*100;
         List<Organization> orgList = rOrg.getlOrg();
-
         for (int i = 0; i < orgList.size(); i++) {
             List<TransactionExecution> transList = orgList.get(i).getRTrans().getTransactions();
 
             for (int j = 0; j < transList.size(); j++) {
                 double taskDelay = transList.get(j).getTaskDelay();
+                
+                if (taskDelay > 3 && taskDelay > delayPercentage) {
+
 
                 if (taskDelay > 3 && taskDelay > delayProb) {
                     Freelancer free = transList.get(j).getFreel();
@@ -212,7 +224,7 @@ public class Platform implements Serializable {
             }
         }
     }
-
+    }
     /**
      * Returns true if the year received by parameter is a leap year. If the
      * year received by parameter is not a leap year, it returns false.
