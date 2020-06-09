@@ -6,7 +6,10 @@
 package UI;
 
 import Controller.WatchStatisticsController;
+import Model.Freelancer;
+import Utils.CustomValue;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,7 +58,9 @@ public class WatchStatisticsUI implements Initializable {
 
     @FXML
     private void confirm(ActionEvent event) {
-        Object[][] obj = wsc.getOverallStatistics();
+        Map.Entry<Freelancer, CustomValue> entryPayment = wsc.OverallStatistics();
+        Map.Entry<Freelancer, CustomValue> entryTaskExecution = wsc.OverallStatistics();
+        
     }
 
     @FXML

@@ -52,12 +52,7 @@ public class Freelancer implements Serializable{
      * address of the freelancer
      */
     private Address address;
-    
-    /**
-     * payment list of the freelancer
-     */
-    private PaymentList pl;
-    
+   
     /**
      * task list of the freelancer
      */
@@ -110,8 +105,6 @@ public class Freelancer implements Serializable{
         this.nif = NIF_BY_OMISSION;
         this.email = EMAIL_BY_OMISSION;
         this.address = new Address();
-        this.pl = new PaymentList();
-        this.tl = new TaskList();
     }
 
     /**
@@ -132,8 +125,6 @@ public class Freelancer implements Serializable{
         this.name = name;
         this.nif = nif;
         this.address = address;
-        this.pl = new PaymentList();
-        this.tl = new TaskList();
     }
 
     /**
@@ -156,8 +147,6 @@ public class Freelancer implements Serializable{
         this.name = name;
         this.nif = nif;
         this.address = address;
-        this.pl = new PaymentList();
-        this.tl = new TaskList();
 
     }
 
@@ -263,43 +252,6 @@ public class Freelancer implements Serializable{
         this.country = country;
     }
 
-    /**
-     * returns freelancer's payment list
-     * @return the pl
-     */
-    public PaymentList getPl() {
-        return pl;
-    }
-
-    /**
-     * modifies freelancer's payment list
-     * @param pl the pl to set
-     */
-    public void setPl(PaymentList pl) {
-        this.pl = pl;
-    }
-
-    /**
-     * method that adds a payment to freelancer's payment list
-     * @param p
-     * @return 
-     */
-    public boolean addPayment(Payment p) {
-        if (p == null) {
-            return false;
-        }
-
-        pl.addPayment(p);
-        return true;
-    }
-
-    /**
-     * returns freelancer's payment list 
-     * @return 
-     */
-    public PaymentList getPaymentList() {
-        return pl;
-    }
 
     /**
      * returns freelancer's task list
@@ -317,78 +269,7 @@ public class Freelancer implements Serializable{
         this.tl = tl;
     }
 
-    /**
-     * method that calculates the average payment of one freelancer
-     * @param paymentTotal
-     * @param n
-     * @return 
-     */
-    public double averageOfEachFreelancer(double paymentTotal, int n) {
-        return (paymentTotal / n);
-    }
-
-    /**
-     * method that calculates the payment variance of one freelancer
-     * @param averageFreel
-     * @param paymentValue
-     * @return 
-     */
-    public double sumPaymentVariance(double averageFreel, double paymentValue) {
-        double deviation = Math.pow((paymentValue - averageFreel), 2);
-        return deviation;
-    }
-
-    /**
-     * method that calculates the payment deviation of one freelancer
-     * @param sumAllPaymentsDeviation
-     * @param n
-     * @return 
-     */
-    public double calculateDeviation(double sumAllPaymentsDeviation, int n) {
-        return Math.sqrt((sumAllPaymentsDeviation / (n - 1)));
-    }
-
-    /**
-     * method that calculates the delay mean of one freelancer
-     * @param totalDelay
-     * @param size
-     * @return 
-     */
-    public double delayMean(double totalDelay, int size) {
-        return (totalDelay / size);
-    }
-
-    /**
-     * method that calculates the delay variance of one freelancer
-     * @param averageDelayOfFreelancer
-     * @param delayTask
-     * @return 
-     */
-    public double sumDelayVariance(double averageDelayOfFreelancer, double delayTask) {
-        double deviation = Math.pow((delayTask - averageDelayOfFreelancer), 2);
-        return deviation;
-    }
-
-    /**
-     * method that calculates the delay deviation of one freelancer
-     * @param deviatonDelayOfEachTask
-     * @param size
-     * @return 
-     */
-    public double calculateDelayDeviation(double deviatonDelayOfEachTask, int size) {
-        return Math.sqrt((deviatonDelayOfEachTask / (size - 1)));
-    }
-
-    /**
-     * method that calculates the average delay of all freelancers
-     * @param totalDelayOfAllFreelancers
-     * @param numTasksOfAllFreelancers
-     * @return 
-     */
-    public double calculateAverageDelayOfAllFreelancers(double totalDelayOfAllFreelancers, double numTasksOfAllFreelancers) {
-        return (totalDelayOfAllFreelancers / numTasksOfAllFreelancers);
-    }
-
+   
     /**
      * returns the task list of the freelancer
      * @return 
@@ -397,36 +278,6 @@ public class Freelancer implements Serializable{
         return tl;
     }
 
-    /**
-     * method that calculates the average payment of all freelancers
-     * @param totalPaymentOfAllFreelancer
-     * @param numPaymentsOfAllFreelancers
-     * @return 
-     */
-    public double calculateAveragePayementOFAllFreelancers(double totalPaymentOfAllFreelancer, int numPaymentsOfAllFreelancers) {
-        return totalPaymentOfAllFreelancer / numPaymentsOfAllFreelancers;
-    }
-
-    /**
-     * method that calculates the payment variance of all freelancers
-     * @param averagePayementOFAllFreelancers
-     * @param payValue
-     * @return 
-     */
-    public double calculatePaymentVarianceOfAllFreelancers(double averagePayementOFAllFreelancers, double payValue) {
-        double deviation = Math.pow((payValue - averagePayementOFAllFreelancers), 2);
-        return deviation;
-    }
-
-    /**
-     * method that claculates the payment deviation of all freelancers
-     * @param sumPaymentDeviationOfAllFreelancers
-     * @param n
-     * @return 
-     */
-    public double calculatepaymentDeviationOfAllFreelancers(double sumPaymentDeviationOfAllFreelancers, int n) {
-        return Math.sqrt((sumPaymentDeviationOfAllFreelancers / (n - 1)));
-    }
 
     @Override
     public String toString(){
