@@ -116,12 +116,13 @@ public class TransactionExecution implements Serializable {
      * @param delay
      * @param descString
      */
-    public TransactionExecution(Task task, Freelancer freel, Date endDate, double delay, String descString) {
+    public TransactionExecution(Task task, Freelancer freel, Date endDate, double delay, String descString, Payment payment) {
         this.task = task;
         this.freel = freel;
         this.endDate = endDate;
         this.delay = delay;
         this.descriptionOfQuality = descString;
+        this.payment = payment;
         counter++;
     }
 

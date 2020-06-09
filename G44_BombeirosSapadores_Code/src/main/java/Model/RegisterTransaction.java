@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Utils.CurrencyConverter;
 import Utils.Date;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class RegisterTransaction implements Serializable{
      * transaction list
      */
     private List<TransactionExecution> transactionList;
+    
+    private CurrencyConverter cc;
 
     /**
      * constructor than initializes the transaftion list as an ArrayList
@@ -65,7 +68,8 @@ public class RegisterTransaction implements Serializable{
      */
     public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         task.setIsFinished(true);
-        return new TransactionExecution(task, freel, endDate, delay, qow);
+        double costEuros = task.getCostHour()*task.getTimeTask();
+        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros,cc.convert(costEuros, freel.getCountry())));
     }
 
     /**
@@ -99,7 +103,6 @@ public class RegisterTransaction implements Serializable{
      */
     public boolean addTransaction(TransactionExecution trans) {
         transactionList.add(trans);
-        trans.setTransactionValue(calculateTransactionValue(trans));
         if(transactionList!=null){
             return true;
         }
@@ -116,12 +119,10 @@ public class RegisterTransaction implements Serializable{
             if (t.equals(trans)) {
                 if (trans.getFreel().getLevelExp().equalsIgnoreCase("Senior")) {
                     double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;
-                    trans.setTransactionValue(value);
                     return value;
                     
                 }
                 double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask();
-                trans.setTransactionValue(value);
                 return value;
             }
 
