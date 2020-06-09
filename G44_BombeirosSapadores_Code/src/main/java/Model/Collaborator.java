@@ -11,33 +11,33 @@ import java.io.Serializable;
  *
  * @author OMEN X
  */
-public class Collaborator implements Serializable{
+public class Collaborator implements Serializable {
 
     /**
      * name of the collaborator
      */
     private String nameC;
-    
+
     /**
      * email of the Collaborator
      */
     private String emailC;
-    
+
     /**
      * role of the Collaborator
      */
     private String role;
-    
+
     /**
      * name of the collaborator by omission
      */
     private static final String NAME_BY_OMISSION = "no name";
-    
+
     /**
      * email of the collaborator by omission
      */
     private static final String EMAIL_BY_OMISSION = "no email";
-    
+
     /**
      * role of the collaborator by omission
      */
@@ -79,8 +79,10 @@ public class Collaborator implements Serializable{
         role = otherCollaborator.getRole();
     }
 
+    //======================================================================================================================================================
     /**
      * returns the name of the collaborator
+     *
      * @return the nameC
      */
     public String getNameC() {
@@ -88,15 +90,8 @@ public class Collaborator implements Serializable{
     }
 
     /**
-     * modifies the name of the collaborator
-     * @param nameC the nameC to set
-     */
-    public void setNameC(String nameC) {
-        this.nameC = nameC;
-    }
-
-    /**
      * returns the email of the collaborator
+     *
      * @return the emailC
      */
     public String getEmailC() {
@@ -104,7 +99,18 @@ public class Collaborator implements Serializable{
     }
 
     /**
+     * returns the role of the collaborator
+     *
+     * @return the role
+     */
+    public String getRole() {
+        return role;
+    }
+
+    //======================================================================================================================================================
+    /**
      * modifies the email of teh collaborator
+     *
      * @param emailC the emailC to set
      */
     public void setEmailC(String emailC) {
@@ -112,24 +118,29 @@ public class Collaborator implements Serializable{
     }
 
     /**
-     * returns the role of the collaborator
-     * @return the role
+     * modifies the name of the collaborator
+     *
+     * @param nameC the nameC to set
      */
-    public String getRole() {
-        return role;
+    public void setNameC(String nameC) {
+        this.nameC = nameC;
     }
 
     /**
      * modifies teh role of the collaborator
+     *
      * @param role the role to set
      */
     public void setRole(String role) {
         this.role = role;
     }
+    
+    //======================================================================================================================================================
 
     /**
      * writing method of the class Collaborator
-     * @return 
+     *
+     * @return
      */
     @Override
     public String toString() {

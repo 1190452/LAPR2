@@ -27,6 +27,8 @@ public class CheckPerformanceController {
     private String email;
 
     private Statistic st;
+    
+    //======================================================================================================================================================
 
     public Map.Entry<String, CustomValue> OverallStatistics() {
         String decisao = null;
@@ -50,7 +52,9 @@ public class CheckPerformanceController {
         }
         return null;
     }
-
+    
+    //======================================================================================================================================================
+    
     /**
      * method that gets the performances of freelancers in 4 ways: - payment
      * mean and deviation of one freelancer - delay mean and deviation of one

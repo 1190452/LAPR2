@@ -42,6 +42,8 @@ public class DoPaymentTask extends TimerTask {
     public DoPaymentTask() {
 
     }
+    
+    //======================================================================================================================================================
 
     /**
      * calls the method doPayment

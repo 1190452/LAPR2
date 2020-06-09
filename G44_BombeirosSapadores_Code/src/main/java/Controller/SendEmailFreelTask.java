@@ -36,6 +36,8 @@ public class SendEmailFreelTask extends TimerTask {
         ApplicationPOT pot = ApplicationPOT.getInstance();
         p1 = pot.getPlatform();
     }
+    
+    //======================================================================================================================================================
 
     /**
      * Runs the process of sending an email to the freelancers
@@ -59,12 +61,14 @@ public class SendEmailFreelTask extends TimerTask {
         }
 
     }
+    
+    //======================================================================================================================================================
 
     private long getOneDayTime() {
         return 24 * 60 * 60 * 1000;
     }
 
-    
+    //======================================================================================================================================================
 
     public void setTimer(Timer t) {
         this.t1 = t1;

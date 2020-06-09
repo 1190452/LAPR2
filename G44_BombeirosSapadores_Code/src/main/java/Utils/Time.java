@@ -99,149 +99,10 @@ public class Time implements Comparable<Time>,Serializable{
         minutes = anotherTime.minutes;
         seconds = anotherTime.seconds;
     }
-
-    /**
-     * It returns the time's hours.
-     *
-     * @return time's hours.
-     */
-    public int getHours() {
-        return hours;
-    }
-
-    /**
-     * It returns the time's minutes.
-     *
-     * @return time's minutes.
-     */
-    public int getMinutes() {
-        return minutes;
-    }
-
-    /**
-     * It returns the time's seconds.
-     *
-     * @return time's seconds.
-     */
-    public int getSeconds() {
-        return seconds;
-    }
-
-    /**
-     * It changes the time's hours.
-     *
-     * @param hours the new time's hours.
-     */
-    public void setHours(int hours) {
-        this.hours = hours;
-    }
-
-    /**
-     * It changes the time's minutes.
-     *
-     * @param minutes the new time's minutes.
-     */
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
-    }
-
-    /**
-     * It changes the time's seconds.
-     *
-     * @param seconds the new time's seconds.
-     */
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
-    }
-
-    /**
-     * It changes the time's hours, minutes and seconds.
-     *
-     * @param hours   the new time's hours.
-     * @param minutes the new time's minutes.
-     * @param seconds the new time's seconds.
-     */
-    public void setTime(int hours, int minutes, int seconds) {
-        this.hours = hours;
-        this.minutes = minutes;
-        this.seconds = seconds;
-    }
-    /**
-     * It changes the time's hours
-     * @param hours the new time's hours
-     */
-    public void setTime(int hours){
-        this.hours = hours;
-        minutes = MINUTES_BY_OMISSION;
-        seconds = SECONDS_BY_OMISSION;
-    }
-    /**
-     * It changes the time's hours and minutes
-     * @param hours the new time's hours
-     * @param minutes the new time's minutes
-     */
-    public void setTime(int hours, int minutes){
-        this.hours = hours;
-        this.minutes = minutes;
-        seconds = SECONDS_BY_OMISSION;
-    }
-
-    /**
-     * Returns the textual description of the time in the format:
-     * %02d:%02d:%02d AM/PM.
-     *
-     * @return time's characteristics.
-     */
-    @Override
-    public String toString() {
-        return String.format("%02d:%02d:%02d %s",
-                (hours == 12 || hours == 0) ? 12 : hours % 12,
-                minutes, seconds, hours < 12 ? "AM" : "PM");
-    }
-
-    /**
-     * Returns the time in the format: %02d%02d%02d.
-     *
-     * @return time's characteristics.
-     */
-    public String toStringHHMM() {
-        return String.format("%02d:%02d", hours, minutes);
-    }
-
-    /**
-     * Compares the time with the received object.
-     *
-     * @param anotherObject the object to be compared with the time.
-     * @return true if the received object represents a time equivalent to the
-     *         time. Otherwise, returns false.
-     */
-    @Override
-    public boolean equals(Object anotherObject) {
-        if (this == anotherObject) {
-            return true;
-        }
-        if (anotherObject == null || getClass() != anotherObject.getClass()) {
-            return false;
-        }
-        Time anotherTime = (Time) anotherObject;
-        return hours == anotherTime.hours && minutes == anotherTime.minutes
-                && seconds == anotherTime.seconds;
-    }
     
-    /**
-     * Compares the time with another time received by parameter.
-     * 
-     * @param anotherTime time to be compared.
-     * @return value 0 if the anotherTime received is equal to the time;
-     *         value -1 if the anotherTime is later than the time;
-     *         value 1 if the anotherTime is earlier than the time.
-     */    
-    @Override
-    public int compareTo(Time anotherTime) {
-        return (anotherTime.isGreater(this)) ? -1 : (isGreater(anotherTime)) ? 1 : 0;
-    }     
-
-    /**
+    //======================================================================================================================================================
+    
+     /**
      * Returns true if the time is greater than the time received by parameter.
      * If the time is less than or equal to the time received by parameter,
      * returns false.
@@ -333,5 +194,155 @@ public class Time implements Comparable<Time>,Serializable{
     public int toMinutes() {
         return toSeconds()*60;
     }
+    //======================================================================================================================================================
+
+    /**
+     * It returns the time's hours.
+     *
+     * @return time's hours.
+     */
+    public int getHours() {
+        return hours;
+    }
+
+    /**
+     * It returns the time's minutes.
+     *
+     * @return time's minutes.
+     */
+    public int getMinutes() {
+        return minutes;
+    }
+
+    /**
+     * It returns the time's seconds.
+     *
+     * @return time's seconds.
+     */
+    public int getSeconds() {
+        return seconds;
+    }
+
+    //======================================================================================================================================================
+    
+    /**
+     * It changes the time's hours.
+     *
+     * @param hours the new time's hours.
+     */
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+
+    /**
+     * It changes the time's minutes.
+     *
+     * @param minutes the new time's minutes.
+     */
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    /**
+     * It changes the time's seconds.
+     *
+     * @param seconds the new time's seconds.
+     */
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
+    }
+
+    /**
+     * It changes the time's hours, minutes and seconds.
+     *
+     * @param hours   the new time's hours.
+     * @param minutes the new time's minutes.
+     * @param seconds the new time's seconds.
+     */
+    public void setTime(int hours, int minutes, int seconds) {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+    /**
+     * It changes the time's hours
+     * @param hours the new time's hours
+     */
+    public void setTime(int hours){
+        this.hours = hours;
+        minutes = MINUTES_BY_OMISSION;
+        seconds = SECONDS_BY_OMISSION;
+    }
+    /**
+     * It changes the time's hours and minutes
+     * @param hours the new time's hours
+     * @param minutes the new time's minutes
+     */
+    public void setTime(int hours, int minutes){
+        this.hours = hours;
+        this.minutes = minutes;
+        seconds = SECONDS_BY_OMISSION;
+    }
+
+    //======================================================================================================================================================
+    
+    /**
+     * Returns the textual description of the time in the format:
+     * %02d:%02d:%02d AM/PM.
+     *
+     * @return time's characteristics.
+     */
+    @Override
+    public String toString() {
+        return String.format("%02d:%02d:%02d %s",
+                (hours == 12 || hours == 0) ? 12 : hours % 12,
+                minutes, seconds, hours < 12 ? "AM" : "PM");
+    }
+
+    /**
+     * Returns the time in the format: %02d%02d%02d.
+     *
+     * @return time's characteristics.
+     */
+    public String toStringHHMM() {
+        return String.format("%02d:%02d", hours, minutes);
+    }
+    
+    //======================================================================================================================================================
+
+    /**
+     * Compares the time with the received object.
+     *
+     * @param anotherObject the object to be compared with the time.
+     * @return true if the received object represents a time equivalent to the
+     *         time. Otherwise, returns false.
+     */
+    @Override
+    public boolean equals(Object anotherObject) {
+        if (this == anotherObject) {
+            return true;
+        }
+        if (anotherObject == null || getClass() != anotherObject.getClass()) {
+            return false;
+        }
+        Time anotherTime = (Time) anotherObject;
+        return hours == anotherTime.hours && minutes == anotherTime.minutes
+                && seconds == anotherTime.seconds;
+    }
+    
+    /**
+     * Compares the time with another time received by parameter.
+     * 
+     * @param anotherTime time to be compared.
+     * @return value 0 if the anotherTime received is equal to the time;
+     *         value -1 if the anotherTime is later than the time;
+     *         value 1 if the anotherTime is earlier than the time.
+     */    
+    @Override
+    public int compareTo(Time anotherTime) {
+        return (anotherTime.isGreater(this)) ? -1 : (isGreater(anotherTime)) ? 1 : 0;
+    }     
+
+   
     
 }

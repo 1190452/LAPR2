@@ -28,6 +28,8 @@ public class RegisterFreelancer implements Serializable {
         this.listaFreelancers = new ArrayList();
 
     }
+    
+    //======================================================================================================================================================
 
     /**
      * method that creates a new freelancer
@@ -102,17 +104,8 @@ public class RegisterFreelancer implements Serializable {
     public boolean removeFreelancer(Freelancer fr) {
         return getListaFreelancers().remove(fr);
     }
-
-    /**
-     * returns the list of freelancers
-     *
-     * @return
-     */
-    public List<Freelancer> getListFreelancers() {
-        return getListaFreelancers();
-    }
-
-    /**
+    
+     /**
      * method that generates an id to a freelancer
      *
      * @param free
@@ -136,6 +129,24 @@ public class RegisterFreelancer implements Serializable {
         }
         return id + d;
 
+    }
+    
+    public boolean Verification(Freelancer fr) {
+        if (getListaFreelancers().contains(fr)) {
+            return false;
+        }
+        return true;
+    }
+
+    //======================================================================================================================================================
+
+    /**
+     * returns the list of freelancers
+     *
+     * @return
+     */
+    public List<Freelancer> getListFreelancers() {
+        return getListaFreelancers();
     }
 
     /**
@@ -161,13 +172,6 @@ public class RegisterFreelancer implements Serializable {
         return newList;
     }
 
-    public boolean Verification(Freelancer fr) {
-        if (getListaFreelancers().contains(fr)) {
-            return false;
-        }
-        return true;
-    }
-
     /**
      * returns the list of freelancers
      *
@@ -177,14 +181,7 @@ public class RegisterFreelancer implements Serializable {
         return listaFreelancers;
     }
 
-    /**
-     * modifies the list of freelancers
-     *
-     * @param listaFreelancers the listaFreelancers to set
-     */
-    public void setListaFreelancers(List<Freelancer> listaFreelancers) {
-        this.listaFreelancers = listaFreelancers;
-    }
+    
 
     /**
      * returns the delay probability
@@ -194,6 +191,8 @@ public class RegisterFreelancer implements Serializable {
     public double getDelayProb() {
         return delayProb;
     }
+    
+    //======================================================================================================================================================
 
     /**
      * modifies the delay probability
@@ -203,5 +202,13 @@ public class RegisterFreelancer implements Serializable {
     public void setDelayProb(double delayProb) {
         this.delayProb = delayProb;
     }
-
+    
+    /**
+     * modifies the list of freelancers
+     *
+     * @param listaFreelancers the listaFreelancers to set
+     */
+    public void setListaFreelancers(List<Freelancer> listaFreelancers) {
+        this.listaFreelancers = listaFreelancers;
+    }
 }

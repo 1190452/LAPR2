@@ -31,6 +31,8 @@ public class RegisterTransaction implements Serializable {
         transactionList = new ArrayList<>();
     }
 
+    //======================================================================================================================================================
+    
     /**
      * method that removes a transaction from the transaction list
      *
@@ -84,15 +86,6 @@ public class RegisterTransaction implements Serializable {
         }
         return ((sum / count) * 100);
 
-    }
-
-    /**
-     * returns the list of transactions
-     *
-     * @return the transactionList
-     */
-    public List<TransactionExecution> getTransactions() {
-        return transactionList;
     }
 
     /**
@@ -183,4 +176,15 @@ public class RegisterTransaction implements Serializable {
         }
         return -1;
     }
+
+    //======================================================================================================================================================
+    /**
+     * returns the list of transactions
+     *
+     * @return the transactionList
+     */
+    public List<TransactionExecution> getTransactions() {
+        return transactionList;
+    }
+
 }

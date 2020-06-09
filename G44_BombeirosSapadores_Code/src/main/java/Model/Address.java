@@ -71,6 +71,8 @@ public class Address implements Serializable{
         this.doorNumber = otherAddress.doorNumber;
         this.locality = otherAddress.locality;
     }
+    
+    //======================================================================================================================================================
 
     /**
      * Returns the street of the Address
@@ -95,6 +97,8 @@ public class Address implements Serializable{
     public String getLocality() {
         return locality;
     }
+    
+    //======================================================================================================================================================
     
     /**
      * Changes the street of the Address
@@ -126,6 +130,8 @@ public class Address implements Serializable{
         this.locality = locality;
     }
     
+    //======================================================================================================================================================
+    
     
     /**
      * Compares 2 Address objects through street, door number and locality with both objects being considered equal only when these 3 parameteres are the same
@@ -146,6 +152,8 @@ public class Address implements Serializable{
                 && this.doorNumber.equals(otherAddress.doorNumber) 
                 && this.locality.equalsIgnoreCase(otherAddress.locality);
     }
+    
+    //======================================================================================================================================================
     
     /**
      * Returns the characteristics of the Address

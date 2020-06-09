@@ -28,15 +28,8 @@ public class WatchStatisticsController {
 
     private Statistic st;
     
-    public List<TransactionExecution> getFreelancers(){
-        ApplicationPOT app = ApplicationPOT.getInstance();
-        RegisterOrganization rorgs = app.getPlatform().getrOrg();
-        UserSession log = app.getActualSession();
-        email = log.getUserEmail();
-        Organization org = rorgs.getOrganizationByUserEmailColab(email);
-        return org.getRTrans().getTransactions();
-    }
-    public Map.Entry<String, CustomValue> OverallStatistics( List<TransactionExecution> ltr) {
+   
+     public Map.Entry<String, CustomValue> OverallStatistics( List<TransactionExecution> ltr) {
         String decisao = null;
         String emailF = "gg@gmail.com";
         st = new Statistic();     
@@ -52,6 +45,18 @@ public class WatchStatisticsController {
         }
 
         return null;
+    } 
+     
+    //======================================================================================================================================================
+    
+   
+    public List<TransactionExecution> getFreelancers(){
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        RegisterOrganization rorgs = app.getPlatform().getrOrg();
+        UserSession log = app.getActualSession();
+        email = log.getUserEmail();
+        Organization org = rorgs.getOrganizationByUserEmailColab(email);
+        return org.getRTrans().getTransactions();
     }
 
     /**

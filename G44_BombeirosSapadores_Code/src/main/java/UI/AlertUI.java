@@ -14,6 +14,8 @@ import javafx.scene.control.ButtonType;
  * @author tiagopereira
  */
 public class AlertUI {
+    
+    //======================================================================================================================================================
 
     public static Alert createAlert(Alert.AlertType alertType, String title, String header, String message) {
         Alert alert = new Alert(alertType);
