@@ -15,6 +15,7 @@ import Authorization.FacadeAuthorization;
 import Authorization.model.RegisterUser;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
+import java.time.Year;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -215,8 +216,14 @@ public class Platform implements Serializable {
         Date date = getLastDayDate();
         sEF = new SendEmailFreelTask();
         Timer t = new Timer();
-        //t.schedule(sEF, date);
+        long delay = calculateDifferenceDate(date);
+        long interval = getYearInterval();
+        t.scheduleAtFixedRate(sEF, delay, interval);
 
+    }
+
+    public long getYearInterval() {
+        return 366 * 24 * 60 * 60 * 1000;
     }
 
     /**
@@ -225,7 +232,8 @@ public class Platform implements Serializable {
      * @return
      */
     public Date getLastDayDate() {
-        return new Date(12, 31);
+        int year = Year.now().getValue();
+        return new Date(year, 12, 31);
     }
 
     /**
@@ -265,8 +273,6 @@ public class Platform implements Serializable {
         long interval = calculateDifference(date, time);
 
         Timer t = new Timer();
-        
-        
 
         dpt.passOrg(org);
         System.out.println("Timer uc7 defined");
@@ -292,7 +298,8 @@ public class Platform implements Serializable {
         return diff;
 
     }
-      public long calculateDifferenceDate(Date date) {
+
+    public long calculateDifferenceDate(Date date) {
         Time time = new Time();
         ZonedDateTime now = ZonedDateTime.now();
 
@@ -341,4 +348,16 @@ public class Platform implements Serializable {
             }
         }
     }
+    /**
+     * Returns true if the year received by parameter is a leap year.
+     * If the year received by parameter is not a leap year, it returns false.
+     *
+     * @param year the year to be validated.
+     * @return true if the year received by parameter is a leap year,
+     *         otherwise it is false.
+     */
+    public static boolean leapYear(int year) {
+        return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
+    }
+
 }
