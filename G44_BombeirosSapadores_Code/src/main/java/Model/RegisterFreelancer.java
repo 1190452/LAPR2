@@ -132,9 +132,12 @@ public class RegisterFreelancer implements Serializable {
     }
     
     public boolean Verification(Freelancer fr) {
-        if (getListaFreelancers().contains(fr)) {
-            return false;
+        for (int i=0; i<listaFreelancers.size();i++) {
+            if(listaFreelancers.get(i).getNif().equals(fr.getNif())){
+                return false;
+            }
         }
+        
         return true;
     }
 

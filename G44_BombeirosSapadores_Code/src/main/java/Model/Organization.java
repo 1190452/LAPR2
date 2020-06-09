@@ -101,6 +101,8 @@ public class Organization implements Serializable {
         this.taskList = new TaskList();
         this.definePayment = null;
         this.rTrans = new RegisterTransaction();
+        this.itxt = new ImportTxtFile();
+        this.icsv = new ImportCsvFile();
 
     }
 
@@ -116,8 +118,7 @@ public class Organization implements Serializable {
         this.colab = otherOrganization.colab;
         this.manager = otherOrganization.manager;
         this.taskList = otherOrganization.taskList;
-        this.itxt = new ImportTxtFile();
-        this.icsv = new ImportCsvFile();
+        
     }
 
     public Organization() {
@@ -128,6 +129,8 @@ public class Organization implements Serializable {
         this.colab = new Collaborator();
         this.manager = new Manager();
         this.taskList = new TaskList();
+        this.itxt = new ImportTxtFile();
+        this.icsv = new ImportCsvFile();
     }
 
     //======================================================================================================================================================

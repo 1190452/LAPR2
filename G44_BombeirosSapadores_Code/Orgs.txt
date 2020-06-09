@@ -1,5 +1,3 @@
-Organization ISEP made a payment of 140.0 on 2020_June_8 at 09:05:59 PM
-Organization lda made a payment of 24.0 on 2020_June_8 at 11:57:59 PM
-Organization lda made a payment of 0.0 on 2020_June_8 at 11:57:59 PM
-Organization lda made a payment of 244.0 on 2020_June_9 at 12:01:59 AM
-Organization lda made a payment of 0.0 on 2020_June_9 at 12:01:59 AM
+Organization lda made a payment of 165.0 on 2020_June_9 at 11:41:59 PM
+Organization lda made a payment of 4.0 on 2020_June_9 at 11:51:15 PM
+Organization lda made a payment of 3004.0 on 2020_June_9 at 11:55:35 PM

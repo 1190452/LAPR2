@@ -1,5 +1,10 @@
-Receipt of JS1Task :t1 -------------------- 24.0 
-The total value is: 24.0euros
-Receipt of JS1Task :t1 -------------------- 24.0 
-Task :2 -------------------- 220.0 
-The total value is: 244.0euros
+Receipt of MB1
+Task Execution: 1 -------------------- 165.0 
+The total value in euros is 165.0 and 184.701 in your local currency
+Receipt of JC1
+Task Execution: 1 -------------------- 4.0 
+The total value in euros is 4.0 and 4.4776 in your local currency
+Receipt of JC1
+Task Execution: 1 -------------------- 4.0 
+Task Execution: 5 -------------------- 3000.0 
+The total value in euros is 3004.0 and 3362.6776 in your local currency

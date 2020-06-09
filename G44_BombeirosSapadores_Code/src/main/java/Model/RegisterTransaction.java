@@ -29,10 +29,11 @@ public class RegisterTransaction implements Serializable {
      */
     public RegisterTransaction() {
         transactionList = new ArrayList<>();
+        cc = new CurrencyConverter();
+        
     }
 
     //======================================================================================================================================================
-    
     /**
      * method that removes a transaction from the transaction list
      *
@@ -61,20 +62,20 @@ public class RegisterTransaction implements Serializable {
         }
     }
 
-    public double percentageOfDelays(Freelancer free) {
-        int numberOfTasks = free.getTaskList().getTaskList().size();
-        int count = 0;
-        int sum = 0;
-
-        for (int i = 0; i < transactionList.size(); i++) {
-            if (transactionList.get(i).getFreel().equals(free)) {
-                sum += transactionList.get(i).getTaskDelay();
-                count++;
-            }
-
-        }
-        return ((sum / count) * 100);
-    }
+//    public double percentageOfDelays(Freelancer free) {
+//        int numberOfTasks = free.getTaskList().getTaskList().size();
+//        int count = 0;
+//        int sum = 0;
+//
+//        for (int i = 0; i < transactionList.size(); i++) {
+//            if (transactionList.get(i).getFreel().equals(free)) {
+//                sum += transactionList.get(i).getTaskDelay();
+//                count++;
+//            }
+//
+//        }
+//        return ((sum / count) * 100);
+//    }
 
     public double overallPercentageDelays() {
         int count = 0;
@@ -109,9 +110,11 @@ public class RegisterTransaction implements Serializable {
      * @return
      */
     public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+     
         task.setIsFinished(true);
         double costEuros = task.getCostHour() * task.getTimeTask();
-        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros, cc.convert(costEuros, freel.getCountry())));
+        double costCureency = cc.convert(costEuros, freel.getCountry());
+        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros,costCureency));
     }
 
     /**
