@@ -267,6 +267,8 @@ public class Platform implements Serializable{
         long interval = calculateDifference(date, time);
 
         Timer t = new Timer();
+        
+        
 
         dpt.passOrg(org);
         System.out.println("Timer uc7 defined");
@@ -289,6 +291,17 @@ public class Platform implements Serializable{
                 time.getHours(), time.getMinutes(), time.getSeconds(), 0, ZoneId.of("Europe/London"));
 
         long diff = ChronoUnit.SECONDS.between(now, timeToTimer);
+        return diff;
+
+    }
+      public long calculateDifferenceDate(Date date) {
+        Time time = new Time();
+        ZonedDateTime now = ZonedDateTime.now();
+
+        ZonedDateTime timeToTimer = ZonedDateTime.of(date.getYear(), date.getMonth(), date.getDay(),
+                time.getHours(), time.getMinutes(), time.getSeconds(), 0, ZoneId.of("Europe/London"));
+
+        long diff = ChronoUnit.MILLIS.between(now, timeToTimer);
         return diff;
 
     }
