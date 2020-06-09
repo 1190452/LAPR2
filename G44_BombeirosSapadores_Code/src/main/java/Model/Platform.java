@@ -200,8 +200,6 @@ public class Platform implements Serializable {
     }
     
     /**
-=======
->>>>>>> 9ac137832ea31ab824dde615eee83728d987fa61
      * method that "sends" and email to mean performance freelancers
      *
      * @throws FileNotFoundException
@@ -215,20 +213,18 @@ public class Platform implements Serializable {
 
             for (int j = 0; j < transList.size(); j++) {
                 double taskDelay = transList.get(j).getTaskDelay();
-<<<<<<< HEAD
                 
                 if (taskDelay > 3 && taskDelay > delayPercentage) {
-=======
+
 
                 if (taskDelay > 3 && taskDelay > delayProb) {
->>>>>>> 9ac137832ea31ab824dde615eee83728d987fa61
                     Freelancer free = transList.get(j).getFreel();
                     Writer.sendEmail(free);
                 }
             }
         }
     }
-    
+    }
     /**
      * Returns true if the year received by parameter is a leap year. If the
      * year received by parameter is not a leap year, it returns false.
