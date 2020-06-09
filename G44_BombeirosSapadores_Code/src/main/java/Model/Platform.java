@@ -213,15 +213,10 @@ public class Platform implements Serializable {
 
             for (int j = 0; j < transList.size(); j++) {
                 double taskDelay = transList.get(j).getTaskDelay();
-                
-                if (taskDelay > 3 && taskDelay > delayPercentage) {
-
-
                 if (taskDelay > 3 && taskDelay > delayProb) {
                     Freelancer free = transList.get(j).getFreel();
                     Writer.sendEmail(free);
                 }
-            }
         }
     }
     }
