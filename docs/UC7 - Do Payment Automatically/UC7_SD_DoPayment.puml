@@ -11,11 +11,12 @@ participant "lt\n:List<Task>" as LT
 participant "ts :Task" as T
 participant "amountsET\n: List<Task>" as LTS
 participant "freel\n:Freelancer" as F
-participant "p\n:Payment" as PA
+
 participant "rt\n:RegisterTransaction" as RT
-participant "ltr\n:List<Transaction>" as LTR
-participant "tr\n:Transaction" as TR
-participant "nltr\nList<Transaction>" as NLTR
+participant "ltr\n:List<TransactionExecution>" as LTR
+participant "tr\n:TransactionExecution" as TR
+participant "p\n:Payment" as PA
+participant "nltr\nList<TransactionExecution>" as NLTR
 participant "CurrencyConverter" as CC
 participant "Writer" as W
 
@@ -65,9 +66,9 @@ end opt
 end loop
 
 
-TASK -> P : rt = getRT()
-activate P
-deactivate P
+TASK -> O : rt = getRT()
+activate O
+deactivate O
 
 TASK -> RT : ltr = getltr()
 activate RT
@@ -111,9 +112,13 @@ activate NLTR
 deactivate NLTR
 
 
-TASK -> TR : value = getTransactionValue()
+TASK -> TR : p = getPayment()
 activate TR
 deactivate TR
+
+TASK -> PA : value = getValueE()
+activate PA
+deactivate PA
 
 TASK -> TASK : sum = addThisValue(value)
 
@@ -132,28 +137,17 @@ deactivate CC
 
 
 
-TASK --> PA** : create(sum, curr, nltr)
 
-activate PA
-PA -> PA : validatePay()
-deactivate PA
-
-TASK -> F : addPayment(p)
-activate F
-deactivate F
 
 TASK -> W : writeOrg(org, sum, curr)
 activate W
 deactivate W
 
-TASK -> PA : generateReceipt(country)
-activate PA
-deactivate PA
+TASK -> W : generateReceipt(curr, sum, nltr)
+activate W
+deactivate W
 
 
-
-
-ref over PA : UC7_SD_GenerateReceipt
 
 end loop
 deactivate TASK

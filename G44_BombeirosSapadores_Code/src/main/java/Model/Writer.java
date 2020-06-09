@@ -88,7 +88,7 @@ public class Writer {
 
             FileWriter writer2 = new FileWriter(Constants.EMAILS, true);
 
-            writer2.write("Receipt of " + nltr.get(0).getFreel().getFreeID());
+            writer2.write("Receipt of " + nltr.get(0).getFreel().getFreeID()+"\n");
             for (TransactionExecution e : nltr) {
                 writer2.write(e.toString() + "\n");
             }

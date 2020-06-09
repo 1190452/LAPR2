@@ -7,7 +7,11 @@ package Controller;
 
 import Model.ApplicationPOT;
 import Model.Platform;
+import Utils.Date;
+import static Utils.Date.leapYear;
 import java.io.FileNotFoundException;
+import java.time.Year;
+import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +27,10 @@ public class SendEmailFreelTask extends TimerTask {
      */
     private Platform p1;
 
+    private Timer t1;
+
     /**
-     * constructor that gets platform of the current session 
+     * constructor that gets platform of the current session
      */
     public SendEmailFreelTask() {
         ApplicationPOT pot = ApplicationPOT.getInstance();
@@ -34,15 +40,34 @@ public class SendEmailFreelTask extends TimerTask {
     /**
      * Runs the process of sending an email to the freelancers
      */
-    @Override
     public void run() {
         try {
-            p1.sendEmail();
-            p1.scheduleProcess();
+            int year = Year.now().getValue();
+            boolean leapY = p1.leapYear(year);
+
+            if (leapY) {
+                long time = getOneDayTime();
+                t1.wait(time);
+                p1.sendEmail();
+            } else {
+                p1.sendEmail();
+            }
         } catch (FileNotFoundException ex) {
+            Logger.getLogger(SendEmailFreelTask.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InterruptedException ex) {
             Logger.getLogger(SendEmailFreelTask.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    private long getOneDayTime() {
+        return 24 * 60 * 60 * 1000;
+    }
+
+    
+
+    public void setTimer(Timer t) {
+        this.t1 = t1;
     }
 
 }

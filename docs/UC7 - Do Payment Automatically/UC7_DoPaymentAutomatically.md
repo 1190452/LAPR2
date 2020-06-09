@@ -117,7 +117,6 @@ When the manager defines the hour of the payments.
 
 ![UC7_SD_DoPayment.svg](UC7_SD_DoPayment.svg)
 
-![UC7_SD_GenerateReceipt.svg](UC7_SD_GenerateReceipt.svg)
 
 ###	Class Diagram
 
