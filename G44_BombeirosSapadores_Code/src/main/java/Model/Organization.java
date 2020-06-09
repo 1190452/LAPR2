@@ -387,4 +387,11 @@ public class Organization implements Serializable {
         }
     }
 
+    public RegisterTransaction getrTrans() {
+        return rTrans;
+    }
+    
+    
+    
+
 }

@@ -218,4 +218,9 @@ public class RegisterOrganization implements Serializable {
         return true;
     }
 
+    public List<Organization> getlOrg() {
+        return lOrg;
+    }
+    
+
 }

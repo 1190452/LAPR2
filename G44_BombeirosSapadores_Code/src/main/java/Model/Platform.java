@@ -48,7 +48,6 @@ public class Platform implements Serializable {
      */
     private RegisterUser rUser;
 
-
     /**
      * password generator
      */
@@ -81,8 +80,7 @@ public class Platform implements Serializable {
         pg.useLower(true);
         pg.useDigits(true);
         this.alg = pg.build();
-    
-      
+
     }
 
     /**
@@ -163,8 +161,6 @@ public class Platform implements Serializable {
         this.rOrg = rOrg;
     }
 
-    
-
     /**
      * return the password generator
      *
@@ -181,6 +177,7 @@ public class Platform implements Serializable {
         Date date = getLastDayDate();
         sEF = new SendEmailFreelTask();
         Timer t = new Timer();
+        sEF.setTimer(t);
         long delay = calculateDifferenceDate(date);
         long interval = getYearInterval();
         t.scheduleAtFixedRate(sEF, delay, interval);
@@ -209,7 +206,6 @@ public class Platform implements Serializable {
     public void setAlg(PasswordGenerator alg) {
         this.alg = alg;
     }
-
 
     /**
      * method that schedules the payment to the freelancer
@@ -287,7 +283,6 @@ public class Platform implements Serializable {
         return writer;
     }
 
-<<<<<<< HEAD
     /**
      * method that "sends" and email to mean performance freelancers
      *
@@ -296,28 +291,32 @@ public class Platform implements Serializable {
     public void sendEmail() throws FileNotFoundException {
         List<Freelancer> listFreelancers = rFree.getListFreelancers();
         double delayProb = rFree.getDelayProb();
+        List<Organization> orgList = rOrg.getlOrg();
 
-        List<TransactionExecution> transList = rTrans.getTransactions();
-        for (int i = 0; i < transList.size(); i++) {
-            double taskDelay = transList.get(i).getTaskDelay();
-            if (taskDelay > 3 && taskDelay > delayProb) {
-                Freelancer free = transList.get(i).getFreel();
-                Writer.sendEmail(free);
+        for (int i = 0; i < orgList.size(); i++) {
+            List<TransactionExecution> transList = orgList.get(i).getRTrans().getTransactions();
+            
+            for (int j = 0; j < transList.size(); j++) {
+                double taskDelay = transList.get(j).getTaskDelay();
+                
+                if (taskDelay > 3 && taskDelay > delayProb) {
+                    Freelancer free = transList.get(j).getFreel();
+                    Writer.sendEmail(free);
+                }
             }
         }
     }
+
     /**
-     * Returns true if the year received by parameter is a leap year.
-     * If the year received by parameter is not a leap year, it returns false.
+     * Returns true if the year received by parameter is a leap year. If the
+     * year received by parameter is not a leap year, it returns false.
      *
      * @param year the year to be validated.
-     * @return true if the year received by parameter is a leap year,
-     *         otherwise it is false.
+     * @return true if the year received by parameter is a leap year, otherwise
+     * it is false.
      */
     public static boolean leapYear(int year) {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
 
-=======
->>>>>>> a08184695fb9839da0e3507ad85c1cd95ce4162e
 }
