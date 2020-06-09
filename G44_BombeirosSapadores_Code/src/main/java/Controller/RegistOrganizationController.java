@@ -20,6 +20,8 @@ public class RegistOrganizationController {
     private Platform plat;
     RegisterOrganization ro;
     Organization org;
+    
+    //======================================================================================================================================================
 
     /**
      * calls the RegisterOrganization method that creates a new organization and receives that organization

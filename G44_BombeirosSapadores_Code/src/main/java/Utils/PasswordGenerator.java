@@ -43,6 +43,8 @@ public final class PasswordGenerator implements Serializable{
         this.useDigits = builder.useDigits;
         this.usePunctuation = builder.usePunctuation;
     }
+    
+    //======================================================================================================================================================
 
     public static class PasswordGeneratorBuilder {
 

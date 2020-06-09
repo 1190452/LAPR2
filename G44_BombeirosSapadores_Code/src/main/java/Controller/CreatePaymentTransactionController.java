@@ -44,6 +44,39 @@ public class CreatePaymentTransactionController {
     public CreatePaymentTransactionController() {
 
     }
+    
+    
+    
+    //======================================================================================================================================================
+     /**
+     * calls the method of the class RegisterTransaction to create a new
+     * transaction
+     *
+     * @param task
+     * @param freel
+     * @param endDate
+     * @param delay
+     * @param qow
+     * @return
+     */
+    public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        rt = app.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getRTrans();
+        trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
+        return trans;
+    }
+
+    /**
+     * calls the method of the class RegisterTransaction to register the created
+     * transaction
+     *
+     * @return
+     */
+    public boolean registerTransaction() {
+        return rt.registerTransaction(trans);
+    }
+    
+    //======================================================================================================================================================
 
     /**
      * method that calls the TaskList class to get the list of tasks
@@ -72,32 +105,8 @@ public class CreatePaymentTransactionController {
         List<Freelancer> freelancerList = rl.getListFreelancers();
         return freelancerList;
     }
+    
 
-    /**
-     * calls the method of the class RegisterTransaction to create a new
-     * transaction
-     *
-     * @param task
-     * @param freel
-     * @param endDate
-     * @param delay
-     * @param qow
-     * @return
-     */
-    public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
-        ApplicationPOT app = ApplicationPOT.getInstance();
-        rt = app.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getRTrans();
-        trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
-        return trans;
-    }
-
-    /**
-     * calls the method of the class RegisterTransaction to register the created
-     * transaction
-     *
-     * @return
-     */
-    public boolean registerTransaction() {
-        return rt.registerTransaction(trans);
-    }
+    
+   
 }

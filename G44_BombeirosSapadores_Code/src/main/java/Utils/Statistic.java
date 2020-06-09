@@ -17,6 +17,40 @@ import java.util.Map;
  */
 public class Statistic {
 
+    private double FreelancerMeanPayment(List<TransactionExecution> eachFreel) {
+        double sum = 0;
+        for (int i = 0; i < eachFreel.size(); i++) {
+            sum += eachFreel.get(i).getPayment().getValueE();
+        }
+        return (sum / eachFreel.size());
+    }
+
+    private double FreelancerPaymentDeviation(List<TransactionExecution> eachFreel, double meanFreel) {
+        double sumDeviation = 0;
+        for (int i = 0; i < eachFreel.size(); i++) {
+            sumDeviation += Math.pow((eachFreel.get(i).getPayment().getValueE() - meanFreel), 2);
+        }
+        return sumDeviation;
+    }
+
+    private double FreelancerMeanTaskExecution(List<TransactionExecution> eachFreel) {
+        double sum = 0;
+        for (int i = 0; i < eachFreel.size(); i++) {
+            sum += eachFreel.get(i).getTaskDelay();
+        }
+        return (sum / eachFreel.size());
+    }
+
+    private double FreelancerDeviationTaskExecution(List<TransactionExecution> eachFreel, double meanFreel) {
+        double sumDeviation = 0;
+        for (int i = 0; i < eachFreel.size(); i++) {
+            sumDeviation += Math.pow((eachFreel.get(i).getTaskDelay() - meanFreel), 2);
+        }
+        return sumDeviation;
+    }
+
+    //======================================================================================================================================================
+    
     /**
      * Inspired in
      * https://stackoverflow.com/questions/3110547/java-how-to-create-new-entry-key-value
@@ -43,22 +77,6 @@ public class Statistic {
 
     }
 
-    private double FreelancerMeanPayment(List<TransactionExecution> eachFreel) {
-        double sum = 0;
-        for (int i = 0; i < eachFreel.size(); i++) {
-            sum += eachFreel.get(i).getPayment().getValueE();
-        }
-        return (sum / eachFreel.size());
-    }
-
-    private double FreelancerPaymentDeviation(List<TransactionExecution> eachFreel, double meanFreel) {
-        double sumDeviation = 0;
-        for (int i = 0; i < eachFreel.size(); i++) {
-            sumDeviation += Math.pow((eachFreel.get(i).getPayment().getValueE() - meanFreel), 2);
-        }
-        return sumDeviation;
-    }
-
     public Map.Entry<String, CustomValue> getTaskExecutionDelayOfEachFreelancer(List<TransactionExecution> ltr, String emailF) {
         List<TransactionExecution> eachFreel = new ArrayList<>();
         String f = null;
@@ -72,22 +90,6 @@ public class Statistic {
         double deviationFreel = FreelancerDeviationTaskExecution(eachFreel, meanFreel);
         Map.Entry<String, CustomValue> entry = new AbstractMap.SimpleEntry<>(f, new CustomValue(meanFreel, deviationFreel));
         return entry;
-    }
-
-    private double FreelancerMeanTaskExecution(List<TransactionExecution> eachFreel) {
-        double sum = 0;
-        for (int i = 0; i < eachFreel.size(); i++) {
-            sum += eachFreel.get(i).getTaskDelay();
-        }
-        return (sum / eachFreel.size());
-    }
-
-    private double FreelancerDeviationTaskExecution(List<TransactionExecution> eachFreel, double meanFreel) {
-        double sumDeviation = 0;
-        for (int i = 0; i < eachFreel.size(); i++) {
-            sumDeviation += Math.pow((eachFreel.get(i).getTaskDelay() - meanFreel), 2);
-        }
-        return sumDeviation;
     }
 
     public Map.Entry<String, CustomValue> getTaskExecutionDelayOfAllFreelancers(List<TransactionExecution> ltr) {

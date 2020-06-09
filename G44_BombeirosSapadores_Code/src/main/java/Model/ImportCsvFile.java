@@ -33,6 +33,8 @@ public class ImportCsvFile implements ImportFile, Serializable {
      * that class
      */
     private RegisterFreelancer rf;
+    
+    //======================================================================================================================================================
 
     /**
      * method that reads a CSV file and loads a set of historical transactions

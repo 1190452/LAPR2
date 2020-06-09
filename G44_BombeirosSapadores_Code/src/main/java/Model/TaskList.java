@@ -26,6 +26,8 @@ public class TaskList implements Serializable {
     public TaskList() {
         taskList = new ArrayList<>();
     }
+    
+    //======================================================================================================================================================
 
     /**
      * adds a task to the task list
@@ -44,17 +46,7 @@ public class TaskList implements Serializable {
     public void removeTask(Task t) {
         taskList.remove(t);
     }
-
-    /**
-     * returns the task list
-     *
-     * @return
-     */
-    public List<Task> getTaskList() {
-        return taskList;
-    }
-
-    /**
+      /**
      * creates a new task with the following parameters:
      *
      * @param idTask
@@ -105,5 +97,18 @@ public class TaskList implements Serializable {
             return false;
         }
     }
+    
+    //======================================================================================================================================================
+
+    /**
+     * returns the task list
+     *
+     * @return
+     */
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
+  
     
 }

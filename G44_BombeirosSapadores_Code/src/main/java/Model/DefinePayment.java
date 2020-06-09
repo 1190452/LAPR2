@@ -60,56 +60,9 @@ public class DefinePayment implements Serializable{
         dateToPay = DATETOPAY_OMISSION;
         nrDays = NRDAYS_OMISSION;
     }
-
-    /**
-     * returns the time to pay
-     * @return the timeToPay
-     */
-    public Time getTimeToPay() {
-        return timeToPay;
-    }
-
-    /**
-     * modifies the time to pay
-     * @param timeToPay the timeToPay to set
-     */
-    public void setTimeToPay(Time timeToPay) {
-        this.timeToPay = timeToPay;
-    }
-
-    /**
-     * returns the date to pay
-     * @return the dateToPay
-     */
-    public Date getDateToPay() {
-        return dateToPay;
-    }
-
-    /**
-     * modifies the date to pay
-     * @param dateToPay the dateToPay to set
-     */
-    public void setDateToPay(Date dateToPay) {
-        this.dateToPay = dateToPay;
-    }
-
-    /**
-     * returns the number of days
-     * @return the nrDays
-     */
-    public int getNrDays() {
-        return nrDays;
-    }
-
-    /**
-     * modifies the number of days
-     * @param nrDays the nrDays to set
-     */
-    public void setNrDays(int nrDays) {
-        this.nrDays = nrDays;
-    }
-
-    /**
+    //======================================================================================================================================================
+    
+      /**
      * method that registers the payment definition created
      * @param dpay
      * @return 
@@ -135,6 +88,58 @@ public class DefinePayment implements Serializable{
 
         return bRet;
     }
+    
+    //======================================================================================================================================================
+
+    /**
+     * returns the time to pay
+     * @return the timeToPay
+     */
+    public Time getTimeToPay() {
+        return timeToPay;
+    }
+
+    
+    /**
+     * returns the date to pay
+     * @return the dateToPay
+     */
+    public Date getDateToPay() {
+        return dateToPay;
+    }
+
+    
+
+    /**
+     * returns the number of days
+     * @return the nrDays
+     */
+    public int getNrDays() {
+        return nrDays;
+    }
+    
+    //======================================================================================================================================================
+    
+    /**
+     * modifies the time to pay
+     * @param timeToPay the timeToPay to set
+     */
+    public void setTimeToPay(Time timeToPay) {
+        this.timeToPay = timeToPay;
+    }
+
+    public void setDateToPay(Date dateToPay) {
+        this.dateToPay = dateToPay;
+    }
+    /**
+     * modifies the number of days
+     * @param nrDays the nrDays to set
+     */
+    public void setNrDays(int nrDays) {
+        this.nrDays = nrDays;
+    }
+
+    //======================================================================================================================================================
     
     /**
      * Method toString of Define Payment
