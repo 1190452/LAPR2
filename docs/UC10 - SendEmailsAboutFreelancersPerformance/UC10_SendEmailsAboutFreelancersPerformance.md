@@ -73,13 +73,18 @@ All the last days of the years.
 
 | Main Flow  | Question: What Class...  | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-|1. The last day of year is reached.|...coordinate the uc?    |   SendEmailFreelTask      |    |
+|1. The last day of year is reached.|...coordinate the uc?    |   SendEmailFreelTask      | Controller: |
 |       | ...determines that time has been reached? |     Timer       |   Timer        |
-|       | ...creates the timer instance? |   Platform  | Creator+IE: The platform knows the date to start the process                
+|       | ...creates the timer instance? |   Platform  | Creator+IE: The platform knows the date to start the process |              
 |2. The system identify the freelancers who have a task delay greater than 3 hours and their percentage of task delay higher than the percentage of overall delays. Then sends emails to them. |  ...own the freelancers?	|  RegisterFreelancer | IE+(HC+LC):Register Freelancer contains / aggregates Freelancers (according to the HC + LC standard, on Platform)|
+|       | ...determines what year we are in? |     Year       |           |
+|       | ...check if the year is a leap year? |     Platform       |           |
 |       | ...knows RegisterFreelancer? |     Platform      |   IE: Platform contains freelancers       |
-|       | ...knows TaskExecution? |         |   IE: TaskExecution is related to the work of Freelancer      |
-|       | ...knows the task delay of freelancers?|     TaskExecution       |   IE: Task Execution has the Task Delay attribute for a freelancer|
+|       | ...knows RegisterOrganization? |     Platform      |   IE:       |
+|       | ...knows Organization? |    RegisterOrganization     |   IE:       |
+|       | ...knows RegisterTransaction? |Organization        |   IE:      |
+|       | ...knows TransactionList? | RegisterTransaction        |   IE:      |
+|       | ...knows the task delay of freelancers?|     Transaction       |   IE: Transaction has the Task Delay attribute for a freelancer|
 |       | ...knows the percentage task delay overall of freelancers?|     RegisterFreelancer       |   IE: RegisterFreelancer contains the overall percentage of Task delay of freelancers |
 |       | ...saves the emails?|    Writer      |   IE: Writer simulates sending an email by saving|
 |       | ...send the emails?|     Platform      |   IE: Platform sends the emails to the freelancers|
@@ -96,7 +101,12 @@ It follows from the rational that the conceptual classes promoted to software cl
 
  * Platform
  * RegisterFreelancer
+ * RegisterOrganization
  * Freelancer
+ * Organization
+ * Writer
+ * Transaction
+
 
 Other software classes (i.e. Pure Fabrication) identified:  
 
@@ -105,6 +115,8 @@ Other software classes (i.e. Pure Fabrication) identified:
 Other classes of external systems / components:
 
  * Timer
+ * Date
+ * Year
 
 
 ###	Sequence Diagram
