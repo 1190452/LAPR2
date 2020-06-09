@@ -60,20 +60,19 @@ public class RegisterTransaction implements Serializable {
     }
 
 
-//    public double percentageOfDelays(Freelancer free) {
-//        int numberOfTasks = free.getTaskList().getTaskList().size();
-//        int count = 0;
-//        int sum = 0;
-//
-//        for (int i = 0; i < transactionList.size(); i++) {
-//            if (transactionList.get(i).getFreel().equals(free)) {
-//                sum += transactionList.get(i).getTaskDelay();
-//                count++;
-//            }
-//
-//        }
-//        return ((sum / count) * 100);
-//    }
+    public double percentageOfDelays(Freelancer free) {
+        int count = 0;
+        int sum = 0;
+
+        for (int i = 0; i < transactionList.size(); i++) {
+            if (transactionList.get(i).getFreel().equals(free)&& (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
+                sum += transactionList.get(i).getTaskDelay();
+                count++;
+            }
+
+        }
+        return ((sum / count) * 100);
+    }
 
 
 
