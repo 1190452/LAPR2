@@ -80,7 +80,7 @@ public class DoPaymentTask extends TimerTask {
             }
         }
 
-        RegisterTransaction rt = plt.getRTrans();
+        RegisterTransaction rt = org.getRTrans();
         List<TransactionExecution> ltr = rt.getTransactions();
 
         List<TransactionExecution> nltr = new ArrayList<>();
@@ -102,7 +102,8 @@ public class DoPaymentTask extends TimerTask {
 
                     if (ts.equals(cts) && freel.equals(f)) {
                         nltr.add(tr);
-                        double value = tr.getTransactionValue();
+                        Payment p = tr.getPayment();
+                        double value = p.getValueE();
                         sum += value;
 
                     }
@@ -114,16 +115,10 @@ public class DoPaymentTask extends TimerTask {
             CurrencyConverter c = new CurrencyConverter();
             double curr = c.convert(sum, country);
 
-            Payment p = new Payment(sum, curr);
-
-            boolean verif = p.validatePay();
-            if (verif == true) {
-                freel.addPayment(p);
-            }
-
+            
             Writer.writeOrg(org, sum);
 
-            p.generateReceipt(country);
+            Writer.genEmail(nltr, sum, curr);
 
         }
     }

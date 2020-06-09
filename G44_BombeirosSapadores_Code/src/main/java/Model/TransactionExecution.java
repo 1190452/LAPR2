@@ -287,7 +287,7 @@ public class TransactionExecution implements Serializable {
      */
     @Override
     public String toString() {
-        return String.format("Task Execution:%s -------------------- %s ", task.getIdTask(), payment.getValueE());
+        return String.format("Task Execution: %s -------------------- %s ", task.getIdTask(), payment.getValueE());
     }
 
 }
