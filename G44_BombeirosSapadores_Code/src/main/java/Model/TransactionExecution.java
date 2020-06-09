@@ -53,7 +53,7 @@ public class TransactionExecution implements Serializable {
     /**
      * The id of the TransactionExecution
      */
-    private String transID;
+    private final int transID;
 
     /**
      * counter which will be incremented to generate the transaction ID
@@ -71,7 +71,7 @@ public class TransactionExecution implements Serializable {
      * @param delay
      * @param descString
      */
-    public TransactionExecution(String transID, Task task, Freelancer freel, Date endDate, double delay, String descString) {
+    public TransactionExecution(int transID, Task task, Freelancer freel, Date endDate, double delay, String descString) {
         this.transID = transID;
         this.task = task;
         this.freel = freel;
@@ -92,9 +92,8 @@ public class TransactionExecution implements Serializable {
      * @param delay
      * @param descString
      * @param payment
-     * @param transactionValue
      */
-    public TransactionExecution(String transID, Task task, Freelancer freel, Date endDate, double delay, String descString, Payment payment) {
+    public TransactionExecution(int transID, Task task, Freelancer freel, Date endDate, double delay, String descString, Payment payment) {
         this.transID = transID;
         this.task = task;
         this.freel = freel;
@@ -114,6 +113,7 @@ public class TransactionExecution implements Serializable {
      * @param endDate
      * @param delay
      * @param descString
+     * @param payment
      */
     public TransactionExecution(Task task, Freelancer freel, Date endDate, double delay, String descString, Payment payment) {
         this.task = task;
@@ -122,7 +122,7 @@ public class TransactionExecution implements Serializable {
         this.delay = delay;
         this.descriptionOfQuality = descString;
         this.payment = payment;
-        counter++;
+        transID = ++counter;
     }
 
     /**
@@ -135,7 +135,7 @@ public class TransactionExecution implements Serializable {
         this.delay = DELAY_BY_OMISSION;
         this.descriptionOfQuality = DESCRIPTION_BY_OMISSION;
         this.payment = new Payment();
-        counter++;
+        transID = ++counter;
     }
 
     /**
@@ -155,6 +155,17 @@ public class TransactionExecution implements Serializable {
     }
 
     //======================================================================================================================================================
+
+    
+    
+    /**
+     * Returns the id related to the transaction
+     * @return id of the transaction
+     */
+    public int getTransID() {
+        return transID;
+    }
+    
     /**
      * returns the end date
      *

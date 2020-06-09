@@ -54,11 +54,7 @@ public class RegisterTransaction implements Serializable {
             }
 
         }
-        if ((sum / count) > 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return (sum / count) > 3;
     }
 
     public double percentageOfDelays(Freelancer free) {
@@ -135,10 +131,11 @@ public class RegisterTransaction implements Serializable {
      * @return
      */
     public boolean validateTransaction(TransactionExecution trans) {
-        if (transactionList.contains(trans)) {
-            return false;
+        for(TransactionExecution t : transactionList) {
+            if(t.getTransID() == trans.getTransID())
+                return false;
         }
-        return true;
+        return !transactionList.contains(trans);
     }
 
     /**
@@ -149,10 +146,7 @@ public class RegisterTransaction implements Serializable {
      */
     public boolean addTransaction(TransactionExecution trans) {
         transactionList.add(trans);
-        if (transactionList != null) {
-            return true;
-        }
-        return false;
+        return transactionList != null;
     }
 
     /**
