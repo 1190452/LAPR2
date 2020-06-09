@@ -27,26 +27,27 @@ public class CreatePaymentTransactionController {
      * atribute to call the methods of RegisterTransaction class
      */
     private RegisterTransaction rt;
-    
+
     /**
-     * transaction that will be created 
+     * transaction that will be created
      */
     private TransactionExecution trans;
-    
+
     /**
      * email of the user
      */
     private String email;
-    
+
     /**
      * constructor that creates an instance of CreateTransactionController
      */
     public CreatePaymentTransactionController() {
-        
+
     }
 
     /**
      * method that calls the TaskList class to get the list of tasks
+     *
      * @return taskList
      */
     public List<Task> getTaskList() {
@@ -60,7 +61,9 @@ public class CreatePaymentTransactionController {
     }
 
     /**
-     * method that calls the RegisterFreelancer class to get the list of freelancers
+     * method that calls the RegisterFreelancer class to get the list of
+     * freelancers
+     *
      * @return freelancerList
      */
     public List<Freelancer> getFreelancerList() {
@@ -71,24 +74,28 @@ public class CreatePaymentTransactionController {
     }
 
     /**
-     * calls the method of the class RegisterTransaction to create a new transaction
+     * calls the method of the class RegisterTransaction to create a new
+     * transaction
+     *
      * @param task
      * @param freel
      * @param endDate
      * @param delay
      * @param qow
-     * @return 
+     * @return
      */
     public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         ApplicationPOT app = ApplicationPOT.getInstance();
-        rt = app.getPlatform().getRTrans();
+        rt = app.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getRTrans();
         trans = rt.createNewTransaction(task, freel, endDate, delay, qow);
         return trans;
     }
 
     /**
-     * calls the method of the class RegisterTransaction to register the created transaction
-     * @return 
+     * calls the method of the class RegisterTransaction to register the created
+     * transaction
+     *
+     * @return
      */
     public boolean registerTransaction() {
         return rt.registerTransaction(trans);

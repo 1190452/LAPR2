@@ -50,7 +50,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
             ApplicationPOT pot = ApplicationPOT.getInstance();
             UserSession log = pot.getActualSession();
             String email = log.getUserEmail();
-            ht = pot.getPlatform().getRTrans();
+            ht = pot.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getRTrans();
             tl = pot.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).getTaskList();
             rf = pot.getPlatform().getRfree();
             String header = sc.nextLine();
