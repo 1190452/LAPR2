@@ -8,6 +8,7 @@ package Model;
 import Utils.CurrencyConverter;
 import Utils.Date;
 import java.io.Serializable;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +33,6 @@ public class RegisterTransaction implements Serializable {
     }
 
     //======================================================================================================================================================
-    
     /**
      * method that removes a transaction from the transaction list
      *
@@ -48,7 +48,7 @@ public class RegisterTransaction implements Serializable {
         double sum = 0;
 
         for (int i = 0; i < transactionList.size(); i++) {
-            if (transactionList.get(i).getFreel().equals(free)) {
+            if ((transactionList.get(i).getFreel().equals(free)) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
                 sum += transactionList.get(i).getTaskDelay();
                 count++;
             }
@@ -67,7 +67,7 @@ public class RegisterTransaction implements Serializable {
         int sum = 0;
 
         for (int i = 0; i < transactionList.size(); i++) {
-            if (transactionList.get(i).getFreel().equals(free)) {
+            if (transactionList.get(i).getFreel().equals(free) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
                 sum += transactionList.get(i).getTaskDelay();
                 count++;
             }
@@ -81,8 +81,10 @@ public class RegisterTransaction implements Serializable {
         int sum = 0;
 
         for (int i = 0; i < transactionList.size(); i++) {
-            sum += transactionList.get(i).getTaskDelay();
-            count++;
+            if ((transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
+                sum += transactionList.get(i).getTaskDelay();
+                count++;
+            }
         }
         return ((sum / count) * 100);
 
