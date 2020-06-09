@@ -190,7 +190,7 @@ public class Platform implements Serializable {
     }
 
     /**
-<<<<<<< HEAD
+
      * return the writer
      *
      * @return
