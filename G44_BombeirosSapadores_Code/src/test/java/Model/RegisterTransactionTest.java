@@ -167,7 +167,7 @@ public class RegisterTransactionTest {
         double valueE = task.getCostHour() * task.getTimeTask();
         double valueC = cc.convert(valueE, freel.getCountry());
         RegisterTransaction instance = new RegisterTransaction();
-        TransactionExecution expResult = new TransactionExecution(task, freel, endDate, delay, qow, new Payment(valueE, valueC));
+        TransactionExecution expResult = new TransactionExecution(task, freel, endDate, delay, qow);
         TransactionExecution result = instance.createNewTransaction(task, freel, endDate, delay, qow);
         assertEquals(expResult, result);
 
@@ -183,7 +183,7 @@ public class RegisterTransactionTest {
         CurrencyConverter cc = new CurrencyConverter();
         double valueE = task.getCostHour() * task.getTimeTask();
         double valueC = cc.convert(valueE, freel.getCountry());
-        TransactionExecution trans = new TransactionExecution(task, freel, endDate, delay, qow, new Payment(valueE, valueC));
+        TransactionExecution trans = new TransactionExecution(task, freel, endDate, delay, qow);
         RegisterTransaction instance = new RegisterTransaction();
         boolean expResult = true;
         boolean result = instance.registerTransaction(trans);

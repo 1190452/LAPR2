@@ -153,10 +153,17 @@ public class TransactionExecution implements Serializable {
         this.payment = otherTrans.payment;
 
     }
+      public TransactionExecution(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+        this.task = task;
+        this.freel = freel;
+        this.endDate = endDate;
+        this.delay = delay;
+        this.descriptionOfQuality = qow;
+        transID = ++counter;
+    }
 
     //======================================================================================================================================================
-
-    
+ 
     
     /**
      * Returns the id related to the transaction
