@@ -1,0 +1,165 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package UI;
+
+import Controller.WatchStatisticsController;
+import com.jfoenix.controls.JFXComboBox;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+
+/**
+ *
+ * @author tiagopereira
+ */
+public class TaskExecutionDelayOfEachFreelancerUI {
+
+    @FXML
+    private Button cancelBtn;
+    @FXML
+    private Button confirmBtn;
+    @FXML
+    private JFXComboBox<String> freelEmail;
+    @FXML
+    private Button HistogramBtn;
+    @FXML
+    private Label freelancerLbl;
+    @FXML
+    private Label AverageLbl;
+    @FXML
+    private Label deviationLbl;
+    
+    private WatchStatisticsUI ws;
+    private WatchStatisticsController wsc;
+    private double x, y;
+
+      @FXML
+    private void min(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void cancel(ActionEvent event) {
+        endWatch(event);
+    }
+
+    @FXML
+    private void confirm(ActionEvent event) {
+    }
+
+    @FXML
+    private void Histogram(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram.fxml"));
+        Parent root = loader.load();
+        HistogramUI c = loader.getController();
+        c.associarParentUI(this);
+        Scene create = new Scene(root);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(create);
+        window.show();
+    }
+
+    
+    @FXML
+    private void dragged(MouseEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
+    }
+
+    @FXML
+    private void pressed(MouseEvent event) {
+        x = event.getSceneX();
+        y = event.getSceneY();
+    }
+
+    public void associarParentUI(WatchStatisticsUI ws) {
+        this.ws = ws;
+        wsc = this.ws.getController();
+    }
+    private void endWatch(ActionEvent event) {
+        getFreelEmail().getSelectionModel().clearSelection();
+        getFreelancerLbl().setText("");
+        getDeviationLbl().setText("");
+        getAverageLbl().setText("");
+        ((Node) event.getSource()).getScene().getWindow().hide();
+    }
+
+    /**
+     * @return the freelEmail
+     */
+    public JFXComboBox<String> getFreelEmail() {
+        return freelEmail;
+    }
+
+    /**
+     * @param freelEmail the freelEmail to set
+     */
+    public void setFreelEmail(JFXComboBox<String> freelEmail) {
+        this.freelEmail = freelEmail;
+    }
+
+    /**
+     * @return the freelancerLbl
+     */
+    public Label getFreelancerLbl() {
+        return freelancerLbl;
+    }
+
+    /**
+     * @param freelancerLbl the freelancerLbl to set
+     */
+    public void setFreelancerLbl(Label freelancerLbl) {
+        this.freelancerLbl = freelancerLbl;
+    }
+
+    /**
+     * @return the AverageLbl
+     */
+    public Label getAverageLbl() {
+        return AverageLbl;
+    }
+
+    /**
+     * @param AverageLbl the AverageLbl to set
+     */
+    public void setAverageLbl(Label AverageLbl) {
+        this.AverageLbl = AverageLbl;
+    }
+
+    /**
+     * @return the deviationLbl
+     */
+    public Label getDeviationLbl() {
+        return deviationLbl;
+    }
+
+    /**
+     * @param deviationLbl the deviationLbl to set
+     */
+    public void setDeviationLbl(Label deviationLbl) {
+        this.deviationLbl = deviationLbl;
+    }
+
+
+}

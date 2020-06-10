@@ -82,16 +82,16 @@ public class WatchStatisticsUI implements Initializable {
         } else if (choice.equalsIgnoreCase("Task Execution Delay of each Freelancer")) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
             Parent root = loader.load();
-            SeeOverallStatisticsIntroducingNameUI c = loader.getController();
+            TaskExecutionDelayOfEachFreelancerUI c = loader.getController();
             c.associarParentUI(this);
             Scene create = new Scene(root);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(create);
             window.show();
         } else if (choice.equals("Task Execution Delay of All Freelancers")) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOffAllFreelancers.fxml"));
             Parent root = loader.load();
-            SeeOverallStatisticsIntroducingNameUI c = loader.getController();
+            TaskExecutionDelayOffAllFreelancersUI c = loader.getController();
             c.associarParentUI(this);
             Scene create = new Scene(root);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

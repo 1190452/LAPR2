@@ -6,8 +6,10 @@
 package UI;
 
 import Controller.WatchStatisticsController;
+import Model.TransactionExecution;
 import Utils.CustomValue;
 import com.jfoenix.controls.JFXComboBox;
+import java.util.List;
 import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,17 +32,16 @@ public class PaymentDeviationOfEachFreelancerUI {
     @FXML
     private JFXComboBox<String> freelEmail;
     @FXML
-    private Button HistogramBtn;
-    @FXML
     private Label freelancerLbl;
     @FXML
     private Label deviationLbl;
-    @FXML
     private Label averageLbl;
 
     private WatchStatisticsUI ws;
     private WatchStatisticsController wsc;
     private double x, y;
+    @FXML
+    private Label AverageLbl;
 
     @FXML
     private void min(MouseEvent event) {
@@ -62,11 +63,11 @@ public class PaymentDeviationOfEachFreelancerUI {
     @FXML
     private void confirm(ActionEvent event) {
         String name = freelEmail.getValue();
-        Map.Entry<String, CustomValue> entry = wsc.OverallStatistics(ltr, name)
-    }
-
-    @FXML
-    private void Histogram(ActionEvent event) {
+        List<TransactionExecution> ltr = ws.getLtr();
+        Map.Entry<String, CustomValue> entry = wsc.getPaymentDeviationOfEachFreelancer(name, ltr);
+        freelancerLbl.setText(entry.getKey());
+        deviationLbl.setText(Double.toString(entry.getValue().getDeviation()));
+        averageLbl.setText(Double.toString(entry.getValue().getMean()));
     }
 
     @FXML
@@ -95,5 +96,7 @@ public class PaymentDeviationOfEachFreelancerUI {
         averageLbl.setText("");
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
+
+   
 
 }

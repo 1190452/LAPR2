@@ -27,29 +27,7 @@ public class WatchStatisticsController {
     private String email;
 
     private Statistic st;
-    
-   
-     public Map.Entry<String, CustomValue> OverallStatistics( List<TransactionExecution> ltr, String choice) {
-        
-        String emailF = "gg@gmail.com";
-        st = new Statistic();     
-         if (choice.equals("Payment Deviation of each Freelancer")) {
-            return getPaymentDeviationOfEachFreelancer(emailF, ltr);
-
-        } else if (choice.equals("Task Execution Delay of each Freelancer")) {
-            return getTaskExecutionDelayOfEachFreelancer(emailF, ltr);
-
-        } else if (choice.equals("Task Execution Delay of All Freelancers")) {
-            return getTaskExecutionDelayOfAllFreelancers(ltr);
-       
-        }
-
-        return null;
-    } 
      
-    //======================================================================================================================================================
-    
-   
     public List<TransactionExecution> getFreelancers(){
         ApplicationPOT app = ApplicationPOT.getInstance();
         RegisterOrganization rorgs = app.getPlatform().getrOrg();
