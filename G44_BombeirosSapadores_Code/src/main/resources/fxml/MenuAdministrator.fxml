@@ -70,7 +70,7 @@
                   </MenuItem>
                   <MenuItem mnemonicParsing="false">
                      <graphic>
-                        <Button fx:id="warnFreelancerBtn" minWidth="100.0" mnemonicParsing="false" onAction="#warnFreelancer" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Send email to freelancer" textFill="#e6be8a" />
+                        <Button fx:id="warnFreelancerBtn" minWidth="210.0" mnemonicParsing="false" onAction="#warnFreelancer" style="-fx-background-color: #595959;" stylesheets="@../styles/stylesheet.css" text="Send email to freelancer" textFill="#e6be8a" />
                      </graphic>
                   </MenuItem>
               </items>
