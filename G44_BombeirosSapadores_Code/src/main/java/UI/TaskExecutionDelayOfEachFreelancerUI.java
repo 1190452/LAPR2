@@ -6,8 +6,12 @@
 package UI;
 
 import Controller.WatchStatisticsController;
+import Model.TransactionExecution;
+import Utils.CustomValue;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,13 +68,19 @@ public class TaskExecutionDelayOfEachFreelancerUI {
 
     @FXML
     private void confirm(ActionEvent event) {
+        String name = freelEmail.getValue();
+        List<TransactionExecution> ltr = ws.getLtr();
+        Map.Entry<String, CustomValue> entry = wsc.getPaymentDeviationOfEachFreelancer(name, ltr);
+        freelancerLbl.setText(entry.getKey());
+        deviationLbl.setText(Double.toString(entry.getValue().getDeviation()));
+        AverageLbl.setText(Double.toString(entry.getValue().getMean()));
     }
 
     @FXML
     private void Histogram(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (TaskExecutionDelayOfEachFreelancer).fxml"));
         Parent root = loader.load();
-        HistogramUI c = loader.getController();
+        HistogramTaskExecutionDelayOfEachFreelancerUI c = loader.getController();
         c.associarParentUI(this);
         Scene create = new Scene(root);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

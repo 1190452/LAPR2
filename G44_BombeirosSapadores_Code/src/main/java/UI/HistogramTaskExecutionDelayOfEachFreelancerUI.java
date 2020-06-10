@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  *
  * @author User
  */
-public class HistogramUI implements Initializable {
+public class HistogramTaskExecutionDelayOfEachFreelancerUI implements Initializable {
 
     @FXML
     private BarChart<?, ?> histogram;
@@ -29,14 +29,16 @@ public class HistogramUI implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         XYChart.Series set1 = new XYChart.Series<>();
 
-        set1.getData().add(new XYChart.Data("]-∞, µ-σ]",));
-        set1.getData().add(new XYChart.Data("]µ- σ,µ+σ[",));
-        set1.getData().add(new XYChart.Data("[µ+σ, +∞[",));
+        set1.getData().add(new XYChart.Data("]-∞, µ-σ]",3));
+        set1.getData().add(new XYChart.Data("]µ- σ,µ+σ[",3));
+        set1.getData().add(new XYChart.Data("[µ+σ, +∞[",3));
 
         histogram.getData().addAll(set1);
 
@@ -68,9 +70,9 @@ public class HistogramUI implements Initializable {
         y = event.getSceneY();
     }
 
-    void associarParentUI(TaskExecutionDelayOfEachFreelancerUI td) {
-        this.td = td
-                ;
+    public void associarParentUI(TaskExecutionDelayOfEachFreelancerUI td) {
+        this.td = td;     
+                
     }
 
 }

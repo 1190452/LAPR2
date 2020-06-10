@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.HistogramTaskExecutionDelayOfAllFreelancersUI">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="518.0" prefWidth="802.0" style="-fx-background-color: #2c2424;">
+         <center>
+            <GridPane prefHeight="397.0" prefWidth="655.0" style="-fx-background-color: #262626 #262626;" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text fill="#e6be8a" fontSmoothingType="LCD" stroke="#e6be8a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline-color: #e6be8a;" text="Histogram" underline="true" GridPane.halignment="CENTER">
+                     <font>
+                        <Font name="Verdana" size="24.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="100.0" right="100.0" top="30.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <BarChart fx:id="histogram" alternativeColumnFillVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="817.0" style="-fx-background-color: transparent; -fx-alternative-column-fill-visible: #e6be8a;" GridPane.rowIndex="5">
+                    <xAxis>
+                      <CategoryAxis label="Interval" side="BOTTOM" tickLabelFill="#e6be8a" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis label="Absolute Frequency" side="LEFT" tickLabelFill="#e6be8a" />
+                    </yAxis>
+                     <opaqueInsets>
+                        <Insets left="100.0" top="100.0" />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="100.0" right="100.0" />
+                     </padding>
+                  </BarChart>
+               </children>
+            </GridPane>
+         </center>
+         <top>
+            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="802.0" style="-fx-background-color: #595959; -fx-border-color: #e6be8a; -fx-border-width: 0px 0px 2px 0px;">
+               <children>
+                  <FontAwesomeIconView fill="#e6be8a" glyphName="MINUS" onMouseClicked="#min" size="1.2em">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView fill="#ee5253" glyphName="CLOSE" onMouseClicked="#close" size="1.2em">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+               </children>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
