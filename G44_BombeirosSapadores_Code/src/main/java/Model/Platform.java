@@ -195,17 +195,18 @@ public class Platform implements Serializable {
      * @throws FileNotFoundException
      */
     public void sendEmail() throws FileNotFoundException {
+        RegisterOrganization rOrg = getrOrg();
         List<Organization> orgList = rOrg.getlOrg();
-        double percentOverallDelays = rTrans.overallPercentageDelays();
+        double percentOverallDelays = rOrg.overallPercentageDelays(orgList);
+        
         for (int i = 0; i < orgList.size(); i++) {
             RegisterTransaction rTrans = orgList.get(i).getRTrans();
             List<TransactionExecution> transList = rTrans.getTransactions();
             
-
             for (int j = 0; j < transList.size(); j++) {
                 Freelancer free = transList.get(i).getFreel();
                 boolean isDelayBetterThan3 = rTrans.meanTaskDelayBetterThan3(free, transList);
-                double percentOfDelayFree = rTrans.percentageOfDelays(free);
+                double percentOfDelayFree = rOrg.percentageOfDelays(free,orgList);
 
                 if ((isDelayBetterThan3) && (percentOfDelayFree > percentOverallDelays)) {
                     Writer.sendEmail(free);

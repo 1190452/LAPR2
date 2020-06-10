@@ -45,51 +45,9 @@ public class RegisterTransaction implements Serializable {
         return transactionList.remove(tr);
     }
 
-    public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
-        int count = 0;
-        double sum = 0;
+   
 
-        for (int i = 0; i < ltr.size(); i++) {
-            if ((ltr.get(i).getFreel().equals(free)) && (ltr.get(i).getEndDate().getYear() == Year.now().getValue())) {
-                sum += ltr.get(i).getTaskDelay();
-                count++;
-            }
-
-        }
-        return (sum / count) > 3;
-    }
-
-    public double percentageOfDelays(Freelancer free) {
-        int count = 0;
-        int sum = 0;
-
-        for (int i = 0; i < transactionList.size(); i++) {
-            if (transactionList.get(i).getFreel().equals(free) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
-                sum += transactionList.get(i).getTaskDelay();
-                count++;
-            }
-
-        }
-        return ((sum / count) * 100);
-    }
-
-    public double overallPercentageDelays(List<Organization> lOrg) {
-        double count = 0;
-        double transactionCounter = 0;
-        for (int i = 0; i < lOrg.size(); i++) {
-            List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
-            
-            for (int j = 0; j < ltr.size(); j++) {
-                if (((ltr.get(j).getEndDate().getYear()) == (Year.now().getValue())) && (ltr.get(j).getTaskDelay() > 3)) {
-                    count++;
-                }
-                transactionCounter++;
-            }
-        }
-        double result = (count/transactionCounter) * 100;
-        return result;
-
-    }
+ 
 
     /**
      * method that verifies if they transaction list is empty

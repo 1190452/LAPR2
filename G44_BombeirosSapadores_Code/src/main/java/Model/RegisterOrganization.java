@@ -9,6 +9,7 @@ import java.util.List;
 import org.jcp.xml.dsig.internal.dom.Utils;
 import Utils.PasswordGenerator;
 import java.io.Serializable;
+import java.time.Year;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
 /**
@@ -123,6 +124,59 @@ public class RegisterOrganization implements Serializable {
 
         return bRet;
     }
+     public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
+        int count = 0;
+        double sum = 0;
+
+        for (int i = 0; i < ltr.size(); i++) {
+            if ((ltr.get(i).getFreel().equals(free)) && (ltr.get(i).getEndDate().getYear() == Year.now().getValue())) {
+                sum += ltr.get(i).getTaskDelay();
+                count++;
+            }
+
+        }
+        return (sum / count) > 3;
+    }
+
+    public double percentageOfDelays(Freelancer free, List<Organization> lOrg) {
+        double transactionCounter = 0;
+        double count = 0;
+        
+        for (int i = 0; i < lOrg.size(); i++) {
+            List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
+
+            for (int j = 0; j < ltr.size(); j++) {
+                if (ltr.get(j).getFreel().equals(free)&& (ltr.get(j).getEndDate().getYear() == Year.now().getValue())) {
+                    transactionCounter++;
+
+                    if ((ltr.get(j).getTaskDelay() > 3)) {
+                        count++;
+                    }
+                }
+
+            }
+           
+        }
+        return ((count / transactionCounter) * 100);
+    }
+    
+    public double overallPercentageDelays(List<Organization> lOrg) {
+        double count = 0;
+        double transactionCounter = 0;
+        for (int i = 0; i < lOrg.size(); i++) {
+            List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
+
+            for (int j = 0; j < ltr.size(); j++) {
+                if (((ltr.get(j).getEndDate().getYear()) == (Year.now().getValue())) && (ltr.get(j).getTaskDelay() > 3)) {
+                    count++;
+                }
+                transactionCounter++;
+            }
+        }
+        double result = (count / transactionCounter) * 100;
+        return result;
+
+    }
 
     /**
      * method that regists in the system an organization received by parameter
@@ -234,5 +288,7 @@ public class RegisterOrganization implements Serializable {
     public List<Organization> getlOrg() {
         return lOrg;
     }
+
+   
 
 }
