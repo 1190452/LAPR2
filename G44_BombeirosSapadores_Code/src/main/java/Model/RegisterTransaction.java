@@ -45,7 +45,19 @@ public class RegisterTransaction implements Serializable {
         return transactionList.remove(tr);
     }
 
-   
+    public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
+        int count = 0;
+        double sum = 0;
+
+        for (int i = 0; i < ltr.size(); i++) {
+            if ((ltr.get(i).getFreel().equals(free)) && (ltr.get(i).getEndDate().getYear() == Year.now().getValue())) {
+                sum += ltr.get(i).getTaskDelay();
+                count++;
+            }
+
+        }
+        return (sum / count) > 3;
+    }
 
  
 

@@ -124,19 +124,7 @@ public class RegisterOrganization implements Serializable {
 
         return bRet;
     }
-     public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
-        int count = 0;
-        double sum = 0;
-
-        for (int i = 0; i < ltr.size(); i++) {
-            if ((ltr.get(i).getFreel().equals(free)) && (ltr.get(i).getEndDate().getYear() == Year.now().getValue())) {
-                sum += ltr.get(i).getTaskDelay();
-                count++;
-            }
-
-        }
-        return (sum / count) > 3;
-    }
+     
 
     public double percentageOfDelays(Freelancer free, List<Organization> lOrg) {
         double transactionCounter = 0;
