@@ -13,10 +13,6 @@ import static org.junit.Assert.*;
  * @author Jorge
  */
 public class AdministratorTest {
-    
-    public AdministratorTest() {
-    }
-
     /**
      * Test of toString method, of class Administrator.
      */

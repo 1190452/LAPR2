@@ -59,7 +59,7 @@ public class Manager implements Serializable{
     }
 
     /**
-     * embpty constructor that builds and instance of Manager
+     * empty constructor that builds and instance of Manager
      */
     public Manager() {
         this.nameM = NAME_BY_OMISSION;
@@ -140,6 +140,20 @@ public class Manager implements Serializable{
     @Override
     public String toString() {
         return String.format("Nome: %s \nEmail: %s \nRole: %s", nameM, emailM, role);
+    }
+    
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Manager otherManager = (Manager) otherObject;
+        return this.nameM.equalsIgnoreCase(otherManager.nameM)
+                && this.emailM.equals(otherManager.emailM) 
+                && this.role.equalsIgnoreCase(otherManager.role);
     }
 }
 

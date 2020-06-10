@@ -33,18 +33,20 @@ public class TaskList implements Serializable {
      * adds a task to the task list
      *
      * @param t
+     * @return 
      */
-    public void addTask(Task t) {
-        taskList.add(t);
+    public boolean addTask(Task t) {
+        return taskList.add(t);
     }
 
     /**
      * removes a task from the task list
      *
      * @param t
+     * @return 
      */
-    public void removeTask(Task t) {
-        taskList.remove(t);
+    public boolean removeTask(Task t) {
+        return taskList.remove(t);
     }
       /**
      * creates a new task with the following parameters:
@@ -109,6 +111,8 @@ public class TaskList implements Serializable {
         return taskList;
     }
 
+    
+    
   
     
 }

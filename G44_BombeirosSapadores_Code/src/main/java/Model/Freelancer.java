@@ -156,8 +156,8 @@ public class Freelancer implements Serializable {
      * @return
      */
     public boolean validateFreelancer() {
-        if ((freeID == null) || (name == null) || (getLevelExp() == null) || (getEmail() == null) || (nif == null) || (iban == null) || (getCountry() == null) || (address == null)
-                || (freeID.isEmpty()) || (name.isEmpty()) || (getLevelExp().isEmpty()) || (getEmail().isEmpty()) || (nif.isEmpty()) || (iban.isEmpty()) || (getCountry().isEmpty())) {
+        if ((name == null) || (getLevelExp() == null) || (getEmail() == null) || (nif == null) || (iban == null) || (getCountry() == null) || (address == null)
+                || (name.isEmpty()) || (getLevelExp().isEmpty()) || (getEmail().isEmpty()) || (nif.isEmpty()) || (iban.isEmpty()) || (getCountry().isEmpty())) {
             return false;
         } else {
             return true;
@@ -272,5 +272,20 @@ public class Freelancer implements Serializable {
     @Override
     public String toString() {
         return String.format("Name: %s\nLevel of Experience: %s\nEmail: %s", name, levelExp, email);
+    }
+    
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Freelancer otherFreelancer = (Freelancer) otherObject;
+        return this.name.equalsIgnoreCase(otherFreelancer.name)
+                && this.email.equals(otherFreelancer.email) 
+               
+                && this.iban.equals(otherFreelancer.iban);
     }
 }

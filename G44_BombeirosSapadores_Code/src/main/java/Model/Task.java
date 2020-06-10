@@ -283,5 +283,14 @@ public class Task implements Serializable {
         return String.format("Task %s, description: %s, cost per hour: %s, "
                 + "category: %s", idTask, description, costHour, taskCategory);
     }
+    
+    /**
+     * Returns the characteristics of the Task
+     *
+     * @return characteristics of the Task
+     */
+    public String toString2() {
+        return String.format("Task %s", idTask);
+    }
 
 }

@@ -8,25 +8,21 @@ package Model;
 import Utils.Date;
 import Utils.Time;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author User
+ * @author OMEN X
  */
 public class OrganizationTest {
+    
+    public OrganizationTest() {
+    }
 
-    /**
-     * Test of newAddress method, of class Organization.
-     */
     @Test
     public void testNewAddress() {
-        System.out.println("newAddress");
+       System.out.println("newAddress");
         String street = "rua de cima";
         String doorNumber = "212";
         String locality = "Vila do conde";
@@ -34,43 +30,28 @@ public class OrganizationTest {
         Address expResult = new Address(street, doorNumber, locality);
         Address result = instance.newAddress(street, doorNumber, locality);
         assertEquals(expResult, result);
-
     }
 
-    /**
-     * Test of newCollaborator method, of class Organization.
-     */
     @Test
     public void testNewCollaborator() {
-        System.out.println("newCollaborator");
-        String nameC = "namec";
-        String emailC = "emailc";
-        String role = "role";
+        String nameC = "José Vieira";
+        String emailC = "jose@gmail.com";
+        String role = Constants.ROLE_COLLABORATOR_ORGANIZATION;
         Collaborator expResult = new Collaborator(nameC, emailC, role);
         Collaborator result = Organization.newCollaborator(nameC, emailC, role);
         assertEquals(expResult, result);
-
     }
 
-    /**
-     * Test of newManager method, of class Organization.
-     */
     @Test
     public void testNewManager() {
-        System.out.println("newManager");
-        String nameM = "nameM";
-        String emailM = "emailM";
-        String role = "role";
+        String nameM = "José Vieira";
+        String emailM = "jose@gmail.com";
+        String role = Constants.ROLE_MANAGER_ORGANIZATION;
         Manager expResult = new Manager(nameM, emailM, role);
-        Organization instance = new Organization("name", "Nif", "email", new Address("street", "123", "locality"), new Collaborator("name", "email", "role"), new Manager(nameM, emailM, role));
-        Manager result = instance.newManager(nameM, emailM, role);
+        Manager result = Organization.newManager(nameM, emailM, role);
         assertEquals(expResult, result);
-
     }
 
-    /**
-     * Test of newDefinePayment method, of class Organization.
-     */
     @Test
     public void testNewDefinePayment() {
         System.out.println("newDefinePayment");
@@ -81,12 +62,8 @@ public class OrganizationTest {
         DefinePayment expResult = new DefinePayment(time, date, rtp);
         DefinePayment result = instance.newDefinePayment(time, date, rtp);
         assertEquals(expResult, result);
-
     }
 
-    /**
-     * Test of validatesDefinePayment method, of class Organization.
-     */
     @Test
     public void testValidatesDefinePayment() {
         System.out.println("validatesDefinePayment");
@@ -95,12 +72,8 @@ public class OrganizationTest {
         boolean expResult = true;
         boolean result = instance.validatesDefinePayment(dp);
         assertEquals(expResult, result);
-
     }
 
-    /**
-     * Test of loadHistoricalTransaction method, of class Organization.
-     */
     @Test
     public void testLoadHistoricalTransaction() {
         System.out.println("loadHistoricalTransaction");
@@ -111,20 +84,13 @@ public class OrganizationTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of sendEmail method, of class Organization.
-     */
     @Test
     public void testSendEmail() throws Exception {
-        System.out.println("sendEmail");
+         System.out.println("sendEmail");
         Organization instance = new Organization("name", "NIF", "email", new Address("street", "123", "locality"), new Collaborator("name", "email", "role"), new Manager("name", "email", "role"));
         instance.sendEmail();
-
     }
 
-    /**
-     * Test of equals method, of class Organization.
-     */
     @Test
     public void testEquals() {
         System.out.println("equals");
@@ -133,7 +99,6 @@ public class OrganizationTest {
         boolean expResult = true;
         boolean result = instance.equals(otherObject);
         assertEquals(expResult, result);
-
     }
-
+    
 }

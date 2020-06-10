@@ -78,4 +78,8 @@ public class Payment implements Serializable {
         this.valueC = valueC;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%.2f", valueE);
+    }
 }

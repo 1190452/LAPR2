@@ -196,16 +196,19 @@ public class Platform implements Serializable {
      * @throws FileNotFoundException
      */
     public void sendEmail() throws FileNotFoundException {
-        List<Freelancer> listFreelancers = rFree.getListFreelancers();
-        double delayPercentage = rFree.getDelayProb()*100;
         List<Organization> orgList = rOrg.getlOrg();
+        
         for (int i = 0; i < orgList.size(); i++) {
-            List<TransactionExecution> transList = orgList.get(i).getRTrans().getTransactions();
+            RegisterTransaction rTrans = orgList.get(i).getRTrans();
+            List<TransactionExecution> transList = rTrans.getTransactions();
+            double percentOverallDelays = rTrans.overallPercentageDelays();
 
             for (int j = 0; j < transList.size(); j++) {
-                double taskDelay = transList.get(j).getTaskDelay();
-                if (taskDelay > 3 && taskDelay > delayProb) {
-                    Freelancer free = transList.get(j).getFreel();
+                Freelancer free = transList.get(i).getFreel();
+                boolean isDelayBetterThan3 = rTrans.meanTaskDelayBetterThan3(free);
+                double percentOfDelayFree = rTrans.percentageOfDelays(free);
+                        
+                if ((isDelayBetterThan3) && (percentOfDelayFree > percentOverallDelays)) {  
                     Writer.sendEmail(free);
                 }
         }
@@ -222,6 +225,7 @@ public class Platform implements Serializable {
     public static boolean leapYear(int year) {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
+    
     //======================================================================================================================================================
 
     /**
@@ -293,6 +297,7 @@ public class Platform implements Serializable {
     }
 
     //======================================================================================================================================================
+    
     /**
      * modifies the register user
      *

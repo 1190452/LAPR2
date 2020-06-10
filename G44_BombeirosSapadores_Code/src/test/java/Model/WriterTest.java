@@ -69,10 +69,13 @@ public class WriterTest {
     @Test
     public void testGenEmail() {
         System.out.println("genEmail");
-        ArrayList<TransactionExecution> nltr = new ArrayList();
-        nltr.add(new TransactionExecution("transID", new Task("idTask", "description", 20, 30, "taskCategory"), new Freelancer("name", "levelExp", "email", "12344", "12445", "country", new Address("street", "123", "locality")) , new Date(2010,10,5), 20, "descString"));
         double valueE = 2.0;
         double valueC = 3.0;
+        ArrayList<TransactionExecution> nltr = new ArrayList();
+        Freelancer f = new Freelancer("JS1", "Joaquim Silva", "Junior", "joaq@gmail.com", "123456789","PT812987615290817263", "Portugal", new Address("ruazita", "45", "beira"));
+        nltr.add(new TransactionExecution(101, new Task("idTask", "description", 20, 30, "taskCategory"), f , new Date(2010,10,5), 20, "descString", new Payment(valueE, valueC)));
+        
+        
         boolean result = Writer.genEmail(nltr, valueE, valueC);
         boolean expectedResult = true;
         assertEquals(expectedResult, result);
