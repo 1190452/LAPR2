@@ -20,15 +20,11 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="49.1953125" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="What statistics do you want to see?" wrappingWidth="255.1953125" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -36,7 +32,7 @@
                   <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="15.0" right="100.0" />
                </GridPane.margin>
@@ -49,20 +45,16 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="15.0" left="100.0" />
                </GridPane.margin>
             </Button>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Delay Task: " GridPane.halignment="LEFT" GridPane.rowIndex="4">
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
+            <JFXComboBox fx:id="combDecision" prefHeight="27.0" prefWidth="226.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="200.0" />
+                  <Insets right="70.0" />
                </GridPane.margin>
-            </Text>
-            <JFXComboBox prefHeight="27.0" prefWidth="206.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            </JFXComboBox>
          </children>
       </GridPane>
    </center>

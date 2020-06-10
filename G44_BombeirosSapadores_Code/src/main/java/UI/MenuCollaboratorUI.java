@@ -52,7 +52,7 @@ public class MenuCollaboratorUI implements Initializable {
     private Button logoutBtn;
     @FXML
     private Label lblWelcome;
-    
+
     private ApplicationPOT pot;
     @FXML
     private Button checkFreelancerStatistics;
@@ -82,7 +82,7 @@ public class MenuCollaboratorUI implements Initializable {
                 event -> lblWelcome.setVisible(false)
         );
         visiblePause.play();
-        
+
     }
 
     @FXML
@@ -175,7 +175,7 @@ public class MenuCollaboratorUI implements Initializable {
 
     @FXML
     private void logout(ActionEvent event) throws IOException {
-        
+
         pot.doLogout();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/Login.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
@@ -191,7 +191,18 @@ public class MenuCollaboratorUI implements Initializable {
     }
 
     @FXML
-    private void checkStatisticsFreelancer(ActionEvent event) {
+    private void checkStatisticsFreelancer(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WatchStatistics.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("See Overall Statistics");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }

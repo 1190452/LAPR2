@@ -29,17 +29,17 @@ public class WatchStatisticsController {
     private Statistic st;
     
    
-     public Map.Entry<String, CustomValue> OverallStatistics( List<TransactionExecution> ltr) {
-        String decisao = null;
+     public Map.Entry<String, CustomValue> OverallStatistics( List<TransactionExecution> ltr, String choice) {
+        
         String emailF = "gg@gmail.com";
         st = new Statistic();     
-         if (decisao.equals("Payment Deviation of each Freelancer")) {
+         if (choice.equals("Payment Deviation of each Freelancer")) {
             return getPaymentDeviationOfEachFreelancer(emailF, ltr);
 
-        } else if (decisao.equals("Task Execution Delay of each Freelancer")) {
+        } else if (choice.equals("Task Execution Delay of each Freelancer")) {
             return getTaskExecutionDelayOfEachFreelancer(emailF, ltr);
 
-        } else if (decisao.equals("Task Execution Delay of All Freelancers")) {
+        } else if (choice.equals("Task Execution Delay of All Freelancers")) {
             return getTaskExecutionDelayOfAllFreelancers(ltr);
        
         }

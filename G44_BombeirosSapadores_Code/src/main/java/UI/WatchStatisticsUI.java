@@ -6,17 +6,22 @@
 package UI;
 
 import Controller.WatchStatisticsController;
-import Model.Freelancer;
 import Model.TransactionExecution;
 import Utils.CustomValue;
+import Utils.Statistic;
+import com.jfoenix.controls.JFXComboBox;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -33,13 +38,13 @@ public class WatchStatisticsUI implements Initializable {
     private Button cancelBtn;
     @FXML
     private Button confirmBtn;
-    @FXML
     private Label lblName;
-    @FXML
     private Label lblDelay;
-    @FXML
     private Label lblPayment;
     private double x, y;
+    private Statistic st;
+    @FXML
+    private JFXComboBox<String> combDecision;
 
     @FXML
     private void min(MouseEvent event) {
@@ -59,11 +64,40 @@ public class WatchStatisticsUI implements Initializable {
     }
 
     @FXML
-    private void confirm(ActionEvent event) {
+    private void confirm(ActionEvent event) throws IOException {
         List<TransactionExecution> ltr = wsc.getFreelancers();
-        Map.Entry<String, CustomValue> entry = wsc.OverallStatistics(ltr);
+        String choice = combDecision.getSelectionModel().getSelectedItem();
+        Map.Entry<String, CustomValue> entry = wsc.OverallStatistics(ltr, choice);
         
-        
+        if (choice.equalsIgnoreCase("Payment Deviation of each Freelancer")) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationofEachFreelancer.fxml"));
+            Parent root = loader.load();
+            SeeOverallStatisticsIntroducingNameUI c = loader.getController();
+            c.associarParentUI(this);
+            Scene create = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(create);
+            window.show();
+        } else if (choice.equalsIgnoreCase("Task Execution Delay of each Freelancer")) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
+            Parent root = loader.load();
+            SeeOverallStatisticsIntroducingNameUI c = loader.getController();
+            c.associarParentUI(this);
+            Scene create = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(create);
+            window.show();
+        } else if (choice.equals("Task Execution Delay of All Freelancers")) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
+            Parent root = loader.load();
+            SeeOverallStatisticsIntroducingNameUI c = loader.getController();
+            c.associarParentUI(this);
+            Scene create = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(create);
+            window.show();
+        }
+
     }
 
     @FXML
@@ -92,5 +126,11 @@ public class WatchStatisticsUI implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         wsc = new WatchStatisticsController();
+        st = new Statistic();
+        combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers");
+    }
+
+    public WatchStatisticsController getController() {
+        return wsc;
     }
 }
