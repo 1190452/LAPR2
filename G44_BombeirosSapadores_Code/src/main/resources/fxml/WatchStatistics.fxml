@@ -50,7 +50,7 @@
                   <Insets bottom="15.0" left="100.0" />
                </GridPane.margin>
             </Button>
-            <JFXComboBox fx:id="combDecision" prefHeight="27.0" prefWidth="226.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <JFXComboBox fx:id="combDecision" focusColor="#e6be8a" prefHeight="27.0" prefWidth="226.0" style="-fx-text-inner-color: white;" stylesheets="@../styles/Styles.css" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets right="70.0" />
                </GridPane.margin>
