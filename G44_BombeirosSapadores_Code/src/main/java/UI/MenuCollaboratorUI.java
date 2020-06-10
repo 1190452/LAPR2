@@ -59,9 +59,14 @@ public class MenuCollaboratorUI implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        pot = ApplicationPOT.getInstance();
+        pot.save(pot.getPlatform());
 
         /**
          * Shows the current time in the label
