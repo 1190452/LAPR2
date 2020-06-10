@@ -189,7 +189,6 @@ public class Platform implements Serializable {
         return (long) (Constants.NR_OF_SECONDS_OF_DAY * nrDays);
     }
 
-    
     /**
      * method that "sends" and email to mean performance freelancers
      *
@@ -197,23 +196,24 @@ public class Platform implements Serializable {
      */
     public void sendEmail() throws FileNotFoundException {
         List<Organization> orgList = rOrg.getlOrg();
-        
+        double percentOverallDelays = rTrans.overallPercentageDelays();
         for (int i = 0; i < orgList.size(); i++) {
             RegisterTransaction rTrans = orgList.get(i).getRTrans();
             List<TransactionExecution> transList = rTrans.getTransactions();
-            double percentOverallDelays = rTrans.overallPercentageDelays();
+            
 
             for (int j = 0; j < transList.size(); j++) {
                 Freelancer free = transList.get(i).getFreel();
                 boolean isDelayBetterThan3 = rTrans.meanTaskDelayBetterThan3(free, transList);
                 double percentOfDelayFree = rTrans.percentageOfDelays(free);
-                        
-                if ((isDelayBetterThan3) && (percentOfDelayFree > percentOverallDelays)) {  
+
+                if ((isDelayBetterThan3) && (percentOfDelayFree > percentOverallDelays)) {
                     Writer.sendEmail(free);
                 }
+            }
         }
     }
-    }
+
     /**
      * Returns true if the year received by parameter is a leap year. If the
      * year received by parameter is not a leap year, it returns false.
@@ -225,9 +225,8 @@ public class Platform implements Serializable {
     public static boolean leapYear(int year) {
         return year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
     }
-    
-    //======================================================================================================================================================
 
+    //======================================================================================================================================================
     /**
      * returns the facade authorization
      *
@@ -297,7 +296,6 @@ public class Platform implements Serializable {
     }
 
     //======================================================================================================================================================
-    
     /**
      * modifies the register user
      *

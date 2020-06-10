@@ -34,9 +34,9 @@ public class HistogramUI implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         XYChart.Series set1 = new XYChart.Series<>();
 
-        set1.getData().add(new XYChart.Data("]-∞, µ-σ]",));
-        set1.getData().add(new XYChart.Data("]µ- σ,µ+σ[",));
-        set1.getData().add(new XYChart.Data("[µ+σ, +∞[",));
+//        set1.getData().add(new XYChart.Data("]-∞, µ-σ]",));
+//        set1.getData().add(new XYChart.Data("]µ- σ,µ+σ[",));
+//        set1.getData().add(new XYChart.Data("[µ+σ, +∞[",));
 
         histogram.getData().addAll(set1);
 

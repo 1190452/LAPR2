@@ -31,7 +31,7 @@ public class RegisterTransaction implements Serializable {
     public RegisterTransaction() {
         transactionList = new ArrayList<>();
         cc = new CurrencyConverter();
-        
+
     }
 
     //======================================================================================================================================================
@@ -48,7 +48,7 @@ public class RegisterTransaction implements Serializable {
     public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
         int count = 0;
         double sum = 0;
-        
+
         for (int i = 0; i < ltr.size(); i++) {
             if ((ltr.get(i).getFreel().equals(free)) && (ltr.get(i).getEndDate().getYear() == Year.now().getValue())) {
                 sum += ltr.get(i).getTaskDelay();
@@ -59,13 +59,12 @@ public class RegisterTransaction implements Serializable {
         return (sum / count) > 3;
     }
 
-
     public double percentageOfDelays(Freelancer free) {
         int count = 0;
         int sum = 0;
 
         for (int i = 0; i < transactionList.size(); i++) {
-            if (transactionList.get(i).getFreel().equals(free)&& (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
+            if (transactionList.get(i).getFreel().equals(free) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
                 sum += transactionList.get(i).getTaskDelay();
                 count++;
             }
@@ -74,19 +73,20 @@ public class RegisterTransaction implements Serializable {
         return ((sum / count) * 100);
     }
 
-
-
-    public double overallPercentageDelays() {
+    public double overallPercentageDelays(List<Organization> lOrg) {
         int count = 0;
-        int sum = 0;
-
-        for (int i = 0; i < transactionList.size(); i++) {
-            if ((transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
-                sum += transactionList.get(i).getTaskDelay();
-                count++;
+        int transactionCounter =0;
+        for (int i = 0; i < lOrg.size(); i++) {
+            List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
+            
+            for (int j = 0; j < ltr.size(); j++) {
+                if ((ltr.get(j).getEndDate().getYear() == Year.now().getValue()) && ltr.get(j).getTaskDelay() > 3) {
+                    count++;
+                }
+                transactionCounter++;
             }
         }
-        return ((sum / count) * 100);
+        return ((count / transactionCounter ) * 100);
 
     }
 
@@ -111,11 +111,11 @@ public class RegisterTransaction implements Serializable {
      * @return
      */
     public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
-     
+
         task.setIsFinished(true);
         double costEuros = task.getCostHour() * task.getTimeTask();
         double costCureency = cc.convert(costEuros, freel.getCountry());
-        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros,costCureency));
+        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros, costCureency));
     }
 
     /**
@@ -139,9 +139,10 @@ public class RegisterTransaction implements Serializable {
      * @return
      */
     public boolean validateTransaction(TransactionExecution trans) {
-        for(TransactionExecution t : transactionList) {
-            if(t.getTransID() == trans.getTransID())
+        for (TransactionExecution t : transactionList) {
+            if (t.getTransID() == trans.getTransID()) {
                 return false;
+            }
         }
         return !transactionList.contains(trans);
     }
@@ -169,10 +170,10 @@ public class RegisterTransaction implements Serializable {
                     double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;
                     return value;
 
-                }else{
-                   double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask();
-                return value; 
-                }               
+                } else {
+                    double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask();
+                    return value;
+                }
             }
 
         }
