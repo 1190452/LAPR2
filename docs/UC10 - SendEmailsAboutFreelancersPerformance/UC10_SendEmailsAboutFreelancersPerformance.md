@@ -140,3 +140,7 @@ Other classes of external systems / components:
 ###	UC10_CD_SendEmail
 
 ![UC10_CD_SendEmail.png](UC10_CD_SendEmail.png)
+
+###	UC10_CD_SendEmailRef
+
+![UC10_CD_SendEmailRef.png](UC10_CD_SendEmailRef.png)
