@@ -43,6 +43,7 @@ public class WatchStatisticsUI implements Initializable {
     private Label lblPayment;
     private double x, y;
     private Statistic st;
+    private List<TransactionExecution> ltr;
     @FXML
     private JFXComboBox<String> combDecision;
 
@@ -65,14 +66,14 @@ public class WatchStatisticsUI implements Initializable {
 
     @FXML
     private void confirm(ActionEvent event) throws IOException {
-        List<TransactionExecution> ltr = wsc.getFreelancers();
+         ltr = wsc.getFreelancers();
         String choice = combDecision.getSelectionModel().getSelectedItem();
-        Map.Entry<String, CustomValue> entry = wsc.OverallStatistics(ltr, choice);
+        Map.Entry<String, CustomValue> entry = wsc.OverallStatistics(getLtr(), choice);
         
         if (choice.equalsIgnoreCase("Payment Deviation of each Freelancer")) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationofEachFreelancer.fxml"));
             Parent root = loader.load();
-            SeeOverallStatisticsIntroducingNameUI c = loader.getController();
+            PaymentDeviationOfEachFreelancerUI c = loader.getController();
             c.associarParentUI(this);
             Scene create = new Scene(root);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -132,5 +133,12 @@ public class WatchStatisticsUI implements Initializable {
 
     public WatchStatisticsController getController() {
         return wsc;
+    }
+
+    /**
+     * @return the ltr
+     */
+    public List<TransactionExecution> getLtr() {
+        return ltr;
     }
 }
