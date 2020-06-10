@@ -45,6 +45,12 @@ public class RegisterTransaction implements Serializable {
         return transactionList.remove(tr);
     }
 
+    /**
+     * checks if a task delay of a certain freelancer (received by parameter) is higher than 3 hours
+     * @param free
+     * @param ltr
+     * @return 
+     */
     public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
         int count = 0;
         double sum = 0;
