@@ -370,10 +370,6 @@ public class Organization implements Serializable {
         return rTrans;
     }
 
-    public RegisterTransaction getrTrans() {
-        return rTrans;
-    }
-
     //======================================================================================================================================================
     /**
      * modifies the task list of the organization

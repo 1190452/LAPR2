@@ -74,7 +74,7 @@ public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializa
     }
 
     void associarParentUI(TaskExecutionDelayOfEachFreelancerUI td) {
-        this.td = td;
+        //this.tda = td;
     }
 
 }

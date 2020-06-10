@@ -74,8 +74,8 @@ public class RegisterTransaction implements Serializable {
     }
 
     public double overallPercentageDelays(List<Organization> lOrg) {
-        int count = 0;
-        int transactionCounter =0;
+        double count = 0;
+        double transactionCounter = 0;
         for (int i = 0; i < lOrg.size(); i++) {
             List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
             
@@ -86,7 +86,8 @@ public class RegisterTransaction implements Serializable {
                 transactionCounter++;
             }
         }
-        return ((count / transactionCounter ) * 100);
+        double result = (count/transactionCounter) * 100;
+        return result;
 
     }
 
