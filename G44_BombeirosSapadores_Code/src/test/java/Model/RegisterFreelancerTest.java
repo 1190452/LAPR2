@@ -7,10 +7,6 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -37,9 +33,10 @@ public class RegisterFreelancerTest {
         String doorNumber = "12";
         String locality = "Tóquio";
         RegisterFreelancer instance = new RegisterFreelancer();
-        Freelancer expResult = instance.newFreelancer(name, levelExp, email, nif, iban, country, street, doorNumber, locality);
-        Freelancer result = expResult;
-        assertEquals(expResult, result);
+        Freelancer expResult = new Freelancer(name, levelExp, email, nif, iban, country, new Address(street, doorNumber, locality));
+        Freelancer result = instance.newFreelancer(name, levelExp, email, nif, iban, country, street, doorNumber, locality);
+        
+        assertEquals(result, expResult);
         
       
     }
@@ -90,10 +87,13 @@ public class RegisterFreelancerTest {
     @Test
     public void testRemoveFreelancer() {
         System.out.println("removeFreelancer");
-        Freelancer fr = null;
+        Freelancer fr = new Freelancer();
         RegisterFreelancer instance = new RegisterFreelancer();
+        instance.addFreelancer(fr);
         boolean expectedResult = instance.removeFreelancer(fr);
         boolean result = true;
+        
+        assertEquals(expectedResult, result);
         
     }
 

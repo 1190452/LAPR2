@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -55,11 +56,11 @@ public class TaskListTest {
     @Test
     public void testNewTask() {
         System.out.println("newTask");
-        String idTask = "";
-        String description = "";
+        String idTask = "t1";
+        String description = "task1";
         int timeTask = 0;
         double costHour = 0.0;
-        String taskCategory = "";
+        String taskCategory = "programing";
         TaskList instance = new TaskList();
         
         Task expResult = new Task(idTask, description, timeTask, costHour, taskCategory);
@@ -67,48 +68,45 @@ public class TaskListTest {
         assertEquals(expResult, result);
     }
 
-//    /**
-//     * Test of validateTask method, of class TaskList.
-//     */
-//    @Test
-//    public void testValidateTask() {
-//        System.out.println("validateTask");
-//        Task task = null;
-//        TaskList instance = new TaskList();
-//        boolean expResult = false;
-//        boolean result = instance.validateTask(task);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of registersTask method, of class TaskList.
-//     */
-//    @Test
-//    public void testRegistersTask() {
-//        System.out.println("registersTask");
-//        Task task = null;
-//        TaskList instance = new TaskList();
-//        boolean expResult = false;
-//        boolean result = instance.registersTask(task);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//
-//    /**
-//     * Test of getTaskList method, of class TaskList.
-//     */
-//    @Test
-//    public void testGetTaskList() {
-//        System.out.println("getTaskList");
-//        TaskList instance = new TaskList();
-//        List<Task> expResult = null;
-//        List<Task> result = instance.getTaskList();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
+    /**
+     * Test of validateTask method, of class TaskList.
+     */
+    @Test
+    public void testValidateTask() {
+        System.out.println("validateTask");
+        Task task = new Task();
+        TaskList instance = new TaskList();
+        boolean expResult = true;
+        boolean result = instance.validateTask(task);
+        assertEquals(expResult, result);
+        
+    }
+
+    /**
+     * Test of registersTask method, of class TaskList.
+     */
+    @Test
+    public void testRegistersTask() {
+        System.out.println("registersTask");
+        Task task = new Task();
+        TaskList instance = new TaskList();
+        boolean expResult = true;
+        boolean result = instance.registersTask(task);
+        assertEquals(expResult, result);
+        
+    }
+
+    /**
+     * Test of getTaskList method, of class TaskList.
+     */
+    @Test
+    public void testGetTaskList() {
+        System.out.println("getTaskList");
+        TaskList instance = new TaskList();
+        List<Task> expResult = new ArrayList<>();
+        List<Task> result = instance.getTaskList();
+        assertEquals(expResult, result);
+        
+    }
     
 }

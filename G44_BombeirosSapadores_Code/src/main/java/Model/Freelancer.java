@@ -273,4 +273,19 @@ public class Freelancer implements Serializable {
     public String toString() {
         return String.format("Name: %s\nLevel of Experience: %s\nEmail: %s", name, levelExp, email);
     }
+    
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+        Freelancer otherFreelancer = (Freelancer) otherObject;
+        return this.name.equalsIgnoreCase(otherFreelancer.name)
+                && this.email.equals(otherFreelancer.email) 
+               
+                && this.iban.equals(otherFreelancer.iban);
+    }
 }
