@@ -17,6 +17,7 @@
       <GridPane prefHeight="397.0" prefWidth="655.0" style="-fx-background-color: #262626 #262626;" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -34,7 +35,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="100.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
             <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Brief description:" GridPane.halignment="LEFT" GridPane.rowIndex="2">
@@ -42,7 +43,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="100.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
             <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Time duration (hours):" GridPane.halignment="LEFT" GridPane.rowIndex="3">
@@ -50,12 +51,12 @@
                   <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="100.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                <GridPane.margin>
-                  <Insets bottom="15.0" right="100.0" />
+                  <Insets bottom="15.0" right="15.0" />
                </GridPane.margin>
             </Button>
             <Text fill="WHITE" fontSmoothingType="LCD" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TASK" underline="true" GridPane.halignment="LEFT">
@@ -71,7 +72,7 @@
                   <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="100.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
             <Text fill="WHITE" fontSmoothingType="LCD" layoutX="147.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category:" GridPane.halignment="LEFT" GridPane.rowIndex="5">
@@ -79,35 +80,35 @@
                   <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="100.0" />
+                  <Insets left="200.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
                <GridPane.margin>
-                  <Insets bottom="15.0" left="100.0" />
+                  <Insets bottom="15.0" left="15.0" />
                </GridPane.margin>
             </Button>
-            <JFXTextField fx:id="idTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <JFXTextField fx:id="idTxt" focusColor="#e6be8a" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="descriptionTxt" focusColor="#e6be8a" layoutX="376.0" layoutY="89.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <JFXTextField fx:id="descriptionTxt" focusColor="#e6be8a" layoutX="376.0" layoutY="89.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="timeTxt" focusColor="#e6be8a" layoutX="376.0" layoutY="150.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <JFXTextField fx:id="timeTxt" focusColor="#e6be8a" layoutX="376.0" layoutY="150.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="costTxt" focusColor="#e6be8a" layoutX="376.0" layoutY="211.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <JFXTextField fx:id="costTxt" focusColor="#e6be8a" layoutX="376.0" layoutY="211.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>
             </JFXTextField>
-            <JFXTextField fx:id="categoryTxt" focusColor="#e6be8a" layoutX="376.0" layoutY="272.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+            <JFXTextField fx:id="categoryTxt" focusColor="#e6be8a" layoutX="376.0" layoutY="272.0" maxWidth="170.0" style="-fx-text-inner-color: white;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>
