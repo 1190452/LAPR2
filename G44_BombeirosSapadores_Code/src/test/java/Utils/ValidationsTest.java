@@ -124,8 +124,8 @@ public class ValidationsTest {
      */
     @Test
     public void testIsNameValid2() {
-        String name = "q8ajz";
-        boolean expResult = false;
+        String name = "Alexandre Rosa";
+        boolean expResult = true;
         boolean result = Validations.isNameValid(name);
         assertEquals(expResult, result);
     }
