@@ -33,7 +33,7 @@ public class WatchStatisticsController {
         RegisterOrganization rorgs = app.getPlatform().getrOrg();
         UserSession log = app.getActualSession();
         email = log.getUserEmail();
-        Organization org = rorgs.getOrganizationByUserEmailColab(email);
+        Organization org = rorgs.getOrganizationByUserEmail(email);
         return org.getRTrans().getTransactions();
     }
 

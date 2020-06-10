@@ -1,10 +1,10 @@
-package UI;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package UI;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -16,33 +16,38 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
  *
- * @author User
+ * @author tiagopereira
  */
-public class HistogramUI implements Initializable {
+public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializable{
 
     @FXML
     private BarChart<?, ?> histogram;
-    private TaskExecutionDelayOfEachFreelancerUI td;
-    private double x, y;
+    private double x,y;
+    private TaskExecutionDelayOfAllFreelancersUI tda;
 
-    /**
+      /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         XYChart.Series set1 = new XYChart.Series<>();
 
-        set1.getData().add(new XYChart.Data("]-∞, µ-σ]",));
-        set1.getData().add(new XYChart.Data("]µ- σ,µ+σ[",));
-        set1.getData().add(new XYChart.Data("[µ+σ, +∞[",));
+        set1.getData().add(new XYChart.Data("]-∞, µ-σ]",3));
+        set1.getData().add(new XYChart.Data("]µ- σ,µ+σ[",3));
+        set1.getData().add(new XYChart.Data("[µ+σ, +∞[",3));
 
         histogram.getData().addAll(set1);
 
     }
 
-    @FXML
+    public void associarParentUI(TaskExecutionDelayOfAllFreelancersUI tda){
+        this.tda = tda;
+    }
+
+     @FXML
     private void min(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
@@ -67,9 +72,13 @@ public class HistogramUI implements Initializable {
         x = event.getSceneX();
         y = event.getSceneY();
     }
+<<<<<<< HEAD:G44_BombeirosSapadores_Code/src/main/java/UI/HistogramUI.java
 
     void associarParentUI(TaskExecutionDelayOfEachFreelancerUI td) {
         this.td = td;
     }
 
+=======
+    
+>>>>>>> f7a34abacbcb5462cbc5f1ef8ca45db542ead6ac:G44_BombeirosSapadores_Code/src/main/java/UI/HistogramTaskExecutionDelayOfAllFreelancersUI.java
 }

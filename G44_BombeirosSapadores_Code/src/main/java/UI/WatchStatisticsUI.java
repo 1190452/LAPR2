@@ -66,10 +66,9 @@ public class WatchStatisticsUI implements Initializable {
 
     @FXML
     private void confirm(ActionEvent event) throws IOException {
-         ltr = wsc.getFreelancers();
+        ltr = wsc.getFreelancers();
         String choice = combDecision.getSelectionModel().getSelectedItem();
-        Map.Entry<String, CustomValue> entry = wsc.OverallStatistics(getLtr(), choice);
-        
+
         if (choice.equalsIgnoreCase("Payment Deviation of each Freelancer")) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationofEachFreelancer.fxml"));
             Parent root = loader.load();
@@ -91,7 +90,7 @@ public class WatchStatisticsUI implements Initializable {
         } else if (choice.equals("Task Execution Delay of All Freelancers")) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOffAllFreelancers.fxml"));
             Parent root = loader.load();
-            TaskExecutionDelayOffAllFreelancersUI c = loader.getController();
+            TaskExecutionDelayOfAllFreelancersUI c = loader.getController();
             c.associarParentUI(this);
             Scene create = new Scene(root);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

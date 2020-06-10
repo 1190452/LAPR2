@@ -57,10 +57,8 @@ public class RegisterOrganization implements Serializable {
 
         lOrg = new ArrayList<>();
     }
-    
-    //======================================================================================================================================================
 
-    
+    //======================================================================================================================================================
     /**
      * adds an organization to the list of organizations
      *
@@ -72,7 +70,9 @@ public class RegisterOrganization implements Serializable {
             return true;
         }
         return false;
-    } /**
+    }
+
+    /**
      * method that creates a new organization and receives the following
      * parameters:
      *
@@ -106,9 +106,8 @@ public class RegisterOrganization implements Serializable {
             return null;
         }
     }
-    
-    //======================================================================================================================================================
 
+    //======================================================================================================================================================
     /**
      * method that validates if an organization is or isn't null
      *
@@ -177,9 +176,8 @@ public class RegisterOrganization implements Serializable {
         Writer.sendsPassword(emailC, pwdC, Constants.ROLE_COLLABORATOR_ORGANIZATION);
         return true;
     }
-    
-    //======================================================================================================================================================
 
+    //======================================================================================================================================================
     /**
      * returns the writing method of the organization
      *
@@ -223,11 +221,18 @@ public class RegisterOrganization implements Serializable {
         return null;
     }
 
-   
+    public Organization getOrganizationByUserEmail(String email) {
+        for (int i = 0; i < lOrg.size(); i++) {
+            if (email.equalsIgnoreCase(lOrg.get(i).getManager().getEmailM()) || email.equalsIgnoreCase(lOrg.get(i).getColab().getEmailC())) {
+                return lOrg.get(i);
+            }
+
+        }
+        return null;
+    }
 
     public List<Organization> getlOrg() {
         return lOrg;
     }
-    
 
 }
