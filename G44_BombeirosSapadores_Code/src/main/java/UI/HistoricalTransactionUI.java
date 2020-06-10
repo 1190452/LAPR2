@@ -64,16 +64,21 @@ public class HistoricalTransactionUI implements Initializable {
 
     @FXML
     private void Confirm(ActionEvent event) {
-        for (int i = 0; i < files.size(); i++) {
-            boolean loaded = ht_controller.loadHistoricalTransaction(files.get(i).getName());
-            Alert alert6 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Loading File", "Do you confirm this File?");        
-            Optional<ButtonType> option = alert6.showAndWait();
-            if (option.get() == ButtonType.OK) {
-                AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new File",
-                        loaded ? "New File added with success"
-                                : "It was not possible to add the File").show();
-                endLoad(event);
-            } 
+        try {
+            for (int i = 0; i < files.size(); i++) {
+                boolean loaded = ht_controller.loadHistoricalTransaction(files.get(i).getName());
+                Alert alert6 = AlertUI.createAlert(Alert.AlertType.CONFIRMATION, MainApp.APPLICATION_TITLE, "Loading File", "Do you confirm this File?");
+                Optional<ButtonType> option = alert6.showAndWait();
+                if (option.get() == ButtonType.OK) {
+                    AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Adding new File",
+                            loaded ? "New File added with success"
+                                    : "It was not possible to add the File").show();
+                    endLoad(event);
+                }
+            }
+        } catch (Exception e) {
+            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "It wasn't possible to load the file(s)!" , "Please try again");
+            alert.show();
         }
 
     }
@@ -114,7 +119,6 @@ public class HistoricalTransactionUI implements Initializable {
         x = event.getSceneX();
         y = event.getSceneY();
     }
-
 
     private void endLoad(ActionEvent event) {
         ((Node) event.getSource()).getScene().getWindow().hide();
