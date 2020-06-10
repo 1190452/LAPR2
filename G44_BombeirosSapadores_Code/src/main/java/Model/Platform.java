@@ -195,7 +195,6 @@ public class Platform implements Serializable {
      * @throws FileNotFoundException
      */
     public void sendEmail() throws FileNotFoundException {
-        RegisterOrganization rOrg = getrOrg();
         List<Organization> orgList = rOrg.getlOrg();
         double percentOverallDelays = rOrg.overallPercentageDelays(orgList);
         
