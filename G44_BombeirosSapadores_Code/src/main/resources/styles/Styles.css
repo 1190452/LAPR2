@@ -18,4 +18,6 @@
 .combo-box .cell:selected {
     -fx-text-fill: white;
 }
-
+.chart-bar {
+    -fx-bar-fill: #e6be8a; 
+}
