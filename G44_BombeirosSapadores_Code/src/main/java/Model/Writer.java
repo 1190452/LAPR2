@@ -100,7 +100,7 @@ public class Writer {
 
             writer2.write("Receipt of " + nltr.get(0).getFreel().getFreeID()+"\n");
             for (TransactionExecution e : nltr) {
-                writer2.write(e.toString() + "\n");
+                writer2.write("Task " + e.getTask().getIdTask() + ":-----------" + e.getPayment().getValueE() + "€" + "\n");
             }
             if (valueE == valueC) {
                 writer2.write("The total value is: " + valueE + "euros\n");

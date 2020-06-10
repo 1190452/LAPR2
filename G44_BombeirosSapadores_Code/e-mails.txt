@@ -8,3 +8,9 @@ Receipt of JC1
 Task Execution: 1 -------------------- 4.0 
 Task Execution: 5 -------------------- 3000.0 
 The total value in euros is 3004.0 and 3362.6776 in your local currency
+Receipt of JS1
+hello
+The total value in euros is 2.0 and 3.0 in your local currency
+Receipt of JS1
+Task idTask:-----------2.0€
+The total value in euros is 2.0 and 3.0 in your local currency
