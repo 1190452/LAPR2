@@ -36,15 +36,14 @@ public class HistogramTaskExecutionDelayOfEachFreelancerUI implements Initializa
     public void initialize(URL url, ResourceBundle rb) {
         XYChart.Series set1 = new XYChart.Series<>();
 
-<<<<<<< HEAD:G44_BombeirosSapadores_Code/src/main/java/UI/HistogramUI.java
+
 //        set1.getData().add(new XYChart.Data("]-∞, µ-σ]",));
 //        set1.getData().add(new XYChart.Data("]µ- σ,µ+σ[",));
 //        set1.getData().add(new XYChart.Data("[µ+σ, +∞[",));
-=======
+
         set1.getData().add(new XYChart.Data("]-∞, µ-σ]",3));
         set1.getData().add(new XYChart.Data("]µ- σ,µ+σ[",3));
         set1.getData().add(new XYChart.Data("[µ+σ, +∞[",3));
->>>>>>> 3ad1f585a254575f3770ede36f8f2f4b3331b2fb:G44_BombeirosSapadores_Code/src/main/java/UI/HistogramTaskExecutionDelayOfEachFreelancerUI.java
 
         histogram.getData().addAll(set1);
 

@@ -72,13 +72,9 @@ public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializa
         x = event.getSceneX();
         y = event.getSceneY();
     }
-<<<<<<< HEAD:G44_BombeirosSapadores_Code/src/main/java/UI/HistogramUI.java
 
     void associarParentUI(TaskExecutionDelayOfEachFreelancerUI td) {
         this.td = td;
     }
 
-=======
-    
->>>>>>> f7a34abacbcb5462cbc5f1ef8ca45db542ead6ac:G44_BombeirosSapadores_Code/src/main/java/UI/HistogramTaskExecutionDelayOfAllFreelancersUI.java
 }
