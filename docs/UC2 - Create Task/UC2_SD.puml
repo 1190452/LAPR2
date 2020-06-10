@@ -39,11 +39,11 @@ CTRL -> SESSAO : email = getUserEmail()
 activate SESSAO
 deactivate SESSAO
 
-CTRL -> PLAT : rorgs = getOrganizaionRegister()
+CTRL -> PLAT : rorgs = getrOrgs()
 activate PLAT
 deactivate PLAT
 
-CTRL -> RORGS : org = getOrganizationByUserEmail(email)
+CTRL -> RORGS : org2 = getOrganizationByUserEmail(email)
 activate RORGS
 deactivate RORGS
 
@@ -51,10 +51,10 @@ CTRL -> ORG : tl = getTaskList()
 activate ORG
 deactivate ORG
 
-CTRL -> LTASKS : task = newTask(idT, description, timeDuration, costHour, taskCategoty)
+CTRL -> LTASKS : task = newTask(idTask, description, timeTask, costHour, taskCategory)
 activate LTASKS
 
-LTASKS -> TAREFA** : create(idT, description, timeDuration, costHour, taskCategoty)
+LTASKS -> TAREFA** : create(idTask, description, timeTask, costHour, taskCategory)
 
 LTASKS -> LTASKS : validatesTask(task)
 
