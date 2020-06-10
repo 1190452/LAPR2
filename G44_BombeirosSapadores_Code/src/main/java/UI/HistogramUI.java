@@ -69,8 +69,7 @@ public class HistogramUI implements Initializable {
     }
 
     void associarParentUI(TaskExecutionDelayOfEachFreelancerUI td) {
-        this.td = td
-                ;
+        this.td = td;
     }
 
 }
