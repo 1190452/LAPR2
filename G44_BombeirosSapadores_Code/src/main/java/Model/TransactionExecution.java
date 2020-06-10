@@ -153,7 +153,8 @@ public class TransactionExecution implements Serializable {
         this.payment = otherTrans.payment;
 
     }
-      public TransactionExecution(Task task, Freelancer freel, Date endDate, double delay, String qow) {
+
+    public TransactionExecution(Task task, Freelancer freel, Date endDate, double delay, String qow) {
         this.task = task;
         this.freel = freel;
         this.endDate = endDate;
@@ -163,16 +164,15 @@ public class TransactionExecution implements Serializable {
     }
 
     //======================================================================================================================================================
- 
-    
     /**
      * Returns the id related to the transaction
+     *
      * @return id of the transaction
      */
     public int getTransID() {
         return transID;
     }
-    
+
     /**
      * returns the end date
      *
@@ -287,19 +287,18 @@ public class TransactionExecution implements Serializable {
     public void setFreel(Freelancer freel) {
         this.freel = freel;
     }
-    
-    /**
-    * modifies the payment of the transaction
-    * @param
-    payment
 
-    */
+    /**
+     * modifies the payment of the transaction
+     *
+     * @param payment
+     *
+     */
     public void setTransactionValue(Payment payment) {
         this.payment = payment;
     }
-    
-    //======================================================================================================================================================
 
+    //======================================================================================================================================================
     /**
      * writing method of the class TransactionExecution
      *
@@ -308,6 +307,24 @@ public class TransactionExecution implements Serializable {
     @Override
     public String toString() {
         return String.format("Task %s ---------- %s", task.toString2(), payment.toString());
+    }
+
+    //======================================================================================================================================================
+    
+    @Override
+    public boolean equals(Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }
+        if (otherObject == null || this.getClass() != otherObject.getClass()) {
+            return false;
+        }
+        TransactionExecution transE = (TransactionExecution) otherObject;
+        return (this.transID == transE.transID)
+                && this.task.equals(transE.task)
+                && this.freel.equals(transE.freel)
+                && this.payment.equals(transE.payment)
+                && (this.delay == transE.delay);
     }
 
 }

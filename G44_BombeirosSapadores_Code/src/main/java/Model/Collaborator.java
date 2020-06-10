@@ -147,6 +147,8 @@ public class Collaborator implements Serializable {
         return String.format("Nome: %s \nEmail: %s \nRole: %s", nameC, emailC, role);
     }
     
+    //======================================================================================================================================================
+    
     @Override
     public boolean equals(Object otherObject) {
         if (this == otherObject) {

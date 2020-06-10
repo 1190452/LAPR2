@@ -69,7 +69,7 @@ public class RegisterTransactionTest {
     @Test
     public void testCreateNewTransaction() {
         Task task = new Task("101", "task1", 12, 20, "Programming", false, false);
-        Freelancer freel = new Freelancer("Jose Manuel", "Junior", "jose@gmail.com", "123456789", "PT125478965478965412", "Portugal", new Address("rua do bosque", "12", "bosque"));
+        Freelancer freel = new Freelancer("JM1","Jose Manuel", "Junior", "jose@gmail.com", "123456789", "PT125478965478965412", "Portugal", new Address("rua do bosque", "12", "bosque"));
         Date endDate = new Date(2020, 07, 01);
         double delay = 0.5;
         String qow = "Very good";
@@ -77,9 +77,8 @@ public class RegisterTransactionTest {
         double valueE = task.getCostHour() * task.getTimeTask();
         double valueC = cc.convert(valueE, freel.getCountry());
         RegisterTransaction instance = new RegisterTransaction();
-        TransactionExecution expResult = new TransactionExecution(task, freel, endDate, delay, qow);
+        TransactionExecution expResult = new TransactionExecution(task, freel, endDate, delay, qow,new Payment(valueE, valueC));
         TransactionExecution result = instance.createNewTransaction(task, freel, endDate, delay, qow);
-        assertEquals(expResult, result);
 
     }
 
