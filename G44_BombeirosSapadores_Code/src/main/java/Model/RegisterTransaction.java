@@ -45,13 +45,13 @@ public class RegisterTransaction implements Serializable {
         return transactionList.remove(tr);
     }
 
-    public boolean meanTaskDelayBetterThan3(Freelancer free) {
+    public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
         int count = 0;
         double sum = 0;
-
-        for (int i = 0; i < transactionList.size(); i++) {
-            if ((transactionList.get(i).getFreel().equals(free)) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
-                sum += transactionList.get(i).getTaskDelay();
+        
+        for (int i = 0; i < ltr.size(); i++) {
+            if ((ltr.get(i).getFreel().equals(free)) && (ltr.get(i).getEndDate().getYear() == Year.now().getValue())) {
+                sum += ltr.get(i).getTaskDelay();
                 count++;
             }
 
@@ -153,8 +153,7 @@ public class RegisterTransaction implements Serializable {
      * @return
      */
     public boolean addTransaction(TransactionExecution trans) {
-        transactionList.add(trans);
-        return transactionList != null;
+        return transactionList.add(trans);
     }
 
     /**
@@ -170,9 +169,10 @@ public class RegisterTransaction implements Serializable {
                     double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;
                     return value;
 
-                }
-                double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask();
-                return value;
+                }else{
+                   double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask();
+                return value; 
+                }               
             }
 
         }

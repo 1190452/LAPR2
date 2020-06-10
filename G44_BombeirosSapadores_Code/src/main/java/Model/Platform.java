@@ -205,7 +205,7 @@ public class Platform implements Serializable {
 
             for (int j = 0; j < transList.size(); j++) {
                 Freelancer free = transList.get(i).getFreel();
-                boolean isDelayBetterThan3 = rTrans.meanTaskDelayBetterThan3(free);
+                boolean isDelayBetterThan3 = rTrans.meanTaskDelayBetterThan3(free, transList);
                 double percentOfDelayFree = rTrans.percentageOfDelays(free);
                         
                 if ((isDelayBetterThan3) && (percentOfDelayFree > percentOverallDelays)) {  
