@@ -17,7 +17,9 @@
    <center>
       <GridPane prefHeight="397.0" prefWidth="655.0" style="-fx-background-color: #262626 #262626;" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="330.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.0" minWidth="10.0" prefWidth="130.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="330.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -28,9 +30,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets bottom="15.0" right="200.0" />
+                  <Insets bottom="15.0" />
                </GridPane.margin>
             </Button>
             <Text fill="WHITE" fontSmoothingType="LCD" stroke="#e6be8a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline-color: #e6be8a;" text="Payment Deviation Of Each Freelancer" underline="true" GridPane.halignment="LEFT">
@@ -41,67 +43,76 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.halignment="CENTER" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets bottom="15.0" left="200.0" />
-               </GridPane.margin>
-            </Button>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Email:" wrappingWidth="156.22900390625" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets right="200.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <JFXComboBox fx:id="freelEmail" focusColor="#e6be8a" maxWidth="277.0" prefHeight="27.0" prefWidth="277.0" style="-fx-text-inner-color: white;" styleClass="combo-box" stylesheets="@../styles/Styles.css" unFocusColor="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets right="100.0" />
-               </GridPane.margin>
-            </JFXComboBox>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer:" wrappingWidth="156.22900390625" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets right="200.0" />
-               </GridPane.margin>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Payment Deviation: :" wrappingWidth="241.22900390625" GridPane.halignment="CENTER" GridPane.rowIndex="3">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets right="200.0" />
-               </GridPane.margin>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Average Payment:" wrappingWidth="228.22900390625" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets right="200.0" />
-               </GridPane.margin>
-            </Text>
-            <Button id="goldline" fx:id="HistogramBtn" cancelButton="true" mnemonicParsing="false" onAction="#Histogram" stylesheets="@../styles/stylesheet.css" text="Histogram" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="freelancerLbl" prefHeight="17.0" prefWidth="141.0" text="Label" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Email:" wrappingWidth="173.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets />
+                  <Insets left="50.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+            </Text>
+            <JFXComboBox fx:id="freelEmail" focusColor="#e6be8a" maxWidth="277.0" prefHeight="27.0" prefWidth="277.0" style="-fx-text-inner-color: white;" styleClass="combo-box" stylesheets="@../styles/Styles.css" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="100.0" />
+               </GridPane.margin>
+            </JFXComboBox>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer:" wrappingWidth="108.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Payment Deviation:" wrappingWidth="286.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Average Payment:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Verdana" size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Button id="goldline" fx:id="HistogramBtn" cancelButton="true" mnemonicParsing="false" onAction="#Histogram" stylesheets="@../styles/stylesheet.css" text="Histogram" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </Button>
+            <Label fx:id="freelancerLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets right="100.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="AverageLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="100.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="deviationLbl" prefHeight="17.0" prefWidth="351.0" text="Label" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
-               <padding>
-                  <Insets right="200.0" />
-               </padding>
-            </Label>
-            <Label fx:id="averageLbl" prefHeight="17.0" prefWidth="141.0" text="Label" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
-               <padding>
-                  <Insets right="250.0" />
-               </padding>
+            <Label fx:id="deviationLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="100.0" />
+               </GridPane.margin>
             </Label>
          </children>
       </GridPane>
