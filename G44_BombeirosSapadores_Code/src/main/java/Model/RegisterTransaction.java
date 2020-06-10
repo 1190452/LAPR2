@@ -80,7 +80,7 @@ public class RegisterTransaction implements Serializable {
             List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
             
             for (int j = 0; j < ltr.size(); j++) {
-                if ((ltr.get(j).getEndDate().getYear() == Year.now().getValue()) && ltr.get(j).getTaskDelay() > 3) {
+                if (((ltr.get(j).getEndDate().getYear()) == (Year.now().getValue())) && (ltr.get(j).getTaskDelay() > 3)) {
                     count++;
                 }
                 transactionCounter++;

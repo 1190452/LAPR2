@@ -146,7 +146,7 @@ public class RegisterTransactionTest {
         ltr.add(trans2);
 
         Task task3 = new Task("101", "task1", 12, 20, "Programming", true, true);
-        Freelancer freel3 = new Freelancer("Jose Manuel", "Junior", "jose@gmail.com", "123456789", "PT125478965478965412", "Portugal", new Address("rua do bosque", "12", "bosque"));
+        Freelancer freel3 = new Freelancer("Jose Manuel23", "Junior23", "jose2@gmail.com", "123456789", "PT125478965478965412", "Portugal", new Address("rua do bosque", "12", "bosque"));
         Date endDate3 = new Date(2020, 07, 01);
         double delay3 = 0.5;
         String qow3 = "Very good";
