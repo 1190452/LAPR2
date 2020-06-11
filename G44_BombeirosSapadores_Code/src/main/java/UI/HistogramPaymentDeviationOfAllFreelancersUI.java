@@ -7,15 +7,12 @@ package UI;
 
 import Controller.WatchStatisticsController;
 import Utils.CustomValue;
-import java.awt.Color;
 import java.util.Map;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 /**
@@ -61,21 +58,10 @@ public class HistogramPaymentDeviationOfAllFreelancersUI {
         double value1 = Double.parseDouble(tda.getAverageLbl().getText()) - Double.parseDouble(tda.getDeviationLbl().getText());
         double value2 = Double.parseDouble(tda.getAverageLbl().getText()) + Double.parseDouble(tda.getDeviationLbl().getText());
         Map.Entry<String, CustomValue> entry = tda.getEntry();
-        
-        CategoryAxis xAxis = new CategoryAxis();
-        xAxis.setLabel("Payment Deviation");
-        
-        
- 
+
         set1.getData().add(new XYChart.Data("]-∞," + value1 + "]", entry.getValue().getLeftDev()));
         set1.getData().add(new XYChart.Data("]" + value1 + "," + value2 + "[", entry.getValue().getMiddleDev()));
         set1.getData().add(new XYChart.Data("[" + value2 + ", +∞[", entry.getValue().getRightDev()));
-        
-       
-        
-        histogram.lookupAll(".default-color0.chart-bar")
-            .forEach(n -> n.setStyle("-fx-bar-fill: #e6be8a;"));
-        
         histogram.getData().addAll(set1);
     }
 
