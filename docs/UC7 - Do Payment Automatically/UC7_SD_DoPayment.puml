@@ -2,6 +2,8 @@
 autonumber
 
 participant "task\n:DoPaymentTask" as TASK
+participant "ApplicationPOT" as _APP
+participant "app\n:ApplicationPOT" as APP
 participant "Platform" as P
 participant "rFree\n:RegisterFreelancer" as RF
 participant "lf\n:List<Freelancer>" as LF
@@ -20,9 +22,16 @@ participant "nltr\nList<TransactionExecution>" as NLTR
 participant "CurrencyConverter" as CC
 participant "Writer" as W
 
-[o-> TASK : DoPayment(org)
+[o-> TASK : DoPayment()
 activate TASK
 
+TASK -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+
+TASK -> APP : plt = getPlatform()
+activate APP
+deactivate APP
 
 TASK -> P : rFree = getRegisterFreelancer()
 activate P
@@ -50,11 +59,14 @@ deactivate LT
 
 
 
-TASK -> T : verifier = getIsPayed()
+TASK -> T : verifier = isIsFinished()
+activate T
+deactivate T
+TASK -> T : verifier2 = isIsPayed()
 activate T
 deactivate T
 
-opt [if verifier == false]
+opt [if verifier == true && verifier2 == false]
 
 
 
@@ -66,11 +78,11 @@ end opt
 end loop
 
 
-TASK -> O : rt = getRT()
+TASK -> O : rt = getRTrans()
 activate O
 deactivate O
 
-TASK -> RT : ltr = getltr()
+TASK -> RT : ltr = getTransactions()
 activate RT
 deactivate RT
 
@@ -79,7 +91,7 @@ TASK --> NLTR** : create()
 
 loop [for every Freelancer]
 
-TASK --> NLTR : removeAll()
+TASK -> NLTR : removeAll()
 activate NLTR
 deactivate NLTR
 
@@ -127,6 +139,7 @@ end opt
 end loop
 end loop
 
+opt [if sum != 0]
 TASK -> F : country = getCountry()
 activate F
 deactivate F
@@ -135,19 +148,15 @@ TASK -> CC : curr = convertToCurrency(sum, country)
 activate CC
 deactivate CC
 
-
-
-
-
-TASK -> W : writeOrg(org, sum, curr)
+TASK -> W : writeOrg(org, sum)
 activate W
 deactivate W
 
-TASK -> W : generateReceipt(curr, sum, nltr)
+TASK -> W : generateReceipt(nltr, sum, curr)
 activate W
 deactivate W
 
-
+end opt
 
 end loop
 deactivate TASK

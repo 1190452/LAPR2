@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -50,9 +51,14 @@ public class HistogramTaskExecutionDelayOfEachFreelancerUI implements Initializa
         double value4 = Double.parseDouble(td.getDeviationLbl().getText());
         double valueR = value3 + value4;
         Map.Entry<String, CustomValue> entry = td.getEntry();
+        
+         CategoryAxis xAxis = new CategoryAxis();
+        xAxis.setLabel("Payment Deviation");
         set1.getData().add(new XYChart.Data("]-∞," + valueF + "]", entry.getValue().getLeftDev()));
         set1.getData().add(new XYChart.Data("]" + valueF + "," + valueR + "[", entry.getValue().getMiddleDev()));
         set1.getData().add(new XYChart.Data("[" + valueR + ", +∞[", entry.getValue().getRightDev()));
+        histogram.lookupAll(".default-color0.chart-bar")
+            .forEach(n -> n.setStyle("-fx-bar-fill: #e6be8a;"));
 
         histogram.getData().addAll(set1);
     }
