@@ -44,7 +44,6 @@ public class ApplicationPOT implements Serializable {
     }
 
     //======================================================================================================================================================
-    
     public void read() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File(FILENAME)));
@@ -100,14 +99,9 @@ public class ApplicationPOT implements Serializable {
      */
     private void bootstrap() {
 
-        this.m_oAutorizacao.registerUser("Ricardo", "bombeiro@gmail.com", "qwerty", Constants.ROLE_ADMINISTRATIVE);
-        this.m_oAutorizacao.registerUser("Bruno", "b@gmail.com", "qwerty", Constants.ROLE_COLLABORATOR_ORGANIZATION);
-        this.m_oAutorizacao.registerUser("Alexandre", "a@gmail.com ", "qwerty", Constants.ROLE_MANAGER_ORGANIZATION);
-//        Collaborator o = new Collaborator("Bruno Silva", "bruno@gmail.com", Constants.ROLE_COLLABORATOR_ORGANIZATION);
-//        Manager m = new Manager("Alex Silva", "alexandre@gmail.com", Constants.ROLE_MANAGER_ORGANIZATION);
-//        ru.newUser("Alex Silva", "alexandre@gmail.com", "cona", Constants.ROLE_MANAGER_ORGANIZATION);
-//        ru.newUser("Bruno Silva", "bruno@gmail.com", "cona", Constants.ROLE_COLLABORATOR_ORGANIZATION);
-//        this.rorg.addOrganization(new Organization("lda", "152063390", "lad@gmail.com", new Address("Rua rosa", "43", "Portugal"), o, m));
+        this.m_oAutorizacao.registerUser("T4J Administrator", "administrator@gmail.com", "qwerty", Constants.ROLE_ADMINISTRATIVE);
+        this.m_oAutorizacao.registerUser("T4J Collaborator", "collaborator@gmail.com", "qwerty", Constants.ROLE_COLLABORATOR_ORGANIZATION);
+        this.m_oAutorizacao.registerUser("T4J Manager", "manager@gmail.com ", "qwerty", Constants.ROLE_MANAGER_ORGANIZATION);
 
     }
 
@@ -128,7 +122,6 @@ public class ApplicationPOT implements Serializable {
     }
 
     //======================================================================================================================================================
-    
     /**
      * return the platform
      *

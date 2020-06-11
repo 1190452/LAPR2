@@ -79,12 +79,10 @@ When the manager defines the hour of the payments.
 |       | ...knows the TaskList? | Organization | IE: Organization has tasks | 
 |       | ...creates a temporary list to save the tasks for each freelancer? | DoPaymentTask | creator |
 |       | ...has tasks? | TaskList | IE: task lists have tasks | 
-|       | ...knows the RegisterTransaction | Platform | IE and HC+LC |
-|       | ...knows every Transaction? | RegisterTransaction | IE and HC+LC |
+|       | ...knows the RegisterTransaction | Organization | IE and HC+LC |
+|       | ...knows every Transaction of each organization? | RegisterTransaction | IE and HC+LC |
 |       | ...creates a temporary list to save the transactions for each freelancer? | DoPaymentTask | creator |
-|       | ...creates Payment? | DoPayementTask | creator |
-|       | ...knows the Writer? | DoPayementTask | IE |
-|       | ...creates the Receipt? | Payment | creator |   
+|       | ...knows the Writer? | DoPayementTask | IE |   
 
 
 ### Systematization ##
@@ -93,8 +91,7 @@ When the manager defines the hour of the payments.
 
  * Platform
  * Task
- * Transaction
- * Receipt
+ * TransactionExecution
  * Writer
  * Organization
  * DefinePayment
@@ -128,7 +125,5 @@ When the manager defines the hour of the payments.
 
 ![UC7_CD_REF1.svg](UC7_CD_REF1.svg)
 
-* generateReceiptCD:
 
-![UC7_CD_REF2.svg](UC7_CD_REF2.svg)
 

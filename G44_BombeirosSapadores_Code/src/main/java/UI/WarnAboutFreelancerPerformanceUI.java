@@ -13,12 +13,12 @@ import java.io.FileNotFoundException;
  * @author OMEN X
  */
 public class WarnAboutFreelancerPerformanceUI {
-    
+
     private WarnAboutFreelancerPerformanceController controller;
-    
+
     //======================================================================================================================================================
-    
-    public void sendEmail() throws FileNotFoundException{
-        controller.sendEmail();
+    public boolean sendEmail() throws FileNotFoundException {
+        controller = new WarnAboutFreelancerPerformanceController();
+        return controller.sendEmail();
     }
 }

@@ -68,7 +68,7 @@ public class PaymentDeviationOfAllFreelancersUI {
     @FXML
     private void confirm(ActionEvent event) {
         List<TransactionExecution> ltr = ws.getLtr();
-        entry = getWsc().getTaskExecutionDelayOfAllFreelancers(ltr);
+        entry = getWsc().getPaymentDeviationOfAllFreelancers(ltr);
         getDeviationLbl().setText(Double.toString(getEntry().getValue().getDeviation()));
         getAverageLbl().setText(Double.toString(getEntry().getValue().getMean()));
     }

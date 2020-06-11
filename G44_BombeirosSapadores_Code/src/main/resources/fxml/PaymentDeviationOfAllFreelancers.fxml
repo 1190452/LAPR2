@@ -32,7 +32,7 @@
                   <Insets bottom="15.0" />
                </GridPane.margin>
             </Button>
-            <Text fill="WHITE" fontSmoothingType="LCD" stroke="#e6be8a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline-color: #e6be8a;" text="Payment Of All Freelancers" underline="true" GridPane.halignment="LEFT">
+            <Text fill="WHITE" fontSmoothingType="LCD" stroke="#e6be8a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline-color: #e6be8a;" text="Payment Deviation Of All Freelancers" underline="true" GridPane.halignment="LEFT">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
@@ -45,10 +45,7 @@
                   <Insets bottom="15.0" />
                </GridPane.margin>
             </Button>
-<<<<<<< HEAD
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Deviation:" wrappingWidth="294.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-=======
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer:" wrappingWidth="108.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Deviation:" wrappingWidth="294.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -56,20 +53,7 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Deviation:" wrappingWidth="294.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="3">
->>>>>>> 14a90c7a9dc49b85a3708e018cca028de0f21a55
-               <font>
-                  <Font name="Verdana" size="14.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Text>
-<<<<<<< HEAD
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Payment Deviation:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
-=======
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Payment Deviation:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="2">
->>>>>>> 14a90c7a9dc49b85a3708e018cca028de0f21a55
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Payment:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>

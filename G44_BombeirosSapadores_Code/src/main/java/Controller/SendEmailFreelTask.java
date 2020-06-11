@@ -7,8 +7,6 @@ package Controller;
 
 import Model.ApplicationPOT;
 import Model.Platform;
-import Utils.Date;
-import static Utils.Date.leapYear;
 import java.io.FileNotFoundException;
 import java.time.Year;
 import java.util.Timer;
@@ -42,6 +40,7 @@ public class SendEmailFreelTask extends TimerTask {
     /**
      * Runs the process of sending an email to the freelancers
      */
+    @Override
     public void run() {
         try {
             int year = Year.now().getValue();
@@ -54,9 +53,7 @@ public class SendEmailFreelTask extends TimerTask {
             } else {
                 p1.sendEmail();
             }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(SendEmailFreelTask.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
+        } catch (FileNotFoundException | InterruptedException ex) {
             Logger.getLogger(SendEmailFreelTask.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -70,7 +67,7 @@ public class SendEmailFreelTask extends TimerTask {
 
     //======================================================================================================================================================
 
-    public void setTimer(Timer t) {
+    public void setTimer(Timer t1) {
         this.t1 = t1;
     }
 

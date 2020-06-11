@@ -91,7 +91,13 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     if (tl.validateTask(t)) {
                         tl.addTask(t);
                     }
-                    double valueE = timeTask * taskCost;
+                    double valueE = 0;
+                    if (FreelancerExpertise.equalsIgnoreCase("Junior")) {
+                        valueE = timeTask * taskCost;
+                    } else {
+                        valueE = timeTask * taskCost * 2;
+                    }
+
                     double valueC = pot.getPlatform().getC().convert(valueE, FreelancerCountry);
                     TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, descripOFQuality, new Payment(valueE, valueC));
                     if (ht.validateTransaction(trans)) {

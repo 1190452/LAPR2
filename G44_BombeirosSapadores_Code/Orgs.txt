@@ -1,5 +1,15 @@
 <<<<<<< HEAD
+Organization name made a payment of 2.0 on 2020_June_11 at 10:20:48 PM
+Organization name made a payment of 2.0 on 2020_June_11 at 10:21:09 PM
+Organization name made a payment of 2.0 on 2020_June_11 at 10:22:44 PM
+=======
+<<<<<<< HEAD
 Organization name made a payment of 2.0 on 2020_June_11 at 04:37:57 PM
 =======
 Organization name made a payment of 2.0 on 2020_June_11 at 04:38:51 PM
 >>>>>>> eb45379ed0eed1121db14b8d0bf02829cb1a1f31
+>>>>>>> b6a042873667845b10e58283e1654e548130b028
+Organization name made a payment of 2.0 on 2020_June_11 at 10:29:44 PM
+Organization name made a payment of 2.0 on 2020_June_11 at 10:29:57 PM
+Organization name made a payment of 2.0 on 2020_June_11 at 10:30:51 PM
+Organization name made a payment of 2.0 on 2020_June_11 at 10:31:26 PM
