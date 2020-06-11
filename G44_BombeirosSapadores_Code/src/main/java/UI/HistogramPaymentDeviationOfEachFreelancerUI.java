@@ -45,7 +45,7 @@ public class HistogramPaymentDeviationOfEachFreelancerUI implements Initializabl
         double value2 = Double.parseDouble(pf.getAverageLbl().getText()) + Double.parseDouble(pf.getDeviationLbl().getText());
         Map.Entry<String, CustomValue> entry = pf.getEntry();
         set1.getData().add(new XYChart.Data("]-∞," + value1 + "]", entry.getValue().getLeftDev()));
-        set1.getData().add(new XYChart.Data("]" + value1 + "," + value1 + "[", entry.getValue().getMiddleDev()));
+        set1.getData().add(new XYChart.Data("]" + value1 + "," + value2 + "[", entry.getValue().getMiddleDev()));
         set1.getData().add(new XYChart.Data("[" + value2 + ", +∞[", entry.getValue().getRightDev()));
 
         histogram.getData().addAll(set1);
