@@ -7,6 +7,9 @@ package Controller;
 
 import Authorization.model.UserSession;
 import Model.ApplicationPOT;
+import Model.Organization;
+import Model.Platform;
+import Model.RegisterOrganization;
 import Model.TransactionExecution;
 import java.util.List;
 
@@ -40,7 +43,10 @@ public class HistoricalTransactionController {
         ApplicationPOT ap = ApplicationPOT.getInstance();
         UserSession log = ap.getActualSession();
         String email = log.getUserEmail();
-        lt = ap.getPlatform().getrOrg().getOrganizationByUserEmailColab(email).loadHistoricalTransaction(fileName);
+        Platform plat = ap.getPlatform();
+        RegisterOrganization rOrg = plat.getrOrg();
+        Organization org = rOrg.getOrganizationByUserEmailColab(email);
+        lt = org.loadHistoricalTransaction(fileName);
         return lt != null;
     }
 
