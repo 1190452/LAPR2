@@ -128,35 +128,35 @@ public class CreateManagerCollaboratorUI implements Initializable {
                                             }
 
                                         } else {
-                                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Manager is invalid!", "Please check the information on written.");
+                                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Manager is invalid!", "Please check the information written.");
                                             alert.show();
                                         }
                                     } else {
-                                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Collaborator is invalid!", "Please check the information on written.");
+                                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Collaborator is invalid!", "Please check the information written.");
                                         alert.show();
                                     }
                                 } else {
-                                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The locality is invalid!", "Please check the information on written.");
+                                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The locality is invalid!", "Please check the information written.");
                                     alert.show();
                                 }
                             } else {
-                                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Door number is invalid!", "Please check the information on written.");
+                                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Door number is invalid!", "Please check the information written.");
                                 alert.show();
                             }
                         } else {
-                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Street is invalid!", "Please check the information on written.");
+                            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Street is invalid!", "Please check the information written.");
                             alert.show();
                         }
                     } else {
-                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The NIF is invalid!", "Please check the information on written.");
+                        Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The NIF is invalid!", "Please check the information written.");
                         alert.show();
                     }
                 } else {
-                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Email is invalid!", "Please check the information on written.");
+                    Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Email is invalid!", "Please check the information written.");
                     alert.show();
                 }
             } else {
-                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Name of the Organization is invalid!", "Please check the information on written.");
+                Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "The Name of the Organization is invalid!", "Please check the information written.");
                 alert.show();
             }
 

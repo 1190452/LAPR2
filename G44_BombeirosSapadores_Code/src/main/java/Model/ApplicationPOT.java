@@ -99,7 +99,7 @@ public class ApplicationPOT implements Serializable {
      */
     private void bootstrap() {
 
-        this.m_oAutorizacao.registerUser("T4J Administrator", "administrator@gmail.com", "qwerty", Constants.ROLE_ADMINISTRATIVE);
+        this.m_oAutorizacao.registerUser("T4J Administrator", "admin@gmail.com", "qwerty", Constants.ROLE_ADMINISTRATIVE);
         this.m_oAutorizacao.registerUser("T4J Collaborator", "collaborator@gmail.com", "qwerty", Constants.ROLE_COLLABORATOR_ORGANIZATION);
         this.m_oAutorizacao.registerUser("T4J Manager", "manager@gmail.com ", "qwerty", Constants.ROLE_MANAGER_ORGANIZATION);
 
