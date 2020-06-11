@@ -81,11 +81,11 @@ All the last days of the years.
 |       | ...check if the year is a leap year? |     Platform       |           |
 |       | ...knows RegisterFreelancer? |     Platform      |   IE: Platform contains freelancers       |
 |       | ...knows RegisterOrganization? |     Platform      |   IE:       |
-|       | ...knows Organization? |    RegisterOrganization     |   IE:       |
-|       | ...knows RegisterTransaction? |Organization        |   IE:      |
-|       | ...knows TransactionList? | RegisterTransaction        |   IE:      |
+|       | ...knows Organization? |    RegisterOrganization     |   IE+(HC+LC):RegisterOrganization contains / aggregates Organizations (according to the HC + LC standard, on Platform)      |
+|       | ...knows RegisterTransaction? | Organization        |   IE:      |
+|       | ...knows TransactionList? | RegisterTransaction        |   IE: RegisterTransaction has Transactions     |
 |       | ...knows the task delay of freelancers?|     Transaction       |   IE: Transaction has the Task Delay attribute for a freelancer|
-|       | ...knows the percentage task delay overall of freelancers?|     RegisterFreelancer       |   IE: RegisterFreelancer contains the overall percentage of Task delay of freelancers |
+|       | ...knows the percentage task delay overall of freelancers?|     RegisterOrganization      |   IE: RegisterFreelancer contains the overall percentage of Task delay of freelancers |
 |       | ...saves the emails?|    Writer      |   IE: Writer simulates sending an email by saving|
 |       | ...send the emails?|     Platform      |   IE: Platform sends the emails to the freelancers|
 
