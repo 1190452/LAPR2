@@ -150,9 +150,7 @@ public class MenuAdministratorUI implements Initializable {
         if (Desktop.isDesktopSupported()) {
             try {
                 Desktop.getDesktop().browse(new URI("https://www.instagram.com/isep.pporto/"));
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            } catch (URISyntaxException e1) {
+            } catch (IOException | URISyntaxException e1) {
                 e1.printStackTrace();
             }
         }
@@ -163,9 +161,7 @@ public class MenuAdministratorUI implements Initializable {
         if (Desktop.isDesktopSupported()) {
             try {
                 Desktop.getDesktop().browse(new URI("https://www.facebook.com/isep.pporto/"));
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            } catch (URISyntaxException e1) {
+            } catch (IOException | URISyntaxException e1) {
                 e1.printStackTrace();
             }
         }
@@ -177,9 +173,7 @@ public class MenuAdministratorUI implements Initializable {
         if (Desktop.isDesktopSupported()) {
             try {
                 Desktop.getDesktop().browse(new URI("https://www.linkedin.com/school/isep/?originalSubdomain=pt"));
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            } catch (URISyntaxException e1) {
+            } catch (IOException | URISyntaxException e1) {
                 e1.printStackTrace();
             }
         }
@@ -209,10 +203,16 @@ public class MenuAdministratorUI implements Initializable {
         wabfp = app.getPlatform().getWabfp();
         boolean check = wabfp.sendEmail();
         if (check) {
-            Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Send Email", "Email sent with success");
+            Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Send Email", "Email sent with success!");
 
             if (alert1.showAndWait().get() == ButtonType.OK) {
                 alert1.close();
+            }
+        }else {
+            Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Send Email", "Email not sent!");
+            
+            if (alert2.showAndWait().get() == ButtonType.OK) {
+                alert2.close();
             }
         }
         // Hide this current window
