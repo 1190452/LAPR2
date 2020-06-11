@@ -26,6 +26,9 @@
                   <Font size="15.0" />
                </font>
             </Label>
+            <FontAwesomeIconView fill="#e6be8a" glyphName="INSTAGRAM" layoutX="14.0" layoutY="30.0" onMouseClicked="#openInsta" size="20" />
+            <FontAwesomeIconView fill="#e6be8a" glyphName="FACEBOOK" layoutX="16.0" layoutY="75.0" onMouseClicked="#openFace" size="20" />
+            <FontAwesomeIconView fill="#e6be8a" glyphName="LINKEDIN" layoutX="14.0" layoutY="120.0" onMouseClicked="#openLink" size="20" />
          </children></AnchorPane>
    </bottom>
    <top>
