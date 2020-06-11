@@ -79,10 +79,9 @@ public class DoPaymentTask extends TimerTask {
 
             Task ts = lt.get(i);
             boolean verifier = ts.isIsFinished();
-            if (verifier == true) {
-
+            boolean verifier2 = ts.isIsPayed();
+            if (verifier == true && verifier2 == false) {
                 amountsET.add(ts);
-
             }
         }
 
