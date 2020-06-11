@@ -4,7 +4,7 @@
 
 ### Brief Format
 
-The collaborator beggins loading the file with historical transactions. The system request for the necessary data about the file(i.e. file name). The collaborator introduces the data requiered. The system validate and show the data, waiting for confirmation. The collaborator confirms. The system load the file and records the transactions data and informs the collaborator about the success of the operation.
+The collaborator beggins loading the file with historical transactions. The system request for the necessary data about the file(i.e. file name). The collaborator introduces the data requiered. The system request confirmation. The collaborator confirms. The system load the file and records the transactions data and informs the collaborator about the success of the operation.
 
 ### SSD
 ![UC5_SSD.svg](UC5_SSD.svg)
@@ -18,20 +18,21 @@ Collaborator
 
 #### Stakeholders and their interests
 * Collaborator: pretends to load the historical transactions to see them.
+* Organization: to has access of all transactions done.
 
 #### Preconditions
 * file must be created
 
 #### Postconditions
-* Platforma has already all the transactions that have been done.
+* Organization has already all the transactions that have been done.
 
 #### Main success scenario (or basic flow)
 
 1. The collaborator starts loading the file.
 2. The system request for the necessary data (i.e. file name). 
 3. The collaborator introduces the data requiered.
-4. The system validate and show the data, waiting for confirmation.
-5. The collaborator confirms. 
+4. The system request confirmation.
+5. The collaborator confirms.
 6. The system save the transactions history and notify the collaborator about the sucess of the operation.
 
 #### Extensions (or alternative flows)
@@ -65,8 +66,6 @@ n/a
 #### Open questions
 
 * How many files the collaborator can load?
-* What is the requeired information in the file?
-
 
 ## 2. OO Analysis
 
@@ -82,29 +81,29 @@ n/a
 | Main flow | Question: what class... | Answer | reason |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The collaborator starts uploading the file.|... interacts with the user?| HistoricalTransactionUI |Pure Fabrication|
-| |... coordinates the UC?| HistoricalTransactionController |Controller|
-| |... create instances of file?|Collaborator|Creator(rule1)|
+|             |... coordinates the UC?| HistoricalTransactionController |Controller|
+|             |... create instances of file?|Collaborator|Creator(rule1)|
 |2. The system request the necessary data about the file (i.e. file name).||||
-|3. The collaborator introducethe required data. |... saves the entered data?|Reader|IE: instance created in step 1|
-|4. The system validates and show the data, asking confirmation. |... validate the data of Reader? (local validation)|Reader|IE: own your own data|
-| |...validate the data of Reader? (global validation)|Platform|IE: Platform has historical transactions.|
+|3. The collaborator introducethe required data. |... saves the entered data?|Organization|IE: instance created in step 1|
+|4. The system validates and show the data, asking confirmation. |... validate the data of Reader? (local validation)|ImportFile|IE: instace created in step1|
+|             |...validate the data of ImportFile? (global validation)|Organization|IE: Organization has historical transactions.|
 |5. The collaborator confirms. ||||
-|6. The system load all the information and notify the collaborator about the sucess of the operation.|... saves the reader created?| Platform |IE: No MD the platform has historical transactions|
+|6. The system load all the information and notify the collaborator about the sucess of the operation.|... saves the ImportFile created?| Organization |IE: No MD the Organization has historical transactions|
              
 
 ### Sistematization ##
 
  From rational results that conceptual classes  conceptuais promoted to software classes are:
 
- * Platform
+ * Organization 
  * Collaborator
- * Reader
+ * ImportFile
 
 
 Other software classes (i.e. Pure Fabrication) identified:  
 
- * ReaderUI  
- * ReaderController
+ * HistoricalTransactionUI  
+ * HistoricalTransactionController
 
 
 ###	Sequence Diagram
