@@ -42,7 +42,7 @@ public class WatchStatisticsController {
             for (int i = 0; i < lorg.size(); i++) {
                 RegisterTransaction ra = lorg.get(i).getRTrans();
                 for (int p = 0; p < ra.getTransactions().size(); p++) {
-                    ltr.add(ra.getTransactions().get(i));
+                    ltr.add(ra.getTransactions().get(p));
                 }
             }
             return ltr;
