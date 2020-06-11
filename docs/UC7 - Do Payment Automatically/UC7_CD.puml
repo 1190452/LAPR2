@@ -6,10 +6,11 @@ class Platform{
     +calculatePeriod(nrDays)
     +getTime()
     +calculateDifference(date, time)
+    +schedulesPayment(email)
 }
 
 class DoPaymentTask{
-    +DoPayment(org)
+    +doPayment()
 }
 
 abstract TimerTask{
@@ -17,7 +18,7 @@ abstract TimerTask{
 }
 
 class RegistOrganization {
-    +getLO()
+    +getOrganizationByUserEmailMan(email)
 }
 
 class Organization {
@@ -25,8 +26,8 @@ class Organization {
 }
 
 class DefinePayment {
-    +getTime()
-    +getDate()
+    +getTimeToPay()
+    +getDateToPay()
     +getNrDays()
 }
 
@@ -38,6 +39,6 @@ Platform "1" --> "1" DoPaymentTask : has
 Platform "1" --> "1" RegistOrganization : has
 RegistOrganization "1" --> "1..*" Organization : has
 Organization "1" --> "1" DefinePayment : has
-Platform "1" --> "1" Timer : has
+Platform "1" --> "1" Timer : creates
 
 @enduml

@@ -3,28 +3,28 @@
 skinparam classAttributeIconSize 0
 left to right direction
 
+class ApplicationPOT{
+    +getInstance()
+    +getPlatform()
+}
 
 class DoPaymentTask{
-    +DoPayment(org)
-    +calculateCost(costHour, TimeDuration)
-    +convertToCurrency(costHour, TimeDuration)
+    +DoPayment()
+    +passOrg(org)
 }
 
 class Platform{
     +getRegisterFreelancer()
-    +getRT()
 }
 
 class Organization{
-
     +getTaskList()
+    +getRTrans()
 }
 
 class RegisterFreelancer{
-    +getFreelancer()
+    +getFreelancerList()
 }
-
-
 
 class Freelancer{
     +getCountry()
@@ -41,7 +41,7 @@ class Task{
 }
 
 class RegisterTransaction{
-    +gettltr()
+    +getTransactions()
 }
 
 class Transaction {
@@ -49,15 +49,16 @@ class Transaction {
     +getTask()
 }
 
-class Payment{
-    +Payment(sum, curr, nltr)
-    +generateReceipt(country)
+class CurrencyConverter{
+    +convertToCurrency(sum, country)
 }
 
 class Writer{
-    +writeOrg(org, sum, curr)
+    +writeOrg(org, sum)
+    +generateReceipt(nltr, sum, curr)
 }
 
+DoPaymentTask ..> ApplicationPOT
 DoPaymentTask ..> Platform
 DoPaymentTask ..> Organization
 Platform "1" -- "1" RegisterFreelancer : has
@@ -65,16 +66,14 @@ RegisterFreelancer "1" -- "1..*" Freelancer : has
 Organization "1" -- "1" TaskList : has
 TaskList "1" -- "1..*" Task : has
 Platform "1" -- "1..*" Organization : has
-Platform "1" -- "1..*" RegisterTransaction : has
+Organization "1" -- "1..*" RegisterTransaction : has
 RegisterTransaction "1" -- "1..*" Transaction : has
 DoPaymentTask ..> RegisterFreelancer
 DoPaymentTask ..> Task
 DoPaymentTask ..> RegisterTransaction
 DoPaymentTask ..> Transaction
 DoPaymentTask ..> Freelancer
-DoPaymentTask "1" -- "1..*" Payment : creates
-DoPaymentTask ..> Payment
-Payment "1" --> "1" Freelancer
 DoPaymentTask ..> Writer
+DoPaymentTask ..> CurrencyConverter
 
 @enduml
