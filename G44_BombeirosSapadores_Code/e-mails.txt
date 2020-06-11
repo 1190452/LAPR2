@@ -1,0 +1,3 @@
+Receipt of JS1
+Task idTask:-----------2.0€
+The total value in euros is 2.0 and 3.0 in your local currency
