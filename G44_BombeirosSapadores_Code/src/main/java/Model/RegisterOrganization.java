@@ -52,10 +52,6 @@ public class RegisterOrganization implements Serializable {
      *
      */
     public RegisterOrganization() {
-        // this.ctask_controller = new CreateTaskController();
-        //    this.m_oApp = ApplicationPOT.getInstance();
-        //  this.m_oPlataforma = m_oApp.getPlatform();
-
         lOrg = new ArrayList<>();
     }
 

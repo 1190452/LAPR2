@@ -1,0 +1,78 @@
+@startuml
+autonumber
+
+
+participant "ro:Regist\nOrganizations" as ORGS
+participant "colab:Collaborator" as COLAB
+participant "manager:Manager" as MNGR
+participant ":Plataform" as PLAT
+participant "pwdGen: PasswordGenerator" as PWD
+participant "aut:AuthorizationFacade" as AUT
+participant "Writer" as WRT
+
+
+
+ORGS -> PLAT : alg=getPasswordGenerator()
+activate PLAT
+deactivate PLAT
+
+ORGS -> PLAT : aut = getFacadeAuthorazation()
+activate PLAT
+deactivate PLAT
+
+ORGS -> ORGS : registUser(manager)
+activate ORGS
+deactivate ORGS
+
+ORGS -> MNGR : nameM=getName()
+activate MNGR
+deactivate MNGR
+
+ORGS -> MNGR : emailM=getEmail()
+activate MNGR
+deactivate MNGR
+
+
+
+ORGS -> PWD : pwdM=generatePassword(nameM, emailM)
+activate PWD
+deactivate PWD
+
+
+
+ORGS -> AUT : registUser(nameM,emailM,pwdM,"MANAGER")
+activate AUT
+deactivate AUT
+
+ORGS -> WRT: sendsPwd(emailM, pwdM)
+activate WRT
+deactivate WRT
+
+
+ORGS -> ORGS : registUser(collaborator)
+activate ORGS
+deactivate ORGS
+
+ORGS -> COLAB : nameC = getName()
+activate COLAB
+deactivate COLAB
+
+ORGS -> COLAB : emailC=getEmail() 
+activate COLAB
+deactivate COLAB
+
+ORGS -> PWD : pwdC=generatePassword(nameC, emailC)
+activate PWD
+deactivate PWD
+
+
+ORGS -> AUT : registUser(nameC,emailC,pwdC,"COLLABORATOR")
+activate AUT
+deactivate AUT
+
+
+ORGS -> WRT: sendsPwd(emailC, pwdC)
+activate WRT
+deactivate WRT
+
+@enduml
