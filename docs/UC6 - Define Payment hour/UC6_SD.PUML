@@ -5,12 +5,13 @@ actor "Manager" as ADM
 
 participant ":PaymentUI" as UI
 participant ":DefinePaymentController" as CTRL
+participant "ApplicationPOT" as _APP
+participant "app\n:ApplicationPOT" as APP
+participant "log\n:UserSession" as SESSAO
 participant "Platform" as P
 participant "rorgs\n:RegisterOrganization" as RO
 participant "org\n:Organization" as O
 participant "dpay:DefinePayment" as DPAY
-
-
 
 activate ADM
 ADM -> UI : The manager of the organization selects the processment cycle of payment transactions.
@@ -19,17 +20,29 @@ activate UI
 UI -> CTRL : getOrg()
 activate CTRL
 
+CTRL -> _APP : app = getInstance()
+activate _APP
+deactivate _APP
+
+CTRL -> APP : plt = getPlatform()
+activate APP
+deactivate APP
 
 CTRL -> P : rorgs = getRorgs()
 activate P
 deactivate P
 
+CTRL -> APP : log = getActualSession()
+activate APP
+deactivate APP
 
-CTRL -> RO : org = getOrganizationByUserEmail(email)
+CTRL -> SESSAO : email = getUserEmail()
+activate SESSAO
+deactivate SESSAO
+
+CTRL -> RO : org = getOrganizationByUserEmailMan(email)
 activate RO
 deactivate RO
-
-
 
 deactivate CTRL
 
@@ -39,16 +52,15 @@ deactivate UI
 ADM -> UI : The Manager inserts the information.
 activate UI
 
-UI -> CTRL : newDefinePayment(time, date, nrDays)
+UI -> CTRL : newDefinePayment(time, date, rtp)
 activate CTRL
 
-
-CTRL -> O : define = newDefinePayment(time, date, nrDays)
+CTRL -> O : dpay = newDefinePayment(time, date, rtp)
 activate O
-O -> DPAY** : create(time, date, nrDays)
+O -> DPAY** : create(time, date, rtp)
 deactivate O
 
-CTRL -> O : validatesDefinePayment(define)
+CTRL -> O : validatesDefinePayment(dpay)
 activate O
 deactivate O
 
@@ -63,11 +75,11 @@ activate UI
 UI -> CTRL : registerDefinePayment()
 activate CTRL
 
-CTRL -> DPAY : registersDefinePayment(define)
+CTRL -> DPAY : registersDefinePayment(dpay)
 activate DPAY
-DPAY -> DPAY : validatesDefinePayment(define)
+DPAY -> DPAY : validatesDefinePayment(dpay)
 deactivate DPAY
-CTRL -> O : setDefinePayment(define)
+CTRL -> O : setDefinePayment(dpay)
 activate O
 deactivate O
 
@@ -80,8 +92,5 @@ deactivate CTRL
 UI -> ADM : informs about the success of the operation
 deactivate UI
 deactivate ADM
-
-
-
 
 @enduml

@@ -31,7 +31,7 @@ CTRL -> _APP : app = getInstance()
 activate _APP
 deactivate _APP
 
-CTRL -> APP : log = getLogin()
+CTRL -> APP : log = getActualSession()
 activate APP
 deactivate APP
 
