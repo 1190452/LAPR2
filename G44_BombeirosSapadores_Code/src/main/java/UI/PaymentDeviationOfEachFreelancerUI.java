@@ -5,14 +5,20 @@
  */
 package UI;
 
+import Controller.CheckPerformanceController;
 import Controller.WatchStatisticsController;
+import Model.ApplicationPOT;
+import Model.Freelancer;
 import Model.TransactionExecution;
 import Utils.CustomValue;
 import com.jfoenix.controls.JFXComboBox;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,7 +29,7 @@ import javafx.stage.Stage;
  *
  * @author tiagopereira
  */
-public class PaymentDeviationOfEachFreelancerUI {
+public class PaymentDeviationOfEachFreelancerUI implements Initializable {
 
     @FXML
     private Button cancelBtn;
@@ -35,13 +41,15 @@ public class PaymentDeviationOfEachFreelancerUI {
     private Label freelancerLbl;
     @FXML
     private Label deviationLbl;
-    private Label averageLbl;
 
     private WatchStatisticsUI ws;
     private WatchStatisticsController wsc;
     private double x, y;
+    private CheckPerformanceUI cp;
+    private CheckPerformanceController cpc;
     @FXML
     private Label AverageLbl;
+    private List<Freelancer> freel;
 
     @FXML
     private void min(MouseEvent event) {
@@ -67,7 +75,7 @@ public class PaymentDeviationOfEachFreelancerUI {
         Map.Entry<String, CustomValue> entry = wsc.getPaymentDeviationOfEachFreelancer(name, ltr);
         freelancerLbl.setText(entry.getKey());
         deviationLbl.setText(Double.toString(entry.getValue().getDeviation()));
-        averageLbl.setText(Double.toString(entry.getValue().getMean()));
+        AverageLbl.setText(Double.toString(entry.getValue().getMean()));
     }
 
     @FXML
@@ -93,10 +101,17 @@ public class PaymentDeviationOfEachFreelancerUI {
         freelEmail.getSelectionModel().clearSelection();
         freelancerLbl.setText("");
         deviationLbl.setText("");
-        averageLbl.setText("");
+        AverageLbl.setText("");
         ((Node) event.getSource()).getScene().getWindow().hide();
     }
 
-   
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ApplicationPOT ap = ApplicationPOT.getInstance();
+        freel = ap.getPlatform().getRfree().getListFreelancers();
+        for (int i = 0; i < freel.size(); i++) {
+            freelEmail.getItems().add(freel.get(i).getEmail());
+        }
+    }
 
 }

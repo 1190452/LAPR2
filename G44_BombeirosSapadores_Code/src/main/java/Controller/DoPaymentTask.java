@@ -37,14 +37,18 @@ public class DoPaymentTask extends TimerTask {
     private Organization org;
 
     /**
+     * currency converter
+     */
+    private CurrencyConverter c;
+
+    /**
      * creates an instance of DoPaymentTask
      */
     public DoPaymentTask() {
 
     }
-    
-    //======================================================================================================================================================
 
+    //======================================================================================================================================================
     /**
      * calls the method doPayment
      */
@@ -112,15 +116,14 @@ public class DoPaymentTask extends TimerTask {
 
                 }
             }
-
+            if(sum!= 0){
             String country = freel.getCountry();
-            CurrencyConverter c = new CurrencyConverter();
-            double curr = c.convert(sum, country);
+            double curr = plt.getC().convert(sum, country);
 
-            
             Writer.writeOrg(org, sum);
 
             Writer.genEmail(nltr, sum, curr);
+            }
 
         }
     }

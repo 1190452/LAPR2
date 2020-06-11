@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import Utils.Date;
 import Authorization.model.UserSession;
+import Utils.CurrencyConverter;
 import java.io.Serializable;
+import java.util.Currency;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -36,9 +38,9 @@ public class ImportTxtFile implements ImportFile, Serializable {
      */
     private RegisterFreelancer rf;
 
-    
+    private CurrencyConverter cv;
+
     //======================================================================================================================================================
-    
     /**
      * method that reads a txt file and loads a set of historical transactions
      *
@@ -89,8 +91,9 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     if (tl.validateTask(t)) {
                         tl.addTask(t);
                     }
-                    
-                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, descripOFQuality);
+                    double valueE = timeTask * taskCost;
+                    double valueC = pot.getPlatform().getC().convert(valueE, FreelancerCountry);
+                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, descripOFQuality, new Payment(valueE, valueC));
                     if (ht.validateTransaction(trans)) {
                         ht.addTransaction(trans);
                     }

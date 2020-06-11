@@ -7,13 +7,11 @@ package UI;
 
 import Controller.WatchStatisticsController;
 import Model.TransactionExecution;
-import Utils.CustomValue;
 import Utils.Statistic;
 import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,9 +36,6 @@ public class WatchStatisticsUI implements Initializable {
     private Button cancelBtn;
     @FXML
     private Button confirmBtn;
-    private Label lblName;
-    private Label lblDelay;
-    private Label lblPayment;
     private double x, y;
     private Statistic st;
     private List<TransactionExecution> ltr;
@@ -70,8 +65,8 @@ public class WatchStatisticsUI implements Initializable {
         String choice = combDecision.getSelectionModel().getSelectedItem();
 
         if (choice.equalsIgnoreCase("Payment Deviation of each Freelancer")) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationofEachFreelancer.fxml"));
-            Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationOfEachFreelancer.fxml"));
+            Parent root = (Parent) loader.load();
             PaymentDeviationOfEachFreelancerUI c = loader.getController();
             c.associarParentUI(this);
             Scene create = new Scene(root);
@@ -79,8 +74,8 @@ public class WatchStatisticsUI implements Initializable {
             window.setScene(create);
             window.show();
         } else if (choice.equalsIgnoreCase("Task Execution Delay of each Freelancer")) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CreateManagerCollaborator.fxml"));
-            Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOfEachFreelancer.fxml"));
+            Parent root = (Parent) loader.load();
             TaskExecutionDelayOfEachFreelancerUI c = loader.getController();
             c.associarParentUI(this);
             Scene create = new Scene(root);
@@ -88,8 +83,8 @@ public class WatchStatisticsUI implements Initializable {
             window.setScene(create);
             window.show();
         } else if (choice.equals("Task Execution Delay of All Freelancers")) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOffAllFreelancers.fxml"));
-            Parent root = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOfAllFreelancers.fxml"));
+            Parent root = (Parent) loader.load();
             TaskExecutionDelayOfAllFreelancersUI c = loader.getController();
             c.associarParentUI(this);
             Scene create = new Scene(root);
@@ -115,9 +110,7 @@ public class WatchStatisticsUI implements Initializable {
     }
 
     private void endWatch(ActionEvent event) {
-        lblName.setText("");
-        lblDelay.setText("");
-        lblPayment.setText("");
+        combDecision.getSelectionModel().clearSelection();
 
         ((Node) event.getSource()).getScene().getWindow().hide();
 
@@ -126,7 +119,7 @@ public class WatchStatisticsUI implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         wsc = new WatchStatisticsController();
-        st = new Statistic();
+        
         combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers");
     }
 

@@ -5,9 +5,14 @@
  */
 package UI;
 
+import Controller.CheckPerformanceController;
 import Controller.WatchStatisticsController;
+import Model.ApplicationPOT;
+import Model.Organization;
 import Model.TransactionExecution;
 import Utils.CustomValue;
+import com.jfoenix.controls.JFXComboBox;
+import com.sun.glass.ui.Application;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -26,32 +31,29 @@ import javafx.stage.Stage;
  *
  * @author tiagopereira
  */
-public class TaskExecutionDelayOfAllFreelancersUI{
+public class PaymentDeviationOfEachFreelancerUIA {
 
     @FXML
     private Button cancelBtn;
     @FXML
     private Button confirmBtn;
     @FXML
-    private Button HistogramBtn;
+    private JFXComboBox<String> freelEmail;
     @FXML
     private Label freelancerLbl;
     @FXML
     private Label AverageLbl;
     @FXML
     private Label deviationLbl;
-
-    private double x, y;
-    private WatchStatisticsUI ws;
-    private WatchStatisticsController wsc;
+    @FXML
+    private Button HistogramBtn;
+    
+    private double x,y;
+    private CheckPerformanceUI cp;
+    private CheckPerformanceController cpc;
     private Map.Entry<String, CustomValue> entry;
 
-    public void associarParentUI(WatchStatisticsUI ws) {
-        this.ws = ws;
-        wsc = this.ws.getController();
-    }
-
-    @FXML
+   @FXML
     private void min(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
@@ -69,25 +71,15 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     }
 
     @FXML
-    private void confirm(ActionEvent event) {   
-        List<TransactionExecution> ltr = ws.getLtr();
-        entry = getWsc().getTaskExecutionDelayOfAllFreelancers(ltr);
-        getFreelancerLbl().setText(getEntry().getKey());
-        getDeviationLbl().setText(Double.toString(getEntry().getValue().getDeviation()));
-        getAverageLbl().setText(Double.toString(getEntry().getValue().getMean()));
-    }
-
-    @FXML
-    private void Histogram(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (TaskExecutionDelayOfAllFreelancers).fxml"));
-        Parent root = (Parent) loader.load();
-        HistogramTaskExecutionDelayOfAllFreelancersUI c = loader.getController();
-        c.associarParentUI(this);
-        c.fillData();
-        Scene create = new Scene(root);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(create);
-        window.show();
+    private void confirm(ActionEvent event) {
+        String name = freelEmail.getValue();
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        List<Organization> lorg = app.getPlatform().getrOrg().getlOrg();
+        List<TransactionExecution> ltr = cpc.getAllTransactionExecution(lorg);
+        entry = cpc.getPaymentDeviationOfEachFreelancer(name, ltr);
+        freelancerLbl.setText(getEntry().getKey());
+        deviationLbl.setText(Double.toString(getEntry().getValue().getDeviation()));
+        AverageLbl.setText(Double.toString(getEntry().getValue().getMean()));
     }
 
     @FXML
@@ -103,13 +95,31 @@ public class TaskExecutionDelayOfAllFreelancersUI{
         x = event.getSceneX();
         y = event.getSceneY();
     }
-
+    @FXML
+    private void Histogram(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (PaymentDeviationOfEachFreelancer).fxml"));
+        Parent root = (Parent)loader.load();
+        HistogramPaymentDeviationOfEachFreelancerUI c = loader.getController();
+        c.associarParentUI(this);
+        c.fillData();
+        Scene create = new Scene(root);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(create);
+        window.show();
+    }
     private void endWatch(ActionEvent event) {
-
+        getFreelEmail().getSelectionModel().clearSelection();
         getFreelancerLbl().setText("");
         getDeviationLbl().setText("");
         getAverageLbl().setText("");
         ((Node) event.getSource()).getScene().getWindow().hide();
+    }
+
+    /**
+     * @return the freelEmail
+     */
+    public JFXComboBox<?> getFreelEmail() {
+        return freelEmail;
     }
 
     /**
@@ -120,24 +130,10 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     }
 
     /**
-     * @param freelancerLbl the freelancerLbl to set
-     */
-    public void setFreelancerLbl(Label freelancerLbl) {
-        this.freelancerLbl = freelancerLbl;
-    }
-
-    /**
      * @return the AverageLbl
      */
     public Label getAverageLbl() {
         return AverageLbl;
-    }
-
-    /**
-     * @param AverageLbl the AverageLbl to set
-     */
-    public void setAverageLbl(Label AverageLbl) {
-        this.AverageLbl = AverageLbl;
     }
 
     /**
@@ -148,27 +144,15 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     }
 
     /**
-     * @param deviationLbl the deviationLbl to set
-     */
-    public void setDeviationLbl(Label deviationLbl) {
-        this.deviationLbl = deviationLbl;
-    }
-
-    /**
-     * @return the wsc
-     */
-    public WatchStatisticsController getWsc() {
-        return wsc;
-    }
-
-    /**
      * @return the entry
      */
     public Map.Entry<String, CustomValue> getEntry() {
         return entry;
     }
-    
-    
 
-
+   public void associarParentUI(CheckPerformanceUI cp) {
+        this.cp = cp;
+        this.cpc = this.cp.getCpc();
+                
+    }
 }

@@ -122,7 +122,7 @@ public class TransactionExecution implements Serializable {
         this.delay = delay;
         this.descriptionOfQuality = descString;
         this.payment = payment;
-        transID = ++counter;
+        this.transID = ++counter;
     }
 
     /**
@@ -135,7 +135,7 @@ public class TransactionExecution implements Serializable {
         this.delay = DELAY_BY_OMISSION;
         this.descriptionOfQuality = DESCRIPTION_BY_OMISSION;
         this.payment = new Payment();
-        transID = ++counter;
+        this.transID = ++counter;
     }
 
     /**
@@ -159,7 +159,7 @@ public class TransactionExecution implements Serializable {
         this.endDate = endDate;
         this.delay = delay;
         this.descriptionOfQuality = qow;
-        transID = ++counter;
+        this.transID = ++counter;
     }
 
     //======================================================================================================================================================

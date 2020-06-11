@@ -13,6 +13,8 @@ import Utils.Date;
 import Utils.Time;
 import Authorization.FacadeAuthorization;
 import Authorization.model.RegisterUser;
+import Utils.CurrencyConverter;
+import Utils.Statistic;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.time.Year;
@@ -27,6 +29,20 @@ import java.util.Timer;
  * @author Paulo Maio <pam@isep.ipp.pt>
  */
 public class Platform implements Serializable {
+
+    /**
+     * @return the c
+     */
+    public CurrencyConverter getC() {
+        return c;
+    }
+
+    /**
+     * @param c the c to set
+     */
+    public void setC(CurrencyConverter c) {
+        this.c = c;
+    }
 
     /**
      * facade authorization
@@ -69,6 +85,16 @@ public class Platform implements Serializable {
     private Writer writer;
 
     /**
+     * currency converter
+     */
+    private CurrencyConverter c;
+
+    /**
+     * Statistic
+     */
+    private Statistic st;
+
+    /**
      * constructor than initializes the necessary classes (FacadeAuthorization,
      * RegisterOrganization, RegisterFreelancer, PasswordGenerator)
      */
@@ -80,6 +106,8 @@ public class Platform implements Serializable {
         pg.useLower(true);
         pg.useDigits(true);
         this.alg = pg.build();
+        this.c = new CurrencyConverter();
+        this.st = new Statistic();
 
     }
 
@@ -196,20 +224,19 @@ public class Platform implements Serializable {
      */
     public void sendEmail() throws FileNotFoundException {
         List<Organization> orgList = rOrg.getlOrg();
-        double percentOverallDelays = rTrans.overallPercentageDelays();
+//        double percentOverallDelays = rTrans.overallPercentageDelays();
         for (int i = 0; i < orgList.size(); i++) {
             RegisterTransaction rTrans = orgList.get(i).getRTrans();
             List<TransactionExecution> transList = rTrans.getTransactions();
-            
 
             for (int j = 0; j < transList.size(); j++) {
                 Freelancer free = transList.get(i).getFreel();
                 boolean isDelayBetterThan3 = rTrans.meanTaskDelayBetterThan3(free, transList);
                 double percentOfDelayFree = rTrans.percentageOfDelays(free);
 
-                if ((isDelayBetterThan3) && (percentOfDelayFree > percentOverallDelays)) {
-                    Writer.sendEmail(free);
-                }
+//                if ((isDelayBetterThan3) && (percentOfDelayFree > percentOverallDelays)) {
+//                    Writer.sendEmail(free);
+//                }
             }
         }
     }
@@ -293,6 +320,13 @@ public class Platform implements Serializable {
      */
     public Writer getWriter() {
         return writer;
+    }
+
+    /**
+     * @return the st
+     */
+    public Statistic getSt() {
+        return st;
     }
 
     //======================================================================================================================================================

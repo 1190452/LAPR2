@@ -69,7 +69,7 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Task Execution Delay:" wrappingWidth="294.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Task Execution Delay Deviation:" wrappingWidth="267.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>
@@ -77,7 +77,7 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Average Task Execution:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Task Execution Delay:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <font>
                   <Font name="Verdana" size="18.0" />
                </font>

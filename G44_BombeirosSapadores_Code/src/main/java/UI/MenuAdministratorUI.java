@@ -113,8 +113,18 @@ public class MenuAdministratorUI implements Initializable {
     }
 
     @FXML
-    private void checkFreelancerStatistics(ActionEvent event) {
-    }
+    private void checkFreelancerStatistics(ActionEvent event) throws IOException { 
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WatchStatistics.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.setTitle("See Overall Statistics");
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setResizable(false);
+        stage.show();
+
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();    }
 
     @FXML
     private void createOrganization(ActionEvent event) throws IOException {

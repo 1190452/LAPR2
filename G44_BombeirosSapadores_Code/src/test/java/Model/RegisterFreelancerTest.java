@@ -162,7 +162,7 @@ public class RegisterFreelancerTest {
         System.out.println("getListaFreelancers");
         RegisterFreelancer instance = new RegisterFreelancer();
         List<Freelancer> expResult = new ArrayList<>();
-        List<Freelancer> result = instance.getListaFreelancers();
+        List<Freelancer> result = instance.getListFreelancers();
         assertEquals(expResult, result);
        
     }

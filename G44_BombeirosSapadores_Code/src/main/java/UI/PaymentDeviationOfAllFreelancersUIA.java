@@ -5,7 +5,10 @@
  */
 package UI;
 
+import Controller.CheckPerformanceController;
 import Controller.WatchStatisticsController;
+import Model.ApplicationPOT;
+import Model.Organization;
 import Model.TransactionExecution;
 import Utils.CustomValue;
 import java.io.IOException;
@@ -26,9 +29,9 @@ import javafx.stage.Stage;
  *
  * @author tiagopereira
  */
-public class TaskExecutionDelayOfAllFreelancersUI{
+public class PaymentDeviationOfAllFreelancersUIA {
 
-    @FXML
+     @FXML
     private Button cancelBtn;
     @FXML
     private Button confirmBtn;
@@ -42,13 +45,13 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     private Label deviationLbl;
 
     private double x, y;
-    private WatchStatisticsUI ws;
-    private WatchStatisticsController wsc;
+    private CheckPerformanceUI cp;
+    private CheckPerformanceController cpc;
     private Map.Entry<String, CustomValue> entry;
 
-    public void associarParentUI(WatchStatisticsUI ws) {
-        this.ws = ws;
-        wsc = this.ws.getController();
+    public void associarParentUI(CheckPerformanceUI ws) {
+        this.cp = cp;
+        cpc = this.cp.getCpc();
     }
 
     @FXML
@@ -70,8 +73,10 @@ public class TaskExecutionDelayOfAllFreelancersUI{
 
     @FXML
     private void confirm(ActionEvent event) {   
-        List<TransactionExecution> ltr = ws.getLtr();
-        entry = getWsc().getTaskExecutionDelayOfAllFreelancers(ltr);
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        List<Organization> lorg = app.getPlatform().getrOrg().getlOrg();
+        List<TransactionExecution> ltr = cpc.getAllTransactionExecution(lorg);
+        entry = cpc.getPaymentDeviationOfAllFreelancers(ltr);
         getFreelancerLbl().setText(getEntry().getKey());
         getDeviationLbl().setText(Double.toString(getEntry().getValue().getDeviation()));
         getAverageLbl().setText(Double.toString(getEntry().getValue().getMean()));
@@ -79,9 +84,9 @@ public class TaskExecutionDelayOfAllFreelancersUI{
 
     @FXML
     private void Histogram(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (TaskExecutionDelayOfAllFreelancers).fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (PaymentDeviationOfAllFreelancers).fxml"));
         Parent root = (Parent) loader.load();
-        HistogramTaskExecutionDelayOfAllFreelancersUI c = loader.getController();
+        HistogramPaymentDeviationOfAllFreelancersUI c = loader.getController();
         c.associarParentUI(this);
         c.fillData();
         Scene create = new Scene(root);
@@ -157,8 +162,8 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     /**
      * @return the wsc
      */
-    public WatchStatisticsController getWsc() {
-        return wsc;
+    public CheckPerformanceController getWsc() {
+        return cpc;
     }
 
     /**
@@ -167,8 +172,4 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     public Map.Entry<String, CustomValue> getEntry() {
         return entry;
     }
-    
-    
-
-
 }

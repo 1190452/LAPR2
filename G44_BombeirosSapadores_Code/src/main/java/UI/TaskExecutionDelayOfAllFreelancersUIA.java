@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author tiagopereira
  */
-public class TaskExecutionDelayOfAllFreelancersUI{
+public class TaskExecutionDelayOfAllFreelancersUIA{
 
     @FXML
     private Button cancelBtn;

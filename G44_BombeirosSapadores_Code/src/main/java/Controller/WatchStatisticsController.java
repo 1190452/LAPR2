@@ -27,9 +27,10 @@ public class WatchStatisticsController {
     private String email;
 
     private Statistic st;
-     
-    public List<TransactionExecution> getFreelancers(){
+
+    public List<TransactionExecution> getFreelancers() {
         ApplicationPOT app = ApplicationPOT.getInstance();
+        st = app.getPlatform().getSt();
         RegisterOrganization rorgs = app.getPlatform().getrOrg();
         UserSession log = app.getActualSession();
         email = log.getUserEmail();
@@ -48,14 +49,14 @@ public class WatchStatisticsController {
      */
     public Map.Entry<String, CustomValue> getPaymentDeviationOfEachFreelancer(String emailF, List<TransactionExecution> ltr) {
         return st.getPaymentDeviationOfEachFreelancer(ltr, emailF);
+    }
 
+    public Map.Entry<String, CustomValue> getTaskExecutionDelayOfAllFreelancers(List<TransactionExecution> ltr) {
+        return st.getTaskExecutionDelayOfAllFreelancers(ltr);
     }
 
     public Map.Entry<String, CustomValue> getTaskExecutionDelayOfEachFreelancer(String emailF, List<TransactionExecution> ltr) {
         return st.getTaskExecutionDelayOfEachFreelancer(ltr, emailF);
     }
 
-    private Map.Entry<String, CustomValue> getTaskExecutionDelayOfAllFreelancers(List<TransactionExecution> ltr) {
-        return st.getTaskExecutionDelayOfAllFreelancers(ltr);
-    }
 }

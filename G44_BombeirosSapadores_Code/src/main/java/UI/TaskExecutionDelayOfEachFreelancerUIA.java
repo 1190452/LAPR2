@@ -6,14 +6,20 @@
 package UI;
 
 import Controller.WatchStatisticsController;
+import Model.ApplicationPOT;
+import Model.Freelancer;
 import Model.TransactionExecution;
 import Utils.CustomValue;
+import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -26,12 +32,14 @@ import javafx.stage.Stage;
  *
  * @author tiagopereira
  */
-public class TaskExecutionDelayOfAllFreelancersUI{
+public class TaskExecutionDelayOfEachFreelancerUIA implements Initializable {
 
     @FXML
     private Button cancelBtn;
     @FXML
     private Button confirmBtn;
+    @FXML
+    private JFXComboBox<String> freelEmail;
     @FXML
     private Button HistogramBtn;
     @FXML
@@ -41,15 +49,11 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     @FXML
     private Label deviationLbl;
 
-    private double x, y;
     private WatchStatisticsUI ws;
     private WatchStatisticsController wsc;
+    private double x, y;
+    private List<Freelancer> freel;
     private Map.Entry<String, CustomValue> entry;
-
-    public void associarParentUI(WatchStatisticsUI ws) {
-        this.ws = ws;
-        wsc = this.ws.getController();
-    }
 
     @FXML
     private void min(MouseEvent event) {
@@ -69,19 +73,20 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     }
 
     @FXML
-    private void confirm(ActionEvent event) {   
+    private void confirm(ActionEvent event) {
+        String name = freelEmail.getValue();
         List<TransactionExecution> ltr = ws.getLtr();
-        entry = getWsc().getTaskExecutionDelayOfAllFreelancers(ltr);
-        getFreelancerLbl().setText(getEntry().getKey());
-        getDeviationLbl().setText(Double.toString(getEntry().getValue().getDeviation()));
-        getAverageLbl().setText(Double.toString(getEntry().getValue().getMean()));
+        entry = wsc.getTaskExecutionDelayOfEachFreelancer(name, ltr);
+        freelancerLbl.setText(getEntry().getKey());
+        deviationLbl.setText(Double.toString(getEntry().getValue().getDeviation()));
+        AverageLbl.setText(Double.toString(getEntry().getValue().getMean()));
     }
 
     @FXML
     private void Histogram(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (TaskExecutionDelayOfAllFreelancers).fxml"));
-        Parent root = (Parent) loader.load();
-        HistogramTaskExecutionDelayOfAllFreelancersUI c = loader.getController();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (TaskExecutionDelayOfEachFreelancer).fxml"));
+        Parent root = (Parent)loader.load();
+        HistogramTaskExecutionDelayOfEachFreelancerUI c = loader.getController();
         c.associarParentUI(this);
         c.fillData();
         Scene create = new Scene(root);
@@ -104,12 +109,31 @@ public class TaskExecutionDelayOfAllFreelancersUI{
         y = event.getSceneY();
     }
 
-    private void endWatch(ActionEvent event) {
+    public void associarParentUI(WatchStatisticsUI ws) {
+        this.ws = ws;
+        wsc = this.ws.getController();
+    }
 
+    private void endWatch(ActionEvent event) {
+        getFreelEmail().getSelectionModel().clearSelection();
         getFreelancerLbl().setText("");
         getDeviationLbl().setText("");
         getAverageLbl().setText("");
         ((Node) event.getSource()).getScene().getWindow().hide();
+    }
+
+    /**
+     * @return the freelEmail
+     */
+    public JFXComboBox<String> getFreelEmail() {
+        return freelEmail;
+    }
+
+    /**
+     * @param freelEmail the freelEmail to set
+     */
+    public void setFreelEmail(JFXComboBox<String> freelEmail) {
+        this.freelEmail = freelEmail;
     }
 
     /**
@@ -154,11 +178,13 @@ public class TaskExecutionDelayOfAllFreelancersUI{
         this.deviationLbl = deviationLbl;
     }
 
-    /**
-     * @return the wsc
-     */
-    public WatchStatisticsController getWsc() {
-        return wsc;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ApplicationPOT ap = ApplicationPOT.getInstance();
+        freel = ap.getPlatform().getRfree().getListFreelancers();
+        for (int i = 0; i < freel.size(); i++) {
+            freelEmail.getItems().add(freel.get(i).getEmail());
+        }
     }
 
     /**
@@ -167,8 +193,5 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     public Map.Entry<String, CustomValue> getEntry() {
         return entry;
     }
-    
-    
-
 
 }

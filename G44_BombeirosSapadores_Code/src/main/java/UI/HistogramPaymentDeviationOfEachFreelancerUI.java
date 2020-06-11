@@ -1,10 +1,10 @@
-package UI;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package UI;
+
 import Utils.CustomValue;
 import java.net.URL;
 import java.util.Map;
@@ -18,17 +18,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
  *
- * @author User
+ * @author tiagopereira
  */
-public class HistogramTaskExecutionDelayOfEachFreelancerUI implements Initializable {
-
+public class HistogramPaymentDeviationOfEachFreelancerUI implements Initializable {
     @FXML
     private BarChart<?, ?> histogram;
-    private TaskExecutionDelayOfEachFreelancerUI td;
+    private PaymentDeviationOfEachFreelancerUIA td;
     private double x, y;
-
+    
     /**
      * Initializes the controller class.
      *
@@ -38,6 +36,9 @@ public class HistogramTaskExecutionDelayOfEachFreelancerUI implements Initializa
     @Override
     public void initialize(URL url, ResourceBundle rb) {        
 
+    }
+    public void associarParentUI(PaymentDeviationOfEachFreelancerUIA td) {
+        this.td = td;
     }
     
     public void fillData(){
@@ -56,8 +57,8 @@ public class HistogramTaskExecutionDelayOfEachFreelancerUI implements Initializa
 
         histogram.getData().addAll(set1);
     }
-
-    @FXML
+    
+     @FXML
     private void min(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
@@ -82,10 +83,4 @@ public class HistogramTaskExecutionDelayOfEachFreelancerUI implements Initializa
         x = event.getSceneX();
         y = event.getSceneY();
     }
-
-    public void associarParentUI(TaskExecutionDelayOfEachFreelancerUI td) {
-        this.td = td;
-
-    }
-
 }

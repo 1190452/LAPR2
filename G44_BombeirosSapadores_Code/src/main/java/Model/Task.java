@@ -90,6 +90,8 @@ public class Task implements Serializable {
         this.timeTask = timeTask;
         this.costHour = costHour;
         this.taskCategory = taskCategory;
+        this.isPayed = false;
+        this.isFinished = true;
     }
 
     /**

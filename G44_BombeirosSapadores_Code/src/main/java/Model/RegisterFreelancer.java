@@ -87,7 +87,7 @@ public class RegisterFreelancer implements Serializable {
      */
     public boolean addFreelancer(Freelancer free) {
         if (!listaFreelancers.contains(free)) {
-            getListaFreelancers().add(free);
+            getListFreelancers().add(free);
             return true;
         } else {
             return false;
@@ -102,7 +102,7 @@ public class RegisterFreelancer implements Serializable {
      * @param 
      */
     public boolean removeFreelancer(Freelancer fr) {
-        return getListaFreelancers().remove(fr);
+        return getListFreelancers().remove(fr);
     }
     
      /**
@@ -144,15 +144,6 @@ public class RegisterFreelancer implements Serializable {
     //======================================================================================================================================================
 
     /**
-     * returns the list of freelancers
-     *
-     * @return
-     */
-    public List<Freelancer> getListFreelancers() {
-        return getListaFreelancers();
-    }
-
-    /**
      * method that returns a specific list of freelancers
      *
      * @param lt
@@ -180,7 +171,7 @@ public class RegisterFreelancer implements Serializable {
      *
      * @return the listaFreelancers
      */
-    public List<Freelancer> getListaFreelancers() {
+    public List<Freelancer> getListFreelancers() {
         return listaFreelancers;
     }
 

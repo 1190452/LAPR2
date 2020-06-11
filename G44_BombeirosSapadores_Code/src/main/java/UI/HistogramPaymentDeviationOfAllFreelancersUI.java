@@ -22,30 +22,23 @@ import javafx.stage.Stage;
  *
  * @author tiagopereira
  */
-public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializable {
+public class HistogramPaymentDeviationOfAllFreelancersUI implements Initializable {
 
-    @FXML
     private BarChart<?, ?> histogram;
     private double x, y;
-    private TaskExecutionDelayOfAllFreelancersUI tda;
+    private PaymentDeviationOfAllFreelancersUIA pa;
     private WatchStatisticsController wsc;
 
-    /**
-     * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+    public void associarParentUI(PaymentDeviationOfAllFreelancersUIA pa) {
+        this.pa = pa;
+        this.wsc = this.pa.getWsc();
     }
 
     public void fillData() {
         XYChart.Series set1 = new XYChart.Series<>();
-        double value1 = Double.parseDouble(tda.getAverageLbl().getText()) - Double.parseDouble(tda.getDeviationLbl().getText());
-        double value2 = Double.parseDouble(tda.getAverageLbl().getText()) + Double.parseDouble(tda.getDeviationLbl().getText());
-        Map.Entry<String, CustomValue> entry = tda.getEntry();
+        double value1 = Double.parseDouble(pa.getAverageLbl().getText()) - Double.parseDouble(pa.getDeviationLbl().getText());
+        double value2 = Double.parseDouble(pa.getAverageLbl().getText()) + Double.parseDouble(pa.getDeviationLbl().getText());
+        Map.Entry<String, CustomValue> entry = pa.getEntry();
 
         set1.getData().add(new XYChart.Data("]-∞," + value1 + "]", entry.getValue().getLeftDev()));
         set1.getData().add(new XYChart.Data("]" + value1 + "," + value2 + "[", entry.getValue().getMiddleDev()));
@@ -53,9 +46,8 @@ public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializa
         histogram.getData().addAll(set1);
     }
 
-    public void associarParentUI(TaskExecutionDelayOfAllFreelancersUI tda) {
-        this.tda = tda;
-        this.wsc = this.tda.getWsc();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
     }
 
     @FXML

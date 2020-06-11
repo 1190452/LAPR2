@@ -29,33 +29,7 @@ public class CheckPerformanceController {
     private Statistic st;
     
     //======================================================================================================================================================
-
-    public Map.Entry<String, CustomValue> OverallStatistics() {
-        String decisao = null;
-        st = new Statistic();
-        ApplicationPOT app = ApplicationPOT.getInstance();
-        String emailF = "gg@gmail.com";
-        List<Organization> lorg = app.getPlatform().getrOrg().getlOrg();
-        List<TransactionExecution> ltr = getAllTransactionExecution(lorg);
-
-        if (decisao.equals("Payment Deviation of each Freelancer")) {
-            return getPaymentDeviationOfEachFreelancer(emailF, ltr);
-
-        } else if (decisao.equals("Task Execution Delay of each Freelancer")) {
-            return getTaskExecutionDelayOfEachFreelancer(emailF, ltr);
-
-        } else if (decisao.equals("Task Execution Delay of All Freelancers")) {
-            return getTaskExecutionDelayOfAllFreelancers(ltr);
-
-        } else if (decisao.equals("Payment Deviation of All Freelancers")) {
-            return getPaymentDeviationOfAllFreelancers(ltr);
-        }
-        return null;
-        
-    }
-    
-    //======================================================================================================================================================
-    
+   
     /**
      * method that gets the performances of freelancers in 4 ways: - payment
      * mean and deviation of one freelancer - delay mean and deviation of one
@@ -74,15 +48,15 @@ public class CheckPerformanceController {
         return st.getTaskExecutionDelayOfEachFreelancer(ltr, emailF);
     }
 
-    private Map.Entry<String, CustomValue> getTaskExecutionDelayOfAllFreelancers(List<TransactionExecution> ltr) {
+    public Map.Entry<String, CustomValue> getTaskExecutionDelayOfAllFreelancers(List<TransactionExecution> ltr) {
         return st.getTaskExecutionDelayOfAllFreelancers(ltr);
     }
 
-    private Map.Entry<String, CustomValue> getPaymentDeviationOfAllFreelancers(List<TransactionExecution> ltr) {
+   public Map.Entry<String, CustomValue> getPaymentDeviationOfAllFreelancers(List<TransactionExecution> ltr) {
         return st.getPaymentDeviationOfAllFreelancers(ltr);
     }
 
-    private List<TransactionExecution> getAllTransactionExecution(List<Organization> lorg) {
+    public List<TransactionExecution> getAllTransactionExecution(List<Organization> lorg) {
         List<TransactionExecution> ltr = new ArrayList<>();
         for (int i = 0; i < lorg.size(); i++) {
             RegisterTransaction ra = lorg.get(i).getrTrans();
