@@ -84,11 +84,10 @@ public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializa
         y = event.getSceneY();
     }
 
-<<<<<<< HEAD
-=======
+
     void associarParentUI(TaskExecutionDelayOfEachFreelancerUI td) {
         //this.tda = td;
     }
 
->>>>>>> 946afc14359def4252dde7ce377b3b3cea668c8d
+
 }

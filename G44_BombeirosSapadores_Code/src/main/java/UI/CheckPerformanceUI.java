@@ -6,8 +6,6 @@
 package UI;
 
 import Controller.CheckPerformanceController;
-import Controller.WatchStatisticsController;
-import Model.ApplicationPOT;
 import Model.Organization;
 import Model.TransactionExecution;
 import Utils.Statistic;
