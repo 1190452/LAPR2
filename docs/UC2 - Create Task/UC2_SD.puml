@@ -9,7 +9,7 @@ participant "ApplicationPOT" as _APP
 participant "app\n:ApplicationPOT" as APP
 participant "log\n:UserSession" as SESSAO
 participant ":Plataform" as PLAT
-participant "rorgs:Organization\nRegister" as RORGS
+participant "rorgs:Register\nOrganization" as RORGS
 participant "org\n:Organization" as ORG
 participant "tl\n:TaksList" as LTASKS
 participant "task\n:Task" as TAREFA
