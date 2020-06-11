@@ -68,12 +68,13 @@ When the manager defines the hour of the payments.
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 | 1. The timer starts the automatic payment process at the stipulated time.      | ...creates the instance of the Task?  | Platform | creator |
 |       | ...coordinates the UC? | DoPaymentTask | Controller |
-|       | ...knows the RegistOrganizations? | Platform | IE and HC+LC |
+|       | ...knows the RegisterOrganizations? | Platform | IE and HC+LC |
 |       | ...has every Organization? | RegistOrganizations | HC+LC |
 |       | ...knows the DefinePayment? | Organization | IE: each organization has a DefinePayment |
 |       | ...creates the instance of the Timer? | Platform | creator | 
 |       | ...determines that time has been reached? | Timer | IE |
-| 2. The system makes payments using the payment list, triggering the process at the defined date and time, generating the receipt and sending an email to every freelancer. | ...knows the RegisterFreelancer? | Platform | IE and HC+LC |
+| 2. The system makes payments using the payment list, triggering the process at the defined date and time, generating the receipt and sending an email to every freelancer. | ...knows teh Platform? | ApplicationPOT | IE |
+|       | ...knows the RegisterFreelancer? | Platform | IE and HC+LC |
 |       | ...knows every Freelancer? | RegisterFreelancer | IE |
 |       | ...knows the TaskList? | Organization | IE: Organization has tasks | 
 |       | ...creates a temporary list to save the tasks for each freelancer? | DoPaymentTask | creator |
@@ -104,7 +105,7 @@ When the manager defines the hour of the payments.
  * DoPaymentTask 
  * TaskList
  * RegisterFreelancer
- * RegistOrganizations
+ * RegisterOrganizations
  * RegisterTransaction
  
  Other classes of external systems / components:
