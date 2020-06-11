@@ -21,3 +21,11 @@
 .chart-bar {
     -fx-bar-fill: #e6be8a; 
 }
+
+ .label1 {
+    -fx-tick-label-font-size:34;
+ }
+
+ .label2 {
+    -fx-tick-label-fill: rgb(255,255,255);
+ }

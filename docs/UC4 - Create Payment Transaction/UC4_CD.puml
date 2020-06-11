@@ -9,14 +9,14 @@ class CreateTransactionController{
   +getFreelancerList()
   +createNewTransaction(task, freel, endDate, delay, qow)
   +registerTransaction()
-  
   }
 
 class Organization{
   -String nome
   -String email
   -String nif
-  +getTL()
+  +getTaskList()
+  +getRTrans()
   }
 
 class TaskList{
@@ -24,12 +24,12 @@ class TaskList{
   }
 
 class Platform{
-  +getRF()
-  +getRT()
+  +getRFree()
+
   }
 
 class RegisterFreelancer{
-  +getFreelancerList()
+  +getListFreelancers()
   }
 
 class RegisterTransaction{
@@ -39,10 +39,11 @@ class RegisterTransaction{
   +addTransaction(trans)
   }
 
-class Transaction{
-  +create(task, freel, endDate, delay, qow)
-  +validateTaskExecution(taskExec)
-  +addTaskExecution(taskExec)
+class TransactionExecution{
+  -Data endDate
+  -double delay
+  -String descriptionOfQuality
+  +create(task, freel,endDate, delay, qow, payment)
   }
 
 class Freelancer{
@@ -68,11 +69,10 @@ class Task{
   -String taskCategory
   }
 
-class TaskExecution{
-  -Data endDate
-  -double delay
-  -String descriptionOfQuality
-  +create(endDate, delay, qow)
+class Payment{
+  -valueE
+  -valueC
+  +create(costEuros, costCurrency)
   }
   
 
@@ -82,14 +82,14 @@ CreateTransactionController ..> TaskList
 CreateTransactionController ..> Platform
 CreateTransactionController ..> RegisterFreelancer
 CreateTransactionController ..> RegisterTransaction
-CreateTransactionController ..> Transaction
+CreateTransactionController ..> TransactionExecution
 
 CreateTransactionUI ..> CreateTransactionController
 
-Freelancer "1" -- "1" Transaction: receives >
+Freelancer "1" -- "1" Payment: receives >
 
 Platform "1" -- "1..*" RegisterTransaction: has >
-RegisterTransaction "1" -- "*" Transaction: has >
+RegisterTransaction "1" -- "*" TransactionExecution: has >
 Platform "1" -- "1..*" Organization: has registered >
 Platform "1" -- "1..*" RegisterFreelancer: has >
 RegisterFreelancer "1" -- "*" Freelancer: has >
@@ -99,15 +99,16 @@ Organization "1" -- "1" TaskList: has >
 
 TaskList "1" -- "*" Task: has >
 
-Collaborator "1" -- "1..*" Transaction: creates >
+Collaborator "1" -- "1..*" TransactionExecution: creates >
 Collaborator "1" -- "1" User: acts as >
 
 Task "1..*" -- "1" Freelancer: made by >
-Task "1" -- "1" TaskExecution: originates >
 
-Transaction "1" -- "1" TaskExecution: has >
 
-TaskExecution "1" -- "1" Freelancer: related to the work of >
+TransactionExecution "1" --"1" Payment: originates
+TransactionExecution "1" -- "1" Freelancer: related to the work of
+TransactionExecution "1" --"1" Task: has
+TransactionExecution "1" --"1" Freelancer: has
 
 
 

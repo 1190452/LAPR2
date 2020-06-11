@@ -7,6 +7,7 @@ package UI;
  */
 import Utils.CustomValue;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -36,19 +37,22 @@ public class HistogramTaskExecutionDelayOfEachFreelancerUI implements Initializa
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {        
+    public void initialize(URL url, ResourceBundle rb) {
 
     }
-    
-    public void fillData(){
-    
+
+    public void fillData() {
+        DecimalFormat f = new DecimalFormat("##.00");
         XYChart.Series set1 = new XYChart.Series<>();
         double value1 = Double.parseDouble(td.getAverageLbl().getText());
         double value2 = Double.parseDouble(td.getDeviationLbl().getText());
-        double valueF = value1 -value2;
+        double valueF = value1 - value2;
         double value3 = Double.parseDouble(td.getAverageLbl().getText());
         double value4 = Double.parseDouble(td.getDeviationLbl().getText());
         double valueR = value3 + value4;
+        f.format(valueF);
+        f.format(valueR);
+
         Map.Entry<String, CustomValue> entry = td.getEntry();
         set1.getData().add(new XYChart.Data("]-∞," + valueF + "]", entry.getValue().getLeftDev()));
         set1.getData().add(new XYChart.Data("]" + valueF + "," + valueR + "[", entry.getValue().getMiddleDev()));
