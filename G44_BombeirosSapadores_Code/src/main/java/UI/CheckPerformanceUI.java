@@ -65,43 +65,43 @@ public class CheckPerformanceUI implements Initializable {
 
         String choice = combDecision.getSelectionModel().getSelectedItem();
 
-        if (choice.equalsIgnoreCase("Payment Deviation of each Freelancer")) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationOfEachFreelancer.fxml"));
-            Parent root = (Parent) loader.load();
-            PaymentDeviationOfEachFreelancerUIA c = loader.getController();
-            c.associarParentUI(this);
-            Scene create = new Scene(root);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(create);
-            window.show();
-        } else if (choice.equalsIgnoreCase("Payment Deviation off all Freelancers")){
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationOfAllFreelancersA.fxml"));
-            Parent root = (Parent) loader.load();
-            PaymentDeviationOfAllFreelancersUIA c = loader.getController();
-            c.associarParentUI(this);
-            Scene create = new Scene(root);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(create);
-            window.show();
-        } else if (choice.equalsIgnoreCase("Task Execution Delay of each Freelancer")) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOfEachFreelancer.fxml"));
-            Parent root = (Parent) loader.load();
-            TaskExecutionDelayOfEachFreelancerUIA c = loader.getController();
-            c.associarParentUI(this);
-            Scene create = new Scene(root);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(create);
-            window.show();
-        } else if (choice.equals("Task Execution Delay of All Freelancers")) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOfAllFreelancers.fxml"));
-            Parent root = (Parent) loader.load();
-            TaskExecutionDelayOfAllFreelancersUI c = loader.getController();
-            c.associarParentUI(this);
-            Scene create = new Scene(root);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(create);
-            window.show();
-        }
+//        if (choice.equalsIgnoreCase("Payment Deviation of each Freelancer")) {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationOfEachFreelancer.fxml"));
+//            Parent root = (Parent) loader.load();
+//            PaymentDeviationOfEachFreelancerUIA c = loader.getController();
+//            c.associarParentUI(this);
+//            Scene create = new Scene(root);
+//            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            window.setScene(create);
+//            window.show();
+//        } else if (choice.equalsIgnoreCase("Payment Deviation off all Freelancers")){
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationOfAllFreelancersA.fxml"));
+//            Parent root = (Parent) loader.load();
+//            PaymentDeviationOfAllFreelancersUIA c = loader.getController();
+//            c.associarParentUI(this);
+//            Scene create = new Scene(root);
+//            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            window.setScene(create);
+//            window.show();
+//        } else if (choice.equalsIgnoreCase("Task Execution Delay of each Freelancer")) {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOfEachFreelancer.fxml"));
+//            Parent root = (Parent) loader.load();
+//            TaskExecutionDelayOfEachFreelancerUIA c = loader.getController();
+//            c.associarParentUI(this);
+//            Scene create = new Scene(root);
+//            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            window.setScene(create);
+//            window.show();
+//        } else if (choice.equals("Task Execution Delay of All Freelancers")) {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/TaskExecutionDelayOfAllFreelancers.fxml"));
+//            Parent root = (Parent) loader.load();
+//            TaskExecutionDelayOfAllFreelancersUI c = loader.getController();
+//            c.associarParentUI(this);
+//            Scene create = new Scene(root);
+//            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            window.setScene(create);
+//            window.show();
+//        }
     }
 
     @FXML

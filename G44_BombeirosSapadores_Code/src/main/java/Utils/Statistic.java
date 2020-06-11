@@ -17,6 +17,7 @@ import java.util.Map;
  */
 public class Statistic {
 
+
     private double FreelancerMeanPayment(List<TransactionExecution> eachFreelTrans) {
         double sum = 0;
         for (int i = 0; i < eachFreelTrans.size(); i++) {
@@ -31,7 +32,7 @@ public class Statistic {
             sumDeviation += Math.pow((eachFreelTrans.get(i).getPayment().getValueE() - meanFreel), 2);
         }
         //(contador==0 ? 1 : contador);
-        return (sumDeviation/((eachFreelTrans.size()-1)==0 ? 1 : (eachFreelTrans.size()-1) ));
+        return (sumDeviation / ((eachFreelTrans.size() - 1) == 0 ? 1 : (eachFreelTrans.size() - 1)));
     }
 
     private double FreelancerMeanTaskExecution(List<TransactionExecution> eachFreelTrans) {
@@ -47,7 +48,7 @@ public class Statistic {
         for (int i = 0; i < eachFreelTrans.size(); i++) {
             sumDeviation += Math.pow((eachFreelTrans.get(i).getTaskDelay() - meanFreel), 2);
         }
-        return (sumDeviation/((eachFreelTrans.size()-1)==0 ? 1 : (eachFreelTrans.size()-1) ));
+        return (sumDeviation / ((eachFreelTrans.size() - 1) == 0 ? 1 : (eachFreelTrans.size() - 1)));
     }
 
     //======================================================================================================================================================
