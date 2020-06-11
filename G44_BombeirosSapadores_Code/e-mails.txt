@@ -1,25 +1,3 @@
 Receipt of JS1
-<<<<<<< HEAD
-Task idTask:-----------2.0â‚¬
-The total value in euros is 2.0 and 3.0 in your local currency
-Receipt of JS1
-Task idTask:-----------2.0â‚¬
-The total value in euros is 2.0 and 3.0 in your local currency
-Receipt of JS1
-Task idTask:-----------2.0â‚¬
-=======
-Task idTask:-----------2.0€
-The total value in euros is 2.0 and 3.0 in your local currency
-Receipt of JS1
-Task idTask:-----------2.0€
-The total value in euros is 2.0 and 3.0 in your local currency
-Receipt of JS1
-Task idTask:-----------2.0€
->>>>>>> 533076ad92df876d47b9965cef4e4a99625aefa8
-The total value in euros is 2.0 and 3.0 in your local currency
-Receipt of JS1
-Task idTask:-----------2.0â‚¬
-The total value in euros is 2.0 and 3.0 in your local currency
-Receipt of JS1
 Task idTask:-----------2.0â‚¬
 The total value in euros is 2.0 and 3.0 in your local currency
