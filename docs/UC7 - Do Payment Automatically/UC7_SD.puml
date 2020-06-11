@@ -2,7 +2,7 @@
 autonumber
 
 participant ":Plataform" as PLAT
-participant "task\n:DoPaymentTask" as TASK
+participant "dpt\n:DoPaymentTask" as TASK
 participant "t\n:timer" as TI
 participant "RegistOrganizations" as RORGS
 
@@ -16,17 +16,20 @@ activate PLAT
 
 PLAT --> TASK** : create( )
 
-PLAT -> RORGS : org = getOrganizationByUserEmail(email)
+PLAT -> RORGS : org = getOrganizationByUserEmailMan(email)
 activate RORGS
 deactivate RORGS
 
 PLAT -> O : dp = getDefinePayment()
 activate O
 deactivate O
-PLAT -> DP : date = getDate()
+
+
+
+PLAT -> DP : date = getDateToPay()
 activate DP
 deactivate DP
-PLAT -> DP : time = getTime()
+PLAT -> DP : time = getTimeToPay()
 activate DP
 deactivate DP
 PLAT -> DP : nrDays = getNrDays()
@@ -36,7 +39,7 @@ deactivate DP
 PLAT -> PLAT : period = calculatePeriod(nrDays)
 
 
-PLAT -> PLAT : interval = calculatedifference(date, time)
+PLAT -> PLAT : interval = calculateDifference(date, time)
 
 
 PLAT --> TI** : create( )
