@@ -74,7 +74,6 @@ N/A
 
 #### Open questions
 
-* What if there is another date and time defined previously for the payment?
 
 ## 2. Object oriented analysis
 
@@ -87,35 +86,41 @@ N/A
 | Basic flow| Question: What class.. | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The manager begins the processment cycle of payment transactions. |... Interacts with the user? | PaymentUI | Pure fabrication |
-| |... coordinates the UC? | PaymentController | Controller |
+| |...coordinates the UC? | PaymentController | Controller |
+| |...knows the Platform | ApplicationPOT | IE |
+| |...knows the RegisterOrganization | Platform | HC+LC |
+| |...knows the user/ Collaborator using the system? | UserSession  | IE:documentation of the user management component. |
 | |...knows the user / manager using the system? | Login  | IE:documentation of the user management component. |
 | |...which organization the user / manager belongs to? | OrganizationRegister | IE: Knows every Organization |
 | |       | Organization | IE: Knows its Manager |
 | |       | Manager | IE: Knows his own data (e.g. email) |
-| |... creates instances of Payment | PaymentRegist | Creator(rule 1)
+| |... creates instances of DefinePayment | Organization | Creator(rule 1)
 |2. The system asks for the day of the month, the time of the day and the recurring time. | 
 |3. The manager inserts the information. |... stores the information entered? | Payment | 
 |4. The system requests the validation of the information. |...validates the Date and time (local validation)?	 |    Payment         |  IE:has its own information.                            |
 |5. The tasks that aren't payed will be payed on the date defined by the manager. | 
-|6. The manager confirms. The system registers the information. | ...saves the created instance of Transaction | PaymentList | HC+LC |
+|6. The manager confirms. The system registers the information. | ...saves the created instance the DefinePayment | Organization | IE |
 
 ### Systematization
 
 From the rational the conceptual classes promoted to software classes are:
 
-* Manager
-* Payment
+* DefinePayment
 * Transaction
+* Platform
+* Organization
+* ApplicationPOT
+
 
 Other software classes (i.e. Pure Fabrication) identified:
 
 * PaymentUI
 * DefinePaymentController
-* PaymentList
+* RegisterOrganization
 
 Other classes of external systems / components:
  
-* Login
+* UserSession
 
 ### Sequence Diagram
 
