@@ -48,12 +48,12 @@
                   <Insets bottom="15.0" />
                </GridPane.margin>
             </Button>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Email:" wrappingWidth="173.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Email:" wrappingWidth="173.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
                <font>
-                  <Font name="Verdana" size="18.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
             </Text>
             <JFXComboBox fx:id="freelEmail" focusColor="#e6be8a" maxWidth="277.0" prefHeight="27.0" prefWidth="277.0" style="-fx-text-inner-color: white;" styleClass="combo-box" stylesheets="@../styles/Styles.css" unFocusColor="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
@@ -61,25 +61,25 @@
                   <Insets right="100.0" />
                </GridPane.margin>
             </JFXComboBox>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer:" wrappingWidth="108.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer:" wrappingWidth="108.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
-                  <Font name="Verdana" size="18.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Deviation Delay:" wrappingWidth="267.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Deviation Delay:" wrappingWidth="267.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <font>
-                  <Font name="Verdana" size="18.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Payment:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Average Payment:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <font>
-                  <Font name="Verdana" size="18.0" />
+                  <Font name="Verdana" size="14.0" />
                </font>
                <GridPane.margin>
                   <Insets left="50.0" />
