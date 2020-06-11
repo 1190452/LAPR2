@@ -5,7 +5,6 @@
  */
 package UI;
 
-import Controller.WatchStatisticsController;
 import Utils.CustomValue;
 import java.net.URL;
 import java.util.Map;
@@ -22,14 +21,13 @@ import javafx.stage.Stage;
  *
  * @author tiagopereira
  */
-public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializable {
+public class HistogramPaymentDeviationOfEachFreelancerUI implements Initializable{
 
     @FXML
     private BarChart<?, ?> histogram;
+    private PaymentDeviationOfEachFreelancerUI pf;
     private double x, y;
-    private TaskExecutionDelayOfAllFreelancersUI tda;
-    private WatchStatisticsController wsc;
-
+    
     /**
      * Initializes the controller class.
      *
@@ -37,28 +35,27 @@ public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializa
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {        
 
     }
-
-    public void fillData() {
+    public void fillData(){
+    
         XYChart.Series set1 = new XYChart.Series<>();
-        double value1 = Double.parseDouble(tda.getAverageLbl().getText()) - Double.parseDouble(tda.getDeviationLbl().getText());
-        double value2 = Double.parseDouble(tda.getAverageLbl().getText()) + Double.parseDouble(tda.getDeviationLbl().getText());
-        Map.Entry<String, CustomValue> entry = tda.getEntry();
-
+        double value1 = Double.parseDouble(pf.getAverageLbl().getText()) - Double.parseDouble(pf.getDeviationLbl().getText());
+        double value2 = Double.parseDouble(pf.getAverageLbl().getText()) + Double.parseDouble(pf.getDeviationLbl().getText());
+        Map.Entry<String, CustomValue> entry = pf.getEntry();
         set1.getData().add(new XYChart.Data("]-∞," + value1 + "]", entry.getValue().getLeftDev()));
-        set1.getData().add(new XYChart.Data("]" + value1 + "," + value2 + "[", entry.getValue().getMiddleDev()));
+        set1.getData().add(new XYChart.Data("]" + value1 + "," + value1 + "[", entry.getValue().getMiddleDev()));
         set1.getData().add(new XYChart.Data("[" + value2 + ", +∞[", entry.getValue().getRightDev()));
+
         histogram.getData().addAll(set1);
     }
 
-    public void associarParentUI(TaskExecutionDelayOfAllFreelancersUI tda) {
-        this.tda = tda;
-        this.wsc = this.tda.getWsc();
+    public void associarParentUI(PaymentDeviationOfEachFreelancerUI pf) {
+        this.pf = pf;
     }
 
-    @FXML
+     @FXML
     private void min(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setIconified(true);
@@ -83,6 +80,4 @@ public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializa
         x = event.getSceneX();
         y = event.getSceneY();
     }
-
-
 }

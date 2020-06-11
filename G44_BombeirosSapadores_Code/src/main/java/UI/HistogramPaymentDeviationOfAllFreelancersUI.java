@@ -7,11 +7,8 @@ package UI;
 
 import Controller.WatchStatisticsController;
 import Utils.CustomValue;
-import java.net.URL;
 import java.util.Map;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
@@ -22,41 +19,13 @@ import javafx.stage.Stage;
  *
  * @author tiagopereira
  */
-public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializable {
+public class HistogramPaymentDeviationOfAllFreelancersUI {
 
     @FXML
     private BarChart<?, ?> histogram;
     private double x, y;
-    private TaskExecutionDelayOfAllFreelancersUI tda;
+    private PaymentDeviationOfAllFreelancersUI tda;
     private WatchStatisticsController wsc;
-
-    /**
-     * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-    }
-
-    public void fillData() {
-        XYChart.Series set1 = new XYChart.Series<>();
-        double value1 = Double.parseDouble(tda.getAverageLbl().getText()) - Double.parseDouble(tda.getDeviationLbl().getText());
-        double value2 = Double.parseDouble(tda.getAverageLbl().getText()) + Double.parseDouble(tda.getDeviationLbl().getText());
-        Map.Entry<String, CustomValue> entry = tda.getEntry();
-
-        set1.getData().add(new XYChart.Data("]-∞," + value1 + "]", entry.getValue().getLeftDev()));
-        set1.getData().add(new XYChart.Data("]" + value1 + "," + value2 + "[", entry.getValue().getMiddleDev()));
-        set1.getData().add(new XYChart.Data("[" + value2 + ", +∞[", entry.getValue().getRightDev()));
-        histogram.getData().addAll(set1);
-    }
-
-    public void associarParentUI(TaskExecutionDelayOfAllFreelancersUI tda) {
-        this.tda = tda;
-        this.wsc = this.tda.getWsc();
-    }
 
     @FXML
     private void min(MouseEvent event) {
@@ -84,5 +53,21 @@ public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializa
         y = event.getSceneY();
     }
 
+    public void fillData() {
+        XYChart.Series set1 = new XYChart.Series<>();
+        double value1 = Double.parseDouble(tda.getAverageLbl().getText()) - Double.parseDouble(tda.getDeviationLbl().getText());
+        double value2 = Double.parseDouble(tda.getAverageLbl().getText()) + Double.parseDouble(tda.getDeviationLbl().getText());
+        Map.Entry<String, CustomValue> entry = tda.getEntry();
+
+        set1.getData().add(new XYChart.Data("]-∞," + value1 + "]", entry.getValue().getLeftDev()));
+        set1.getData().add(new XYChart.Data("]" + value1 + "," + value2 + "[", entry.getValue().getMiddleDev()));
+        set1.getData().add(new XYChart.Data("[" + value2 + ", +∞[", entry.getValue().getRightDev()));
+        histogram.getData().addAll(set1);
+    }
+
+    public void associarParentUI(PaymentDeviationOfAllFreelancersUI tda) {
+        this.tda = tda;
+        this.wsc = this.tda.getWsc();
+    }
 
 }

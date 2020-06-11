@@ -10,8 +10,11 @@ import Model.Organization;
 import Model.RegisterOrganization;
 import Model.TransactionExecution;
 import Authorization.model.UserSession;
+import Model.Constants;
+import Model.RegisterTransaction;
 import Utils.CustomValue;
 import Utils.Statistic;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -28,14 +31,29 @@ public class WatchStatisticsController {
 
     private Statistic st;
 
+    private List<TransactionExecution> ltr;
+
     public List<TransactionExecution> getFreelancers() {
         ApplicationPOT app = ApplicationPOT.getInstance();
         st = app.getPlatform().getSt();
-        RegisterOrganization rorgs = app.getPlatform().getrOrg();
-        UserSession log = app.getActualSession();
-        email = log.getUserEmail();
-        Organization org = rorgs.getOrganizationByUserEmail(email);
-        return org.getRTrans().getTransactions();
+        if (app.getActualSession().getUserBySession().getRole().equalsIgnoreCase(Constants.ROLE_ADMINISTRATIVE)) {
+            List<Organization> lorg = app.getPlatform().getrOrg().getlOrg();
+            ltr = new ArrayList<>();
+            for (int i = 0; i < lorg.size(); i++) {
+                RegisterTransaction ra = lorg.get(i).getRTrans();
+                for (int p = 0; p < ra.getTransactions().size(); p++) {
+                    ltr.add(ra.getTransactions().get(i));
+                }
+            }
+            return ltr;
+        } else {
+            RegisterOrganization rorgs = app.getPlatform().getrOrg();
+            UserSession log = app.getActualSession();
+            email = log.getUserEmail();
+            Organization org = rorgs.getOrganizationByUserEmail(email);
+            return org.getRTrans().getTransactions();
+        }
+
     }
 
     /**
@@ -53,6 +71,10 @@ public class WatchStatisticsController {
 
     public Map.Entry<String, CustomValue> getTaskExecutionDelayOfAllFreelancers(List<TransactionExecution> ltr) {
         return st.getTaskExecutionDelayOfAllFreelancers(ltr);
+    }
+
+    public Map.Entry<String, CustomValue> getPaymentDeviationOfAllFreelancers(List<TransactionExecution> ltr) {
+        return st.getPaymentDeviationOfAllFreelancers(ltr);
     }
 
     public Map.Entry<String, CustomValue> getTaskExecutionDelayOfEachFreelancer(String emailF, List<TransactionExecution> ltr) {

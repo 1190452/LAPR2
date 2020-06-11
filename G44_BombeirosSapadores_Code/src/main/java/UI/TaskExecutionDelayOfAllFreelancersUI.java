@@ -34,8 +34,7 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     private Button confirmBtn;
     @FXML
     private Button HistogramBtn;
-    @FXML
-    private Label freelancerLbl;
+ 
     @FXML
     private Label AverageLbl;
     @FXML
@@ -72,7 +71,6 @@ public class TaskExecutionDelayOfAllFreelancersUI{
     private void confirm(ActionEvent event) {   
         List<TransactionExecution> ltr = ws.getLtr();
         entry = getWsc().getTaskExecutionDelayOfAllFreelancers(ltr);
-        getFreelancerLbl().setText(getEntry().getKey());
         getDeviationLbl().setText(Double.toString(getEntry().getValue().getDeviation()));
         getAverageLbl().setText(Double.toString(getEntry().getValue().getMean()));
     }
@@ -106,24 +104,9 @@ public class TaskExecutionDelayOfAllFreelancersUI{
 
     private void endWatch(ActionEvent event) {
 
-        getFreelancerLbl().setText("");
         getDeviationLbl().setText("");
         getAverageLbl().setText("");
         ((Node) event.getSource()).getScene().getWindow().hide();
-    }
-
-    /**
-     * @return the freelancerLbl
-     */
-    public Label getFreelancerLbl() {
-        return freelancerLbl;
-    }
-
-    /**
-     * @param freelancerLbl the freelancerLbl to set
-     */
-    public void setFreelancerLbl(Label freelancerLbl) {
-        this.freelancerLbl = freelancerLbl;
     }
 
     /**
