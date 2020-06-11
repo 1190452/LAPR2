@@ -7,6 +7,7 @@ package UI;
 
 import Model.ApplicationPOT;
 import java.awt.Desktop;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,7 +26,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -56,9 +59,11 @@ public class MenuAdministratorUI implements Initializable {
     @FXML
     private Button warnFreelancerBtn;
 
+    private WarnAboutFreelancerPerformanceUI wabfp;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
         pot = ApplicationPOT.getInstance();
         pot.save(pot.getPlatform());
 
@@ -113,7 +118,7 @@ public class MenuAdministratorUI implements Initializable {
     }
 
     @FXML
-    private void checkFreelancerStatistics(ActionEvent event) throws IOException { 
+    private void checkFreelancerStatistics(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/WatchStatistics.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -124,7 +129,8 @@ public class MenuAdministratorUI implements Initializable {
         stage.show();
 
         // Hide this current window
-        ((Node) (event.getSource())).getScene().getWindow().hide();    }
+        ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
 
     @FXML
     private void createOrganization(ActionEvent event) throws IOException {
@@ -198,7 +204,19 @@ public class MenuAdministratorUI implements Initializable {
     }
 
     @FXML
-    private void warnFreelancer(ActionEvent event) {
+    private void warnFreelancer(ActionEvent event) throws FileNotFoundException {
+        ApplicationPOT app = ApplicationPOT.getInstance();
+        wabfp = app.getPlatform().getWabfp();
+        boolean check = wabfp.sendEmail();
+        if (check) {
+            Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Send Email", "Email sent with success");
+
+            if (alert1.showAndWait().get() == ButtonType.OK) {
+                alert1.close();
+            }
+        }
+        // Hide this current window
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
 }

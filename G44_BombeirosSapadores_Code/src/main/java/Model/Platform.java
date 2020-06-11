@@ -13,7 +13,9 @@ import Utils.Date;
 import Utils.Time;
 import Authorization.FacadeAuthorization;
 import Authorization.model.RegisterUser;
+import UI.WarnAboutFreelancerPerformanceUI;
 import Utils.CurrencyConverter;
+import Utils.SortList;
 import Utils.Statistic;
 import java.io.FileNotFoundException;
 import java.io.Serializable;
@@ -95,6 +97,16 @@ public class Platform implements Serializable {
     private Statistic st;
 
     /**
+     * warn about freelancer performance
+     */
+    private WarnAboutFreelancerPerformanceUI wabfp;
+
+    /**
+     * Sort List
+     */
+    private SortList sl;
+
+    /**
      * constructor than initializes the necessary classes (FacadeAuthorization,
      * RegisterOrganization, RegisterFreelancer, PasswordGenerator)
      */
@@ -105,9 +117,13 @@ public class Platform implements Serializable {
         PasswordGenerator.PasswordGeneratorBuilder pg = new PasswordGenerator.PasswordGeneratorBuilder();
         pg.useLower(true);
         pg.useDigits(true);
+        pg.usePunctuation(true);
+        pg.useUpper(true);
         this.alg = pg.build();
         this.c = new CurrencyConverter();
         this.st = new Statistic();
+        this.wabfp = new WarnAboutFreelancerPerformanceUI();
+        this.sl = new SortList();
 
     }
 
@@ -222,7 +238,7 @@ public class Platform implements Serializable {
      *
      * @throws FileNotFoundException
      */
-    public void sendEmail() throws FileNotFoundException {
+    public boolean sendEmail() throws FileNotFoundException {
         RegisterOrganization rOrg = getrOrg();
         List<Organization> orgList = rOrg.getlOrg();
         double percentOverallDelays = rOrg.overallPercentageDelays(orgList);
@@ -232,15 +248,17 @@ public class Platform implements Serializable {
             List<TransactionExecution> transList = rTrans.getTransactions();
 
             for (int j = 0; j < transList.size(); j++) {
-                Freelancer free = transList.get(i).getFreel();
+                Freelancer free = transList.get(j).getFreel();
                 boolean isDelayBetterThan3 = rTrans.meanTaskDelayBetterThan3(free, transList);
                 double percentOfDelayFree = rOrg.percentageOfDelays(free, orgList);
 
                 if ((isDelayBetterThan3) && (percentOfDelayFree > percentOverallDelays)) {
                     Writer.sendEmail(free);
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     /**
@@ -331,6 +349,20 @@ public class Platform implements Serializable {
         return st;
     }
 
+    /**
+     * @return the wabfp
+     */
+    public WarnAboutFreelancerPerformanceUI getWabfp() {
+        return wabfp;
+    }
+
+    /**
+     * @return the sl
+     */
+    public SortList getSl() {
+        return sl;
+    }
+
     //======================================================================================================================================================
     /**
      * modifies the register user
@@ -357,6 +389,20 @@ public class Platform implements Serializable {
      */
     public void setAlg(PasswordGenerator alg) {
         this.alg = alg;
+    }
+
+    /**
+     * @param wabfp the wabfp to set
+     */
+    public void setWabfp(WarnAboutFreelancerPerformanceUI wabfp) {
+        this.wabfp = wabfp;
+    }
+
+    /**
+     * @param sl the sl to set
+     */
+    public void setSl(SortList sl) {
+        this.sl = sl;
     }
 
 }

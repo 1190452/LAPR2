@@ -91,7 +91,15 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     if (tl.validateTask(t)) {
                         tl.addTask(t);
                     }
-                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, descripOFQuality);
+                    double valueE = 0;
+                    if (FreelancerExpertise.equalsIgnoreCase("Junior")) {
+                        valueE = taskDuration * taskCost;
+                    } else {
+                        valueE = taskDuration * taskCost * 2;
+                    }
+
+                    double valueC = pot.getPlatform().getC().convert(valueE, FreelancerCountry);
+                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, descripOFQuality, new Payment(valueE, valueC));
                     if (ht.validateTransaction(trans)) {
                         ht.addTransaction(trans);
                     }

@@ -8,6 +8,7 @@ package UI;
 import Controller.WatchStatisticsController;
 import Model.ApplicationPOT;
 import Model.Constants;
+import Model.Freelancer;
 import Model.TransactionExecution;
 import Utils.Statistic;
 import com.jfoenix.controls.JFXComboBox;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,9 +25,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.apache.commons.math3.distribution.NormalDistribution;
 
 /**
  *
@@ -42,6 +48,10 @@ public class WatchStatisticsUI implements Initializable {
     private List<TransactionExecution> ltr;
     @FXML
     private JFXComboBox<String> combDecision;
+    @FXML
+    private Button sortByPaymentbtn;
+    @FXML
+    private Button sortByNamebtn;
 
     @FXML
     private void min(MouseEvent event) {
@@ -96,13 +106,53 @@ public class WatchStatisticsUI implements Initializable {
                 window2.setScene(create2);
                 window2.show();
                 break;
-            case "Payment Deviation off all Freelancers":
+            case "Payment Deviation of all Freelancers":
+                FXMLLoader loader3 = new FXMLLoader(getClass().getResource("/fxml/PaymentDeviationOfAllFreelancers.fxml"));
+                Parent root3 = (Parent) loader3.load();
+                PaymentDeviationOfAllFreelancersUI c3 = loader3.getController();
+                c3.associarParentUI(this);
+                Scene create3 = new Scene(root3);
+                Stage window3 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window3.setScene(create3);
+                window3.show();
+                break;
+
+            case "Probability that the delay mean is higher than 3 hours":
+                ApplicationPOT app = ApplicationPOT.getInstance();
+                List<Freelancer> lf = app.getPlatform().getRfree().getListFreelancers();
+                NormalDistribution nd1 = new NormalDistribution(2, 1.5 / Math.sqrt(lf.size()));
+                double prob = 1 - nd1.cumulativeProbability(3);
+                Alert alert1 = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Probability", String.valueOf(prob));
+                if (alert1.showAndWait().get() == ButtonType.OK) {
+                    alert1.close();
+                }
                 break;
             default:
-                System.out.println("Ecra nao disponivel");
+                Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Choice", "The option you chose doesn´t exist!");
+                if (alert2.showAndWait().get() == ButtonType.OK) {
+                    alert2.close();
+                }
                 break;
 
         }
+
+    }
+
+    @FXML
+    private void sortByPayment(ActionEvent event) {
+        List<Freelancer> lfree = wsc.sortFreelByValue();
+        StringBuilder sb = new StringBuilder();
+        lfree.forEach(e -> sb.append(e.getName() + "\n"));
+        AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Sorting Freelancers by Payment Value", sb.toString()).show();
+
+    }
+
+    @FXML
+    private void sortByName(ActionEvent event) {
+        List<Freelancer> lfree = wsc.sortFreelByName();
+        StringBuilder sb = new StringBuilder();
+        lfree.forEach(e -> sb.append(e.getName() + "\n"));
+        AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Sorting Freelancers by Name", sb.toString()).show();
 
     }
 
@@ -133,10 +183,14 @@ public class WatchStatisticsUI implements Initializable {
         ApplicationPOT ap = ApplicationPOT.getInstance();
         if (ap.getActualSession().getUserBySession().getRole().equalsIgnoreCase(Constants.ROLE_ADMINISTRATIVE)) {
             combDecision.getItems().clear();
-            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Payment Deviation of all Freelancers", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers");
+            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Payment Deviation of all Freelancers", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers", "Probability that the delay mean is higher than 3 hours");
+            this.sortByPaymentbtn.setVisible(false);
+            this.sortByNamebtn.setVisible(false);
         } else {
             combDecision.getItems().clear();
             combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers");
+            this.sortByPaymentbtn.setVisible(true);
+            this.sortByNamebtn.setVisible(true);
         }
 
     }
@@ -151,4 +205,5 @@ public class WatchStatisticsUI implements Initializable {
     public List<TransactionExecution> getLtr() {
         return ltr;
     }
+
 }

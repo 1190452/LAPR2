@@ -11,8 +11,10 @@ import Model.RegisterOrganization;
 import Model.TransactionExecution;
 import Authorization.model.UserSession;
 import Model.Constants;
+import Model.Freelancer;
 import Model.RegisterTransaction;
 import Utils.CustomValue;
+import Utils.SortList;
 import Utils.Statistic;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +34,12 @@ public class WatchStatisticsController {
     private Statistic st;
 
     private List<TransactionExecution> ltr;
+    private  ApplicationPOT app;   
+    private SortList sl;
+    private List<Freelancer> lfree;
 
     public List<TransactionExecution> getFreelancers() {
-        ApplicationPOT app = ApplicationPOT.getInstance();
+        app = ApplicationPOT.getInstance();
         st = app.getPlatform().getSt();
         if (app.getActualSession().getUserBySession().getRole().equalsIgnoreCase(Constants.ROLE_ADMINISTRATIVE)) {
             List<Organization> lorg = app.getPlatform().getrOrg().getlOrg();
@@ -42,7 +47,7 @@ public class WatchStatisticsController {
             for (int i = 0; i < lorg.size(); i++) {
                 RegisterTransaction ra = lorg.get(i).getRTrans();
                 for (int p = 0; p < ra.getTransactions().size(); p++) {
-                    ltr.add(ra.getTransactions().get(i));
+                    ltr.add(ra.getTransactions().get(p));
                 }
             }
             return ltr;
@@ -54,6 +59,25 @@ public class WatchStatisticsController {
             return org.getRTrans().getTransactions();
         }
 
+    }
+    
+    public List<Freelancer> sortFreelByValue(){
+        app = ApplicationPOT.getInstance();
+        UserSession log = app.getActualSession();
+        email = log.getUserEmail();
+        lfree = app.getPlatform().getRfree().getListFreelancers();
+        ltr = app.getPlatform().getrOrg().getOrganizationByUserEmail(email).getRTrans().getTransactions();
+        sl = app.getPlatform().getSl();
+        List<Freelancer> lfreeS = sl.sortByPaymentValue(lfree, ltr);
+        return lfreeS;
+    }
+    
+    public List<Freelancer> sortFreelByName(){
+        app = ApplicationPOT.getInstance();
+        lfree = app.getPlatform().getRfree().getListFreelancers();
+        sl = app.getPlatform().getSl();
+        List<Freelancer> lfreeS = sl.sortByName(lfree);
+        return lfreeS;
     }
 
     /**
