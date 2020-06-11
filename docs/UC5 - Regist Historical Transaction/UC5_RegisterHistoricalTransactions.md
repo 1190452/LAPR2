@@ -114,5 +114,5 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ###	Class Diagram
 
-![UC5_CD.svg](UC5_CD.png)
+![UC5_CD.svg](UC5_CD.svg)
 
