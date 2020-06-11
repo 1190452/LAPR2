@@ -8,6 +8,7 @@ package UI;
 import Controller.WatchStatisticsController;
 import Utils.CustomValue;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -42,9 +43,12 @@ public class HistogramTaskExecutionDelayOfAllFreelancersUI implements Initializa
     }
 
     public void fillData() {
+        DecimalFormat f = new DecimalFormat("##.00");
         XYChart.Series set1 = new XYChart.Series<>();
         double value1 = Double.parseDouble(tda.getAverageLbl().getText()) - Double.parseDouble(tda.getDeviationLbl().getText());
         double value2 = Double.parseDouble(tda.getAverageLbl().getText()) + Double.parseDouble(tda.getDeviationLbl().getText());
+        f.format(value1);
+        f.format(value2);
         Map.Entry<String, CustomValue> entry = tda.getEntry();
 
         set1.getData().add(new XYChart.Data("]-∞," + value1 + "]", entry.getValue().getLeftDev()));

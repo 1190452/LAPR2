@@ -43,12 +43,12 @@
                         <Insets left="100.0" right="100.0" top="30.0" />
                      </GridPane.margin>
                   </Text>
-                  <BarChart fx:id="histogram" alternativeColumnFillVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="817.0" style="-fx-background-color: transparent; -fx-alternative-column-fill-visible: #e6be8a;" GridPane.rowIndex="5">
+                  <BarChart fx:id="histogram" alternativeColumnFillVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="817.0" style="-fx-background-color: transparent; -fx-alternative-column-fill-visible: #e6be8a;" styleClass="chart-bar" stylesheets="@../styles/Styles.css" GridPane.rowIndex="5">
                     <xAxis>
-                      <CategoryAxis label="Interval" side="BOTTOM" tickLabelFill="#e6be8a" />
+                      <CategoryAxis label="Interval" side="BOTTOM" tickLabelFill="#e6be8a" style="-fx-text-fill: white"/>
                     </xAxis>
                     <yAxis>
-                      <NumberAxis label="Absolute Frequency" side="LEFT" tickLabelFill="#e6be8a" />
+                      <NumberAxis label="Absolute Frequency" side="LEFT" style="-fx-text-fill: white" tickLabelFill="#e6be8a"/>
                     </yAxis>
                      <opaqueInsets>
                         <Insets left="100.0" top="100.0" />
