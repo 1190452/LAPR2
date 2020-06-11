@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="518.0" prefWidth="802.0" style="-fx-background-color: #2c2424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.PaymentDeviationOfEachFreelancerUI">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#dragged" onMousePressed="#pressed" prefHeight="518.0" prefWidth="802.0" style="-fx-background-color: #2c2424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.PaymentDeviationOfEachFreelancerUIA">
    <center>
       <GridPane prefHeight="397.0" prefWidth="655.0" style="-fx-background-color: #262626 #262626;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -32,7 +32,7 @@
          <children>
             <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets bottom="15.0" right="22.0" />
+                  <Insets bottom="15.0" />
                </GridPane.margin>
             </Button>
             <Text fill="WHITE" fontSmoothingType="LCD" stroke="#e6be8a" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline-color: #e6be8a;" text="Payment Deviation Of Each Freelancer" underline="true" GridPane.halignment="LEFT">
@@ -45,7 +45,7 @@
             </Text>
             <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets bottom="15.0" left="22.0" />
+                  <Insets bottom="15.0" />
                </GridPane.margin>
             </Button>
             <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer Email:" wrappingWidth="173.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
@@ -69,7 +69,7 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
-            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Deviation:" wrappingWidth="286.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Deviation Delay:" wrappingWidth="267.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -85,6 +85,11 @@
                   <Insets left="50.0" />
                </GridPane.margin>
             </Text>
+            <Button id="goldline" fx:id="HistogramBtn" cancelButton="true" mnemonicParsing="false" onAction="#Histogram" stylesheets="@../styles/stylesheet.css" text="Histogram" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </Button>
             <Label fx:id="freelancerLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="100.0" />
@@ -109,11 +114,6 @@
                   <Insets right="100.0" />
                </GridPane.margin>
             </Label>
-            <Button id="goldline" fx:id="histogramButon" cancelButton="true" mnemonicParsing="false" onAction="#histogram" stylesheets="@../styles/stylesheet.css" text="Histogram" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-               <GridPane.margin>
-                  <Insets bottom="15.0" />
-               </GridPane.margin>
-            </Button>
          </children>
       </GridPane>
    </center>

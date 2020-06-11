@@ -25,10 +25,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <Button id="goldline" fx:id="cancelBtn" cancelButton="true" mnemonicParsing="false" onAction="#cancel" stylesheets="@../styles/stylesheet.css" text="Cancel" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
@@ -41,49 +40,33 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+            <Button id="goldline" fx:id="confirmBtn" cancelButton="true" mnemonicParsing="false" onAction="#confirm" stylesheets="@../styles/stylesheet.css" text="Confirm" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
             </Button>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancer:" wrappingWidth="108.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancers Task Execution Delay:" wrappingWidth="294.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="3">
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancers Average Task Execution:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="2">
-               <font>
-                  <Font name="Verdana" size="18.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </Text>
-            <Button id="goldline" fx:id="HistogramBtn" cancelButton="true" mnemonicParsing="false" onAction="#Histogram" stylesheets="@../styles/stylesheet.css" text="Histogram" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets bottom="15.0" />
-               </GridPane.margin>
-            </Button>
-            <Label fx:id="freelancerLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets right="100.0" />
-               </GridPane.margin>
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancers Task Execution Delay:" wrappingWidth="294.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
-            </Label>
-            <Label fx:id="AverageLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Freelancers Average Task Execution:" wrappingWidth="269.22900390625" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Button id="goldline" fx:id="HistogramBtn" cancelButton="true" mnemonicParsing="false" onAction="#Histogram" stylesheets="@../styles/stylesheet.css" text="Histogram" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </Button>
+            <Label fx:id="AverageLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
@@ -91,7 +74,7 @@
                   <Insets right="100.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="deviationLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <Label fx:id="deviationLbl" prefHeight="18.0" prefWidth="255.0" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <font>
                   <Font name="Verdana" size="14.0" />
                </font>
