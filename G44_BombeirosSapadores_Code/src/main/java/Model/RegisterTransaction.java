@@ -45,6 +45,12 @@ public class RegisterTransaction implements Serializable {
         return transactionList.remove(tr);
     }
 
+    /**
+     * checks if a task delay of a certain freelancer (received by parameter) is higher than 3 hours
+     * @param free
+     * @param ltr
+     * @return 
+     */
     public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
         int count = 0;
         double sum = 0;
@@ -59,36 +65,7 @@ public class RegisterTransaction implements Serializable {
         return (sum / count) > 3;
     }
 
-    public double percentageOfDelays(Freelancer free) {
-        int count = 0;
-        int sum = 0;
-
-        for (int i = 0; i < transactionList.size(); i++) {
-            if (transactionList.get(i).getFreel().equals(free) && (transactionList.get(i).getEndDate().getYear() == Year.now().getValue())) {
-                sum += transactionList.get(i).getTaskDelay();
-                count++;
-            }
-
-        }
-        return ((sum / count) * 100);
-    }
-
-    public double overallPercentageDelays(List<Organization> lOrg) {
-        int count = 0;
-        int transactionCounter =0;
-        for (int i = 0; i < lOrg.size(); i++) {
-            List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
-            
-            for (int j = 0; j < ltr.size(); j++) {
-                if (((ltr.get(j).getEndDate().getYear()) == (Year.now().getValue())) && (ltr.get(j).getTaskDelay() > 3)) {
-                    count++;
-                }
-                transactionCounter++;
-            }
-        }
-        return ((count / transactionCounter ) * 100);
-
-    }
+ 
 
     /**
      * method that verifies if they transaction list is empty

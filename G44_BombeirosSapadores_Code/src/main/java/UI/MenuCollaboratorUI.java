@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -59,12 +60,13 @@ public class MenuCollaboratorUI implements Initializable {
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
         pot = ApplicationPOT.getInstance();
         pot.save(pot.getPlatform());
 
@@ -150,17 +152,23 @@ public class MenuCollaboratorUI implements Initializable {
 
     @FXML
     private void CreatePaymentOA(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreatePaymentTransaction.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root1));
-        stage.setTitle("CreatePayment");
-        stage.initStyle(StageStyle.TRANSPARENT);
-        stage.setResizable(false);
-        stage.show();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/CreatePaymentTransaction.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.setTitle("CreatePayment");
+            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.setResizable(false);
+            stage.show();
 
-        // Hide this current window
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+            // Hide this current window
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        }catch(IOException e) {
+            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "It wasn't possible to create a payment transaction!" , "Please check if the system has any transactions.");
+            alert.show();
+        }
+
     }
 
     @FXML

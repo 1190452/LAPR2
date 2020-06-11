@@ -59,7 +59,7 @@ public class CheckPerformanceController {
     public List<TransactionExecution> getAllTransactionExecution(List<Organization> lorg) {
         List<TransactionExecution> ltr = new ArrayList<>();
         for (int i = 0; i < lorg.size(); i++) {
-            RegisterTransaction ra = lorg.get(i).getrTrans();
+            RegisterTransaction ra = lorg.get(i).getRTrans();
             for (int p = 0; p < ra.getTransactions().size(); p++) {
                 ltr.add(ra.getTransactions().get(i));
             }

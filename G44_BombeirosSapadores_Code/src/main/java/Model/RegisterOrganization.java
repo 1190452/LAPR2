@@ -9,6 +9,7 @@ import java.util.List;
 import org.jcp.xml.dsig.internal.dom.Utils;
 import Utils.PasswordGenerator;
 import java.io.Serializable;
+import java.time.Year;
 
 //import pt.ipp.isep.dei.esoft.pot.ui.console.utils.Utils;
 /**
@@ -125,6 +126,59 @@ public class RegisterOrganization implements Serializable {
     }
 
     /**
+     * calculates the percentage of delays of a freelancer received by parameter
+     * that is higher than 3
+     *
+     * @param free
+     * @param lOrg
+     * @return
+     */
+    public double percentageOfDelays(Freelancer free, List<Organization> lOrg) {
+        double transactionCounter = 0;
+        double count = 0;
+
+        for (int i = 0; i < lOrg.size(); i++) {
+            List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
+
+            for (int j = 0; j < ltr.size(); j++) {
+                if (ltr.get(j).getFreel().equals(free) && (ltr.get(j).getEndDate().getYear() == Year.now().getValue())) {
+                    transactionCounter++;
+
+                    if ((ltr.get(j).getTaskDelay() > 3)) {
+                        count++;
+                    }
+                }
+
+            }
+
+        }
+        return ((count / transactionCounter) * 100);
+    }
+
+    /**
+     * calculates the overall percentage of delays of all the freelancers of the platform
+     * @param lOrg
+     * @return 
+     */
+    public double overallPercentageDelays(List<Organization> lOrg) {
+        double count = 0;
+        double transactionCounter = 0;
+        for (int i = 0; i < lOrg.size(); i++) {
+            List<TransactionExecution> ltr = lOrg.get(i).getRTrans().getTransactions();
+
+            for (int j = 0; j < ltr.size(); j++) {
+                if (((ltr.get(j).getEndDate().getYear()) == (Year.now().getValue())) && (ltr.get(j).getTaskDelay() > 3)) {
+                    count++;
+                }
+                transactionCounter++;
+            }
+        }
+        double result = (count / transactionCounter) * 100;
+        return result;
+
+    }
+
+    /**
      * method that regists in the system an organization received by parameter
      *
      * @param org
@@ -205,8 +259,7 @@ public class RegisterOrganization implements Serializable {
     }
 
     /**
-     * returns the organization of the manager, which email was received by
-     * parameter
+     * returns the organization of the manager, which email was received by parameter
      *
      * @param email
      * @return
@@ -221,6 +274,11 @@ public class RegisterOrganization implements Serializable {
         return null;
     }
 
+    /**
+     * returns the organization of the user, which email was received by parameter
+     * @param email
+     * @return 
+     */
     public Organization getOrganizationByUserEmail(String email) {
         for (int i = 0; i < lOrg.size(); i++) {
             if (email.equalsIgnoreCase(lOrg.get(i).getManager().getEmailM()) || email.equalsIgnoreCase(lOrg.get(i).getColab().getEmailC())) {
@@ -231,6 +289,10 @@ public class RegisterOrganization implements Serializable {
         return null;
     }
 
+    /**
+     * retuns the list of organization
+     * @return the lOrg
+     */
     public List<Organization> getlOrg() {
         return lOrg;
     }

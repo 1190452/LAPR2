@@ -1,3 +1,4 @@
+
 # UC 2 - Create Task
 
 ## 1. Requirements Engineering
@@ -93,7 +94,7 @@ The tasks are available in the platform.
 | 1. The Collaborator initiates the creation of the task. 		 | ...interacts with the user?						 |   CreateTaskUI          |       Pure Fabrication:it is not justified to assign this responsibility to any existing class in the Domain Model           |
 |       | ...coordinates the UC? | CreateTaskController | Controller |
 |       | ...creates Task instance? | TaskList | Creator (Rule1) + HC/LC:in the MD the Organization has a Task. By HC / LC delegates these responsibilities in Task List |
-|       | ...knows the user / manager using the system? | Login  | IE:documentation of the user management component. |
+|       | ...knows the user/ Collaborator using the system? | UserSession  | IE:documentation of the user management component. |
 |       | ...which organization the user / collaborator belongs to? | OrganizationRegister | IE: Knows every Organization |
 |       |       | Organization | IE: Knows its Collaborator |
 |       |       | Collaborator | IE: Knows his own data (e.g. email) |
@@ -102,7 +103,7 @@ The tasks are available in the platform.
 | 4. The System validates, shows the data and asks for confirmation.		 |	...validates the Task data (local validation)?	 |    Task         |  IE:has its own data.                            |
 |       | ...validates the Task data (global validation)?       | TaskList | IE:the TaskList contains Task |
 | 5. The Collaborator confirms.	 | 							 |             |                              |
-| 6. The System registers the data and informs about the success of the operation.  |	...keeps the created Task?		 |  TaskList    | IE:the TaskList contains Task  |
+| 6. The System registers the data and informs about the success of the operation.  |	...keeps the created Task?		 |  TaskList    | IE:the TaskList contains Tasks  |
 
 ### Systematization ##
 
@@ -121,7 +122,8 @@ The tasks are available in the platform.
  
  Other classes of external systems / components:
  
- * Login
+ * UserSession
+ * ApplicationPOT
 
 ###	Sequence Diagram
 
