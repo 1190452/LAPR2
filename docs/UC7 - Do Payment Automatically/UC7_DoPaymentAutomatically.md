@@ -19,6 +19,7 @@ Timer
 #### Stakeholders and their interests
 
 * **Organization:** intends to pay the freelancers.
+* **Manager:** intends to define the hour of the transactions from the organization that are not paid.
 * **Freelancer:** intends to receive the payment for the work made.
 
 #### Preconditions
@@ -31,7 +32,7 @@ The Freelancer receives the payment
 #### Main success scenario (or basic flow)
 
 1. The timer starts the automatic payment process.
-2. The system makes payments using the payment list, triggering the process at the defined date and time, generating the receipt and sending an email to every freelancer.
+2. The system makes payments using the payment list, triggering the process at the defined date and time, generating the receipt , registering the total value that the organization spent, and sending an email to every freelancer.
 
 #### Extensions (or alternative flow)
 
