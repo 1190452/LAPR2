@@ -42,13 +42,11 @@ public class CreatePaymentTransactionController {
      * constructor that creates an instance of CreateTransactionController
      */
     public CreatePaymentTransactionController() {
-            trans = new TransactionExecution ();
+        trans = new TransactionExecution();
     }
-    
-    
-    
+
     //======================================================================================================================================================
-     /**
+    /**
      * calls the method of the class RegisterTransaction to create a new
      * transaction
      *
@@ -75,9 +73,8 @@ public class CreatePaymentTransactionController {
     public boolean registerTransaction() {
         return rt.registerTransaction(trans);
     }
-    
-    //======================================================================================================================================================
 
+    //======================================================================================================================================================
     /**
      * method that calls the TaskList class to get the list of tasks
      *
@@ -105,8 +102,5 @@ public class CreatePaymentTransactionController {
         List<Freelancer> freelancerList = rl.getListFreelancers();
         return freelancerList;
     }
-    
 
-    
-   
 }

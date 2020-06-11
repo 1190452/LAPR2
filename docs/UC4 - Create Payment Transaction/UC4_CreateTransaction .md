@@ -97,23 +97,21 @@ n/a
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The Collaborator beggins the creation of a payment transaction. |... interacts with te Collaborator?| CreateTransactionUI |Pure Fabrication|
 | |... coordinates the UC?| CreateTransactionController |Controller|
-| |... creates instances of Transaction |RegisterTransaction|Creator(rule1) combined with HC+LC with Platform.|
-| |...knows RegisterTransaction? | Platform | IE: Platform has RegisterTransaction |
-|2. The system shows the Collaborator a list of tasks and asks him to choose one.|...has the list of tasks?| TaskList|HC+LC with Platform|
+| |... creates instances of TransactionExecution |RegisterTransaction|Creator(rule1) combined with HC+LC with Platform.|
+| |...knows RegisterTransaction? | Organization | IE: Organization has RegisterTransaction |
+|2. The system shows the Collaborator a list of tasks and asks him to choose one.|...has the list of tasks?| TaskList|HC+LC with Organization|
 |  |...knows TaskList? | Organization | IE: Organization has TaskList | 
 |3. The collaborator chooses one task from the list. ||||
 |4. The system shows the collaborator a list of freelancers that are present in the system and asks the collaborator once again to choose of of them.|...has the list of Freelancers?| RegisterFreelancer| HC+LC|
-| |...knows RegisterFreelancer?| Platform | IE: Platform has RegisterFreelancer |
+| |...knows RegisterFreelancer?| Pla6tform | IE: Platform has RegisterFreelancer |
 |5. The collaborator chooses one freelancer from the list. |... 
 |6. The System asks for the rest of the necessary data(details about the execution of the task(end date, delay, brief description of the quality of the work)).|||| 
-|7. The Collaborator introduces all the necessary data.|...saves all the information introduced? | Transaction | Creator (rule1) |
-|                                          |...creates an instance of TaskExecution? | Transaction | IE: in the MD, Transaction has Taskexecution |
-|8. The system shows the data to the Collaborator and asks him to confirm |... validates the Transaction data (Global validation)? | RegisterTransaction | HC+LC combined with IE, because RegisterTransaction has all the Transactions|
-|    |...validates the Transaction data (local validation)? | Transaction | IE: knows its own data |
-|    |...validates the TaskExecution data (global validation) | Transaction | IE: in the MD, Transaction has TaskExecution |
-|    |...validates the TaskExecution data (local validation) | TaskExecution | IE: knows its own data |
+|7. The Collaborator introduces all the necessary data.|...saves all the information introduced? | TransactionExecution | Creator (rule1) |
+|                                                      |...creates an instance of Payment? | TransactionExecution | IE: In the MD, TransactionExecution generates a Payment / Creator (rule 1) |
+|8. The system shows the data to the Collaborator and asks him to confirm |... validates the TransactionExecution data (Global validation)? | RegisterTransaction | HC+LC combined with IE, because RegisterTransaction has all the TransactionExecutions|
+|    |...validates the TransactionExecution data (local validation)? | TransactionExecution | IE: knows its own data |
 |9. The collaborator confirms.|||| 
-|10. The system registers the data and informs the Collaborator that the operation was successful. |...saves the created instance of Transaction | RegisterTransaction| HC+LC | 
+|10. The system registers the data and informs the Collaborator that the operation was successful. |...saves the created instance of TransactionExecution | RegisterTransaction| HC+LC | 
 
 
 ### Sistematization ##
@@ -122,10 +120,8 @@ From the racional, the conceptual classes that are promoted to software classes 
 
  * Platform
  * Organization
- * Transaction
- * TaskExecution
- 
-
+ * TransactionExecution
+ * Payment
 
 Other software classes (eg: Pure Fabrication) identified:
 
@@ -133,9 +129,7 @@ Other software classes (eg: Pure Fabrication) identified:
  * CreateTransactionController
  * RegisterTransaction
  * RegisterFreelancer
- * TaskList
- 
- 
+ * TaskList-
 
 
 ### Sequence Diagram
