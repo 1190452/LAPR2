@@ -61,7 +61,7 @@ public class WatchStatisticsController {
 
     }
     
-    public List<Freelancer> sortFreelByValue(){
+    public List<Freelancer> sortFreelByPayment(){
         app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
         email = log.getUserEmail();
