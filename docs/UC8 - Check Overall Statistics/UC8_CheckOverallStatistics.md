@@ -74,7 +74,7 @@ n/a
 | |...knows RegisterTransaction? | Organization | IE: Organization knows RegisterTransaction |
 | |...knows the list of Freelancers? | RegisterFreelancer | HC+LC |
 | |...knows RegisterFreelancer? | Platform | Platform knows all the freelancers | 
-| |...knows the payment of each freelancer? | TransactionExecution | IE: In the MD, TransactionExecution originates a payment |
+| |...knows the payment of each freelancer? | TransactionExecution | IE: In the MD, TransactionExecution originates a Payment |
 | |...knows the delay of each freelancer? | TransactionExecution | IE: TransactionExecution knows its own data | 
              
 
@@ -107,5 +107,5 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ###	Class Diagram
 
-![UC8_CD.svg](UC8_CD.png)
+![UC8_CD.svg](UC8_CD.svg)
 
