@@ -42,10 +42,10 @@
       ><path d="M-7 -7 L19 -7 L19 45 L-7 45 L-7 -7 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath13"
-      ><path d="M-88 -14 L176 -14 L176 28 L-88 28 L-88 -14 Z"
+      ><path d="M-164 -14 L328 -14 L328 28 L-164 28 L-164 -14 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath14"
-      ><path d="M-164 -14 L328 -14 L328 28 L-164 28 L-164 -14 Z"
+      ><path d="M-88 -14 L176 -14 L176 28 L-88 28 L-88 -14 Z"
       /></clipPath
       ><clipPath clipPathUnits="userSpaceOnUse" id="clipPath15"
       ><path d="M0 0 L725 0 L725 104 L0 104 L0 0 Z"
@@ -206,13 +206,13 @@
     ><g stroke-linecap="butt" font-size="11px" transform="translate(80,378)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1" stroke-miterlimit="0"
     ><rect fill="none" x="0" width="8" height="22" y="0" clip-path="url(#clipPath8)"
     /></g
-    ><g font-size="11px" transform="translate(669,2)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="10" xml:space="preserve" y="11" clip-path="url(#clipPath13)" stroke="none"
-      >st : Statistics</text
-    ></g
     ><g font-size="11px" transform="translate(2,2)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="11" xml:space="preserve" y="11" clip-path="url(#clipPath14)" stroke="none"
+    ><text x="11" xml:space="preserve" y="11" clip-path="url(#clipPath13)" stroke="none"
       >: WatchStatisticsController</text
+    ></g
+    ><g font-size="11px" transform="translate(669,2)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
+    ><text x="10" xml:space="preserve" y="11" clip-path="url(#clipPath14)" stroke="none"
+      >st : Statistics</text
     ></g
     ><g stroke-linecap="butt" font-size="11px" transform="translate(38,57)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1"
     ><line y2="50" fill="none" x1="50" clip-path="url(#clipPath16)" x2="671" y1="50"
