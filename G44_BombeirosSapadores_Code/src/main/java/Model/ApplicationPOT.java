@@ -30,13 +30,11 @@ public class ApplicationPOT implements Serializable {
      * facade authorization
      */
     private FacadeAuthorization m_oAutorizacao;
-    private RegisterUser ru;
+
 
     /**
      * constructor that initializes the Platform and the FacadeAuthorization
      */
-    private RegisterOrganization rorg;
-
     public ApplicationPOT() {
         this.m_oPlataforma = new Platform();
         this.m_oAutorizacao = this.m_oPlataforma.getFacadeAuthorazation();
@@ -44,6 +42,9 @@ public class ApplicationPOT implements Serializable {
     }
 
     //======================================================================================================================================================
+    /**
+     * reads the data from a binary file
+     */
     public void read() {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File(FILENAME)));
@@ -61,6 +62,11 @@ public class ApplicationPOT implements Serializable {
         }
     }
 
+    /**
+     * saves the new data into a binary file
+     * @param m_Platform
+     * @return 
+     */
     public boolean save(Platform m_Platform) {
         try {
             ObjectOutputStream out = new ObjectOutputStream(
