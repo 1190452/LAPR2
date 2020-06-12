@@ -1,68 +1,67 @@
 @startuml
-skinparam classAttributeIconSize 0
 
 
-class CheckPerformanceUI{
+class WatchStatisticsUI{  
+  
+}
+
+class WatchStatisticsController{
+  +getFreelancers()
   }
 
-class CheckPerformanceController{
-  +checkPerformances()
+class ApplicationPOT{
+  +getInstance()
+  +getPlatform()
+  +getFacadeAuthorization()
   }
 
 class Platform {
-  +getRegisterFreelancer()
+  +getST()
+  +getrOrg()
   }
 
-class RegisterFreelancer{
-  +getListFreelancer()
-  +calculateProbabilityHigherThanThreeHours()
+class UserSession {
+  +getUserEmail()
   }
 
-class Payment {
-  +getListTransactions()
+class RegisterOrganization{
+  +getlOrg()
   }
 
-class Transaction{
-  +getPayementValue()
-  }
-
-class Freelancer {
-  +getListPayements()
-  +averageOfEachFreelancer(paymentTotal)
-  +calculateDeviation(averageFreel, payment)
-  +calculateDeviation(sumAllPaymentsDeviation)
-  +getTaskList()
-  +delaySumMean(delayTask)
-  +delayMean(sumDelaysOfFreelancer)
-  +deviationDelay(delayTask, averageDelayOfFreelancer)
-  +sumDeviationDelay(deviationDelayOfFreelancer)
-  +calculateDeviationOfOneFreelancer(sumDeviationDelaysOfFreelancer)
-  +averageDelayOfAllFreelancers(totalDelayOfAllFreelancers)
-  +averagePaymentOfAllFreelancers(totalPaymentOfAllFreelancers)
-  +deviationDelay (delayTask , averageDelayOfAllFreelancers)
-  +calculateDeviationOfAllFreelancers(sumDelayDeviationOfAllFreelancers)
-  +calculateDeviation(averagePaymentOfAllFreelancers, payment)
-  +calculatePaymentDeviationOfAllFreelancers(sumAllPaymentsDeviation)
-  }
-
-class TaskExecution{
-  +getDelayByTask()
+class Organization {
+  -String nome
+  -String email
+  -String NIF
   }
 
 
-CheckPerformanceUI ..> CheckPerformanceController
-CheckPerformanceController ..> Platform
-CheckPerformanceController ..> Payment
-CheckPerformanceController ..> Transaction
-CheckPerformanceController ..> Freelancer
-CheckPerformanceController ..> TaskExecution
+
+class FacadeAuthorization {  
+  +getUserSession()
+}
 
 
-Platform "1" --> "1" RegisterFreelancer: has
-RegisterFreelancer "1" --> "*" Freelancer: has
-Freelancer "1" --> "1.." Payment: has
-Transaction "1..*" --> "1"Payment: originates 
-Transaction "1" --> "1" TaskExecution: creates
+
+WatchStatisticsUI ..> WatchStatisticsController
+
+WatchStatisticsController ..> ApplicationPOT
+WatchStatisticsController ..> Platform
+WatchStatisticsController ..> UserSession
+WatchStatisticsController ..> RegisterOrganization
+WatchStatisticsController ..> Organization
+WatchStatisticsController ..> FacadeAuthorization
+
+ApplicationPOT  ..> Platform
+ApplicationPOT  ..> FacadeAuthorization
+
+FacadeAuthorization "1"-- "1" UserSession: has
+
+
+Platform "1" -- "1" RegisterOrganization : has
+
+RegisterOrganization "1" -- "1..*" Organization : has
+
+
 
 
 
@@ -70,6 +69,3 @@ Transaction "1" --> "1" TaskExecution: creates
 
 
 @enduml
-
-
-
