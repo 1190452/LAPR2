@@ -74,16 +74,14 @@ All the last days of the years.
 | Main Flow  | Question: What Class...  | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The last day of year is reached.|...coordinate the uc?    |   SendEmailFreelTask      | Controller: |
-|       | ...determines that time has been reached? |     Timer       |   Timer        |
+|       | ...determines that time has been reached? |     Timer       |   IE: Timer knows when the time reached        |
 |       | ...creates the timer instance? |   Platform  | Creator+IE: The platform knows the date to start the process |              
-|2. The system identify the freelancers who have a task delay greater than 3 hours and their percentage of task delay higher than the percentage of overall delays. Then sends emails to them. |  ...own the freelancers?	|  RegisterFreelancer | IE+(HC+LC):Register Freelancer contains / aggregates Freelancers (according to the HC + LC standard, on Platform)|
-|       | ...determines what year we are in? |     Year       |           |
-|       | ...check if the year is a leap year? |     Platform       |           |
-|       | ...knows RegisterFreelancer? |     Platform      |   IE: Platform contains freelancers       |
-|       | ...knows RegisterOrganization? |     Platform      |   IE:       |
-|       | ...knows Organization? |    RegisterOrganization     |   IE+(HC+LC):RegisterOrganization contains / aggregates Organizations (according to the HC + LC standard, on Platform)      |
-|       | ...knows RegisterTransaction? | Organization        |   IE+ (HC + LC) on Organization: Organization delegates responsibilities for RegisterTransaction:      |
-|       | ...knows TransactionList? | RegisterTransaction        |   IE: RegisterTransaction has Transactions     |
+|2. The system identify the freelancers who have a task delay greater than 3 hours and their percentage of task delay higher than the percentage of overall delays. Then sends emails to them. |  ...determines what year we are in? |     Year       |    IE: Year knows the year that we are       |
+|       | ...check if the year is a leap year? |     Platform       |   IE: Platform knows how to determine if the year is a leap year      |
+|       | ...knows RegisterOrganization? |     Platform      |   IE: IE+ (HC + LC) on Platform : Platform delegates responsibilities for RegisterOrganization       |
+|       | ...knows Organization? |    RegisterOrganization     |   IE+(HC+LC): RegisterOrganization contains / aggregates Organizations (according to the HC + LC standard, on Platform)      |
+|       | ...knows RegisterTransaction? | Organization        |   IE+ (HC + LC) on Organization: Organization delegates responsibilities for RegisterTransaction      |
+|       | ...knows TransactionList? | RegisterTransaction        |   IE+(HC+LC): RegisterTransaction contains / aggregates Transactions (according to the HC + LC standard, on Organization)     |
 |       | ...knows the task delay of freelancers?|     Transaction       |   IE: Transaction has the Task Delay attribute for a freelancer|
 |       | ...knows the percentage task delay overall of freelancers?|     RegisterOrganization      |   IE: RegisterFreelancer contains the overall percentage of Task delay of freelancers |
 |       | ...saves the emails?|    Writer      |   IE: Writer simulates sending an email by saving|
@@ -102,7 +100,6 @@ It follows from the rational that the conceptual classes promoted to software cl
  * Platform
  * RegisterFreelancer
  * RegisterOrganization
- * Freelancer
  * Organization
  * Writer
  * Transaction
