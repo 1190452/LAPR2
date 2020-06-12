@@ -18,7 +18,7 @@ import java.util.List;
 public class SortList {
 
     public List<Freelancer> sortByName(List<Freelancer> lfree) {
-         int size = lfree.size();
+        int size = lfree.size();
         for (int i = 0; i < size - 1; i++) {
             for (int j = i + 1; j < size; j++) {
                 if (lfree.get(i).getName().compareTo(lfree.get(j).getName()) > 0) {
