@@ -12,18 +12,23 @@ participant "add:Address" as ADD
 participant "colab:Collaborator" as COLAB
 participant "manager:Manager" as MNGR
 
+activate ADM
+ADM -> UI : begins the registration process of an organization.
+activate UI
 
+UI --> ADM : requests information about the organization (e.g. name, email, nif, address), \nthe manager(e.g. name, email) and the collaborator(e.g. name, email, phone number)
+deactivate UI
 ADM -> UI : inserts the information
 activate UI
 
 UI -> CTRL : newOrganization(name,email,NIF,street,doorNumber,locality, nameC, emailC, phoneNumberC, nameM, emailM, phoneNumberM)
 activate CTRL
 
-CTRL -> PLAT: ro = getRegistOrganizations()
+CTRL -> PLAT: ro = getrOrg()
 activate PLAT
 deactivate PLAT
 
-CTRL -> ORGS: org = newOrganization(name,email,NIF,street,doorNumber,locality, nameC, emailC, phoneNumberC, nameM, emailM, phoneNumberM)
+CTRL -> ORGS: org = newOrganization(name,email,NIF,street,doorNumber,locality, nameC, \n emailC, phoneNumberC, nameM, emailM, phoneNumberM)
 activate ORGS
 
 ORGS -> _ORG: end=newAddress(street, doorNumber, locality)
@@ -31,22 +36,19 @@ activate _ORG
 _ORG --> ADD ** : create(street, doorNumber, locality)
 deactivate _ORG
 
-ORGS -> _ORG: manager=newManager(name, email, role, phoneNumber)
+ORGS -> _ORG: manager=newManager(nameM, emailM, roleM)
 activate _ORG
-_ORG --> MNGR ** : create(name, email, role, phoneNumber)
+_ORG --> MNGR ** : create(name, email, role)
 deactivate _ORG
 
-ORGS -> _ORG: collab=newCollaborator(name, email, role, phoneNumber)
+ORGS -> _ORG: collab=newCollaborator(nameC, emailC, roleC)
 activate _ORG
-_ORG --> COLAB ** : create(name, email, role, phoneNumber)
+_ORG --> COLAB ** : create(name, email, role)
 deactivate _ORG
 
 ORGS --> ORG ** : create(name, email, nif, address, collaborator, manager)
 deactivate ORGS
 
-CTRL -> ORGS : validateOrganization(org)
-activate ORGS
-deactivate ORGS
 
 deactivate CTRL
 UI --> ADM : shows information and a requests confirmation
@@ -55,9 +57,9 @@ deactivate UI
 ADM -> UI : confirms
 activate UI
 
-UI -> CTRL: registOrganization()
+UI -> CTRL: registerOrganization()
 activate CTRL
-CTRL -> ORGS: registOrganization(org)
+CTRL -> ORGS: registerOrganization(org)
 activate ORGS
 
 ORGS -> ORGS: validatesOrganization(org)

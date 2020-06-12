@@ -46,10 +46,12 @@ public class RegisterTransaction implements Serializable {
     }
 
     /**
-     * checks if a task delay of a certain freelancer (received by parameter) is higher than 3 hours
+     * checks if a task delay of a certain freelancer (received by parameter) is
+     * higher than 3 hours
+     *
      * @param free
      * @param ltr
-     * @return 
+     * @return
      */
     public boolean meanTaskDelayBetterThan3(Freelancer free, List<TransactionExecution> ltr) {
         int count = 0;
@@ -64,8 +66,6 @@ public class RegisterTransaction implements Serializable {
         }
         return (sum / count) > 3;
     }
-
- 
 
     /**
      * method that verifies if they transaction list is empty
@@ -88,11 +88,15 @@ public class RegisterTransaction implements Serializable {
      * @return
      */
     public TransactionExecution createNewTransaction(Task task, Freelancer freel, Date endDate, double delay, String qow) {
-
+        double costEuros;
         task.setIsFinished(true);
-        double costEuros = task.getCostHour() * task.getTimeTask();
-        double costCureency = cc.convert(costEuros, freel.getCountry());
-        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros, costCureency));
+        if (freel.getLevelExp().equals("Senior")) {
+            costEuros = task.getCostHour() * task.getTimeTask() * 2;
+        } else {
+            costEuros = task.getCostHour() * task.getTimeTask();
+        }
+        double costCurrency = cc.convert(costEuros, freel.getCountry());
+        return new TransactionExecution(task, freel, endDate, delay, qow, new Payment(costEuros, costCurrency));
     }
 
     /**
@@ -132,29 +136,6 @@ public class RegisterTransaction implements Serializable {
      */
     public boolean addTransaction(TransactionExecution trans) {
         return transactionList.add(trans);
-    }
-
-    /**
-     * method that calculates the value of each transaction
-     *
-     * @param trans
-     * @return
-     */
-    public double calculateTransactionValue(TransactionExecution trans) {
-        for (TransactionExecution t : transactionList) {
-            if (t.equals(trans)) {
-                if (trans.getFreel().getLevelExp().equalsIgnoreCase("Senior")) {
-                    double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask() * 2;
-                    return value;
-
-                } else {
-                    double value = trans.getTask().getCostHour() * trans.getTask().getTimeTask();
-                    return value;
-                }
-            }
-
-        }
-        return -1;
     }
 
     //======================================================================================================================================================
