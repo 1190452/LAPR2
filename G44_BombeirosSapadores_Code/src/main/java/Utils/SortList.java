@@ -7,13 +7,9 @@ package Utils;
 
 import Model.Freelancer;
 import Model.TransactionExecution;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -34,17 +30,18 @@ public class SortList {
     }
 
     public List<Freelancer> sortByPaymentValue(List<Freelancer> lfree, List<TransactionExecution> ltr) {
-      
+      List<Freelancer> orderedFreelancers = new ArrayList<>();
        SortByPaymentValue c = new SortByPaymentValue();
        Collections.sort(ltr,c);
-       List<Object> lt =  ltr.stream().filter(distinctByKey(TransactionExecution::getFreel)).distinct().collect(Collectors.toList());
+        for (int i = 0; i < ltr.size(); i++) {
+            if(!orderedFreelancers.contains(ltr.get(i).getFreel())){
+                  orderedFreelancers.add(ltr.get(i).getFreel());
+            }
+          
+        }
        
-        return lfree;
+        return orderedFreelancers;
     }
     
-    //inspired in https://stackoverflow.com/questions/23699371/java-8-distinct-by-property
-    public static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
-    Set<Object> seen = ConcurrentHashMap.newKeySet();
-    return t -> seen.add(keyExtractor.apply(t));
-}
+
 }
