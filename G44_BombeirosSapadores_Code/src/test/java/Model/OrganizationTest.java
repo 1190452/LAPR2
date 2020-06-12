@@ -85,13 +85,6 @@ public class OrganizationTest {
     }
 
     @Test
-    public void testSendEmail() throws Exception {
-         System.out.println("sendEmail");
-        Organization instance = new Organization("name", "NIF", "email", new Address("street", "123", "locality"), new Collaborator("name", "email", "role"), new Manager("name", "email", "role"));
-        instance.sendEmail();
-    }
-
-    @Test
     public void testEquals() {
         System.out.println("equals");
         Object otherObject = new Organization("name", "NIF", "email", new Address("street", "123", "locality"), new Collaborator("name", "email", "role"), new Manager("name", "email", "role"));

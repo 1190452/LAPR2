@@ -25,7 +25,7 @@ Administrator
 n/a
 
 #### Postconditions
-* The system should show the Administrator the performance of all the freelancers(with and without histograms).
+* The system should show the Administrator the performance of all the freelancers.
 
 #### Main success scenario 
 
@@ -67,14 +67,13 @@ n/a
 |:--------------  |:---------------------- |:----------|:---------------------------- |
 |1. The Administrator starts the visualization of the performance of the freelancers. |...interacts with the user? | CheckPerformanceUI | Pure Fabrication|
 |             |...coordinates the UC? | CheckPerformanceController | Controller |
-|2. The system shows the statistics describing the performance of the freelancers (the mean and the standard deviation of the delays and payments of all the freelancers and the histrograms that represent that) and shows the probability that the sample mean is higher than 3 hours. | |...knows the list of Freelancers? | RegisterFreelancer | HC+LC |
-| |...knows the payment list of each freelancer? | Freelancer | IE: has its own data |
-| |...knows the transactions of each payment? | Payment | IE: has its own data |
-| |...knows the delay of each freelancer? | TaskExecution | IE: TaskExecution knows its own data | 
-| | ...knows TaskExecution? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution |
-| | ...calculates the payment for each task of each freelancer? | Transaction | IE: Transaction has the cost per hour and the time that the task took.|
-| |...saves the probability that the sample mean is higher than 3 hours? | RegisterFreelancer | HC+lC |
-| |...knows RegisterFreelancer? | Platform | IE: Platform has RegisterFreelancer | 
+|2. The system shows the statistics describing the performance of the freelancers (the mean and the standard deviation of the delays and payments of all the freelancers and the histrograms that represent that) and shows the probability that the sample mean is higher than 3 hours. |...knows the list of transactions? | RegisterTransaction | HC+LC |
+| |...knows RegisterTransaction? | Organization | IE: Organization knows RegisterTransaction |
+| |...knows the list of Freelancers? | RegisterFreelancer | HC+LC |
+| |...knows RegisterFreelancer? | Platform | Platform knows all the freelancers | 
+| |...knows the payment of each freelancer? | TransactionExecution | IE: In the MD, TransactionExecution originates a payment |
+| |...knows the delay of each freelancer? | TransactionExecution | IE: TransactionExecution knows its own data | 
+
 
 
 
@@ -82,19 +81,16 @@ n/a
 
 From the racional, the conceptual classes that are promoted to software classes are:
 
- * Platform
- * Transaction
- * Payment
- * Freelancer
- * TaskExecution
- 
-
+* Platform
+* Organization
+* TransactionExecution
 
 Other software classes (eg: Pure Fabrication) identified:
 
  * CheckPerformanceUI
  * CheckPerformanceController
  * RegisterFreelancer
+ * RegisterTransaction
  
 
 ### Sequence Diagram

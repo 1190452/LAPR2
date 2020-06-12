@@ -19,7 +19,6 @@ public class RegisterFreelancer implements Serializable {
      * list of freelancers
      */
     private List<Freelancer> listaFreelancers;
-    private double delayProb;
 
     /**
      * constructor than initializes the list of freelancers as an ArrayList
@@ -176,26 +175,7 @@ public class RegisterFreelancer implements Serializable {
     }
 
     
-
-    /**
-     * returns the delay probability
-     *
-     * @return the delayProb
-     */
-    public double getDelayProb() {
-        return delayProb;
-    }
-    
     //======================================================================================================================================================
-
-    /**
-     * modifies the delay probability
-     *
-     * @param delayProb the delayProb to set
-     */
-    public void setDelayProb(double delayProb) {
-        this.delayProb = delayProb;
-    }
     
     /**
      * modifies the list of freelancers

@@ -17,17 +17,21 @@ The collaborator/manager beggins watch overall statistics about task execution t
 Manager/Collaborator
 
 #### Stakeholders and their interests
-* Collaborator: pretends to se overall statistics.
-* Manager: pretends to se overall statistics.
-* Freelancer: pretends to see your own statistics.
+* Collaborator: pretends to see overall statistics.
+* Manager: pretends to see overall statistics.
+* Freelancer: pretends to see their own statistics.
 
 #### Preconditions
 
+The system should have registered freelancers and transactions
+
 #### Postconditions
+
+* The system should show the Manager/Collaborator the performance of the freelancers of their organization.
 
 #### Main success scenario (or basic flow)
 
-1. The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments.
+1. The collaborator/manager beggins the watch overall statistics about task execution times and freelancer payments.
 2. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation.
 
 
@@ -59,25 +63,28 @@ n/a
 
 ### Rational
 
-| Main flow | Question: what class... | Answer | reason |
+| Main Flux | Question: Which class... | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-|1. The collaborator/manager starts watching overall statistics|... interacts with the user?| WatchStatisticsUI |Pure Fabrication|
-| |... coordinates the UC?|  WatchStatisticsController |Controller|
-|2. The collaborator/manager beggins watch overall statistics about task execution times and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation.||...knows the list of Freelancers? | RegisterFreelancer | HC+LC |
-| |...knows the payment list of each freelancer? | Freelancer | IE: has its own data |
-| |...knows the transactions of each payment? | Payment | IE: has its own data |
-| |...knows the delay of each freelancer? | TaskExecution | IE: TaskExecution knows its own data | 
-| | ...knows TaskExecution? | Transaction | IE: Transaction created TaskExecution, therefore Transaction knows the data about TaskExecution |
-| | ...calculates the payment for each task of each freelancer? | Transaction | IE: Transaction has the cost per hour and the time that the task took.|
-| |...knows RegisterFreelancer? | Platform | IE: Platform has RegisterFreelancer | 
+|1. The collaborator/manager starts watching overall statistics|...interacts with the user? | WatchStatisticsUI | Pure Fabrication|
+|             |...coordinates the UC? | WatchStatisticsController | Controller |
+|2. The collaborator/manager beggins watch overall statistics about task execution delay and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation. |...knows the actual session | ApplicationPOT | IE: ApplicationPOT knows the registered users | 
+| |...knows the Organization of the actual session user? | RegisterOrganization | HC+LC |
+| |...knows RegisterOrganization? | Platform | IE: Platform has the list of Organizations |
+| |...knows the list of transactions? | RegisterTransaction | HC+LC |
+| |...knows RegisterTransaction? | Organization | IE: Organization knows RegisterTransaction |
+| |...knows the list of Freelancers? | RegisterFreelancer | HC+LC |
+| |...knows RegisterFreelancer? | Platform | Platform knows all the freelancers | 
+| |...knows the payment of each freelancer? | TransactionExecution | IE: In the MD, TransactionExecution originates a payment |
+| |...knows the delay of each freelancer? | TransactionExecution | IE: TransactionExecution knows its own data | 
              
 
 ### Sistematization ##
 
  From rational results that conceptual classes  conceptuais promoted to software classes are:
 
- * Platform
- * TaskExecution
+* Platform
+* Organization
+* TransactionExecution
 
 
 Other software classes (i.e. Pure Fabrication) identified:  
@@ -85,6 +92,7 @@ Other software classes (i.e. Pure Fabrication) identified:
  * WatchStatisticsUI  
  * WatchStatisticsController
  * RegisterTransactions
+ * RegisterFreelancer
 
 
 ###	Sequence Diagram

@@ -221,27 +221,6 @@ public class Organization implements Serializable {
         return null;
     }
 
-    /**
-     * method that "sends" and email to mean performance freelancers
-     *
-     * @throws FileNotFoundException
-     */
-    public void sendEmail() throws FileNotFoundException {
-        ApplicationPOT ap = ApplicationPOT.getInstance();
-        List<Freelancer> listFreelancers = ap.getPlatform().getRfree().getListFreelancers();
-        double delayProb = ap.getPlatform().getRfree().getDelayProb();
-
-        List<TransactionExecution> transList = rTrans.getTransactions();
-        for (int i = 0; i < transList.size(); i++) {
-            double taskDelay = transList.get(i).getTaskDelay();
-            if (taskDelay > 3 && taskDelay > delayProb) {
-                Freelancer free = transList.get(i).getFreel();
-                Writer.sendEmail(free); 
-              
-            }
-        }
-    }
-
     //======================================================================================================================================================
     /**
      * Compares 2 Organization objects through NIF and email with both objects
