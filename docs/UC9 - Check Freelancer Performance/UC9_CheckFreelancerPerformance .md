@@ -106,7 +106,7 @@ Other software classes (eg: Pure Fabrication) identified:
 
 ### Class Diagram
 
-![UC9_CD.svg](UC_CD.svg)
+![UC9_CD.svg](UC9_CD.svg)
 ![UC9_CD_GetFreelancers.svg](UC9_CD_GetFreelancers.svg)
 ![UC9_CD_Choice.svg](UC9_CD_Choice.svg)
 
