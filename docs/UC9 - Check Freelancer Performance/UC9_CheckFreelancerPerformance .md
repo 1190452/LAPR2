@@ -65,12 +65,15 @@ n/a
 
 | Main Flux | Question: Which class... | Answer  | Justification  |
 |:--------------  |:---------------------- |:----------|:---------------------------- |
-|1. The Administrator starts the visualization of the performance of the freelancers. |...interacts with the user? | CheckPerformanceUI | Pure Fabrication|
-|             |...coordinates the UC? | CheckPerformanceController | Controller |
+|1. The Administrator starts the visualization of the performance of the freelancers. |...interacts with the user? | WatchStatisticsUI | Pure Fabrication|
+|             |...coordinates the UC? | WatchStatisticsController | Controller |
 |2. The system shows the statistics describing the performance of the freelancers (the mean and the standard deviation of the delays and payments of all the freelancers and the histrograms that represent that) and shows the probability that the sample mean is higher than 3 hours. |...knows the list of transactions? | RegisterTransaction | HC+LC |
 | |...knows RegisterTransaction? | Organization | IE: Organization knows RegisterTransaction |
 | |...knows the list of Freelancers? | RegisterFreelancer | HC+LC |
-| |...knows RegisterFreelancer? | Platform | Platform knows all the freelancers | 
+| |...knows RegisterFreelancer? | Platform | Platform knows all the freelancers |
+| |...knows Platform? | ApplicationPOT | ApplicationPOT knows the platform |
+| |...knows UserSession | FacadeAuthorization | FacadeAuthorization knows the UserSession |
+| |...knows FacadeAuthorization | ApplicationPOT | ApplicationPOT knows the FacadeAuthorization |
 | |...knows the payment of each freelancer? | TransactionExecution | IE: In the MD, TransactionExecution originates a payment |
 | |...knows the delay of each freelancer? | TransactionExecution | IE: TransactionExecution knows its own data | 
 
