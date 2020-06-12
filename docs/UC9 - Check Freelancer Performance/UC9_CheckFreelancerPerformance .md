@@ -96,6 +96,8 @@ Other software classes (eg: Pure Fabrication) identified:
 ### Sequence Diagram
 
 ![UC9_SD.svg](UC9_SD.svg)
+![UC9_GetFreelancers.svg](UC9_GetFreelancers.svg)
+![UC9_SD_Choice.svg](UC9_SD_Choice.svg)
 
 
 
