@@ -43,8 +43,9 @@ public class SendEmailFreelTask extends TimerTask {
     @Override
     public void run() {
         try {
+            System.out.println("Task is running (UC10)");
             int year = Year.now().getValue();
-            boolean leapY = p1.leapYear(year);
+            boolean leapY = Platform.leapYear(year);
 
             if (leapY) {
                 long time = getOneDayTime();

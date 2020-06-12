@@ -26,7 +26,6 @@ public class Payment implements Serializable {
      *
      * @param sum
      * @param curr
-     * @param nltr
      */
     public Payment(double sum, double curr) {
         if (sum != 0 && curr != 0) {
