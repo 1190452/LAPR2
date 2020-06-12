@@ -1,0 +1,19 @@
+@startuml
+
+class WatchStatisticsController{
+  }
+
+class Statistics {
+  +getPaymentDeviationOfEachFreelancer(String email, List<TransactionExecutino> ltr)
+  +getTaskExecutionDelayOfEachFreelancer(String email, List<TransactionExecutino> ltr)
+  +getTaskExecutionDelayOfAllFreelancers(List<TransactionExecutino> ltr)
+  }
+
+
+WatchStatisticsController ..> Statistics
+
+
+
+
+
+@enduml

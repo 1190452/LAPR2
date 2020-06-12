@@ -70,6 +70,9 @@ n/a
 |2. The collaborator/manager beggins watch overall statistics about task execution delay and freelancer payments. The system show the statistics about task execution times and freelancer payments the and informs the manager/collaborator about the success of the operation. |...knows the actual session | ApplicationPOT | IE: ApplicationPOT knows the registered users | 
 | |...knows the Organization of the actual session user? | RegisterOrganization | HC+LC |
 | |...knows RegisterOrganization? | Platform | IE: Platform has the list of Organizations |
+| |...knows Platform? |	ApplicationPOT	| ApplicationPOT knows the platform |
+| |...knows UserSession	| FacadeAuthorization | FacadeAuthorization knows the UserSession |
+| |...knows FacadeAuthorization | ApplicationPOT | ApplicationPOT knows the FacadeAuthorization |
 | |...knows the list of transactions? | RegisterTransaction | HC+LC |
 | |...knows RegisterTransaction? | Organization | IE: Organization knows RegisterTransaction |
 | |...knows the list of Freelancers? | RegisterFreelancer | HC+LC |
@@ -108,4 +111,6 @@ Other software classes (i.e. Pure Fabrication) identified:
 ###	Class Diagram
 
 ![UC8_CD.svg](UC8_CD.svg)
+
+![UC8_CD_Choice.svg](UC8_CD_Choice.svg)
 
