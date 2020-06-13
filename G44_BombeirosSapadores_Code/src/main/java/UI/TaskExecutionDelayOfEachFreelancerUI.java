@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -84,15 +85,21 @@ public class TaskExecutionDelayOfEachFreelancerUI implements Initializable {
 
     @FXML
     private void Histogram(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (TaskExecutionDelayOfEachFreelancer).fxml"));
-        Parent root = (Parent)loader.load();
-        HistogramTaskExecutionDelayOfEachFreelancerUI c = loader.getController();
-        c.associarParentUI(this);
-        c.fillData();
-        Scene create = new Scene(root);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(create);
-        window.show();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Histogram (TaskExecutionDelayOfEachFreelancer).fxml"));
+            Parent root = (Parent) loader.load();
+            HistogramTaskExecutionDelayOfEachFreelancerUI c = loader.getController();
+            c.associarParentUI(this);
+            c.fillData();
+            Scene create = new Scene(root);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(create);
+            window.show();
+        } catch (IOException e) {
+            Alert alert = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error loading the histogram!", "Please confirm the information first.");
+            alert.show();
+        }
+
     }
 
     @FXML
