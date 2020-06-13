@@ -60,7 +60,7 @@ public class ImportCsvFile implements ImportFile, Serializable {
             try {
 
                 while ((line = bufferedReader.readLine()) != null) {
-                    String[] temp = line.split(";|-|,");
+                    String[] temp = line.split(";");
                     int transID = Integer.parseInt(temp[0]);
                     String idTask = temp[1];
                     String descriptionTask = temp[2];
@@ -83,7 +83,9 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     String FreelancerLocality = temp[20];
                     String FreelancerCountry = temp[21];
 
-                    Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
+                    Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail,
+                            FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor,
+                                    FreelancerLocality));
                     if (rf.Verification(fr)) {
                         rf.addFreelancer(fr);
                     }
@@ -99,7 +101,8 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     }
 
                     double valueC = pot.getPlatform().getC().convert(valueE, FreelancerCountry);
-                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, descripOFQuality, new Payment(valueE, valueC));
+                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay,
+                            descripOFQuality, new Payment(valueE, valueC));
                     if (ht.validateTransaction(trans)) {
                         ht.addTransaction(trans);
                     }
