@@ -144,7 +144,7 @@ public class WatchStatisticsUI implements Initializable {
 
     @FXML
     private void sortByPayment(ActionEvent event) {
-        List<Freelancer> lfree = wsc.sortFreelByValue();
+        List<Freelancer> lfree = wsc.sortFreelByPayment();
         StringBuilder sb = new StringBuilder();
         lfree.forEach(e -> sb.append(e.getName() + "\n"));
         AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Sorting Freelancers by Payment Value", sb.toString()).show();

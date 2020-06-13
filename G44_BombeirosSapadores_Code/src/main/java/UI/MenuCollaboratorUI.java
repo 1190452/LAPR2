@@ -6,7 +6,10 @@ package UI;
  * and open the template in the editor.
  */
 import Model.ApplicationPOT;
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -216,6 +219,41 @@ public class MenuCollaboratorUI implements Initializable {
 
         // Hide this current window
         ((Node) (event.getSource())).getScene().getWindow().hide();
+    }
+
+    @FXML
+    private void openInsta(MouseEvent event) throws URISyntaxException {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.instagram.com/isep.pporto/"));
+            } catch (IOException | URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+    @FXML
+    private void openFace(MouseEvent event) {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.facebook.com/isep.pporto/"));
+            } catch (IOException | URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+        }
+
+    }
+
+    @FXML
+    private void openLink(MouseEvent event) {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.linkedin.com/school/isep/?originalSubdomain=pt"));
+            } catch (IOException | URISyntaxException e1) {
+                e1.printStackTrace();
+            }
+        }
+
     }
 
 }

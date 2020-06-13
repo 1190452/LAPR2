@@ -62,7 +62,7 @@ public class DoPaymentTask extends TimerTask {
      */
     private void doPayment() {
 
-        System.out.println("task ta a andarrrrrr");
+        System.out.println("Task is running (UC7)");
         ApplicationPOT app = ApplicationPOT.getInstance();
 
         plt = app.getPlatform();

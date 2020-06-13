@@ -83,6 +83,7 @@ public class WatchStatisticsController {
         }
 
     }
+<<<<<<< HEAD
 
     /**
      * method that sort the list of freelancers by their payments received.
@@ -90,6 +91,10 @@ public class WatchStatisticsController {
      * @return
      */
     public List<Freelancer> sortFreelByValue() {
+=======
+    
+    public List<Freelancer> sortFreelByPayment(){
+>>>>>>> f7d1188cc48b132040426a1689d1e73d712adfe1
         app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
         email = log.getUserEmail();

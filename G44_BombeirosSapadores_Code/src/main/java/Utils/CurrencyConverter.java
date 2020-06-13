@@ -25,33 +25,27 @@ public class CurrencyConverter implements Serializable{
         
         switch(country.toLowerCase()){
             case ("usa"):
-            case ("USA"):
-            case ("United States of America"):    
+            case ("united states of america"):    
                 return valueE*1.1194;
                     
             case ("united kingdom"):
             case ("uk"):
-            case ("UK"):
                 return valueE*0.8907;
                     
             case ("switzerland"):
-            case ("Switzerland"):
-            case ("CH"):
+            case ("ch"):
                 return valueE*1.0793;
                 
             case ("canada"):
-            case ("Canada"):
-            case ("CA"):
+            case ("ca"):
                 return valueE*1.5173;
             
             case ("australia"):
-            case ("Australia"):
-            case ("AU"):
+            case ("au"):
                 return valueE*1.6280;
             
             case ("japan"):
-            case ("Japan"):
-            case ("JP"):
+            case ("jp"):
                 return valueE*123.77;
                 
             default:

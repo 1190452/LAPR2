@@ -1,0 +1,32 @@
+@startuml
+
+
+
+class WatchStatisticsController{
+  +add(trans)
+  }
+
+class Organization {
+  +getRTrans()
+  }
+
+class RegisterTransaction{
+  +getTransactions()
+  }
+
+class TransactionExecution{
+  -Data endDate
+-double delay
+-String descriptionOfQuality
+  }
+
+WatchStatisticsController ..>Organization
+WatchStatisticsController ..>RegisterTransaction
+
+Organization "1" -- "1" RegisterTransaction: has
+
+RegisterTransaction "1" -- "1..*" TransactionExecution : has
+
+
+
+@enduml
