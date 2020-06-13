@@ -144,7 +144,7 @@ public class WatchStatisticsUI implements Initializable {
 
     @FXML
     private void sortByPayment(ActionEvent event) {
-        List<Freelancer> lfree = wsc.sortFreelByValue();
+        List<Freelancer> lfree = wsc.sortFreelByPayment();
         StringBuilder sb = new StringBuilder();
         lfree.forEach(e -> sb.append(e.getName() + "\n"));
         AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Sorting Freelancers by Payment Value", sb.toString()).show();
@@ -187,12 +187,15 @@ public class WatchStatisticsUI implements Initializable {
         ApplicationPOT ap = ApplicationPOT.getInstance();
         if (ap.getActualSession().getUserBySession().getRole().equalsIgnoreCase(Constants.ROLE_ADMINISTRATIVE)) {
             combDecision.getItems().clear();
-            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Payment Deviation of all Freelancers", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers", "Probability that the delay mean is higher than 3 hours");
+            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Payment Deviation of all Freelancers",
+                   "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers", 
+                   "Probability that the delay mean is higher than 3 hours");
             this.sortByPaymentbtn.setVisible(false);
             this.sortByNamebtn.setVisible(false);
         } else {
             combDecision.getItems().clear();
-            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers");
+            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Task Execution Delay of each Freelancer",
+                    "Task Execution Delay of All Freelancers");
             this.sortByPaymentbtn.setVisible(true);
             this.sortByNamebtn.setVisible(true);
         }
