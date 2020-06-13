@@ -63,7 +63,7 @@
                         <Insets bottom="15.0" right="100.0" />
                      </GridPane.margin>
                   </Button>
-                  <Text fill="WHITE" fontSmoothingType="LCD" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="TASK EXECUTION" underline="true" GridPane.halignment="LEFT">
+                  <Text fill="WHITE" fontSmoothingType="LCD" stroke="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaction" underline="true" GridPane.halignment="LEFT">
                      <font>
                         <Font name="Verdana" size="18.0" />
                      </font>
