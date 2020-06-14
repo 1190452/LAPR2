@@ -64,8 +64,6 @@ public class MenuAdministratorUI implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        pot = ApplicationPOT.getInstance();
-        pot.save(pot.getPlatform());
 
         /**
          * Shows the current time in the label

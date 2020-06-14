@@ -3,17 +3,23 @@ skinparam classAttributeIconSize 0
 hide methods
 left to right direction
 
+class Platform{
+}
 
+class Organization {
+  -String name
+  -String email
+  -String nif
+}
 
 class Manager {
-  -String nome
-  -String email
+  -String nameM
+  -String emailM
+  -String role
 }
 
 class User {
 }
-
-
 
 class Payment{
   -double valueE
@@ -22,21 +28,15 @@ class Payment{
 
 class DefinePayment{
   -Time timeToPay
-  -Data dateToPay
+  -Date dateToPay
   -int nrDays
-}
-
-
+  }
 
 Platform "1" -- "1..*" Organization: has registered >
-
 Organization "1" -- "1" Manager: has >
-Organization "1" -- "1" DefinePayment: saves >
-
+Organization "1" -- "1..*" DefinePayment: executes >
 Manager "1" -- "1" User: acts as >
-Manager "1" -- "1" DefinePayment: determines >
-
-
-DefinePayment "1" -- "1..*" Payment: defines > 
+Manager "1" -- "1" DefinePayment: defines
+DefinePayment "1" -- "1..*" Payment: has >
 
 @enduml

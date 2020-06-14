@@ -35,7 +35,7 @@ class Task {
 }
 
 
-class Transaction {
+class TransactionExecution {
   -Data endDate
   -double delay
   -String descriptionOfQuality
@@ -51,40 +51,33 @@ class Administrator {
 }
 
 
-class Reader {
-  -String fileName
-}
 
-class HistoricalTransaction{
-}
-
-Freelancer "1" -- "1" Transaction: receive >
+Freelancer "1" -- "1" TransactionExecution: receive >
 Freelancer "1" -- "1" Address: has >
 
 Task "1..*" -- "1" Freelancer: made by >
 
-Platform "1" -- "1..*" Transaction: has >
+Platform "1" -- "1..*" TransactionExecution: has >
 Platform "1" -- "1" Administrator: has >
 Platform "1" -- "1..*" Organization: has registered >
 Platform "1" -- "1..*" Freelancer: has >
+Platform "1" -- "1" ImportFile : has
 
 Organization "1" -- "1" Address: has >
 Organization "1" -- "1" Collaborator: has >
 
+
 Administrator "1" -- "1" Organization: registers >
 Administrator "1" -- "1" Collaborator: registers >
 
-Transaction "1" -- "1" Task: has >
+TransactionExecution "1" -- "1" Task: has >
 
-Reader "1" -- "1..*" HistoricalTransaction: originates >
-
-HistoricalTransaction "1" -- "1..*" Transaction: has >
-HistoricalTransaction "1" -- "1..*" Freelancer: has >
 
 Collaborator "1" -- "1" Freelancer: creates >
 Collaborator "1" -- "1..*" Task: creates >
-Collaborator "1" -- "1..*" Transaction: creates >
-Collaborator "1" -- "1" HistoricalTransaction: load >
+Collaborator "1" -- "1..*" TransactionExecution: creates >
+
+ImportFile "1" -- "1" Collaborator: used by
 
 
 

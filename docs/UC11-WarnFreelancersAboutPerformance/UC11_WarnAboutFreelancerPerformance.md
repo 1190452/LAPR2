@@ -65,7 +65,7 @@ All the last days of the years.
 
 ### Excerpt from the Relevant Domain Model for UC
 
-![UC10_MD.png](UC10_MD.png)
+![UC11_MD.svg](UC11_MD.svg)
 
 ## 3. Design - Use Case Realization
 
@@ -110,8 +110,6 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ###	Class Diagram
 
-![UC10_CD.png](UC10_CD.png)
+![UC11_CD.svg](UC11_CD.svg)
 
-###	UC10_CD_SendEmail
 
-![UC10_CD_SendEmail.png](UC10_CD_SendEmail.png)
