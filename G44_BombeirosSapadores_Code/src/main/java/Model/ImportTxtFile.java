@@ -51,7 +51,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
 
         try {
             Scanner sc = new Scanner(new File(fileName), "utf-8");
-            sc.useDelimiter(";|\n|,");
+            sc.useDelimiter("\t");
             ApplicationPOT pot = ApplicationPOT.getInstance();
             UserSession log = pot.getActualSession();
             String email = log.getUserEmail();
@@ -83,7 +83,9 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     String FreelancerLocality = sc.next().trim();
                     String FreelancerCountry = sc.next().trim();
 
-                    Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail, FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor, FreelancerLocality));
+                    Freelancer fr = new Freelancer(FreelancerID, FreelancerName, FreelancerExpertise, FreelancerEmail, 
+                            FreelancerNIF, FreelancerBankAccount, FreelancerCountry, new Address(FreelancerStreet, FreelancerDoor,
+                                    FreelancerLocality));
                     if (rf.Verification(fr)) {
                         rf.addFreelancer(fr);
                     }
@@ -99,7 +101,8 @@ public class ImportTxtFile implements ImportFile, Serializable {
                     }
 
                     double valueC = pot.getPlatform().getC().convert(valueE, FreelancerCountry);
-                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, descripOFQuality, new Payment(valueE, valueC));
+                    TransactionExecution trans = new TransactionExecution(transID, t, fr, new Date(year, month, day), delay, 
+                            descripOFQuality, new Payment(valueE, valueC));
                     if (ht.validateTransaction(trans)) {
                         ht.addTransaction(trans);
                     }

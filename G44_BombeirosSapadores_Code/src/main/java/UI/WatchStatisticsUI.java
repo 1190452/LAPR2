@@ -135,7 +135,7 @@ public class WatchStatisticsUI implements Initializable {
 
             }
         } else {
-            Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error", "There are no freelancers in the system!");
+            Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error", "There are no transactions in the system!");
             if (alert2.showAndWait().get() == ButtonType.OK) {
                 alert2.close();
             }
