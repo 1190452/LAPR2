@@ -1,4 +1,4 @@
-For testing purposes, the initial passwords to test are the same.
+For testing purposes, the initial passwords to test are the following:
 
 Administrator:
 admin@gmail.com

@@ -46,15 +46,15 @@ public class ApplicationPOT implements Serializable {
      * reads the data from a binary file
      */
     public void read() {
+        Platform plat1;
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File(FILENAME)));
             try {
-                Platform plat1 = (Platform) in.readObject();
+                plat1 = (Platform) in.readObject();
                 this.m_oPlataforma = plat1;
-                this.m_oAutorizacao = this.m_oPlataforma.getFacadeAuthorazation();
+                this.m_oAutorizacao = plat1.getFacadeAuthorazation();
             } finally {
                 in.close();
-                in.reset();
             }
 
         } catch (IOException | ClassNotFoundException ex) {
@@ -81,6 +81,7 @@ public class ApplicationPOT implements Serializable {
             return false;
         }
     }
+    
 
     /**
      * method that logins a user in the platform

@@ -7,12 +7,13 @@ package UI;
 
 import Controller.WarnAboutFreelancerPerformanceController;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 
 /**
  *
  * @author OMEN X
  */
-public class WarnAboutFreelancerPerformanceUI {
+public class WarnAboutFreelancerPerformanceUI implements Serializable{
 
     private WarnAboutFreelancerPerformanceController controller;
 
