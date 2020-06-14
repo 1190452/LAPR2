@@ -2,7 +2,6 @@ package Model;
 
 import Utils.Date;
 import Utils.Time;
-import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -212,10 +211,9 @@ public class Organization implements Serializable {
             return lt;
         } else if (fileName.endsWith(".csv")) {
             rTrans = icsv.importFile(fileName);
-            List<TransactionExecution> lt = getRTrans().getTransactions();
-            if (getRTrans().validateHistoricalTransaction(lt)) {
-                return lt;
-            }
+            List<TransactionExecution> lt = rTrans.getTransactions();
+            return lt;
+            
 
         }
         return null;
