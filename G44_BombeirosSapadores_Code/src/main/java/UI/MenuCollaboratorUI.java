@@ -70,8 +70,6 @@ public class MenuCollaboratorUI implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        pot = ApplicationPOT.getInstance();
-        pot.save(pot.getPlatform());
 
         /**
          * Shows the current time in the label
