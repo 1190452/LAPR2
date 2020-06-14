@@ -110,8 +110,6 @@ Other software classes (i.e. Pure Fabrication) identified:
 
 ###	Class Diagram
 
-![UC10_CD.png](UC10_CD.png)
+![UC11_CD.svg](UC11_CD.svg)
 
-###	UC10_CD_SendEmail
 
-![UC10_CD_SendEmail.png](UC10_CD_SendEmail.png)
