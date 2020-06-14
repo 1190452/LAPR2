@@ -65,7 +65,7 @@ All the last days of the years.
 
 ### Excerpt from the Relevant Domain Model for UC
 
-![UC10_MD.png](UC10_MD.png)
+![UC11_MD.svg](UC11_MD.svg)
 
 ## 3. Design - Use Case Realization
 
