@@ -7,6 +7,7 @@ package Utils;
 
 import Model.Freelancer;
 import Model.TransactionExecution;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author tiagopereira
  */
-public class SortList {
+public class SortList implements Serializable {
 
     public List<Freelancer> sortByName(List<Freelancer> lfree) {
         int size = lfree.size();

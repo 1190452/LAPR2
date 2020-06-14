@@ -6,6 +6,7 @@
 package Utils;
 
 import Model.TransactionExecution;
+import java.io.Serializable;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Map;
  *
  * @author tiagopereira
  */
-public class Statistic {
+public class Statistic implements Serializable {
 
     /**
      * calculates the payment mean of a freelancer
