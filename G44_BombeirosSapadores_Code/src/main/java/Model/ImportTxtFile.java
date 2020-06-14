@@ -11,7 +11,6 @@ import Utils.Date;
 import Authorization.model.UserSession;
 import Utils.CurrencyConverter;
 import java.io.Serializable;
-import java.util.Currency;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -51,7 +50,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
 
         try {
             Scanner sc = new Scanner(new File(fileName), "utf-8");
-            sc.useDelimiter("\t");
+            sc.useDelimiter("\t|\n");
             ApplicationPOT pot = ApplicationPOT.getInstance();
             UserSession log = pot.getActualSession();
             String email = log.getUserEmail();

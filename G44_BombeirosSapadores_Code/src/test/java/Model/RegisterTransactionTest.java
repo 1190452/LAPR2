@@ -7,7 +7,6 @@ package Model;
 
 import Utils.CurrencyConverter;
 import Utils.Date;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
@@ -72,14 +71,13 @@ public class RegisterTransactionTest {
         Freelancer freel = new Freelancer("JM1","Jose Manuel", "Junior", "jose@gmail.com", "123456789", "PT125478965478965412", "Portugal", new Address("rua do bosque", "12", "bosque"));
         Date endDate = new Date(2020, 07, 01);
         double delay = 0.5;
-        String qow = "Very good";
+        String qow = "Very good";      
         CurrencyConverter cc = new CurrencyConverter();
         double valueE = task.getCostHour() * task.getTimeTask();
         double valueC = cc.convert(valueE, freel.getCountry());
         RegisterTransaction instance = new RegisterTransaction();
-        TransactionExecution expResult = new TransactionExecution(task, freel, endDate, delay, qow,new Payment(valueE, valueC));
+        TransactionExecution expResult = new TransactionExecution(task, freel, endDate, delay, qow, new Payment(valueE, valueC));
         TransactionExecution result = instance.createNewTransaction(task, freel, endDate, delay, qow);
-
     }
 
     @Test

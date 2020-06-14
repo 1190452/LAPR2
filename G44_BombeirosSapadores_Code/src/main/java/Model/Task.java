@@ -248,7 +248,6 @@ public class Task implements Serializable {
     }
 
     //======================================================================================================================================================
-    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -273,6 +272,7 @@ public class Task implements Serializable {
         }
         Task otherTask = (Task) otherObject;
         return this.idTask.equals(otherTask.idTask);
+
     }
 
     //======================================================================================================================================================
@@ -286,7 +286,7 @@ public class Task implements Serializable {
         return String.format("Task %s, description: %s, cost per hour: %s, "
                 + "category: %s", idTask, description, costHour, taskCategory);
     }
-    
+
     /**
      * Returns the characteristics of the Task
      *
