@@ -118,7 +118,7 @@ public class ImportTxtFile implements ImportFile, Serializable {
             System.out.println("O ficheiro que está a tentar carregar nao existe.");
 
         }
-        return null;
+        return ht;
 
     }
 }

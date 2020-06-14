@@ -117,6 +117,7 @@ public class Organization implements Serializable {
         this.colab = otherOrganization.colab;
         this.manager = otherOrganization.manager;
         this.taskList = otherOrganization.taskList;
+        this.rTrans = (otherOrganization.getRTrans() == null ? new RegisterTransaction() : otherOrganization.getRTrans());
         
     }
 
@@ -130,6 +131,7 @@ public class Organization implements Serializable {
         this.taskList = new TaskList();
         this.itxt = new ImportTxtFile();
         this.icsv = new ImportCsvFile();
+        this.rTrans = new RegisterTransaction();
     }
 
     //======================================================================================================================================================

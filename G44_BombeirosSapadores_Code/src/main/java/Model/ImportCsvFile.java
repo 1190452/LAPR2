@@ -58,13 +58,13 @@ public class ImportCsvFile implements ImportFile, Serializable {
                 while (sc.hasNextLine()) {
                     String linha = sc.nextLine();
                     String[] data = linha.split(";");
-                    Freelancer fr = new Freelancer(data[11], data[12], data[13], data[14],
-                            data[15], data[16], data[20], new Address(data[17], data[18],
-                                    data[19]));
+                    Freelancer fr = new Freelancer(data[11].trim(), data[12].trim(), data[13].trim(), data[14].trim(),
+                            data[15].trim(), data[16].trim(), data[20].trim(), new Address(data[17].trim(), data[18].trim(),
+                                    data[19].trim()));
                     if (rf.Verification(fr)) {
                         rf.addFreelancer(fr);
                     }
-                    Task t = new Task(data[1], data[2], Integer.parseInt(data[3]), Double.parseDouble(data[4]), data[5]);
+                    Task t = new Task(data[1].trim(), data[2].trim(), Integer.parseInt(data[3]), Double.parseDouble(data[4]), data[5].trim());
                     if (tl.validateTask(t)) {
                         tl.addTask(t);
                     }
@@ -76,8 +76,9 @@ public class ImportCsvFile implements ImportFile, Serializable {
                     }
 
                     double valueC = pot.getPlatform().getC().convert(valueE, data[20]);
-                    TransactionExecution trans = new TransactionExecution(Integer.parseInt(data[0]), t, fr, new Date(Integer.parseInt(data[8]), Integer.parseInt(data[7]), Integer.parseInt(data[6])), Double.parseDouble(data[9]),
-                            data[10], new Payment(valueE, valueC));
+                    TransactionExecution trans = new TransactionExecution(Integer.parseInt(data[0]), t, fr, new Date(Integer.parseInt(data[8]), 
+                            Integer.parseInt(data[7].trim()), Integer.parseInt(data[6])), Double.parseDouble(data[9]),
+                            data[10].trim(), new Payment(valueE, valueC));
                     if (ht.validateTransaction(trans)) {
                         ht.addTransaction(trans);
                     }
@@ -88,6 +89,9 @@ public class ImportCsvFile implements ImportFile, Serializable {
                 System.out.println("Error reading HistoricalTransaction file!");
 
             }
+             catch(Exception e){
+                 System.out.println("Error reading file. Contact the admninistrator");
+             }
             finally{
                 sc.close();
             }
@@ -95,7 +99,7 @@ public class ImportCsvFile implements ImportFile, Serializable {
         } catch (FileNotFoundException e) {
         } catch (IOException e) {
         }
-        return null;
+        return ht;
     }
     }
 
