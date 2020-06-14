@@ -16,20 +16,21 @@ class Freelancer {
 }
 
 class Organization {
-  -String nome
+  -String name
   -String email
   -String nif
 }
 
 class Collaborator{
-  -String nome
-  -String email
+  -String nameC
+  -String emailC
+  -String role
 }
 
 class Task {
-  -String idT
+  -String idTask
   -String description
-  -Time timeDuration
+  -int timeTask
   -double costHour
   -String taskCategory
   -boolean isPayed
@@ -37,23 +38,25 @@ class Task {
 }
 
 class Manager {
-  -String nome
-  -String email
+  -String nameM
+  -String emailM
+  -String role
 }
 
 class User {
 }
 
 class TransactionExecution { 
-  -Data endDate
+  -Date endDate
   -double delay
   -String descriptionOfQuality
+  -int transID
 }
 
 class Address{
   -String street
   -String doorNumber
-  -String city
+  -String locality
 }
 
 class Administrator {
@@ -64,21 +67,18 @@ class Payment{
   -double valueC
 }
 
-class AutomaticPayment{
+class DefinePayment{
   -Time timeToPay
-  -Data dateToPay
+  -Date dateToPay
   -int nrDays
   }
 
 class ImportFile {
-  -String fileName
 }
 
-class HistoricalTransaction{
-}
+
 
 class Writer{
-  -String fileName
   }
 
 Freelancer "1" -- "1..*" Payment: receives >
@@ -95,19 +95,20 @@ Platform "1" -- "1" Freelancer: sends email to >
 Platform "1" -- "1" Collaborator: sends email to >
 Platform "1" -- "1" Manager: sends email to >
 Platform "1" -- "1" Writer : sends emails from >
-Platform "1" -- "1..*" AutomaticPayment : makes
+Platform "1" -- "1..*" DefinePayment : makes
 Platform "1" -- "1" ImportFile: has > 
 
 Organization "1" -- "1" Address: has >
 Organization "1" -- "1" Manager: has >
 Organization "1" -- "1" Collaborator: has >
 Organization "1" -- "1..*" Task: has >
-Organization "1" -- "1..*" Transaction: has >
-Organization "1" -- "1..*" AutomaticPayment: executes >
+Organization "1" -- "1..*" DefinePayment: executes >
+Organization "1" -- "1" TransactionExecution: has >
+
 
 Manager "1" -- "1" User: acts as >
 Manager "1" -- "1" Writer: receives email from >
-Manager "1" -- "1" AutomaticPayment: defines 
+Manager "1" -- "1" DefinePayment: defines 
 
 Administrator "1" -- "1" Organization: registers >
 Administrator "1" -- "1" User: acts as >
@@ -115,23 +116,25 @@ Administrator "1" -- "1" Collaborator: registers >
 Administrator "1" -- "1" Manager: registers >
 Administrator "1" -- "1" Writer: receives email from >
 
+
+
+
+
 TransactionExecution "1" -- "1" Task : has >
 TransactionExecution "1" -- "1" Freelancer: related to the work of >
 TransactionExecution "1" -- "1" Payment : originates >
 
-AutomaticPayment "1" -- "1..*" Payment: has >
+DefinePayment "1" -- "1..*" Payment: has >
 
 
-ImportFile "1" -- "1..*" HistoricalTransaction: originates >
 
-HistoricalTransaction "1" -- "1..*" TransactionExecution: has >
-HistoricalTransaction "1" -- "1..*" Freelancer: has >
+
+
 
 Collaborator "1" -- "1" Freelancer: creates >
 Collaborator "1" -- "1..*" Task: creates >
 Collaborator "1" -- "1..*" TransactionExecution: creates >
 Collaborator "1" -- "1" User: acts as >
-Collaborator "1" -- "1" HistoricalTransaction: loads >
 Collaborator "1" -- "1" Writer: receives email from >
 
 
