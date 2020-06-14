@@ -6,21 +6,10 @@ left to right direction
 class Platform{
 }
 
-
 class Organization {
   -String name
   -String email
   -String nif
-}
-
-class Task {
-  -String idTask
-  -String description
-  -int timeTask
-  -double costHour
-  -String taskCategory
-  -boolean isPayed
-  -boolean isFinished
 }
 
 class Manager {
@@ -31,16 +20,6 @@ class Manager {
 
 class User {
 }
-
-class TransactionExecution {
-  -Date endDate
-  -double delay
-  -String descriptionOfQuality
-  -int transID
-}
-
-
-
 
 class Payment{
   -double valueE
@@ -53,55 +32,11 @@ class DefinePayment{
   -int nrDays
   }
 
-
-
-
-Task "1..*" -- "1" Freelancer: made by >
-
-
 Platform "1" -- "1..*" Organization: has registered >
-Platform "1" -- "1..*" DefinePayment : makes
-
 Organization "1" -- "1" Manager: has >
-Organization "1" -- "1..*" Task: has >
 Organization "1" -- "1..*" DefinePayment: executes >
-
 Manager "1" -- "1" User: acts as >
 Manager "1" -- "1" DefinePayment: defines
-
-Administrator "1" -- "1" Organization: registers >
-Administrator "1" -- "1" User: acts as >
-Administrator "1" -- "1" Collaborator: registers >
-Administrator "1" -- "1" Manager: registers >
-Administrator "1" -- "1" Writer: receives email from >
-
-
-
-
-
-TransactionExecution "1" -- "1" Task : has >
-TransactionExecution "1" -- "1" Freelancer: related to the work of >
-TransactionExecution "1" -- "1" Payment : originates >
-
 DefinePayment "1" -- "1..*" Payment: has >
-
-
-
-
-
-
-Collaborator "1" -- "1" Freelancer: creates >
-Collaborator "1" -- "1..*" Task: creates >
-Collaborator "1" -- "1..*" TransactionExecution: creates >
-Collaborator "1" -- "1" User: acts as >
-Collaborator "1" -- "1" Writer: receives email from >
-
-
-
-
-
-
-
-
 
 @enduml
