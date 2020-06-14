@@ -103,11 +103,8 @@ Organization "1" -- "1" Manager: has >
 Organization "1" -- "1" Collaborator: has >
 Organization "1" -- "1..*" Task: has >
 Organization "1" -- "1..*" DefinePayment: executes >
-<<<<<<< HEAD
 Organization "1" -- "1" TransactionExecution: has >
 
-=======
->>>>>>> ce3eb65b22ac5505ba8bbc247d5fc0ed17b88e0e
 
 Manager "1" -- "1" User: acts as >
 Manager "1" -- "1" Writer: receives email from >
@@ -129,7 +126,7 @@ TransactionExecution "1" -- "1" Payment : originates >
 
 DefinePayment "1" -- "1..*" Payment: has >
 
-
+ImportFile "1" -- "1" Collaborator: used by
 
 
 
