@@ -156,7 +156,8 @@ public class Statistic {
         int midDev = calculateMidDev(ltr, mean, deviation);
         int rightDev = calculateRightDev(ltr, mean, deviation);
 
-        Map.Entry<String, CustomValue> entry = new AbstractMap.SimpleEntry<>("Payment Deviation of All Freelancers", new CustomValue(mean, deviation, leftDev, midDev, rightDev));
+        Map.Entry<String, CustomValue> entry = new AbstractMap.SimpleEntry<>("Payment Deviation of All Freelancers", new CustomValue(mean, deviation, leftDev, midDev, 
+                rightDev));
         return entry;
     }
 

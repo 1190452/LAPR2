@@ -135,7 +135,7 @@ public class WatchStatisticsUI implements Initializable {
 
             }
         } else {
-            Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error", "There are no freelancers in the system!");
+            Alert alert2 = AlertUI.createAlert(Alert.AlertType.ERROR, MainApp.APPLICATION_TITLE, "Error", "There are no transactions in the system!");
             if (alert2.showAndWait().get() == ButtonType.OK) {
                 alert2.close();
             }
@@ -187,12 +187,15 @@ public class WatchStatisticsUI implements Initializable {
         ApplicationPOT ap = ApplicationPOT.getInstance();
         if (ap.getActualSession().getUserBySession().getRole().equalsIgnoreCase(Constants.ROLE_ADMINISTRATIVE)) {
             combDecision.getItems().clear();
-            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Payment Deviation of all Freelancers", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers", "Probability that the delay mean is higher than 3 hours");
+            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Payment Deviation of all Freelancers",
+                   "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers", 
+                   "Probability that the delay mean is higher than 3 hours");
             this.sortByPaymentbtn.setVisible(false);
             this.sortByNamebtn.setVisible(false);
         } else {
             combDecision.getItems().clear();
-            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Task Execution Delay of each Freelancer", "Task Execution Delay of All Freelancers");
+            combDecision.getItems().addAll("Payment Deviation of each Freelancer", "Task Execution Delay of each Freelancer",
+                    "Task Execution Delay of All Freelancers");
             this.sortByPaymentbtn.setVisible(true);
             this.sortByNamebtn.setVisible(true);
         }

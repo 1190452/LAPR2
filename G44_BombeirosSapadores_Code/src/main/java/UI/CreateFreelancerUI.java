@@ -107,8 +107,7 @@ public class CreateFreelancerUI implements Initializable {
             if (Validations.isEmailValid(emailTxt.getText())) {
                 if (Validations.isNIFValid(nifTxt.getText())) {
                     if (Validations.isIBANValid(ibanTxt.getText())) {
-                        if (Validations.isNameValid(countryTxt.getText()) && Validations.isStreetValid(streetTxt.getText())
-                                && Validations.isDoorNumberValid(doorTxt.getText()) && Validations.isLocalityValid(localityTxt.getText())) {
+                        if (Validations.isStreetValid(streetTxt.getText()) && Validations.isDoorNumberValid(doorTxt.getText()) && Validations.isLocalityValid(localityTxt.getText())) {
                             Freelancer f = cf.newFreelancer(nameTxt.getText(), experienceCB.getSelectionModel().getSelectedItem(), emailTxt.getText(), nifTxt.getText(),
                                     ibanTxt.getText(), countryTxt.getText(), streetTxt.getText(), doorTxt.getText(), localityTxt.getText());
                             Alert alert = AlertUI.createAlert(Alert.AlertType.INFORMATION, MainApp.APPLICATION_TITLE, "Freelancer Creation", f.toString());

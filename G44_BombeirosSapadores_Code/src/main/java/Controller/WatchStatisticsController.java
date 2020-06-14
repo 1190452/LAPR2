@@ -31,13 +31,36 @@ public class WatchStatisticsController {
      */
     private String email;
 
+    /**
+     * method Statistic
+     */
     private Statistic st;
 
+    /**
+     * list of transactions
+     */
     private List<TransactionExecution> ltr;
-    private  ApplicationPOT app;   
+
+    /**
+     * method ApplicationPOT
+     */
+    private ApplicationPOT app;
+
+    /**
+     * method SortList
+     */
     private SortList sl;
+
+    /**
+     * list of freelancers
+     */
     private List<Freelancer> lfree;
 
+    /**
+     * method that get the freelancers that we want to check the performance of the freelancers.
+     *
+     * @return
+     */
     public List<TransactionExecution> getFreelancers() {
         app = ApplicationPOT.getInstance();
         st = app.getPlatform().getSt();
@@ -60,7 +83,12 @@ public class WatchStatisticsController {
         }
 
     }
-    
+
+    /**
+     * method that sort the list of freelancers by their payments received.
+     *
+     * @return
+     */
     public List<Freelancer> sortFreelByPayment(){
         app = ApplicationPOT.getInstance();
         UserSession log = app.getActualSession();
@@ -71,8 +99,13 @@ public class WatchStatisticsController {
         List<Freelancer> lfreeS = sl.sortByPaymentValue(lfree, ltr);
         return lfreeS;
     }
-    
-    public List<Freelancer> sortFreelByName(){
+
+    /**
+     * method that sort the list of freelancers by their names.
+     *
+     * @return
+     */
+    public List<Freelancer> sortFreelByName() {
         app = ApplicationPOT.getInstance();
         lfree = app.getPlatform().getRfree().getListFreelancers();
         sl = app.getPlatform().getSl();

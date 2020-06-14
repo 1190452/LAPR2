@@ -147,7 +147,6 @@ public class Platform implements Serializable {
         if (strPwd.isEmpty()) {
             bRet = false;
         }
-        //
 
         return bRet;
     }

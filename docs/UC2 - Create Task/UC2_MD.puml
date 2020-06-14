@@ -14,18 +14,21 @@ class Organization {
 }
 
 class Collaborator{
-  -String name
-  -String email
+  -String nameC
+  -String emailC
+  -String role
 }
 
 class Task {
-  -String idT
+  -String idTask
   -String description
-  -Time timeDuration
+  -int timeTask
   -double costHour
   -String taskCategory
-  -Boolean isPayed
+  -boolean isPayed
+  -boolean isFinished
 }
+
 
 
 class User {
@@ -36,25 +39,22 @@ class User {
 Platform "1" -- "1..*" Organization: has registered >
 
 
-
-
 Organization "1" -- "1" Collaborator: has >
+Organization "1" -- "1..*" Task: has >
+
+
+
+Collaborator "1" -- "1..*" Task: creates >
+
 Collaborator "1" -- "1" User: acts as >
 
-Administrator "1" -- "1" Organization: registers >
-
-Administrator "1" -- "1" Collaborator: registers >
-
-Platform "1" -- "1..*" Task: has registered >
 
 
 
 
-Platform "1" -- "1" Administrator: has >
-Collaborator "1" -- "1..*" Task: creates >
+
 
 
 
 
 @enduml
-
