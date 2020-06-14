@@ -2,6 +2,7 @@ package Model;
 
 import Utils.Date;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -164,7 +165,6 @@ public class TransactionExecution implements Serializable {
     }
 
     //======================================================================================================================================================
-    
     /**
      * Returns the id related to the transaction
      *
@@ -311,7 +311,6 @@ public class TransactionExecution implements Serializable {
     }
 
     //======================================================================================================================================================
-    
     @Override
     public boolean equals(Object otherObject) {
         if (this == otherObject) {
@@ -321,11 +320,25 @@ public class TransactionExecution implements Serializable {
             return false;
         }
         TransactionExecution transE = (TransactionExecution) otherObject;
-        return (this.transID == transE.transID)
-                && this.task.equals(transE.task)
+        return this.task.equals(transE.task)
                 && this.freel.equals(transE.freel)
                 && this.payment.equals(transE.payment)
+                && this.endDate.equals(transE.endDate)
+                && this.descriptionOfQuality.equals(transE.descriptionOfQuality)
                 && (this.delay == transE.delay);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.task);
+        hash = 17 * hash + Objects.hashCode(this.freel);
+        hash = 17 * hash + Objects.hashCode(this.endDate);
+        hash = 17 * hash + (int) (Double.doubleToLongBits(this.delay) ^ (Double.doubleToLongBits(this.delay) >>> 32));
+        hash = 17 * hash + Objects.hashCode(this.descriptionOfQuality);
+        hash = 17 * hash + Objects.hashCode(this.payment);
+        hash = 17 * hash + this.transID;
+        return hash;
     }
 
 }
